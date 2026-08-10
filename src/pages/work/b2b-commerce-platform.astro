@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import en from "../../i18n/en";
+import CaseStudyHero from "../../components/case-study/CaseStudyHero.astro";
+
+const t = en;
+---
+
+<BaseLayout
+  title={t.b2bCommercePlatform.hero.title}
+  content={t}
+>
+  <CaseStudyHero content={t.b2bCommercePlatform.hero} />
+</BaseLayout>

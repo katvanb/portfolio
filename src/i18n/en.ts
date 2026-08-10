@@ -206,25 +206,66 @@ const en = {
 
   footer: {
 
-  title: "Have a complex product challenge?",
+    title: "Have a complex product challenge?",
 
-  description:
-    "If you're building products with complex systems, enterprise workflows, or AI-powered experiences, I'd love to help make them easier to understand and use.",
+    description:
+      "If you're building products with complex systems, enterprise workflows, or AI-powered experiences, I'd love to help make them easier to understand and use.",
 
-  email: "Email",
+    email: "Email",
 
-  linkedin: "LinkedIn",
+    linkedin: "LinkedIn",
 
-  copyright:
-    "© 2026 Katherine Gaspare",
+    copyright:
+      "© 2026 Katherine Gaspare",
 
-  credits: [
-    "Designed in Figma.",
-    "Built with Astro.",
-    "Crafted by me, with AI as a creative partner."
-  ]
+    credits: [
+      "Designed in Figma.",
+      "Built with Astro.",
+      "Crafted by me, with AI as a creative partner."
+    ]
 
-}
+  },
+
+  sidebar: {
+    navigation: {
+      work: "Work",
+      about: "About",
+      experiments: "Experiments",
+      writing: "Writing",
+    },
+
+    actions: {
+      downloadCV: "Download CV",
+      linkedin: "LinkedIn",
+      email: "Email",
+    },
+  },
+
+  credentialPlatform: {
+    hero: {
+      tag: "ENTERPRISE SaaS · EDTECH · DIGITAL CREDENTIALS",
+      title: "Creating structure for a growing credentialing ecosystem.",
+      description:
+        "Designing a multi-tenant credentialing system with complex role hierarchies, reporting layers, and scalable organization structures.",
+      role: "Product Designer",
+      timeline: "2 years",
+      team:
+        "Product Designer, UX/UI Designer, Developers, QA, PM, Product Stakeholders",
+    },
+  },
+
+  b2bCommercePlatform: {
+    hero: {
+      tag: "B2B COMMERCE · SCIENTIFIC SUPPLIES",
+      title: "From sales-assisted purchasing to self-service.",
+      description:
+        "Transforming fragmented purchasing workflows into a centralized digital experience for enterprise customers across Spain and Portugal.",
+      role: "Product Designer",
+      timeline: "2 years",
+      team:
+        "Product Designer, UX/UI Designer, Developers, QA, PM, Client Development Team, Business Stakeholders",
+    },
+  },
 
 };
 

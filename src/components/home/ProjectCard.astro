@@ -10,11 +10,11 @@ interface Props {
 const { title, category, description, link, action } = Astro.props;
 ---
 
-<article class="card">
+<a href={link} class="card">
 
-  <p class="category">
+  <span class="category">
     {category}
-  </p>
+  </span>
 
   <h3>
     {title}
@@ -24,11 +24,11 @@ const { title, category, description, link, action } = Astro.props;
     {description}
   </p>
 
-  <a href={link}>
+  <span class="action">
     {action}
-  </a>
+  </span>
 
-</article>
+</a>
 
 
 <style>
@@ -74,7 +74,7 @@ h3 {
 }
 
 
-a {
+.action {
   margin-top: auto;
   font-weight: 500;
 }

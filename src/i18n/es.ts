@@ -238,7 +238,48 @@ const es = {
       "Creado por mí, con IA como compañera creativa."
     ]
 
-  }
+  },
+
+  sidebar: {
+    navigation: {
+      work: "Trabajo",
+      about: "Sobre mí",
+      experiments: "Experimentos",
+      writing: "Escritura",
+    },
+  
+    actions: {
+      downloadCV: "Descargar CV",
+      linkedin: "LinkedIn",
+      email: "Email",
+    },
+  },
+
+  credentialPlatform: {
+    hero: {
+      tag: "SaaS EMPRESARIAL · EDTECH · CREDENCIALES DIGITALES",
+      title: "Creando estructura para un ecosistema de credenciales en crecimiento.",
+      description:
+        "Diseñando un sistema multi-tenant de gestión de credenciales con jerarquías de roles, capas de reporting y estructuras organizacionales escalables.",
+      role: "Product Designer",
+      timeline: "2 años",
+      team:
+        "Product Designer, UX/UI Designer, Desarrolladores, QA, PM, Stakeholders de Producto",
+    },
+  },
+
+  b2bCommercePlatform: {
+    hero: {
+      tag: "COMERCIO B2B · SUMINISTROS CIENTÍFICOS",
+      title: "De compras asistidas por ventas a autoservicio.",
+      description:
+        "Transformando procesos de compra fragmentados en una experiencia digital centralizada para clientes empresariales en España y Portugal.",
+      role: "Product Designer",
+      timeline: "2 años",
+      team:
+        "Product Designer, UX/UI Designer, Desarrolladores, QA, PM, Equipo de Desarrollo del Cliente, Stakeholders del Negocio",
+    },
+  },
 
 };
 

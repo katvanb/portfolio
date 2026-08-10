@@ -1,6 +1,14 @@
 ---
 import { Sun, Moon, Mail, Linkedin, Download, ArrowLeft, ArrowRight } from "lucide-astro";
 import LanguageSelector from "../navigation/LanguageSelector.astro";
+import en from "../../i18n/en";
+import es from "../../i18n/es";
+
+const pathname = Astro.url.pathname;
+
+const t = pathname.startsWith("/es") ? es : en;
+
+const prefix = pathname.startsWith("/es") ? "/es" : "";
 ---
 
 
@@ -41,20 +49,20 @@ import LanguageSelector from "../navigation/LanguageSelector.astro";
 
   <nav class="navigation">
 
-    <a href="/#work">
-      Work
+    <a href={`${prefix}/#work`}>
+      {t.sidebar.navigation.work}
     </a>
 
-    <a href="/about">
-      About
+    <a href={`${prefix}/about`}>
+      {t.sidebar.navigation.about}
     </a>
 
-    <a href="/experiments">
-      Experiments
+    <a href={`${prefix}/experiments`}>
+      {t.sidebar.navigation.experiments}
     </a>
 
-    <a href="/writing">
-      Writing
+    <a href={`${prefix}/writing`}>
+      {t.sidebar.navigation.writing}
     </a>
 
   </nav>
@@ -80,7 +88,7 @@ import LanguageSelector from "../navigation/LanguageSelector.astro";
         <Download size={16} />
 
         <span>
-          Download CV
+          {t.sidebar.actions.downloadCV}
         </span>
       </a>
 
@@ -93,11 +101,12 @@ import LanguageSelector from "../navigation/LanguageSelector.astro";
         href="https://www.linkedin.com/" 
         target="_blank"
         class="linkedin"
-        aria-label="LinkedIn"
+        aria-label={t.sidebar.actions.linkedin}
       >
         <Linkedin size={18} />
+
         <span>
-          LinkedIn
+          {t.sidebar.actions.linkedin}
         </span>
       </a>
 
@@ -109,11 +118,12 @@ import LanguageSelector from "../navigation/LanguageSelector.astro";
 
       <button 
         class="email"
-        aria-label="Email"
+        aria-label={t.sidebar.actions.email}
       >
         <Mail size={18} />
+
         <span>
-          Email
+          {t.sidebar.actions.email}
         </span>
       </button>
 
