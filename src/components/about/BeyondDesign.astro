@@ -1,0 +1,129 @@
+---
+interface Props {
+  content: {
+    eyebrow: string;
+    title: string;
+    paragraphs: string[];
+  };
+}
+
+const { content } = Astro.props;
+---
+
+
+<section class="beyond">
+
+  <div class="section-header">
+
+    <span class="eyebrow">
+      {content.eyebrow}
+    </span>
+
+
+    <h2>
+      {content.title}
+    </h2>
+
+  </div>
+
+
+  <div class="content">
+
+    {
+      content.paragraphs.map((paragraph) => (
+
+        <p>
+          {paragraph}
+        </p>
+
+      ))
+    }
+
+  </div>
+
+</section>
+
+
+<style>
+
+.beyond {
+
+  display: grid;
+
+  grid-template-columns: 1fr 1.2fr;
+
+  gap: var(--space-xl);
+
+  align-items: start;
+
+}
+
+
+.section-header h2 {
+
+  margin: 0;
+
+  max-width: 400px;
+
+  font-size: var(--font-size-h2);
+
+  line-height: 1.2;
+
+}
+
+
+.eyebrow {
+
+  display: block;
+
+  margin-bottom: var(--space-md);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+}
+
+
+.content {
+
+  max-width: 600px;
+
+}
+
+
+.content p {
+
+  margin: 0 0 var(--space-md);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body-large);
+
+  line-height: 1.7;
+
+}
+
+
+.content p:last-child {
+
+  margin-bottom: 0;
+
+}
+
+
+@media(max-width:768px){
+
+  .beyond {
+
+    grid-template-columns: 1fr;
+
+  }
+
+}
+
+</style>

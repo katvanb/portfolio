@@ -1,0 +1,118 @@
+---
+interface Props {
+  content: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    workButton: string;
+    aboutButton: string;
+  };
+}
+
+const { content } = Astro.props;
+---
+
+
+<section class="hero">
+
+  <p class="eyebrow">
+    {content.eyebrow}
+  </p>
+
+  <h1>
+    {content.title}
+  </h1>
+
+  <p class="description">
+    {content.description}
+  </p>
+
+  <div class="actions">
+    <a href="#work" class="button primary">
+      {content.workButton}
+    </a>
+
+    <a href="/about" class="button secondary">
+      {content.aboutButton}
+    </a>
+  </div>
+
+</section>
+
+
+<style>
+
+.hero {
+  padding: var(--space-2xl) 0;
+
+  max-width: 850px;
+}
+
+
+.eyebrow {
+  color: var(--color-accent);
+  font-size: var(--font-size-small);
+  letter-spacing: 0.12em;
+  font-weight: 600;
+
+  margin-bottom: var(--space-md);
+}
+
+
+h1 {
+  font-size: var(--font-size-display);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+
+  margin-bottom: var(--space-lg);
+}
+
+
+.description {
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body-lg);
+  line-height: 1.6;
+
+  max-width: 650px;
+
+  margin-bottom: var(--space-xl);
+}
+
+
+.actions {
+  display: flex;
+  gap: var(--space-md);
+}
+
+
+.button {
+  padding: 14px 24px;
+
+  border-radius: var(--radius-sm);
+
+  font-size: var(--font-size-body);
+  font-weight: 500;
+
+  transition: all 0.2s ease;
+}
+
+
+.primary {
+  background: var(--color-accent);
+  color: white;
+}
+
+
+.secondary {
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+}
+
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+
+</style>

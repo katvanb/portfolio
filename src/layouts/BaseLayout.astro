@@ -1,0 +1,68 @@
+---
+import "../styles/global.css";
+import Sidebar from "../components/layout/Sidebar.astro";
+import Footer from "../components/layout/Footer.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  content: any;
+}
+
+const { title, description = "Product Designer portfolio", content } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+
+  <body>
+
+    <div class="layout">
+
+        <Sidebar />
+
+        <main>
+          <slot />
+          <Footer content={content.footer} />
+        </main>
+    </div>
+
+  </body>
+</html>
+
+<style>
+
+.layout {
+
+  display: grid;
+
+  grid-template-columns: var(--sidebar-width) 1fr;
+
+  transition: grid-template-columns .3s ease;
+
+}
+
+
+main {
+
+  grid-column: 2;
+  
+  padding: 0 var(--space-xl);
+
+  min-width: 0;
+}
+
+
+.layout.collapsed {
+
+  grid-template-columns: var(--sidebar-collapsed) 1fr;
+
+}
+
+</style>

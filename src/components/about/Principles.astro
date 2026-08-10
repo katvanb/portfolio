@@ -1,0 +1,159 @@
+---
+interface Principle {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  content: {
+    eyebrow: string;
+    title: string;
+    items: Principle[];
+  };
+}
+
+const { content } = Astro.props;
+---
+
+
+<section class="principles">
+
+  <div class="section-header">
+
+    <span class="eyebrow">
+      {content.eyebrow}
+    </span>
+
+
+    <h2>
+      {content.title}
+    </h2>
+
+  </div>
+
+
+  <div class="principles-list">
+
+    {
+      content.items.map((principle) => (
+
+        <article class="principle">
+
+          <h3>
+            {principle.title}
+          </h3>
+
+
+          <p>
+            {principle.description}
+          </p>
+
+        </article>
+
+      ))
+    }
+
+  </div>
+
+</section>
+
+
+<style>
+
+.principles {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-xl);
+
+}
+
+
+.section-header {
+
+  max-width: 600px;
+
+}
+
+
+.eyebrow {
+
+  display: block;
+
+  margin-bottom: var(--space-md);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+}
+
+
+.section-header h2 {
+
+  margin: 0;
+
+  font-size: var(--font-size-h2);
+
+  line-height: 1.2;
+
+}
+
+
+.principles-list {
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: var(--space-lg);
+
+}
+
+
+.principle {
+
+  padding-top: var(--space-lg);
+
+  border-top: 1px solid var(--color-border);
+
+}
+
+
+.principle h3 {
+
+  margin: 0 0 var(--space-sm);
+
+  font-size: var(--font-size-body-large);
+
+}
+
+
+.principle p {
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  line-height: 1.7;
+
+}
+
+
+@media(max-width:768px){
+
+  .principles-list {
+
+    grid-template-columns: 1fr;
+
+  }
+
+}
+
+</style>

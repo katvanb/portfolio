@@ -1,0 +1,214 @@
+---
+interface Props {
+  content: {
+    title: string;
+    description: string;
+    email: string;
+    linkedin: string;
+    copyright: string;
+    credits: string[];
+  };
+}
+
+const { content } = Astro.props;
+---
+
+
+<footer class="footer">
+
+  <div class="footer-content">
+
+    <div class="footer-message">
+
+      <h2>
+        {content.title}
+      </h2>
+
+      <p>
+        {content.description}
+      </p>
+
+    </div>
+
+
+    <div class="footer-links">
+
+      <a href="mailto:your@email.com">
+        {content.email}
+      </a>
+
+      <a 
+        href="https://www.linkedin.com/"
+        target="_blank"
+      >
+        {content.linkedin}
+      </a>
+
+      <a
+    href="/Katherine-Gaspare-CV.pdf"
+    >
+      Resume
+    </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    <p>
+      {content.copyright}
+    </p>
+
+    <p>
+      {content.credits[0]}
+    </p>
+
+    <p>
+      {content.credits[1]}
+    </p>
+
+    <p>
+      {content.credits[2]}
+    </p>
+
+  </div>
+
+</footer>
+
+
+<style>
+
+.footer {
+
+  margin-top: 160px;
+
+  padding: 96px 0 48px;
+
+  border-top: 1px solid var(--color-border);
+
+}
+
+
+.footer-content {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-end;
+
+  gap: var(--space-xl);
+
+}
+
+
+.footer-message {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-md);
+
+}
+
+
+.footer-message h2 {
+
+  font-size: var(--font-size-h2);
+
+  margin: 0;
+
+  max-width: 500px;
+
+}
+
+
+.footer-message p {
+
+  margin: 0;
+
+  max-width: 520px;
+
+  color: var(--color-text-secondary);
+
+  line-height: 1.7;
+
+}
+
+
+.footer-links {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: var(--space-sm);
+
+}
+
+
+.footer-links a {
+
+  color: var(--color-text-primary);
+
+  transition: opacity .2s ease;
+
+}
+
+
+.footer-links a:hover {
+
+  opacity: .6;
+
+}
+
+
+.footer-bottom {
+
+  margin-top: 72px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+}
+
+
+@media(max-width:768px){
+
+  .footer-content {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+  }
+
+
+  .footer-links {
+    width: 100%;
+  }
+
+
+  .footer-bottom {
+
+    flex-direction: column;
+
+    gap: var(--space-sm);
+
+  }
+
+}
+
+</style>

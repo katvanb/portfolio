@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+import AboutHero from "../../components/about/AboutHero.astro";
+import Background from "../../components/about/Background.astro";
+import Process from "../../components/about/Process.astro";
+import Principles from "../../components/about/Principles.astro";
+import BeyondDesign from "../../components/about/BeyondDesign.astro";
+import es from "../../i18n/es";
+
+const t = es;
+---
+
+<BaseLayout title="About" content={t}>
+
+  <div class="about-page">
+
+    <AboutHero content={t.about.hero} />
+
+    <Background content={t.about.background} />
+
+    <Process content={t.about.process} />
+
+    <Principles content={t.about.principles} />
+
+    <BeyondDesign content={t.about.beyond} />
+
+  </div>
+
+</BaseLayout>
+
+
+<style>
+
+.about-page {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--section-spacing);
+
+  padding-top: var(--space-2xl);
+
+}
+
+</style>

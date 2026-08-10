@@ -1,0 +1,595 @@
+---
+import { Sun, Moon, Mail, Linkedin, Download, ArrowLeft, ArrowRight } from "lucide-astro";
+import LanguageSelector from "../navigation/LanguageSelector.astro";
+---
+
+
+<aside class="sidebar" id="sidebar">
+
+  <div class="top">
+
+    <button class="toggle" id="sidebar-toggle">
+
+      <ArrowLeft class="arrow-open" size={18} />
+
+      <ArrowRight class="arrow-close" size={18} />
+
+    </button>
+
+
+    <a href="/" class="profile">
+
+      <div class="avatar">
+        KG
+      </div>
+
+
+      <div class="info">
+        <h1>
+          Katherine Gaspare
+        </h1>
+
+        <p>
+          Product Designer
+        </p>
+      </div>
+
+    </a>
+
+  </div>
+
+
+  <nav class="navigation">
+
+    <a href="/#work">
+      Work
+    </a>
+
+    <a href="/about">
+      About
+    </a>
+
+    <a href="/experiments">
+      Experiments
+    </a>
+
+    <a href="/writing">
+      Writing
+    </a>
+
+  </nav>
+
+
+  <div class="bottom">
+
+    <div class="actions">
+
+      <div class="preferences">
+
+        <button class="icon-button" aria-label="Toggle theme">
+          <Moon size={18} />
+        </button>
+
+
+        <LanguageSelector />
+
+      </div>
+
+
+      <a href="/Katherine-Gaspare-CV.pdf" class="cv-link">
+        <Download size={16} />
+
+        <span>
+          Download CV
+        </span>
+      </a>
+
+    </div>
+
+
+    <div class="contact">
+
+      <a 
+        href="https://www.linkedin.com/" 
+        target="_blank"
+        class="linkedin"
+        aria-label="LinkedIn"
+      >
+        <Linkedin size={18} />
+        <span>
+          LinkedIn
+        </span>
+      </a>
+
+
+      <span class="separator">
+        |
+      </span>
+
+
+      <button 
+        class="email"
+        aria-label="Email"
+      >
+        <Mail size={18} />
+        <span>
+          Email
+        </span>
+      </button>
+
+    </div>
+
+  </div>
+
+
+</aside>
+
+
+<style>
+
+.sidebar {
+
+  position: fixed;
+
+  top: 0;
+
+  left: 0;
+
+  height: 100vh;
+
+  width: var(--sidebar-width);
+
+  background: var(--color-bg-secondary);
+
+  box-sizing: border-box;
+
+  border-right: 1px solid var(--color-border);
+
+  padding: var(--space-lg);
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-xl);
+
+  transition: width .3s ease,
+              padding .3s ease;
+
+  z-index: 100;
+
+}
+
+
+.toggle {
+
+  background: transparent;
+
+  border: none;
+
+  color: var(--color-text-secondary);
+
+  cursor: pointer;
+
+  margin-bottom: var(--space-md);
+
+}
+
+
+.profile {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+}
+
+
+.info {
+
+  min-width: 0;
+
+  max-width: 150px;
+
+}
+
+
+.info h1 {
+
+  font-size: 15px;
+
+  line-height: 1.2;
+
+  letter-spacing: -0.01em;
+
+  font-weight: 600;
+
+}
+
+
+.info p {
+
+  color: var(--color-text-secondary);
+
+  font-size: 12px;
+
+  line-height: 1.3;
+
+}
+
+
+.avatar {
+
+  width: 40px;
+
+  height: 40px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: var(--color-accent);
+
+  display: grid;
+
+  place-items: center;
+
+  font-weight: 600;
+
+}
+
+
+/* Navigation */
+
+.navigation {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-sm);
+
+}
+
+
+.navigation a {
+
+  color: var(--color-text-secondary);
+
+}
+
+
+.navigation a:hover {
+
+  color: var(--color-text-primary);
+
+}
+
+
+/* Bottom section */
+
+.bottom {
+
+  margin-top: auto;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-lg);
+
+}
+
+
+/* Theme + Language + CV */
+
+.actions {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-md);
+
+}
+
+
+.preferences {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-start;
+
+  gap: var(--space-md);
+
+}
+
+
+.icon-button {
+
+  width: 36px;
+
+  height: 36px;
+
+  display: grid;
+
+  place-items: center;
+
+  background: transparent;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-sm);
+
+  cursor: pointer;
+
+  color: var(--color-text-primary);
+
+  transition: background .2s ease;
+
+}
+
+
+.icon-button:hover {
+
+  background: var(--color-border);
+
+}
+
+
+
+/* Contact */
+
+.contact {
+
+  display: flex;
+
+  flex-direction: row;
+
+  align-items: center;
+
+  gap: var(--space-sm);
+
+  white-space: nowrap;
+
+}
+
+
+.contact a,
+.contact button {
+
+  background: none;
+
+  border: none;
+
+  padding: 0;
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  cursor: pointer;
+
+  font-size: var(--font-size-body);
+
+  font-family: inherit;
+
+}
+
+
+.contact a:hover,
+.contact button:hover {
+
+  color: var(--color-text-primary);
+
+}
+
+
+.actions a {
+
+  color: var(--color-text-secondary);
+
+}
+
+
+.actions a:hover {
+
+  color: var(--color-text-primary);
+
+}
+
+
+/* Collapsed state */
+
+.sidebar.collapsed {
+
+  width: var(--sidebar-collapsed);
+
+  padding: var(--space-md);
+
+  align-items: center;
+
+}
+
+
+/* Hide text content */
+
+.sidebar.collapsed .info,
+.sidebar.collapsed .navigation a,
+.sidebar.collapsed .actions a {
+
+  display: none;
+
+}
+
+
+
+/* Center avatar */
+
+.sidebar.collapsed .profile {
+
+  justify-content: center;
+
+}
+
+
+/* Center theme */
+
+.sidebar.collapsed .preferences {
+
+  justify-content: center;
+
+  flex-direction: column;
+
+  gap: var(--space-md);
+
+}
+
+
+/* Collapsed contact */
+
+.sidebar.collapsed .bottom {
+
+  gap: var(--space-md);
+
+}
+
+
+.sidebar.collapsed .contact {
+
+  display: flex !important;
+
+  flex-direction: column;
+
+  gap: var(--space-md);
+
+  align-items: center;
+
+}
+
+
+.sidebar.collapsed .separator {
+
+  display: none;
+
+}
+
+
+.sidebar.collapsed .contact span {
+
+  display: none;
+
+}
+
+
+.sidebar.collapsed .contact a,
+.sidebar.collapsed .contact button {
+
+  width: 36px;
+
+  height: 36px;
+
+  display: grid;
+
+  place-items: center;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-sm);
+
+  color: var(--color-text-primary);
+
+}
+
+
+.sidebar.collapsed .contact a span,
+.sidebar.collapsed .contact button span {
+
+  display: none;
+
+}
+
+
+.cv-link,
+.linkedin,
+.email {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: var(--space-sm);
+
+}
+
+
+.arrow-close {
+  display:none;
+}
+
+
+.sidebar.collapsed .arrow-open {
+  display:none;
+}
+
+
+.sidebar.collapsed .arrow-close {
+  display:block;
+}
+
+
+.sidebar.no-transition {
+  transition: none;
+}
+
+</style>
+
+
+<script>
+
+const sidebar = document.getElementById("sidebar");
+const toggle = document.getElementById("sidebar-toggle");
+const layout = document.querySelector(".layout");
+
+
+const savedState = localStorage.getItem("sidebar-state");
+
+
+if (savedState === "collapsed") {
+
+  sidebar?.classList.add("no-transition");
+
+  sidebar?.classList.add("collapsed");
+
+  layout?.classList.add("collapsed");
+
+
+  requestAnimationFrame(() => {
+
+    sidebar?.classList.remove("no-transition");
+
+  });
+
+}
+
+
+toggle?.addEventListener("click", () => {
+
+  const isCollapsed = sidebar?.classList.toggle("collapsed");
+
+
+  layout?.classList.toggle("collapsed", isCollapsed);
+
+
+  localStorage.setItem(
+    "sidebar-state",
+    isCollapsed ? "collapsed" : "open"
+  );
+
+});
+
+</script>

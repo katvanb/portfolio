@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import en from "../i18n/en";
+
+import Hero from "../components/home/Hero.astro";
+import Work from "../components/home/Work.astro";
+import AboutPreview from "../components/home/AboutPreview.astro";
+
+const t = en;
+---
+
+<BaseLayout 
+  title="Katherine Gaspare"
+  content={t}
+>
+
+  <Hero content={t.home.hero} />
+
+  <Work content={t.home.work} />
+
+  <AboutPreview content={t.home.aboutPreview} />
+
+</BaseLayout>

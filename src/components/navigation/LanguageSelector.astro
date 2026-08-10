@@ -1,0 +1,306 @@
+---
+const currentPath = Astro.url.pathname;
+
+const currentLanguage = currentPath.startsWith("/es")
+  ? "ES"
+  : currentPath.startsWith("/fr")
+    ? "FR"
+    : "EN";
+---
+
+
+<div class="language-selector" id="language-selector">
+
+  <button 
+    class="language-trigger"
+    aria-label="Change language"
+    id="language-trigger"
+  >
+
+    <span>
+      {currentLanguage}
+    </span>
+
+    <svg 
+      class="chevron"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+
+  </button>
+
+
+  <div class="language-menu" id="language-menu">
+
+    <button data-language="en">
+      EN
+    </button>
+
+    <button data-language="es">
+      ES
+    </button>
+
+    <button data-language="fr">
+      FR
+    </button>
+
+  </div>
+
+</div>
+
+
+<style>
+
+.language-selector {
+
+  position: relative;
+
+}
+
+
+.language-trigger {
+
+  height: 36px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  background: transparent;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-sm);
+
+  color: var(--color-text-primary);
+
+  padding: 0 12px;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+}
+
+
+.chevron {
+
+  transition: transform .2s ease;
+
+}
+
+
+.language-menu {
+
+  position: absolute;
+
+  top: calc(100% + 8px);
+
+  left: 0;
+
+  min-width: 100%;
+
+  background: var(--color-bg-secondary);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-sm);
+
+  padding: 6px;
+
+  display: none;
+
+  z-index: 10;
+
+}
+
+
+.language-menu button {
+
+  width: 100%;
+
+  padding: 8px 12px;
+
+  background: transparent;
+
+  border: none;
+
+  color: var(--color-text-primary);
+
+  text-align: left;
+
+  border-radius: var(--radius-sm);
+
+  cursor: pointer;
+
+}
+
+
+.language-menu button:hover {
+
+  background: var(--color-border);
+
+}
+
+
+.language-selector.open .language-menu {
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+
+.language-selector.open .chevron {
+
+  transform: rotate(180deg);
+
+}
+
+
+/* Sidebar collapsed */
+
+.sidebar.collapsed .language-trigger {
+
+  width: 36px;
+
+  padding: 0;
+
+  justify-content: center;
+
+}
+
+
+.sidebar.collapsed .language-trigger span {
+
+  font-size: 12px;
+
+}
+
+
+:global(.sidebar.collapsed) .chevron {
+
+  display: none;
+
+}
+
+
+:global(.sidebar.collapsed) .language-trigger {
+
+  width: 36px;
+
+  height: 36px;
+
+  padding: 0;
+
+  justify-content: center;
+
+}
+
+
+</style>
+
+
+<script>
+
+const selector = document.getElementById("language-selector");
+const trigger = document.getElementById("language-trigger");
+
+const languageButtons = document.querySelectorAll(
+  "[data-language]"
+);
+
+trigger?.addEventListener("click", () => {
+
+  selector?.classList.toggle("open");
+
+});
+
+
+languageButtons.forEach((button) => {
+
+  button.addEventListener("click", () => {
+
+    const language = button.getAttribute("data-language");
+
+
+    if(language) {
+
+      let currentPath = window.location.pathname;
+
+
+      // Remove existing language prefix
+
+      if(currentPath.startsWith("/es")) {
+
+        currentPath = currentPath.replace("/es", "");
+
+      }
+
+
+      if(currentPath.startsWith("/fr")) {
+
+        currentPath = currentPath.replace("/fr", "");
+
+      }
+
+
+      // Add selected language prefix
+
+      if(language === "es") {
+
+        currentPath = `/es${currentPath}`;
+
+      }
+
+
+      if(language === "fr") {
+
+        currentPath = `/fr${currentPath}`;
+
+      }
+
+
+      // English has no prefix
+
+      if(language === "en" && currentPath === "") {
+
+        currentPath = "/";
+
+      }
+
+
+      window.location.href = currentPath;
+
+    }
+
+  });
+
+});
+
+
+document.addEventListener("click", (event) => {
+
+  if(
+    selector &&
+    !selector.contains(event.target as Node)
+  ){
+
+    selector.classList.remove("open");
+
+  }
+
+});
+
+</script>

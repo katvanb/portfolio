@@ -1,0 +1,87 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+
+interface Project {
+  title: string;
+  category: string;
+  description: string;
+  link: string;
+}
+
+interface Props {
+  content: {
+    title: string;
+    projects: Project[];
+    action: string;
+  };
+}
+
+const { content } = Astro.props;
+---
+
+
+<section class="work">
+
+  <h2>
+    {content.title}
+  </h2>
+
+
+  <div class="projects">
+
+    {
+      content.projects.map((project) => (
+
+        <ProjectCard
+          title={project.title}
+          category={project.category}
+          description={project.description}
+          link={project.link}
+          action={content.action}
+        />
+
+      ))
+    }
+
+  </div>
+
+</section>
+
+
+<style>
+
+.work {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-xl);
+
+  padding-bottom: var(--space-2xl);
+
+}
+
+
+.projects {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: var(--space-lg);
+
+}
+
+
+@media(max-width:768px){
+
+  .projects {
+
+    grid-template-columns: 1fr;
+
+  }
+
+}
+
+</style>

@@ -1,0 +1,91 @@
+---
+interface Props {
+  content: {
+    eyebrow: string;
+    title: string;
+    paragraphs: string[];
+  };
+}
+
+const { content } = Astro.props;
+---
+
+<section class="about-hero">
+
+  <span class="eyebrow">
+    {content.eyebrow}
+  </span>
+
+
+  <h1>
+    {content.title}
+  </h1>
+
+
+  {
+    content.paragraphs.map((paragraph) => (
+      <p>
+        {paragraph}
+      </p>
+    ))
+  }
+
+</section>
+
+
+<style>
+
+.about-hero {
+
+  max-width: 760px;
+
+}
+
+
+.eyebrow {
+
+  display: block;
+
+  margin-bottom: var(--space-md);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+}
+
+
+.about-hero h1 {
+
+  margin: 0;
+
+  max-width: 700px;
+
+  font-size: var(--font-size-h1);
+
+  line-height: 1.1;
+
+  letter-spacing: -0.03em;
+
+}
+
+
+.about-hero p {
+
+  margin: var(--space-lg) 0 0;
+
+  max-width: 620px;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body-large);
+
+  line-height: 1.7;
+
+}
+
+</style>
