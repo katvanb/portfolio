@@ -1,0 +1,529 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<section class="architecture">
+
+  <div class="section-heading">
+    <h2>{title}</h2>
+  </div>
+
+
+  <div class="diagram">
+
+    <!-- Global Platform -->
+
+    <div class="node platform">
+      Global Platform
+    </div>
+
+
+    <!-- Connection from Global Platform -->
+
+    <div class="platform-connector">
+
+      <div class="platform-line"></div>
+
+      <div class="platform-horizontal"></div>
+
+      <div class="platform-branch left"></div>
+      <div class="platform-branch right"></div>
+
+    </div>
+
+
+    <!-- First level -->
+
+    <div class="top-level">
+
+
+      <!-- Organization -->
+
+      <div class="branch">
+
+        <div class="node organization">
+          Organization
+        </div>
+
+        <div class="vertical-line"></div>
+
+        <div class="roles">
+
+          <div class="node role">
+            Administrators
+          </div>
+
+          <div class="node role">
+            Accredited
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Holding -->
+
+      <div class="branch holding-branch">
+
+        <div class="node holding">
+          Holding
+        </div>
+
+
+        <!-- Holding → Organizations -->
+
+        <div class="holding-connector">
+
+          <div class="holding-line-vertical"></div>
+
+          <div class="holding-line-horizontal"></div>
+
+          <div class="holding-line-branch left"></div>
+          <div class="holding-line-branch right"></div>
+
+        </div>
+
+
+        <div class="holding-organizations">
+
+
+          <!-- Organization 1 -->
+
+          <div class="organization-branch">
+
+            <div class="node organization">
+              Organization
+            </div>
+
+            <div class="vertical-line"></div>
+
+            <div class="roles">
+
+              <div class="node role">
+                Administrators
+              </div>
+
+              <div class="node role">
+                Accredited
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Organization 2 -->
+
+          <div class="organization-branch">
+
+            <div class="node organization">
+              Organization
+            </div>
+
+            <div class="vertical-line"></div>
+
+            <div class="roles">
+
+              <div class="node role">
+                Administrators
+              </div>
+
+              <div class="node role">
+                Accredited
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<style>
+
+.architecture {
+  width: 100%;
+  margin-top: var(--section-spacing);
+}
+
+
+.section-heading {
+  margin-bottom: var(--space-lg);
+}
+
+
+.section-heading h2 {
+  margin: 0;
+  font-size: var(--font-size-h2);
+}
+
+
+/* =========================
+   Diagram
+========================= */
+
+.diagram {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: var(--space-lg) 0;
+}
+
+
+/* =========================
+   Nodes
+========================= */
+
+.node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 44px;
+  padding: 0 var(--space-md);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  background: var(--color-background);
+
+  font-size: var(--font-size-small);
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+
+.platform {
+  min-width: 170px;
+
+  border-color: var(--color-accent);
+
+  font-weight: 600;
+}
+
+
+.organization {
+  min-width: 140px;
+}
+
+
+.holding {
+  min-width: 120px;
+
+  border-color: var(--color-accent);
+}
+
+
+.role {
+  min-width: 120px;
+
+  color: var(--color-text-secondary);
+}
+
+
+/* =========================
+   Global Platform connector
+========================= */
+
+.platform-connector {
+  width: min(100%, 760px);
+
+  height: 42px;
+
+  position: relative;
+}
+
+
+.platform-line {
+  position: absolute;
+
+  top: 0;
+  left: 50%;
+
+  width: 1px;
+  height: 18px;
+
+  background: var(--color-border);
+
+  transform: translateX(-50%);
+}
+
+
+.platform-horizontal {
+  position: absolute;
+
+  top: 18px;
+  left: calc(25% - 12px);
+  right: calc(25% - 12px);
+
+  height: 1px;
+
+  background: var(--color-border);
+}
+
+
+.platform-branch {
+  position: absolute;
+
+  top: 18px;
+
+  width: 1px;
+  height: 24px;
+
+  background: var(--color-border);
+}
+
+
+.platform-branch.left {
+  left: calc(25% - 12px);
+}
+
+
+.platform-branch.right {
+  right: calc(25% - 12px);
+}
+
+
+/* =========================
+   Top level
+========================= */
+
+.top-level {
+  width: min(100%, 760px);
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  gap: 48px;
+
+  align-items: start;
+}
+
+
+.branch {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* =========================
+   Organization roles
+========================= */
+
+.roles {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 8px;
+
+  width: 100%;
+}
+
+
+/* =========================
+   Standard vertical connector
+========================= */
+
+.vertical-line {
+  width: 1px;
+  height: 24px;
+
+  background: var(--color-border);
+}
+
+
+/* =========================
+   Holding connector
+========================= */
+
+.holding-connector {
+  width: 100%;
+
+  height: 36px;
+
+  position: relative;
+}
+
+
+/*
+  Line coming down from Holding.
+*/
+
+.holding-line-vertical {
+  position: absolute;
+
+  top: 0;
+  left: 50%;
+
+  width: 1px;
+  height: 18px;
+
+  background: var(--color-border);
+
+  transform: translateX(-50%);
+}
+
+
+/*
+  Horizontal line connecting
+  the two Organizations.
+*/
+
+.holding-line-horizontal {
+  position: absolute;
+
+  top: 18px;
+  left: 25%;
+  right: 25%;
+
+  height: 1px;
+
+  background: var(--color-border);
+}
+
+
+/*
+  Lines going down to each
+  Organization.
+*/
+
+.holding-line-branch {
+  position: absolute;
+
+  top: 18px;
+
+  width: 1px;
+  height: 18px;
+
+  background: var(--color-border);
+}
+
+
+.holding-line-branch.left {
+  left: 25%;
+}
+
+
+.holding-line-branch.right {
+  right: 25%;
+}
+
+
+/* =========================
+   Organizations inside Holding
+========================= */
+
+.holding-organizations {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  gap: 20px;
+}
+
+
+.organization-branch {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 950px) {
+
+  .top-level {
+    gap: 32px;
+  }
+
+
+  .role {
+    min-width: 110px;
+  }
+
+}
+
+
+@media (max-width: 760px) {
+
+  .platform-connector {
+    display: none;
+  }
+
+
+  .top-level {
+    grid-template-columns: 1fr;
+
+    gap: var(--space-xl);
+  }
+
+
+  .holding-branch {
+    width: 100%;
+
+    padding-top: var(--space-lg);
+
+    border-top: 1px solid var(--color-border);
+  }
+
+
+  .holding-organizations {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 520px) {
+
+  .holding-organizations {
+    grid-template-columns: 1fr;
+
+    gap: var(--space-lg);
+  }
+
+
+  .role {
+    width: 100%;
+  }
+
+}
+
+</style>

@@ -1,0 +1,125 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  items: string[];
+}
+
+const {
+  eyebrow,
+  title,
+  items
+} = Astro.props;
+---
+
+<section class="contribution">
+
+  <div class="section-intro">
+
+    <span class="eyebrow">
+      {eyebrow}
+    </span>
+
+    <h2>
+      {title}
+    </h2>
+
+  </div>
+
+
+  <div class="contributions">
+
+    {
+      items.map((item, index) => (
+        <article class="contribution-item">
+
+          <span class="number">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+
+          <p>
+            {item}
+          </p>
+
+        </article>
+      ))
+    }
+
+  </div>
+
+</section>
+
+
+<style>
+
+.contribution {
+  margin-top: var(--section-spacing);
+}
+
+
+.section-intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+
+.eyebrow {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+h2 {
+  max-width: 700px;
+  font-size: var(--font-size-h2);
+}
+
+
+.contributions {
+  border-top: 1px solid var(--color-border);
+}
+
+
+.contribution-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+
+  align-items: start;
+
+  padding: var(--space-lg) 0;
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+
+.number {
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+  font-variant-numeric: tabular-nums;
+}
+
+
+p {
+  max-width: 800px;
+
+  margin: 0;
+
+  font-size: var(--font-size-body-large);
+  line-height: 1.6;
+}
+
+
+@media (max-width: 768px) {
+
+  .contribution-item {
+    grid-template-columns: 48px 1fr;
+  }
+
+}
+
+</style>

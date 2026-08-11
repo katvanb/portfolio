@@ -217,9 +217,31 @@ const currentLanguage = currentPath.startsWith("/es")
 const selector = document.getElementById("language-selector");
 const trigger = document.getElementById("language-trigger");
 
-const languageButtons = document.querySelectorAll(
-  "[data-language]"
-);
+const languageButtons =
+  document.querySelectorAll("[data-language]");
+
+languageButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    sessionStorage.setItem(
+      "language-scroll-position",
+      window.scrollY.toString()
+    );
+  });
+});
+
+window.addEventListener("load", () => {
+  const savedScroll =
+    sessionStorage.getItem("language-scroll-position");
+
+  if (!savedScroll) return;
+
+  sessionStorage.removeItem("language-scroll-position");
+
+  window.scrollTo({
+    top: Number(savedScroll),
+    behavior: "instant"
+  });
+});
 
 trigger?.addEventListener("click", () => {
 

@@ -30,7 +30,7 @@ const es = {
       projects: [
 
         {
-          title: "Plataforma de Credenciales",
+          title: "Estructura para un ecosistema en crecimiento.",
           category: "Enterprise SaaS · Credenciales Digitales",
           description:
             "Diseño de una plataforma escalable de gestión de credenciales para múltiples organizaciones y roles complejos.",
@@ -39,7 +39,7 @@ const es = {
 
 
         {
-          title: "Plataforma B2B Commerce",
+          title: "De compras asistidas a autoservicio.",
           category: "B2B Commerce · Plataforma Empresarial",
           description:
             "Transformación de un proceso comercial tradicional en una experiencia de autoservicio para compradores profesionales.",
@@ -266,6 +266,63 @@ const es = {
       team:
         "Product Designer, UX/UI Designer, Desarrolladores, QA, PM, Stakeholders de Producto",
     },
+
+    challenge: {
+      eyebrow: "EL DESAFÍO", 
+      title: "Transformando requisitos de negocio en una estructura de producto escalable.", 
+      business: { 
+        title: "PROBLEMA DE NEGOCIO", 
+        items: [ 
+          "No existía una estructura escalable para gestionar credenciales digitales.", 
+          "Falta de claridad en las jerarquías organizacionales.", 
+          "No había un sistema unificado para gestionar múltiples organizaciones.", 
+          "Los requisitos de reporting no estaban definidos y eran inconsistentes." 
+        ] 
+      }, 
+
+      product: { 
+        title: "PROBLEMA DE PRODUCTO", 
+        items: [ 
+          "El sistema inicialmente se construyó replicando funcionalidades de competidores.", 
+          "Alta complejidad debido a flujos de trabajo interconectados.", 
+          "Falta de claridad entre la lógica a nivel de plataforma y a nivel de organización.", 
+          "La estructura de roles y permisos de los usuarios no estaba definida." 
+        ] 
+      }, 
+
+      role: { 
+        title: "MI ENFOQUE", 
+        items: [ 
+          "Descubrimiento de producto", 
+          "Arquitectura del sistema", 
+          "Roles y permiso", 
+          "Arquitectura de información", 
+          "Flujos y casos límite" 
+        ] 
+      } 
+    },
+
+    contribution: { 
+      eyebrow: "MI CONTRIBUCIÓN", 
+      title: "Del descubrimiento del producto a la implementación.", 
+      items: [ 
+        "Lideré el descubrimiento del producto y el análisis de requisitos con stakeholders de negocio.", 
+        "Definí RBAC, la arquitectura multi-tenant y la lógica del ciclo de vida de las credenciales.", 
+        "Diseñé flujos de usuario, arquitectura de información y especificaciones funcionales.", 
+        "Co-diseñé el lanzamiento inicial del producto y revisé las implementaciones de UI posteriores.", 
+        "Colaboré con ingeniería y QA para validar flujos, casos límite y consistencia de la implementación." 
+      ] 
+    },
+
+    understandingSystem: {
+      title: "Understanding the system",
+      description:
+        "The platform was designed around two complementary systems: platform governance and organization management. Role-based permissions determined how users interacted with each layer."
+    },
+
+    multiTenantArchitecture: {
+      title: "Arquitectura Multi-tenant"
+    }
   },
 
   b2bCommercePlatform: {

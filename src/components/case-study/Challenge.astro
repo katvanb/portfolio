@@ -1,0 +1,207 @@
+---
+interface ChallengeItem {
+  title: string;
+  items: string[];
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  business: ChallengeItem;
+  product: ChallengeItem;
+  role: ChallengeItem;
+}
+
+const {
+  eyebrow,
+  title,
+  business,
+  product,
+  role
+} = Astro.props;
+---
+
+<section class="challenge">
+
+  <div class="section-intro">
+
+    <span class="eyebrow">
+      {eyebrow}
+    </span>
+
+    <h2>
+      {title}
+    </h2>
+
+  </div>
+
+
+  <div class="bento-grid">
+
+    <article class="card">
+
+      <span class="card-label">
+        {business.title}
+      </span>
+
+      <ul>
+        {
+          business.items.map((item) => (
+            <li>{item}</li>
+          ))
+        }
+      </ul>
+
+    </article>
+
+
+    <article class="card">
+
+      <span class="card-label">
+        {product.title}
+      </span>
+
+      <ul>
+        {
+          product.items.map((item) => (
+            <li>{item}</li>
+          ))
+        }
+      </ul>
+
+    </article>
+
+
+    <article class="card role-card">
+
+      <span class="card-label">
+        {role.title}
+      </span>
+
+      <ul>
+        {
+          role.items.map((item) => (
+            <li>{item}</li>
+          ))
+        }
+      </ul>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<style>
+
+.challenge {
+  margin-top: var(--section-spacing);
+}
+
+
+.section-intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+
+.eyebrow {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+h2 {
+  max-width: 700px;
+  font-size: var(--font-size-h2);
+}
+
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+
+.card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  padding: var(--space-xl);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+
+  background: var(--color-bg-secondary);
+}
+
+
+.card-label {
+  color: var(--color-accent);
+
+  font-size: var(--font-size-small);
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+
+li {
+  position: relative;
+
+  padding-left: 20px;
+
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+
+li::before {
+  content: "—";
+
+  position: absolute;
+  left: 0;
+
+  color: var(--color-text-primary);
+}
+
+
+.role-card {
+  grid-column: 1 / -1;
+}
+
+
+@media (max-width: 768px) {
+
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .role-card {
+    grid-column: auto;
+  }
+
+}
+
+</style>

@@ -25,7 +25,7 @@ const prefix = pathname.startsWith("/es") ? "/es" : "";
     </button>
 
 
-    <a href="/" class="profile">
+    <a href={`${prefix}/`} class="profile">
 
       <div class="avatar">
         KG
@@ -599,6 +599,164 @@ toggle?.addEventListener("click", () => {
     "sidebar-state",
     isCollapsed ? "collapsed" : "open"
   );
+
+});
+
+
+const workLink = document.querySelector('a[href$="#work"]');
+
+
+workLink?.addEventListener("click", (event) => {
+
+  const target = document.getElementById("work");
+
+
+  // Estamos en Home
+  if (target) {
+
+    event.preventDefault();
+
+    const start = window.scrollY;
+    const offset = 80;
+
+    const end =
+      target.getBoundingClientRect().top +
+      window.scrollY -
+      offset;
+
+    const distance = end - start;
+    const duration = 1100;
+
+    let startTime: number | null = null;
+
+
+    const easeInOut = (t: number) => {
+      return t < 0.5
+        ? 2 * t * t
+        : 1 - Math.pow(-2 * t + 2, 2) / 2;
+    };
+
+
+    const animateScroll = (currentTime: number) => {
+
+      if (startTime === null) {
+        startTime = currentTime;
+      }
+
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      window.scrollTo(
+        0,
+        start + distance * easeInOut(progress)
+      );
+
+
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      }
+
+    };
+
+
+    requestAnimationFrame(animateScroll);
+
+    return;
+  }
+
+
+  // Estamos en otra página
+
+  event.preventDefault();
+
+  sessionStorage.setItem("scroll-to-work", "true");
+
+
+  const href = workLink?.getAttribute("href");
+
+  if (!href) return;
+
+
+  // Quitamos #work para evitar que el navegador
+  // salte directamente a la sección.
+  const homeUrl = href.split("#")[0];
+
+  window.location.href = homeUrl || "/";
+
+});
+
+
+
+// Si venimos de otra página hacia Work
+
+window.addEventListener("load", () => {
+
+  const shouldScroll =
+    sessionStorage.getItem("scroll-to-work");
+
+
+  if (!shouldScroll) return;
+
+
+  const target =
+    document.getElementById("work");
+
+
+  if (!target) return;
+
+
+  sessionStorage.removeItem("scroll-to-work");
+
+
+  setTimeout(() => {
+
+    const start = window.scrollY;
+    const offset = 80;
+
+    const end =
+      target.getBoundingClientRect().top +
+      window.scrollY -
+      offset;
+
+    const distance = end - start;
+    const duration = 1100;
+
+    let startTime: number | null = null;
+
+
+    const easeInOut = (t: number) => {
+      return t < 0.5
+        ? 2 * t * t
+        : 1 - Math.pow(-2 * t + 2, 2) / 2;
+    };
+
+
+    const animateScroll = (currentTime: number) => {
+
+      if (startTime === null) {
+        startTime = currentTime;
+      }
+
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+
+      window.scrollTo(
+        0,
+        start + distance * easeInOut(progress)
+      );
+
+
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      }
+
+    };
+
+
+    requestAnimationFrame(animateScroll);
+
+  }, 100);
 
 });
 

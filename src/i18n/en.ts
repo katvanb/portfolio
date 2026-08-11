@@ -25,7 +25,7 @@ const en = {
       projects: [
 
         {
-          title: "Global Certifica",
+          title: "Structure for a credentialing ecosystem",
           category: "Enterprise SaaS · Digital Credentials",
           description:
             "Designing a scalable credential management platform for multiple organizations and complex user roles.",
@@ -33,7 +33,7 @@ const en = {
         },
 
         {
-          title: "Proquinorte",
+          title: "From sales-assisted to self-service",
           category: "B2B Commerce · Enterprise Platform",
           description:
             "Transforming a traditional sales process into a self-service commerce experience for professional buyers.",
@@ -246,12 +246,71 @@ const en = {
       tag: "ENTERPRISE SaaS · EDTECH · DIGITAL CREDENTIALS",
       title: "Creating structure for a growing credentialing ecosystem.",
       description:
-        "Designing a multi-tenant credentialing system with complex role hierarchies, reporting layers, and scalable organization structures.",
+        "Designing a multi-tenant credentialing system with layered role hierarchies, reporting requirements, and scalable organization structures.",
       role: "Product Designer",
       timeline: "2 years",
       team:
         "Product Designer, UX/UI Designer, Developers, QA, PM, Product Stakeholders",
     },
+
+    challenge: {
+      eyebrow: "THE CHALLENGE",
+      title: "Turning business requirements into a scalable product structure.",
+  
+      business: {
+        title: "BUSINESS PROBLEM",
+        items: [
+          "No scalable structure for managing digital credentials.",
+          "Lack of clarity in organizational hierarchies.",
+          "No unified system for multi-organization management.",
+          "Reporting requirements were undefined and inconsistent."
+        ]
+      },
+  
+      product: {
+        title: "PRODUCT PROBLEM",
+        items: [
+          "System was initially built by replicating competitor functionality.",
+          "High complexity due to interconnected workflows.",
+          "Lack of clarity between platform-level vs organization-level logic.",
+          "Undefined user roles and permissions structure."
+        ]
+      },
+  
+      role: {
+        title: "MY FOCUS",
+        items: [
+          "Product discovery",
+          "System architecture",
+          "Role & permissions",
+          "Information architecture",
+          "Workflows & edge cases"
+        ]
+      }
+    },
+    
+    contribution: {
+      eyebrow: "MY CONTRIBUTION",
+      title: "From product discovery to implementation.",
+    
+      items: [
+        "Led product discovery and requirement analysis with business stakeholders.",
+        "Defined RBAC, multi-tenant architecture, and credential lifecycle logic.",
+        "Designed user flows, information architecture, and functional specifications.",
+        "Co-designed the initial product release and reviewed subsequent UI implementations.",
+        "Collaborated with engineering and QA to validate workflows, edge cases, and implementation consistency."
+      ]
+    },
+
+    understandingSystem: {
+      title: "Understanding the system",
+      description:
+        "The platform was designed around two complementary systems: platform governance and organization management. Role-based permissions determined how users interacted with each layer."
+    },
+
+    multiTenantArchitecture: {
+      title: "Multi-tenant Architecture"
+    }
   },
 
   b2bCommercePlatform: {
@@ -264,10 +323,8 @@ const en = {
       timeline: "2 years",
       team:
         "Product Designer, UX/UI Designer, Developers, QA, PM, Client Development Team, Business Stakeholders",
-    },
-  },
-
+    }
+  }
 };
-
 
 export default en;
