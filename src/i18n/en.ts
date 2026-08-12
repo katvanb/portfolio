@@ -310,7 +310,251 @@ const en = {
 
     multiTenantArchitecture: {
       title: "Multi-tenant Architecture"
-    }
+    },
+
+    roleHierarchy: {
+      title: "Role Hierarchy (RBAC)",
+    
+      roles: [
+        {
+          role: "Global Sys Admin",
+          platform: "✔️",
+          organization: "✔️",
+          credential: "—",
+          reports: "Platform-wide",
+          experience: "—"
+        },
+        {
+          role: "Multi-Organization Admin",
+          platform: "✔️",
+          organization: "✔️",
+          credential: "—",
+          reports: "Multi-org",
+          experience: "—"
+        },
+        {
+          role: "Organization Admin",
+          platform: "—",
+          organization: "✔️",
+          credential: "✔️",
+          reports: "Organization",
+          experience: "—"
+        },
+        {
+          role: "Secondary Admin",
+          platform: "—",
+          organization: "Limited",
+          credential: "✔️",
+          reports: "Limited",
+          experience: "—"
+        },
+        {
+          role: "Accredited",
+          platform: "—",
+          organization: "—",
+          credential: "—",
+          reports: "Own Activity",
+          experience: "✔️"
+        },
+        {
+          role: "Guest",
+          platform: "—",
+          organization: "—",
+          credential: "—",
+          reports: "—",
+          experience: "View Shared Credentials"
+        }
+      ],
+    
+      insight: {
+        title: "Turning business rules into a scalable access model.",
+        description:
+          "I translated fragmented business rules into a clear role and permission model, separating platform governance from organizational operations and user-facing experiences. This gave the product a consistent foundation for defining workflows, permissions, and future roles."
+      }
+    },
+
+    credentialLifecycle: {
+      title: "Credential Lifecycle",
+      alt: "Credential lifecycle flow showing the main stages and interactions of the credentialing process."
+    },
+
+    informationArchitecture: {
+      title: "Information Architecture (High Level)",
+    
+      description:
+        "The platform exposes a different navigation structure depending on the user's organizational context, ensuring each role accesses only the modules relevant to its responsibilities.",
+    
+      principleTitle: "Design Principle",
+    
+      principleHeadline: "Context-aware navigation.",
+    
+      principleDescription:
+        "Instead of exposing every module to every user, the platform adapts its information architecture according to organizational scope and responsibilities. This reduced navigation complexity while supporting a scalable multi-tenant architecture."
+    },
+
+    reportingComplexity: {
+      title: "Reporting Complexity",
+    
+      columns: {
+        report: "Report / Insight",
+        globalPlatform: "Global Platform",
+        holding: "Holding (Multi-org)",
+        organization: "Organization",
+        accredited: "Accredited"
+      },
+    
+      rows: [
+        {
+          name: "Organizational Overview",
+          values: ["✔️", "Assigned Organizations", "➖", "➖"]
+        },
+        {
+          name: "Plan & Subscription Status",
+          values: ["✔️", "✔️", "Current Plan", "➖"]
+        },
+        {
+          name: "Plan Consumption",
+          values: ["✔️", "✔️", "Own Usage", "➖"]
+        },
+        {
+          name: "Organizational Members",
+          values: ["✔️", "✔️", "✔️", "➖"]
+        },
+        {
+          name: "Credential Inventory",
+          values: ["✔️", "Shared Database", "✔️", "Own Credentials"]
+        },
+        {
+          name: "Credential Assignments",
+          values: ["✔️", "✔️", "✔️", "Own Assignments"]
+        },
+        {
+          name: "Assignment Status",
+          values: ["✔️", "✔️", "✔️", "Own Status"]
+        },
+        {
+          name: "Credential Sharing Analytics",
+          values: ["✔️", "✔️", "✔️", "Personal Activity"]
+        },
+        {
+          name: "Administrator Activity",
+          values: ["✔️", "✔️", "✔️", "➖"]
+        },
+        {
+          name: "System Activity Logs",
+          values: ["✔️", "✔️", "Organization Logs", "➖"]
+        },
+        {
+          name: "Export Reports",
+          values: ["✔️", "✔️", "✔️", "➖"]
+        }
+      ],
+
+      insight:
+        "Reporting was designed using progressive visibility rather than creating different reporting modules for each role. Every user accessed the same reporting ecosystem, but the available data was filtered according to their level of responsibility, reducing interface complexity while maintaining a consistent reporting experience across the platform."
+    },
+
+    constraints: {
+      title: "Constraints & Design Decisions",
+    
+      items: [
+        {
+          number: "01",
+          title: "Aligning Features with Business Architecture",
+    
+          decisionLabel: "Decision",
+          decision:
+            "Designed workflows around the client's business model instead of replicating competitor features.",
+    
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "More discovery upfront, but a product that could evolve beyond feature parity."
+        },
+    
+        {
+          number: "02",
+          title: "Separating Governance from Operations",
+    
+          decisionLabel: "Decision",
+          decision:
+            "Separated platform governance, organization management, and credential ownership into independent layers.",
+    
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "Higher implementation complexity in exchange for long-term scalability."
+        },
+    
+        {
+          number: "03",
+          title: "Designing Around Responsibilities",
+    
+          decisionLabel: "Decision",
+          decision:
+            "Grouped permissions by responsibilities instead of individual actions to simplify access management.",
+    
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "More analysis upfront, significantly lower maintenance as the platform grew."
+        },
+    
+        {
+          number: "04",
+          title: "Optimizing for Bulk Operations",
+    
+          decisionLabel: "Decision",
+          decision:
+            "Prioritized batch credential issuance with CSV validation over individual workflows.",
+    
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "A more complex flow that dramatically improved administrative efficiency."
+        },
+    
+        {
+          number: "05",
+          title: "Designing Reporting for Growth",
+    
+          decisionLabel: "Decision",
+          decision:
+            "Structured reporting by visibility level rather than fixed dashboards.",
+    
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "More flexible reporting architecture despite evolving business requirements."
+        }
+      ]
+    },
+
+    quote:
+      "Great product design is about designing architectures that keep complexity manageable as products evolve.",
+
+      impact: {
+        title: "Impact",
+    
+        impact: [
+          "Successfully adopted by multiple organizations in Colombia.",
+          "Established a scalable multi-tenant architecture for different organizational models.",
+          "Standardized credential issuance through reusable workflows and role-based permissions.",
+          "Improved administrative efficiency through bulk operations and self-service."
+        ],
+    
+        highlights: [
+          "6 Roles",
+          "2 System Layers",
+          "5 Credential States",
+          "Multi-tenant Architecture",
+          "Live Enterprise Product"
+        ],
+    
+        reflection: {
+          title: "Reflection",
+    
+          items: [
+            "This project reinforced that enterprise products are rarely limited by interface complexity—they're limited by business complexity.",
+            "Translating evolving business rules into a scalable architecture required balancing flexibility, governance, and usability. It strengthened my ability to transform ambiguous business requirements into scalable product architectures that balance governance, usability, and long-term growth."
+          ]
+        }
+      },
   },
 
   b2bCommercePlatform: {

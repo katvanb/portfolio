@@ -1,0 +1,302 @@
+---
+interface Props {
+  title: string;
+  roles: {
+    role: string;
+    platform: string;
+    organization: string;
+    credential: string;
+    reports: string;
+    experience: string;
+  }[];
+  insight: {
+    title: string;
+    description: string;
+  };
+}
+
+const { title, roles, insight } = Astro.props;
+---
+
+<section class="role-hierarchy">
+
+  <div class="section-heading">
+    <h2>{title}</h2>
+  </div>
+
+
+  <div class="table-wrapper">
+
+    <table>
+
+      <thead>
+        <tr>
+          <th scope="col">Role</th>
+          <th scope="col">Platform Governance</th>
+          <th scope="col">Organizational Management</th>
+          <th scope="col">Credential Management</th>
+          <th scope="col">Reports</th>
+          <th scope="col">Credential Experience</th>
+        </tr>
+      </thead>
+
+
+      <tbody>
+
+        {
+          roles.map((item) => (
+            <tr>
+
+              <th scope="row">
+                {item.role}
+              </th>
+
+              <td class:list={{ permission: item.platform === "✔" }}>
+                {item.platform}
+              </td>
+
+              <td class:list={{ permission: item.organization === "✔" }}>
+                {item.organization}
+              </td>
+
+              <td class:list={{ permission: item.credential === "✔" }}>
+                {item.credential}
+              </td>
+
+              <td>
+                {item.reports}
+              </td>
+
+              <td class:list={{ permission: item.experience === "✔" }}>
+                {item.experience}
+              </td>
+
+            </tr>
+          ))
+        }
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <div class="insight">
+
+    <h3>
+      {insight.title}
+    </h3>
+  
+    <p>
+      {insight.description}
+    </p>
+  
+  </div>
+
+</section>
+
+
+<style>
+
+.role-hierarchy {
+  width: 100%;
+  margin-top: var(--section-spacing);
+}
+
+
+.section-heading {
+  margin-bottom: var(--space-lg);
+}
+
+
+.section-heading h2 {
+  margin: 0;
+  font-size: var(--font-size-h2);
+}
+
+
+/* =========================
+   Table
+========================= */
+
+.table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+
+table {
+  width: 100%;
+
+  min-width: 900px;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+}
+
+
+th,
+td {
+  padding: var(--space-md);
+
+  border-bottom: 1px solid var(--color-border);
+
+  text-align: center;
+
+  font-size: var(--font-size-small);
+
+  line-height: 1.45;
+}
+
+
+/* Role column */
+
+thead th:first-child,
+tbody th {
+  text-align: left;
+}
+
+
+tbody th {
+  font-weight: 500;
+
+  color: var(--color-text);
+}
+
+
+tbody td {
+  color: var(--color-text-secondary);
+}
+
+tbody td:has(✔) {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+
+/* =========================
+   Column widths
+========================= */
+
+thead th:first-child,
+tbody th {
+  width: 18%;
+}
+
+
+thead th:nth-child(2) {
+  width: 16%;
+}
+
+
+thead th:nth-child(3) {
+  width: 18%;
+}
+
+
+thead th:nth-child(4) {
+  width: 17%;
+}
+
+
+thead th:nth-child(5) {
+  width: 14%;
+}
+
+
+thead th:nth-child(6) {
+  width: 17%;
+}
+
+
+/* =========================
+   Permissions
+========================= */
+
+.permission {
+  color: var(--color-text);
+
+  font-weight: 600;
+}
+
+
+/* =========================
+   Last row
+========================= */
+
+tbody tr:last-child th,
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =========================
+   Hover
+========================= */
+
+tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+
+tbody tr:hover {
+  background: var(--color-background-secondary);
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 900px) {
+
+  .table-wrapper {
+    overflow-x: auto;
+  }
+
+
+  table {
+    min-width: 900px;
+  }
+
+}
+
+
+/* =========================
+   Insight
+========================= */
+
+.insight {
+  margin-top: var(--space-2xl);
+
+  padding: var(--space-lg) 0 var(--space-lg) var(--space-lg);
+
+  border-left: 3px solid var(--color-accent);
+}
+
+
+.insight h3 {
+  margin: 0 0 var(--space-sm);
+
+  font-size: var(--font-size-body);
+  font-weight: 600;
+}
+
+
+.insight p {
+  max-width: 760px;
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+  line-height: 1.7;
+}
+
+</style>

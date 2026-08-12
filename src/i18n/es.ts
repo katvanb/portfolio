@@ -322,7 +322,251 @@ const es = {
 
     multiTenantArchitecture: {
       title: "Arquitectura Multi-tenant"
-    }
+    },
+
+    roleHierarchy: {
+      title: "Jerarquía de roles (RBAC)",
+    
+      roles: [
+        {
+          role: "Administrador Global",
+          platform: "✔️",
+          organization: "✔️",
+          credential: "—",
+          reports: "Toda la plataforma",
+          experience: "—"
+        },
+        {
+          role: "Administrador Multi-Organización",
+          platform: "✔️",
+          organization: "✔️",
+          credential: "—",
+          reports: "Multi-organización",
+          experience: "—"
+        },
+        {
+          role: "Administrador de Organización",
+          platform: "—",
+          organization: "✔️",
+          credential: "✔️",
+          reports: "Organización",
+          experience: "—"
+        },
+        {
+          role: "Administrador Secundario",
+          platform: "—",
+          organization: "Limitado",
+          credential: "✔️",
+          reports: "Limitado",
+          experience: "—"
+        },
+        {
+          role: "Acreditado",
+          platform: "—",
+          organization: "—",
+          credential: "—",
+          reports: "Actividad propia",
+          experience: "✔️"
+        },
+        {
+          role: "Invitado",
+          platform: "—",
+          organization: "—",
+          credential: "—",
+          reports: "—",
+          experience: "Ver credenciales compartidas"
+        }
+      ],
+    
+      insight: {
+        title: "Convertir las reglas de negocio en un modelo de acceso escalable.",
+        description:
+          "Traduje reglas de negocio fragmentadas en un modelo claro de roles y permisos, separando la gobernanza de la plataforma de las operaciones de las organizaciones y las experiencias de usuario. Esto proporcionó una base consistente para definir flujos, permisos y futuros roles."
+      }
+    },
+
+    credentialLifecycle: {
+      title: "Ciclo de vida de las credenciales",
+      alt: "Flujo del ciclo de vida de las credenciales mostrando las principales etapas e interacciones del proceso de acreditación."
+    },
+
+    informationArchitecture: {
+      title: "Arquitectura de Información (Alto Nivel)",
+    
+      description:
+        "La plataforma presenta una estructura de navegación diferente según el contexto organizacional del usuario, asegurando que cada rol acceda únicamente a los módulos relevantes para sus responsabilidades.",
+    
+      principleTitle: "Principio de Diseño",
+    
+      principleHeadline: "Navegación consciente del contexto.",
+    
+      principleDescription:
+        "En lugar de mostrar todos los módulos a cada usuario, la plataforma adapta su arquitectura de información según el alcance organizacional y las responsabilidades. Esto redujo la complejidad de navegación y permitió mantener una arquitectura multi-tenant escalable."
+    },
+
+    reportingComplexity: {
+      title: "Complejidad de Reportes",
+    
+      columns: {
+        report: "Reporte / Insight",
+        globalPlatform: "Plataforma Global",
+        holding: "Holding (Multi-org)",
+        organization: "Organización",
+        accredited: "Acreditado"
+      },
+    
+      rows: [
+        {
+          name: "Resumen Organizacional",
+          values: ["✔️", "Organizaciones Asignadas", "➖", "➖"]
+        },
+        {
+          name: "Estado del Plan y Suscripción",
+          values: ["✔️", "✔️", "Plan Actual", "➖"]
+        },
+        {
+          name: "Consumo del Plan",
+          values: ["✔️", "✔️", "Uso Propio", "➖"]
+        },
+        {
+          name: "Miembros de la Organización",
+          values: ["✔️", "✔️", "✔️", "➖"]
+        },
+        {
+          name: "Inventario de Credenciales",
+          values: ["✔️", "Base de Datos Compartida", "✔️", "Credenciales Propias"]
+        },
+        {
+          name: "Asignaciones de Credenciales",
+          values: ["✔️", "✔️", "✔️", "Asignaciones Propias"]
+        },
+        {
+          name: "Estado de las Asignaciones",
+          values: ["✔️", "✔️", "✔️", "Estado Propio"]
+        },
+        {
+          name: "Analítica de Compartición de Credenciales",
+          values: ["✔️", "✔️", "✔️", "Actividad Personal"]
+        },
+        {
+          name: "Actividad de Administradores",
+          values: ["✔️", "✔️", "✔️", "➖"]
+        },
+        {
+          name: "Registros de Actividad del Sistema",
+          values: ["✔️", "✔️", "Registros de la Organización", "➖"]
+        },
+        {
+          name: "Exportación de Reportes",
+          values: ["✔️", "✔️", "✔️", "➖"]
+        }
+      ],
+
+      insight:
+        "El sistema de reportes fue diseñado utilizando visibilidad progresiva en lugar de crear módulos de reportes diferentes para cada rol. Todos los usuarios accedían al mismo ecosistema de reportes, pero los datos disponibles se filtraban según su nivel de responsabilidad, reduciendo la complejidad de la interfaz y manteniendo una experiencia de reportes consistente en toda la plataforma."
+    },
+
+    constraints: {
+      title: "Restricciones y Decisiones de Diseño",
+    
+      items: [
+        {
+          number: "01",
+          title: "Alinear las Funcionalidades con la Arquitectura del Negocio",
+    
+          decisionLabel: "Decisión",
+          decision:
+            "Diseñé los flujos alrededor del modelo de negocio del cliente en lugar de replicar las funcionalidades de la competencia.",
+    
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "Mayor trabajo de discovery inicial, pero un producto capaz de evolucionar más allá de la paridad funcional."
+        },
+    
+        {
+          number: "02",
+          title: "Separar Gobernanza de Operaciones",
+    
+          decisionLabel: "Decisión",
+          decision:
+            "Separé la gobernanza de la plataforma, la gestión de organizaciones y la propiedad de credenciales en capas independientes.",
+    
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "Mayor complejidad de implementación a cambio de escalabilidad a largo plazo."
+        },
+    
+        {
+          number: "03",
+          title: "Diseñar en Función de las Responsabilidades",
+    
+          decisionLabel: "Decisión",
+          decision:
+            "Agrupé los permisos por responsabilidades en lugar de acciones individuales para simplificar la gestión de acceso.",
+    
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "Mayor análisis inicial y una reducción significativa del mantenimiento a medida que la plataforma crecía."
+        },
+    
+        {
+          number: "04",
+          title: "Optimizar para Operaciones Masivas",
+    
+          decisionLabel: "Decisión",
+          decision:
+            "Priorizamos la emisión masiva de credenciales con validación mediante CSV sobre los flujos individuales.",
+    
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "Un flujo más complejo que mejoró significativamente la eficiencia administrativa."
+        },
+    
+        {
+          number: "05",
+          title: "Diseñar los Reportes para el Crecimiento",
+    
+          decisionLabel: "Decisión",
+          decision:
+            "Estructuré los reportes según niveles de visibilidad en lugar de dashboards fijos.",
+    
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "Una arquitectura de reportes más flexible frente a requisitos de negocio en evolución."
+        }
+      ]
+    },
+
+    quote:
+      "El buen diseño de producto consiste diseñar arquitecturas que mantengan la complejidad bajo control a medida que los productos evolucionan.",
+    
+    impact: {
+      title: "Impacto",
+    
+      impact: [
+        "Adoptado exitosamente por múltiples organizaciones en Colombia.",
+        "Estableció una arquitectura multi-tenant escalable para diferentes modelos organizacionales.",
+        "Estandarizó la emisión de credenciales mediante flujos reutilizables y permisos basados en roles.",
+        "Mejoró la eficiencia administrativa mediante operaciones masivas y funcionalidades de autoservicio."
+      ],
+    
+      highlights: [
+        "6 Roles",
+        "2 Capas del Sistema",
+        "5 Estados de Credencial",
+        "Arquitectura Multi-tenant",
+        "Producto Enterprise en Producción"
+      ],
+    
+      reflection: {
+        title: "Reflexión",
+    
+        items: [
+          "Este proyecto reforzó mi convicción de que los productos enterprise rara vez están limitados por la complejidad de la interfaz; están limitados por la complejidad del negocio.",
+          "Traducir reglas de negocio en evolución a una arquitectura escalable requirió equilibrar flexibilidad, gobernanza y usabilidad. Fortaleció mi capacidad para transformar requisitos de negocio ambiguos en arquitecturas de producto escalables que equilibran gobernanza, usabilidad y crecimiento a largo plazo."
+        ]
+      }
+    },
   },
 
   b2bCommercePlatform: {

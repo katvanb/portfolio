@@ -1,0 +1,58 @@
+---
+interface Props {
+  title: string;
+  image: string;
+  alt: string;
+}
+
+const { title, image, alt } = Astro.props;
+---
+
+<section class="lifecycle">
+
+  <div class="section-heading">
+    <h2>{title}</h2>
+  </div>
+
+  <div class="flow-container">
+    <img
+      src={image}
+      alt={alt}
+    />
+  </div>
+
+</section>
+
+
+<style>
+
+.lifecycle {
+  width: 100%;
+  margin-top: var(--section-spacing);
+}
+
+
+.section-heading {
+  margin-bottom: var(--space-lg);
+}
+
+
+.section-heading h2 {
+  margin: 0;
+  font-size: var(--font-size-h2);
+}
+
+
+.flow-container {
+  width: 100%;
+}
+
+
+.flow-container img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+}
+
+</style>

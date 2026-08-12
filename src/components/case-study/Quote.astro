@@ -1,0 +1,54 @@
+---
+interface Props {
+  quote: string;
+}
+
+const { quote } = Astro.props;
+---
+
+<section class="quote-section">
+
+  <blockquote>
+    {quote}
+  </blockquote>
+
+</section>
+
+<style>
+
+.quote-section {
+  width: 100%;
+  margin-top: var(--section-spacing);
+  padding: var(--space-2xl) 0;
+}
+
+blockquote {
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  text-align: center;
+
+  font-size: var(--font-size-h2);
+  font-weight: 500;
+
+  line-height: 1.35;
+
+  letter-spacing: -0.02em;
+
+  color: var(--color-text);
+}
+
+@media (max-width: 700px) {
+
+  .quote-section {
+    padding: var(--space-xl) 0;
+  }
+
+  blockquote {
+    font-size: var(--font-size-h3);
+  }
+
+}
+
+</style>

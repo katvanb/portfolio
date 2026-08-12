@@ -1,0 +1,555 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  principleTitle: string;
+  principleHeadline: string;
+  principleDescription: string;
+}
+
+const {
+  title,
+  description,
+  principleTitle,
+  principleHeadline,
+  principleDescription
+} = Astro.props;
+---
+
+<section class="information-architecture">
+
+  <div class="section-heading">
+
+    <h2>{title}</h2>
+
+    <p class="description">
+      {description}
+    </p>
+
+  </div>
+
+
+  <!-- Architecture diagram -->
+
+  <div class="architecture-diagram">
+
+    <div class="ia-diagram">
+
+        <!-- Global Platform -->
+      
+        <div class="context global">
+      
+          <div class="context-header">
+            <span class="context-index">01</span>
+      
+            <h3>
+              Global Platform
+            </h3>
+          </div>
+      
+          <div class="modules">
+      
+            <span>Dashboards</span>
+            <span>Organizations</span>
+            <span>Plans</span>
+            <span>Reports</span>
+            <span>Settings</span>
+      
+          </div>
+      
+        </div>
+      
+      
+        <div class="context-connector">
+          <span></span>
+        </div>
+      
+      
+        <!-- Holding -->
+      
+        <div class="context holding">
+      
+          <div class="context-header">
+            <span class="context-index">02</span>
+      
+            <h3>
+              Holding
+            </h3>
+          </div>
+      
+          <div class="modules">
+      
+            <span>Dashboards</span>
+            <span>Organization</span>
+            <span>Admins</span>
+            <span>Reports</span>
+            <span>Settings</span>
+      
+          </div>
+      
+        </div>
+      
+      
+        <div class="context-connector">
+          <span></span>
+        </div>
+      
+      
+        <!-- Organization -->
+      
+        <div class="context organization">
+      
+          <div class="context-header">
+            <span class="context-index">03</span>
+      
+            <h3>
+              Organization
+            </h3>
+          </div>
+      
+      
+          <div class="modules organization-modules">
+      
+            <span>Dashboards</span>
+      
+            <span>Admins</span>
+      
+            <span>Reports</span>
+      
+            <span>Settings</span>
+      
+          </div>
+      
+      
+          <!-- Deep navigation -->
+      
+          <div class="deep-navigation">
+      
+      
+            <!-- Credentials -->
+      
+            <div class="deep-module">
+      
+              <div class="deep-header">
+                Credentials
+              </div>
+      
+              <div class="deep-content">
+      
+                <span>
+                  Certificates / Badges
+                </span>
+      
+                <span>
+                  Collections
+                </span>
+      
+                <div class="nested-items">
+      
+                  <span>Assignments</span>
+                  <span>Bulk Imports</span>
+      
+                </div>
+      
+              </div>
+      
+            </div>
+      
+      
+            <!-- Accredited -->
+      
+            <div class="deep-module">
+      
+              <div class="deep-header">
+                Accredited
+              </div>
+      
+              <div class="deep-content">
+      
+                <span>
+                  Certificates / Badges
+                </span>
+      
+                <span>
+                  Collections
+                </span>
+      
+                <div class="nested-items">
+      
+                  <span>Assignments</span>
+      
+                </div>
+      
+                <span>
+                  Reports
+                </span>
+      
+              </div>
+      
+            </div>
+      
+      
+          </div>
+      
+        </div>
+      
+      </div>
+
+  </div>
+
+  <div class="principle">
+
+    <span class="principle-label">
+      {principleTitle}
+    </span>
+
+    <h3>
+      {principleHeadline}
+    </h3>
+
+    <p>
+      {principleDescription}
+    </p>
+
+  </div>
+
+</section>
+
+
+<style>
+
+.information-architecture {
+  width: 100%;
+  margin-top: var(--section-spacing);
+}
+
+
+.section-heading {
+  margin-bottom: var(--space-xl);
+}
+
+
+.section-heading h2 {
+  margin: 0;
+
+  font-size: var(--font-size-h2);
+}
+
+
+.description {
+  max-width: 760px;
+
+  margin: var(--space-md) 0 0;
+
+  color: var(--color-text-secondary);
+
+  line-height: 1.7;
+}
+
+
+/* =========================
+   Design Principle
+========================= */
+
+.principle {
+  max-width: 900px;
+
+  margin-top: var(--section-spacing);
+
+  margin-bottom: var(--space-2xl);
+
+  padding: var(--space-lg) 0 var(--space-lg) var(--space-lg);
+
+  border-left: 3px solid var(--color-accent);
+}
+
+
+.principle-label {
+  display: block;
+
+  margin-bottom: var(--space-sm);
+
+  font-size: var(--font-size-small);
+
+  font-weight: 600;
+
+  letter-spacing: 0.06em;
+
+  text-transform: uppercase;
+}
+
+
+.principle h3 {
+  margin: 0 0 var(--space-sm);
+
+  font-size: var(--font-size-body-large);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+
+.principle p {
+  max-width: 760px;
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+  line-height: 1.7;
+}
+
+
+/* =========================
+   Architecture
+========================= */
+
+.architecture-diagram {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+
+/* =========================
+   Information Architecture
+========================= */
+
+.ia-diagram {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* =========================
+   Context
+========================= */
+
+.context {
+  width: 100%;
+
+  padding: var(--space-lg);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  background: var(--color-background);
+}
+
+
+.context-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+
+  margin-bottom: var(--space-lg);
+}
+
+
+.context-index {
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-caption);
+
+  font-variant-numeric: tabular-nums;
+}
+
+
+.context-header h3 {
+  margin: 0;
+
+  font-size: var(--font-size-body);
+  font-weight: 600;
+}
+
+
+/* =========================
+   Modules
+========================= */
+
+.modules {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+
+.modules span {
+  padding: 7px 11px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+}
+
+
+/* =========================
+   Context connectors
+========================= */
+
+.context-connector {
+  position: relative;
+
+  width: 100%;
+  height: 40px;
+}
+
+
+.context-connector::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 50%;
+
+  width: 1px;
+  height: 40px;
+
+  background: var(--color-border);
+
+  transform: translateX(-50%);
+}
+
+
+.context-connector span {
+  position: absolute;
+
+  left: 50%;
+  top: 20px;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: var(--color-border);
+
+  transform: translate(-50%, -50%);
+}
+
+
+/* =========================
+   Organization depth
+========================= */
+
+.deep-navigation {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: var(--space-md);
+
+  margin-top: var(--space-lg);
+}
+
+
+.deep-module {
+  width: 100%;
+
+  overflow: hidden;
+
+  border: 1px solid var(--color-border);
+  
+  border-radius: var(--radius-md);
+
+  background: var(--color-background);
+}
+
+
+.deep-header {
+  padding: var(--space-md);
+
+  border-bottom: 1px solid var(--color-border);
+
+  font-size: var(--font-size-small);
+
+  font-weight: 600;
+
+  color: var(--color-text);
+}
+
+
+.deep-content {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+
+  padding: var(--space-md);
+}
+
+
+.deep-content > span {
+    display: block;
+
+    color: var(--color-text-secondary);
+
+    font-size: var(--font-size-small);
+
+    line-height: 1.4;
+}
+
+
+.nested-items {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  padding-left: var(--space-md);
+}
+
+
+.nested-items span {
+  padding: 5px 8px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 999px;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-caption);
+
+  background: var(--color-background);
+}
+
+
+/* =========================
+   Organization modules
+========================= */
+
+.organization-modules {
+  padding-bottom: 0;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 700px) {
+
+  .context {
+    padding: var(--space-md);
+  }
+
+
+  .deep-navigation {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+</style>

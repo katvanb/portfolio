@@ -1,0 +1,268 @@
+---
+interface Props {
+  title: string;
+
+  impact: string[];
+
+  highlights: string[];
+
+  reflection: {
+    title: string;
+    items: string[];
+  };
+}
+
+const { title, impact, highlights, reflection } = Astro.props;
+---
+
+<section class="impact">
+
+  <div class="section-heading">
+    <h2>{title}</h2>
+  </div>
+
+
+  <!-- Impact -->
+
+  <div class="impact-content">
+
+    <ul class="impact-list">
+
+      {impact.map((item) => (
+        <li>
+          {item}
+        </li>
+      ))}
+
+    </ul>
+
+
+    <!-- Highlights -->
+
+    <div class="highlights">
+
+      {highlights.map((item) => (
+        <div class="highlight">
+          {item}
+        </div>
+      ))}
+
+    </div>
+
+  </div>
+
+
+  <!-- Reflection -->
+
+  <div class="reflection">
+
+    <h3>
+      {reflection.title}
+    </h3>
+
+    <div class="reflection-content">
+
+      {reflection.items.map((item) => (
+        <p>
+          {item}
+        </p>
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<style>
+
+.impact {
+  width: 100%;
+
+  margin-top: var(--section-spacing);
+}
+
+
+/* =========================
+   Heading
+========================= */
+
+.section-heading {
+  margin-bottom: var(--space-lg);
+}
+
+.section-heading h2 {
+  margin: 0;
+
+  font-size: var(--font-size-h2);
+}
+
+
+/* =========================
+   Impact
+========================= */
+
+.impact-list {
+  max-width: 900px;
+
+  margin: 0;
+
+  padding-left: 1.25rem;
+}
+
+.impact-list li {
+  margin-bottom: var(--space-sm);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.7;
+}
+
+
+/* =========================
+   Highlights
+========================= */
+
+.highlights {
+  display: grid;
+
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+
+  margin-top: var(--space-2xl);
+
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+
+.highlight {
+  min-height: 100px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: var(--space-md);
+
+  text-align: center;
+
+  color: var(--color-text);
+
+  font-size: var(--font-size-small);
+
+  font-weight: 500;
+
+  line-height: 1.4;
+
+  border-right: 1px solid var(--color-border);
+}
+
+.highlight:last-child {
+  border-right: none;
+}
+
+
+/* =========================
+   Reflection
+========================= */
+
+.reflection {
+  margin-top: var(--space-2xl);
+
+  padding: var(--space-xl) 0 var(--space-xl) var(--space-lg);
+
+  border-left: 3px solid var(--color-accent);
+
+  display: grid;
+
+  grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr);
+
+  gap: var(--space-xl);
+}
+
+
+.reflection h3 {
+  margin: 0;
+
+  font-size: var(--font-size-h3);
+
+  font-weight: 600;
+}
+
+
+.reflection-content {
+  max-width: 800px;
+}
+
+
+.reflection-content p {
+  margin: 0 0 var(--space-md);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.7;
+}
+
+.reflection-content p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 900px) {
+
+  .highlights {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .highlight:nth-child(3) {
+    border-right: none;
+  }
+
+  .highlight:nth-child(-n + 3) {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .reflection {
+    grid-template-columns: 1fr;
+
+    gap: var(--space-md);
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .highlights {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .highlight:nth-child(3) {
+    border-right: 1px solid var(--color-border);
+  }
+
+  .highlight:nth-child(2n) {
+    border-right: none;
+  }
+
+  .highlight:nth-child(n + 3) {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .highlight:last-child {
+    border-bottom: none;
+  }
+
+}
+
+</style>

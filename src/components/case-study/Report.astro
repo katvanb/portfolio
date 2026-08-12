@@ -1,0 +1,225 @@
+---
+interface Props {
+  title: string;
+  columns: {
+    report: string;
+    globalPlatform: string;
+    holding: string;
+    organization: string;
+    accredited: string;
+  };
+  rows: {
+    name: string;
+    values: string[];
+  }[];
+
+  insight: string;
+}
+
+const { title, columns, rows, insight } = Astro.props;
+---
+
+<section class="reporting-complexity">
+
+  <div class="section-heading">
+    <h2>{title}</h2>
+  </div>
+
+  <div class="table-wrapper">
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>{columns.report}</th>
+          <th>{columns.globalPlatform}</th>
+          <th>{columns.holding}</th>
+          <th>{columns.organization}</th>
+          <th>{columns.accredited}</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        {rows.map((row) => (
+          <tr>
+            <th scope="row">
+              {row.name}
+            </th>
+
+            {row.values.map((value) => (
+              <td>
+                {value}
+              </td>
+            ))}
+          </tr>
+        ))}
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <div class="insight">
+
+    <p>
+      {insight}
+    </p>
+
+  </div>
+
+</section>
+
+
+<style>
+
+.reporting-complexity {
+  width: 100%;
+  margin-top: var(--section-spacing);
+}
+
+
+.section-heading {
+  margin-bottom: var(--space-lg);
+}
+
+
+.section-heading h2 {
+  margin: 0;
+  font-size: var(--font-size-h2);
+}
+
+
+/* =========================
+   Table
+========================= */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+
+table {
+  width: 100%;
+
+  border-spacing: 0;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-md);
+
+  overflow: hidden;
+
+  font-size: var(--font-size-small);
+}
+
+
+/* =========================
+   Header
+========================= */
+
+thead th {
+  padding: var(--space-md);
+
+  border-bottom: 1px solid var(--color-border);
+
+  font-weight: 600;
+
+  text-align: center;
+
+  white-space: nowrap;
+}
+
+
+thead th:first-child {
+  text-align: left;
+}
+
+
+/* =========================
+   Body
+========================= */
+
+tbody th,
+tbody td {
+  padding: var(--space-md);
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+
+tbody tr:last-child th,
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+tbody th {
+  font-weight: 500;
+
+  text-align: left;
+
+  white-space: nowrap;
+}
+
+
+tbody td {
+  text-align: center;
+
+  color: var(--color-text-secondary);
+}
+
+
+/* =========================
+   Hover
+========================= */
+
+tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+
+tbody tr:hover {
+  background: var(--color-background-secondary);
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 800px) {
+
+  table {
+    min-width: 720px;
+  }
+
+}
+
+/* =========================
+   Insight
+========================= */
+
+.insight {
+  margin-top: var(--space-2xl);
+
+  padding: var(--space-lg) 0 var(--space-lg) var(--space-lg);
+
+  border-left: 3px solid var(--color-accent);
+}
+
+.insight p {
+  max-width: 900px;
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+  line-height: 1.7;
+}
+
+</style>
