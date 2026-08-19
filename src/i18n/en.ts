@@ -567,7 +567,43 @@ const en = {
       timeline: "2 years",
       team:
         "Product Designer, UX/UI Designer, Developers, QA, PM, Client Development Team, Business Stakeholders",
-    }
+    },
+
+    challenge: {
+      title: "The Challenge",
+
+      before: {
+        label: "Before",
+        image: "/images/case-studies/b2b-commerce-platform/before.png",
+        items: [
+          "Phone",
+          "Email",
+          "Printed Catalogs",
+          "Quotes",
+          "Manual tracking",
+          "Fragmented departments"
+        ]
+      },
+
+      after: {
+        label: "After",
+        image: "/images/case-studies/b2b-commerce-platform/after.png",
+        items: [
+          "Self-service",
+          "Search",
+          "Quotes",
+          "Orders",
+          "Tracking",
+          "Purchase history"
+        ]
+      },
+
+      goal: {
+      label: "Goal",
+      description:
+        "Transform fragmented commercial operations into a unified self-service experience where enterprise customers could independently search products, request quotations, monitor orders, and manage purchasing activities from a single platform."
+      },
+    },
   }
 };
 

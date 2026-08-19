@@ -1,7 +1,8 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import es from "../../../i18n/es";
-import CaseStudyHero from "../../../components/case-study/CaseStudyHero.astro";
+import CaseStudyHero from "../../../components/case-studies/shared/CaseStudyHero.astro";
+import ChallengeComparison from "../../../components/case-studies/b2b-commerce/ChallengeComparison.astro";
 
 const t = es;
 ---
@@ -11,4 +12,11 @@ const t = es;
   content={t}
 >
   <CaseStudyHero content={t.b2bCommercePlatform.hero} />
+
+  <ChallengeComparison
+    title={t.b2bCommercePlatform.challenge.title}
+    before={t.b2bCommercePlatform.challenge.before}
+    after={t.b2bCommercePlatform.challenge.after}
+    goal={t.b2bCommercePlatform.challenge.goal}
+  />
 </BaseLayout>

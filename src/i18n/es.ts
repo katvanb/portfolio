@@ -580,6 +580,42 @@ const es = {
       team:
         "Product Designer, UX/UI Designer, Desarrolladores, QA, PM, Equipo de Desarrollo del Cliente, Stakeholders del Negocio",
     },
+
+    challenge: {
+      title: "El desafío",
+
+      before: {
+        label: "Antes",
+        image: "/images/case-studies/b2b-commerce-platform/before.png",
+        items: [
+          "Teléfono",
+          "Email",
+          "Catálogos impresos",
+          "Cotizaciones",
+          "Seguimiento manual",
+          "Departamentos fragmentados"
+        ]
+      },
+
+      after: {
+        label: "Después",
+        image: "/images/case-studies/b2b-commerce-platform/after.png",
+        items: [
+          "Autoservicio",
+          "Búsqueda",
+          "Cotizaciones",
+          "Pedidos",
+          "Seguimiento",
+          "Historial de compras"
+        ]
+      },
+
+      goal: {
+        label: "Objetivo",
+        description:
+          "Transformar operaciones comerciales fragmentadas en una experiencia unificada de autoservicio donde los clientes empresariales pudieran buscar productos, solicitar cotizaciones, monitorear pedidos y gestionar sus actividades de compra de forma independiente desde una sola plataforma."
+      },
+    },
   },
 
 };

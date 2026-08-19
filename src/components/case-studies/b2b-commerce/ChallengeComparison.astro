@@ -1,0 +1,845 @@
+---
+interface ComparisonSide {
+  label: string;
+  image: string;
+  items: string[];
+}
+
+interface Props {
+  title: string;
+  before: ComparisonSide;
+  after: ComparisonSide;
+  goal: {
+    label: string;
+    description: string;
+  };
+}
+
+const { title, before, after, goal } = Astro.props;
+---
+
+<section class="challenge">
+
+  <div class="section-heading">
+    <h2>{title}</h2>
+  </div>
+
+
+  <div class="comparison">
+
+    <div class="card-viewport">
+
+      <!-- AFTER -->
+  
+      <div class="panel after-panel">
+  
+        <div class="panel-content">
+  
+          <span class="panel-label">
+            {after.label}
+          </span>
+  
+  
+          <div class="image-wrapper">
+  
+            <img
+              src={after.image}
+              alt=""
+              loading="lazy"
+            />
+  
+          </div>
+  
+  
+          <ul>
+  
+            {after.items.map((item) => (
+              <li>{item}</li>
+            ))}
+  
+          </ul>
+  
+        </div>
+  
+      </div>
+  
+  
+      <!-- BEFORE -->
+  
+      <div class="before-reveal">
+  
+        <div class="panel before-panel">
+  
+          <div class="panel-content">
+  
+            <span class="panel-label">
+              {before.label}
+            </span>
+  
+  
+            <div class="image-wrapper">
+  
+              <img
+                src={before.image}
+                alt=""
+                loading="lazy"
+              />
+  
+            </div>
+  
+  
+            <ul>
+  
+              {before.items.map((item) => (
+                <li>{item}</li>
+              ))}
+  
+            </ul>
+  
+          </div>
+  
+        </div>
+  
+      </div>
+
+    </div>
+
+    <!-- SLIDER -->
+
+    <div
+      class="slider"
+      id="comparison-slider"
+      role="slider"
+      aria-label="Compare before and after"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="50"
+      tabindex="0"
+    >
+
+      <button
+        class="slider-handle"
+        type="button"
+        aria-label="Drag to compare before and after"
+      >
+
+        <span></span>
+        <span></span>
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="goal">
+
+    <div class="goal-label">
+      {goal.label}
+    </div>
+
+    <p>
+      {goal.description}
+    </p>
+
+  </div>
+
+</section>
+
+
+<script>
+
+  const comparison =
+    document.querySelector(".comparison") as HTMLElement | null;
+
+
+  const beforeReveal =
+    document.querySelector(".before-reveal") as HTMLElement | null;
+
+
+  const slider =
+    document.querySelector("#comparison-slider") as HTMLElement | null;
+
+
+  const handle =
+    document.querySelector(".slider-handle") as HTMLButtonElement | null;
+
+
+  if (
+    comparison &&
+    beforeReveal &&
+    slider &&
+    handle
+  ) {
+
+    let isDragging = false;
+
+
+    /* =========================
+       Update slider
+    ========================= */
+
+    const updateSlider = (clientX: number) => {
+
+      const rect =
+        comparison.getBoundingClientRect();
+
+
+      let position =
+        ((clientX - rect.left) / rect.width) * 100;
+
+
+      position =
+        Math.max(
+          0,
+          Math.min(100, position)
+        );
+
+
+      beforeReveal.style.width =
+        `${position}%`;
+
+
+      slider.style.left =
+        `${position}%`;
+
+
+      slider.setAttribute(
+        "aria-valuenow",
+        Math.round(position).toString()
+      );
+
+    };
+
+
+    /* =========================
+       Dragging
+    ========================= */
+
+    const startDragging = () => {
+
+      isDragging = true;
+
+      document.body.style.userSelect =
+        "none";
+
+    };
+
+
+    const stopDragging = () => {
+
+      isDragging = false;
+
+      document.body.style.userSelect =
+        "";
+
+    };
+
+
+    /* =========================
+       Handle
+    ========================= */
+
+    handle.addEventListener(
+      "pointerdown",
+      (event) => {
+
+        if (!(event instanceof PointerEvent)) {
+          return;
+        }
+
+
+        event.preventDefault();
+
+
+        handle.setPointerCapture(
+          event.pointerId
+        );
+
+
+        startDragging();
+
+      }
+    );
+
+
+    handle.addEventListener(
+      "pointermove",
+      (event) => {
+
+        if (!(event instanceof PointerEvent)) {
+          return;
+        }
+
+
+        if (!isDragging) {
+          return;
+        }
+
+
+        updateSlider(
+          event.clientX
+        );
+
+      }
+    );
+
+
+    handle.addEventListener(
+      "pointerup",
+      stopDragging
+    );
+
+
+    handle.addEventListener(
+      "pointercancel",
+      stopDragging
+    );
+
+
+    /* =========================
+       Click on comparison
+    ========================= */
+
+    comparison.addEventListener(
+      "pointerdown",
+      (event) => {
+
+        if (!(event instanceof PointerEvent)) {
+          return;
+        }
+
+
+        if (
+          event.target === handle ||
+          handle.contains(
+            event.target as Node
+          )
+        ) {
+          return;
+        }
+
+
+        updateSlider(
+          event.clientX
+        );
+
+      }
+    );
+
+
+    /* =========================
+       Keyboard
+    ========================= */
+
+    slider.addEventListener(
+      "keydown",
+      (event) => {
+
+        const current =
+          Number(
+            slider.getAttribute(
+              "aria-valuenow"
+            ) || 50
+          );
+
+
+        let next =
+          current;
+
+
+        if (event.key === "ArrowLeft") {
+          next -= 5;
+        }
+
+
+        if (event.key === "ArrowRight") {
+          next += 5;
+        }
+
+
+        if (event.key === "Home") {
+          next = 0;
+        }
+
+
+        if (event.key === "End") {
+          next = 100;
+        }
+
+
+        next =
+          Math.max(
+            0,
+            Math.min(100, next)
+          );
+
+
+        if (next !== current) {
+
+          event.preventDefault();
+
+
+          const rect =
+            comparison.getBoundingClientRect();
+
+
+          updateSlider(
+            rect.left +
+            (rect.width * next) / 100
+          );
+
+        }
+
+      }
+    );
+
+
+    /* =========================
+       Initial state
+    ========================= */
+
+    const initialPosition =
+      50;
+
+
+    beforeReveal.style.width =
+      `${initialPosition}%`;
+
+
+    slider.style.left =
+      `${initialPosition}%`;
+
+  }
+
+</script>
+
+
+<style>
+
+/* =========================
+   Section
+========================= */
+
+.challenge {
+  width: 100%;
+  margin-top: var(--section-spacing);
+}
+
+
+.section-heading {
+  margin-bottom: var(--space-lg);
+}
+
+
+.section-heading h2 {
+  margin: 0;
+  font-size: var(--font-size-h2);
+}
+
+
+/* =========================
+   Comparison
+========================= */
+
+.comparison {
+  position: relative;
+
+  width: min(100%, 380px);
+
+  margin: 0 auto;
+
+  aspect-ratio: 3 / 4;
+
+  overflow: visible;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-background);
+
+  isolation: isolate;
+
+  touch-action: pan-y;
+}
+
+.card-viewport {
+  position: absolute;
+  inset: 0;
+
+  overflow: hidden;
+
+  border-radius: var(--radius-md);
+}
+
+
+/*
+ * Important:
+ * Everything inside the comparison uses
+ * the same box model.
+ */
+
+.comparison *,
+.comparison *::before,
+.comparison *::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   Shared panels
+========================= */
+
+.panel {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+}
+
+
+.panel-content {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: var(--space-lg);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   AFTER
+========================= */
+
+.after-panel {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  width: 100%;
+  height: 100%;
+
+  background: var(--color-background);
+}
+
+
+.after-panel .panel-label {
+  color: var(--color-accent);
+
+  letter-spacing: 0.12em;
+}
+
+
+/* =========================
+   BEFORE REVEAL
+========================= */
+
+.before-reveal {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  z-index: 2;
+
+  width: 50%;
+  height: 100%;
+
+  overflow: hidden;
+
+  background: #171717;
+
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+
+/* =========================
+   BEFORE
+========================= */
+
+.before-panel {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 380px;
+  height: 100%;
+
+  background: var(--color-background-secondary);
+
+  opacity: 1;
+}
+
+
+.before-panel .panel-label {
+  color: var(--color-text-secondary);
+
+  letter-spacing: 0.12em;
+}
+
+
+/* =========================
+   Labels
+========================= */
+
+.panel-label {
+  display: block;
+
+  margin-bottom: var(--space-md);
+
+  font-size: var(--font-size-caption);
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================
+   Images
+========================= */
+
+.image-wrapper {
+  width: 100%;
+
+  height: 120px;
+
+  flex-shrink: 0;
+
+  overflow: hidden;
+
+  margin-bottom: var(--space-lg);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-background);
+
+  box-sizing: border-box;
+}
+
+
+.image-wrapper img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: inherit;
+}
+
+
+/* =========================
+   Lists
+========================= */
+
+ul {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-sm);
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+
+li {
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+  line-height: 1.4;
+}
+
+
+li::before {
+  content: "—";
+
+  margin-right: var(--space-sm);
+
+  color: var(--color-text);
+}
+
+
+/* =========================
+   Slider
+========================= */
+
+.slider {
+  position: absolute;
+
+  top: -24px;
+  bottom: -24px;
+
+  left: 50%;
+
+  z-index: 10;
+
+  width: 2px;
+
+  transform: translateX(-50%);
+
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-accent) 24px,
+    var(--color-accent) calc(100% - 24px),
+    transparent
+  );
+
+  cursor: ew-resize;
+}
+
+
+/* =========================
+   Handle
+========================= */
+
+.slider-handle {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  padding: 0;
+
+  transform: translate(-50%, -50%);
+
+  border: 1px solid var(--color-accent);
+
+  border-radius: 50%;
+
+  background: var(--color-background);
+
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.12);
+
+  cursor: ew-resize;
+}
+
+
+.slider-handle span {
+  width: 5px;
+  height: 5px;
+
+  border-top: 1px solid var(--color-accent);
+  border-right: 1px solid var(--color-accent);
+}
+
+
+.slider-handle span:first-child {
+  transform: rotate(-135deg);
+}
+
+
+.slider-handle span:last-child {
+  transform: rotate(45deg);
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 700px) {
+
+  .comparison {
+    width: min(100%, 360px);
+
+    aspect-ratio: 3 / 4;
+  }
+
+
+  .before-panel {
+    width: 360px;
+  }
+
+
+  .panel-content {
+    padding: var(--space-md);
+  }
+
+
+  .image-wrapper {
+    height: 105px;
+
+    margin-bottom: var(--space-md);
+  }
+
+
+  ul {
+    gap: var(--space-xs);
+  }
+
+
+  li {
+    font-size: var(--font-size-caption);
+  }
+
+}
+
+
+/* =========================
+   Goal
+========================= */
+
+
+.goal {
+  max-width: 760px;
+  margin: var(--space-2xl) auto 0;
+  padding-left: var(--space-lg);
+
+  border-left: 3px solid var(--color-accent);
+}
+
+.goal-label {
+  margin-bottom: var(--space-sm);
+
+  font-size: var(--font-size-caption);
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.goal p {
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+  line-height: 1.7;
+}
+
+</style>
