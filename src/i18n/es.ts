@@ -616,6 +616,20 @@ const es = {
           "Transformar operaciones comerciales fragmentadas en una experiencia unificada de autoservicio donde los clientes empresariales pudieran buscar productos, solicitar cotizaciones, monitorear pedidos y gestionar sus actividades de compra de forma independiente desde una sola plataforma."
       },
     },
+
+    businessDiscovery: {
+      title: "Business Discovery",
+      departments: [
+        "Sales",
+        "Marketing",
+        "Procurement",
+        "Accounting",
+        "Development"
+      ],
+      workshops: "Discovery Workshops",
+      sharedUnderstanding: "Shared Understanding",
+      note: "Different departments described the same workflow differently."
+    },
   },
 
 };

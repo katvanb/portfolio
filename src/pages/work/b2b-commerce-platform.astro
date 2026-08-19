@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import en from "../../i18n/en";
 import CaseStudyHero from "../../components/case-studies/shared/CaseStudyHero.astro";
 import ChallengeComparison from "../../components/case-studies/b2b-commerce/ChallengeComparison.astro";
+import BusinessDiscovery from "../../components/case-studies/b2b-commerce/BusinessDiscovery.astro";
 
 const t = en;
 ---
@@ -18,5 +19,10 @@ const t = en;
     before={t.b2bCommercePlatform.challenge.before}
     after={t.b2bCommercePlatform.challenge.after}
     goal={t.b2bCommercePlatform.challenge.goal}
+  />
+
+  <BusinessDiscovery
+    title={t.b2bCommercePlatform.businessDiscovery.title}
+    departments={t.b2bCommercePlatform.businessDiscovery.departments}
   />
 </BaseLayout>

@@ -604,6 +604,20 @@ const en = {
         "Transform fragmented commercial operations into a unified self-service experience where enterprise customers could independently search products, request quotations, monitor orders, and manage purchasing activities from a single platform."
       },
     },
+
+    businessDiscovery: {
+      title: "Business Discovery",
+      departments: [
+        "Sales",
+        "Marketing",
+        "Procurement",
+        "Accounting",
+        "Development"
+      ],
+      workshops: "Discovery Workshops",
+      sharedUnderstanding: "Shared Understanding",
+      note: "Different departments described the same workflow differently."
+    },
   }
 };
 
