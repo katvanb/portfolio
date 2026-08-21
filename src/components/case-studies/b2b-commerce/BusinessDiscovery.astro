@@ -17,38 +17,101 @@ const { title, departments } = Astro.props;
 
     <div class="discovery-sticky">
 
-        <div class="discovery-stage">
-      
-          <div class="orbit">
-      
-            <div class="orbit-ring"></div>
-      
-            {
-              departments.map((department, index) => (
-                  <div
-                  class={`department department-${index}`}
-                  style={`--delay: ${index * 180}ms;`}
-                  >
-                  <span class="department-circle"></span>
-      
-                  <span class="department-label">
-                      {department}
-                  </span>
+      <div class="discovery-stage">
+
+        <!-- =========================
+             DEPARTMENTS
+        ========================== -->
+
+        <div class="orbit">
+
+          <div class="orbit-ring"></div>
+
+          {
+            departments.map((department, index) => (
+              <div
+                class={`department department-${index}`}
+                style={`--delay: ${index * 180}ms;`}
+              >
+
+                <div class="department-movement">
+
+                  <div class="department-content">
+
+                    <div class="department-circle">
+
+                      <span class="department-label">
+                        {department}
+                      </span>
+
+                    </div>
+
                   </div>
-              ))
-            }
-      
-          </div>
-      
-          <div class="workshop-state">
-      
-              <div class="workshop-node">
-                  Discovery Workshops
+
+                </div>
+
               </div>
-      
-          </div>
-      
+            ))
+          }
+
         </div>
+
+
+        <!-- =========================
+             DISCOVERY WORKSHOPS
+        ========================== -->
+
+        <div class="workshop-state">
+
+          <div class="workshop-node">
+            Discovery Workshops
+          </div>
+
+          <div class="workshop-note">
+            Different departments described the same workflow differently.
+          </div>
+
+        </div>
+
+
+        <!-- =========================
+             SYNTHESIZING
+        ========================== -->
+
+        <div class="synthesizing-state">
+
+          <div class="synthesizing-content">
+
+            <div class="loading-indicator">
+
+              <span></span>
+              <span></span>
+              <span></span>
+
+            </div>
+
+            <span class="synthesizing-label">
+              Synthesizing…
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- =========================
+             SHARED UNDERSTANDING
+        ========================== -->
+
+        <div class="understanding-state">
+
+          <div class="understanding-node">
+            Shared Understanding
+          </div>
+
+        </div>
+
+      </div>
 
     </div>
 
@@ -59,15 +122,47 @@ const { title, departments } = Astro.props;
 
 <style>
 
+/* =========================
+   Section
+========================= */
+
+.business-discovery {
+  width: 100%;
+
+  margin-top: var(--section-spacing);
+
+  --progress: 0;
+}
+
 
 /* =========================
-   Stage
+   Heading
+========================= */
+
+.section-heading {
+  margin-bottom: var(--space-lg);
+}
+
+
+.section-heading h2 {
+  margin: 0;
+
+  font-size: var(--font-size-h2);
+}
+
+
+/* =========================
+   Scroll
 ========================= */
 
 .discovery-scroll {
   position: relative;
 
-  height: 200vh;
+  /*
+   * Long enough to let each state
+   * breathe while the scene stays fixed.
+   */
+  height: 500vh;
 }
 
 
@@ -86,11 +181,12 @@ const { title, departments } = Astro.props;
   overflow: hidden;
 }
 
+
 .discovery-stage {
   position: relative;
 
   width: 100%;
-  min-height: 520px;
+  height: 100%;
 
   display: flex;
 
@@ -145,22 +241,8 @@ const { title, departments } = Astro.props;
     ring-float
     7s
     ease-in-out
-    1.25s
+    1250ms
     infinite;
-}
-
-
-@keyframes ring-float {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-6px);
-  }
-
 }
 
 
@@ -168,19 +250,39 @@ const { title, departments } = Astro.props;
 
   from {
     opacity: 0;
-    transform: scale(0.94);
+
+    transform:
+      scale(0.94);
   }
 
   to {
     opacity: 0.7;
-    transform: scale(1);
+
+    transform:
+      scale(1);
+  }
+
+}
+
+
+@keyframes ring-float {
+
+  0%,
+  100% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(-7px);
   }
 
 }
 
 
 /* =========================
-   Department
+   Departments
 ========================= */
 
 .department {
@@ -194,24 +296,7 @@ const { title, departments } = Astro.props;
   align-items: center;
   justify-content: center;
 
-  color: #ffffff;
-
-  font-size: var(--font-size-small);
-  font-weight: 500;
-
-  text-align: center;
-
   opacity: 0;
-
-  /*
-   * La posición real durante la convergencia
-   * ahora depende solamente de estas variables.
-   */
-  transform:
-    translate(
-      calc(var(--converge-x) * var(--convergence)),
-      calc(var(--converge-y) * var(--convergence))
-    );
 
   animation:
     department-appear
@@ -221,134 +306,40 @@ const { title, departments } = Astro.props;
     forwards;
 }
 
-/* =========================
-   STATE 02
-   Gravitational convergence
-========================= */
 
-
-.business-discovery {
-
-  --convergence:
-    clamp(
-      0,
-      (var(--progress) - 0.35) / 0.28,
-      1
-    );
-
-  --shrink:
-    clamp(
-      0,
-      (var(--progress) - 0.60) / 0.20,
-      1
-    );
-}
-
-.department {
-
-  --converge-x: 0px;
-  --converge-y: 0px;
+.department-movement {
+  width: 100%;
+  height: 100%;
 
   transform:
     translate(
       calc(
-        var(--converge-x) *
+        var(--move-x) *
         clamp(
           0,
-          (var(--progress) - 0.38) * 1.7,
+          var(--progress) / 0.45,
           1
         )
       ),
       calc(
-        var(--converge-y) *
+        var(--move-y) *
         clamp(
           0,
-          (var(--progress) - 0.38) * 1.7,
+          var(--progress) / 0.45,
           1
         )
       )
-    )
-    scale(
-      calc(
-        1 -
-        clamp(
-          0,
-          (var(--progress) - 0.62) * 3,
-          0.9
-        )
-      )
     );
-
 }
 
 
 /* =========================
-   Convergence directions
+   Department shrink
 ========================= */
 
-.department-0 {
-  top: 0;
-  left: 50%;
-  margin-left: -54px;
-
-  --converge-x: 0px;
-  --converge-y: 210px;
-}
-
-
-.department-1 {
-  top: 24%;
-  right: 0;
-
-  --converge-x: -190px;
-  --converge-y: 100px;
-}
-
-
-.department-2 {
-  bottom: 7%;
-  right: 15%;
-
-  --converge-x: -145px;
-  --converge-y: -125px;
-}
-
-
-.department-3 {
-  bottom: 7%;
-  left: 15%;
-
-  --converge-x: 145px;
-  --converge-y: -125px;
-}
-
-
-.department-4 {
-  top: 24%;
-  left: 0;
-
-  --converge-x: 190px;
-  --converge-y: 100px;
-}
-
-
-/* =========================
-   Department animation
-========================= */
-
-
-.department-circle {
-  position: absolute;
-
-  inset: 0;
-
-  border: 1px solid var(--color-border);
-
-  border-radius: 50%;
-
-  background: #171717;
-
-  z-index: 0;
+.department-content {
+  width: 100%;
+  height: 100%;
 
   transform-origin: center;
 
@@ -357,26 +348,11 @@ const { title, departments } = Astro.props;
       calc(
         1 -
         (
-          var(--shrink) * 0.9
-        )
-      )
-    );
-}
-
-
-.department-label {
-  position: relative;
-
-  z-index: 1;
-
-  transform-origin: center;
-
-  transform:
-    scale(
-      calc(
-        1 -
-        (
-          var(--shrink) * 0.9
+          clamp(
+            0,
+            (var(--progress) - 0.35) / 0.10,
+            1
+          ) * 0.9
         )
       )
     );
@@ -384,8 +360,68 @@ const { title, departments } = Astro.props;
   opacity:
     calc(
       1 -
-      var(--shrink)
+      clamp(
+        0,
+        (var(--progress) - 0.40) / 0.05,
+        1
+      )
     );
+}
+
+
+/* =========================
+   Department circle
+========================= */
+
+.department-circle {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    var(--color-border);
+
+  border-radius: 50%;
+
+  background: #171717;
+
+  transform-origin: center;
+
+  animation:
+    department-float
+    8s
+    ease-in-out
+    calc(var(--delay) + 1s)
+    infinite;
+}
+
+
+/* =========================
+   Department label
+========================= */
+
+.department-label {
+  position: relative;
+
+  z-index: 1;
+
+  color: #ffffff;
+
+  font-size:
+    var(--font-size-small);
+
+  font-weight: 500;
+
+  text-align: center;
+
+  white-space: nowrap;
 }
 
 
@@ -396,30 +432,44 @@ const { title, departments } = Astro.props;
 @keyframes department-appear {
 
   0% {
-
     opacity: 0;
 
     transform:
       scale(0.05);
-
   }
 
   55% {
-
     opacity: 1;
 
     transform:
       scale(1.08);
-
   }
 
   100% {
-
     opacity: 1;
 
     transform:
       scale(1);
+  }
 
+}
+
+
+/* =========================
+   Department floating
+========================= */
+
+@keyframes department-float {
+
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform:
+      translate3d(0, -10px, 0);
   }
 
 }
@@ -430,59 +480,271 @@ const { title, departments } = Astro.props;
 ========================= */
 
 .department-0 {
+  --move-x: 0px;
+  --move-y: 180px;
 
   top: 0;
 
   left: 50%;
 
   margin-left: -54px;
-
 }
 
 
 .department-1 {
+  --move-x: -170px;
+  --move-y: 90px;
 
   top: 24%;
 
   right: 0;
-
 }
 
 
 .department-2 {
+  --move-x: -130px;
+  --move-y: -120px;
 
   bottom: 7%;
 
   right: 15%;
-
 }
 
 
 .department-3 {
+  --move-x: 130px;
+  --move-y: -120px;
 
   bottom: 7%;
 
   left: 15%;
-
 }
 
 
 .department-4 {
+  --move-x: 170px;
+  --move-y: 90px;
 
   top: 24%;
 
   left: 0;
-
 }
 
 
 /* =========================
-   Workshop
+   Discovery Workshops
 ========================= */
 
-
 .workshop-state {
+  position: absolute;
 
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+
+  /*
+   * Workshop appears after
+   * departments disappear.
+   */
+  opacity:
+    clamp(
+      0,
+      (var(--progress) - 0.65) / 0.10,
+      1
+    );
+
+  transform:
+    translateY(
+      calc(
+        clamp(
+          0,
+          (var(--progress) - 0.65) / 0.10,
+          1
+        ) * -20px
+      )
+    );
+}
+
+
+.workshop-node {
+  position: relative;
+
+  z-index: 2;
+
+  min-width: 300px;
+
+  padding:
+    var(--space-lg)
+    var(--space-xl);
+
+  border:
+    1px solid
+    var(--color-accent);
+
+  border-radius:
+    var(--radius-md);
+
+  background:
+    #171717;
+
+  color:
+    #ffffff;
+
+  font-size:
+    var(--font-size-body);
+
+  font-weight: 600;
+
+  text-align: center;
+
+  box-shadow:
+    0 12px 30px
+    rgba(0, 0, 0, 0.12);
+
+  transform:
+    scale(
+      calc(
+        0.92 +
+        (
+          clamp(
+            0,
+            (var(--progress) - 0.45) / 0.05,
+            1
+          ) * 0.08
+        )
+      )
+    );
+}
+
+
+/* =========================
+   Workshop note
+========================= */
+
+.workshop-note {
+  position: absolute;
+
+  top:
+    calc(50% + 52px);
+
+  z-index: 1;
+
+  width:
+    min(280px, 80vw);
+
+  padding:
+    var(--space-sm)
+    var(--space-md);
+
+  border:
+    1px solid
+    var(--color-border);
+
+  border-radius:
+    var(--radius-md);
+
+  background:
+    #171717;
+
+  color:
+    var(--color-text-secondary);
+
+  font-size:
+    var(--font-size-caption);
+
+  line-height: 1.4;
+
+  text-align: center;
+
+  opacity:
+    clamp(
+      0,
+      (var(--progress) - 0.55) / 0.05,
+      1
+    );
+
+  transform:
+    translateY(
+      calc(
+        (
+          1 -
+          clamp(
+            0,
+            (var(--progress) - 0.55) / 0.20,
+            1
+          )
+        ) * 20px
+      )
+    );
+}
+
+
+/* =========================
+   STATE 03
+   Convergence
+========================= */
+
+.workshop-node {
+  transform:
+    translateY(
+      calc(
+        clamp(
+          0,
+          (var(--progress) - 0.95) / 0.025,
+          1
+        ) * 10px
+      )
+    );
+
+  opacity:
+    calc(
+      1 -
+      clamp(
+        0,
+        (var(--progress) - 0.965) / 0.025,
+        1
+      )
+    );
+}
+
+
+.workshop-note {
+  transform:
+    translateY(
+      calc(
+        -35px +
+        (
+          clamp(
+            0,
+            (var(--progress) - 0.94) / 0.025,
+            1
+          ) * 25px
+        )
+      )
+    );
+
+  opacity:
+    calc(
+      1 -
+      clamp(
+        0,
+        (var(--progress) - 0.965) / 0.025,
+        1
+      )
+    );
+}
+
+
+/* =========================
+   Synthesizing
+========================= */
+
+.synthesizing-state {
   position: absolute;
 
   inset: 0;
@@ -497,27 +759,152 @@ const { title, departments } = Astro.props;
   opacity:
     clamp(
       0,
-      (var(--progress) - 0.68) * 5,
+      (var(--progress) - 0.975) / 0.012,
       1
     );
 
   transform:
     scale(
       calc(
-        0.9 +
-        clamp(
-          0,
-          (var(--progress) - 0.68) * 2,
-          0.1
+        0.96 +
+        (
+          clamp(
+            0,
+            (var(--progress) - 0.975) / 0.012,
+            1
+          ) * 0.04
         )
       )
     );
 }
 
 
-.workshop-node {
+/* =========================
+   Synthesizing content
+========================= */
 
-  min-width: 280px;
+.synthesizing-content {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap:
+    var(--space-sm);
+}
+
+
+.synthesizing-label {
+  color:
+    var(--color-text-secondary);
+
+  font-size:
+    var(--font-size-small);
+}
+
+
+/* =========================
+   Loading indicator
+========================= */
+
+.loading-indicator {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+}
+
+
+.loading-indicator span {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background:
+    var(--color-accent);
+
+  animation:
+    loading-pulse
+    1.2s
+    ease-in-out
+    infinite;
+}
+
+
+.loading-indicator span:nth-child(2) {
+  animation-delay: 150ms;
+}
+
+
+.loading-indicator span:nth-child(3) {
+  animation-delay: 300ms;
+}
+
+
+@keyframes loading-pulse {
+
+  0%,
+  100% {
+    opacity: 0.25;
+
+    transform:
+      scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      scale(1);
+  }
+
+}
+
+
+/* =========================
+   Shared Understanding
+========================= */
+
+.understanding-state {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+
+  opacity:
+    clamp(
+      0,
+      (var(--progress) - 0.99) / 0.01,
+      1
+    );
+
+  transform:
+    scale(
+      calc(
+        0.92 +
+        (
+          clamp(
+            0,
+            (var(--progress) - 0.99) / 0.01,
+            1
+          ) * 0.08
+        )
+      )
+    );
+}
+
+
+.understanding-node {
+  min-width: 300px;
 
   padding:
     var(--space-lg)
@@ -531,10 +918,10 @@ const { title, departments } = Astro.props;
     var(--radius-md);
 
   background:
-    var(--color-background);
+    #171717;
 
   color:
-    var(--color-text);
+    #ffffff;
 
   font-size:
     var(--font-size-body);
@@ -545,7 +932,7 @@ const { title, departments } = Astro.props;
 
   box-shadow:
     0 12px 30px
-    rgba(0, 0, 0, 0.06);
+    rgba(0, 0, 0, 0.12);
 }
 
 
@@ -558,14 +945,9 @@ const { title, departments } = Astro.props;
 ) {
 
   .department,
+  .department-circle,
   .orbit-ring {
-
     animation: none;
-
-    opacity: 1;
-
-    transform: none;
-
   }
 
 }
@@ -577,53 +959,43 @@ const { title, departments } = Astro.props;
 
 @media (max-width: 600px) {
 
-  .discovery-stage {
-
-    min-height: 430px;
-
-  }
-
-
   .orbit {
-
     width: 320px;
-
     height: 320px;
-
   }
 
 
   .orbit-ring {
-
     width: 230px;
-
     height: 230px;
-
   }
 
 
   .department {
-
     width: 82px;
     height: 82px;
-
-    padding: var(--space-sm);
-
-    font-size:
-      var(--font-size-caption);
-
   }
 
 
   .department-0 {
-
     margin-left: -41px;
+  }
 
+
+  .workshop-node,
+  .understanding-node {
+    min-width: 250px;
+  }
+
+
+  .workshop-note {
+    width: 250px;
   }
 
 }
 
 </style>
+
 
 <script>
 
