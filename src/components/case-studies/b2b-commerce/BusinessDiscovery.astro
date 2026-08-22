@@ -317,7 +317,7 @@ const { title, departments } = Astro.props;
         var(--move-x) *
         clamp(
           0,
-          var(--progress) / 0.45,
+          var(--progress) / 0.25,
           1
         )
       ),
@@ -325,7 +325,7 @@ const { title, departments } = Astro.props;
         var(--move-y) *
         clamp(
           0,
-          var(--progress) / 0.45,
+          var(--progress) / 0.25,
           1
         )
       )
@@ -350,7 +350,7 @@ const { title, departments } = Astro.props;
         (
           clamp(
             0,
-            (var(--progress) - 0.35) / 0.10,
+            (var(--progress) - 0.15) / 0.10,
             1
           ) * 0.9
         )
@@ -362,7 +362,7 @@ const { title, departments } = Astro.props;
       1 -
       clamp(
         0,
-        (var(--progress) - 0.40) / 0.05,
+        (var(--progress) - 0.22) / 0.03,
         1
       )
     );
@@ -547,26 +547,11 @@ const { title, departments } = Astro.props;
 
   pointer-events: none;
 
-  /*
-   * Workshop appears after
-   * departments disappear.
-   */
   opacity:
     clamp(
       0,
-      (var(--progress) - 0.65) / 0.10,
+      (var(--progress) - 0.18) / 0.10,
       1
-    );
-
-  transform:
-    translateY(
-      calc(
-        clamp(
-          0,
-          (var(--progress) - 0.65) / 0.10,
-          1
-        ) * -20px
-      )
     );
 }
 
@@ -583,8 +568,7 @@ const { title, departments } = Astro.props;
     var(--space-xl);
 
   border:
-    1px solid
-    var(--color-accent);
+    1px solid var(--color-accent);
 
   border-radius:
     var(--radius-md);
@@ -602,18 +586,23 @@ const { title, departments } = Astro.props;
 
   text-align: center;
 
-  box-shadow:
-    0 12px 30px
-    rgba(0, 0, 0, 0.12);
-
   transform:
+    translateY(
+      calc(
+        clamp(
+          0,
+          (var(--progress) - 0.60) / 0.10,
+          1
+        ) * 20px
+      )
+    )
     scale(
       calc(
         0.92 +
         (
           clamp(
             0,
-            (var(--progress) - 0.45) / 0.05,
+            (var(--progress) - 0.23) / 0.10,
             1
           ) * 0.08
         )
@@ -642,8 +631,7 @@ const { title, departments } = Astro.props;
     var(--space-md);
 
   border:
-    1px solid
-    var(--color-border);
+    1px solid var(--color-border);
 
   border-radius:
     var(--radius-md);
@@ -664,7 +652,7 @@ const { title, departments } = Astro.props;
   opacity:
     clamp(
       0,
-      (var(--progress) - 0.55) / 0.05,
+      (var(--progress) - 0.35) / 0.10,
       1
     );
 
@@ -675,10 +663,10 @@ const { title, departments } = Astro.props;
           1 -
           clamp(
             0,
-            (var(--progress) - 0.55) / 0.20,
+            (var(--progress) - 0.35) / 0.10,
             1
           )
-        ) * 20px
+        ) * -35px
       )
     );
 }
@@ -689,25 +677,29 @@ const { title, departments } = Astro.props;
    Convergence
 ========================= */
 
+.workshop-state {
+  transform:
+    translateY(
+      calc(
+        clamp(
+          0,
+          (var(--progress) - 0.55) / 0.10,
+          1
+        ) * -22px
+      )
+    );
+}
+
+
 .workshop-node {
   transform:
     translateY(
       calc(
         clamp(
           0,
-          (var(--progress) - 0.95) / 0.025,
+          (var(--progress) - 0.55) / 0.10,
           1
-        ) * 10px
-      )
-    );
-
-  opacity:
-    calc(
-      1 -
-      clamp(
-        0,
-        (var(--progress) - 0.965) / 0.025,
-        1
+        ) * -10px
       )
     );
 }
@@ -721,24 +713,59 @@ const { title, departments } = Astro.props;
         (
           clamp(
             0,
-            (var(--progress) - 0.94) / 0.025,
+            (var(--progress) - 0.55) / 0.10,
             1
-          ) * 25px
+          ) * 24px
         )
-      )
-    );
-
-  opacity:
-    calc(
-      1 -
-      clamp(
-        0,
-        (var(--progress) - 0.965) / 0.025,
-        1
       )
     );
 }
 
+/* =========================
+   STATE 03
+   Workshop + nota desaparecen — 85–90%
+========================= */
+
+.workshop-state {
+  opacity:
+    calc(
+      clamp(
+        0,
+        (var(--progress) - 0.18) / 0.10,
+        1
+      )
+      *
+      (
+        1 -
+        clamp(
+          0,
+          (var(--progress) - 0.63) / 0.05,
+          1
+        )
+      )
+    );
+}
+
+
+.workshop-note {
+  opacity:
+    calc(
+      clamp(
+        0,
+        (var(--progress) - 0.35) / 0.10,
+        1
+      )
+      *
+      (
+        1 -
+        clamp(
+          0,
+          (var(--progress) - 0.63) / 0.05,
+          1
+        )
+      )
+    );
+}
 
 /* =========================
    Synthesizing
@@ -759,20 +786,20 @@ const { title, departments } = Astro.props;
   opacity:
     clamp(
       0,
-      (var(--progress) - 0.975) / 0.012,
+      (var(--progress) - 0.66) / 0.10,
       1
     );
 
   transform:
     scale(
       calc(
-        0.96 +
+        0.94 +
         (
           clamp(
             0,
-            (var(--progress) - 0.975) / 0.012,
+            (var(--progress) - 0.66) / 0.10,
             1
-          ) * 0.04
+          ) * 0.06
         )
       )
     );
@@ -863,6 +890,29 @@ const { title, departments } = Astro.props;
 
 }
 
+/* =========================
+   Synthesizing desaparece — 98–99%
+========================= */
+
+.synthesizing-state {
+  opacity:
+    calc(
+      clamp(
+        0,
+        (var(--progress) - 0.66) / 0.10,
+        1
+      )
+      *
+      (
+        1 -
+        clamp(
+          0,
+          (var(--progress) - 0.76) / 0.06,
+          1
+        )
+      )
+    );
+}
 
 /* =========================
    Shared Understanding
@@ -883,7 +933,7 @@ const { title, departments } = Astro.props;
   opacity:
     clamp(
       0,
-      (var(--progress) - 0.99) / 0.01,
+      (var(--progress) - 0.82) / 0.08,
       1
     );
 
@@ -894,7 +944,7 @@ const { title, departments } = Astro.props;
         (
           clamp(
             0,
-            (var(--progress) - 0.99) / 0.01,
+            (var(--progress) - 0.82) / 0.08,
             1
           ) * 0.08
         )
@@ -911,28 +961,19 @@ const { title, departments } = Astro.props;
     var(--space-xl);
 
   border:
-    1px solid
-    var(--color-accent);
+    1px solid var(--color-accent);
 
   border-radius:
     var(--radius-md);
 
-  background:
-    #171717;
+  background: #171717;
 
-  color:
-    #ffffff;
+  color: #ffffff;
 
-  font-size:
-    var(--font-size-body);
-
+  font-size: var(--font-size-body);
   font-weight: 600;
 
   text-align: center;
-
-  box-shadow:
-    0 12px 30px
-    rgba(0, 0, 0, 0.12);
 }
 
 
