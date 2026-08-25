@@ -528,7 +528,7 @@ const en = {
     quote:
       "Great product design is about designing architectures that keep complexity manageable as products evolve.",
 
-      impact: {
+    impact: {
         title: "Impact",
     
         impact: [
@@ -567,6 +567,8 @@ const en = {
       timeline: "2 years",
       team:
         "Product Designer, UX/UI Designer, Developers, QA, PM, Client Development Team, Business Stakeholders",
+      ndaText:
+        "Due to a Non-Disclosure Agreement (NDA), some business details and product visuals have been generalized while preserving the design process, challenges, and outcomes.",
     },
 
     challenge: {
@@ -605,6 +607,34 @@ const en = {
       },
     },
 
+    contribution: {
+      eyebrow: "My Contribution",
+
+      description:
+        "Throughout the project, I led product discovery and requirements analysis across major releases, translating business needs and operational complexity into implementation-ready product requirements.",
+
+      items: [
+        "Facilitating cross-functional discovery workshops with business stakeholders",
+
+        "Leading requirement analysis and translating business needs into product requirements",
+
+        "Defining user flows, use cases, information architecture, navigation, and functional logic",
+
+        "Designing search behavior and key product interactions",
+
+        "Co-designing key product interfaces during the initial release and establishing patterns that guided subsequent releases",
+
+        "Producing functional specifications and collaborating closely with engineering throughout implementation",
+
+        "Serving as the product design reference during implementation, validating interaction logic, edge cases, navigation, and design consistency across engineering and QA",
+
+        "Supporting QA and reviewing subsequent UI designs to ensure alignment with business rules, workflows, technical constraints, and the evolving product"
+      ],
+
+      note:
+        "Although technical ERP integrations were implemented by the client's engineering team, I worked closely with stakeholders and developers to define how enterprise data should translate into meaningful user experiences."
+    },
+
     businessDiscovery: {
       title: "Business Discovery",
       departments: [
@@ -617,6 +647,136 @@ const en = {
       workshops: "Discovery Workshops",
       sharedUnderstanding: "Shared Understanding",
       note: "Different departments described the same workflow differently."
+    },
+
+    constraints: {
+      title: "Constraints",
+
+      items: [
+        {
+          number: "01",
+          title: "Legacy business processes",
+
+          decisionLabel: "Decision",
+          decision:
+            "Used the competitor experience as a reference while adapting it to the client's business rules, refining and automating existing processes where possible.",
+
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "More discovery and process analysis upfront, but a familiar experience that still reflected how the business actually operated."
+        },
+
+        {
+          number: "02",
+          title: "Organizational silos",
+
+          decisionLabel: "Decision",
+          decision:
+            "Mapped how different departments understood and interacted with the same commercial processes to identify gaps, dependencies, and conflicting assumptions.",
+
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "More alignment work upfront, but fewer assumptions carried into the product."
+        },
+
+        {
+          number: "03",
+          title: "ERP-driven data",
+
+          decisionLabel: "Decision",
+          decision:
+            "Designed the platform around the ERP as the source of truth, allowing the underlying data structure to evolve without repeatedly changing the user-facing experience.",
+
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "More dependency on the ERP and more upfront architectural work, but a more consistent product experience as the business data evolved."
+        },
+
+        {
+          number: "04",
+          title: "Constantly evolving product information",
+
+          decisionLabel: "Decision",
+          decision:
+            "Designed a compact visual hierarchy for product categories, balancing imagery, density, and scanability across a large and constantly changing catalog.",
+
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "Less room for each category to be visually prominent, but a faster way to scan and navigate a broad product range."
+        },
+
+        {
+          number: "05",
+          title: "Complex purchasing rules",
+
+          decisionLabel: "Decision",
+          decision:
+            "Translated customer-specific pricing, accounts, quotes, inventory, and purchasing conditions into flows that could be understood and managed through the platform.",
+
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "More conditional logic, but a more accurate self-service experience for professional buyers."
+        },
+
+        {
+          number: "06",
+          title: "Incremental implementation across multiple releases",
+
+          decisionLabel: "Decision",
+          decision:
+            "Designed foundations that could evolve across multiple releases instead of treating each release as a separate product.",
+
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "Some improvements had to be phased over time, but the experience could evolve without repeatedly rebuilding its foundations."
+        }
+      ]
+    },
+
+    impact: {
+      title: "Impact",
+    
+        impactSections: [
+          {
+            title: "Customer Self-Service",
+            items: [
+              "Quotations initiated through the platform",
+              "Order tracking adoption",
+              "Purchase history and reorder usage",
+              "Shopping list adoption"
+            ]
+          },
+
+          {
+            title: "Operational Efficiency",
+            items: [
+              "Product availability inquiries",
+              "Order status inquiries",
+              "Quotation status inquiries",
+              "Purchases based on outdated catalogs"
+            ]
+          },
+
+          {
+            title: "Product Discovery",
+            items: [
+              "Search success rate",
+              "Product detail engagement",
+              "Search refinement rate",
+              "Successful product identification before quotation"
+            ]
+          }
+        ],
+    
+        reflection: {
+          title: "Reflection",
+    
+          items: [
+            "Digital transformation starts with understanding how a business operates, where information breaks down, and how systems can restore clarity and autonomy.",
+            "This project strengthened my ability to navigate ambiguity, facilitate cross-functional conversations, and translate complex operational workflows into scalable digital experiences.",
+            "The most valuable lesson was that self-service is not simply about moving transactions online. It is about giving customers the information and visibility they need to act with confidence."
+          ]
+        }
     },
   }
 };

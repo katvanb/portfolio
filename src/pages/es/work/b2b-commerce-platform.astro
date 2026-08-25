@@ -1,18 +1,30 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import es from "../../../i18n/es";
+import { calculateReadingTime } from "../../../utils/readingTime";
 import CaseStudyHero from "../../../components/case-studies/shared/CaseStudyHero.astro";
 import ChallengeComparison from "../../../components/case-studies/b2b-commerce/ChallengeComparison.astro";
+import MyContribution from "../../../components/case-studies/shared/MyContribution.astro";
 import BusinessDiscovery from "../../../components/case-studies/b2b-commerce/BusinessDiscovery.astro";
+import Constraints from "../../../components/case-studies/shared/Constraints.astro";
+import Impact from "../../../components/case-studies/shared/Impact.astro";
 
 const t = es;
+
+const readingTime = calculateReadingTime(
+  t.b2bCommercePlatform
+);
 ---
 
 <BaseLayout
   title={t.b2bCommercePlatform.hero.title}
   content={t}
 >
-  <CaseStudyHero content={t.b2bCommercePlatform.hero} />
+  <CaseStudyHero
+    content={t.b2bCommercePlatform.hero}
+    readingTime={readingTime}
+    nda
+  />
 
   <ChallengeComparison
     title={t.b2bCommercePlatform.challenge.title}
@@ -21,9 +33,27 @@ const t = es;
     goal={t.b2bCommercePlatform.challenge.goal}
   />
 
+  <MyContribution
+  eyebrow={t.b2bCommercePlatform.contribution.eyebrow}
+  description={t.b2bCommercePlatform.contribution.description}
+  items={t.b2bCommercePlatform.contribution.items}
+  note={t.b2bCommercePlatform.contribution.note}
+/>
+
   <BusinessDiscovery
     title={t.b2bCommercePlatform.businessDiscovery.title}
     departments={t.b2bCommercePlatform.businessDiscovery.departments}
+  />
+
+  <Constraints
+    title={t.b2bCommercePlatform.constraints.title}
+    items={t.b2bCommercePlatform.constraints.items}
+  />
+
+  <Impact
+    title={t.b2bCommercePlatform.impact.title}
+    impactSections={t.b2bCommercePlatform.impact.impactSections}
+    reflection={t.b2bCommercePlatform.impact.reflection}
   />
 
 </BaseLayout>

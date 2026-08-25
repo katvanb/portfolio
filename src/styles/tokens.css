@@ -1,15 +1,81 @@
 :root {
 
   /* Colors */
-  --color-bg-primary: #0D0D0D;
-  --color-bg-secondary: #171717;
 
-  --color-text-primary: #F5F5F5;
-  --color-text-secondary: #A3A3A3;
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F5F5F5;
 
-  --color-accent: #E63946;
+  --color-text-primary: #3A3A3A;
+  --color-text-secondary: #737373;
 
-  --color-border: #2A2A2A;
+  --color-border: #E5E5E5;
+
+
+  /* Accent palette */
+
+  --accent-red: #F04438;
+  --accent-orange: #E8752F;
+  --accent-yellow: #D9A514;
+  --accent-green: #3F8F5F;
+  --accent-cyan: #2997A8;
+  --accent-blue: #3978C9;
+  --accent-purple: #8056B8;
+  --accent-magenta: #C44783;
+  --accent-brown: #9A6345;
+
+  --accent-graphite-light: #525252;
+  --accent-graphite-dark: #A3A3A3;
+
+
+  @property --rainbow-hue {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+
+[data-accent="rainbow"] {
+
+  --color-accent:
+    oklch(72% 0.12 var(--rainbow-hue));
+
+  --color-accent-soft:
+    oklch(94% 0.035 var(--rainbow-hue));
+
+  animation:
+    rainbow-accent 8s linear infinite;
+
+}
+
+
+[data-theme="dark"][data-accent="rainbow"] {
+
+  --color-accent:
+    oklch(78% 0.11 var(--rainbow-hue));
+
+  --color-accent-soft:
+    oklch(28% 0.035 var(--rainbow-hue));
+
+}
+
+
+@keyframes rainbow-accent {
+
+  from {
+    --rainbow-hue: 0;
+  }
+
+  to {
+    --rainbow-hue: 360;
+  }
+
+}
+
+
+  /* Default accent */
+
+  --color-accent: var(--accent-orange);
+  --color-accent-soft: #FBE4D5;
 
 
   /* Typography */
@@ -48,4 +114,146 @@
   --sidebar-collapsed: 72px;
 
   --sidebar-width: var(--sidebar-expanded);
+}
+
+[data-theme="dark"] {
+
+  --color-bg-primary: #0D0D0D;
+  --color-bg-secondary: #171717;
+
+  --color-text-primary: #F5F5F5;
+  --color-text-secondary: #A3A3A3;
+
+  --color-border: #2A2A2A;
+
+}
+
+/* Accents activos */
+
+[data-accent="red"] {
+  --color-accent: var(--accent-red);
+  --color-accent-soft: #FCE3E1;
+}
+
+[data-theme="dark"][data-accent="red"] {
+  --color-accent-soft: #3A1F1C;
+}
+
+[data-accent="orange"] {
+  --color-accent: var(--accent-orange);
+  --color-accent-soft: #FBE4D5;
+}
+
+[data-theme="dark"][data-accent="orange"] {
+  --color-accent-soft: #3A2418;
+}
+
+
+[data-accent="yellow"] {
+  --color-accent: var(--accent-yellow);
+  --color-accent-soft: #F8EFCF;
+}
+
+[data-theme="dark"][data-accent="yellow"] {
+  --color-accent-soft: #393119;
+}
+
+
+[data-accent="green"] {
+  --color-accent: var(--accent-green);
+  --color-accent-soft: #DDEDE3;
+}
+
+[data-theme="dark"][data-accent="green"] {
+  --color-accent-soft: #1E3025;
+}
+
+
+[data-accent="cyan"] {
+  --color-accent: var(--accent-cyan);
+  --color-accent-soft: #D9EFF2;
+}
+
+[data-theme="dark"][data-accent="cyan"] {
+  --color-accent-soft: #183137;
+}
+
+
+[data-accent="blue"] {
+  --color-accent: var(--accent-blue);
+  --color-accent-soft: #DDE8F8;
+}
+
+[data-theme="dark"][data-accent="blue"] {
+  --color-accent-soft: #1C293B;
+}
+
+
+[data-accent="purple"] {
+  --color-accent: var(--accent-purple);
+  --color-accent-soft: #E9DFF3;
+}
+
+[data-theme="dark"][data-accent="purple"] {
+  --color-accent-soft: #2C2036;
+}
+
+
+[data-accent="magenta"] {
+  --color-accent: var(--accent-magenta);
+  --color-accent-soft: #F3DDE8;
+}
+
+[data-theme="dark"][data-accent="magenta"] {
+  --color-accent-soft: #351F2B;
+}
+
+
+[data-accent="brown"] {
+  --color-accent: var(--accent-brown);
+  --color-accent-soft: #F0E2D9;
+}
+
+[data-theme="dark"][data-accent="brown"] {
+  --color-accent-soft: #32231C;
+}
+
+
+[data-accent="graphite"] {
+  --color-accent: var(--accent-graphite-light);
+  --color-accent-soft: #E5E5E5;
+}
+
+[data-theme="dark"][data-accent="graphite"] {
+  --color-accent: var(--accent-graphite-dark);
+  --color-accent-soft: #262626;
+}
+
+@property --rainbow-hue {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 30;
+}
+
+[data-accent="rainbow"] {
+  --color-accent: oklch(72% 0.12 var(--rainbow-hue));
+  --color-accent-soft: oklch(94% 0.035 var(--rainbow-hue));
+  animation: rainbow-accent 10s linear infinite;
+}
+
+[data-theme="dark"][data-accent="rainbow"] {
+  --color-accent: oklch(78% 0.11 var(--rainbow-hue));
+  --color-accent-soft: oklch(28% 0.035 var(--rainbow-hue));
+}
+
+@keyframes rainbow-accent {
+
+  from {
+    --rainbow-hue: 0;
+  }
+
+  to {
+    --rainbow-hue: 360;
+  }
+
 }

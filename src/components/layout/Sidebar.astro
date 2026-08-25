@@ -1,6 +1,7 @@
 ---
 import { Sun, Moon, Mail, Linkedin, Download, ArrowLeft, ArrowRight } from "lucide-astro";
 import LanguageSelector from "../navigation/LanguageSelector.astro";
+import AccentPicker from "../navigation/AccentPicker.astro";
 import en from "../../i18n/en";
 import es from "../../i18n/es";
 
@@ -74,10 +75,16 @@ const prefix = pathname.startsWith("/es") ? "/es" : "";
 
       <div class="preferences">
 
-        <button class="icon-button" aria-label="Toggle theme">
-          <Moon size={18} />
+        <button
+          class="icon-button"
+          id="theme-toggle"
+          aria-label="Toggle theme"
+        >
+          <Moon id="theme-moon" size={18} />
+          <Sun id="theme-sun" size={18} />
         </button>
 
+        <AccentPicker />
 
         <LanguageSelector />
 
@@ -346,10 +353,14 @@ const prefix = pathname.startsWith("/es") ? "/es" : "";
 
 .icon-button:hover {
 
-  background: var(--color-border);
+  background: var(--color-accent-soft);
 
 }
 
+
+#theme-moon {
+  display: none;
+}
 
 
 /* Contact */
@@ -564,6 +575,75 @@ const prefix = pathname.startsWith("/es") ? "/es" : "";
 const sidebar = document.getElementById("sidebar");
 const toggle = document.getElementById("sidebar-toggle");
 const layout = document.querySelector(".layout");
+
+// =========================
+// Theme
+// =========================
+
+const themeToggle = document.getElementById("theme-toggle");
+const themeMoon = document.getElementById("theme-moon");
+const themeSun = document.getElementById("theme-sun");
+
+const root = document.documentElement;
+
+type Theme = "light" | "dark";
+
+const savedTheme = localStorage.getItem("theme");
+
+const systemTheme: Theme =
+  window.matchMedia("(prefers-color-scheme: light)").matches
+    ? "light"
+    : "dark";
+
+const initialTheme: Theme =
+  savedTheme === "light" || savedTheme === "dark"
+    ? savedTheme
+    : systemTheme;
+
+root.setAttribute("data-theme", initialTheme);
+
+
+const updateThemeIcon = (theme: Theme) => {
+
+  if (!themeMoon || !themeSun) return;
+
+  if (theme === "light") {
+
+    themeMoon.style.display = "block";
+    themeSun.style.display = "none";
+
+  } else {
+
+    themeMoon.style.display = "none";
+    themeSun.style.display = "block";
+
+  }
+
+};
+
+
+updateThemeIcon(initialTheme);
+
+
+themeToggle?.addEventListener("click", () => {
+
+  const currentTheme: Theme =
+    root.getAttribute("data-theme") === "light"
+      ? "light"
+      : "dark";
+
+  const newTheme: Theme =
+    currentTheme === "dark"
+      ? "light"
+      : "dark";
+
+  root.setAttribute("data-theme", newTheme);
+
+  localStorage.setItem("theme", newTheme);
+
+  updateThemeIcon(newTheme);
+
+});
 
 
 const savedState = localStorage.getItem("sidebar-state");

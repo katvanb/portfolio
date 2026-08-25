@@ -7,10 +7,15 @@ interface Props {
     role: string;
     timeline: string;
     team: string;
+    ndaText?: string;
   };
+
+  readingTime?: string;
+  nda?: boolean;
+  ndaText?: string;
 }
 
-const { content } = Astro.props;
+const { content, readingTime, nda = false, ndaText } = Astro.props;
 ---
 
 <section class="case-study-hero">
@@ -26,8 +31,24 @@ const { content } = Astro.props;
     </h1>
 
     <p class="description">
-        {content.description}
+      {content.description}
     </p>
+
+    {
+      nda && content.ndaText && (
+        <p class="nda-disclaimer">
+          {content.ndaText}
+        </p>
+      )
+    }
+
+    {
+      readingTime && (
+        <span class="reading-time">
+          {readingTime}
+        </span>
+      )
+    }
 
   </div>
 
@@ -150,6 +171,46 @@ h1 {
 
   line-height: 1.7;
 
+}
+
+
+.nda-disclaimer {
+  max-width: 700px;
+
+  margin: var(--space-lg) 0 0;
+
+  padding:
+    var(--space-md)
+    var(--space-lg);
+
+  border-radius:
+    var(--radius-md);
+
+  background:
+    var(--color-bg-secondary);
+
+  color:
+    var(--color-text-secondary);
+
+  font-size:
+    var(--font-size-small);
+
+  font-style:
+    italic;
+
+  line-height:
+    1.6;
+}
+
+
+.reading-time {
+  display: block;
+
+  margin-top: var(--space-md);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
 }
 
 

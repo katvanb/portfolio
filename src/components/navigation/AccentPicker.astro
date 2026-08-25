@@ -1,0 +1,453 @@
+---
+interface Accent {
+  name: string;
+  value: string;
+}
+
+const accents: Accent[] = [
+  { name: "Red", value: "red" },
+  { name: "Orange", value: "orange" },
+  { name: "Yellow", value: "yellow" },
+  { name: "Green", value: "green" },
+  { name: "Cyan", value: "cyan" },
+  { name: "Blue", value: "blue" },
+  { name: "Purple", value: "purple" },
+  { name: "Magenta", value: "magenta" },
+  { name: "Brown", value: "brown" },
+  { name: "Graphite", value: "graphite" }
+];
+---
+
+<div class="accent-picker">
+
+  <button
+    class="accent-trigger"
+    id="accent-trigger"
+    aria-label="Change accent color"
+    aria-expanded="false"
+  >
+    <span class="accent-preview"></span>
+  </button>
+
+
+  <div
+    class="accent-menu"
+    id="accent-menu"
+    aria-hidden="true"
+  >
+
+    <div class="accent-grid">
+
+      {accents.map((accent) => (
+        <button
+          class="accent-option"
+          data-accent={accent.value}
+          aria-label={accent.name}
+          title={accent.name}
+        >
+          <span class={`swatch swatch-${accent.value}`}></span>
+        </button>
+      ))}
+
+    </div>
+
+
+    <div class="accent-divider"></div>
+
+
+    <button
+      class="rainbow-option"
+      id="rainbow-option"
+    >
+      <span class="rainbow-icon">🌈</span>
+
+      <span>
+        Surprise me
+      </span>
+    </button>
+
+  </div>
+
+</div>
+
+
+<style>
+
+.accent-picker {
+  position: relative;
+}
+
+
+.accent-trigger {
+  width: 36px;
+  height: 36px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  background: transparent;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  cursor: pointer;
+
+  transition:
+    background .2s ease,
+    border-color .2s ease;
+}
+
+
+.accent-trigger:hover {
+  background: var(--color-accent-soft);
+}
+
+
+.accent-preview {
+  width: 14px;
+  height: 14px;
+
+  border-radius: 50%;
+
+  background: var(--color-accent);
+}
+
+
+.accent-menu {
+  position: absolute;
+
+  left: 0;
+  bottom: calc(100% + 10px);
+
+  width: 190px;
+
+  padding: var(--space-sm);
+
+  background: var(--color-bg-secondary);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .12);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(6px);
+
+  transition:
+    opacity .2s ease,
+    transform .2s ease,
+    visibility .2s ease;
+
+  z-index: 200;
+}
+
+
+.accent-menu.open {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+
+.accent-grid {
+  display: grid;
+
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 8px;
+}
+
+
+.accent-option {
+  width: 28px;
+  height: 28px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  background: transparent;
+
+  border: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+
+.swatch {
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+
+.accent-option:hover .swatch {
+  transform: scale(1.18);
+}
+
+
+.accent-option.active .swatch {
+  box-shadow:
+    0 0 0 2px var(--color-bg-secondary),
+    0 0 0 3px var(--color-accent);
+}
+
+
+/* Accent colors */
+
+.swatch-red {
+  background: var(--accent-red);
+}
+
+.swatch-orange {
+  background: var(--accent-orange);
+}
+
+.swatch-yellow {
+  background: var(--accent-yellow);
+}
+
+.swatch-green {
+  background: var(--accent-green);
+}
+
+.swatch-cyan {
+  background: var(--accent-cyan);
+}
+
+.swatch-blue {
+  background: var(--accent-blue);
+}
+
+.swatch-purple {
+  background: var(--accent-purple);
+}
+
+.swatch-magenta {
+  background: var(--accent-magenta);
+}
+
+.swatch-brown {
+  background: var(--accent-brown);
+}
+
+.swatch-graphite {
+  background: var(--accent-graphite-light);
+}
+
+[data-theme="dark"] .swatch-graphite {
+  background: var(--accent-graphite-dark);
+}
+
+
+.accent-divider {
+  height: 1px;
+
+  margin: var(--space-sm) 0;
+
+  background: var(--color-border);
+}
+
+
+.rainbow-option {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px;
+
+  background: transparent;
+
+  border: none;
+  border-radius: var(--radius-sm);
+
+  color: var(--color-text-primary);
+
+  font-family: inherit;
+  font-size: var(--font-size-small);
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: background .2s ease;
+}
+
+
+.rainbow-option:hover {
+  background: var(--color-accent-soft);
+}
+
+
+.rainbow-icon {
+  font-size: 15px;
+}
+
+
+@media (max-width: 768px) {
+
+  .accent-menu {
+    left: auto;
+    right: 0;
+  }
+
+}
+
+</style>
+
+
+<script>
+
+const trigger =
+  document.getElementById("accent-trigger");
+
+const menu =
+  document.getElementById("accent-menu");
+
+const rainbow =
+  document.getElementById("rainbow-option");
+
+const options =
+  document.querySelectorAll(".accent-option");
+
+
+const openMenu = () => {
+
+  menu?.classList.add("open");
+
+  trigger?.setAttribute(
+    "aria-expanded",
+    "true"
+  );
+
+  menu?.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+};
+
+
+const closeMenu = () => {
+
+  menu?.classList.remove("open");
+
+  trigger?.setAttribute(
+    "aria-expanded",
+    "false"
+  );
+
+  menu?.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+};
+
+
+trigger?.addEventListener("click", (event) => {
+
+  event.stopPropagation();
+
+  if (menu?.classList.contains("open")) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
+
+});
+
+
+document.addEventListener("click", () => {
+  closeMenu();
+});
+
+
+menu?.addEventListener("click", (event) => {
+  event.stopPropagation();
+});
+
+
+const updateActiveAccent = (accent: string) => {
+
+  options.forEach((option) => {
+
+    option.classList.toggle(
+      "active",
+      option.getAttribute("data-accent") === accent
+    );
+
+  });
+
+};
+
+
+const applyAccent = (accent: string) => {
+
+  document.documentElement.setAttribute(
+    "data-accent",
+    accent
+  );
+
+  localStorage.setItem(
+    "accent",
+    accent
+  );
+
+  updateActiveAccent(accent);
+
+};
+
+
+const savedAccent =
+  localStorage.getItem("accent");
+
+const initialAccent =
+  savedAccent || "orange";
+
+
+applyAccent(initialAccent);
+
+
+options.forEach((option) => {
+
+  option.addEventListener("click", () => {
+
+    const accent =
+      option.getAttribute("data-accent");
+
+    if (!accent) return;
+
+    applyAccent(accent);
+
+    closeMenu();
+
+  });
+
+});
+
+
+rainbow?.addEventListener("click", () => {
+
+  applyAccent("rainbow");
+
+  closeMenu();
+
+});
+
+</script>

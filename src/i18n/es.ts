@@ -579,6 +579,8 @@ const es = {
       timeline: "2 años",
       team:
         "Product Designer, UX/UI Designer, Desarrolladores, QA, PM, Equipo de Desarrollo del Cliente, Stakeholders del Negocio",
+      ndaText:
+        "Debido a un acuerdo de confidencialidad (NDA), algunos detalles del negocio y elementos visuales del producto han sido generalizados, preservando el proceso de diseño, los desafíos y los resultados.",
     },
 
     challenge: {
@@ -617,6 +619,34 @@ const es = {
       },
     },
 
+    contribution: {
+      eyebrow: "Mi contribución",
+
+      description:
+        "A lo largo del proyecto, lideré el proceso de descubrimiento y análisis de requerimientos durante las distintas versiones, traduciendo las necesidades del negocio y la complejidad operativa en requerimientos de producto listos para implementación.",
+
+      items: [
+        "Facilitación de workshops de descubrimiento con diferentes áreas y stakeholders del negocio",
+
+        "Liderazgo del análisis de requerimientos y traducción de las necesidades del negocio en requerimientos de producto",
+
+        "Definición de flujos de usuario, casos de uso, arquitectura de información, navegación y lógica funcional",
+
+        "Diseño del comportamiento de búsqueda y de interacciones clave del producto",
+
+        "Co-diseño de interfaces clave durante la primera versión y establecimiento de patrones que guiaron las versiones posteriores",
+
+        "Elaboración de especificaciones funcionales y colaboración cercana con ingeniería durante la implementación",
+
+        "Actuar como referencia de diseño durante la implementación, validando la lógica de interacción, casos límite, navegación y consistencia del diseño entre ingeniería y QA",
+
+        "Apoyo a QA y revisión de diseños posteriores para asegurar su alineación con las reglas de negocio, flujos de trabajo, restricciones técnicas y evolución del producto"
+      ],
+
+      note:
+        "Aunque las integraciones técnicas con el ERP fueron implementadas por el equipo de ingeniería del cliente, trabajé estrechamente con stakeholders y desarrolladores para definir cómo los datos empresariales debían traducirse en experiencias de usuario significativas."
+    },
+
     businessDiscovery: {
       title: "Business Discovery",
       departments: [
@@ -629,6 +659,138 @@ const es = {
       workshops: "Discovery Workshops",
       sharedUnderstanding: "Shared Understanding",
       note: "Different departments described the same workflow differently."
+    },
+
+    constraints: {
+      title: "Restricciones",
+
+      items: [
+        {
+          number: "01",
+          title: "Procesos de negocio heredados",
+
+          decisionLabel: "Decisión",
+          decision:
+            "Usamos la experiencia del competidor como referencia, adaptándola a las reglas de negocio del cliente y refinando o automatizando los procesos existentes cuando era posible.",
+
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "Más trabajo de descubrimiento y análisis de procesos al inicio, pero una experiencia familiar que seguía reflejando cómo operaba realmente el negocio."
+        },
+
+        {
+          number: "02",
+          title: "Silos organizacionales",
+
+          decisionLabel: "Decisión",
+          decision:
+            "Mapeamos cómo los distintos departamentos entendían e interactuaban con los mismos procesos comerciales para identificar brechas, dependencias y supuestos en conflicto.",
+
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "Más trabajo de alineación al inicio, pero menos supuestos trasladados al producto."
+        },
+
+        {
+          number: "03",
+          title: "Datos impulsados por el ERP",
+
+          decisionLabel: "Decisión",
+          decision:
+            "Diseñamos la plataforma tomando el ERP como fuente de verdad, permitiendo que la estructura de datos evolucionara sin tener que modificar repetidamente la experiencia de cara al usuario.",
+
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "Mayor dependencia del ERP y más trabajo arquitectónico inicial, pero una experiencia de producto más consistente a medida que evolucionaban los datos del negocio."
+        },
+
+        {
+          number: "04",
+          title: "Información de producto en constante evolución",
+
+          decisionLabel: "Decisión",
+          decision:
+            "Diseñamos una jerarquía visual compacta para las categorías de productos, equilibrando imágenes, densidad y facilidad de escaneo dentro de un catálogo amplio y en constante cambio.",
+
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "Menos espacio para que cada categoría destacara visualmente, pero una forma más rápida de escanear y navegar una amplia variedad de productos."
+        },
+
+        {
+          number: "05",
+          title: "Reglas de compra complejas",
+
+          decisionLabel: "Decisión",
+          decision:
+            "Tradujimos precios específicos por cliente, cuentas, cotizaciones, inventario y condiciones de compra en flujos que pudieran entenderse y gestionarse desde la plataforma.",
+
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "Más lógica condicional, pero una experiencia de autoservicio más precisa para compradores profesionales."
+        },
+
+        {
+          number: "06",
+          title: "Implementación incremental en múltiples versiones",
+
+          decisionLabel: "Decisión",
+          decision:
+            "Diseñamos fundamentos que pudieran evolucionar a través de múltiples versiones, en lugar de tratar cada versión como un producto independiente.",
+
+          tradeoffLabel: "Trade-off",
+          tradeoff:
+            "Algunas mejoras tuvieron que implementarse por etapas, pero la experiencia pudo evolucionar sin reconstruir constantemente sus fundamentos."
+        }
+      ]
+    },
+
+    impact: {
+      title: "Impact",
+
+      impactSections: [
+        {
+          title: "Autoservicio del cliente",
+          items: [
+            "Cotizaciones iniciadas a través de la plataforma",
+            "Adopción del seguimiento de pedidos",
+            "Uso del historial de compras y la recompra",
+            "Adopción de listas de compras"
+          ]
+        },
+
+        {
+          title: "Eficiencia operativa",
+          items: [
+            "Consultas sobre disponibilidad de productos",
+            "Consultas sobre el estado de los pedidos",
+            "Consultas sobre el estado de las cotizaciones",
+            "Compras basadas en catálogos desactualizados"
+          ]
+        },
+
+        {
+          title: "Descubrimiento de productos",
+          items: [
+            "Tasa de éxito en búsquedas",
+            "Interacción con las páginas de producto",
+            "Uso de refinamientos de búsqueda",
+            "Identificación exitosa de productos antes de solicitar una cotización"
+          ]
+        }
+      ],
+
+      reflection: {
+        title: "Reflexión",
+
+        items: [
+          "La transformación digital comienza por comprender cómo opera un negocio, dónde se rompe la información y cómo diseñar sistemas que devuelvan claridad y autonomía.",
+
+          "Este proyecto fortaleció mi capacidad para navegar la ambigüedad, facilitar conversaciones entre diferentes áreas y transformar flujos operativos complejos en experiencias digitales escalables.",
+
+          "La lección más valiosa fue entender que el autoservicio no consiste simplemente en llevar las transacciones al entorno digital. Se trata de brindar a los clientes la información y visibilidad necesarias para tomar decisiones con confianza."
+        ]
+      }
     },
   },
 

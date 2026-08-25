@@ -1,14 +1,18 @@
 ---
 interface Props {
   eyebrow: string;
-  title: string;
+  title?: string;
+  description?: string;
   items: string[];
+  note?: string;
 }
 
 const {
   eyebrow,
   title,
-  items
+  description,
+  items,
+  note
 } = Astro.props;
 ---
 
@@ -23,6 +27,14 @@ const {
     <h2>
       {title}
     </h2>
+
+    {
+      description && (
+        <p class="section-description">
+          {description}
+        </p>
+      )
+    }
 
   </div>
 
@@ -47,6 +59,14 @@ const {
 
   </div>
 
+  {
+    note && (
+      <p class="contribution-note">
+        {note}
+      </p>
+    )
+  }
+
 </section>
 
 
@@ -64,6 +84,32 @@ const {
   margin-bottom: var(--space-xl);
 }
 
+.section-description {
+  max-width: 800px;
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body-large);
+
+  line-height: 1.6;
+}
+
+.contribution-note {
+  max-width: 800px;
+
+  margin:
+    var(--space-xl)
+    0
+    0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+  line-height: 1.7;
+}
 
 .eyebrow {
   color: var(--color-text-secondary);

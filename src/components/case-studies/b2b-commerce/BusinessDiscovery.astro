@@ -9,15 +9,54 @@ const { title, departments } = Astro.props;
 
 <section class="business-discovery">
 
-  <div class="section-heading">
-    <h2>{title}</h2>
-  </div>
-
   <div class="discovery-scroll">
 
     <div class="discovery-sticky">
 
-      <div class="discovery-stage">
+      <div class="discovery-layout">
+
+        <!-- =========================
+             LEFT — CONTEXT
+        ========================== -->
+
+        <div class="discovery-info">
+
+          <div class="section-heading">
+
+            <h2>{title}</h2>
+
+            <p>
+              Business discovery is where different perspectives
+              became a shared understanding.
+            </p>
+
+          </div>
+
+
+          <div class="discovery-process">
+
+            <div class="process-step">
+              Interviews
+            </div>
+
+            <div class="process-step">
+              Workshops
+            </div>
+
+            <div class="process-step">
+              Shared Understanding
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =========================
+             RIGHT — ANIMATION
+        ========================== -->
+
+        <div class="discovery-stage">
 
         <!-- =========================
              DEPARTMENTS
@@ -111,6 +150,8 @@ const { title, departments } = Astro.props;
 
         </div>
 
+        </div>
+
       </div>
 
     </div>
@@ -132,6 +173,172 @@ const { title, departments } = Astro.props;
   margin-top: var(--section-spacing);
 
   --progress: 0;
+}
+
+
+/* =========================
+   Business Discovery Layout
+========================= */
+
+.discovery-layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(220px, 0.35fr)
+    minmax(0, 0.65fr);
+
+  gap: var(--space-2xl);
+
+  align-items: start;
+
+  width: 100%;
+
+  height: 200vh;
+}
+
+
+/* =========================
+   Left — Information
+========================= */
+
+.discovery-info {
+  position: relative;
+
+  min-width: 0;
+
+  padding-top: var(--space-sm);
+}
+
+
+.discovery-info .section-heading {
+  margin-bottom: var(--space-xl);
+}
+
+
+.discovery-info .section-heading h2 {
+  margin: 0;
+
+  font-size: var(--font-size-h2);
+}
+
+
+.discovery-info .section-heading p {
+  max-width: 360px;
+
+  margin:
+    var(--space-md)
+    0
+    0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.5;
+}
+
+
+/* =========================
+   Process
+========================= */
+
+.discovery-process {
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: var(--space-sm);
+
+  margin-top: var(--space-lg);
+
+  padding-left: 20px;
+}
+
+
+/* =========================
+   Vertical connector
+========================= */
+
+.discovery-process::before {
+  content: "";
+
+  position: absolute;
+
+  /*
+    Center of the 7px nodes
+  */
+  left: 4px;
+
+  top: 15px;
+  bottom: 15px;
+
+  width: 1px;
+
+  background:
+    var(--color-border);
+
+  z-index: 0;
+}
+
+
+/* =========================
+   Process step
+========================= */
+
+.process-step {
+  position: relative;
+
+  z-index: 1;
+
+  display: flex;
+
+  align-items: center;
+
+  min-height: 28px;
+
+  color:
+    var(--color-text);
+
+  font-size:
+    var(--font-size-small);
+
+  font-weight: 500;
+}
+
+
+/* =========================
+   Node
+========================= */
+
+.process-step::before {
+  content: "";
+
+  position: absolute;
+
+  left: -20px;
+
+  top: 50%;
+
+  width: 7px;
+  height: 7px;
+
+  border:
+    1px solid
+    var(--color-border);
+
+  border-radius: 50%;
+
+  background:
+    var(--color-accent);
+
+  transform:
+    translateY(-50%);
+  
+  z-index: 2;
 }
 
 
@@ -158,11 +365,7 @@ const { title, departments } = Astro.props;
 .discovery-scroll {
   position: relative;
 
-  /*
-   * Long enough to let each state
-   * breathe while the scene stays fixed.
-   */
-  height: 500vh;
+  height: 300vh;
 }
 
 
@@ -173,12 +376,35 @@ const { title, departments } = Astro.props;
 
   height: 100vh;
 
+  width: 100%;
+
   display: flex;
 
   align-items: center;
-  justify-content: center;
 
   overflow: hidden;
+}
+
+
+.discovery-layout {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(220px, 0.35fr)
+    minmax(0, 0.65fr);
+
+  gap: var(--space-2xl);
+
+  align-items: center;
+}
+
+
+.discovery-info {
+  position: relative;
+
+  min-width: 0;
 }
 
 
@@ -186,7 +412,8 @@ const { title, departments } = Astro.props;
   position: relative;
 
   width: 100%;
-  height: 100%;
+
+  height: 100vh;
 
   display: flex;
 
@@ -547,19 +774,40 @@ const { title, departments } = Astro.props;
 
   pointer-events: none;
 
+  z-index: 2;
+
+  /*
+    Appears: 18–28%
+    Disappears: 63–68%
+  */
   opacity:
-    clamp(
-      0,
-      (var(--progress) - 0.18) / 0.10,
-      1
+    calc(
+      clamp(
+        0,
+        (var(--progress) - 0.18) / 0.10,
+        1
+      )
+      *
+      (
+        1 -
+        clamp(
+          0,
+          (var(--progress) - 0.63) / 0.05,
+          1
+        )
+      )
     );
 }
 
 
+/* =========================
+   Workshop node
+========================= */
+
 .workshop-node {
   position: relative;
 
-  z-index: 2;
+  z-index: 3;
 
   min-width: 300px;
 
@@ -586,12 +834,19 @@ const { title, departments } = Astro.props;
 
   text-align: center;
 
+  /*
+    Appearance:
+    23–33%
+
+    Movement:
+    55–65%
+  */
   transform:
     translateY(
       calc(
         clamp(
           0,
-          (var(--progress) - 0.60) / 0.10,
+          (var(--progress) - 0.55) / 0.10,
           1
         ) * 20px
       )
@@ -618,10 +873,15 @@ const { title, departments } = Astro.props;
 .workshop-note {
   position: absolute;
 
+  /*
+    The note starts BELOW the workshop.
+  */
   top:
-    calc(50% + 52px);
+    calc(50% + 58px);
 
-  z-index: 1;
+  left: 50%;
+
+  z-index: 2;
 
   width:
     min(280px, 80vw);
@@ -645,18 +905,16 @@ const { title, departments } = Astro.props;
   font-size:
     var(--font-size-caption);
 
-  line-height: 1.4;
+  line-height:
+    1.4;
 
   text-align: center;
 
-  opacity:
-    clamp(
-      0,
-      (var(--progress) - 0.35) / 0.10,
-      1
-    );
-
+  /*
+    Center the note horizontally.
+  */
   transform:
+    translateX(-50%)
     translateY(
       calc(
         (
@@ -669,85 +927,14 @@ const { title, departments } = Astro.props;
         ) * -35px
       )
     );
-}
 
+  /*
+    Appears:
+    35–45%
 
-/* =========================
-   STATE 03
-   Convergence
-========================= */
-
-.workshop-state {
-  transform:
-    translateY(
-      calc(
-        clamp(
-          0,
-          (var(--progress) - 0.55) / 0.10,
-          1
-        ) * -22px
-      )
-    );
-}
-
-
-.workshop-node {
-  transform:
-    translateY(
-      calc(
-        clamp(
-          0,
-          (var(--progress) - 0.55) / 0.10,
-          1
-        ) * -10px
-      )
-    );
-}
-
-
-.workshop-note {
-  transform:
-    translateY(
-      calc(
-        -35px +
-        (
-          clamp(
-            0,
-            (var(--progress) - 0.55) / 0.10,
-            1
-          ) * 24px
-        )
-      )
-    );
-}
-
-/* =========================
-   STATE 03
-   Workshop + nota desaparecen — 85–90%
-========================= */
-
-.workshop-state {
-  opacity:
-    calc(
-      clamp(
-        0,
-        (var(--progress) - 0.18) / 0.10,
-        1
-      )
-      *
-      (
-        1 -
-        clamp(
-          0,
-          (var(--progress) - 0.63) / 0.05,
-          1
-        )
-      )
-    );
-}
-
-
-.workshop-note {
+    Disappears:
+    63–68%
+  */
   opacity:
     calc(
       clamp(
@@ -1031,6 +1218,32 @@ const { title, departments } = Astro.props;
 
   .workshop-note {
     width: 250px;
+  }
+
+}
+
+
+@media (max-width: 800px) {
+
+  .discovery-layout {
+    grid-template-columns: 1fr;
+
+    gap: var(--space-xl);
+  }
+
+
+  .discovery-info {
+    padding-top: 0;
+  }
+
+
+  .discovery-process {
+    display: none;
+  }
+
+
+  .discovery-scroll {
+    height: 200vh;
   }
 
 }

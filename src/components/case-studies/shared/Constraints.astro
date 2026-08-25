@@ -112,7 +112,7 @@ const { title, items } = Astro.props;
 
   min-width: 0;
 
-  padding: var(--space-lg);
+  padding: var(--space-md);
 
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -131,19 +131,13 @@ const { title, items } = Astro.props;
   border-color: var(--color-accent);
 }
 
-.constraint-card:last-child {
-  grid-column: 1 / -1;
-  width: calc(50% - (var(--space-md) / 2));
-  justify-self: center;
-}
-
 
 /* =========================
    Number
 ========================= */
 
 .number {
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
 
   color: var(--color-accent);
 
@@ -160,7 +154,7 @@ const { title, items } = Astro.props;
 ========================= */
 
 .constraint-card h3 {
-  margin: 0 0 var(--space-lg);
+  margin: 0 0 var(--space-md);
 
   font-size: var(--font-size-h3);
 
@@ -179,9 +173,9 @@ const { title, items } = Astro.props;
 
 
 .tradeoff {
-  margin-top: var(--space-lg);
+  margin-top: var(--space-md);
 
-  padding-top: var(--space-lg);
+  padding-top: var(--space-md);
 
   border-top: 1px solid var(--color-border);
 }
