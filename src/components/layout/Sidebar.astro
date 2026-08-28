@@ -1,5 +1,5 @@
 ---
-import { Sun, Moon, Mail, Linkedin, Download, ArrowLeft, ArrowRight, Menu, X } from "lucide-astro";
+import { Sun, Moon, Mail, Linkedin, Download, ArrowLeft, ArrowRight, Menu, X, Check } from "lucide-astro";
 import LanguageSelector from "../navigation/LanguageSelector.astro";
 import AccentPicker from "../navigation/AccentPicker.astro";
 import en from "../../i18n/en";
@@ -107,10 +107,10 @@ const prefix = isSpanish
 
 
       <a
-        href="/KatherineGaspare_SeniorProductDesigner_Resume.pdf"
+        href={`${import.meta.env.BASE_URL}Katherine-Gaspare-CV.pdf`}
+        class="cv-link"
         target="_blank"
         rel="noopener noreferrer"
-        class="cv-link"
       >
         <Download size={16} />
 
@@ -146,9 +146,12 @@ const prefix = isSpanish
 
       <button 
         class="email"
+        id="email-button"
         aria-label={t.sidebar.actions.email}
       >
-        <Mail size={18} />
+
+        <Mail class="email-icon" size={18} />
+        <Check class="email-check" size={18} />
 
         <span>
           {t.sidebar.actions.email}
@@ -787,6 +790,29 @@ const prefix = isSpanish
 
 }
 
+/* Email */
+
+.email-check {
+  display: none;
+}
+
+.email.copied {
+  color: #3A8F6B !important;
+}
+
+.email.copied .email-check {
+  display: block;
+  color: #3A8F6B !important;
+}
+
+.email.copied .email-icon {
+  display: none;
+}
+
+.email.copied span {
+  color: #3A8F6B !important;
+}
+
 </style>
 
 
@@ -1126,31 +1152,33 @@ window.addEventListener("load", () => {
 });
 
 const emailButton =
-  document.getElementById("email-copy");
-
-const email =
-  "katherine.gaspare@gmail.com";
-
+  document.getElementById("email-button");
 
 emailButton?.addEventListener("click", async () => {
 
   try {
 
-    await navigator.clipboard.writeText(email);
+    await navigator.clipboard.writeText(
+      "katherine.gaspare@gmail.com"
+    );
 
-    const label =
+    emailButton.classList.add("copied");
+
+    const emailText =
       emailButton.querySelector("span");
 
-    if (!label) return;
+    if (!emailText) return;
 
     const originalText =
-      label.textContent;
+      emailText.textContent;
 
-    label.textContent = "Copied!";
+    emailText.textContent = "Copied";
 
     setTimeout(() => {
 
-      label.textContent =
+      emailButton.classList.remove("copied");
+
+      emailText.textContent =
         originalText;
 
     }, 1500);
@@ -1158,7 +1186,7 @@ emailButton?.addEventListener("click", async () => {
   } catch (error) {
 
     console.error(
-      "Failed to copy email:",
+      "Could not copy email:",
       error
     );
 
