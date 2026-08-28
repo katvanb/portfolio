@@ -59,19 +59,6 @@
 }
 
 
-@keyframes rainbow-accent {
-
-  from {
-    --rainbow-hue: 0;
-  }
-
-  to {
-    --rainbow-hue: 360;
-  }
-
-}
-
-
   /* Default accent */
 
   --color-accent: var(--accent-orange);
