@@ -96,7 +96,12 @@ const prefix = pathname.startsWith("/es") ? "/es" : "";
       </div>
 
 
-      <a href="/Katherine-Gaspare-CV.pdf" class="cv-link">
+      <a
+        href="/KatherineGaspare_SeniorProductDesigner_Resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="cv-link"
+      >
         <Download size={16} />
 
         <span>
@@ -110,8 +115,9 @@ const prefix = pathname.startsWith("/es") ? "/es" : "";
     <div class="contact">
 
       <a 
-        href="https://www.linkedin.com/" 
+        href="https://www.linkedin.com/in/katherine-gaspare/"
         target="_blank"
+        rel="noopener noreferrer"
         class="linkedin"
         aria-label={t.sidebar.actions.linkedin}
       >
@@ -1106,6 +1112,47 @@ window.addEventListener("load", () => {
     requestAnimationFrame(animateScroll);
 
   }, 100);
+
+});
+
+const emailButton =
+  document.getElementById("email-copy");
+
+const email =
+  "katherine.gaspare@gmail.com";
+
+
+emailButton?.addEventListener("click", async () => {
+
+  try {
+
+    await navigator.clipboard.writeText(email);
+
+    const label =
+      emailButton.querySelector("span");
+
+    if (!label) return;
+
+    const originalText =
+      label.textContent;
+
+    label.textContent = "Copied!";
+
+    setTimeout(() => {
+
+      label.textContent =
+        originalText;
+
+    }, 1500);
+
+  } catch (error) {
+
+    console.error(
+      "Failed to copy email:",
+      error
+    );
+
+  }
 
 });
 
