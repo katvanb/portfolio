@@ -1,0 +1,485 @@
+---
+interface IndexSection {
+  id: string;
+  label: string;
+}
+
+interface Props {
+  sections: IndexSection[];
+}
+
+const { sections } = Astro.props;
+---
+
+<nav
+  class="case-study-index"
+  id="case-study-index"
+  aria-label="Case study sections"
+>
+
+  <div class="index-items">
+
+    {
+      sections.map((section) => (
+        <a
+          href={`#${section.id}`}
+          class="index-item"
+          data-section={section.id}
+          aria-label={section.label}
+        >
+          <span class="index-line"></span>
+
+          <span class="index-label">
+            {section.label}
+          </span>
+        </a>
+      ))
+    }
+
+  </div>
+
+</nav>
+
+
+<style>
+
+.case-study-index {
+
+  position: fixed;
+
+  top: 50%;
+  right: 0;
+
+  transform: translateY(-50%);
+
+  z-index: 50;
+
+  width: 210px;
+
+  padding: 24px 24px 24px 12px;
+
+  /*
+   * El propio índice es ahora
+   * la zona interactiva.
+   */
+  pointer-events: auto;
+
+}
+
+
+.index-items {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 5px;
+
+}
+
+
+/* Individual item */
+
+.index-item {
+
+  display: flex;
+
+  flex-direction: row-reverse;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: var(--color-text-secondary);
+
+  text-decoration: none;
+
+}
+
+
+/* Lines */
+
+.index-line {
+
+  width: 18px;
+  height: 2px;
+
+  flex-shrink: 0;
+
+  background: var(--color-text-secondary);
+
+  opacity: .45;
+
+  transition:
+    width .2s ease,
+    background .2s ease,
+    opacity .2s ease;
+
+}
+
+
+/* Labels */
+
+.index-label {
+
+  max-width: 0;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  opacity: 0;
+
+  transform: translateX(6px);
+
+  color: var(--color-text-secondary);
+
+  font-size: 12px;
+
+  line-height: 1.2;
+
+  transition:
+    max-width .25s ease,
+    opacity .2s ease,
+    transform .2s ease,
+    color .2s ease;
+
+}
+
+
+/*
+ * EXPANDED
+ *
+ * Al hacer hover sobre cualquier parte
+ * del índice, todos los títulos aparecen.
+ */
+
+.case-study-index.expanded .index-label {
+
+  max-width: 160px;
+
+  opacity: 1;
+
+  transform: translateX(0);
+
+}
+
+
+/*
+ * Cuando está expandido las líneas
+ * se retraen.
+ */
+
+.case-study-index:hover .index-line {
+
+  width: 0;
+
+  opacity: 0;
+
+}
+
+
+/*
+ * Hover sobre una sección específica
+ */
+
+.index-item:hover .index-label {
+
+  color: var(--color-accent);
+
+}
+
+
+/*
+ * Aunque las líneas estén retraídas,
+ * la sección bajo hover puede mostrar
+ * una pequeña línea accent.
+ */
+
+.index-item:hover .index-line {
+
+  width: 22px;
+
+  background: var(--color-accent);
+
+  opacity: 1;
+
+}
+
+
+/*
+ * ACTIVE SECTION
+ *
+ * Cuando el índice está cerrado:
+ * línea más larga y ligeramente opaca.
+ */
+
+.index-item.active {
+
+  pointer-events: none;
+
+}
+
+
+.index-item.active .index-line {
+  width: 34px;
+  height: 2px;
+  background: var(--color-accent);
+  opacity: .65;
+}
+
+.index-item.active .index-label {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+
+/*
+ * Cuando el índice está expandido,
+ * la sección activa vuelve a comportarse
+ * como una línea retraída.
+ */
+
+.case-study-index:hover .index-item.active .index-line {
+
+  width: 0;
+
+  opacity: 0;
+
+}
+
+
+/*
+ * IMPORTANTE:
+ * la sección activa NO muestra texto
+ * cuando el índice está cerrado.
+ */
+
+.index-item.active .index-label {
+
+  max-width: 0;
+
+  opacity: 0;
+
+  transform: translateX(6px);
+
+}
+
+
+/*
+ * Pero cuando el índice está expandido,
+ * todos muestran su texto.
+ */
+
+.case-study-index:hover .index-item.active .index-label {
+
+  max-width: 160px;
+
+  opacity: 1;
+
+  transform: translateX(0);
+
+}
+
+
+/*
+ * Mobile
+ */
+
+@media (max-width: 1200px) {
+
+  .case-study-index {
+
+    right: var(--space-md);
+
+  }
+
+}
+
+
+@media (max-width: 768px) {
+
+  .case-study-index {
+
+    display: none;
+
+  }
+
+}
+
+</style>
+
+
+<script>
+
+const index =
+  document.getElementById("case-study-index");
+
+const items =
+  document.querySelectorAll<HTMLElement>(
+    ".index-item"
+  );
+
+
+const sections =
+  Array.from(items)
+    .map((item) => {
+
+      const id =
+        item.dataset.section;
+
+      if (!id) return null;
+
+      return document.getElementById(id);
+
+    })
+    .filter(
+      (section): section is HTMLElement =>
+        section !== null
+    );
+
+
+const updateActiveSection = () => {
+
+  const scrollPosition =
+    window.scrollY + window.innerHeight * 0.35;
+
+
+  let activeSection: HTMLElement | null = null;
+
+
+  sections.forEach((section) => {
+
+    if (
+      section.offsetTop <= scrollPosition
+    ) {
+
+      activeSection = section;
+
+    }
+
+  });
+
+
+  items.forEach((item) => {
+
+    item.classList.toggle(
+      "active",
+      item.dataset.section ===
+        activeSection?.id
+    );
+
+  });
+
+};
+
+
+window.addEventListener(
+  "scroll",
+  updateActiveSection,
+  { passive: true }
+);
+
+
+window.addEventListener(
+  "resize",
+  updateActiveSection
+);
+
+
+updateActiveSection();
+
+
+// =========================
+// Smooth section navigation
+// =========================
+
+items.forEach((item) => {
+
+  item.addEventListener("click", (event) => {
+
+    event.preventDefault();
+
+    const id =
+      item.dataset.section;
+
+    if (!id) return;
+
+    const target =
+      document.getElementById(id);
+
+    if (!target) return;
+
+    const offset = 80;
+
+    const targetPosition =
+      target.getBoundingClientRect().top +
+      window.scrollY -
+      offset;
+
+    window.scrollTo({
+
+      top: targetPosition,
+
+      behavior: "smooth"
+
+    });
+
+  });
+
+});
+
+
+// =========================
+// Index hover
+// =========================
+
+let closeTimeout: number | null = null;
+
+
+const showIndex = () => {
+
+  if (closeTimeout !== null) {
+
+    window.clearTimeout(closeTimeout);
+
+    closeTimeout = null;
+
+  }
+
+  index?.classList.add("expanded");
+
+};
+
+
+const hideIndex = () => {
+
+  if (closeTimeout !== null) {
+
+    window.clearTimeout(closeTimeout);
+
+  }
+
+  closeTimeout = window.setTimeout(() => {
+
+    index?.classList.remove("expanded");
+
+  }, 180);
+
+};
+
+
+index?.addEventListener(
+  "mouseenter",
+  showIndex
+);
+
+
+index?.addEventListener(
+  "mouseleave",
+  hideIndex
+);
+
+</script>

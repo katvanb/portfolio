@@ -610,6 +610,8 @@ const en = {
     contribution: {
       eyebrow: "My Contribution",
 
+      title: "Shaping the product from the inside out",
+
       description:
         "Throughout the project, I led product discovery and requirements analysis across major releases, translating business needs and operational complexity into implementation-ready product requirements.",
 

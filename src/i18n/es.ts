@@ -622,6 +622,8 @@ const es = {
     contribution: {
       eyebrow: "Mi contribución",
 
+      title: "Diseñando el producto desde adentro hacia afuera",
+
       description:
         "A lo largo del proyecto, lideré el proceso de descubrimiento y análisis de requerimientos durante las distintas versiones, traduciendo las necesidades del negocio y la complejidad operativa en requerimientos de producto listos para implementación.",
 

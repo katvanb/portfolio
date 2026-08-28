@@ -1,5 +1,5 @@
 ---
-import { Sun, Moon, Mail, Linkedin, Download, ArrowLeft, ArrowRight } from "lucide-astro";
+import { Sun, Moon, Mail, Linkedin, Download, ArrowLeft, ArrowRight, Menu, X } from "lucide-astro";
 import LanguageSelector from "../navigation/LanguageSelector.astro";
 import AccentPicker from "../navigation/AccentPicker.astro";
 import en from "../../i18n/en";
@@ -17,12 +17,17 @@ const prefix = pathname.startsWith("/es") ? "/es" : "";
 
   <div class="top">
 
-    <button class="toggle" id="sidebar-toggle">
-
+    <button
+      class="toggle"
+      id="sidebar-toggle"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+    >
       <ArrowLeft class="arrow-open" size={18} />
-
       <ArrowRight class="arrow-close" size={18} />
 
+      <Menu class="mobile-menu-icon" size={22} />
+      <X class="mobile-close-icon" size={22} />
     </button>
 
 
@@ -39,7 +44,7 @@ const prefix = pathname.startsWith("/es") ? "/es" : "";
         </h1>
 
         <p>
-          Product Designer
+          Product Designer + Systems Engineer
         </p>
       </div>
 
@@ -567,6 +572,205 @@ const prefix = pathname.startsWith("/es") ? "/es" : "";
   transition: none;
 }
 
+
+/* ========================================
+   Mobile navbar
+======================================== */
+
+.mobile-menu-icon,
+.mobile-close-icon {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+
+    top: 0;
+    left: 0;
+
+    padding: var(--space-md);
+
+    display: block;
+
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+
+    background: var(--color-bg-secondary);
+
+    z-index: 1000;
+
+    transition:
+      max-height .3s ease,
+      padding .3s ease;
+  }
+
+
+  .sidebar .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: var(--space-md);
+  }
+
+
+  .sidebar .profile {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+  }
+
+
+  .sidebar .avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+
+  .sidebar .info {
+    max-width: none;
+  }
+
+
+  .sidebar .info h1 {
+    font-size: 15px;
+  }
+
+
+  .sidebar .info p {
+    font-size: 11px;
+  }
+
+
+  /* Menu button */
+
+  .sidebar .toggle {
+    order: 2;
+
+    width: 40px;
+    height: 40px;
+
+    margin: 0;
+    padding: 0;
+
+    display: grid;
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+
+    color: var(--color-text-primary);
+  }
+
+
+  /* Closed by default */
+
+  .sidebar .navigation,
+  .sidebar .bottom {
+    display: none;
+  }
+
+
+  /* Open */
+
+  .sidebar.mobile-open {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: var(--space-md);
+  }
+
+
+  .sidebar.mobile-open .navigation {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--space-md);
+
+    margin-top: var(--space-xl);
+  }
+
+
+  .sidebar.mobile-open .navigation a {
+    display: block;
+
+    padding: var(--space-sm) 0;
+
+    color: var(--color-text-primary);
+
+    font-size: var(--font-size-body-lg);
+  }
+
+
+  .sidebar.mobile-open .bottom {
+    display: none;
+  }
+
+
+/* Mobile icon */
+
+.sidebar .arrow-open,
+.sidebar .arrow-close {
+  display: none;
+}
+
+
+.sidebar .mobile-menu-icon {
+  display: block;
+}
+
+
+.sidebar .mobile-close-icon {
+  display: none;
+}
+
+
+.sidebar.mobile-open .mobile-menu-icon {
+  display: none;
+}
+
+
+.sidebar.mobile-open .mobile-close-icon {
+  display: block;
+}
+
+
+  /* Important:
+     mobile does not affect desktop layout */
+
+  .sidebar.collapsed {
+    width: 100%;
+    padding: var(--space-md);
+
+    align-items: initial;
+  }
+
+
+  .sidebar.collapsed .info,
+  .sidebar.collapsed .navigation a,
+  .sidebar.collapsed .actions a {
+    display: block;
+  }
+
+
+  .sidebar.collapsed .profile {
+    justify-content: initial;
+  }
+
+}
+
 </style>
 
 
@@ -575,6 +779,8 @@ const prefix = pathname.startsWith("/es") ? "/es" : "";
 const sidebar = document.getElementById("sidebar");
 const toggle = document.getElementById("sidebar-toggle");
 const layout = document.querySelector(".layout");
+const isMobile =
+  window.matchMedia("(max-width: 768px)").matches;
 
 // =========================
 // Theme
@@ -646,41 +852,104 @@ themeToggle?.addEventListener("click", () => {
 });
 
 
-const savedState = localStorage.getItem("sidebar-state");
+// =========================
+// Sidebar initial state
+// =========================
+
+const sidebarHasBeenUsed =
+  localStorage.getItem("sidebar-used") === "true";
 
 
-if (savedState === "collapsed") {
-
-  sidebar?.classList.add("no-transition");
+if (!isMobile && sidebarHasBeenUsed) {
 
   sidebar?.classList.add("collapsed");
 
   layout?.classList.add("collapsed");
 
-
-  requestAnimationFrame(() => {
-
-    sidebar?.classList.remove("no-transition");
-
-  });
-
 }
 
 
+// =========================
+// Auto-collapse on scroll
+// =========================
+
 toggle?.addEventListener("click", () => {
 
-  const isCollapsed = sidebar?.classList.toggle("collapsed");
+  if (!sidebar) return;
 
 
-  layout?.classList.toggle("collapsed", isCollapsed);
+  // =========================
+  // Mobile
+  // =========================
+
+  if (isMobile) {
+
+    const isOpen =
+      sidebar.classList.toggle("mobile-open");
 
 
-  localStorage.setItem(
-    "sidebar-state",
-    isCollapsed ? "collapsed" : "open"
+    toggle.setAttribute(
+      "aria-expanded",
+      String(isOpen)
+    );
+
+
+    return;
+
+  }
+
+
+  // =========================
+  // Desktop
+  // =========================
+
+  const isCollapsed =
+    sidebar.classList.toggle("collapsed");
+
+
+  layout?.classList.toggle(
+    "collapsed",
+    isCollapsed
   );
 
 });
+
+
+// =========================
+// Auto-collapse on scroll
+// =========================
+
+window.addEventListener(
+  "scroll",
+  () => {
+
+    if (!sidebar) return;
+
+
+    // Mobile no usa auto-collapse
+    if (isMobile) return;
+
+
+    if (window.scrollY <= 20) return;
+
+
+    if (!sidebar.classList.contains("collapsed")) {
+
+      sidebar.classList.add("collapsed");
+
+      layout?.classList.add("collapsed");
+
+    }
+
+
+    localStorage.setItem(
+      "sidebar-used",
+      "true"
+    );
+
+  },
+  { passive: true }
+);
 
 
 const workLink = document.querySelector('a[href$="#work"]');
