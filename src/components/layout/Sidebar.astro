@@ -7,9 +7,15 @@ import es from "../../i18n/es";
 
 const pathname = Astro.url.pathname;
 
-const t = pathname.startsWith("/es") ? es : en;
+const isSpanish = pathname.includes("/es");
 
-const prefix = pathname.startsWith("/es") ? "/es" : "";
+const t = isSpanish ? es : en;
+
+const base = import.meta.env.BASE_URL;
+
+const prefix = isSpanish
+  ? `${base}/es/`
+  : `${base}/`;
 ---
 
 
@@ -55,21 +61,25 @@ const prefix = pathname.startsWith("/es") ? "/es" : "";
 
   <nav class="navigation">
 
-    <a href={`${prefix}/#work`}>
-      {t.sidebar.navigation.work}
-    </a>
+    <nav class="navigation">
 
-    <a href={`${prefix}/about`}>
-      {t.sidebar.navigation.about}
-    </a>
+      <a href={`${prefix}#work`}>
+        {t.sidebar.navigation.work}
+      </a>
 
-    <a href={`${prefix}/experiments`}>
-      {t.sidebar.navigation.experiments}
-    </a>
+      <a href={`${prefix}about`}>
+        {t.sidebar.navigation.about}
+      </a>
 
-    <a href={`${prefix}/writing`}>
-      {t.sidebar.navigation.writing}
-    </a>
+      <a href={`${prefix}experiments`}>
+        {t.sidebar.navigation.experiments}
+      </a>
+
+      <a href={`${prefix}writing`}>
+        {t.sidebar.navigation.writing}
+      </a>
+
+    </nav>
 
   </nav>
 

@@ -1,11 +1,14 @@
 ---
 const currentPath = Astro.url.pathname;
 
-const currentLanguage = currentPath.startsWith("/es")
-  ? "ES"
-  : currentPath.startsWith("/fr")
-    ? "FR"
-    : "EN";
+const base = import.meta.env.BASE_URL;
+
+const currentLanguage =
+  currentPath.startsWith(`${base}es`)
+    ? "ES"
+    : currentPath.startsWith(`${base}fr`)
+      ? "FR"
+      : "EN";
 ---
 
 
@@ -254,58 +257,74 @@ languageButtons.forEach((button) => {
 
   button.addEventListener("click", () => {
 
-    const language = button.getAttribute("data-language");
+    const language =
+      button.getAttribute("data-language");
+
+    if (!language) return;
 
 
-    if(language) {
-
-      let currentPath = window.location.pathname;
-
-
-      // Remove existing language prefix
-
-      if(currentPath.startsWith("/es")) {
-
-        currentPath = currentPath.replace("/es", "");
-
-      }
+    const base =
+      import.meta.env.BASE_URL;
 
 
-      if(currentPath.startsWith("/fr")) {
-
-        currentPath = currentPath.replace("/fr", "");
-
-      }
+    let currentPath =
+      window.location.pathname;
 
 
-      // Add selected language prefix
+    // Remove base path
 
-      if(language === "es") {
+    if (currentPath.startsWith(base)) {
 
-        currentPath = `/es${currentPath}`;
-
-      }
-
-
-      if(language === "fr") {
-
-        currentPath = `/fr${currentPath}`;
-
-      }
-
-
-      // English has no prefix
-
-      if(language === "en" && currentPath === "") {
-
-        currentPath = "/";
-
-      }
-
-
-      window.location.href = currentPath;
+      currentPath =
+        currentPath.slice(base.length);
 
     }
+
+
+    // Remove trailing slash
+
+    currentPath =
+      currentPath.replace(/^\/|\/$/g, "");
+
+
+    // Remove existing language prefix
+
+    currentPath =
+      currentPath.replace(/^(es|fr)(\/|$)/, "");
+
+
+    // Build new path
+
+    let newPath = base;
+
+
+    if (language === "es") {
+
+      newPath += "es/";
+
+    }
+
+    else if (language === "fr") {
+
+      newPath += "fr/";
+
+    }
+
+    else {
+
+      newPath += "";
+
+    }
+
+
+    if (currentPath) {
+
+      newPath += currentPath + "/";
+
+    }
+
+
+    window.location.href = newPath;
 
   });
 
