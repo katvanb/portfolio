@@ -6,6 +6,7 @@ interface Props {
     description: string;
     workButton: string;
     aboutButton: string;
+    aboutLink:string
   };
 }
 
@@ -38,7 +39,7 @@ const { content } = Astro.props;
     </a>
 
     <a
-      href={`${import.meta.env.BASE_URL}about`}
+      href={content.aboutLink}
       class="button secondary"
     >
       {content.aboutButton}
