@@ -1,12 +1,8 @@
 ---
 interface Props {
   content: {
-    title: string;
-    description: string;
     email: string;
     linkedin: string;
-    copyright: string;
-    credits: string[];
   };
 }
 
@@ -18,60 +14,49 @@ const { content } = Astro.props;
 
   <div class="footer-content">
 
-    <div class="footer-message">
-
-      <h2>
-        {content.title}
-      </h2>
-
-      <p>
-        {content.description}
-      </p>
-
-    </div>
+    <p class="credit">
+      Designed + Coded by Katherine
+    </p>
 
 
-    <div class="footer-links">
+    <div class="actions">
 
-      <a href="mailto:your@email.com">
-        {content.email}
-      </a>
-
-      <a 
-        href="https://www.linkedin.com/"
-        target="_blank"
+      <button
+        class="email"
+        id="footer-email-button"
+        aria-label={content.email}
       >
-        {content.linkedin}
-      </a>
+        <span>
+          {content.email}
+        </span>
+      </button>
+
 
       <a
-    href="/Katherine-Gaspare-CV.pdf"
-    >
-      Resume
-    </a>
+        href="https://www.linkedin.com/in/katherine-gaspare/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="linkedin"
+        aria-label={content.linkedin}
+      >
+        <span>
+          {content.linkedin}
+        </span>
+      </a>
+
+
+      <a
+        href={`${import.meta.env.BASE_URL}Katherine-Gaspare-CV.pdf`}
+        class="resume"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span>
+          Resume
+        </span>
+      </a>
 
     </div>
-
-  </div>
-
-
-  <div class="footer-bottom">
-
-    <p>
-      {content.copyright}
-    </p>
-
-    <p>
-      {content.credits[0]}
-    </p>
-
-    <p>
-      {content.credits[1]}
-    </p>
-
-    <p>
-      {content.credits[2]}
-    </p>
 
   </div>
 
@@ -84,7 +69,7 @@ const { content } = Astro.props;
 
   margin-top: 160px;
 
-  padding: 96px 0 48px;
+  padding: var(--space-xl) 0 var(--space-lg);
 
   border-top: 1px solid var(--color-border);
 
@@ -97,95 +82,87 @@ const { content } = Astro.props;
 
   justify-content: space-between;
 
-  align-items: flex-end;
+  align-items: center;
 
-  gap: var(--space-xl);
+  flex-wrap: wrap;
 
-}
-
-
-.footer-message {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: var(--space-md);
+  gap: var(--space-lg);
 
 }
 
 
-.footer-message h2 {
-
-  font-size: var(--font-size-h2);
+.credit {
 
   margin: 0;
-
-  max-width: 500px;
-
-}
-
-
-.footer-message p {
-
-  margin: 0;
-
-  max-width: 520px;
 
   color: var(--color-text-secondary);
 
-  line-height: 1.7;
+  font-size: var(--font-size-body);
 
 }
 
 
-.footer-links {
+.actions {
 
   display: flex;
 
-  flex-direction: column;
+  align-items: center;
 
-  align-items: flex-end;
+  flex-wrap: wrap;
 
-  gap: var(--space-sm);
+  gap: var(--space-lg);
 
 }
 
 
-.footer-links a {
+.actions a,
+.actions button {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  background: none;
+
+  border: none;
+
+  padding: 0;
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  cursor: pointer;
+
+  font-size: var(--font-size-body);
+
+  font-family: inherit;
+
+  white-space: nowrap;
+
+}
+
+
+.actions a:hover,
+.actions button:hover {
 
   color: var(--color-text-primary);
 
-  transition: opacity .2s ease;
-
 }
 
 
-.footer-links a:hover {
+/* Email copy state */
 
-  opacity: .6;
+.email.copied {
+  color: #3A8F6B !important;
+}
 
+.email.copied span {
+  color: #3A8F6B !important;
 }
 
 
-.footer-bottom {
-
-  margin-top: 72px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 6px;
-
-  color: var(--color-text-secondary);
-
-  font-size: var(--font-size-small);
-
-}
-
-
-@media(max-width:768px){
+@media (max-width: 768px) {
 
   .footer-content {
 
@@ -193,22 +170,65 @@ const { content } = Astro.props;
 
     align-items: flex-start;
 
+    gap: var(--space-md);
+
   }
 
 
-  .footer-links {
-    width: 100%;
-  }
+  .actions {
 
-
-  .footer-bottom {
-
-    flex-direction: column;
-
-    gap: var(--space-sm);
+    gap: var(--space-md);
 
   }
 
 }
 
 </style>
+
+
+<script>
+
+const emailButton =
+  document.getElementById("footer-email-button");
+
+emailButton?.addEventListener("click", async () => {
+
+  try {
+
+    await navigator.clipboard.writeText(
+      "katherine.gaspare@gmail.com"
+    );
+
+    emailButton.classList.add("copied");
+
+    const emailText =
+      emailButton.querySelector("span");
+
+    if (!emailText) return;
+
+    const originalText =
+      emailText.textContent;
+
+    emailText.textContent = "Copied";
+
+    setTimeout(() => {
+
+      emailButton.classList.remove("copied");
+
+      emailText.textContent =
+        originalText;
+
+    }, 1500);
+
+  } catch (error) {
+
+    console.error(
+      "Could not copy email:",
+      error
+    );
+
+  }
+
+});
+
+</script>

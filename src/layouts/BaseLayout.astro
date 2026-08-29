@@ -23,6 +23,8 @@ const { title, description = "Product Designer portfolio", content } = Astro.pro
 
   <body>
 
+    <div class="cursor" id="cursor" aria-hidden="true"></div>
+
     <div class="layout">
 
         <Sidebar />
@@ -65,4 +67,224 @@ main {
 
 }
 
+
+@media (max-width: 768px) {
+
+  .layout,
+  .layout.collapsed {
+
+    display: block;
+
+    transition: none;
+
+  }
+
+
+  main {
+
+    padding: 0 var(--space-md);
+
+  }
+
+}
+
+
+/* ========================================
+   Custom cursor
+======================================== */
+
+.cursor {
+
+  position: fixed;
+
+  top: 0;
+
+  left: 0;
+
+  width: 10px;
+
+  height: 10px;
+
+  border-radius: 50%;
+
+  background: var(--color-accent);
+
+  transform: translate(-50%, -50%);
+
+  pointer-events: none;
+
+  z-index: 9999;
+
+  opacity: 0;
+
+  transition:
+    width .2s ease,
+    height .2s ease,
+    background .2s ease,
+    border-color .2s ease,
+    opacity .3s ease;
+
+}
+
+
+.cursor.cursor-visible {
+
+  opacity: 1;
+
+}
+
+
+.cursor.cursor-active {
+
+  width: 24px;
+
+  height: 24px;
+
+  background: var(--color-accent-soft);
+
+  border: 1.5px solid var(--color-accent);
+
+}
+
+
+@media (pointer: fine) {
+
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  label,
+  summary {
+
+    cursor: none;
+
+  }
+
+}
+
 </style>
+
+
+<script>
+
+const cursor = document.getElementById("cursor");
+
+const finePointer =
+  window.matchMedia("(pointer: fine)").matches;
+
+const reducedMotion =
+  window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+if (
+  cursor &&
+  finePointer &&
+  !reducedMotion
+) {
+
+  let x = 0;
+  let y = 0;
+
+  let targetX = 0;
+  let targetY = 0;
+
+  let raf: number | null = null;
+
+
+  const loop = () => {
+
+    x += (targetX - x) * 0.18;
+    y += (targetY - y) * 0.18;
+
+    cursor!.style.transform =
+      `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+
+
+    if (
+      Math.abs(targetX - x) < 0.5 &&
+      Math.abs(targetY - y) < 0.5
+    ) {
+
+      x = targetX;
+      y = targetY;
+
+      raf = null;
+
+      return;
+
+    }
+
+    raf = requestAnimationFrame(loop);
+
+  };
+
+
+  const schedule = () => {
+
+    if (raf === null) {
+
+      raf = requestAnimationFrame(loop);
+
+    }
+
+  };
+
+
+  window.addEventListener("mousemove", (event) => {
+
+    targetX = event.clientX;
+    targetY = event.clientY;
+
+    cursor!.classList.add("cursor-visible");
+
+    schedule();
+
+  });
+
+
+  document.addEventListener("mouseleave", () => {
+
+    cursor!.classList.remove("cursor-visible");
+
+  });
+
+
+  const interactiveSelector =
+    "a, button, input, textarea, select, label, summary, [role='button']";
+
+
+  document.addEventListener("mouseover", (event) => {
+
+    const target = event.target as HTMLElement | null;
+
+    if (target?.closest(interactiveSelector)) {
+
+      cursor!.classList.add("cursor-active");
+
+    }
+
+  });
+
+
+  document.addEventListener("mouseout", (event) => {
+
+    const from = event.target as HTMLElement | null;
+    const to = event.relatedTarget as HTMLElement | null;
+
+    if (
+      from?.closest(interactiveSelector) &&
+      !to?.closest(interactiveSelector)
+    ) {
+
+      cursor!.classList.remove("cursor-active");
+
+    }
+
+  });
+
+}
+
+</script>

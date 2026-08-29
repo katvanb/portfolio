@@ -40,5 +40,5 @@ main {
 
 
 :root {
-  --section-spacing: 120px;
+  --section-spacing: clamp(64px, 8vw, 120px);
 }

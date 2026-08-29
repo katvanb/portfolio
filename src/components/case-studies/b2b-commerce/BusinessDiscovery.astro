@@ -1200,13 +1200,22 @@ const { title, departments } = Astro.props;
 
 
   .department {
-    width: 82px;
-    height: 82px;
+    width: 110px;
+    height: 110px;
   }
 
 
   .department-0 {
-    margin-left: -41px;
+    margin-left: -55px;
+  }
+
+
+  .department-label {
+    white-space: normal;
+
+    line-height: 1.15;
+
+    padding: 0 12px;
   }
 
 
@@ -1223,17 +1232,28 @@ const { title, departments } = Astro.props;
 }
 
 
-@media (max-width: 800px) {
+@media (max-width: 1200px) {
 
   .discovery-layout {
-    grid-template-columns: 1fr;
+    display: flex;
 
-    gap: var(--space-xl);
+    flex-direction: column;
+
+    gap: var(--space-lg);
+
+    flex: 0 0 auto;
+
+    height: auto;
   }
 
 
   .discovery-info {
     padding-top: 0;
+  }
+
+
+  .discovery-info .section-heading {
+    margin-bottom: 0;
   }
 
 
@@ -1243,7 +1263,38 @@ const { title, departments } = Astro.props;
 
 
   .discovery-scroll {
-    height: 200vh;
+    height: 260vh;
+  }
+
+
+  .discovery-sticky {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    justify-content: center;
+
+    height: 100vh;
+  }
+
+
+  .discovery-stage {
+    flex: 0 0 auto;
+
+    height: auto;
+
+    padding-top: 12px;
+  }
+
+}
+
+
+@media (max-width: 767px) {
+
+  .discovery-sticky {
+    padding-top: 72px;
   }
 
 }

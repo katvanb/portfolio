@@ -207,23 +207,9 @@ const en = {
 
   footer: {
 
-    title: "Have a complex product challenge?",
-
-    description:
-      "If you're building products with complex systems, enterprise workflows, or AI-powered experiences, I'd love to help make them easier to understand and use.",
-
     email: "Email",
 
     linkedin: "LinkedIn",
-
-    copyright:
-      "© 2026 Katherine Gaspare",
-
-    credits: [
-      "Designed in Figma.",
-      "Built with Astro.",
-      "Crafted by me, with AI as a creative partner."
-    ]
 
   },
 
@@ -577,7 +563,7 @@ const en = {
 
       before: {
         label: "Before",
-        image: "/images/case-studies/b2b-commerce-platform/before.png",
+        image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce-platform/before.png`,
         items: [
           "Phone",
           "Email",
@@ -590,7 +576,7 @@ const en = {
 
       after: {
         label: "After",
-        image: "/images/case-studies/b2b-commerce-platform/after.png",
+        image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce-platform/after.png`,
         items: [
           "Self-service",
           "Search",

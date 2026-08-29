@@ -222,23 +222,9 @@ const es = {
 
   footer: {
 
-    title: "¿Tienes un reto de producto?",
-
-    description:
-      "Si estas construyendo productos con sistemas complejos, flujos empresariales, o experiencias potenciadas con IA, me encantaria ayudarte a hacerlas más sencillas y faciles de usar.",
-
     email: "Email",
 
     linkedin: "LinkedIn",
-
-    copyright:
-      "© 2026 Katherine Gaspare",
-
-    credits: [
-      "Diseñado en Figma.",
-      "Construido con Astro.",
-      "Creado por mí, con IA como compañera creativa."
-    ]
 
   },
 
@@ -590,7 +576,7 @@ const es = {
 
       before: {
         label: "Antes",
-        image: "/images/case-studies/b2b-commerce-platform/before.png",
+        image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce-platform/before.png`,
         items: [
           "Teléfono",
           "Email",
@@ -603,7 +589,7 @@ const es = {
 
       after: {
         label: "Después",
-        image: "/images/case-studies/b2b-commerce-platform/after.png",
+        image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce-platform/after.png`,
         items: [
           "Autoservicio",
           "Búsqueda",

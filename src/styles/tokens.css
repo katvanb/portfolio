@@ -70,12 +70,12 @@
 
 
   /* Font sizes */
-  --font-size-display: 64px;
-  --font-size-h1: 48px;
-  --font-size-h2: 36px;
-  --font-size-h3: 24px;
+  --font-size-display: clamp(42px, 7vw, 64px);
+  --font-size-h1: clamp(30px, 5vw, 48px);
+  --font-size-h2: clamp(26px, 4vw, 36px);
+  --font-size-h3: clamp(20px, 2.5vw, 24px);
 
-  --font-size-body-lg: 20px;
+  --font-size-body-lg: clamp(17px, 1.4vw, 20px);
   --font-size-body: 16px;
   --font-size-small: 14px;
 

@@ -92,6 +92,7 @@ h1 {
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-md);
 }
 
@@ -122,6 +123,26 @@ h1 {
 
 .button:hover {
   transform: translateY(-2px);
+}
+
+
+@media (max-width: 768px) {
+
+  .hero {
+    padding: var(--space-2xl) 0;
+  }
+
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+
+  .actions .button {
+    text-align: center;
+  }
+
 }
 
 
