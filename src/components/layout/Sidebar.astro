@@ -37,7 +37,7 @@ const prefix = isSpanish
     </button>
 
 
-    <a href={`${prefix}/`} class="profile">
+    <a href={prefix} class="profile">
 
       <div class="avatar">
         KG
@@ -61,8 +61,6 @@ const prefix = isSpanish
 
   <nav class="navigation">
 
-    <nav class="navigation">
-
       <a href={`${prefix}#work`}>
         {t.sidebar.navigation.work}
       </a>
@@ -82,8 +80,6 @@ const prefix = isSpanish
       </a>
 
       -->
-
-    </nav>
 
   </nav>
 
@@ -705,41 +701,35 @@ const prefix = isSpanish
 
   /* Open */
 
-  .sidebar.mobile-open {
-    height: 100vh;
+.sidebar.mobile-open {
+  height: 100dvh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-md);
+  box-sizing: border-box;
+}
 
-    display: flex;
-    flex-direction: column;
+.sidebar.mobile-open .navigation {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
 
-    padding: var(--space-md);
-  }
+.sidebar.mobile-open .navigation a {
+  display: block;
+  padding: var(--space-sm) 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-body-lg);
+}
 
-
-  .sidebar.mobile-open .navigation {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: var(--space-md);
-
-    margin-top: var(--space-xl);
-  }
-
-
-  .sidebar.mobile-open .navigation a {
-    display: block;
-
-    padding: var(--space-sm) 0;
-
-    color: var(--color-text-primary);
-
-    font-size: var(--font-size-body-lg);
-  }
-
-
-  .sidebar.mobile-open .bottom {
-    display: none;
-  }
+.sidebar.mobile-open .bottom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-top: auto;
+}
 
 
 /* Mobile icon */
