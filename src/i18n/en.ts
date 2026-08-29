@@ -10,7 +10,7 @@ const en = {
 
       workButton: "View my work",
       aboutButton: "About me",
-      aboutLink: `${import.meta.env.BASE_URL}about/`,
+      aboutLink: `${import.meta.env.BASE_URL}/about/`,
     },
 
 
@@ -30,7 +30,7 @@ const en = {
           category: "Enterprise SaaS · Digital Credentials",
           description:
             "Designing a scalable credential management platform for multiple organizations and complex user roles.",
-          link: `${import.meta.env.BASE_URL}work/credential-platform/`
+          link: `${import.meta.env.BASE_URL}/work/credential-platform/`
         },
 
         {
@@ -38,7 +38,7 @@ const en = {
           category: "B2B Commerce · Enterprise Platform",
           description:
             "Transforming a traditional sales process into a self-service commerce experience for professional buyers.",
-          link: `${import.meta.env.BASE_URL}work/b2b-commerce-platform/`
+          link: `${import.meta.env.BASE_URL}/work/b2b-commerce-platform/`
         }
 
       ],
@@ -58,7 +58,7 @@ const en = {
       description:
         "With a background in Systems Engineering and Product Design, I help teams transform complex requirements into scalable, user-centered digital products.",
 
-      link: `${import.meta.env.BASE_URL}about/`,
+      link: `${import.meta.env.BASE_URL}/about/`,
 
       action: "More about me"
 
