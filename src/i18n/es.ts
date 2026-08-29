@@ -34,7 +34,7 @@ const es = {
           category: "Enterprise SaaS · Credenciales Digitales",
           description:
             "Diseño de una plataforma escalable de gestión de credenciales para múltiples organizaciones y roles complejos.",
-          link: "/es/work/credential-platform"
+          link: `${import.meta.env.BASE_URL}es/work/credential-platform`
         },
 
 
@@ -43,7 +43,7 @@ const es = {
           category: "B2B Commerce · Plataforma Empresarial",
           description:
             "Transformación de un proceso comercial tradicional en una experiencia de autoservicio para compradores profesionales.",
-          link: "/es/work/b2b-commerce-platform"
+          link: `${import.meta.env.BASE_URL}es/work/b2b-commerce-platform`
         }
 
       ],
@@ -63,7 +63,7 @@ const es = {
       description:
         "Con formación en Ingeniería de Sistemas y Product Design, ayudo a equipos a transformar requerimientos complejos en productos digitales escalables y centrados en usuarios.",
 
-      link: "/es/about",
+      link: `${import.meta.env.BASE_URL}es/about`,
 
       action: "Más sobre mí",
 
