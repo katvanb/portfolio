@@ -1,32 +1,27 @@
 ---
 interface Props {
   title: string;
-  category: string;
-  description: string;
   link: string;
+  image: string;
   action: string;
 }
 
-const { title, category, description, link, action } = Astro.props;
+const { title, link, image, action } = Astro.props;
 ---
 
-<a href={link} class="card">
+<a href={link} class="card" data-cursor-text={action}>
 
-  <span class="category">
-    {category}
-  </span>
+  <div class="thumb">
+    <img
+      src={image}
+      alt={title}
+      loading="lazy"
+    />
+  </div>
 
-  <h3>
+  <h3 class="title">
     {title}
   </h3>
-
-  <p class="description">
-    {description}
-  </p>
-
-  <span class="action">
-    {action}
-  </span>
 
 </a>
 
@@ -34,49 +29,50 @@ const { title, category, description, link, action } = Astro.props;
 <style>
 
 .card {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-
-  padding: var(--space-lg);
 
   display: flex;
+
   flex-direction: column;
+
   gap: var(--space-md);
 
-  transition: transform .2s ease,
-              border-color .2s ease;
+  transition: transform .2s ease;
 }
-
 
 .card:hover {
   transform: translateY(-4px);
-  border-color: var(--color-accent);
 }
 
 
-.category {
-  color: var(--color-accent);
+.thumb {
 
-  font-size: var(--font-size-small);
-  letter-spacing: .08em;
-  text-transform: uppercase;
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-md);
+
+  overflow: hidden;
+
+  background: var(--color-bg-secondary);
 }
 
 
-h3 {
+.thumb img {
+
+  display: block;
+
+  width: 100%;
+
+  aspect-ratio: 4 / 3;
+
+  object-fit: cover;
+}
+
+
+.title {
+
   font-size: var(--font-size-h3);
-}
 
-
-.description {
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-}
-
-
-.action {
-  margin-top: auto;
-  font-weight: 500;
+  line-height: var(--line-height-h3);
 }
 
 </style>

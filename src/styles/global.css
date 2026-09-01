@@ -1,8 +1,20 @@
 @import "./tokens.css";
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500&display=swap");
 
 
 * {
   box-sizing: border-box;
+}
+
+
+@media (pointer: fine) {
+
+  *,
+  *::before,
+  *::after {
+    cursor: none !important;
+  }
+
 }
 
 
@@ -16,6 +28,11 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+  letter-spacing: var(--letter-spacing-body);
 }
 
 
@@ -24,6 +41,30 @@ h2,
 h3,
 p {
   margin: 0;
+}
+
+
+h1 {
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+  font-weight: var(--font-weight-h1);
+  letter-spacing: var(--letter-spacing-h1);
+}
+
+
+h2 {
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+  font-weight: var(--font-weight-h2);
+  letter-spacing: var(--letter-spacing-h2);
+}
+
+
+h3 {
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: var(--font-weight-h3);
+  letter-spacing: var(--letter-spacing-h3);
 }
 
 
@@ -41,4 +82,60 @@ main {
 
 :root {
   --section-spacing: clamp(64px, 8vw, 120px);
+}
+
+
+::selection {
+
+  background: var(--color-accent);
+
+  color: var(--color-bg-primary);
+
+}
+
+
+/* Hero typewriter */
+
+.hero-typewriter {
+
+  color: var(--color-accent);
+
+  font-weight: var(--font-weight-label);
+
+  white-space: nowrap;
+
+}
+
+
+.hero-caret {
+
+  display: inline-block;
+
+  width: 2px;
+
+  height: 1em;
+
+  margin-left: 2px;
+
+  vertical-align: -0.125em;
+
+  background: var(--color-accent);
+
+  animation: hero-caret-blink 1s steps(2, start) infinite;
+
+}
+
+
+@keyframes hero-caret-blink {
+
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+
 }

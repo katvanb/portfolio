@@ -3,14 +3,23 @@ const en = {
   home: {
 
     hero: {
-      eyebrow: "PRODUCT DESIGNER",
-      title: "Turning complexity into clarity.",
-      description:
-        "I help teams transform complex systems and business challenges into intuitive, scalable experiences.",
 
-      workButton: "View my work",
-      aboutButton: "About me",
-      aboutLink: `${import.meta.env.BASE_URL}/about/`,
+      title: "Hi, I'm Katherine.",
+
+      paragraphs: [
+
+        "I'm a <strong>Product Design Lead</strong> with a Systems Engineering background. I tend to look at the big picture and how all the pieces fit together.",
+
+        "I work across <strong class=\"hero-typewriter\" data-words=\"strategy|UX|data|technology|business\"><span class=\"tw-text\">strategy</span><span class=\"hero-caret\" aria-hidden=\"true\"></span></strong>",
+
+        "I'm equally comfortable shaping a direction, getting into the details, or writing some code to make it happen. I like knowing when to simplify, when to build for what's next, and when to leave something alone.",
+
+        "When the work is done, I switch gears completely, making room for a life <strong>far beyond my screen</strong>—moving, exploring, learning, creating, and spending time with the people and cats I love.",
+
+        "<strong>That's the life I'm designing for.</strong>",
+
+      ],
+
     },
 
 
@@ -30,7 +39,8 @@ const en = {
           category: "Enterprise SaaS · Digital Credentials",
           description:
             "Designing a scalable credential management platform for multiple organizations and complex user roles.",
-          link: `${import.meta.env.BASE_URL}/work/credential-platform/`
+          link: `${import.meta.env.BASE_URL}/work/credential-platform/`,
+          image: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/cover.png`
         },
 
         {
@@ -38,12 +48,33 @@ const en = {
           category: "B2B Commerce · Enterprise Platform",
           description:
             "Transforming a traditional sales process into a self-service commerce experience for professional buyers.",
-          link: `${import.meta.env.BASE_URL}/work/b2b-commerce-platform/`
+          link: `${import.meta.env.BASE_URL}/work/b2b-commerce-platform/`,
+          image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce-platform/cover.png`
         }
 
       ],
 
       action: "View case study"
+
+    },
+
+
+    options: {
+
+      about: {
+        title: "About",
+        link: `${import.meta.env.BASE_URL}/about/`
+      },
+
+      fun: {
+        title: "Fun",
+        link: `${import.meta.env.BASE_URL}/fun/`
+      },
+
+      experiments: {
+        title: "Experiments",
+        link: `${import.meta.env.BASE_URL}/experiments/`
+      }
 
     },
 
@@ -61,6 +92,18 @@ const en = {
       link: `${import.meta.env.BASE_URL}/about/`,
 
       action: "More about me"
+
+    },
+
+
+    closing: {
+
+      quote:
+        "Bring me the situation. Let's understand what's actually going on, figure out what matters, and decide what to do next.",
+
+      workWithMe: "Work with me",
+
+      copied: "Copied",
 
     }
 
@@ -218,7 +261,7 @@ const en = {
       work: "Work",
       about: "About",
       experiments: "Experiments",
-      writing: "Writing",
+      fun: "Fun",
     },
 
     actions: {
@@ -226,6 +269,20 @@ const en = {
       linkedin: "LinkedIn",
       email: "Email",
     },
+
+    preferences: {
+      typography: "Text size",
+      typographyLarge: "Large",
+      typographyMedium: "Medium",
+      typographySmall: "Small",
+    },
+  },
+
+  underConstruction: {
+    badge: "Coming soon",
+    title: "This page is under construction",
+    description: "I'm working on something here. Check back soon.",
+    backLabel: "View my work",
   },
 
   credentialPlatform: {

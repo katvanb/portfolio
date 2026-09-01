@@ -2,20 +2,34 @@
 import { Sun, Moon, Mail, Linkedin, Download, ArrowLeft, ArrowRight, Menu, X, Check } from "lucide-astro";
 import LanguageSelector from "../navigation/LanguageSelector.astro";
 import AccentPicker from "../navigation/AccentPicker.astro";
+import TypeScale from "../navigation/TypeScale.astro";
 import en from "../../i18n/en";
 import es from "../../i18n/es";
+import fr from "../../i18n/fr";
 
 const pathname = Astro.url.pathname;
 
 const isSpanish = pathname.includes("/es");
+const isFrench = pathname.includes("/fr");
 
-const t = isSpanish ? es : en;
+const t = isFrench ? fr : isSpanish ? es : en;
 
 const base = import.meta.env.BASE_URL;
 
-const prefix = isSpanish
-  ? `${base}/es/`
-  : `${base}/`;
+const prefix = isFrench
+  ? `${base}/fr/`
+  : isSpanish
+    ? `${base}/es/`
+    : `${base}/`;
+
+const activePage =
+  pathname.includes("/about/")
+    ? "about"
+    : pathname.includes("/fun/")
+      ? "fun"
+      : pathname.includes("/experiments/")
+        ? "experiments"
+        : "work";
 ---
 
 
@@ -61,25 +75,33 @@ const prefix = isSpanish
 
   <nav class="navigation">
 
-      <a href={`${prefix}#work`}>
+      <a
+        href={`${prefix}#work`}
+        class:list={{ active: activePage === "work" }}
+      >
         {t.sidebar.navigation.work}
       </a>
 
-      <a href={`${prefix}about`}>
+      <a
+        href={`${prefix}about`}
+        class:list={{ active: activePage === "about" }}
+      >
         {t.sidebar.navigation.about}
       </a>
 
-      <!--
+      <a
+        href={`${prefix}fun`}
+        class:list={{ active: activePage === "fun" }}
+      >
+        {t.sidebar.navigation.fun}
+      </a>
 
-      <a href={`${prefix}experiments`}>
+      <a
+        href={`${prefix}experiments`}
+        class:list={{ active: activePage === "experiments" }}
+      >
         {t.sidebar.navigation.experiments}
       </a>
-
-      <a href={`${prefix}writing`}>
-        {t.sidebar.navigation.writing}
-      </a>
-
-      -->
 
   </nav>
 
@@ -90,18 +112,28 @@ const prefix = isSpanish
 
       <div class="preferences">
 
-        <button
-          class="icon-button"
-          id="theme-toggle"
-          aria-label="Toggle theme"
-        >
-          <Moon id="theme-moon" size={18} />
-          <Sun id="theme-sun" size={18} />
-        </button>
+        <div class="preferences-row">
 
-        <AccentPicker />
+          <button
+            class="icon-button"
+            id="theme-toggle"
+            aria-label="Toggle theme"
+          >
+            <Moon id="theme-moon" size={18} />
+            <Sun id="theme-sun" size={18} />
+          </button>
 
-        <LanguageSelector />
+          <AccentPicker />
+
+        </div>
+
+        <div class="preferences-row">
+
+          <TypeScale labels={t.sidebar.preferences} />
+
+          <LanguageSelector />
+
+        </div>
 
       </div>
 
@@ -297,14 +329,31 @@ const prefix = isSpanish
 
 .navigation a {
 
+  font-family: var(--font-family-ui);
+
+  font-size: var(--font-size-navigation);
+
+  font-weight: var(--font-weight-navigation);
+
   color: var(--color-text-secondary);
+
+  padding: 4px 0;
+
+  transition: color .2s ease;
 
 }
 
 
 .navigation a:hover {
 
-  color: var(--color-text-primary);
+  color: var(--color-accent);
+
+}
+
+
+.navigation a.active {
+
+  color: var(--color-accent);
 
 }
 
@@ -341,9 +390,22 @@ const prefix = isSpanish
 
   display: flex;
 
-  align-items: center;
+  flex-direction: column;
+
+  align-items: flex-start;
 
   justify-content: flex-start;
+
+  gap: var(--space-sm);
+
+}
+
+
+.preferences-row {
+
+  display: flex;
+
+  align-items: center;
 
   gap: var(--space-md);
 
@@ -488,7 +550,22 @@ const prefix = isSpanish
 
   justify-content: center;
 
+  align-items: center;
+
   flex-direction: column;
+
+  gap: var(--space-md);
+
+}
+
+
+.sidebar.collapsed .preferences-row {
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
 
   gap: var(--space-md);
 

@@ -2,18 +2,20 @@
 import "../styles/global.css";
 import Sidebar from "../components/layout/Sidebar.astro";
 import Footer from "../components/layout/Footer.astro";
+import { Eye } from "lucide-astro";
 
 interface Props {
   title: string;
   description?: string;
   content: any;
+  lang?: string;
 }
 
-const { title, description = "Product Designer portfolio", content } = Astro.props;
+const { title, description = "Product Designer portfolio", content, lang = "en" } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -23,7 +25,10 @@ const { title, description = "Product Designer portfolio", content } = Astro.pro
 
   <body>
 
-    <div class="cursor" id="cursor" aria-hidden="true"></div>
+    <div class="cursor" id="cursor" aria-hidden="true">
+      <Eye class="cursor-eye" size={14} />
+      <span class="cursor-chip-text" id="cursor-chip-text"></span>
+    </div>
 
     <div class="layout">
 
@@ -147,21 +152,49 @@ main {
 }
 
 
-@media (pointer: fine) {
+/* ========================================
+   Cursor chip (hover on case study cards)
+======================================== */
 
-  body,
-  a,
-  button,
-  input,
-  textarea,
-  select,
-  label,
-  summary {
+.cursor-eye,
+.cursor-chip-text {
+  display: none;
+}
 
-    cursor: none;
 
-  }
+#cursor.cursor-chip {
 
+  width: auto;
+  height: auto;
+
+  padding: 7px 14px;
+
+  border-radius: 999px;
+
+  border: none;
+
+  background: var(--color-accent);
+
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  line-height: 1;
+}
+
+#cursor.cursor-chip .cursor-eye {
+  display: block;
+}
+
+#cursor.cursor-chip .cursor-chip-text {
+  display: block;
 }
 
 </style>
@@ -196,16 +229,16 @@ if (
 
   const loop = () => {
 
-    x += (targetX - x) * 0.18;
-    y += (targetY - y) * 0.18;
+    x += (targetX - x) * 0.14;
+    y += (targetY - y) * 0.14;
 
     cursor!.style.transform =
       `translate(${x}px, ${y}px) translate(-50%, -50%)`;
 
 
     if (
-      Math.abs(targetX - x) < 0.5 &&
-      Math.abs(targetY - y) < 0.5
+      Math.abs(targetX - x) < 0.2 &&
+      Math.abs(targetY - y) < 0.2
     ) {
 
       x = targetX;
@@ -280,6 +313,50 @@ if (
     ) {
 
       cursor!.classList.remove("cursor-active");
+
+    }
+
+  });
+
+
+  // ========================================
+  // Cursor chip (case study cards)
+  // ========================================
+
+  const cursorChipText =
+    document.getElementById("cursor-chip-text");
+
+  document.addEventListener("mouseover", (event) => {
+
+    const target = event.target as HTMLElement | null;
+
+    const chipEl =
+      target?.closest<HTMLElement>(
+        "[data-cursor-text]"
+      );
+
+    if (chipEl && cursorChipText) {
+
+      cursorChipText.textContent =
+        chipEl.dataset.cursorText || "";
+
+      cursor!.classList.add("cursor-chip");
+
+    }
+
+  });
+
+  document.addEventListener("mouseout", (event) => {
+
+    const from = event.target as HTMLElement | null;
+    const to = event.relatedTarget as HTMLElement | null;
+
+    if (
+      from?.closest("[data-cursor-text]") &&
+      !to?.closest("[data-cursor-text]")
+    ) {
+
+      cursor!.classList.remove("cursor-chip");
 
     }
 

@@ -1,0 +1,18 @@
+---
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+import UnderConstruction from "../../components/UnderConstruction.astro";
+
+import fr from "../../i18n/fr";
+
+const t = fr;
+
+---
+
+
+<BaseLayout title="Expérimentations" content={t}>
+
+  <UnderConstruction content={t.underConstruction} backHref="/portfolio/fr/#work" />
+
+</BaseLayout>

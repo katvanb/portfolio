@@ -4,7 +4,8 @@ import en from "../i18n/en";
 
 import Hero from "../components/home/Hero.astro";
 import Work from "../components/home/Work.astro";
-import AboutPreview from "../components/home/AboutPreview.astro";
+import Options from "../components/home/Options.astro";
+import Closing from "../components/home/Closing.astro";
 
 const t = en;
 ---
@@ -16,8 +17,10 @@ const t = en;
 
   <Hero content={t.home.hero} />
 
+  <Options items={Object.values(t.home.options)} />
+
   <Work content={t.home.work} />
 
-  <AboutPreview content={t.home.aboutPreview} />
+  <Closing content={t.home.closing} />
 
 </BaseLayout>

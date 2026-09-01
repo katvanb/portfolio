@@ -1,0 +1,131 @@
+---
+
+interface Props {
+
+  content: {
+
+    badge: string;
+
+    title: string;
+
+    description: string;
+
+    backLabel: string;
+
+  };
+
+  backHref: string;
+
+}
+
+
+const { content, backHref } = Astro.props;
+
+---
+
+
+<section class="under-construction">
+
+  <span class="badge">{content.badge}</span>
+
+  <h1>{content.title}</h1>
+
+  <p class="description">{content.description}</p>
+
+  <a class="back" href={backHref}>{content.backLabel}</a>
+
+</section>
+
+
+<style>
+
+.under-construction {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+
+  padding: var(--space-2xl) var(--space-xl) 0;
+
+}
+
+
+.badge {
+
+  font-family: var(--font-family-ui);
+
+  font-size: var(--font-size-label);
+
+  font-weight: var(--font-weight-label);
+
+  letter-spacing: var(--letter-spacing-label);
+
+  text-transform: uppercase;
+
+  color: var(--color-accent);
+
+  border: 1px solid var(--color-accent);
+
+  border-radius: var(--radius-full);
+
+  padding: 4px 14px;
+
+  margin-bottom: var(--space-xl);
+
+}
+
+
+h1 {
+
+  font-size: var(--font-size-h1);
+
+  line-height: var(--line-height-h1);
+
+  max-width: 500px;
+
+}
+
+
+.description {
+
+  margin-top: var(--space-lg);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: var(--line-height-body-lg);
+
+  color: var(--color-text-secondary);
+
+  max-width: 450px;
+
+}
+
+
+.back {
+
+  margin-top: var(--space-2xl);
+
+  font-family: var(--font-family-ui);
+
+  font-size: var(--font-size-links);
+
+  font-weight: var(--font-weight-links);
+
+  color: var(--color-text-secondary);
+
+  transition: color .2s ease;
+
+}
+
+
+.back:hover {
+
+  color: var(--color-accent);
+
+}
+
+</style>

@@ -1,0 +1,188 @@
+---
+
+import { Mail, Check } from "lucide-astro";
+
+
+interface Props {
+
+  content: {
+
+    quote: string;
+
+    workWithMe: string;
+
+    copied: string;
+
+  };
+
+}
+
+
+const { content } = Astro.props;
+
+---
+
+
+<section class="closing">
+
+  <blockquote class="quote">
+    {content.quote}
+  </blockquote>
+
+
+  <button
+    class="cta"
+    id="closing-cta"
+    data-copied={content.copied}
+    aria-label={content.workWithMe}
+  >
+
+    <Mail class="cta-mail" size={17} />
+    <Check class="cta-check" size={17} />
+
+    <span>{content.workWithMe}</span>
+
+  </button>
+
+</section>
+
+
+<style>
+
+.closing {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+
+  gap: var(--space-lg);
+
+  padding: var(--space-2xl) 0;
+
+}
+
+
+.quote {
+
+  margin: 0;
+
+  max-width: 640px;
+
+  font-size: var(--font-size-h2);
+
+  line-height: var(--line-height-h2);
+
+  font-weight: var(--font-weight-body);
+
+  letter-spacing: var(--letter-spacing-h2);
+
+  color: var(--color-text-secondary);
+
+}
+
+
+.cta {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 0;
+
+  background: none;
+
+  border: none;
+
+  font-family: var(--font-family-ui);
+
+  font-size: var(--font-size-links);
+
+  font-weight: var(--font-weight-links);
+
+  color: var(--color-text-primary);
+
+  transition: color .2s ease;
+
+}
+
+
+.cta:hover {
+  color: var(--color-accent);
+}
+
+
+.cta-check {
+  display: none;
+}
+
+
+.cta.copied {
+  color: #3A8F6B;
+}
+
+.cta.copied .cta-check {
+  display: block;
+  color: #3A8F6B;
+}
+
+.cta.copied .cta-mail {
+  display: none;
+}
+
+.cta.copied span {
+  color: #3A8F6B;
+}
+
+</style>
+
+
+<script>
+
+const cta = document.getElementById("closing-cta");
+
+
+cta?.addEventListener("click", async () => {
+
+  try {
+
+    await navigator.clipboard.writeText(
+      "katherine.gaspare@gmail.com"
+    );
+
+    cta.classList.add("copied");
+
+    const span = cta.querySelector("span");
+
+    if (!span) return;
+
+    const originalText = span.textContent;
+
+    span.textContent =
+      cta.getAttribute("data-copied") || "Copied";
+
+    setTimeout(() => {
+
+      cta.classList.remove("copied");
+
+      span.textContent = originalText;
+
+    }, 1500);
+
+  } catch (error) {
+
+    console.error(
+      "Could not copy email:",
+      error
+    );
+
+  }
+
+});
+
+</script>

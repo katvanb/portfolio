@@ -6,6 +6,7 @@ interface Project {
   category: string;
   description: string;
   link: string;
+  image: string;
 }
 
 interface Props {
@@ -22,11 +23,6 @@ const { content } = Astro.props;
 
 <section id="work" class="work">
 
-  <h2>
-    {content.title}
-  </h2>
-
-
   <div class="projects">
 
     {
@@ -34,9 +30,8 @@ const { content } = Astro.props;
 
         <ProjectCard
           title={project.title}
-          category={project.category}
-          description={project.description}
           link={project.link}
+          image={project.image}
           action={content.action}
         />
 
@@ -58,6 +53,7 @@ const { content } = Astro.props;
 
   gap: var(--space-xl);
 
+  padding-top: var(--space-2xl);
   padding-bottom: var(--space-2xl);
 
 }

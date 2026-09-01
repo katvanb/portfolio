@@ -1,0 +1,91 @@
+---
+interface Option {
+  title: string;
+  link: string;
+}
+
+interface Props {
+  items: Option[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="options">
+
+  {
+    items.map((item) => (
+
+      <a href={item.link} class="option">
+        {item.title}
+      </a>
+
+    ))
+  }
+
+</section>
+
+
+<style>
+
+.options {
+
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+
+}
+
+
+.option {
+
+  min-height: 100px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: var(--space-md);
+
+  text-align: center;
+
+  color: var(--color-text);
+
+  font-family: var(--font-family-ui);
+
+  font-size: var(--font-size-small);
+
+  font-weight: var(--font-weight-small);
+
+  line-height: var(--line-height-small);
+
+  border-right: 1px solid var(--color-border);
+
+  transition: color .2s ease,
+              background .2s ease;
+}
+
+.option:last-child {
+  border-right: none;
+}
+
+
+.option:hover {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+
+@media (max-width: 700px) {
+
+  .option {
+    font-size: var(--font-size-body);
+  }
+
+}
+
+</style>

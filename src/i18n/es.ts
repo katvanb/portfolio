@@ -3,19 +3,23 @@ const es = {
   home: {
 
     hero: {
-      eyebrow: "DISEÑADORA DE PRODUCTO",
 
-      title:
-        "Transformando complejidad en claridad.",
+      title: "Hola, soy Katherine.",
 
-      description:
-        "Ayudo a equipos a transformar sistemas complejos y desafíos de negocio en experiencias intuitivas y escalables.",
+      paragraphs: [
 
-      workButton: "Ver mi trabajo",
+        "Soy <strong>Líder de Diseño de Producto</strong> con formación en Ingeniería de Sistemas. Tiendo a ver el panorama general y cómo encajan todas las piezas.",
 
-      aboutButton: "Sobre mí",
+        "Trabajo en <strong class=\"hero-typewriter\" data-words=\"estrategia|UX|datos|tecnología|negocio\"><span class=\"tw-text\">estrategia</span><span class=\"hero-caret\" aria-hidden=\"true\"></span></strong>",
 
-      aboutLink: `${import.meta.env.BASE_URL}/es/about/`,
+        "Me siento igualmente cómoda definiendo una dirección, entrando en los detalles o escribiendo algo de código para hacerlo realidad. Me gusta saber cuándo simplificar, cuándo construir para lo que viene y cuándo dejar las cosas como están.",
+
+        "Cuando termina el trabajo, cambio por completo de modo, dando espacio a una vida <strong>más allá de mi pantalla</strong>: moverme, explorar, aprender, crear y pasar tiempo con las personas y gatos que quiero.",
+
+        "<strong>Esa es la vida que estoy diseñando.</strong>",
+
+      ],
+
     },
 
 
@@ -36,7 +40,8 @@ const es = {
           category: "Enterprise SaaS · Credenciales Digitales",
           description:
             "Diseño de una plataforma escalable de gestión de credenciales para múltiples organizaciones y roles complejos.",
-          link: `${import.meta.env.BASE_URL}/es/work/credential-platform/`
+          link: `${import.meta.env.BASE_URL}/es/work/credential-platform/`,
+          image: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/cover.png`
         },
 
 
@@ -45,12 +50,33 @@ const es = {
           category: "B2B Commerce · Plataforma Empresarial",
           description:
             "Transformación de un proceso comercial tradicional en una experiencia de autoservicio para compradores profesionales.",
-          link: `${import.meta.env.BASE_URL}/es/work/b2b-commerce-platform/`
+          link: `${import.meta.env.BASE_URL}/es/work/b2b-commerce-platform/`,
+          image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce-platform/cover.png`
         }
 
       ],
 
       action: "Ver caso de estudio"
+
+    },
+
+
+    options: {
+
+      about: {
+        title: "Sobre mí",
+        link: `${import.meta.env.BASE_URL}/es/about/`
+      },
+
+      fun: {
+        title: "Diversión",
+        link: `${import.meta.env.BASE_URL}/es/fun/`
+      },
+
+      experiments: {
+        title: "Experimentos",
+        link: `${import.meta.env.BASE_URL}/es/experiments/`
+      }
 
     },
 
@@ -68,6 +94,18 @@ const es = {
       link: `${import.meta.env.BASE_URL}/es/about/`,
 
       action: "Más sobre mí",
+
+    },
+
+
+    closing: {
+
+      quote:
+        "Tráeme la situación. Entendamos qué está pasando realmente, averigüemos qué importa y decidamos qué hacer a continuación.",
+
+      workWithMe: "Trabaja conmigo",
+
+      copied: "Copiado",
 
     }
 
@@ -233,7 +271,7 @@ const es = {
       work: "Trabajo",
       about: "Sobre mí",
       experiments: "Experimentos",
-      writing: "Escritura",
+      fun: "Diversión",
     },
   
     actions: {
@@ -241,6 +279,20 @@ const es = {
       linkedin: "LinkedIn",
       email: "Email",
     },
+
+    preferences: {
+      typography: "Tamaño del texto",
+      typographyLarge: "Grande",
+      typographyMedium: "Mediana",
+      typographySmall: "Pequeña",
+    },
+  },
+
+  underConstruction: {
+    badge: "Próximamente",
+    title: "Esta página está en construcción",
+    description: "Estoy trabajando en algo aquí. Vuelve pronto.",
+    backLabel: "Ver mi trabajo",
   },
 
   credentialPlatform: {
@@ -303,9 +355,9 @@ const es = {
     },
 
     understandingSystem: {
-      title: "Understanding the system",
+      title: "Comprendiendo el sistema",
       description:
-        "The platform was designed around two complementary systems: platform governance and organization management. Role-based permissions determined how users interacted with each layer."
+        "La plataforma fue diseñada en torno a dos sistemas complementarios: la gobernanza de la plataforma y la gestión de organizaciones. Los permisos basados en roles determinaban cómo los usuarios interactuaban con cada capa."
     },
 
     multiTenantArchitecture: {
@@ -638,17 +690,17 @@ const es = {
     },
 
     businessDiscovery: {
-      title: "Business Discovery",
+      title: "Descubrimiento del negocio",
       departments: [
-        "Sales",
+        "Ventas",
         "Marketing",
-        "Procurement",
-        "Accounting",
-        "Development"
+        "Compras",
+        "Contabilidad",
+        "Desarrollo"
       ],
-      workshops: "Discovery Workshops",
-      sharedUnderstanding: "Shared Understanding",
-      note: "Different departments described the same workflow differently."
+      workshops: "Talleres de descubrimiento",
+      sharedUnderstanding: "Comprensión compartida",
+      note: "Los diferentes departamentos describían el mismo proceso de manera distinta."
     },
 
     constraints: {
@@ -736,7 +788,7 @@ const es = {
     },
 
     impact: {
-      title: "Impact",
+      title: "Impacto",
 
       impactSections: [
         {

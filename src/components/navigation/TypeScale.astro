@@ -1,0 +1,353 @@
+---
+
+import { Check } from "lucide-astro";
+
+
+interface Props {
+
+  labels: {
+
+    typography: string;
+
+    typographyLarge: string;
+
+    typographyMedium: string;
+
+    typographySmall: string;
+
+  };
+
+}
+
+
+const { labels } = Astro.props;
+
+
+const options = [
+
+  { value: "large", label: labels.typographyLarge },
+
+  { value: "medium", label: labels.typographyMedium },
+
+  { value: "small", label: labels.typographySmall },
+
+];
+
+---
+
+
+<div class="type-scale">
+
+  <button
+    class="type-trigger"
+    id="type-trigger"
+    aria-label={labels.typography}
+    aria-expanded="false"
+  >
+    <span class="type-icon">Aa</span>
+  </button>
+
+
+  <div
+    class="type-menu"
+    id="type-menu"
+    aria-hidden="true"
+  >
+
+    {options.map((option) => (
+
+      <button
+        class="type-option"
+        data-typography={option.value}
+      >
+        <span class="type-label">{option.label}</span>
+
+        <Check class="type-check" size={15} />
+      </button>
+
+    ))}
+
+  </div>
+
+</div>
+
+
+<style>
+
+.type-scale {
+  position: relative;
+}
+
+
+.type-trigger {
+
+  width: 36px;
+  height: 36px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  background: transparent;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  color: var(--color-text-primary);
+
+  transition:
+    background .2s ease,
+    border-color .2s ease;
+}
+
+
+.type-trigger:hover {
+  background: var(--color-accent-soft);
+}
+
+
+.type-icon {
+
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body);
+
+  font-weight: var(--font-weight-label);
+
+  letter-spacing: -0.02em;
+}
+
+
+.type-menu {
+
+  position: absolute;
+
+  left: 0;
+  bottom: calc(100% + 10px);
+
+  width: 150px;
+
+  padding: var(--space-xs);
+
+  background: var(--color-bg-secondary);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .12);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(6px);
+
+  transition:
+    opacity .2s ease,
+    transform .2s ease,
+    visibility .2s ease;
+
+  z-index: 200;
+}
+
+
+.type-menu.open {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+
+.type-option {
+
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 8px;
+
+  padding: 8px 10px;
+
+  background: transparent;
+
+  border: none;
+  border-radius: var(--radius-sm);
+
+  color: var(--color-text-secondary);
+
+  font-family: var(--font-family-ui);
+  font-size: var(--font-size-small);
+
+  text-align: left;
+
+  transition: background .2s ease;
+}
+
+
+.type-option:hover {
+  background: var(--color-accent-soft);
+  color: var(--color-text-primary);
+}
+
+
+.type-option.active {
+  color: var(--color-accent);
+}
+
+
+.type-option.active .type-check {
+  opacity: 1;
+}
+
+
+.type-check {
+  opacity: 0;
+
+  transition: opacity .2s ease;
+}
+
+
+@media (max-width: 768px) {
+
+  .type-menu {
+    left: auto;
+    right: 0;
+  }
+
+}
+
+</style>
+
+
+<script>
+
+const trigger =
+  document.getElementById("type-trigger");
+
+const menu =
+  document.getElementById("type-menu");
+
+const options =
+  document.querySelectorAll(".type-option");
+
+
+const openMenu = () => {
+
+  menu?.classList.add("open");
+
+  trigger?.setAttribute(
+    "aria-expanded",
+    "true"
+  );
+
+  menu?.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+};
+
+
+const closeMenu = () => {
+
+  menu?.classList.remove("open");
+
+  trigger?.setAttribute(
+    "aria-expanded",
+    "false"
+  );
+
+  menu?.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+};
+
+
+trigger?.addEventListener("click", (event) => {
+
+  event.stopPropagation();
+
+  if (menu?.classList.contains("open")) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
+
+});
+
+
+document.addEventListener("click", () => {
+  closeMenu();
+});
+
+
+menu?.addEventListener("click", (event) => {
+  event.stopPropagation();
+});
+
+
+const updateActive = (value: string) => {
+
+  options.forEach((option) => {
+
+    option.classList.toggle(
+      "active",
+      option.getAttribute("data-typography") === value
+    );
+
+  });
+
+};
+
+
+const applyTypography = (value: string) => {
+
+  document.documentElement.setAttribute(
+    "data-typography",
+    value
+  );
+
+  localStorage.setItem(
+    "typography",
+    value
+  );
+
+  updateActive(value);
+
+};
+
+
+const saved =
+  localStorage.getItem("typography");
+
+const initial =
+  saved === "small" || saved === "large"
+    ? saved
+    : "medium";
+
+
+applyTypography(initial);
+
+
+options.forEach((option) => {
+
+  option.addEventListener("click", () => {
+
+    const value =
+      option.getAttribute("data-typography");
+
+    if (!value) return;
+
+    applyTypography(value);
+
+    closeMenu();
+
+  });
+
+});
+
+</script>
