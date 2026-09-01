@@ -119,13 +119,19 @@ const es = {
       eyebrow: "SOBRE MÍ",
 
       title:
-        "Diseñar productos comienza mucho antes que los píxeles.",
+        "Llegué a Product Design por una puerta poco común.",
 
       paragraphs: [
 
-        "Creo que las grandes experiencias digitales se construyen entendiendo sistemas, personas y objetivos de negocio.",
+        "Empecé como analista en una plataforma social que se construía desde cero. Estuve ahí desde las primeras preguntas e ideas a medio formar, y esa experiencia me acercó al UX y la UI. Cinco años después, he tenido la oportunidad de hacer lo mismo en e-commerce, automotriz, credenciales digitales y productos móviles: llevando productos desde sus primeras etapas hasta su crecimiento y madurez.",
 
-        "Mi rol es transformar complejidad en experiencias de producto claras, escalables y significativas."
+        "Mucho de mi trabajo ocurre antes de que exista algo que diseñar. He trabajado con PMs, desarrolladores, líderes técnicos, QA y dueños de negocio, y también he entrado en distintas áreas de una empresa para entender cómo funcionan las cosas de verdad: desde ventas y marketing hasta contabilidad, administración y compras.",
+
+        "Me gusta meterme a fondo en un producto hasta entender su estructura, su historia, sus restricciones y las razones detrás de sus decisiones. Una vez que tengo ese panorama, puedo ayudar a darle sentido a lo que viene.",
+
+        "Con el tiempo, me convertí en alguien a quien la gente acude cuando no está segura de qué hacer. Me tomo esas preguntas en serio, sin hacerles sentir que es tonto preguntar. A veces la respuesta es sí. A veces es no. Generalmente, está en algún punto intermedio.",
+
+        "Creo que un buen liderazgo tiene mucho que ver con hacer ese espacio más fácil para las personas: <strong>claro como para avanzar, abierto como para hacer preguntas y honesto como para tomar mejores decisiones.</strong>"
 
       ]
 

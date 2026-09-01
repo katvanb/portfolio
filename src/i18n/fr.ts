@@ -116,12 +116,18 @@ const fr = {
       eyebrow: "À PROPOS",
 
       title:
-        "Concevoir un produit commence bien avant les pixels.",
+        "J'arrivé au Design Produit par une porte inhabituelle.",
 
       paragraphs: [
-        "Je suis convaincue que les grandes expériences numériques se construisent en comprenant les systèmes, les personnes et les objectifs métier.",
+        "J'ai commencé comme analyste sur une plateforme sociale construite de zéro. J'étais là dès les premières questions et les idées brutes, et cette expérience m'a menée vers l'UX et l'UI. Cinq ans plus tard, j'ai eu la chance de faire la même chose dans le e-commerce, l'automobile, les certificats numériques et les produits mobiles : emmener des produits de leurs premières étapes jusqu'à leur croissance et leur maturité.",
 
-        "Mon rôle est de transformer la complexité en des expériences produit claires, évolutives et porteuses de sens."
+        "Une grande partie de mon travail se déroule avant qu'il y ait quoi que ce soit à concevoir. J'ai travaillé avec des chefs de produit, des développeurs, des responsables techniques, des équipes QA et des dirigeants, et je suis aussi allée dans différents services d'une entreprise pour comprendre comment les choses fonctionnent réellement : des ventes et du marketing à la comptabilité, l'administration et aux achats.",
+
+        "J'aime aller au fond d'un produit jusqu'à en comprendre la structure, l'histoire, les contraintes et les raisons derrière ses décisions. Une fois que j'ai cette vision d'ensemble, je peux aider à donner du sens à la suite.",
+
+        "Au fil du temps, je suis devenue quelqu'un à qui l'on vient quand on ne sait pas quoi faire. Je prends ces questions au sérieux, sans leur donner l'impression d'être bêtes de demander. Parfois la réponse est oui. Parfois c'est non. Souvent, elle est quelque part entre les deux.",
+
+        "Je pense que le leadership, c'est beaucoup rendre cet espace plus facile pour les personnes : <strong>assez clair pour avancer, assez ouvert pour poser des questions, et assez honnête pour prendre de meilleures décisions.</strong>"
       ]
     },
 

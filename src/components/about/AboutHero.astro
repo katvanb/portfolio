@@ -24,9 +24,7 @@ const { content } = Astro.props;
 
   {
     content.paragraphs.map((paragraph) => (
-      <p>
-        {paragraph}
-      </p>
+      <p set:html={paragraph} />
     ))
   }
 
@@ -52,7 +50,7 @@ const { content } = Astro.props;
 
   font-size: var(--font-size-small);
 
-  letter-spacing: 0.08em;
+  letter-spacing: var(--letter-spacing-label);
 
   text-transform: uppercase;
 
@@ -67,9 +65,9 @@ const { content } = Astro.props;
 
   font-size: var(--font-size-h1);
 
-  line-height: 1.1;
+  line-height: var(--line-height-h1);
 
-  letter-spacing: -0.03em;
+  letter-spacing: var(--letter-spacing-h1);
 
 }
 
@@ -82,9 +80,16 @@ const { content } = Astro.props;
 
   color: var(--color-text-secondary);
 
-  font-size: var(--font-size-body-large);
+  font-size: var(--font-size-body);
 
-  line-height: 1.7;
+  line-height: var(--line-height-body);
+
+}
+
+
+.about-hero p strong {
+
+  color: var(--color-text-primary);
 
 }
 

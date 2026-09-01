@@ -116,12 +116,18 @@ const en = {
       eyebrow: "ABOUT ME",
 
       title:
-        "Designing products begins long before pixels.",
+        "I came into Product Design through an unusual door.",
 
       paragraphs: [
-        "I believe great digital experiences are built by understanding systems, people, and business goals.",
+        "I started out as an analyst on a social platform that was being built from scratch. I was there from the early questions and rough ideas, and that experience pulled me toward UX and UI. Five years later, I've had the chance to do the same thing across e-commerce, automotive, digital credentials, and mobile products—taking products from their early stages through growth and maturity.",
 
-        "My role is to transform complexity into clear, scalable, and meaningful product experiences."
+        "A lot of my work happens before there's anything to design. I've worked with PMs, developers, technical leads, QA, and business owners, and I've also gone into different areas of a business to understand how things actually work—from sales and marketing to accounting, administration, and procurement.",
+
+        "I like getting deep into a product until I understand its structure, its history, its constraints, and the reasons behind its decisions. Once I have that picture, I can help make sense of what comes next.",
+
+        "Over time, I've become someone people come to when they're not sure what to do. I take those questions seriously, without making them feel silly for asking. Sometimes the answer is yes. Sometimes it's no. Usually, it's somewhere in between.",
+
+        "I think good leadership is a lot about making that space easier for people: <strong>clear enough to move forward, open enough to ask questions, and honest enough to make better decisions.</strong>"
       ]
     },
 

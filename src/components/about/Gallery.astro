@@ -1,0 +1,277 @@
+---
+
+
+interface GalleryItem {
+  label: string;
+  ratio: string;
+  src: string;
+}
+
+
+const gallery: GalleryItem[] = [
+
+  { label: "Cats", ratio: "3/4", src: "" },
+  { label: "Movement", ratio: "1/1", src: "" },
+  { label: "Exploring", ratio: "3/2", src: "" },
+  { label: "Learning", ratio: "2/3", src: "" },
+  { label: "Creating", ratio: "4/3", src: "" },
+  { label: "Nature", ratio: "4/5", src: "" },
+
+  { label: "Travel", ratio: "3/4", src: "" },
+  { label: "Family", ratio: "1/1", src: "" },
+  { label: "Books", ratio: "3/2", src: "" },
+  { label: "Trails", ratio: "2/3", src: "" },
+  { label: "Music", ratio: "4/3", src: "" },
+  { label: "Food", ratio: "4/5", src: "" },
+
+  { label: "Cats", ratio: "3/4", src: "" },
+  { label: "Movement", ratio: "1/1", src: "" },
+  { label: "Exploring", ratio: "3/2", src: "" },
+  { label: "Learning", ratio: "2/3", src: "" },
+  { label: "Creating", ratio: "4/3", src: "" },
+  { label: "Nature", ratio: "4/5", src: "" },
+
+];
+
+
+const columns = [0, 1, 2].map((index) =>
+  gallery.filter((_, idx) => idx % 3 === index)
+);
+
+---
+
+
+<div class="gallery" aria-label="Gallery" role="group">
+
+  <div class="gallery-track">
+
+    {[0, 1].map((half) => (
+
+      <div
+        class="gallery-half"
+        class:list={{ "gallery-clone": half === 1 }}
+        aria-hidden={half === 1 ? "true" : undefined}
+      >
+
+        {columns.map((column) => (
+
+          <div class="gallery-column">
+
+            {column.map((item) => (
+
+              <figure
+                class="gallery-item"
+                style={`aspect-ratio: ${item.ratio}`}
+              >
+
+                {item.src ? (
+
+                  <img
+                    src={item.src}
+                    alt={item.label}
+                    loading="lazy"
+                  />
+
+                ) : (
+
+                  <span class="placeholder-label">
+                    {item.label}
+                  </span>
+
+                )}
+
+              </figure>
+
+            ))}
+
+          </div>
+
+        ))}
+
+      </div>
+
+    ))}
+
+  </div>
+
+</div>
+
+
+<style>
+
+.gallery {
+
+  position: relative;
+
+  height: clamp(420px, 62vh, 640px);
+
+  overflow: hidden;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 8%,
+      black 92%,
+      transparent
+    );
+
+}
+
+
+.gallery:hover .gallery-track {
+  animation-play-state: paused;
+}
+
+
+.gallery-track {
+
+  display: flex;
+
+  flex-direction: column;
+
+  will-change: transform;
+
+  animation: gallery-scroll 32s linear infinite;
+
+}
+
+
+.gallery-half {
+
+  display: flex;
+
+  gap: var(--space-sm);
+
+}
+
+
+.gallery-column {
+
+  flex: 1;
+
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-sm);
+
+}
+
+
+.gallery-item {
+
+  margin: 0;
+
+  position: relative;
+
+  border-radius: var(--radius-md);
+
+  border: 1px solid var(--color-border);
+
+  background:
+
+    radial-gradient(
+      circle at 25% 20%,
+      var(--color-accent-soft),
+      transparent 70%
+    ),
+    var(--color-bg-secondary);
+
+  overflow: hidden;
+
+}
+
+
+.gallery-item img {
+
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+}
+
+
+.placeholder-label {
+
+  position: absolute;
+
+  inset: 0;
+
+  display: grid;
+
+  place-items: center;
+
+  color: var(--color-text-secondary);
+
+  font-family: var(--font-family-ui);
+
+  font-size: var(--font-size-small);
+
+  font-weight: var(--font-weight-small);
+
+  letter-spacing: 0.04em;
+
+  text-transform: uppercase;
+
+}
+
+
+@keyframes gallery-scroll {
+
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-50%);
+  }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  .gallery-track {
+    animation: none;
+  }
+
+  .gallery:hover .gallery-track {
+    animation-play-state: running;
+  }
+
+}
+
+
+@media (max-width: 768px) {
+
+  .gallery {
+
+    height: auto;
+
+    overflow: visible;
+
+    mask-image: none;
+
+  }
+
+
+  .gallery-track {
+    animation: none;
+    will-change: auto;
+  }
+
+
+  .gallery-clone {
+    display: none;
+  }
+
+}
+
+</style>
