@@ -44,6 +44,17 @@ const t = es;
 }
 
 
+.about-page .gallery {
+
+  position: sticky;
+
+  top: var(--space-xl);
+
+  align-self: start;
+
+}
+
+
 @media (max-width: 768px) {
 
   .about-page {
@@ -51,6 +62,13 @@ const t = es;
     grid-template-columns: 1fr;
 
     gap: var(--space-xl);
+
+  }
+
+
+  .about-page .gallery {
+
+    position: static;
 
   }
 
