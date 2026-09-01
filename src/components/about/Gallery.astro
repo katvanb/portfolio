@@ -101,7 +101,11 @@ const columns = [0, 1, 2].map((index) =>
 
 .gallery {
 
-  position: relative;
+  position: sticky;
+
+  top: var(--space-xl);
+
+  align-self: start;
 
   height: clamp(420px, 62vh, 640px);
 
@@ -258,6 +262,10 @@ const columns = [0, 1, 2].map((index) =>
     overflow: visible;
 
     mask-image: none;
+
+    position: static;
+
+    top: auto;
 
   }
 
