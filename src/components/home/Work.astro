@@ -5,6 +5,7 @@ interface Project {
   title: string;
   category: string;
   description: string;
+  tags: string[];
   link: string;
   image: string;
 }
@@ -30,6 +31,7 @@ const { content } = Astro.props;
 
         <ProjectCard
           title={project.title}
+          tags={project.tags}
           link={project.link}
           image={project.image}
           action={content.action}
@@ -64,8 +66,6 @@ const { content } = Astro.props;
   display: grid;
 
   grid-template-columns: repeat(2, 1fr);
-
-  gap: var(--space-lg);
 
 }
 

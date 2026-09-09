@@ -8,15 +8,11 @@ const es = {
 
       paragraphs: [
 
-        "Soy <strong>Líder de Diseño de Producto</strong> con formación en Ingeniería de Sistemas. Tiendo a ver el panorama general y cómo encajan todas las piezas.",
+        "Soy <strong>Líder de Diseño de Producto</strong> y me gusta descubrir cómo funcionan realmente las cosas.",
 
-        "Trabajo en <strong class=\"hero-typewriter\" data-words=\"estrategia|UX|datos|tecnología|negocio\"><span class=\"tw-text\">estrategia</span><span class=\"hero-caret\" aria-hidden=\"true\"></span></strong>",
+        "Me muevo entre <strong class=\"hero-typewriter\" data-words=\"dirección de producto|sistemas|UX|implementación\"><span class=\"tw-text\">dirección de producto</span><span class=\"hero-caret\" aria-hidden=\"true\"></span></strong>",
 
-        "Me siento igualmente cómoda definiendo una dirección, entrando en los detalles o escribiendo algo de código para hacerlo realidad. Me gusta saber cuándo simplificar, cuándo construir para lo que viene y cuándo dejar las cosas como están.",
-
-        "Cuando termina el trabajo, cambio por completo de modo, dando espacio a una vida <strong>más allá de mi pantalla</strong>: moverme, explorar, aprender, crear y pasar tiempo con las personas y gatos que quiero.",
-
-        "<strong>Esa es la vida que estoy diseñando.</strong>",
+        "Me acerco al problema lo suficiente como para tomar una buena decisión.",
 
       ],
 
@@ -24,8 +20,7 @@ const es = {
 
 
     buttons: {
-      work: "Ver mi trabajo",
-      about: "Sobre mí"
+      work: "Ver mi trabajo"
     },
 
     work: {
@@ -36,10 +31,11 @@ const es = {
       projects: [
 
         {
-          title: "Estructura para un ecosistema en crecimiento.",
+          title: "De una idea a una plataforma de credenciales escalable",
           category: "Enterprise SaaS · Credenciales Digitales",
           description:
             "Diseño de una plataforma escalable de gestión de credenciales para múltiples organizaciones y roles complejos.",
+          tags: ["Product Strategy", "Systems Design", "Architecture", "Enterprise UX"],
           link: `${import.meta.env.BASE_URL}/es/work/credential-platform/`,
           image: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/cover.png`
         },
@@ -50,6 +46,7 @@ const es = {
           category: "B2B Commerce · Plataforma Empresarial",
           description:
             "Transformación de un proceso comercial tradicional en una experiencia de autoservicio para compradores profesionales.",
+          tags: ["Product Discovery", "Complex UX", "Self-Service", "Business Systems"],
           link: `${import.meta.env.BASE_URL}/es/work/b2b-commerce-platform/`,
           image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce-platform/cover.png`
         }
@@ -62,11 +59,6 @@ const es = {
 
 
     options: {
-
-      about: {
-        title: "Sobre mí",
-        link: `${import.meta.env.BASE_URL}/es/about/`
-      },
 
       fun: {
         title: "Diversión",
@@ -81,161 +73,31 @@ const es = {
     },
 
 
-    aboutPreview: {
+    pointOfView: {
 
-      eyebrow: "SOBRE MÍ",
-
-      title:
-        "Conecto objetivos de negocio, necesidades de usuarios y restricciones técnicas.",
-
-      description:
-        "Con formación en Ingeniería de Sistemas y Product Design, ayudo a equipos a transformar requerimientos complejos en productos digitales escalables y centrados en usuarios.",
-
-      link: `${import.meta.env.BASE_URL}/es/about/`,
-
-      action: "Más sobre mí",
-
-    },
-
-
-    closing: {
-
-      quote:
-        "Tráeme la situación. Entendamos qué está pasando realmente, averigüemos qué importa y decidamos qué hacer a continuación.",
-
-      workWithMe: "Trabaja conmigo",
-
-      copied: "Copiado",
-
-    }
-
-  },
-
-
-  about: {
-
-    hero: {
-
-      eyebrow: "SOBRE MÍ",
-
-      title:
-        "Llegué a Product Design por una puerta poco común.",
+      title: "Tiendo a ir una capa más profunda.",
 
       paragraphs: [
 
-        "Empecé como analista en una plataforma social que se construía desde cero. Estuve ahí desde las primeras preguntas e ideas a medio formar, y esa experiencia me acercó al UX y la UI. Cinco años después, he tenido la oportunidad de hacer lo mismo en e-commerce, automotriz, credenciales digitales y productos móviles: llevando productos desde sus primeras etapas hasta su crecimiento y madurez.",
+        "Un producto rara vez empieza donde dice el brief.",
 
-        "Mucho de mi trabajo ocurre antes de que exista algo que diseñar. He trabajado con PMs, desarrolladores, líderes técnicos, QA y dueños de negocio, y también he entrado en distintas áreas de una empresa para entender cómo funcionan las cosas de verdad: desde ventas y marketing hasta contabilidad, administración y compras.",
+        "Una petición de una nueva funcionalidad puede ser en realidad un problema de negocio.",
 
-        "Me gusta meterme a fondo en un producto hasta entender su estructura, su historia, sus restricciones y las razones detrás de sus decisiones. Una vez que tengo ese panorama, puedo ayudar a darle sentido a lo que viene.",
+        "Una pantalla confusa puede ser en realidad un problema de permisos.",
 
-        "Con el tiempo, me convertí en alguien a quien la gente acude cuando no está segura de qué hacer. Me tomo esas preguntas en serio, sin hacerles sentir que es tonto preguntar. A veces la respuesta es sí. A veces es no. Generalmente, está en algún punto intermedio.",
+        "Una “limitación técnica” puede ser una decisión que nadie ha vuelto a revisar.",
 
-        "Creo que un buen liderazgo tiene mucho que ver con hacer ese espacio más fácil para las personas: <strong>claro como para avanzar, abierto como para hacer preguntas y honesto como para tomar mejores decisiones.</strong>"
+        "Así que me gusta seguir el hilo.",
 
-      ]
+        "Hablo con las personas que conocen el negocio. Pregunto cómo funcionan las cosas hoy, dónde se rompen y por qué han terminado así. Mapeo qué depende de qué, cuestiono supuestos y entro en los detalles cuando los detalles importan.",
 
-    },
+        "A veces eso lleva a un flujo nuevo.",
 
+        "A veces cambia la estructura del producto.",
 
-    background: {
+        "A veces significa decir que no.",
 
-      eyebrow: "BACKGROUND",
-
-      title:
-        "De sistemas a experiencias.",
-
-      paragraphs: [
-
-        "Mi formación en Ingeniería de Sistemas moldeó la forma en la que abordo el diseño.",
-
-        "Me enseñó a pensar en términos de arquitectura, dependencias, escalabilidad y cómo interactúan las diferentes partes de un sistema.",
-
-        "Cuando hice la transición hacia Product Design, descubrí que estas mismas habilidades me ayudaban a resolver un desafío diferente: hacer que productos complejos fueran más fáciles de entender y utilizar.",
-
-        "Hoy trabajo en la intersección entre estrategia de negocio, experiencia de usuario y viabilidad técnica."
-
-      ]
-
-    },
-
-
-    process: {
-
-      eyebrow: "ENFOQUE",
-
-      title:
-        "Cómo transformo complejidad en claridad.",
-
-      intro:
-        "Cada producto tiene sus propios desafíos. Mi proceso comienza entendiendo el problema detrás de la interfaz y creando soluciones que equilibran las necesidades de los usuarios, los objetivos del negocio y las restricciones técnicas.",
-
-
-      steps: [
-
-        {
-          number: "01",
-          title: "Entender",
-          description:
-            "Exploro el ecosistema del producto: usuarios, flujos de trabajo, objetivos de negocio y limitaciones técnicas para entender el problema real detrás de la solicitud."
-        },
-
-        {
-          number: "02",
-          title: "Estructurar",
-          description:
-            "Creo arquitecturas de información, flujos de usuario y sistemas que transforman la complejidad en bases claras y escalables."
-        },
-
-        {
-          number: "03",
-          title: "Diseñar",
-          description:
-            "Transformo insights en interfaces intuitivas, sistemas de diseño e interacciones que hacen más fáciles los procesos complejos."
-        },
-
-        {
-          number: "04",
-          title: "Colaborar",
-          description:
-            "Trabajo junto a stakeholders y equipos de desarrollo para alinear visión, viabilidad e impacto del producto."
-        }
-
-      ]
-
-    },
-
-
-    principles: {
-
-      eyebrow: "PRINCIPIOS",
-
-      title:
-        "Lo que guía mi trabajo.",
-
-
-      items: [
-
-        {
-          title: "Claridad sobre complejidad",
-
-          description:
-            "Las mejores soluciones no siempre son las más complejas. Son aquellas que las personas pueden entender y utilizar con confianza."
-        },
-
-        {
-          title: "Pensamiento sistémico",
-
-          description:
-            "Veo más allá de pantallas individuales para entender cómo se conectan productos, usuarios y procesos de negocio."
-        },
-
-        {
-          title: "Aprendizaje continuo",
-
-          description:
-            "El diseño evoluciona constantemente. Mantengo la curiosidad, experimento y utilizo nuevas herramientas, incluyendo IA, para mejorar mi forma de trabajar."
-        }
+        "<strong>No necesito ser dueña de cada decisión. Solo quiero entender lo suficiente para ayudar a tomar las correctas.</strong>"
 
       ]
 
@@ -244,21 +106,32 @@ const es = {
 
     beyond: {
 
-      eyebrow: "MÁS ALLÁ DEL DISEÑO",
-
-      title:
-        "La curiosidad impulsa mi trabajo.",
-
+      title: "Más allá de la pantalla.",
 
       paragraphs: [
 
-        "Fuera del diseño de producto, constantemente exploro nuevas formas de aprender, crear y entender el mundo que me rodea.",
+        "Me gusta tener una vida que no parezca trabajo.",
 
-        "Disfruto estudiar idiomas, leer sobre psicología y tecnología, pintar y experimentar con nuevas herramientas que expanden mi forma de pensar.",
+        "Me muevo, exploro, aprendo, creo cosas, desaparezco en la naturaleza por un tiempo, salgo, me quedo en casa, leo, experimento y paso una cantidad irracional de tiempo con mis gatos.",
 
-        "Creo que la curiosidad es una de las habilidades más valiosas que un diseñador puede desarrollar."
+        "El trabajo es importante para mí.",
+
+        "Simplemente no es el cuadro completo."
 
       ]
+
+    },
+
+
+    closing: {
+
+      quote: "Tráeme la situación.",
+
+      sub: "Entendamos qué está pasando realmente, averigüemos qué importa y decidamos qué hacer a continuación.",
+
+      workWithMe: "Trabaja conmigo",
+
+      copied: "Email copiado",
 
     }
 
@@ -275,7 +148,6 @@ const es = {
   sidebar: {
     navigation: {
       work: "Trabajo",
-      about: "Sobre mí",
       experiments: "Experimentos",
       fun: "Diversión",
     },

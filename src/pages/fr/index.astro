@@ -3,7 +3,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import fr from "../../i18n/fr";
 import Hero from "../../components/home/Hero.astro";
 import Work from "../../components/home/Work.astro";
+import PointOfView from "../../components/home/PointOfView.astro";
 import Options from "../../components/home/Options.astro";
+import Beyond from "../../components/home/Beyond.astro";
 import Closing from "../../components/home/Closing.astro";
 
 const t = fr;
@@ -13,9 +15,13 @@ const t = fr;
   
   <Hero content={t.home.hero} />
 
+  <Work content={t.home.work} />
+
+  <PointOfView content={t.home.pointOfView} />
+
   <Options items={Object.values(t.home.options)} />
 
-  <Work content={t.home.work} />
+  <Beyond content={t.home.beyond} />
 
   <Closing content={t.home.closing} />
 

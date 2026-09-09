@@ -8,15 +8,11 @@ const fr = {
 
       paragraphs: [
 
-        "Je suis <strong>Lead Produit Design</strong> avec une formation en Ingénierie des Systèmes. J'ai tendance à voir le tableau général et comment toutes les pièces s'assemblent.",
+        "Je suis <strong>Lead Produit Design</strong> et j'aime comprendre comment les choses fonctionnent réellement.",
 
-        "Je travaille sur la <strong class=\"hero-typewriter\" data-words=\"stratégie|UX|données|technologie|business\"><span class=\"tw-text\">stratégie</span><span class=\"hero-caret\" aria-hidden=\"true\"></span></strong>",
+        "Je me déplace entre <strong class=\"hero-typewriter\" data-words=\"direction produit|systèmes|UX|implémentation\"><span class=\"tw-text\">direction produit</span><span class=\"hero-caret\" aria-hidden=\"true\"></span></strong>",
 
-        "Je suis aussi à l'aise pour définir une direction, entrer dans les détails ou écrire un peu de code pour concrétiser les choses. J'aime savoir quand simplifier, quand construire pour ce qui vient et quand laisser les choses telles quelles.",
-
-        "Quand le travail est fait, je change complètement de registre, laissant la place à une vie <strong>loin de mon écran</strong> : bouger, explorer, apprendre, créer et passer du temps avec les gens et les chats que j'aime.",
-
-        "<strong>C'est la vie que je conçois.</strong>",
+        "Je me rapproche du problème autant qu'il le faut pour prendre une bonne décision.",
 
       ],
 
@@ -24,8 +20,7 @@ const fr = {
 
 
     buttons: {
-      work: "Voir mes projets",
-      about: "À propos"
+      work: "Voir mes projets"
     },
 
     work: {
@@ -35,10 +30,11 @@ const fr = {
       projects: [
 
         {
-          title: "Structure pour un écosystème de certification en croissance",
+          title: "D'une idée à une plateforme de certification évolutive",
           category: "SaaS Enterprise · Certificats numériques",
           description:
             "Conception d'une plateforme évolutive de gestion des certifications pour plusieurs organisations et des rôles utilisateurs complexes.",
+          tags: ["Product Strategy", "Systems Design", "Architecture", "Enterprise UX"],
           link: `${import.meta.env.BASE_URL}/fr/work/credential-platform/`,
           image: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/cover.png`
         },
@@ -48,6 +44,7 @@ const fr = {
           category: "Commerce B2B · Plateforme entreprise",
           description:
             "Transformation d'un processus commercial traditionnel en une expérience d'achat en libre-service pour les acheteurs professionnels.",
+          tags: ["Product Discovery", "Complex UX", "Self-Service", "Business Systems"],
           link: `${import.meta.env.BASE_URL}/fr/work/b2b-commerce-platform/`,
           image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce-platform/cover.png`
         }
@@ -60,11 +57,6 @@ const fr = {
 
 
     options: {
-
-      about: {
-        title: "À propos",
-        link: `${import.meta.env.BASE_URL}/fr/about/`
-      },
 
       fun: {
         title: "Fun",
@@ -79,153 +71,31 @@ const fr = {
     },
 
 
-    aboutPreview: {
+    pointOfView: {
 
-      eyebrow: "À PROPOS",
-
-      title:
-        "Je relie les objectifs métier, les besoins utilisateurs et les contraintes techniques.",
-
-      description:
-        "Avec une formation en Ingénierie des Systèmes et en Design Produit, j'aide les équipes à transformer des exigences complexes en produits numériques évolutifs et centrés sur l'utilisateur.",
-
-      link: `${import.meta.env.BASE_URL}/fr/about/`,
-
-      action: "En savoir plus"
-
-    },
-
-
-    closing: {
-
-      quote:
-        "Amenez-moi la situation. Comprenons ce qui se passe réellement, déterminons ce qui compte et décidons de la suite à donner.",
-
-      workWithMe: "Travaillons ensemble",
-
-      copied: "Copié",
-
-    }
-
-  },
-
-
-  about: {
-
-    hero: {
-      eyebrow: "À PROPOS",
-
-      title:
-        "J'arrivé au Design Produit par une porte inhabituelle.",
+      title: "J'ai tendance à aller une couche plus loin.",
 
       paragraphs: [
-        "J'ai commencé comme analyste sur une plateforme sociale construite de zéro. J'étais là dès les premières questions et les idées brutes, et cette expérience m'a menée vers l'UX et l'UI. Cinq ans plus tard, j'ai eu la chance de faire la même chose dans le e-commerce, l'automobile, les certificats numériques et les produits mobiles : emmener des produits de leurs premières étapes jusqu'à leur croissance et leur maturité.",
 
-        "Une grande partie de mon travail se déroule avant qu'il y ait quoi que ce soit à concevoir. J'ai travaillé avec des chefs de produit, des développeurs, des responsables techniques, des équipes QA et des dirigeants, et je suis aussi allée dans différents services d'une entreprise pour comprendre comment les choses fonctionnent réellement : des ventes et du marketing à la comptabilité, l'administration et aux achats.",
+        "Un produit commence rarement là où le brief le dit.",
 
-        "J'aime aller au fond d'un produit jusqu'à en comprendre la structure, l'histoire, les contraintes et les raisons derrière ses décisions. Une fois que j'ai cette vision d'ensemble, je peux aider à donner du sens à la suite.",
+        "Une demande de nouvelle fonctionnalité peut en réalité être un problème métier.",
 
-        "Au fil du temps, je suis devenue quelqu'un à qui l'on vient quand on ne sait pas quoi faire. Je prends ces questions au sérieux, sans leur donner l'impression d'être bêtes de demander. Parfois la réponse est oui. Parfois c'est non. Souvent, elle est quelque part entre les deux.",
+        "Un écran qui prête à confusion peut en réalité être un problème de permissions.",
 
-        "Je pense que le leadership, c'est beaucoup rendre cet espace plus facile pour les personnes : <strong>assez clair pour avancer, assez ouvert pour poser des questions, et assez honnête pour prendre de meilleures décisions.</strong>"
-      ]
-    },
+        "Une « limitation technique » peut être une décision que personne n'a revisitée.",
 
+        "Alors j'aime suivre le fil.",
 
-    background: {
-      eyebrow: "PARCOURS",
+        "Je parle aux personnes qui connaissent le métier. Je demande comment les choses fonctionnent aujourd'hui, où elles cassent et pourquoi elles en sont arrivées là. Je cartographie ce qui dépend de quoi, je remets en question les hypothèses et j'entre dans les détails quand les détails comptent.",
 
-      title:
-        "Des systèmes aux expériences.",
+        "Parfois, cela mène à un nouveau parcours.",
 
-      paragraphs: [
-        "Ma formation en Ingénierie des Systèmes a façonné ma manière d'aborder le design.",
+        "Parfois, cela change la structure du produit.",
 
-        "Elle m'a appris à penser en termes d'architecture, de dépendances, d'évolutivité et d'interaction entre les différentes parties d'un système.",
+        "Parfois, cela signifie dire non.",
 
-        "Quand je me suis tournée vers le Design Produit, j'ai découvert que ces mêmes compétences me permettaient de résoudre un autre défi : rendre les produits complexes plus faciles à comprendre et à utiliser.",
-
-        "Aujourd'hui, je travaille à l'intersection entre la stratégie métier, l'expérience utilisateur et la faisabilité technique."
-      ]
-    },
-
-
-    process: {
-
-      eyebrow: "APPROCHE",
-
-      title:
-        "Comment je transforme la complexité en clarté.",
-
-      intro:
-        "Chaque produit a ses propres défis. Mon processus commence par comprendre le problème derrière l'interface et créer des solutions qui équilibrent les besoins utilisateurs, les objectifs métier et les contraintes techniques.",
-
-
-      steps: [
-
-        {
-          number: "01",
-          title: "Comprendre",
-          description:
-            "J'explore l'écosystème du produit : utilisateurs, flux de travail, objectifs métier et limites techniques pour identifier le vrai problème derrière la demande."
-        },
-
-        {
-          number: "02",
-          title: "Structurer",
-          description:
-            "Je crée des architectures de l'information, des parcours utilisateurs et des systèmes qui transforment la complexité en fondations claires et évolutives."
-        },
-
-        {
-          number: "03",
-          title: "Concevoir",
-          description:
-            "Je traduis les insights en interfaces intuitives, systèmes de design et interactions qui simplifient les processus complexes."
-        },
-
-        {
-          number: "04",
-          title: "Collaborer",
-          description:
-            "Je travaille étroitement avec les parties prenantes et les équipes de développement pour aligner la vision, la faisabilité et l'impact produit."
-        }
-
-      ]
-
-    },
-
-
-    principles: {
-
-      eyebrow: "PRINCIPES",
-
-      title:
-        "Ce qui guide mon travail.",
-
-
-      items: [
-
-        {
-          title: "Clarté plutôt que complexité",
-
-          description:
-            "Les meilleures solutions ne sont pas toujours les plus complexes. Ce sont celles que les gens peuvent comprendre et utiliser en toute confiance."
-        },
-
-        {
-          title: "Pensée systémique",
-
-          description:
-            "Je vais au-delà des écrans individuels pour comprendre comment les produits, les utilisateurs et les processus métier interconnectés."
-        },
-
-        {
-          title: "Apprentissage continu",
-
-          description:
-            "Le design évolue constamment. Je reste curieuse, j'expérimente et j'utilise de nouveaux outils, y compris l'IA, pour améliorer ma façon de travailler."
-        }
+        "<strong>Je n'ai pas besoin de décider de tout. Je veux juste comprendre assez pour aider à prendre les bonnes décisions.</strong>"
 
       ]
 
@@ -234,21 +104,32 @@ const fr = {
 
     beyond: {
 
-      eyebrow: "AU-DELÀ DU DESIGN",
-
-      title:
-        "La curiosité nourrit mon travail.",
-
+      title: "Au-delà de l'écran.",
 
       paragraphs: [
 
-        "En dehors du design produit, j'explore constamment de nouvelles façons d'apprendre, de créer et de comprendre le monde qui m'entoure.",
+        "J'aime avoir une vie qui ne ressemble pas au travail.",
 
-        "J'aime étudier les langues, lire sur la psychologie et la technologie, peindre et expérimenter de nouveaux outils qui élargissent ma façon de penser.",
+        "Je bouge, j'explore, j'apprends, je crée des choses, je disparais dans la nature un moment, je sors, je reste à la maison, je lis, j'expérimente et je passe un temps déraisonnable avec mes chats.",
 
-        "Je crois que la curiosité est l'une des compétences les plus précieuses qu'un designer peut développer."
+        "Le travail est important pour moi.",
+
+        "Ce n'est tout simplement pas le tableau complet."
 
       ]
+
+    },
+
+
+    closing: {
+
+      quote: "Amenez-moi la situation.",
+
+      sub: "Comprenons ce qui se passe réellement, déterminons ce qui compte et décidons de la suite à donner.",
+
+      workWithMe: "Travaillons ensemble",
+
+      copied: "Email copié",
 
     }
 
@@ -265,7 +146,6 @@ const fr = {
   sidebar: {
     navigation: {
       work: "Projets",
-      about: "À propos",
       experiments: "Expérimentations",
       fun: "Fun",
     },

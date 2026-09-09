@@ -9,6 +9,8 @@ interface Props {
 
     quote: string;
 
+    sub: string;
+
     workWithMe: string;
 
     copied: string;
@@ -25,9 +27,13 @@ const { content } = Astro.props;
 
 <section class="closing">
 
-  <blockquote class="quote">
+  <h2 class="quote">
     {content.quote}
-  </blockquote>
+  </h2>
+
+  <p class="subtext">
+    {content.sub}
+  </p>
 
 
   <button
@@ -76,11 +82,26 @@ const { content } = Astro.props;
 
   line-height: var(--line-height-h2);
 
-  font-weight: var(--font-weight-body);
+  font-weight: var(--font-weight-h2);
 
   letter-spacing: var(--letter-spacing-h2);
 
+  color: var(--color-text-primary);
+
+}
+
+
+.subtext {
+
+  margin: 0;
+
+  max-width: 640px;
+
   color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: 1.6;
 
 }
 

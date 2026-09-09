@@ -8,15 +8,11 @@ const en = {
 
       paragraphs: [
 
-        "I'm a <strong>Product Design Lead</strong> with a Systems Engineering background. I tend to look at the big picture and how all the pieces fit together.",
+        "I'm a <strong>Product Design Lead</strong> who likes figuring out how things actually work.",
 
-        "I work across <strong class=\"hero-typewriter\" data-words=\"strategy|UX|data|technology|business\"><span class=\"tw-text\">strategy</span><span class=\"hero-caret\" aria-hidden=\"true\"></span></strong>",
+        "I move between <strong class=\"hero-typewriter\" data-words=\"product direction|systems|UX|implementation\"><span class=\"tw-text\">product direction</span><span class=\"hero-caret\" aria-hidden=\"true\"></span></strong>",
 
-        "I'm equally comfortable shaping a direction, getting into the details, or writing some code to make it happen. I like knowing when to simplify, when to build for what's next, and when to leave something alone.",
-
-        "When the work is done, I switch gears completely, making room for a life <strong>far beyond my screen</strong>—moving, exploring, learning, creating, and spending time with the people and cats I love.",
-
-        "<strong>That's the life I'm designing for.</strong>",
+        "Getting as close to the problem as I need to make a good decision.",
 
       ],
 
@@ -24,8 +20,7 @@ const en = {
 
 
     buttons: {
-      work: "View my work",
-      about: "About me"
+      work: "View my work"
     },
 
     work: {
@@ -35,10 +30,11 @@ const en = {
       projects: [
 
         {
-          title: "Structure for a credentialing ecosystem",
+          title: "From an idea to a scalable credentialing platform",
           category: "Enterprise SaaS · Digital Credentials",
           description:
             "Designing a scalable credential management platform for multiple organizations and complex user roles.",
+          tags: ["Product Strategy", "Systems Design", "Architecture", "Enterprise UX"],
           link: `${import.meta.env.BASE_URL}/work/credential-platform/`,
           image: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/cover.png`
         },
@@ -48,6 +44,7 @@ const en = {
           category: "B2B Commerce · Enterprise Platform",
           description:
             "Transforming a traditional sales process into a self-service commerce experience for professional buyers.",
+          tags: ["Product Discovery", "Complex UX", "Self-Service", "Business Systems"],
           link: `${import.meta.env.BASE_URL}/work/b2b-commerce-platform/`,
           image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce-platform/cover.png`
         }
@@ -60,11 +57,6 @@ const en = {
 
 
     options: {
-
-      about: {
-        title: "About",
-        link: `${import.meta.env.BASE_URL}/about/`
-      },
 
       fun: {
         title: "Fun",
@@ -79,153 +71,31 @@ const en = {
     },
 
 
-    aboutPreview: {
+    pointOfView: {
 
-      eyebrow: "ABOUT ME",
-
-      title:
-        "I bridge business goals, user needs, and technical constraints.",
-
-      description:
-        "With a background in Systems Engineering and Product Design, I help teams transform complex requirements into scalable, user-centered digital products.",
-
-      link: `${import.meta.env.BASE_URL}/about/`,
-
-      action: "More about me"
-
-    },
-
-
-    closing: {
-
-      quote:
-        "Bring me the situation. Let's understand what's actually going on, figure out what matters, and decide what to do next.",
-
-      workWithMe: "Work with me",
-
-      copied: "Copied",
-
-    }
-
-  },
-
-
-  about: {
-
-    hero: {
-      eyebrow: "ABOUT ME",
-
-      title:
-        "I came into Product Design through an unusual door.",
+      title: "I tend to go one layer deeper.",
 
       paragraphs: [
-        "I started out as an analyst on a social platform that was being built from scratch. I was there from the early questions and rough ideas, and that experience pulled me toward UX and UI. Five years later, I've had the chance to do the same thing across e-commerce, automotive, digital credentials, and mobile products—taking products from their early stages through growth and maturity.",
 
-        "A lot of my work happens before there's anything to design. I've worked with PMs, developers, technical leads, QA, and business owners, and I've also gone into different areas of a business to understand how things actually work—from sales and marketing to accounting, administration, and procurement.",
+        "A product rarely starts where the brief says it does.",
 
-        "I like getting deep into a product until I understand its structure, its history, its constraints, and the reasons behind its decisions. Once I have that picture, I can help make sense of what comes next.",
+        "A request for a new feature might actually be a business problem.",
 
-        "Over time, I've become someone people come to when they're not sure what to do. I take those questions seriously, without making them feel silly for asking. Sometimes the answer is yes. Sometimes it's no. Usually, it's somewhere in between.",
+        "A confusing screen might actually be a permissions problem.",
 
-        "I think good leadership is a lot about making that space easier for people: <strong>clear enough to move forward, open enough to ask questions, and honest enough to make better decisions.</strong>"
-      ]
-    },
+        "A “technical limitation” might be a decision nobody has revisited yet.",
 
+        "So I like to follow the thread.",
 
-    background: {
-      eyebrow: "BACKGROUND",
+        "I talk to the people who know the business. I ask how things work today, where they break, and why they've ended up that way. I map what depends on what, challenge assumptions, and get into the details when the details matter.",
 
-      title:
-        "From systems to experiences.",
+        "Sometimes that leads to a new flow.",
 
-      paragraphs: [
-        "My background in Systems Engineering shaped the way I approach design.",
+        "Sometimes it changes the product structure.",
 
-        "It taught me to think in terms of architecture, dependencies, scalability, and how different parts of a system interact.",
+        "Sometimes it means saying no.",
 
-        "When I transitioned into Product Design, I discovered that these same skills helped me solve a different challenge: making complex products easier for people to understand and use.",
-
-        "Today, I work at the intersection of business strategy, user experience, and technical feasibility."
-      ]
-    },
-
-
-    process: {
-
-      eyebrow: "APPROACH",
-
-      title:
-        "How I turn complexity into clarity.",
-
-      intro:
-        "Every product has its own challenges. My process starts by understanding the problem behind the interface and creating solutions that balance user needs, business goals, and technical constraints.",
-
-
-      steps: [
-
-        {
-          number: "01",
-          title: "Understand",
-          description:
-            "I explore the ecosystem around the product: users, workflows, business objectives, and technical limitations to understand the real problem behind the request."
-        },
-
-        {
-          number: "02",
-          title: "Structure",
-          description:
-            "I create information architectures, user flows, and systems that transform complexity into clear and scalable foundations."
-        },
-
-        {
-          number: "03",
-          title: "Design",
-          description:
-            "I translate insights into intuitive interfaces, design systems, and interactions that make complex processes easier to use."
-        },
-
-        {
-          number: "04",
-          title: "Collaborate",
-          description:
-            "I work closely with stakeholders and development teams to align vision, feasibility, and product impact."
-        }
-
-      ]
-
-    },
-
-
-    principles: {
-
-      eyebrow: "PRINCIPLES",
-
-      title:
-        "What guides my work.",
-
-
-      items: [
-
-        {
-          title: "Clarity over complexity",
-
-          description:
-            "The best solutions are not always the most complex ones. They are the ones people can understand and use with confidence."
-        },
-
-        {
-          title: "Systems thinking",
-
-          description:
-            "I look beyond individual screens to understand how products, users, and business processes connect."
-        },
-
-        {
-          title: "Continuous learning",
-
-          description:
-            "Design is constantly evolving. I stay curious, experiment, and use new tools—including AI—to improve the way I work."
-        }
+        "<strong>I don't need to own every decision. I do want to understand enough to help make the right ones.</strong>"
 
       ]
 
@@ -234,21 +104,32 @@ const en = {
 
     beyond: {
 
-      eyebrow: "BEYOND DESIGN",
-
-      title:
-        "Curiosity fuels my work.",
-
+      title: "Beyond the screen.",
 
       paragraphs: [
 
-        "Outside of product design, I'm constantly exploring new ways to learn, create, and understand the world around me.",
+        "I like having a life that doesn't look like work.",
 
-        "I enjoy studying languages, reading about psychology and technology, painting, and experimenting with new tools that expand the way I think.",
+        "I move, explore, learn, make things, disappear into nature for a while, go out, stay in, read, experiment, and spend an unreasonable amount of time with my cats.",
 
-        "I believe curiosity is one of the most valuable skills a designer can develop."
+        "Work is important to me.",
+
+        "It just isn't the whole picture."
 
       ]
+
+    },
+
+
+    closing: {
+
+      quote: "Bring me the situation.",
+
+      sub: "Let's understand what's actually going on, figure out what matters, and decide what to do next.",
+
+      workWithMe: "Work with me",
+
+      copied: "Email copied",
 
     }
 
@@ -265,7 +146,6 @@ const en = {
   sidebar: {
     navigation: {
       work: "Work",
-      about: "About",
       experiments: "Experiments",
       fun: "Fun",
     },

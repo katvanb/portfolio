@@ -23,13 +23,11 @@ const prefix = isFrench
     : `${base}/`;
 
 const activePage =
-  pathname.includes("/about/")
-    ? "about"
-    : pathname.includes("/fun/")
-      ? "fun"
-      : pathname.includes("/experiments/")
-        ? "experiments"
-        : "work";
+  pathname.includes("/fun/")
+    ? "fun"
+    : pathname.includes("/experiments/")
+      ? "experiments"
+      : "work";
 ---
 
 
@@ -80,13 +78,6 @@ const activePage =
         class:list={{ active: activePage === "work" }}
       >
         {t.sidebar.navigation.work}
-      </a>
-
-      <a
-        href={`${prefix}about`}
-        class:list={{ active: activePage === "about" }}
-      >
-        {t.sidebar.navigation.about}
       </a>
 
       <a
