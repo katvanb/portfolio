@@ -35,8 +35,8 @@ const en = {
           description:
             "Designing a scalable credential management platform for multiple organizations and complex user roles.",
           tags: ["Product Strategy", "Systems Design", "Architecture", "Enterprise UX"],
-          link: `${import.meta.env.BASE_URL}/work/credential-platform/`,
-          image: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/cover.png`
+          link: `${import.meta.env.BASE_URL}/work/credential-platform-v2/`,
+          image: `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-01.png`
         },
 
         {
@@ -485,6 +485,369 @@ const en = {
           ]
         }
       },
+  },
+
+  credentialPlatformV2: {
+    hero: {
+      tag: "CASE STUDY",
+      title: "From an idea to a scalable credentialing platform",
+      description: [
+        "A business concept became a live multi-tenant credentialing platform supporting four organizations across Colombia and Spain.",
+        "I defined the product structure, organizational model, roles and permissions, information architecture, core workflows, and interaction patterns — working closely with product, engineering and QA as the platform evolved."
+      ],
+      role: "Product Designer",
+      timeline: "2 years",
+      team: "Product · UX/UI · Engineering · QA · Stakeholders",
+      focus: "Product strategy · Product architecture · UX/UI · IA · Roles & permissions · Workflows · Edge cases",
+      ndaText:
+        "Details have been generalized to protect client confidentiality."
+    },
+
+    challenge: {
+      eyebrow: "THE CHALLENGE",
+      title: "There was a business model, but no product yet.",
+      paragraphs: [
+        "The founders knew what they wanted to sell and had a reference for the type of platform they wanted to build.",
+        "What was missing was the system behind it."
+      ],
+      listTitle: "I needed to define:",
+      items: [
+        "who the different actors were",
+        "how organizations related to each other",
+        "what each role could see and manage",
+        "how credentials moved through their lifecycle",
+        "how multiple organizations could coexist",
+        "how the product could evolve as the business changed"
+      ],
+      closing:
+        "The challenge wasn't reproducing the reference product. It was turning an idea into a product architecture that could actually work.",
+      asset: { id: "ASSET 02", label: "Product architecture diagram" }
+    },
+
+    businessModel: {
+      number: "01",
+      title: "Turn the business model into a product",
+      paragraphs: [
+        "I started by mapping the business rules, organizational relationships, responsibilities and operational workflows with stakeholders.",
+        "Rather than reproducing the reference product, I translated the business model into a structure that could support the platform we were actually building."
+      ],
+      layersTitle: "Two layers emerged",
+      layers: [
+        {
+          title: "Platform governance",
+          description: "Managing the platform and its organizations."
+        },
+        {
+          title: "Organization management",
+          description:
+            "Managing people, credentials and day-to-day operations within each organization."
+        }
+      ],
+      layersNote:
+        "This separation became the foundation for the platform's multi-tenant model.",
+      roleTitle: "The role model evolved",
+      roleIntro: "The initial model was simple:",
+      roleFrom: ["Platform", "Organization", "Administrator", "Operator"],
+      roleParagraphs: [
+        "As the product became real, that structure was no longer enough.",
+        "I reworked it into a hierarchy supporting parent organizations, sub-organizations and different levels of responsibility."
+      ],
+      roleGoal:
+        "The goal wasn't to create more roles. It was to make responsibility explicit.",
+      matrixTitle: "Role & permission model",
+      matrixColumns: ["Role", "Organizations", "Members", "Credentials", "Reports"],
+      matrixRows: [
+        ["Platform Admin", "✓", "✓", "✓", "✓"],
+        ["Org Admin", "✓", "✓", "✓", "✓"],
+        ["Secondary Admin", "—", "✓", "✓", "Limited"],
+        ["Accredited", "—", "—", "Own", "Own"]
+      ],
+      asset: { id: "ASSET 03", label: "Role & permission model" }
+    },
+
+    evolution: {
+      number: "02",
+      title: "The first launch revealed the real product",
+      paragraphs: [
+        "The first organization changed the project.",
+        "Until then, many decisions were based on requirements and assumptions. Once real organizations started using the platform, those assumptions were tested against actual workflows."
+      ],
+      gapsTitle: "New customers exposed gaps around:",
+      gaps: [
+        "self-service",
+        "permissions",
+        "assignment workflows",
+        "reporting",
+        "organizational structure"
+      ],
+      closing: "The product had to evolve with them.",
+      shift:
+        "This shifted my role from defining the initial product to continuously shaping the system as real use cases emerged.",
+      timeline: [
+        "Business idea",
+        "Initial product",
+        "First organization",
+        "Real workflows",
+        "New edge cases",
+        "Product evolution",
+        "4 organizations"
+      ],
+      asset: { id: "ASSET 04", label: "Product evolution" }
+    },
+
+    selfService: {
+      number: "03",
+      title: "Replace operational work with self-service",
+      paragraphs: [
+        "Initially, clients depended on the internal team for operational changes.",
+        "They needed the team to:"
+      ],
+      items: [
+        "create organizations",
+        "add members",
+        "change roles",
+        "modify plan credits",
+        "manage consumption"
+      ],
+      transition: ["That worked at a small scale.", "It wouldn't scale."],
+      resultTitle: "I moved those operations into the product.",
+      resultText:
+        "Clients could create organizations, add members and manage roles themselves.",
+      beforeTitle: "Before",
+      beforeFlow: ["Client request", "Internal team", "Manual change"],
+      afterTitle: "After",
+      afterFlow: ["Client", "Organization settings", "Change completed"],
+      contributionTitle: "Design contribution",
+      contribution: [
+        "Self-service architecture",
+        "Permission logic",
+        "UI flow",
+        "Edge cases",
+        "Validation states"
+      ],
+      callouts: [
+        "Role visibility adapts to the user's responsibility.",
+        "Actions are available only when the user's permission model allows them."
+      ],
+      assetFlow: { id: "ASSET 05", label: "Before / after flow" },
+      assetUi: { id: "ASSET 06", label: "Organization & member management UI" }
+    },
+
+    workflow: {
+      number: "04",
+      title: "Turn credential issuance into a scalable workflow",
+      paragraphs: [
+        "A typical course could have 20–50 accredited users.",
+        "The original workflow required entering information through an extensive form, one person at a time.",
+        "That meant effort increased directly with the number of recipients."
+      ],
+      approachTitle: "I changed the unit of work.",
+      approachText: "Instead of creating every credential from scratch:",
+      approachSteps: ["Define once", "Reuse", "Assign in bulk"],
+      templateTitle: "Reusable credential templates",
+      templateText:
+        "Organizations could create a credential once and reuse or duplicate it.",
+      bulkTitle: "Bulk assignment",
+      bulkText:
+        "Organizations could prepare recipient information and upload it through CSV. With the data ready, a multiple assignment could take approximately 2 minutes.",
+      beforeTitle: "BEFORE",
+      beforeFlow: [
+        "Recipient 1 → Form",
+        "Recipient 2 → Form",
+        "Recipient 3 → Form",
+        "…",
+        "Recipient 50 → Form"
+      ],
+      afterTitle: "AFTER",
+      afterFlow: [
+        "Credential template",
+        "Prepare CSV",
+        "Upload",
+        "Review",
+        "Assign to 20–50 users"
+      ],
+      stat: { value: "~2 min", label: "for a bulk assignment" },
+      uiTitle: "UI sequence",
+      ui: [
+        "Credential template",
+        "Upload CSV",
+        "Data validation",
+        "Review recipients",
+        "Assignment confirmation"
+      ],
+      assetA: { id: "ASSET 07", label: "Workflow transformation" },
+      assetB: { id: "ASSET 08", label: "UI sequence" }
+    },
+
+    accreditedUX: {
+      number: "05",
+      title: "Make the experience clearer for accredited users",
+      paragraphs: [
+        "Scaling the administrative side revealed another issue: some workflows were technically correct but difficult to understand.",
+        "Users struggled with:"
+      ],
+      issues: ["unfamiliar labels", "long registration", "information required too early"],
+      mentalTitle:
+        "I redesigned the entry experience around a simpler mental model:",
+      mentalBold: "Get into the product → Complete your profile",
+      mentalText:
+        "Instead of requiring everything during account creation, users could access their account through a dedicated link and complete or edit their profile afterward.",
+      beforeTitle: "Before",
+      beforeFlow: ["Invitation", "Long registration", "Account"],
+      afterTitle: "After",
+      afterFlow: ["Invitation", "Account", "Complete profile"],
+      annotations: [
+        "Reduced initial cognitive load",
+        "Deferred non-essential information",
+        "Clearer separation of tasks"
+      ],
+      asset: { id: "ASSET 09", label: "UX before / after" }
+    },
+
+    permissions: {
+      number: "06",
+      title: "Design permissions around responsibility",
+      paragraphs: [
+        "As organizations became more autonomous, permissions became a core product problem."
+      ],
+      wrongQIntro: "The question wasn't:",
+      wrongQuestion: "What can this user click?",
+      rightQIntro: "It was:",
+      rightQuestion:
+        "What information and actions should this person be responsible for?",
+      modelText:
+        "I structured permissions around organizational responsibility rather than treating every action as an isolated permission.",
+      modelTitle: "The model accounted for:",
+      model: [
+        "platform governance",
+        "parent organizations",
+        "sub-organizations",
+        "primary and secondary administrators",
+        "credential management",
+        "reporting",
+        "accredited users"
+      ],
+      navTitle: "Context-aware navigation",
+      navParagraphs: [
+        "The same principle shaped the information architecture.",
+        "Users didn't need every module available in the platform."
+      ],
+      navFormulaText: "Navigation adapted to:",
+      navFormula: "Role + organization + responsibility",
+      navExampleTitle: "ORG ADMIN",
+      navExample: ["Dashboard", "Organizations", "Members", "Credentials", "Reports"],
+      navCaptionBefore: "Admin navigation",
+      navCaptionAfter: "Accredited navigation",
+      asset: { id: "ASSET 10", label: "IA + navigation" }
+    },
+
+    reporting: {
+      number: "07",
+      title: "Make reporting reflect the organization",
+      paragraphs: [
+        "The problem wasn't simply a lack of reports.",
+        "The business hadn't yet fully defined what each organizational level needed to understand. That created duplicated information and reports that didn't answer the right questions."
+      ],
+      approachTitle:
+        "I restructured reporting around visibility levels rather than creating completely separate reporting experiences for every role.",
+      approachText:
+        "The same reporting ecosystem could serve different users while information was filtered according to organizational responsibility.",
+      modelTitle: "One reporting system",
+      modelSubtitle: "Different visibility",
+      screens: [
+        "Platform-level report",
+        "Organization-level report",
+        "Filtered view"
+      ],
+      annotation: "Same reporting foundation, different visibility.",
+      asset: { id: "ASSET 11", label: "Reporting model + UI" }
+    },
+
+    expansion: {
+      number: "08",
+      title: "Expand the product beyond its original market",
+      paragraphs: [
+        "As more organizations joined, the product eventually supported four organizations across Colombia and Spain.",
+        "The Spanish opportunity introduced new considerations:"
+      ],
+      considerations: [
+        "GDPR",
+        "currency",
+        "geolocation",
+        "education systems",
+        "organizational structures",
+        "white-label requirements"
+      ],
+      noteTitle: "These weren't simply additional screens.",
+      noteText: "They challenged assumptions embedded in the original product.",
+      conclusion:
+        "The architecture therefore had to evolve from supporting a specific business model and market into supporting different customers and contexts.",
+      diagramTitle: "INITIAL ASSUMPTIONS",
+      diagram: [
+        "Colombia",
+        "Real customers",
+        "New market",
+        "Spain",
+        "New requirements",
+        "Adaptable product architecture"
+      ],
+      asset: { id: "ASSET 12", label: "Expansion / adaptation diagram" }
+    },
+
+    whatChanged: {
+      title: "What changed",
+      columns: ["From", "To"],
+      rows: [
+        ["Business idea", "Product strategy + architecture"],
+        ["Reference product", "Business-specific product"],
+        ["Internal operational dependency", "Client self-service"],
+        ["One-by-one issuance", "Bulk assignment"],
+        ["One-off credentials", "Reusable templates"],
+        ["Flat role model", "Hierarchical organization model"],
+        ["Fixed reporting", "Visibility-based reporting"],
+        ["Colombia assumptions", "Colombia + Spain"],
+        ["Initial launch", "4 organizations"]
+      ],
+      metrics: [
+        { value: "2 years", label: "Product evolution" },
+        { value: "4", label: "Organizations · Colombia + Spain" },
+        { value: "20–50", label: "Users in a typical bulk assignment" },
+        { value: "~2 min", label: "Bulk assignment workflow" }
+      ]
+    },
+
+    outcome: {
+      title: "Outcome",
+      paragraphs: [
+        "The product moved from an initial business idea to a live multi-tenant credentialing platform.",
+        "Organizations could manage their own structure and members. Credential teams could create reusable templates and assign credentials in bulk. Roles and permissions evolved with increasingly sophisticated organizational structures. Reporting became aligned with organizational visibility.",
+        "The architecture was no longer tied to the original reference product."
+      ],
+      closing: "It had become a system that could adapt.",
+      montageTitle: "A system designed to evolve.",
+      montage: [
+        "Dashboard",
+        "Organization management",
+        "Credential builder",
+        "Bulk assignment",
+        "Reports",
+        "User profile"
+      ],
+      asset: { id: "ASSET 14", label: "Final product montage" }
+    },
+
+    lessons: {
+      title: "What I learned",
+      heading: "Designing the system, not just the screen",
+      paragraphs: [
+        "The hardest part wasn't designing individual screens.",
+        "It was making product decisions while the business itself was still taking shape.",
+        "Requirements were incomplete. Organizational structures evolved. Real customers challenged assumptions.",
+        "My role was to create enough structure to support the business today without making tomorrow's changes unnecessarily expensive."
+      ],
+      quote:
+        "Good product design doesn't just solve today's workflow. It creates enough structure for the product to evolve without breaking."
+    }
   },
 
   b2bCommercePlatform: {

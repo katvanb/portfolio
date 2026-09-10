@@ -1,0 +1,147 @@
+---
+import SectionHeading from "../shared/SectionHeading.astro";
+import Asset from "../shared/Asset.astro";
+
+interface Props {
+  title: string;
+  paragraphs: string[];
+  closing: string;
+  montageTitle: string;
+  montage: string[];
+  asset: { id: string; label: string };
+}
+
+const { title, paragraphs, closing, montageTitle, montage, asset } = Astro.props;
+
+const assetImage = `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-14.png`;
+---
+
+<section class="outcome" id="outcome">
+
+  <SectionHeading title={title} />
+
+  <div class="body">
+
+    {
+      paragraphs.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))
+    }
+
+    <p class="closing">{closing}</p>
+
+    <p class="montage-title">{montageTitle}</p>
+
+    <div class="montage">
+
+      {
+        montage.map((screen) => (
+          <div class="montage-tile">{screen}</div>
+        ))
+      }
+
+    </div>
+
+  </div>
+
+  <Asset id={asset.id} label={asset.label} image={assetImage} />
+
+</section>
+
+
+<style>
+
+.outcome {
+  margin-top: var(--section-spacing);
+}
+
+
+.body {
+
+  max-width: 800px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-md);
+
+}
+
+
+.body p {
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: var(--line-height-body-lg);
+
+}
+
+
+.closing {
+
+  font-size: var(--font-size-h3) !important;
+
+  line-height: var(--line-height-h3) !important;
+
+  font-weight: 600;
+
+  color: var(--color-text-primary) !important;
+
+  padding-bottom: var(--space-md);
+
+  border-bottom: 1px solid var(--color-border);
+
+}
+
+
+.montage-title {
+
+  font-weight: 500;
+
+  color: var(--color-text-primary) !important;
+
+}
+
+
+.montage {
+
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: var(--space-md);
+}
+
+
+.montage-tile {
+
+  aspect-ratio: 3 / 4;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: center;
+
+  padding: var(--space-md);
+
+  border: 1px solid var(--color-border);
+
+  background: var(--color-bg-secondary);
+
+  color: var(--color-text-secondary);
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-small);
+
+  text-align: center;
+
+}
+
+</style>

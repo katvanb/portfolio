@@ -3,11 +3,12 @@ interface Props {
   content: {
     tag: string;
     title: string;
-    description: string;
+    description: string | string[];
     role: string;
     timeline: string;
     team: string;
     ndaText?: string;
+    focus?: string;
   };
 
   readingTime?: string;
@@ -31,8 +32,14 @@ const { content, readingTime, nda = false, ndaText } = Astro.props;
     </h1>
 
     <p class="description">
-      {content.description}
+      {Array.isArray(content.description) ? content.description[0] : content.description}
     </p>
+
+    {
+      Array.isArray(content.description) && content.description.slice(1).map((paragraph) => (
+        <p class="description">{paragraph}</p>
+      ))
+    }
 
     {
       nda && content.ndaText && (
@@ -99,6 +106,24 @@ const { content, readingTime, nda = false, ndaText } = Astro.props;
       </p>
 
     </div>
+
+    {
+      content.focus && (
+
+        <div class="metadata-item team">
+
+          <span class="label">
+            FOCUS
+          </span>
+
+          <p>
+            {content.focus}
+          </p>
+
+        </div>
+
+      )
+    }
 
   </div>
 
@@ -172,6 +197,13 @@ h1 {
   font-size: var(--font-size-body-lg);
 
   line-height: var(--line-height-body-lg);
+
+}
+
+
+.description + .description {
+
+  margin-top: var(--space-sm);
 
 }
 

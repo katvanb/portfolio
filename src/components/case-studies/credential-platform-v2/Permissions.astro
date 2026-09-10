@@ -1,0 +1,380 @@
+---
+import SectionHeading from "../shared/SectionHeading.astro";
+import Asset from "../shared/Asset.astro";
+
+interface Props {
+  number: string;
+  title: string;
+  paragraphs: string[];
+  wrongQIntro: string;
+  wrongQuestion: string;
+  rightQIntro: string;
+  rightQuestion: string;
+  modelText: string;
+  modelTitle: string;
+  model: string[];
+  navTitle: string;
+  navParagraphs: string[];
+  navFormulaText: string;
+  navFormula: string;
+  navExampleTitle: string;
+  navExample: string[];
+  navCaptionBefore: string;
+  navCaptionAfter: string;
+  asset: { id: string; label: string };
+}
+
+const {
+  number, title, paragraphs,
+  wrongQIntro, wrongQuestion, rightQIntro, rightQuestion,
+  modelText, modelTitle, model,
+  navTitle, navParagraphs, navFormulaText, navFormula,
+  navExampleTitle, navExample, navCaptionBefore, navCaptionAfter, asset
+} = Astro.props;
+
+const assetImage = `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-10.png`;
+---
+
+<section class="permissions" id="permissions">
+
+  <SectionHeading number={number} title={title} />
+
+  <div class="body">
+
+    {
+      paragraphs.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))
+    }
+
+    <p class="q-intro">{wrongQIntro}</p>
+
+    <p class="question muted">{wrongQuestion}</p>
+
+    <p class="q-intro">{rightQIntro}</p>
+
+    <p class="question">{rightQuestion}</p>
+
+    <p>{modelText}</p>
+
+    <p class="model-title">{modelTitle}</p>
+
+    <div class="model-list">
+
+      {
+        model.map((item) => (
+          <span class="model-tag">{item}</span>
+        ))
+      }
+
+    </div>
+
+    <h3>{navTitle}</h3>
+
+    {
+      navParagraphs.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))
+    }
+
+    <p>{navFormulaText}</p>
+
+    <p class="nav-formula">{navFormula}</p>
+
+    <div class="nav-demo">
+
+      <article class="nav-panel">
+
+        <span class="nav-label">{navCaptionBefore}</span>
+
+        <div class="nav-card admin">
+
+          <span class="nav-role">{navExampleTitle}</span>
+
+          <ul>
+            {navExample.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+
+        </div>
+
+      </article>
+
+
+      <article class="nav-panel">
+
+        <span class="nav-label">{navCaptionAfter}</span>
+
+        <div class="nav-card">
+
+          <span class="nav-role">{navExampleTitle}</span>
+
+          <ul>
+            {navExample.map((item, index) => (
+              <li class={index > 0 ? "dim" : ""}>{item}</li>
+            ))}
+          </ul>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+
+  <Asset id={asset.id} label={asset.label} image={assetImage} />
+
+</section>
+
+
+<style>
+
+.permissions {
+  margin-top: var(--section-spacing);
+}
+
+
+.body {
+
+  max-width: 800px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-md);
+
+}
+
+
+.body p {
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: var(--line-height-body-lg);
+
+}
+
+
+.q-intro {
+
+  font-size: var(--font-size-body) !important;
+
+  color: var(--color-text-secondary) !important;
+
+}
+
+
+.question {
+
+  font-size: var(--font-size-h3) !important;
+
+  line-height: var(--line-height-h3) !important;
+
+  font-weight: 600;
+
+  color: var(--color-text-primary) !important;
+
+}
+
+
+.question.muted {
+
+  color: var(--color-text-secondary) !important;
+
+  text-decoration: line-through;
+
+  text-decoration-color: var(--color-accent);
+
+}
+
+
+.model-title {
+
+  font-weight: 500;
+
+  color: var(--color-text-primary) !important;
+
+}
+
+
+.model-list {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: var(--space-sm);
+
+}
+
+
+.model-tag {
+
+  padding: var(--space-xs) var(--space-md);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 999px;
+
+  background: var(--color-bg-secondary);
+
+  font-size: var(--font-size-small);
+
+  color: var(--color-text-secondary);
+
+}
+
+
+h3 {
+
+  margin: var(--space-lg) 0 0;
+
+  font-size: var(--font-size-h3);
+
+  line-height: var(--line-height-h3);
+
+  font-weight: 600;
+
+}
+
+
+.nav-formula {
+
+  padding: var(--space-md) var(--space-lg);
+
+  border: 1px solid var(--color-border);
+
+  background: var(--color-bg-secondary);
+
+  color: var(--color-text-primary) !important;
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-body) !important;
+
+  letter-spacing: 0.03em;
+
+  width: fit-content;
+
+}
+
+
+.nav-demo {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: var(--space-md);
+
+  margin: var(--space-md) 0;
+}
+
+
+.nav-label {
+
+  display: block;
+
+  margin-bottom: var(--space-sm);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-label);
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+}
+
+
+.nav-card {
+
+  border: 1px solid var(--color-border);
+
+  background: var(--color-bg-secondary);
+
+  padding: var(--space-lg);
+
+}
+
+
+.nav-card.admin {
+
+  border-color: var(--color-accent);
+
+}
+
+
+.nav-role {
+
+  display: block;
+
+  margin-bottom: var(--space-md);
+
+  color: var(--color-accent);
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-small);
+
+  letter-spacing: 0.08em;
+
+}
+
+
+.nav-card ul {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-sm);
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+
+}
+
+
+.nav-card li {
+
+  padding: var(--space-xs) var(--space-sm);
+
+  border: 1px solid var(--color-border);
+
+  background: var(--color-bg-primary);
+
+  font-size: var(--font-size-small);
+
+  color: var(--color-text-secondary);
+
+}
+
+
+.nav-card.admin li:first-child {
+
+  border-color: var(--color-accent);
+
+  color: var(--color-accent);
+
+}
+
+
+.nav-card li.dim {
+
+  opacity: 0.35;
+
+}
+
+</style>

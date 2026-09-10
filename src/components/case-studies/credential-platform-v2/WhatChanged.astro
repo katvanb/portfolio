@@ -1,0 +1,230 @@
+---
+import SectionHeading from "../shared/SectionHeading.astro";
+
+interface Props {
+  title: string;
+  columns: string[];
+  rows: string[][];
+  metrics: { value: string; label: string }[];
+}
+
+const { title, columns, rows, metrics } = Astro.props;
+---
+
+<section class="what-changed" id="what-changed">
+
+  <SectionHeading title={title} />
+
+  <div class="table-wrap">
+
+    <table>
+
+      <thead>
+        <tr>
+          {
+            columns.map((column) => (
+              <th>{column}</th>
+            ))
+          }
+        </tr>
+      </thead>
+
+      <tbody>
+        {
+          rows.map((row) => (
+            <tr>
+              {
+                row.map((cell, index) => (
+                  <td class={index === 0 ? "from" : "to"}>
+                    {cell}
+                  </td>
+                ))
+              }
+            </tr>
+          ))
+        }
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <div class="metrics">
+
+    {
+      metrics.map((metric) => (
+        <div class="metric">
+
+          <span class="metric-value">{metric.value}</span>
+
+          <span class="metric-label">{metric.label}</span>
+
+        </div>
+      ))
+    }
+
+  </div>
+
+</section>
+
+
+<style>
+
+.what-changed {
+  margin-top: var(--section-spacing);
+}
+
+
+.table-wrap {
+
+  width: 100%;
+
+  overflow-x: auto;
+
+  border: 1px solid var(--color-border);
+
+}
+
+
+table {
+
+  width: 100%;
+
+  border-collapse: collapse;
+
+  font-size: var(--font-size-body);
+
+}
+
+
+th {
+
+  padding: var(--space-md);
+
+  text-align: left;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-label);
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  border-bottom: 1px solid var(--color-border);
+
+  background: var(--color-bg-secondary);
+
+}
+
+
+th:first-child {
+
+  width: 45%;
+
+}
+
+
+td {
+
+  padding: var(--space-sm) var(--space-md);
+
+  border-bottom: 1px solid var(--color-border);
+
+  vertical-align: top;
+
+  line-height: 1.5;
+
+}
+
+
+tr:last-child td {
+
+  border-bottom: none;
+
+}
+
+
+td.from {
+
+  color: var(--color-text-secondary);
+
+}
+
+
+td.to {
+
+  color: var(--color-text-primary);
+
+  font-weight: 500;
+
+}
+
+
+.metrics {
+
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  margin-top: var(--space-lg);
+
+  border-top: 1px solid var(--color-border);
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+
+.metric {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: var(--space-xs);
+
+  padding: var(--space-xl) var(--space-md);
+
+  text-align: center;
+
+  border-right: 1px solid var(--color-border);
+}
+
+
+.metric:last-child {
+
+  border-right: none;
+
+}
+
+
+.metric-value {
+
+  font-size: var(--font-size-display);
+
+  line-height: 1;
+
+  font-weight: 600;
+
+  color: var(--color-accent);
+
+  letter-spacing: -0.02em;
+
+}
+
+
+.metric-label {
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+  line-height: 1.4;
+
+}
+
+</style>

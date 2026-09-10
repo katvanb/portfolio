@@ -1,0 +1,102 @@
+---
+interface Props {
+  number?: string;
+  title: string;
+  eyebrow?: string;
+}
+
+const { number, title, eyebrow } = Astro.props;
+---
+
+<div class="section-heading">
+
+  {
+    eyebrow && (
+      <span class="eyebrow">
+        {eyebrow}
+      </span>
+    )
+  }
+
+  <div class="heading-row">
+
+    {
+      number && (
+        <span class="section-number">
+          {number}
+        </span>
+      )
+    }
+
+    <h2>
+      {title}
+    </h2>
+
+  </div>
+
+</div>
+
+
+<style>
+
+.section-heading {
+  margin-bottom: var(--space-lg);
+}
+
+
+.eyebrow {
+
+  display: block;
+
+  margin-bottom: var(--space-sm);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+}
+
+
+.heading-row {
+
+  display: flex;
+
+  align-items: baseline;
+
+  gap: var(--space-md);
+
+}
+
+
+.section-number {
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-h3);
+
+  color: var(--color-accent);
+
+  letter-spacing: 0.05em;
+
+}
+
+
+h2 {
+
+  margin: 0;
+
+  font-size: var(--font-size-h2);
+
+  line-height: var(--line-height-h2);
+
+  font-weight: var(--font-weight-h2);
+
+  letter-spacing: var(--letter-spacing-h2);
+
+}
+
+</style>

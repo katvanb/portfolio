@@ -1,0 +1,387 @@
+---
+import SectionHeading from "../shared/SectionHeading.astro";
+import Asset from "../shared/Asset.astro";
+
+interface Props {
+  number: string;
+  title: string;
+  paragraphs: string[];
+  layersTitle: string;
+  layers: { title: string; description: string }[];
+  layersNote: string;
+  roleTitle: string;
+  roleIntro: string;
+  roleFrom: string[];
+  roleParagraphs: string[];
+  roleGoal: string;
+  matrixTitle: string;
+  matrixColumns: string[];
+  matrixRows: string[][];
+  asset: { id: string; label: string };
+}
+
+const {
+  number, title, paragraphs, layersTitle, layers, layersNote,
+  roleTitle, roleIntro, roleFrom, roleParagraphs, roleGoal,
+  matrixTitle, matrixColumns, matrixRows, asset
+} = Astro.props;
+
+const assetImage = `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-03.png`;
+---
+
+<section class="business-model" id="business-model">
+
+  <SectionHeading number={number} title={title} />
+
+  <div class="body">
+
+    {
+      paragraphs.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))
+    }
+
+    <h3>{layersTitle}</h3>
+
+    <div class="layers">
+
+      {
+        layers.map((layer) => (
+          <article class="layer-card">
+
+            <h4>{layer.title}</h4>
+
+            <p>{layer.description}</p>
+
+          </article>
+        ))
+      }
+
+    </div>
+
+    <p class="layers-note">{layersNote}</p>
+
+    <h3>{roleTitle}</h3>
+
+    <p>{roleIntro}</p>
+
+    <div class="flow-chips">
+
+      {
+        roleFrom.map((step, index) => (
+          <span class="flow-chip-wrap">
+
+            <span class="flow-chip">{step}</span>
+
+            {
+              index < roleFrom.length - 1 && (
+                <span class="flow-arrow">→</span>
+              )
+            }
+
+          </span>
+        ))
+      }
+
+    </div>
+
+    {
+      roleParagraphs.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))
+    }
+
+    <p class="role-goal">{roleGoal}</p>
+
+    <h3>{matrixTitle}</h3>
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            {
+              matrixColumns.map((column) => (
+                <th>{column}</th>
+              ))
+            }
+          </tr>
+        </thead>
+
+        <tbody>
+          {
+            matrixRows.map((row) => (
+              <tr>
+                {
+                  row.map((cell, index) => (
+                    <td class={index === 0 ? "role" : "cell"}>
+                      {cell}
+                    </td>
+                  ))
+                }
+              </tr>
+            ))
+          }
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+  <Asset id={asset.id} label={asset.label} image={assetImage} />
+
+</section>
+
+
+<style>
+
+.business-model {
+  margin-top: var(--section-spacing);
+}
+
+
+.body {
+
+  max-width: 800px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-md);
+
+}
+
+
+.body p {
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: var(--line-height-body-lg);
+
+}
+
+
+h3 {
+
+  margin: var(--space-lg) 0 0;
+
+  font-size: var(--font-size-h3);
+
+  line-height: var(--line-height-h3);
+
+  font-weight: 600;
+
+}
+
+
+.layers {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: var(--space-md);
+
+}
+
+
+.layer-card {
+
+  padding: var(--space-lg);
+
+  border: 1px solid var(--color-border);
+
+  background: var(--color-bg-secondary);
+
+}
+
+
+.layer-card h4 {
+
+  margin: 0 0 var(--space-sm);
+
+  font-size: var(--font-size-body);
+
+  font-weight: 600;
+
+  color: var(--color-accent);
+
+  letter-spacing: 0.03em;
+
+}
+
+
+.layer-card p {
+
+  margin: 0;
+
+  font-size: var(--font-size-body) !important;
+
+}
+
+
+.layers-note {
+
+  padding: var(--space-md);
+
+  border-left: 3px solid var(--color-accent);
+
+  background: var(--color-bg-secondary);
+
+}
+
+
+.flow-chips {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  gap: var(--space-sm);
+
+}
+
+
+.flow-chip-wrap {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: var(--space-sm);
+
+}
+
+
+.flow-chip {
+
+  padding: var(--space-xs) var(--space-md);
+
+  border: 1px solid var(--color-border);
+
+  background: var(--color-bg-secondary);
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-small);
+
+  letter-spacing: 0.03em;
+
+  white-space: nowrap;
+
+}
+
+
+.flow-arrow {
+
+  color: var(--color-accent);
+
+  font-size: var(--font-size-h3);
+
+}
+
+
+.role-goal {
+
+  padding: var(--space-md);
+
+  border: 1px solid var(--color-border);
+
+  color: var(--color-text-primary) !important;
+
+  font-weight: 500;
+
+}
+
+
+.table-wrap {
+
+  width: 100%;
+
+  overflow-x: auto;
+
+  border: 1px solid var(--color-border);
+
+}
+
+
+table {
+
+  width: 100%;
+
+  border-collapse: collapse;
+
+  font-size: var(--font-size-small);
+
+}
+
+
+th {
+
+  padding: var(--space-sm) var(--space-md);
+
+  text-align: left;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-label);
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  border-bottom: 1px solid var(--color-border);
+
+  background: var(--color-bg-secondary);
+
+}
+
+
+td {
+
+  padding: var(--space-sm) var(--space-md);
+
+  color: var(--color-text-secondary);
+
+  border-bottom: 1px solid var(--color-border);
+
+  white-space: nowrap;
+
+}
+
+
+tr:last-child td {
+
+  border-bottom: none;
+
+}
+
+
+td.role {
+
+  color: var(--color-text-primary);
+
+  font-weight: 500;
+
+  font-family: "Courier New", Courier, monospace;
+
+}
+
+
+td.cell {
+
+  text-align: center;
+
+}
+
+</style>

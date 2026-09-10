@@ -1,0 +1,280 @@
+---
+import SectionHeading from "../shared/SectionHeading.astro";
+import Asset from "../shared/Asset.astro";
+
+interface Props {
+  number: string;
+  title: string;
+  paragraphs: string[];
+  considerations: string[];
+  noteTitle: string;
+  noteText: string;
+  conclusion: string;
+  diagramTitle: string;
+  diagram: string[];
+  asset: { id: string; label: string };
+}
+
+const { number, title, paragraphs, considerations, noteTitle, noteText, conclusion, diagramTitle, diagram, asset } = Astro.props;
+
+const assetImage = `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-12.png`;
+---
+
+<section class="expansion" id="expansion">
+
+  <SectionHeading number={number} title={title} />
+
+  <div class="body">
+
+    {
+      paragraphs.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))
+    }
+
+    <div class="considerations">
+
+      {
+        considerations.map((item) => (
+          <span class="consideration-tag">{item}</span>
+        ))
+      }
+
+    </div>
+
+    <div class="note">
+
+      <p>{noteTitle}</p>
+
+      <p>{noteText}</p>
+
+    </div>
+
+    <p class="conclusion">{conclusion}</p>
+
+    <div class="diagram">
+
+      <span class="diagram-title">{diagramTitle}</span>
+
+      <div class="diagram-flow">
+
+        {
+          diagram.map((step, index) => (
+            <div class="diagram-step">
+
+              <span class="diagram-dot"></span>
+
+              <span class="diagram-label">{step}</span>
+
+              {
+                index < diagram.length - 1 && (
+                  <span class="diagram-arrow">↓</span>
+                )
+              }
+
+            </div>
+          ))
+        }
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <Asset id={asset.id} label={asset.label} image={assetImage} />
+
+</section>
+
+
+<style>
+
+.expansion {
+  margin-top: var(--section-spacing);
+}
+
+
+.body {
+
+  max-width: 800px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-md);
+
+}
+
+
+.body p {
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: var(--line-height-body-lg);
+
+}
+
+
+.considerations {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: var(--space-sm);
+
+}
+
+
+.consideration-tag {
+
+  padding: var(--space-xs) var(--space-md);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 999px;
+
+  background: var(--color-bg-secondary);
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-small);
+
+  color: var(--color-text-secondary);
+
+}
+
+
+.note {
+
+  padding: var(--space-md) var(--space-lg);
+
+  border-left: 3px solid var(--color-accent);
+
+  background: var(--color-bg-secondary);
+
+}
+
+
+.note p {
+
+  color: var(--color-text-primary) !important;
+
+  font-size: var(--font-size-body) !important;
+
+}
+
+
+.conclusion {
+
+  font-weight: 500;
+
+  color: var(--color-text-primary) !important;
+
+}
+
+
+.diagram {
+
+  margin-top: var(--space-md);
+
+  border: 1px solid var(--color-border);
+
+  background: var(--color-bg-secondary);
+
+  padding: var(--space-lg);
+}
+
+
+.diagram-title {
+
+  display: block;
+
+  margin-bottom: var(--space-md);
+
+  color: var(--color-text-secondary);
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-label);
+
+  letter-spacing: 0.08em;
+
+}
+
+
+.diagram-flow {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 0;
+
+}
+
+
+.diagram-step {
+
+  display: grid;
+
+  grid-template-columns: 12px 1fr;
+
+  align-items: center;
+
+  gap: var(--space-md);
+}
+
+
+.diagram-dot {
+
+  width: 12px;
+
+  height: 12px;
+
+  border-radius: 50%;
+
+  background: var(--color-accent);
+}
+
+
+.diagram-arrow {
+
+  grid-column: 1;
+
+  margin: 0 auto;
+
+  color: var(--color-accent);
+
+  font-size: var(--font-size-small);
+}
+
+
+.diagram-label {
+
+  grid-column: 2;
+
+  padding: var(--space-xs) 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+}
+
+
+.diagram-step:last-child .diagram-label {
+
+  color: var(--color-text-primary);
+
+  font-weight: 600;
+
+}
+
+</style>

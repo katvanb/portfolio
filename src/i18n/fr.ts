@@ -35,8 +35,8 @@ const fr = {
           description:
             "Conception d'une plateforme évolutive de gestion des certifications pour plusieurs organisations et des rôles utilisateurs complexes.",
           tags: ["Product Strategy", "Systems Design", "Architecture", "Enterprise UX"],
-          link: `${import.meta.env.BASE_URL}/fr/work/credential-platform/`,
-          image: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/cover.png`
+          link: `${import.meta.env.BASE_URL}/fr/work/credential-platform-v2/`,
+          image: `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-01.png`
         },
 
         {
@@ -485,6 +485,369 @@ const fr = {
           ]
         }
       },
+  },
+
+  credentialPlatformV2: {
+    hero: {
+      tag: "ÉTUDE DE CAS",
+      title: "D'une idée à une plateforme de credentials scalable",
+      description: [
+        "Un concept business est devenu une plateforme de credentials multi-tenant en production, soutenant quatre organisations en Colombie et en Espagne.",
+        "J'ai défini la structure du produit, le modèle organisationnel, les rôles et permissions, l'architecture de l'information, les parcours principaux et les patterns d'interaction — en travaillant en étroite collaboration avec le produit, l'ingénierie et la QA pendant que la plateforme évoluait."
+      ],
+      role: "Product Designer",
+      timeline: "2 ans",
+      team: "Produit · UX/UI · Ingénierie · QA · Parties prenantes",
+      focus: "Stratégie produit · Architecture produit · UX/UI · AI · Rôles et permissions · Parcours · Cas limites",
+      ndaText:
+        "Les détails ont été généralisés pour protéger la confidentialité du client."
+    },
+
+    challenge: {
+      eyebrow: "LE DÉFI",
+      title: "Il y avait un modèle business, mais pas encore de produit.",
+      paragraphs: [
+        "Les fondateurs savaient quoi vendre et disposaient d'une référence du type de plateforme qu'ils voulaient construire.",
+        "Ce qui manquait, c'était le système derrière."
+      ],
+      listTitle: "Je devais définir :",
+      items: [
+        "qui étaient les différents acteurs",
+        "comment les organisations étaient liées entre elles",
+        "ce que chaque rôle pouvait voir et gérer",
+        "comment les credentials traversaient leur cycle de vie",
+        "comment plusieurs organisations pouvaient coexister",
+        "comment le produit pouvait évoluer à mesure que le business changeait"
+      ],
+      closing:
+        "Le défi n'était pas de reproduire le produit de référence. C'était de transformer une idée en une architecture produit réellement fonctionnelle.",
+      asset: { id: "ASSET 02", label: "Diagramme d'architecture produit" }
+    },
+
+    businessModel: {
+      number: "01",
+      title: "Transformer le modèle business en produit",
+      paragraphs: [
+        "J'ai commencé par cartographier les règles business, les relations entre organisations, les responsabilités et les parcours opérationnels avec les parties prenantes.",
+        "Plutôt que de reproduire le produit de référence, j'ai traduit le modèle business en une structure capable de soutenir la plateforme que nous construisions réellement."
+      ],
+      layersTitle: "Deux couches ont émergé",
+      layers: [
+        {
+          title: "Gouvernance de la plateforme",
+          description: "Gérer la plateforme et ses organisations."
+        },
+        {
+          title: "Gestion de l'organisation",
+          description:
+            "Gérer les personnes, les credentials et les opérations quotidiennes au sein de chaque organisation."
+        }
+      ],
+      layersNote:
+        "Cette séparation est devenue le fondement du modèle multi-tenant de la plateforme.",
+      roleTitle: "Le modèle de rôles a évolué",
+      roleIntro: "Le modèle initial était simple :",
+      roleFrom: ["Plateforme", "Organisation", "Administrateur", "Opérateur"],
+      roleParagraphs: [
+        "À mesure que le produit devenait réel, cette structure ne suffisait plus.",
+        "Je l'ai retravaillée en une hiérarchie prenant en charge les organisations parentes, les sous-organisations et différents niveaux de responsabilité."
+      ],
+      roleGoal:
+        "L'objectif n'était pas de créer plus de rôles. C'était de rendre la responsabilité explicite.",
+      matrixTitle: "Modèle de rôles et permissions",
+      matrixColumns: ["Rôle", "Organisations", "Membres", "Credentials", "Rapports"],
+      matrixRows: [
+        ["Admin de plateforme", "✓", "✓", "✓", "✓"],
+        ["Admin d'organisation", "✓", "✓", "✓", "✓"],
+        ["Admin secondaire", "—", "✓", "✓", "Limité"],
+        ["Accrédité", "—", "—", "Propres", "Propres"]
+      ],
+      asset: { id: "ASSET 03", label: "Modèle de rôles et permissions" }
+    },
+
+    evolution: {
+      number: "02",
+      title: "Le premier lancement a révélé le vrai produit",
+      paragraphs: [
+        "La première organisation a changé le projet.",
+        "Jusqu'alors, beaucoup de décisions reposaient sur des exigences et des hypothèses. Dès que des organisations réelles ont commencé à utiliser la plateforme, ces hypothèses ont été confrontées à des parcours réels."
+      ],
+      gapsTitle: "Les nouveaux clients ont exposé des lacunes autour de :",
+      gaps: [
+        "libre-service",
+        "permissions",
+        "parcours d'assignation",
+        "rapports",
+        "structure organisationnelle"
+      ],
+      closing: "Le produit devait évoluer avec eux.",
+      shift:
+        "Cela a fait passer mon rôle de la définition du produit initial au façonnage continu du système à mesure que des cas d'usage réels apparaissaient.",
+      timeline: [
+        "Idée business",
+        "Produit initial",
+        "Première organisation",
+        "Parcours réels",
+        "Nouveaux cas limites",
+        "Évolution du produit",
+        "4 organisations"
+      ],
+      asset: { id: "ASSET 04", label: "Évolution du produit" }
+    },
+
+    selfService: {
+      number: "03",
+      title: "Remplacer le travail opérationnel par le libre-service",
+      paragraphs: [
+        "Au départ, les clients dépendaient de l'équipe interne pour les changements opérationnels.",
+        "Ils avaient besoin que l'équipe :"
+      ],
+      items: [
+        "crée des organisations",
+        "ajoute des membres",
+        "change les rôles",
+        "modifie les crédits du plan",
+        "gère la consommation"
+      ],
+      transition: ["Cela fonctionnait à petite échelle.", "Cela n'allait pas passer à l'échelle."],
+      resultTitle: "J'ai déplacé ces opérations dans le produit.",
+      resultText:
+        "Les clients pouvaient créer des organisations, ajouter des membres et gérer les rôles eux-mêmes.",
+      beforeTitle: "Avant",
+      beforeFlow: ["Demande client", "Équipe interne", "Changement manuel"],
+      afterTitle: "Après",
+      afterFlow: ["Client", "Paramètres de l'organisation", "Changement effectué"],
+      contributionTitle: "Contribution design",
+      contribution: [
+        "Architecture libre-service",
+        "Logique de permissions",
+        "Parcours UI",
+        "Cas limites",
+        "États de validation"
+      ],
+      callouts: [
+        "La visibilité du rôle s'adapte à la responsabilité de l'utilisateur.",
+        "Les actions ne sont disponibles que lorsque le modèle de permissions de l'utilisateur le permet."
+      ],
+      assetFlow: { id: "ASSET 05", label: "Parcours avant / après" },
+      assetUi: { id: "ASSET 06", label: "UI de gestion d'organisation et de membres" }
+    },
+
+    workflow: {
+      number: "04",
+      title: "Faire de l'émission de credentials un parcours scalable",
+      paragraphs: [
+        "Un cours typique pouvait avoir entre 20 et 50 utilisateurs accrédités.",
+        "Le parcours initial imposait de saisir les informations via un formulaire long, une personne à la fois.",
+        "Cela signifiait que l'effort augmentait directement avec le nombre de destinataires."
+      ],
+      approachTitle: "J'ai changé l'unité de travail.",
+      approachText: "Au lieu de créer chaque credential de zéro :",
+      approachSteps: ["Définir une fois", "Réutiliser", "Assigner en masse"],
+      templateTitle: "Modèles de credentials réutilisables",
+      templateText:
+        "Les organisations pouvaient créer un credential une seule fois puis le réutiliser ou le dupliquer.",
+      bulkTitle: "Assignation en masse",
+      bulkText:
+        "Les organisations pouvaient préparer les informations des destinataires et les télécharger via CSV. Une fois les données prêtes, une assignation multiple prenait environ 2 minutes.",
+      beforeTitle: "AVANT",
+      beforeFlow: [
+        "Destinataire 1 → Formulaire",
+        "Destinataire 2 → Formulaire",
+        "Destinataire 3 → Formulaire",
+        "…",
+        "Destinataire 50 → Formulaire"
+      ],
+      afterTitle: "APRÈS",
+      afterFlow: [
+        "Modèle de credential",
+        "Préparer le CSV",
+        "Télécharger",
+        "Vérifier",
+        "Assigner à 20–50 utilisateurs"
+      ],
+      stat: { value: "~2 min", label: "pour une assignation en masse" },
+      uiTitle: "Séquence UI",
+      ui: [
+        "Modèle de credential",
+        "Télécharger le CSV",
+        "Validation des données",
+        "Vérifier les destinataires",
+        "Confirmation d'assignation"
+      ],
+      assetA: { id: "ASSET 07", label: "Transformation du parcours" },
+      assetB: { id: "ASSET 08", label: "Séquence UI" }
+    },
+
+    accreditedUX: {
+      number: "05",
+      title: "Rendre l'expérience plus claire pour les utilisateurs accrédités",
+      paragraphs: [
+        "Passer à l'échelle le côté administratif a révélé un autre problème : certains parcours étaient techniquement corrects mais difficiles à comprendre.",
+        "Les utilisateurs butaient sur :"
+      ],
+      issues: ["des libellés peu familiers", "un enregistrement long", "des informations demandées trop tôt"],
+      mentalTitle:
+        "J'ai redessiné l'expérience d'entrée autour d'un modèle mental plus simple :",
+      mentalBold: "Entrer dans le produit → Compléter son profil",
+      mentalText:
+        "Au lieu d'exiger tout à la création du compte, les utilisateurs pouvaient accéder à leur compte via un lien dédié et compléter ou modifier leur profil ensuite.",
+      beforeTitle: "Avant",
+      beforeFlow: ["Invitation", "Enregistrement long", "Compte"],
+      afterTitle: "Après",
+      afterFlow: ["Invitation", "Compte", "Compléter le profil"],
+      annotations: [
+        "Charge cognitive initiale réduite",
+        "Informations non essentielles différées",
+        "Séparation plus claire des tâches"
+      ],
+      asset: { id: "ASSET 09", label: "UX avant / après" }
+    },
+
+    permissions: {
+      number: "06",
+      title: "Concevoir les permissions autour de la responsabilité",
+      paragraphs: [
+        "À mesure que les organisations gagnaient en autonomie, les permissions sont devenues un problème produit central."
+      ],
+      wrongQIntro: "La question n'était pas :",
+      wrongQuestion: "Sur quoi cet utilisateur peut-il cliquer ?",
+      rightQIntro: "C'était :",
+      rightQuestion:
+        "Quelles informations et actions cette personne doit-elle gérer ?",
+      modelText:
+        "J'ai structuré les permissions autour de la responsabilité organisationnelle plutôt que de traiter chaque action comme une permission isolée.",
+      modelTitle: "Le modèle couvrait :",
+      model: [
+        "gouvernance de la plateforme",
+        "organisations parentes",
+        "sous-organisations",
+        "administrateurs primaires et secondaires",
+        "gestion des credentials",
+        "rapports",
+        "utilisateurs accrédités"
+      ],
+      navTitle: "Navigation contextuelle",
+      navParagraphs: [
+        "Le même principe a façonné l'architecture de l'information.",
+        "Les utilisateurs n'avaient pas besoin de tous les modules disponibles dans la plateforme."
+      ],
+      navFormulaText: "La navigation s'adaptait à :",
+      navFormula: "Rôle + organisation + responsabilité",
+      navExampleTitle: "ADMIN D'ORG",
+      navExample: ["Dashboard", "Organisations", "Membres", "Credentials", "Rapports"],
+      navCaptionBefore: "Navigation admin",
+      navCaptionAfter: "Navigation accrédité",
+      asset: { id: "ASSET 10", label: "AI + navigation" }
+    },
+
+    reporting: {
+      number: "07",
+      title: "Faire refléter l'organisation dans les rapports",
+      paragraphs: [
+        "Le problème n'était pas simplement un manque de rapports.",
+        "Le business n'avait pas encore pleinement défini ce que chaque niveau organisationnel devait comprendre. Cela créait des informations dupliquées et des rapports qui ne répondaient pas aux bonnes questions."
+      ],
+      approachTitle:
+        "J'ai restructuré les rapports autour de niveaux de visibilité plutôt que de créer des expériences de reporting entièrement séparées pour chaque rôle.",
+      approachText:
+        "Le même écosystème de rapports pouvait servir différents utilisateurs tandis que les informations étaient filtrées selon la responsabilité organisationnelle.",
+      modelTitle: "Un système de rapports",
+      modelSubtitle: "Visibilité différente",
+      screens: [
+        "Rapport au niveau plateforme",
+        "Rapport au niveau organisation",
+        "Vue filtrée"
+      ],
+      annotation: "Même base de rapports, visibilité différente.",
+      asset: { id: "ASSET 11", label: "Modèle de reporting + UI" }
+    },
+
+    expansion: {
+      number: "08",
+      title: "Étendre le produit au-delà de son marché d'origine",
+      paragraphs: [
+        "À mesure que d'autres organisations ont rejoint la plateforme, le produit a fini par soutenir quatre organisations en Colombie et en Espagne.",
+        "L'opportunité espagnole a introduit de nouvelles considérations :"
+      ],
+      considerations: [
+        "GDPR",
+        "devise",
+        "géolocalisation",
+        "systèmes éducatifs",
+        "structures organisationnelles",
+        "exigences de marque blanche"
+      ],
+      noteTitle: "Ce n'étaient pas simplement des écrans supplémentaires.",
+      noteText: "Ils remettaient en question des hypothèses ancrées dans le produit d'origine.",
+      conclusion:
+        "L'architecture a donc dû évoluer d'un modèle business et d'un marché spécifiques vers le soutien de différents clients et contextes.",
+      diagramTitle: "HYPOTHÈSES INITIALES",
+      diagram: [
+        "Colombie",
+        "Clients réels",
+        "Nouveau marché",
+        "Espagne",
+        "Nouvelles exigences",
+        "Architecture produit adaptable"
+      ],
+      asset: { id: "ASSET 12", label: "Diagramme d'expansion / adaptation" }
+    },
+
+    whatChanged: {
+      title: "Ce qui a changé",
+      columns: ["De", "Vers"],
+      rows: [
+        ["Idée business", "Stratégie + architecture produit"],
+        ["Produit de référence", "Produit spécifique au business"],
+        ["Dépendance opérationnelle interne", "Libre-service client"],
+        ["Émission un par un", "Assignation en masse"],
+        ["Credentials uniques", "Modèles réutilisables"],
+        ["Modèle de rôles plat", "Modèle organisationnel hiérarchique"],
+        ["Rapports fixes", "Rapports basés sur la visibilité"],
+        ["Hypothèses Colombie", "Colombie + Espagne"],
+        ["Lancement initial", "4 organisations"]
+      ],
+      metrics: [
+        { value: "2 ans", label: "Évolution du produit" },
+        { value: "4", label: "Organisations · Colombie + Espagne" },
+        { value: "20–50", label: "Utilisateurs dans une assignation en masse typique" },
+        { value: "~2 min", label: "Parcours d'assignation en masse" }
+      ]
+    },
+
+    outcome: {
+      title: "Résultat",
+      paragraphs: [
+        "Le produit est passé d'une idée business initiale à une plateforme de credentials multi-tenant en production.",
+        "Les organisations pouvaient gérer leur propre structure et leurs membres. Les équipes credentials pouvaient créer des modèles réutilisables et assigner des credentials en masse. Les rôles et permissions ont évolué avec des structures organisationnelles de plus en plus sophistiquées. Le reporting s'est aligné sur la visibilité organisationnelle.",
+        "L'architecture n'était plus liée au produit de référence d'origine."
+      ],
+      closing: "Il était devenu un système capable de s'adapter.",
+      montageTitle: "Un système conçu pour évoluer.",
+      montage: [
+        "Dashboard",
+        "Gestion de l'organisation",
+        "Constructeur de credentials",
+        "Assignation en masse",
+        "Rapports",
+        "Profil utilisateur"
+      ],
+      asset: { id: "ASSET 14", label: "Montage du produit final" }
+    },
+
+    lessons: {
+      title: "Ce que j'ai appris",
+      heading: "Concevoir le système, pas seulement l'écran",
+      paragraphs: [
+        "La partie la plus difficile n'était pas de concevoir des écrans individuels.",
+        "C'était de prendre des décisions produit alors que le business lui-même prenait encore forme.",
+        "Les exigences étaient incomplètes. Les structures organisationnelles évoluaient. De vrais clients remettaient en question les hypothèses.",
+        "Mon rôle était de créer suffisamment de structure pour soutenir le business aujourd'hui sans rendre inutilement coûteux les changements de demain."
+      ],
+      quote:
+        "Un bon design produit ne résout pas seulement le parcours d'aujourd'hui. Il crée suffisamment de structure pour que le produit évolue sans se casser."
+    }
   },
 
   b2bCommercePlatform: {

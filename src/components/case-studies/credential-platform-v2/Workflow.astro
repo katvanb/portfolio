@@ -1,0 +1,496 @@
+---
+import SectionHeading from "../shared/SectionHeading.astro";
+import Asset from "../shared/Asset.astro";
+
+interface Props {
+  number: string;
+  title: string;
+  paragraphs: string[];
+  approachTitle: string;
+  approachText: string;
+  approachSteps: string[];
+  templateTitle: string;
+  templateText: string;
+  bulkTitle: string;
+  bulkText: string;
+  beforeTitle: string;
+  beforeFlow: string[];
+  afterTitle: string;
+  afterFlow: string[];
+  stat: { value: string; label: string };
+  uiTitle: string;
+  ui: string[];
+  assetA: { id: string; label: string };
+  assetB: { id: string; label: string };
+}
+
+const {
+  number, title, paragraphs, approachTitle, approachText, approachSteps,
+  templateTitle, templateText, bulkTitle, bulkText,
+  beforeTitle, beforeFlow, afterTitle, afterFlow, stat, uiTitle, ui, assetA, assetB
+} = Astro.props;
+
+const assetAImage = `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-07.png`;
+const assetBImage = `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-08.png`;
+---
+
+<section class="workflow" id="workflow">
+
+  <SectionHeading number={number} title={title} />
+
+  <div class="body">
+
+    {
+      paragraphs.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))
+    }
+
+    <p class="result-title">{approachTitle}</p>
+
+    <p>{approachText}</p>
+
+    <div class="approach-steps">
+
+      {
+        approachSteps.map((step, index) => (
+          <span class="approach-wrap">
+
+            <span class="approach-chip">{step}</span>
+
+            {
+              index < approachSteps.length - 1 && (
+                <span class="approach-arrow">→</span>
+              )
+            }
+
+          </span>
+        ))
+      }
+
+    </div>
+
+    <div class="tiles">
+
+      <div class="tile">
+
+        <h4>{templateTitle}</h4>
+
+        <p>{templateText}</p>
+
+      </div>
+
+
+      <div class="tile">
+
+        <h4>{bulkTitle}</h4>
+
+        <p>{bulkText}</p>
+
+      </div>
+
+    </div>
+
+    <div class="transformation">
+
+      <div class="side before">
+
+        <span class="side-title">{beforeTitle}</span>
+
+        <div class="side-list">
+
+          {
+            beforeFlow.map((step) => (
+              <div class="side-step">{step}</div>
+            ))
+          }
+
+        </div>
+
+      </div>
+
+
+      <div class="side after">
+
+        <span class="side-title">{afterTitle}</span>
+
+        <div class="side-list">
+
+          {
+            afterFlow.map((step) => (
+              <div class="side-step">{step}</div>
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="stat">
+
+      <span class="stat-value">{stat.value}</span>
+
+      <span class="stat-label">{stat.label}</span>
+
+    </div>
+
+    <h3>{uiTitle}</h3>
+
+    <ol class="ui-list">
+      {ui.map((step) => (
+        <li>{step}</li>
+      ))}
+    </ol>
+
+  </div>
+
+  <Asset id={assetA.id} label={assetA.label} image={assetAImage} />
+
+  <Asset id={assetB.id} label={assetB.label} image={assetBImage} />
+
+</section>
+
+
+<style>
+
+.workflow {
+  margin-top: var(--section-spacing);
+}
+
+
+.body {
+
+  max-width: 800px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-md);
+
+}
+
+
+.body p {
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: var(--line-height-body-lg);
+
+}
+
+
+.result-title {
+
+  font-size: var(--font-size-h3) !important;
+
+  line-height: var(--line-height-h3) !important;
+
+  font-weight: 600;
+
+  color: var(--color-text-primary) !important;
+
+}
+
+
+.approach-steps {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  gap: var(--space-sm);
+
+}
+
+
+.approach-wrap {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: var(--space-sm);
+
+}
+
+
+.approach-chip {
+
+  padding: var(--space-xs) var(--space-md);
+
+  border: 1px solid var(--color-accent);
+
+  color: var(--color-accent);
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-small);
+
+  letter-spacing: 0.03em;
+
+  white-space: nowrap;
+
+}
+
+
+.approach-arrow {
+
+  color: var(--color-accent);
+
+  font-size: var(--font-size-h3);
+
+}
+
+
+.tiles {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: var(--space-md);
+
+}
+
+
+.tile {
+
+  padding: var(--space-lg);
+
+  border: 1px solid var(--color-border);
+
+  background: var(--color-bg-secondary);
+
+}
+
+
+.tile h4 {
+
+  margin: 0 0 var(--space-sm);
+
+  font-size: var(--font-size-body);
+
+  font-weight: 600;
+
+  color: var(--color-text-primary);
+
+}
+
+
+.tile p {
+
+  font-size: var(--font-size-body) !important;
+
+}
+
+
+.transformation {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: var(--space-md);
+
+  margin: var(--space-md) 0 0;
+
+}
+
+
+.side {
+
+  padding: var(--space-lg);
+
+  border: 1px solid var(--color-border);
+
+  background: var(--color-bg-secondary);
+
+}
+
+
+.side.after {
+
+  border-color: var(--color-accent);
+
+}
+
+
+.side-title {
+
+  display: block;
+
+  margin-bottom: var(--space-md);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-label);
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+}
+
+
+.side.after .side-title {
+
+  color: var(--color-accent);
+
+}
+
+
+.side-list {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-sm);
+
+}
+
+
+.side-step {
+
+  padding: var(--space-xs) var(--space-sm);
+
+  border: 1px solid var(--color-border);
+
+  background: var(--color-bg-primary);
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-small);
+
+  color: var(--color-text-secondary);
+
+  text-align: center;
+
+}
+
+
+.side.after .side-step {
+
+  color: var(--color-text-primary);
+
+}
+
+
+.stat {
+
+  display: flex;
+
+  align-items: baseline;
+
+  gap: var(--space-md);
+
+  padding: var(--space-xl);
+
+  border: 1px solid var(--color-accent);
+
+  background: var(--color-bg-secondary);
+
+}
+
+
+.stat-value {
+
+  font-size: var(--font-size-display);
+
+  line-height: 1;
+
+  font-weight: 600;
+
+  color: var(--color-accent);
+
+  letter-spacing: -0.02em;
+
+}
+
+
+.stat-label {
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+
+}
+
+
+h3 {
+
+  margin: var(--space-lg) 0 0;
+
+  font-size: var(--font-size-h3);
+
+  line-height: var(--line-height-h3);
+
+  font-weight: 600;
+
+}
+
+
+.ui-list {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-sm);
+
+  margin: 0;
+
+  padding-left: 1.5rem;
+
+  counter-reset: ui;
+
+  list-style: none;
+
+}
+
+
+.ui-list li {
+
+  position: relative;
+
+  padding-left: var(--space-lg);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.7;
+
+  counter-increment: ui;
+
+}
+
+
+.ui-list li::before {
+
+  content: counter(ui, decimal-leading-zero);
+
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  color: var(--color-accent);
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-small);
+
+}
+
+</style>

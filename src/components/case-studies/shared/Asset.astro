@@ -1,0 +1,92 @@
+---
+interface Props {
+  id: string;
+  label: string;
+  image: string;
+}
+
+const { id, label, image } = Astro.props;
+---
+
+<figure class="asset">
+
+  <img
+    src={image}
+    alt={`${id} — ${label}`}
+    loading="lazy"
+  />
+
+  <figcaption>
+
+    <span class="asset-id">
+      {id}
+    </span>
+
+    <span class="asset-label">
+      {label}
+    </span>
+
+  </figcaption>
+
+</figure>
+
+
+<style>
+
+.asset {
+  margin: var(--space-lg) 0;
+}
+
+
+.asset img {
+
+  display: block;
+
+  width: 100%;
+
+  max-height: 560px;
+
+  object-fit: cover;
+
+  border: 1px solid var(--color-border);
+
+  background: var(--color-bg-secondary);
+
+}
+
+
+.asset figcaption {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: var(--space-sm);
+
+  margin-top: var(--space-sm);
+
+}
+
+
+.asset-id {
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-small);
+
+  color: var(--color-accent);
+
+  letter-spacing: 0.05em;
+
+}
+
+
+.asset-label {
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+}
+
+</style>

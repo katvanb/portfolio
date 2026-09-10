@@ -1,0 +1,396 @@
+---
+import SectionHeading from "../shared/SectionHeading.astro";
+import Asset from "../shared/Asset.astro";
+
+interface Props {
+  number: string;
+  title: string;
+  paragraphs: string[];
+  items: string[];
+  transition: string[];
+  resultTitle: string;
+  resultText: string;
+  beforeTitle: string;
+  beforeFlow: string[];
+  afterTitle: string;
+  afterFlow: string[];
+  contributionTitle: string;
+  contribution: string[];
+  callouts: string[];
+  assetFlow: { id: string; label: string };
+  assetUi: { id: string; label: string };
+}
+
+const {
+  number, title, paragraphs, items, transition, resultTitle, resultText,
+  beforeTitle, beforeFlow, afterTitle, afterFlow,
+  contributionTitle, contribution, callouts, assetFlow, assetUi
+} = Astro.props;
+
+const flowImage = `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-05.png`;
+const uiImage = `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-06.png`;
+---
+
+<section class="self-service" id="self-service">
+
+  <SectionHeading number={number} title={title} />
+
+  <div class="body">
+
+    {
+      paragraphs.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))
+    }
+
+    <ul>
+      {items.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+
+    <div class="transition">
+      {
+        transition.map((line) => (
+          <p>{line}</p>
+        ))
+      }
+    </div>
+
+    <p class="result-title">{resultTitle}</p>
+
+    <p>{resultText}</p>
+
+    <div class="comparison">
+
+      <div class="flow-card">
+
+        <span class="flow-label">{beforeTitle}</span>
+
+        <div class="flow-list">
+
+          {
+            beforeFlow.map((step, index) => (
+              <div class="flow-step">
+
+                <span class="flow-arrow">→</span>
+
+                <span>{step}</span>
+
+              </div>
+            ))
+          }
+
+        </div>
+
+      </div>
+
+
+      <div class="flow-card after">
+
+        <span class="flow-label">{afterTitle}</span>
+
+        <div class="flow-list">
+
+          {
+            afterFlow.map((step, index) => (
+              <div class="flow-step">
+
+                <span class="flow-arrow">→</span>
+
+                <span>{step}</span>
+
+              </div>
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <h3>{contributionTitle}</h3>
+
+    <div class="contribution">
+
+      {
+        contribution.map((item) => (
+          <span class="contribution-tag">{item}</span>
+        ))
+      }
+
+    </div>
+
+    <div class="callouts">
+
+      {
+        callouts.map((callout) => (
+          <blockquote>{callout}</blockquote>
+        ))
+      }
+
+    </div>
+
+  </div>
+
+  <Asset id={assetFlow.id} label={assetFlow.label} image={flowImage} />
+
+  <Asset id={assetUi.id} label={assetUi.label} image={uiImage} />
+
+</section>
+
+
+<style>
+
+.self-service {
+  margin-top: var(--section-spacing);
+}
+
+
+.body {
+
+  max-width: 800px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-md);
+
+}
+
+
+.body p {
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: var(--line-height-body-lg);
+
+}
+
+
+ul {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-sm);
+
+  margin: 0;
+
+  padding-left: 1.25rem;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.7;
+
+}
+
+
+ul li::marker {
+
+  color: var(--color-accent);
+
+}
+
+
+.transition {
+
+  padding: var(--space-md);
+
+  border-left: 3px solid var(--color-accent);
+
+  background: var(--color-bg-secondary);
+
+}
+
+
+.transition p {
+
+  color: var(--color-text-primary) !important;
+
+  font-size: var(--font-size-body) !important;
+
+}
+
+
+.result-title {
+
+  font-size: var(--font-size-h3) !important;
+
+  line-height: var(--line-height-h3) !important;
+
+  font-weight: 600;
+
+  color: var(--color-text-primary) !important;
+
+}
+
+
+.comparison {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: var(--space-md);
+
+  margin: var(--space-md) 0;
+
+}
+
+
+.flow-card {
+
+  padding: var(--space-lg);
+
+  border: 1px solid var(--color-border);
+
+  background: var(--color-bg-secondary);
+
+}
+
+
+.flow-card.after {
+
+  border-color: var(--color-accent);
+
+}
+
+
+.flow-label {
+
+  display: block;
+
+  margin-bottom: var(--space-md);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-label);
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+}
+
+
+.flow-card.after .flow-label {
+
+  color: var(--color-accent);
+
+}
+
+
+.flow-list {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-sm);
+
+}
+
+
+.flow-step {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: var(--space-sm);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+
+}
+
+
+.flow-arrow {
+
+  color: var(--color-accent);
+
+}
+
+
+h3 {
+
+  margin: var(--space-lg) 0 0;
+
+  font-size: var(--font-size-h3);
+
+  line-height: var(--line-height-h3);
+
+  font-weight: 600;
+
+}
+
+
+.contribution {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: var(--space-sm);
+
+}
+
+
+.contribution-tag {
+
+  padding: var(--space-xs) var(--space-md);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 999px;
+
+  background: var(--color-bg-secondary);
+
+  font-size: var(--font-size-small);
+
+  color: var(--color-text-secondary);
+
+}
+
+
+.callouts {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-sm);
+
+}
+
+
+.callouts blockquote {
+
+  margin: 0;
+
+  padding: var(--space-md) var(--space-lg);
+
+  border-left: 3px solid var(--color-accent);
+
+  background: var(--color-bg-secondary);
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.6;
+
+}
+
+</style>
