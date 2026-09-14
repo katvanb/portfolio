@@ -36,7 +36,7 @@ const es = {
           description:
             "Diseño de una plataforma escalable de gestión de credenciales para múltiples organizaciones y roles complejos.",
           tags: ["Product Strategy", "Systems Design", "Architecture", "Enterprise UX"],
-          link: `${import.meta.env.BASE_URL}/es/work/credential-platform-v2/`,
+          link: `${import.meta.env.BASE_URL}es/work/credential-platform-v2/`,
           image: `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-01.png`
         },
 
@@ -47,7 +47,7 @@ const es = {
           description:
             "Transformación de un proceso comercial tradicional en una experiencia de autoservicio para compradores profesionales.",
           tags: ["Product Discovery", "Complex UX", "Self-Service", "Business Systems"],
-          link: `${import.meta.env.BASE_URL}/es/work/b2b-commerce-platform/`,
+          link: `${import.meta.env.BASE_URL}es/work/b2b-commerce-platform/`,
           image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce-platform/cover.png`
         }
 
@@ -62,12 +62,12 @@ const es = {
 
       fun: {
         title: "Escritos",
-        link: `${import.meta.env.BASE_URL}/es/writings/`
+        link: `${import.meta.env.BASE_URL}es/writings/`
       },
 
       experiments: {
         title: "Experimentos",
-        link: `${import.meta.env.BASE_URL}/es/experiments/`
+        link: `${import.meta.env.BASE_URL}es/experiments/`
       }
 
     },

@@ -35,7 +35,7 @@ const fr = {
           description:
             "Conception d'une plateforme évolutive de gestion des certifications pour plusieurs organisations et des rôles utilisateurs complexes.",
           tags: ["Product Strategy", "Systems Design", "Architecture", "Enterprise UX"],
-          link: `${import.meta.env.BASE_URL}/fr/work/credential-platform-v2/`,
+          link: `${import.meta.env.BASE_URL}fr/work/credential-platform-v2/`,
           image: `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-01.png`
         },
 
@@ -45,7 +45,7 @@ const fr = {
           description:
             "Transformation d'un processus commercial traditionnel en une expérience d'achat en libre-service pour les acheteurs professionnels.",
           tags: ["Product Discovery", "Complex UX", "Self-Service", "Business Systems"],
-          link: `${import.meta.env.BASE_URL}/fr/work/b2b-commerce-platform/`,
+          link: `${import.meta.env.BASE_URL}fr/work/b2b-commerce-platform/`,
           image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce-platform/cover.png`
         }
 
@@ -60,12 +60,12 @@ const fr = {
 
       fun: {
         title: "Écrits",
-        link: `${import.meta.env.BASE_URL}/fr/writings/`
+        link: `${import.meta.env.BASE_URL}fr/writings/`
       },
 
       experiments: {
         title: "Expérimentations",
-        link: `${import.meta.env.BASE_URL}/fr/experiments/`
+        link: `${import.meta.env.BASE_URL}fr/experiments/`
       }
 
     },

@@ -35,7 +35,7 @@ const en = {
           description:
             "Designing a scalable credential management platform for multiple organizations and complex user roles.",
           tags: ["Product Strategy", "Systems Design", "Architecture", "Enterprise UX"],
-          link: `${import.meta.env.BASE_URL}/work/credential-platform-v2/`,
+          link: `${import.meta.env.BASE_URL}work/credential-platform-v2/`,
           image: `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-01.png`
         },
 
@@ -45,7 +45,7 @@ const en = {
           description:
             "Transforming a traditional sales process into a self-service commerce experience for professional buyers.",
           tags: ["Product Discovery", "Complex UX", "Self-Service", "Business Systems"],
-          link: `${import.meta.env.BASE_URL}/work/b2b-commerce-v2/`,
+          link: `${import.meta.env.BASE_URL}work/b2b-commerce-v2/`,
           image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce-platform/cover.png`
         }
 
@@ -60,12 +60,12 @@ const en = {
 
       fun: {
         title: "Writings",
-        link: `${import.meta.env.BASE_URL}/writings/`
+        link: `${import.meta.env.BASE_URL}writings/`
       },
 
       experiments: {
         title: "Experiments",
-        link: `${import.meta.env.BASE_URL}/experiments/`
+        link: `${import.meta.env.BASE_URL}experiments/`
       }
 
     },
