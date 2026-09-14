@@ -1,0 +1,847 @@
+---
+interface Step {
+  number: string;
+  name: string;
+  prompt?: string;
+  templates?: string[];
+  drop?: string;
+  or?: string;
+  choose?: string;
+  found?: string;
+  foundLabel?: string;
+  valid?: string;
+  validLabel?: string;
+  attention?: string;
+  attentionLabel?: string;
+  colName?: string;
+  colStatus?: string;
+  rows?: { name: string; attention?: boolean }[];
+  more?: string;
+  ready?: string;
+  stats?: { value: string; label: string }[];
+  button?: string;
+}
+
+interface Props {
+  id: string;
+  label: string;
+  title: string;
+  beforeTitle: string;
+  beforeItems: string[];
+  afterTitle: string;
+  afterSteps: string[];
+  stepPrefix: string;
+  steps: Step[];
+  back: string;
+  next: string;
+  selected: string;
+  dropTitle: string;
+  csvBadge: string;
+  successTitle: string;
+  successDone: string;
+  startOver: string;
+}
+
+const {
+  id, label, title, beforeTitle, beforeItems, afterTitle, afterSteps,
+  stepPrefix, steps, back, next, selected, dropTitle, csvBadge,
+  successTitle, successDone, startOver,
+} = Astro.props;
+---
+
+<figure class="bap" data-bulk-proto>
+
+  <div class="bap-stage">
+
+    <h4 class="bap-title">{title}</h4>
+
+    <div class="ba-grid">
+
+      <div class="ba-card">
+
+        <span class="ba-title">{beforeTitle}</span>
+
+        <div class="ba-list">
+          {beforeItems.map((item) => (
+            <span class="ba-line">{item}</span>
+          ))}
+        </div>
+
+      </div>
+
+      <div class="ba-card after">
+
+        <span class="ba-title">{afterTitle}</span>
+
+        <div class="ba-stack">
+          {afterSteps.map((step, index) => (
+            <>
+              <span class="ba-chip">{step}</span>
+              {index < afterSteps.length - 1 && (
+                <span class="ba-arrow">↓</span>
+              )}
+            </>
+          ))}
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="proto">
+
+      <div class="stepper">
+
+        {steps.map((step, index) => (
+          <button class="stepper-item" type="button" data-step={index}>
+            <span class="stepper-num">{step.number}</span>
+            <span class="stepper-name">{step.name}</span>
+          </button>
+        ))}
+
+      </div>
+
+      <div class="viewport">
+
+        {steps.map((step, index) => (
+          <div class="proto-screen" data-screen={index}>
+            {step.prompt !== undefined && (
+              <div class="screen-head">
+                <span class="screen-label">{stepPrefix} {step.number} — {step.name}</span>
+                <span class="screen-prompt">{step.prompt}</span>
+              </div>
+            )}
+
+            {step.templates !== undefined && (
+              <div class="template-list">
+                {step.templates.map((tpl, i) => (
+                  <button class="template-item" type="button" data-selected={i === 0} data-label={selected}>
+                    <span class="template-name">{tpl}</span>
+                    <span class="template-check" data-check={i === 0}>{i === 0 ? selected : ""}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {step.drop !== undefined && (
+              <div class="dropzone">
+                <span class="dz-badge">{csvBadge}</span>
+                <span class="dz-title">{step.drop}</span>
+                <span class="dz-or">{step.or}</span>
+                <button class="dz-btn" type="button">{step.choose}</button>
+              </div>
+            )}
+
+            {step.found !== undefined && (
+              <div class="validation">
+                <div class="val-main">
+                  <span class="val-value">{step.found}</span>
+                  <span class="val-label">{step.foundLabel}</span>
+                </div>
+                <div class="val-summary">
+                  <span class="val-pill ok"><span class="val-mark">✓</span> {step.valid} {step.validLabel}</span>
+                  <span class="val-pill warn"><span class="val-mark">⚠</span> {step.attention} {step.attentionLabel}</span>
+                  <div class="val-bar"><span class="val-bar-fill"></span></div>
+                </div>
+              </div>
+            )}
+
+            {step.rows !== undefined && (
+              <div class="review">
+                <div class="review-head">
+                  <span>{step.colName}</span>
+                  <span>{step.colStatus}</span>
+                </div>
+                {step.rows.map((row) => (
+                  <div class="review-row">
+                    <span class="review-name">{row.name}</span>
+                    <span class={`review-chip ${row.attention ? "warn" : "ok"}`}>
+                      {row.attention ? `⚠ ${step.attentionLabel}` : `✓ ${step.validLabel}`}
+                    </span>
+                  </div>
+                ))}
+                <div class="review-more">{step.more}</div>
+              </div>
+            )}
+
+            {step.ready !== undefined && (
+              <div class="assign">
+                <span class="assign-title">{step.ready}</span>
+                <div class="assign-stats">
+                  {step.stats?.map((s) => (
+                    <div class="assign-stat">
+                      <span class="assign-value">{s.value}</span>
+                      <span class="assign-label">{s.label}</span>
+                    </div>
+                  ))}
+                </div>
+                <button class="assign-btn" type="button" data-go-success>{step.button}</button>
+              </div>
+            )}
+          </div>
+        ))}
+
+        <div class="proto-screen success" data-screen="success">
+
+          <div class="success-icon">✓</div>
+
+          <h4 class="success-title">{successTitle}</h4>
+
+          <span class="success-chip">✓ {successDone}</span>
+
+        </div>
+
+      </div>
+
+      <div class="proto-nav">
+
+        <button class="nav-btn" type="button" data-nav="back">{back}</button>
+
+        <span class="step-counter" data-counter></span>
+
+        <button class="nav-btn primary" type="button" data-nav="next">{next}</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <figcaption>
+
+    <span class="bap-id">
+      {id}
+    </span>
+
+    <span class="bap-label">
+      {label}
+    </span>
+
+  </figcaption>
+
+</figure>
+
+<script>
+  const root = document.querySelector("[data-bulk-proto]");
+  if (root) {
+    const screens = Array.from(root.querySelectorAll(".proto-screen"));
+    const stepperItems = Array.from(root.querySelectorAll(".stepper-item"));
+    const counter = root.querySelector("[data-counter]");
+    const backBtn = root.querySelector('[data-nav="back"]');
+    const nextBtn = root.querySelector('[data-nav="next"]');
+    const assignBtn = root.querySelector("[data-go-success]");
+    const stepCount = stepperItems.length;
+    let current = 0;
+
+    function render() {
+      screens.forEach((screen, i) => {
+        screen.classList.toggle("active", i === current);
+      });
+      stepperItems.forEach((item, i) => {
+        item.classList.toggle("active", i === current);
+        item.classList.toggle("done", i < current);
+      });
+      const onSuccess = current === screens.length - 1;
+      backBtn.classList.toggle("hidden", current === 0);
+      nextBtn.classList.toggle("hidden", onSuccess || current === stepCount - 1);
+      if (onSuccess) {
+        counter.textContent = "✓";
+        nextBtn.textContent = "↻";
+      } else {
+        counter.textContent = `${String(current + 1).padStart(2, "0")} / ${String(stepCount).padStart(2, "0")}`;
+      }
+    }
+
+    stepperItems.forEach((item, i) => {
+      item.addEventListener("click", () => {
+        if (i < stepCount) {
+          current = i;
+          render();
+        }
+      });
+    });
+
+    backBtn.addEventListener("click", () => {
+      if (current > 0) current -= 1;
+      render();
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (current < screens.length - 1) current += 1;
+      render();
+    });
+
+    assignBtn.addEventListener("click", () => {
+      current = screens.length - 1;
+      render();
+    });
+
+    const templateItems = Array.from(root.querySelectorAll("[data-selected]"));
+    templateItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        templateItems.forEach((other) => {
+          const isThis = other === item;
+          other.dataset.selected = String(isThis);
+          const check = other.querySelector("[data-check]");
+          if (check) check.textContent = isThis ? item.dataset.label || "" : "";
+        });
+      });
+    });
+
+    render();
+  }
+</script>
+
+<style>
+
+.bap {
+  margin: var(--space-lg) 0;
+}
+
+.bap-stage {
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+.bap-title {
+  margin: 0 0 var(--space-lg);
+  text-align: center;
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.ba-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.ba-card {
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-primary);
+}
+
+.ba-card.after {
+  border-color: var(--color-accent);
+}
+
+.ba-title {
+  display: block;
+  margin-bottom: var(--space-md);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.ba-card.after .ba-title {
+  color: var(--color-accent);
+}
+
+.ba-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.ba-line {
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.ba-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-xs);
+}
+
+.ba-chip {
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--color-accent);
+  background: var(--color-bg-primary);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-small);
+  color: var(--color-accent);
+  text-align: center;
+}
+
+.ba-arrow {
+  color: var(--color-accent);
+  font-size: var(--font-size-small);
+  text-align: center;
+  line-height: 1;
+}
+
+.proto {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-primary);
+}
+
+.stepper {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-bottom: 1px solid var(--color-border);
+}
+
+.stepper-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-xs);
+  border: 0;
+  border-right: 1px solid var(--color-border);
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+}
+
+.stepper-item:last-child {
+  border-right: 0;
+}
+
+.stepper-item:hover {
+  background: var(--color-bg-secondary);
+}
+
+.stepper-item.active {
+  color: var(--color-accent);
+  box-shadow: inset 0 -2px 0 var(--color-accent);
+}
+
+.stepper-num {
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-small);
+}
+
+.stepper-name {
+  font-size: var(--font-size-label);
+  text-align: center;
+}
+
+.viewport {
+  padding: var(--space-lg);
+  min-height: 300px;
+  display: flex;
+  align-items: stretch;
+}
+
+.proto-screen {
+  display: none;
+  width: 100%;
+}
+
+.proto-screen.active {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.screen-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.screen-label {
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-label);
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+}
+
+.screen-prompt {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-body-lg);
+}
+
+.template-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.template-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  cursor: pointer;
+  text-align: left;
+}
+
+.template-item[data-selected="true"] {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.template-name {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-body);
+}
+
+.template-check {
+  color: var(--color-accent);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-small);
+  white-space: nowrap;
+}
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xl);
+  border: 2px dashed var(--color-border);
+  background: var(--color-bg-secondary);
+}
+
+.dz-badge {
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-small);
+  letter-spacing: 0.05em;
+}
+
+.dz-title {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-body-lg);
+  font-weight: 600;
+}
+
+.dz-or {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
+
+.dz-btn {
+  padding: var(--space-xs) var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-primary);
+  cursor: pointer;
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+}
+
+.dz-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.validation {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.val-main {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+}
+
+.val-value {
+  font-size: var(--font-size-display);
+  line-height: 1;
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: -0.02em;
+}
+
+.val-label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-body-lg);
+}
+
+.val-summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.val-pill {
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--color-border);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-small);
+}
+
+.val-pill.ok {
+  border-color: #3a9d6d;
+  color: #3a9d6d;
+  background: rgba(58, 157, 109, 0.08);
+}
+
+.val-pill.warn {
+  border-color: #d9a032;
+  color: #d9a032;
+  background: rgba(217, 160, 50, 0.08);
+}
+
+.val-mark {
+  font-weight: 700;
+}
+
+.val-bar {
+  height: 8px;
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  display: flex;
+}
+
+.val-bar-fill {
+  width: 96%;
+  background: var(--color-accent);
+}
+
+.review {
+  border: 1px solid var(--color-border);
+}
+
+.review-head,
+.review-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.review-head {
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.review-row {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.review-row:last-child {
+  border-bottom: 0;
+}
+
+.review-name {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-body);
+}
+
+.review-chip {
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-small);
+  white-space: nowrap;
+}
+
+.review-chip.ok {
+  color: #3a9d6d;
+}
+
+.review-chip.warn {
+  color: #d9a032;
+}
+
+.review-more {
+  padding: var(--space-sm) var(--space-md);
+  color: var(--color-text-secondary);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-small);
+}
+
+.assign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  text-align: center;
+}
+
+.assign-title {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-h3);
+  font-weight: 600;
+}
+
+.assign-stats {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.assign-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+}
+
+.assign-value {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-h3);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.assign-label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-label);
+}
+
+.assign-btn {
+  padding: var(--space-sm) var(--space-xl);
+  border: 1px solid var(--color-accent);
+  background: var(--color-accent);
+  color: #fff;
+  cursor: pointer;
+  font-size: var(--font-size-body);
+  font-weight: 600;
+}
+
+.assign-btn:hover {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+.success {
+  align-items: center;
+  justify-content: center;
+}
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #3a9d6d;
+  border-radius: 50%;
+  color: #3a9d6d;
+  font-size: var(--font-size-h2);
+  font-weight: 700;
+}
+
+.success-title {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-h3);
+  font-weight: 600;
+  text-align: center;
+}
+
+.success-chip {
+  padding: var(--space-xs) var(--space-md);
+  border: 1px solid #3a9d6d;
+  color: #3a9d6d;
+  background: rgba(58, 157, 109, 0.08);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-small);
+}
+
+.proto-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.nav-btn {
+  padding: var(--space-xs) var(--space-md);
+  border: 1px solid var(--color-border);
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-body);
+}
+
+.nav-btn.primary {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.nav-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.nav-btn.hidden {
+  visibility: hidden;
+}
+
+.step-counter {
+  color: var(--color-text-secondary);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-small);
+}
+
+.bap figcaption {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.bap-id {
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-small);
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+}
+
+.bap-label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
+
+@media (max-width: 720px) {
+  .bap-stage {
+    padding: var(--space-md);
+  }
+
+  .ba-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stepper {
+    grid-template-columns: 1fr;
+  }
+
+  .stepper-item {
+    flex-direction: row;
+    justify-content: center;
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .stepper-item:last-child {
+    border-bottom: 0;
+  }
+
+  .assign-stats {
+    flex-direction: column;
+  }
+}
+</style>

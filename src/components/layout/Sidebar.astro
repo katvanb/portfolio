@@ -23,7 +23,7 @@ const prefix = isFrench
     : `${base}/`;
 
 const activePage =
-  pathname.includes("/fun/")
+  pathname.includes("/writings/")
     ? "fun"
     : pathname.includes("/experiments/")
       ? "experiments"
@@ -81,7 +81,7 @@ const activePage =
       </a>
 
       <a
-        href={`${prefix}fun`}
+        href={`${prefix}writings`}
         class:list={{ active: activePage === "fun" }}
       >
         {t.sidebar.navigation.fun}

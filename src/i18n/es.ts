@@ -61,8 +61,8 @@ const es = {
     options: {
 
       fun: {
-        title: "Diversión",
-        link: `${import.meta.env.BASE_URL}/es/fun/`
+        title: "Escritos",
+        link: `${import.meta.env.BASE_URL}/es/writings/`
       },
 
       experiments: {
@@ -149,7 +149,7 @@ const es = {
     navigation: {
       work: "Trabajo",
       experiments: "Experimentos",
-      fun: "Diversión",
+      fun: "Escritos",
     },
   
     actions: {
@@ -701,33 +701,88 @@ const es = {
       bulkTitle: "Asignación masiva",
       bulkText:
         "Las organizaciones podían preparar la información de los destinatarios y subirla mediante CSV. Con los datos listos, una asignación múltiple podía tomar aproximadamente 2 minutos.",
-      beforeTitle: "ANTES",
-      beforeFlow: [
-        "Destinatario 1 → Formulario",
-        "Destinatario 2 → Formulario",
-        "Destinatario 3 → Formulario",
-        "…",
-        "Destinatario 50 → Formulario"
-      ],
-      afterTitle: "DESPUÉS",
-      afterFlow: [
-        "Plantilla de credencial",
-        "Preparar CSV",
-        "Subir",
-        "Revisar",
-        "Asignar a 20–50 usuarios"
-      ],
       stat: { value: "~2 min", label: "para una asignación masiva" },
-      uiTitle: "Secuencia de UI",
-      ui: [
-        "Plantilla de credencial",
-        "Subir CSV",
-        "Validación de datos",
-        "Revisar destinatarios",
-        "Confirmación de asignación"
-      ],
-      assetA: { id: "ASSET 07", label: "Transformación del flujo de trabajo" },
-      assetB: { id: "ASSET 08", label: "Secuencia de UI" }
+      prototype: {
+        id: "ASSET 07 – 08",
+        label: "Prototipo interactivo de asignación en lote",
+        title: "Emisión de credenciales — de uno en uno a lote",
+        beforeTitle: "ANTES",
+        beforeItems: [
+          "Destinatario 1 → Formulario",
+          "Destinatario 2 → Formulario",
+          "Destinatario 3 → Formulario",
+          "…",
+          "Destinatario 50 → Formulario"
+        ],
+        afterTitle: "DESPUÉS",
+        afterSteps: ["Plantilla", "CSV", "Validación", "Revisión", "Asignar"],
+        stepPrefix: "Paso",
+        back: "Atrás",
+        next: "Siguiente",
+        selected: "Seleccionada",
+        dropTitle: "Arrastra tu CSV aquí",
+        csvBadge: "CSV",
+        steps: [
+          {
+            number: "01",
+            name: "Plantilla de credencial",
+            prompt: "Selecciona una credencial",
+            templates: [
+              "Finalización de curso — Nivel 1",
+              "Acreditación — BLS",
+              "Técnico certificado"
+            ]
+          },
+          {
+            number: "02",
+            name: "Subir CSV",
+            drop: "Arrastra tu CSV aquí",
+            or: "o",
+            choose: "Elegir archivo"
+          },
+          {
+            number: "03",
+            name: "Validación",
+            found: "48",
+            foundLabel: "destinatarios encontrados",
+            valid: "46",
+            validLabel: "válidos",
+            attention: "2",
+            attentionLabel: "requieren atención"
+          },
+          {
+            number: "04",
+            name: "Revisión",
+            colName: "Destinatario",
+            colStatus: "Estado",
+            validLabel: "Válido",
+            attentionLabel: "Requiere atención",
+            rows: [
+              { name: "Ana Torres" },
+              { name: "Carlos Díaz", attention: true },
+              { name: "Elena Gómez" },
+              { name: "Luis Pérez" },
+              { name: "Marta Ruiz", attention: true },
+              { name: "Sergio Blanco" }
+            ],
+            more: "+ 42 más"
+          },
+          {
+            number: "05",
+            name: "Asignar",
+            ready: "Listo para asignar",
+            stats: [
+              { value: "48", label: "destinatarios" },
+              { value: "1", label: "credencial" },
+              { value: "~2 min", label: "tiempo est." }
+            ],
+            button: "Asignar credenciales"
+          }
+        ],
+        successTitle: "48 credenciales asignadas",
+        successDone: "Completado",
+        startOver: "↻"
+      }
     },
 
     accreditedUX: {

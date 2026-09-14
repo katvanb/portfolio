@@ -1,6 +1,49 @@
 ---
 import SectionHeading from "../shared/SectionHeading.astro";
-import Asset from "../shared/Asset.astro";
+import BulkAssignmentPrototype from "./BulkAssignmentPrototype.astro";
+
+interface Step {
+  number: string;
+  name: string;
+  prompt?: string;
+  templates?: string[];
+  drop?: string;
+  or?: string;
+  choose?: string;
+  found?: string;
+  foundLabel?: string;
+  valid?: string;
+  validLabel?: string;
+  attention?: string;
+  attentionLabel?: string;
+  colName?: string;
+  colStatus?: string;
+  rows?: { name: string; attention?: boolean }[];
+  more?: string;
+  ready?: string;
+  stats?: { value: string; label: string }[];
+  button?: string;
+}
+
+interface Prototype {
+  id: string;
+  label: string;
+  title: string;
+  beforeTitle: string;
+  beforeItems: string[];
+  afterTitle: string;
+  afterSteps: string[];
+  stepPrefix: string;
+  back: string;
+  next: string;
+  selected: string;
+  dropTitle: string;
+  csvBadge: string;
+  steps: Step[];
+  successTitle: string;
+  successDone: string;
+  startOver: string;
+}
 
 interface Props {
   number: string;
@@ -13,25 +56,14 @@ interface Props {
   templateText: string;
   bulkTitle: string;
   bulkText: string;
-  beforeTitle: string;
-  beforeFlow: string[];
-  afterTitle: string;
-  afterFlow: string[];
   stat: { value: string; label: string };
-  uiTitle: string;
-  ui: string[];
-  assetA: { id: string; label: string };
-  assetB: { id: string; label: string };
+  prototype: Prototype;
 }
 
 const {
   number, title, paragraphs, approachTitle, approachText, approachSteps,
-  templateTitle, templateText, bulkTitle, bulkText,
-  beforeTitle, beforeFlow, afterTitle, afterFlow, stat, uiTitle, ui, assetA, assetB
+  templateTitle, templateText, bulkTitle, bulkText, stat, prototype
 } = Astro.props;
-
-const assetAImage = `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-07.png`;
-const assetBImage = `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-08.png`;
 ---
 
 <section class="workflow" id="workflow">
@@ -91,43 +123,6 @@ const assetBImage = `${import.meta.env.BASE_URL}images/case-studies/credential-p
 
     </div>
 
-    <div class="transformation">
-
-      <div class="side before">
-
-        <span class="side-title">{beforeTitle}</span>
-
-        <div class="side-list">
-
-          {
-            beforeFlow.map((step) => (
-              <div class="side-step">{step}</div>
-            ))
-          }
-
-        </div>
-
-      </div>
-
-
-      <div class="side after">
-
-        <span class="side-title">{afterTitle}</span>
-
-        <div class="side-list">
-
-          {
-            afterFlow.map((step) => (
-              <div class="side-step">{step}</div>
-            ))
-          }
-
-        </div>
-
-      </div>
-
-    </div>
-
     <div class="stat">
 
       <span class="stat-value">{stat.value}</span>
@@ -136,19 +131,27 @@ const assetBImage = `${import.meta.env.BASE_URL}images/case-studies/credential-p
 
     </div>
 
-    <h3>{uiTitle}</h3>
-
-    <ol class="ui-list">
-      {ui.map((step) => (
-        <li>{step}</li>
-      ))}
-    </ol>
-
   </div>
 
-  <Asset id={assetA.id} label={assetA.label} image={assetAImage} />
-
-  <Asset id={assetB.id} label={assetB.label} image={assetBImage} />
+  <BulkAssignmentPrototype
+    id={prototype.id}
+    label={prototype.label}
+    title={prototype.title}
+    beforeTitle={prototype.beforeTitle}
+    beforeItems={prototype.beforeItems}
+    afterTitle={prototype.afterTitle}
+    afterSteps={prototype.afterSteps}
+    stepPrefix={prototype.stepPrefix}
+    steps={prototype.steps}
+    back={prototype.back}
+    next={prototype.next}
+    selected={prototype.selected}
+    dropTitle={prototype.dropTitle}
+    csvBadge={prototype.csvBadge}
+    successTitle={prototype.successTitle}
+    successDone={prototype.successDone}
+    startOver={prototype.startOver}
+  />
 
 </section>
 
@@ -293,98 +296,6 @@ const assetBImage = `${import.meta.env.BASE_URL}images/case-studies/credential-p
 }
 
 
-.transformation {
-
-  display: grid;
-
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-
-  gap: var(--space-md);
-
-  margin: var(--space-md) 0 0;
-
-}
-
-
-.side {
-
-  padding: var(--space-lg);
-
-  border: 1px solid var(--color-border);
-
-  background: var(--color-bg-secondary);
-
-}
-
-
-.side.after {
-
-  border-color: var(--color-accent);
-
-}
-
-
-.side-title {
-
-  display: block;
-
-  margin-bottom: var(--space-md);
-
-  color: var(--color-text-secondary);
-
-  font-size: var(--font-size-label);
-
-  letter-spacing: 0.08em;
-
-  text-transform: uppercase;
-
-}
-
-
-.side.after .side-title {
-
-  color: var(--color-accent);
-
-}
-
-
-.side-list {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: var(--space-sm);
-
-}
-
-
-.side-step {
-
-  padding: var(--space-xs) var(--space-sm);
-
-  border: 1px solid var(--color-border);
-
-  background: var(--color-bg-primary);
-
-  font-family: "Courier New", Courier, monospace;
-
-  font-size: var(--font-size-small);
-
-  color: var(--color-text-secondary);
-
-  text-align: center;
-
-}
-
-
-.side.after .side-step {
-
-  color: var(--color-text-primary);
-
-}
-
-
 .stat {
 
   display: flex;
@@ -422,74 +333,6 @@ const assetBImage = `${import.meta.env.BASE_URL}images/case-studies/credential-p
   color: var(--color-text-secondary);
 
   font-size: var(--font-size-body);
-
-}
-
-
-h3 {
-
-  margin: var(--space-lg) 0 0;
-
-  font-size: var(--font-size-h3);
-
-  line-height: var(--line-height-h3);
-
-  font-weight: 600;
-
-}
-
-
-.ui-list {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: var(--space-sm);
-
-  margin: 0;
-
-  padding-left: 1.5rem;
-
-  counter-reset: ui;
-
-  list-style: none;
-
-}
-
-
-.ui-list li {
-
-  position: relative;
-
-  padding-left: var(--space-lg);
-
-  color: var(--color-text-secondary);
-
-  font-size: var(--font-size-body);
-
-  line-height: 1.7;
-
-  counter-increment: ui;
-
-}
-
-
-.ui-list li::before {
-
-  content: counter(ui, decimal-leading-zero);
-
-  position: absolute;
-
-  left: 0;
-
-  top: 0;
-
-  color: var(--color-accent);
-
-  font-family: "Courier New", Courier, monospace;
-
-  font-size: var(--font-size-small);
 
 }
 

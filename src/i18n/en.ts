@@ -59,8 +59,8 @@ const en = {
     options: {
 
       fun: {
-        title: "Fun",
-        link: `${import.meta.env.BASE_URL}/fun/`
+        title: "Writings",
+        link: `${import.meta.env.BASE_URL}/writings/`
       },
 
       experiments: {
@@ -147,7 +147,7 @@ const en = {
     navigation: {
       work: "Work",
       experiments: "Experiments",
-      fun: "Fun",
+      fun: "Writings",
     },
 
     actions: {
@@ -701,33 +701,88 @@ const en = {
       bulkTitle: "Bulk assignment",
       bulkText:
         "Organizations could prepare recipient information and upload it through CSV. With the data ready, a multiple assignment could take approximately 2 minutes.",
-      beforeTitle: "BEFORE",
-      beforeFlow: [
-        "Recipient 1 → Form",
-        "Recipient 2 → Form",
-        "Recipient 3 → Form",
-        "…",
-        "Recipient 50 → Form"
-      ],
-      afterTitle: "AFTER",
-      afterFlow: [
-        "Credential template",
-        "Prepare CSV",
-        "Upload",
-        "Review",
-        "Assign to 20–50 users"
-      ],
       stat: { value: "~2 min", label: "for a bulk assignment" },
-      uiTitle: "UI sequence",
-      ui: [
-        "Credential template",
-        "Upload CSV",
-        "Data validation",
-        "Review recipients",
-        "Assignment confirmation"
-      ],
-      assetA: { id: "ASSET 07", label: "Workflow transformation" },
-      assetB: { id: "ASSET 08", label: "UI sequence" }
+      prototype: {
+        id: "ASSET 07 – 08",
+        label: "Interactive bulk assignment prototype",
+        title: "Credential issuance — from one-by-one to bulk",
+        beforeTitle: "BEFORE",
+        beforeItems: [
+          "Recipient 1 → Form",
+          "Recipient 2 → Form",
+          "Recipient 3 → Form",
+          "…",
+          "Recipient 50 → Form"
+        ],
+        afterTitle: "AFTER",
+        afterSteps: ["Template", "CSV", "Validation", "Review", "Assign"],
+        stepPrefix: "Step",
+        back: "Back",
+        next: "Next",
+        selected: "Selected",
+        dropTitle: "Drop your CSV here",
+        csvBadge: "CSV",
+        steps: [
+          {
+            number: "01",
+            name: "Credential template",
+            prompt: "Select a credential",
+            templates: [
+              "Course completion — Level 1",
+              "Accreditation — BLS",
+              "Certified technician"
+            ]
+          },
+          {
+            number: "02",
+            name: "Upload CSV",
+            drop: "Drop your CSV here",
+            or: "or",
+            choose: "Choose file"
+          },
+          {
+            number: "03",
+            name: "Validation",
+            found: "48",
+            foundLabel: "recipients found",
+            valid: "46",
+            validLabel: "valid",
+            attention: "2",
+            attentionLabel: "need attention"
+          },
+          {
+            number: "04",
+            name: "Review",
+            colName: "Recipient",
+            colStatus: "Status",
+            validLabel: "Valid",
+            attentionLabel: "Need attention",
+            rows: [
+              { name: "Ana Torres" },
+              { name: "Carlos Díaz", attention: true },
+              { name: "Elena Gómez" },
+              { name: "Luis Pérez" },
+              { name: "Marta Ruiz", attention: true },
+              { name: "Sergio Blanco" }
+            ],
+            more: "+ 42 more"
+          },
+          {
+            number: "05",
+            name: "Assign",
+            ready: "Ready to assign",
+            stats: [
+              { value: "48", label: "recipients" },
+              { value: "1", label: "credential" },
+              { value: "~2 min", label: "est. time" }
+            ],
+            button: "Assign credentials"
+          }
+        ],
+        successTitle: "48 credentials assigned",
+        successDone: "Completed",
+        startOver: "↻"
+      }
     },
 
     accreditedUX: {
