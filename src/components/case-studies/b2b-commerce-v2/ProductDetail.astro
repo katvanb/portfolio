@@ -1,0 +1,885 @@
+---
+import SectionHeading from "../shared/SectionHeading.astro";
+
+interface Callout {
+  number: string;
+  title: string;
+  text: string;
+}
+
+interface Props {
+  number: string;
+  title: string;
+  paragraphs: string[];
+  variantsTitle: string;
+  variants: string[];
+  variantsClosing: string;
+  questionsTitle: string;
+  questions: string[];
+  pathsTitle: string;
+  paths: string[];
+  closing: string;
+  ui: {
+    label: string;
+    brand: string;
+    name: string;
+    sku: string;
+    priceLabel: string;
+    priceValue: string;
+    quoteLabel: string;
+    availability: string;
+    variantLabel: string;
+    variants: string[];
+    conditionLabel: string;
+    condition: string;
+    conditionNote: string;
+    handlingLabel: string;
+    handling: string;
+    handlingNote: string;
+    buyButton: string;
+    quoteButton: string;
+    infoLabel: string;
+    quoteInfo: string;
+  };
+  callouts: Callout[];
+  takeaway: string;
+}
+
+const {
+  number,
+  title,
+  paragraphs,
+  variantsTitle,
+  variants,
+  variantsClosing,
+  questionsTitle,
+  questions,
+  pathsTitle,
+  paths,
+  closing,
+  ui,
+  callouts,
+  takeaway
+} = Astro.props;
+---
+
+<section class="product-detail" id="product-detail">
+
+  <SectionHeading number={number} title={title} />
+
+  <div class="body">
+    {
+      paragraphs.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))
+    }
+  </div>
+
+  <p class="group-title">{variantsTitle}</p>
+
+  <ul class="variants">
+    {variants.map((variant) => (
+      <li>{variant}</li>
+    ))}
+  </ul>
+
+  <div class="body">
+    <p>{variantsClosing}</p>
+    <p class="questions-title">{questionsTitle}</p>
+  </div>
+
+  <div class="questions">
+    {questions.map((question, index) => (
+      <div class="question-row">
+        <span class="question-index">{String(index + 1).padStart(2, "0")}</span>
+        <span>{question}</span>
+      </div>
+    ))}
+  </div>
+
+  <p class="group-title">{pathsTitle}</p>
+
+  <div class="paths">
+    {paths.map((path, index) => (
+      <div class="path-chip">
+        <span class="path-index">{String(index + 1).padStart(2, "0")}</span>
+        <span>{path}</span>
+      </div>
+    ))}
+  </div>
+
+  <div class="body">
+    <p class="closing">{closing}</p>
+  </div>
+
+  <!-- =========================
+       UI MOCK
+  ========================= -->
+
+  <div class="ui-wrap">
+
+    <span class="ui-label">
+      {ui.label}
+    </span>
+
+    <div class="ui-stage">
+
+      <!-- Browser frame -->
+      <div class="browser">
+
+        <div class="browser-bar">
+          <span class="browser-dots"><i></i><i></i><i></i></span>
+          <span class="browser-url">shop.scientific.example.com/products/4521</span>
+        </div>
+
+        <div class="browser-body">
+
+          <!-- Left: product image -->
+          <div class="pdp-left">
+
+            <div class="product-visual">
+
+              <div class="product-tile">
+                <div class="product-art">
+                  <span class="art-bottle"></span>
+                </div>
+                <span class="art-label">PRODUCT IMAGE</span>
+              </div>
+
+              <div class="thumbnails">
+                <span class="thumb"></span>
+                <span class="thumb"></span>
+                <span class="thumb"></span>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Right: purchase info -->
+          <div class="pdp-right">
+
+            <span class="pdp-brand">{ui.brand}</span>
+
+            <h4 class="pdp-name">{ui.name}</h4>
+
+            <span class="pdp-sku">{ui.sku}</span>
+
+            <div class="pdp-availability">
+              <i class="dot"></i>
+              {ui.availability}
+            </div>
+
+            <!-- Variant selector -->
+            <div class="pdp-field">
+              <span class="pdp-field-label">{ui.variantLabel}</span>
+              <div class="variant-options">
+                {
+                  ui.variants.map((variant, index) => (
+                    <span class:list={["variant-option", index === 1 && "selected"]}>
+                      {variant}
+                    </span>
+                  ))
+                }
+              </div>
+            </div>
+
+            <!-- Purchase conditions -->
+            <div class="notice warning">
+              <span class="notice-title">
+                <i class="notice-icon">⚠</i>
+                {ui.conditionLabel}
+              </span>
+              <strong>{ui.condition}</strong>
+              <span class="notice-note">{ui.conditionNote}</span>
+            </div>
+
+            <!-- Special handling -->
+            <div class="notice">
+              <span class="notice-title">
+                <i class="notice-icon">⚠</i>
+                {ui.handlingLabel}
+              </span>
+              <strong>{ui.handling}</strong>
+              <span class="notice-note">{ui.handlingNote}</span>
+            </div>
+
+            <!-- Price / quote -->
+            <div class="price-row">
+              <span class="price-label">{ui.priceLabel}</span>
+              <span class="price-value">{ui.priceValue}</span>
+            </div>
+
+            <div class="pdp-actions">
+              <button class="btn-primary" type="button">{ui.buyButton}</button>
+              <button class="btn-secondary" type="button">{ui.quoteButton}</button>
+            </div>
+
+            <div class="info-row">
+              <span class="info-dot"></span>
+              <span>{ui.infoLabel}</span>
+            </div>
+            <div class="info-row dim">
+              <i class="info-icon">i</i>
+              <span>{ui.quoteInfo}</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Callouts -->
+      <div class="callouts">
+
+        {
+          callouts.map((callout, index) => (
+            <div class:list={["callout", `callout-${index}`]}>
+              <span class="callout-number">{callout.number}</span>
+              <div class="callout-body">
+                <strong>{callout.title}</strong>
+                <span>{callout.text}</span>
+              </div>
+            </div>
+          ))
+        }
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <p class="takeaway">{takeaway}</p>
+
+</section>
+
+
+<style>
+
+.product-detail {
+  width: 100%;
+  margin-top: var(--section-spacing);
+}
+
+/* =========================
+   Body
+========================= */
+
+.body {
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.body p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-body-lg);
+}
+
+.group-title {
+  margin: var(--space-xl) 0 var(--space-md);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: 500;
+}
+
+.questions-title {
+  color: var(--color-text-primary) !important;
+  font-weight: 500;
+}
+
+/* =========================
+   Variants list
+========================= */
+
+.variants {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.variants li {
+  padding: var(--space-xs) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
+
+/* =========================
+   Questions
+========================= */
+
+.questions {
+  display: flex;
+  flex-direction: column;
+  margin: var(--space-lg) 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.question-row {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  align-items: baseline;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.question-row:last-child {
+  border-bottom: none;
+}
+
+.question-index {
+  color: var(--color-accent);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-label);
+  letter-spacing: 0.05em;
+}
+
+.question-row span:last-child {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-body-lg);
+}
+
+/* =========================
+   Paths
+========================= */
+
+.paths {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.path-chip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-small);
+  font-weight: 500;
+}
+
+.path-index {
+  color: var(--color-accent);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-label);
+  letter-spacing: 0.05em;
+}
+
+.closing {
+  color: var(--color-text-primary) !important;
+  font-weight: 500;
+}
+
+/* =========================
+   UI MOCK
+========================= */
+
+.ui-wrap {
+  margin-top: var(--space-xl);
+}
+
+.ui-label {
+  display: block;
+  margin-bottom: var(--space-md);
+  color: var(--color-text-secondary);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ui-stage {
+  position: relative;
+}
+
+/* =========================
+   Browser frame
+========================= */
+
+.browser {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-primary);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+.browser-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+}
+
+.browser-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.browser-dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-border);
+}
+
+.browser-dots i:first-child { background: #f0b429; }
+.browser-dots i:nth-child(2) { background: #3f8f5f; }
+.browser-dots i:nth-child(3) { background: #e05d52; }
+
+.browser-url {
+  padding: 4px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-bg-primary);
+  color: var(--color-text-secondary);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-label);
+}
+
+.browser-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+/* =========================
+   Product visual
+========================= */
+
+.pdp-left {
+  padding: var(--space-lg);
+  border-right: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+}
+
+.product-visual {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.product-tile {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: linear-gradient(145deg, var(--color-bg-primary), var(--color-bg-secondary));
+  overflow: hidden;
+}
+
+.product-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.art-bottle {
+  position: relative;
+  width: 90px;
+  height: 140px;
+  border-radius: 0 0 22px 22px;
+  background: linear-gradient(160deg, #e8f3ff 0%, #cfe5ff 55%, #b7d7f7 100%);
+  box-shadow: inset -18px 0 30px rgba(57, 120, 201, 0.12);
+}
+
+.art-bottle::before {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  width: 34px;
+  height: 22px;
+  transform: translateX(-50%);
+  background: #b9cdd0;
+  border-radius: 4px 4px 0 0;
+}
+
+.art-bottle::after {
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: 16px;
+  width: 58px;
+  height: 90px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.15));
+}
+
+.art-label {
+  position: absolute;
+  bottom: var(--space-sm);
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-text-secondary);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-micro);
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.thumbnails {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.thumb {
+  flex: 1;
+  aspect-ratio: 1;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-primary);
+}
+
+.thumb:first-child {
+  border-color: var(--color-accent);
+}
+
+/* =========================
+   Purchase info
+========================= */
+
+.pdp-right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-lg);
+}
+
+.pdp-brand {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.pdp-name {
+  margin: 0;
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: 500;
+}
+
+.pdp-sku {
+  color: var(--color-text-secondary);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-label);
+}
+
+.pdp-availability {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: var(--space-xs) 0;
+  color: #3f8f5f;
+  font-size: var(--font-size-small);
+}
+
+.pdp-availability .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3f8f5f;
+}
+
+/* =========================
+   Fields
+========================= */
+
+.pdp-field {
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.pdp-field-label {
+  display: block;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.variant-options {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.variant-option {
+  padding: 8px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-primary);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
+
+.variant-option.selected {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+/* =========================
+   Notices
+========================= */
+
+.notice {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-secondary);
+}
+
+.notice.warning {
+  border-color: #e0a83a;
+  background: #fdf6e7;
+}
+
+[data-theme="dark"] .notice.warning {
+  background: #2c2416;
+}
+
+.notice-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.notice-icon {
+  font-style: normal;
+  font-size: 12px;
+}
+
+.notice strong {
+  font-size: var(--font-size-small);
+  font-weight: 500;
+}
+
+.notice-note {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-label);
+}
+
+/* =========================
+   Price & actions
+========================= */
+
+.price-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.price-label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-label);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.price-value {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-h3);
+  font-weight: 600;
+}
+
+.pdp-actions {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.btn-primary,
+.btn-secondary {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.btn-primary {
+  border: 1px solid var(--color-accent);
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #3f8f5f;
+  font-size: var(--font-size-label);
+}
+
+.info-row.dim {
+  color: var(--color-text-secondary);
+}
+
+.info-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3f8f5f;
+}
+
+.info-icon {
+  width: 14px;
+  height: 14px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  font-style: normal;
+  font-size: 10px;
+}
+
+/* =========================
+   Callouts
+========================= */
+
+.callouts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.callout {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-secondary);
+}
+
+.callout-number {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-label);
+  font-weight: 600;
+}
+
+.callout-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.callout-body strong {
+  font-size: var(--font-size-small);
+  font-weight: 500;
+}
+
+.callout-body span {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-label);
+}
+
+/* =========================
+   Takeaway
+========================= */
+
+.takeaway {
+  max-width: 760px;
+  margin: var(--space-xl) 0 0;
+  padding: var(--space-lg);
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: 500;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 900px) {
+
+  .browser-body {
+    grid-template-columns: 1fr;
+  }
+
+  .pdp-left {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .callouts {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .callouts {
+    grid-template-columns: 1fr;
+  }
+
+  .product-tile {
+    aspect-ratio: 4 / 3;
+  }
+
+  .pdp-right,
+  .pdp-left {
+    padding: var(--space-md);
+  }
+
+}
+
+</style>

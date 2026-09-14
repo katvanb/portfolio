@@ -1,0 +1,187 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import en from "../../i18n/en";
+import Index from "../../components/case-studies/shared/Index.astro";
+import { calculateReadingTime } from "../../utils/readingTime";
+import Hero from "../../components/case-studies/shared/CaseStudyHero.astro";
+import Challenge from "../../components/case-studies/b2b-commerce-v2/Challenge.astro";
+import ProductModel from "../../components/case-studies/b2b-commerce-v2/ProductModel.astro";
+import ProductDetail from "../../components/case-studies/b2b-commerce-v2/ProductDetail.astro";
+import SearchEcosystem from "../../components/case-studies/b2b-commerce-v2/SearchEcosystem.astro";
+import TwoMarkets from "../../components/case-studies/b2b-commerce-v2/TwoMarkets.astro";
+import Organization from "../../components/case-studies/b2b-commerce-v2/Organization.astro";
+import PostPurchase from "../../components/case-studies/b2b-commerce-v2/PostPurchase.astro";
+import Adoption from "../../components/case-studies/b2b-commerce-v2/Adoption.astro";
+import Transformation from "../../components/case-studies/b2b-commerce-v2/Transformation.astro";
+import Outcome from "../../components/case-studies/b2b-commerce-v2/Outcome.astro";
+
+const t = en;
+
+const readingTime = calculateReadingTime(t.b2bCommerceV2);
+---
+
+<BaseLayout
+  title="B2B Commerce Platform"
+  content={t}
+>
+
+  <Index
+    sections={[
+      { id: "the-brief", label: "The Brief" },
+      { id: "product-model", label: "Product Model" },
+      { id: "product-detail", label: "Product Detail" },
+      { id: "search", label: "Search Ecosystem" },
+      { id: "two-markets", label: "Two Markets" },
+      { id: "organization", label: "Organization" },
+      { id: "post-purchase", label: "Post-purchase" },
+      { id: "adoption", label: "Adoption" },
+      { id: "transformation", label: "Transformation" },
+      { id: "outcome", label: "Outcome" },
+    ]}
+  />
+
+  <div class="case-study">
+
+    <Hero
+      content={t.b2bCommerceV2.hero}
+      readingTime={readingTime}
+      nda
+    />
+
+    <Challenge
+      title={t.b2bCommerceV2.challenge.title}
+      paragraphs={t.b2bCommerceV2.challenge.paragraphs}
+      pivotLabel={t.b2bCommerceV2.challenge.pivotLabel}
+      pivot={t.b2bCommerceV2.challenge.pivot}
+      pivotAfter={t.b2bCommerceV2.challenge.pivotAfter}
+      summaryLabel={t.b2bCommerceV2.challenge.summaryLabel}
+      before={t.b2bCommerceV2.challenge.before}
+      after={t.b2bCommerceV2.challenge.after}
+    />
+
+    <ProductModel
+      number={t.b2bCommerceV2.productModel.number}
+      title={t.b2bCommerceV2.productModel.title}
+      paragraphs={t.b2bCommerceV2.productModel.paragraphs}
+      departmentsTitle={t.b2bCommerceV2.productModel.departmentsTitle}
+      departments={t.b2bCommerceV2.productModel.departments}
+      synthesisLabel={t.b2bCommerceV2.productModel.synthesisLabel}
+      outputsTitle={t.b2bCommerceV2.productModel.outputsTitle}
+      outputsNote={t.b2bCommerceV2.productModel.outputsNote}
+      outputs={t.b2bCommerceV2.productModel.outputs}
+    />
+
+    <ProductDetail
+      number={t.b2bCommerceV2.productDetail.number}
+      title={t.b2bCommerceV2.productDetail.title}
+      paragraphs={t.b2bCommerceV2.productDetail.paragraphs}
+      variantsTitle={t.b2bCommerceV2.productDetail.variantsTitle}
+      variants={t.b2bCommerceV2.productDetail.variants}
+      variantsClosing={t.b2bCommerceV2.productDetail.variantsClosing}
+      questionsTitle={t.b2bCommerceV2.productDetail.questionsTitle}
+      questions={t.b2bCommerceV2.productDetail.questions}
+      pathsTitle={t.b2bCommerceV2.productDetail.pathsTitle}
+      paths={t.b2bCommerceV2.productDetail.paths}
+      closing={t.b2bCommerceV2.productDetail.closing}
+      ui={t.b2bCommerceV2.productDetail.ui}
+      callouts={t.b2bCommerceV2.productDetail.callouts}
+      takeaway={t.b2bCommerceV2.productDetail.takeaway}
+    />
+
+    <SearchEcosystem
+      number={t.b2bCommerceV2.searchEcosystem.number}
+      title={t.b2bCommerceV2.searchEcosystem.title}
+      paragraphs={t.b2bCommerceV2.searchEcosystem.paragraphs}
+      systemTitle={t.b2bCommerceV2.searchEcosystem.systemTitle}
+      system={t.b2bCommerceV2.searchEcosystem.system}
+      flowTitle={t.b2bCommerceV2.searchEcosystem.flowTitle}
+      flow={t.b2bCommerceV2.searchEcosystem.flow}
+      flowNote={t.b2bCommerceV2.searchEcosystem.flowNote}
+      ui={t.b2bCommerceV2.searchEcosystem.ui}
+    />
+
+    <TwoMarkets
+      number={t.b2bCommerceV2.twoMarkets.number}
+      title={t.b2bCommerceV2.twoMarkets.title}
+      paragraphs={t.b2bCommerceV2.twoMarkets.paragraphs}
+      closing={t.b2bCommerceV2.twoMarkets.closing}
+      closing2={t.b2bCommerceV2.twoMarkets.closing2}
+      platformLabel={t.b2bCommerceV2.twoMarkets.platformLabel}
+      spain={t.b2bCommerceV2.twoMarkets.spain}
+      portugal={t.b2bCommerceV2.twoMarkets.portugal}
+      sharedNote={t.b2bCommerceV2.twoMarkets.sharedNote}
+    />
+
+    <Organization
+      number={t.b2bCommerceV2.organization.number}
+      title={t.b2bCommerceV2.organization.title}
+      paragraphs={t.b2bCommerceV2.organization.paragraphs}
+      questionsIntro={t.b2bCommerceV2.organization.questionsIntro}
+      questions={t.b2bCommerceV2.organization.questions}
+      goal={t.b2bCommerceV2.organization.goal}
+      quote={t.b2bCommerceV2.organization.quote}
+      ui={t.b2bCommerceV2.organization.ui}
+    />
+
+    <PostPurchase
+      number={t.b2bCommerceV2.postPurchase.number}
+      title={t.b2bCommerceV2.postPurchase.title}
+      paragraphs={t.b2bCommerceV2.postPurchase.paragraphs}
+      needsTitle={t.b2bCommerceV2.postPurchase.needsTitle}
+      needs={t.b2bCommerceV2.postPurchase.needs}
+      principleTitle={t.b2bCommerceV2.postPurchase.principleTitle}
+      orderTitle={t.b2bCommerceV2.postPurchase.orderTitle}
+      orderFlow={t.b2bCommerceV2.postPurchase.orderFlow}
+      problemTitle={t.b2bCommerceV2.postPurchase.problemTitle}
+      problemFlow={t.b2bCommerceV2.postPurchase.problemFlow}
+      principleA={t.b2bCommerceV2.postPurchase.principleA}
+      principleB={t.b2bCommerceV2.postPurchase.principleB}
+    />
+
+    <Adoption
+      title={t.b2bCommerceV2.adoption.title}
+      paragraphs={t.b2bCommerceV2.adoption.paragraphs}
+      wrongTitle={t.b2bCommerceV2.adoption.wrongTitle}
+      wrong={t.b2bCommerceV2.adoption.wrong}
+      rightTitle={t.b2bCommerceV2.adoption.rightTitle}
+      right={t.b2bCommerceV2.adoption.right}
+    />
+
+    <Transformation
+      title={t.b2bCommerceV2.transformation.title}
+      before={t.b2bCommerceV2.transformation.before}
+      after={t.b2bCommerceV2.transformation.after}
+    />
+
+    <Outcome
+      title={t.b2bCommerceV2.outcome.title}
+      intro={t.b2bCommerceV2.outcome.intro}
+      sections={t.b2bCommerceV2.outcome.sections}
+      glanceTitle={t.b2bCommerceV2.outcome.glanceTitle}
+      glance={t.b2bCommerceV2.outcome.glance}
+      reflectionTitle={t.b2bCommerceV2.outcome.reflectionTitle}
+      reflectionLead={t.b2bCommerceV2.outcome.reflectionLead}
+      reflectionItems={t.b2bCommerceV2.outcome.reflectionItems}
+      reflectionClose={t.b2bCommerceV2.outcome.reflectionClose}
+    />
+
+  </div>
+
+</BaseLayout>
+
+
+<style>
+
+  .case-study {
+    width: 100%;
+  }
+
+  @media (min-width: 1201px) {
+
+    .case-study {
+      padding-right: 180px;
+    }
+
+  }
+
+</style>

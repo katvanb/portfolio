@@ -1,0 +1,341 @@
+---
+interface Section {
+  title: string;
+  items: string[];
+}
+
+interface Glance {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  title: string;
+  intro: string;
+  sections: Section[];
+  glanceTitle: string;
+  glance: Glance[];
+  reflectionTitle: string;
+  reflectionLead: string;
+  reflectionItems: string[];
+  reflectionClose: string;
+}
+
+const {
+  title,
+  intro,
+  sections,
+  glanceTitle,
+  glance,
+  reflectionTitle,
+  reflectionLead,
+  reflectionItems,
+  reflectionClose
+} = Astro.props;
+---
+
+<section class="outcome" id="outcome">
+
+  <div class="section-heading">
+    <h2>{title}</h2>
+  </div>
+
+  <p class="intro">{intro}</p>
+
+  <div class="impact-content">
+
+    <div class="impact-sections">
+
+      {
+        sections.map((section) => (
+          <div class="impact-section">
+
+            <h3>{section.title}</h3>
+
+            <div class="impact-section-body">
+
+              {
+                section.items.map((item) => (
+                  <p>{item}</p>
+                ))
+              }
+
+            </div>
+
+          </div>
+        ))
+      }
+
+    </div>
+
+  </div>
+
+  <!-- =========================
+       Glance strip
+  ========================= -->
+
+  <div class="glance-wrap">
+
+    <span class="glance-title">{glanceTitle}</span>
+
+    <div class="glance-strip">
+
+      {
+        glance.map((item) => (
+          <div class="glance-item">
+
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
+
+          </div>
+        ))
+      }
+
+    </div>
+
+  </div>
+
+  <!-- =========================
+       Reflection
+  ========================= -->
+
+  <div class="reflection">
+
+    <h3>{reflectionTitle}</h3>
+
+    <p class="reflection-lead">{reflectionLead}</p>
+
+    <div class="reflection-list">
+
+      {
+        reflectionItems.map((item) => (
+          <p>{item}</p>
+        ))
+      }
+
+    </div>
+
+    <p class="reflection-close">{reflectionClose}</p>
+
+  </div>
+
+</section>
+
+
+<style>
+
+.outcome {
+  width: 100%;
+  margin-top: var(--section-spacing);
+}
+
+.section-heading {
+  margin-bottom: var(--space-lg);
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: var(--font-size-h2);
+}
+
+.intro {
+  max-width: 760px;
+  margin-bottom: var(--space-xl);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-body-lg);
+}
+
+/* =========================
+   Impact sections
+========================= */
+
+.impact-content {
+  border-top: 1px solid var(--color-border);
+}
+
+.impact-section {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr);
+  gap: var(--space-xl);
+  padding: var(--space-xl) 0 var(--space-xl) var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.impact-section h3 {
+  margin: 0;
+  font-size: var(--font-size-h3);
+  line-height: 1.3;
+}
+
+.impact-section-body {
+  max-width: 760px;
+}
+
+.impact-section-body p {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-body);
+  line-height: 1.7;
+}
+
+.impact-section-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================
+   Glance strip
+========================= */
+
+.glance-wrap {
+  margin-top: var(--space-2xl);
+}
+
+.glance-title {
+  display: block;
+  margin-bottom: var(--space-md);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: 500;
+}
+
+.glance-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.glance-item {
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: var(--space-md);
+  text-align: center;
+  border-right: 1px solid var(--color-border);
+}
+
+.glance-item:last-child {
+  border-right: none;
+}
+
+.glance-item strong {
+  color: var(--color-accent);
+  font-size: var(--font-size-body-lg);
+  font-weight: 500;
+}
+
+.glance-item span {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
+
+/* =========================
+   Reflection
+========================= */
+
+.reflection {
+  margin-top: var(--space-2xl);
+  padding: var(--space-xl) 0 var(--space-xl) var(--space-lg);
+  border-left: 3px solid var(--color-accent);
+  display: grid;
+  grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr);
+  gap: var(--space-xl);
+}
+
+.reflection h3 {
+  margin: 0;
+  font-size: var(--font-size-h3);
+  font-weight: 600;
+}
+
+.reflection-lead {
+  grid-column: 1 / -1;
+  margin-top: var(--space-lg);
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-display);
+  line-height: var(--line-height-display);
+  font-weight: 500;
+  letter-spacing: var(--letter-spacing-display);
+}
+
+.reflection-list {
+  grid-column: 1 / -1;
+}
+
+.reflection-list p {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-body-lg);
+  line-height: 1.7;
+}
+
+.reflection-list p:last-child {
+  margin-bottom: 0;
+}
+
+.reflection-close {
+  grid-column: 1 / -1;
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: 500;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 900px) {
+
+  .impact-section {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .reflection {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .glance-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .glance-item:nth-child(2) {
+    border-right: none;
+  }
+
+  .glance-item:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .glance-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .glance-item {
+    border-right: none !important;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .glance-item:last-child {
+    border-bottom: none;
+  }
+
+}
+
+</style>

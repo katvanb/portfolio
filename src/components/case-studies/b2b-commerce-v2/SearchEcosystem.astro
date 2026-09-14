@@ -1,0 +1,956 @@
+---
+import SectionHeading from "../shared/SectionHeading.astro";
+
+interface Props {
+  number: string;
+  title: string;
+  paragraphs: string[];
+  systemTitle: string;
+  system: string[];
+  flowTitle: string;
+  flow: string[];
+  flowNote: string;
+  ui: {
+    label: string;
+    inputPlaceholder: string;
+    recentTitle: string;
+    recent: string[];
+    popularTitle: string;
+    popular: string[];
+    suggestedTitle: string;
+    categoriesLabel: string;
+    categories: string[];
+    productsLabel: string;
+    products: string[];
+    resultsTitle: string;
+    filtersTitle: string;
+    filters: string[];
+    activeFilter: string;
+    resultItems: { name: string; brand: string; sku: string }[];
+    discoveryTitle: string;
+    relatedTitle: string;
+    related: string[];
+    promoTitle: string;
+    promos: string[];
+  };
+}
+
+const {
+  number,
+  title,
+  paragraphs,
+  systemTitle,
+  system,
+  flowTitle,
+  flow,
+  flowNote,
+  ui
+} = Astro.props;
+---
+
+<section class="search-ecosystem" id="search">
+
+  <SectionHeading number={number} title={title} />
+
+  <div class="body">
+    {
+      paragraphs.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))
+    }
+  </div>
+
+  <p class="system-title">{systemTitle}</p>
+
+  <div class="system">
+    {system.map((item) => (
+      <span class="system-chip">{item}</span>
+    ))}
+  </div>
+
+  <div class="flow-block">
+
+    <span class="flow-title">{flowTitle}</span>
+
+    <div class="flow">
+      {
+        flow.map((step, index) => (
+          <div class="flow-step">
+            <span class="flow-step-index">{String(index + 1).padStart(2, "0")}</span>
+            <span>{step}</span>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="flow-note">{flowNote}</p>
+
+  </div>
+
+  <!-- =========================
+       UI MOCK — three states
+  ========================= -->
+
+  <div class="ui-wrap">
+
+    <span class="ui-label">
+      {ui.label}
+    </span>
+
+    <div class="stage">
+
+      <!-- Step tabs -->
+      <div class="steps" role="tablist" aria-label="Search states">
+
+        <button
+          class="step-tab active"
+          data-step="0"
+          role="tab"
+          aria-selected="true"
+          aria-controls="search-state-0"
+        >
+          <span class="step-number">01</span>
+          <span class="step-name">Search input</span>
+        </button>
+
+        <button
+          class="step-tab"
+          data-step="1"
+          role="tab"
+          aria-selected="false"
+          aria-controls="search-state-1"
+        >
+          <span class="step-number">02</span>
+          <span class="step-name">Results</span>
+        </button>
+
+        <button
+          class="step-tab"
+          data-step="2"
+          role="tab"
+          aria-selected="false"
+          aria-controls="search-state-2"
+        >
+          <span class="step-number">03</span>
+          <span class="step-name">Product discovery</span>
+        </button>
+
+      </div>
+
+      <!-- Connecting line -->
+      <div class="connect-line">
+        <span class="connect-dot"></span>
+        <span class="connect-dot"></span>
+        <span class="connect-dot"></span>
+      </div>
+
+      <!-- State 01 — Input -->
+      <div class="search-state" id="search-state-0" role="tabpanel">
+
+        <div class="search-input-bar">
+          <span class="search-icon"></span>
+          <span class="search-placeholder">{ui.inputPlaceholder}</span>
+        </div>
+
+        <div class="suggestions-grid">
+
+          <div class="suggestion-col">
+            <span class="suggestion-title">{ui.recentTitle}</span>
+            {
+              ui.recent.map((item) => (
+                <span class="suggestion-item">{item}</span>
+              ))
+            }
+          </div>
+
+          <div class="suggestion-col">
+            <span class="suggestion-title">{ui.popularTitle}</span>
+            {
+              ui.popular.map((item) => (
+                <span class="suggestion-item">{item}</span>
+              ))
+            }
+          </div>
+
+          <div class="suggestion-col">
+            <span class="suggestion-title">{ui.suggestedTitle}</span>
+            <span class="suggestion-sub">{ui.categoriesLabel}</span>
+            {
+              ui.categories.map((item) => (
+                <span class="suggestion-item">{item}</span>
+              ))
+            }
+            <span class="suggestion-sub">{ui.productsLabel}</span>
+            {
+              ui.products.map((item) => (
+                <span class="suggestion-item">{item}</span>
+              ))
+            }
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- State 02 — Results -->
+      <div class="search-state hidden" id="search-state-1" role="tabpanel">
+
+        <div class="results-layout">
+
+          <div class="results-filters">
+
+            <span class="filters-title">{ui.filtersTitle}</span>
+
+            {
+              ui.filters.map((filter, index) => (
+                <div class="filter-row">
+                  <span>{filter}</span>
+                  <i class:list={["filter-chevron", index === 0 && "open"]}></i>
+                </div>
+              ))
+            }
+
+            <div class="active-filter">
+              <span class="active-dot"></span>
+              {ui.activeFilter}
+            </div>
+
+          </div>
+
+          <div class="results-panel">
+
+            <span class="results-title">{ui.resultsTitle}</span>
+
+            <div class="result-grid">
+
+              {
+                ui.resultItems.map((item, index) => (
+                  <div class:list={["result-card", index === 0 && "featured"]}>
+
+                    <div class="result-ratio">
+                      <div class="result-art"></div>
+                    </div>
+
+                    <div class="result-info">
+                      <span class="result-brand">{item.brand}</span>
+                      <strong>{item.name}</strong>
+                      <span class="result-sku">{item.sku}</span>
+                      <span class:list={["result-avail", index < 3 && "ok"]}>
+                        {index < 3 ? "In stock" : "On demand"}
+                      </span>
+                    </div>
+
+                  </div>
+                ))
+              }
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- State 03 — Discovery -->
+      <div class="search-state hidden" id="search-state-2" role="tabpanel">
+
+        <div class="discovery-layout">
+
+          <div class="related-block">
+
+            <span class="block-title">{ui.relatedTitle}</span>
+
+            <div class="related-row">
+              {
+                ui.related.map((item) => (
+                  <div class="related-card">
+                    <div class="related-art"></div>
+                    <span>{item}</span>
+                  </div>
+                ))
+              }
+            </div>
+
+          </div>
+
+          <div class="promo-block">
+
+            <span class="block-title">{ui.promoTitle}</span>
+
+            <div class="promo-row">
+              {
+                ui.promos.map((promo) => (
+                  <div class="promo-card">
+                    <span class="promo-tag">%</span>
+                    <span>{promo}</span>
+                  </div>
+                ))
+              }
+            </div>
+
+          </div>
+
+          <span class="discovery-caption">← {ui.discoveryTitle}</span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<script>
+
+  const tabs =
+    document.querySelectorAll<HTMLButtonElement>(
+      ".step-tab"
+    );
+
+  const states =
+    document.querySelectorAll<HTMLElement>(
+      ".search-state"
+    );
+
+  const dots =
+    document.querySelectorAll<HTMLElement>(
+      ".connect-dot"
+    );
+
+  const activate = (index: number) => {
+
+    tabs.forEach((tab, i) => {
+
+      const active = i === index;
+
+      tab.classList.toggle("active", active);
+
+      tab.setAttribute(
+        "aria-selected",
+        String(active)
+      );
+
+    });
+
+    states.forEach((state, i) => {
+
+      state.classList.toggle(
+        "hidden",
+        i !== index
+      );
+
+    });
+
+    dots.forEach((dot, i) => {
+
+      dot.classList.toggle("active", i <= index);
+
+    });
+
+  };
+
+  tabs.forEach((tab, index) => {
+
+    tab.addEventListener("click", () => {
+      activate(index);
+    });
+
+  });
+
+</script>
+
+
+<style>
+
+.search-ecosystem {
+  width: 100%;
+  margin-top: var(--section-spacing);
+}
+
+/* =========================
+   Body
+========================= */
+
+.body {
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.body p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-body-lg);
+}
+
+/* =========================
+   Search system
+========================= */
+
+.system-title {
+  margin: var(--space-xl) 0 var(--space-md);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: 500;
+}
+
+.system {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.system-chip {
+  padding: var(--space-xs) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
+
+/* =========================
+   Flow
+========================= */
+
+.flow-block {
+  margin: var(--space-xl) 0;
+}
+
+.flow-title {
+  display: block;
+  margin-bottom: var(--space-md);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: 500;
+}
+
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.flow-step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-body);
+}
+
+.flow-step:not(:last-child)::after {
+  content: "→";
+  margin-left: var(--space-md);
+  color: var(--color-accent);
+}
+
+.flow-step-index {
+  color: var(--color-accent);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-label);
+  letter-spacing: 0.05em;
+}
+
+.flow-note {
+  max-width: 760px;
+  margin: var(--space-md) 0 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+  line-height: 1.7;
+}
+
+/* =========================
+   UI MOCK
+========================= */
+
+.ui-wrap {
+  margin-top: var(--space-xl);
+}
+
+.ui-label {
+  display: block;
+  margin-bottom: var(--space-md);
+  color: var(--color-text-secondary);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stage {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+}
+
+/* =========================
+   Tabs
+========================= */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.step-tab {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.step-tab:last-child {
+  border-right: none;
+}
+
+.step-tab:hover {
+  background: var(--color-bg-primary);
+}
+
+.step-tab.active {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  border-bottom-color: var(--color-accent);
+}
+
+.step-number {
+  color: var(--color-accent);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-label);
+  letter-spacing: 0.05em;
+}
+
+.step-name {
+  font-size: var(--font-size-small);
+  font-weight: 500;
+}
+
+/* =========================
+   Connecting line
+========================= */
+
+.connect-line {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  position: relative;
+  padding: var(--space-sm) var(--space-md);
+}
+
+.connect-line::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 16.66%;
+  right: 16.66%;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.connect-dot {
+  z-index: 1;
+  width: 12px;
+  height: 12px;
+  margin: 0 auto;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-bg-secondary);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.connect-dot.active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+/* =========================
+   States
+========================= */
+
+.search-state {
+  padding: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg-primary);
+}
+
+.search-state.hidden {
+  display: none;
+}
+
+/* =========================
+   State 01 — Input
+========================= */
+
+.search-input-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 12px 16px;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-primary);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+.search-icon {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--color-text-secondary);
+  border-radius: 50%;
+  position: relative;
+}
+
+.search-icon::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  bottom: -3px;
+  width: 6px;
+  height: 2px;
+  background: var(--color-text-secondary);
+  transform: rotate(45deg);
+}
+
+.search-placeholder {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-body);
+}
+
+.suggestions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.suggestion-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.suggestion-title {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+}
+
+.suggestion-sub {
+  margin-top: var(--space-sm);
+  color: var(--color-accent);
+  font-size: var(--font-size-label);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.suggestion-item {
+  padding: 4px 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-small);
+  transition: color 0.2s ease;
+}
+
+.suggestion-item::before {
+  content: "·";
+  margin-right: 8px;
+  color: var(--color-accent);
+}
+
+/* =========================
+   State 02 — Results
+========================= */
+
+.results-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--space-lg);
+}
+
+.results-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filters-title {
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-small);
+  font-weight: 500;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
+
+.filter-chevron {
+  width: 7px;
+  height: 7px;
+  border-right: 1px solid var(--color-text-secondary);
+  border-bottom: 1px solid var(--color-text-secondary);
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.filter-chevron.open {
+  transform: rotate(225deg);
+}
+
+.active-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: var(--space-sm);
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--color-accent-soft);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-label);
+}
+
+.active-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.results-panel {
+  min-width: 0;
+}
+
+.results-title {
+  display: block;
+  margin-bottom: var(--space-md);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-small);
+  font-weight: 500;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-sm);
+}
+
+.result-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-primary);
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.result-card.featured {
+  border-color: var(--color-accent);
+}
+
+.result-ratio {
+  aspect-ratio: 2 / 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+}
+
+.result-art {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: linear-gradient(160deg, #e8f3ff 0%, #cfe5ff 55%, #b7d7f7 100%);
+}
+
+.result-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-sm) var(--space-md);
+}
+
+.result-brand {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-micro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.result-info strong {
+  font-size: var(--font-size-small);
+  font-weight: 500;
+}
+
+.result-sku {
+  color: var(--color-text-secondary);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-micro);
+}
+
+.result-avail {
+  margin-top: var(--space-sm);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-micro);
+}
+
+.result-avail.ok {
+  color: #3f8f5f;
+}
+
+/* =========================
+   State 03 — Discovery
+========================= */
+
+.discovery-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.related-block,
+.promo-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.block-title {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.related-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+}
+
+.related-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-small);
+}
+
+.related-art {
+  width: 100%;
+  aspect-ratio: 2 / 1.2;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-primary);
+}
+
+.promo-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-sm);
+}
+
+.promo-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border: 1px dashed var(--color-accent);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-small);
+}
+
+.promo-tag {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: var(--font-size-label);
+  font-weight: 600;
+}
+
+.discovery-caption {
+  color: var(--color-text-secondary);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-label);
+  letter-spacing: 0.05em;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 900px) {
+
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .step-tab,
+  .step-tab:last-child {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .connect-line {
+    display: none;
+  }
+
+  .results-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .suggestions-grid,
+  .related-row {
+    grid-template-columns: 1fr;
+  }
+
+  .promo-row,
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .search-state {
+    padding: var(--space-md);
+  }
+
+}
+
+</style>

@@ -45,7 +45,7 @@ const en = {
           description:
             "Transforming a traditional sales process into a self-service commerce experience for professional buyers.",
           tags: ["Product Discovery", "Complex UX", "Self-Service", "Business Systems"],
-          link: `${import.meta.env.BASE_URL}/work/b2b-commerce-platform/`,
+          link: `${import.meta.env.BASE_URL}/work/b2b-commerce-v2/`,
           image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce-platform/cover.png`
         }
 
@@ -1073,6 +1073,362 @@ const en = {
           ]
         }
     },
+  },
+
+  b2bCommerceV2: {
+    hero: {
+      tag: "B2B COMMERCE · SCIENTIFIC SUPPLIES",
+      title: "From sales-assisted purchasing to self-service",
+      description: [
+        "Designing a B2B commerce platform for scientific supplies, where products, customers, markets, and purchasing rules all came with their own conditions.",
+      ],
+      role: "Product Designer",
+      timeline: "2 years",
+      team: "Product · UX/UI · Engineering · QA · Client Development · Business Stakeholders",
+      focus: "Product strategy · Discovery · B2B commerce · UX/UI · Search · Product architecture · Self-service",
+      ndaText:
+        "Due to an NDA, some business details and product visuals have been generalized while preserving the design process and design decisions.",
+    },
+
+    challenge: {
+      title: "The Brief",
+      paragraphs: [
+        "Build a B2B commerce experience similar to Fisher Scientific.",
+        "The business already had customers, products and established sales processes. What it didn't have was a digital experience that brought those pieces together.",
+        "Customers were used to purchasing through sales teams, while departments operated with different processes and rules.",
+      ],
+      pivotLabel: "The challenge",
+      pivot:
+        "The challenge wasn't putting a catalog online.",
+      pivotAfter:
+        "It was turning a complex purchasing operation into a self-service experience customers could actually use.",
+      summaryLabel: "The 30-second summary",
+      before: {
+        label: "BEFORE",
+        sublabel: "Sales-assisted purchasing",
+        items: [
+          "Phone",
+          "Email",
+          "Printed catalogs",
+          "Quotes",
+          "Manual tracking",
+          "Fragmented departments"
+        ]
+      },
+      after: {
+        label: "AFTER",
+        sublabel: "Self-service commerce",
+        items: [
+          "Search",
+          "Product discovery",
+          "Quotes",
+          "Orders",
+          "Account management",
+          "Tracking",
+          "Support"
+        ]
+      }
+    },
+
+    productModel: {
+      number: "01",
+      title: "Turn fragmented business processes into one product model",
+      paragraphs: [
+        "Before designing the interface, I needed to understand how the business actually worked.",
+        "Sales, marketing, procurement, accounting and development each had a different perspective on the same commercial process. I facilitated discovery workshops and mapped those perspectives into a shared product model.",
+      ],
+      departmentsTitle: "Different departments. Different versions of the same process.",
+      departments: [
+        { name: "Sales", note: "Customer relationships · Commercial processes" },
+        { name: "Marketing", note: "Products · Promotions · Content" },
+        { name: "Procurement", note: "Availability · Purchasing" },
+        { name: "Accounting", note: "Customer conditions · Commercial rules" },
+        { name: "Development", note: "Systems · Data · Technical constraints" }
+      ],
+      synthesisLabel: "Synthesis",
+      outputsTitle: "One shared product model",
+      outputsNote: "The output wasn't a screen. It was a shared understanding of the business that could guide product decisions across teams.",
+      outputs: [
+        "Business rules",
+        "User roles",
+        "Product logic",
+        "System constraints"
+      ]
+    },
+
+    productDetail: {
+      number: "02",
+      title: "Design a product detail experience around purchasing decisions",
+      paragraphs: [
+        "The product detail page became one of the hardest problems in the platform. This wasn't a conventional catalog.",
+      ],
+      variantsTitle: "Products could have:",
+      variants: [
+        "no variants",
+        "multiple variants",
+        "product families",
+        "quotation-based purchasing",
+        "purchase restrictions",
+        "special handling requirements"
+      ],
+      variantsClosing:
+        "For some scientific products, customers might need authorization to purchase them. Others required special handling because of hazardous materials or dry ice.",
+      questionsTitle: "So the product page needed to answer more than:",
+      questions: [
+        "What is this product?",
+        "Can I buy it?",
+        "Which version do I need?",
+        "What conditions apply?",
+        "Do I need a quotation?"
+      ],
+      pathsTitle: "One product experience, multiple purchasing paths",
+      paths: [
+        "Direct purchase",
+        "Variant selection",
+        "Product family",
+        "Request quotation",
+        "Purchase restriction"
+      ],
+      closing:
+        "The challenge was exposing the right information at the right moment without turning the product page into a wall of business rules.",
+      ui: {
+        label: "Conceptual product detail — anonymized",
+        brand: "SCIENTIFIC SUPPLIES",
+        name: "Cell Culture Medium X",
+        sku: "SKU 4521-900ML",
+        priceLabel: "Price",
+        priceValue: "On request",
+        quoteLabel: "OR",
+        availability: "In stock · Ships in 48h",
+        variantLabel: "Select size",
+        variants: ["500 ml", "1 L", "2 L"],
+        conditionLabel: "Purchase conditions",
+        condition: "Authorization required",
+        conditionNote: "Hazardous material — restricted purchase",
+        handlingLabel: "Special handling",
+        handling: "Dry ice shipping",
+        handlingNote: "Packaged with dry ice — expedited delivery",
+        buyButton: "Add to cart",
+        quoteButton: "Request quotation",
+        infoLabel: "Eligible for order",
+        quoteInfo: "Price must be confirmed by sales"
+      },
+      callouts: [
+        { number: "01", title: "Product configuration", text: "Variants / families" },
+        { number: "02", title: "Purchasing path", text: "Buy vs. request quotation" },
+        { number: "03", title: "Eligibility", text: "Authorization requirements" },
+        { number: "04", title: "Special handling", text: "Hazardous materials / dry ice" }
+      ],
+      takeaway:
+        "I understand business rules and know how to translate them into UI."
+    },
+
+    searchEcosystem: {
+      number: "03",
+      title: "Make a large scientific catalog searchable",
+      paragraphs: [
+        "Search became one of the main ways customers navigated the catalog. Professional buyers could arrive with a precise query — product name, brand, SKU or characteristics — while others needed to explore.",
+        "I designed search to support both behaviors.",
+      ],
+      systemTitle: "Search wasn't a field. It was a discovery system.",
+      system: [
+        "Autocomplete",
+        "Suggestions",
+        "Recent searches",
+        "Popular searches",
+        "Categories",
+        "Brands",
+        "Products",
+        "Filters",
+        "Similar products",
+        "Promotions"
+      ],
+      flowTitle: "From search to product decision",
+      flow: ["Search", "Suggestions", "Results", "Filters", "Product", "Decision"],
+      flowNote: "The goal was to help customers move from intent to the right product without requiring them to understand the underlying catalog structure.",
+      ui: {
+        label: "Search ecosystem — conceptual",
+        inputPlaceholder: "Search products, brands, SKUs…",
+        recentTitle: "Recent searches",
+        recent: ["DNA extraction", "Pipettes", "Serum"],
+        popularTitle: "Popular searches",
+        popular: ["Cell culture", "Microplates", "Buffers"],
+        suggestedTitle: "Suggested",
+        categoriesLabel: "Categories",
+        categories: ["Molecular Biology"],
+        productsLabel: "Products",
+        products: ["Agarose LE"],
+        resultsTitle: "Results",
+        filtersTitle: "Filters",
+        filters: ["Brand", "Category", "Availability"],
+        activeFilter: "In stock",
+        resultItems: [
+          { name: "Agarose LE", brand: "SciBrand", sku: "SKU 2214" },
+          { name: "Agarose SEAKEM", brand: "SciBrand", sku: "SKU 2218" },
+          { name: "Tris-Acetate", brand: "BioLab", sku: "SKU 8810" },
+          { name: "SYBR Safe", brand: "BioLab", sku: "SKU 9004" }
+        ],
+        discoveryTitle: "Product discovery",
+        relatedTitle: "Related products",
+        related: ["Agarose LM", "Loading buffer", "Ladder 1kb"],
+        promoTitle: "Promotions",
+        promos: ["20% on buffers", "Free shipping on cold-chain"]
+      }
+    },
+
+    twoMarkets: {
+      number: "04",
+      title: "Design one platform for two markets",
+      paragraphs: [
+        "The platform served customers in Spain and Portugal. The experience needed to remain consistent while allowing market-specific behavior around language, products, stock, promotions, content and commercial conditions.",
+      ],
+      closing: "The goal was not to create two separate storefronts.",
+      closing2: "It was to create one system with different contexts.",
+      platformLabel: "ONE PLATFORM",
+      spain: { label: "SPAIN", items: ["Spanish", "Catalog", "Stock", "Promotions", "Content"] },
+      portugal: { label: "PORTUGAL", items: ["Portuguese", "Catalog", "Stock", "Promotions", "Content"] },
+      sharedNote: "Shared experience + market-specific behavior"
+    },
+
+    organization: {
+      number: "05",
+      title: "Design self-service around the organization",
+      paragraphs: [
+        "B2B purchasing isn't always an individual activity. The product needed to represent the organization behind the buyer: authorized buyers, permissions, shipping addresses, individual activity, team activity and order history.",
+      ],
+      questionsIntro: "The experience had to answer not only",
+      questions: [
+        "What can I buy?",
+        "What can I do on behalf of my organization?"
+      ],
+      goal: "The goal was to reduce the need for customers to contact sales for routine account and purchasing tasks.",
+      quote: "The customer wasn't just a buyer. They were an organization.",
+      ui: {
+        label: "Conceptual account screens — anonymized",
+        orgTab: "Organization",
+        orgItems: ["Members", "Roles & permissions", "Addresses", "Activity"],
+        ordersTab: "Orders",
+        ordersItems: ["History", "Status", "Details"],
+        memberName: "M. García",
+        memberRole: "Buyer",
+        memberStatus: "Authorized",
+        addressLabel: "Shipping address",
+        address: "Madrid — Lab 3, Av. Principal 12",
+        activityLabel: "Last activity",
+        activity: "Order #4821 · 2 days ago",
+        orderRow: [
+          { id: "#4817", status: "Delivered", date: "Sep 02" },
+          { id: "#4821", status: "In transit", date: "Sep 09" },
+          { id: "#4830", status: "Processing", date: "Sep 12" }
+        ]
+      }
+    },
+
+    postPurchase: {
+      number: "06",
+      title: "Connect purchasing with what happens after checkout",
+      paragraphs: [
+        "The digital experience didn't stop at checkout. I worked with developers and stakeholders to translate logistics information into a customer-facing experience, including packaging, shipment progress and delivery documentation.",
+      ],
+      needsTitle: "The experience also needed to handle what happened when something went wrong.",
+      needs: ["Returns", "Incidents", "Technical support", "Customer requests"],
+      principleTitle: "The customer shouldn't have to understand the company's internal structure to get help.",
+      orderTitle: "Order",
+      orderFlow: ["Order", "Packaging", "Shipment", "Delivery"],
+      problemTitle: "Problem",
+      problemFlow: ["Issue", "Support / Return", "Internal routing", "Resolution"],
+      principleA: "Customer describes the problem.",
+      principleB: "The system routes it to the right place."
+    },
+
+    adoption: {
+      title: "Designing for adoption",
+      paragraphs: [
+        "Existing customers already knew how to buy. They knew who to call, who to email, how to request a quotation and who to contact when something went wrong.",
+        "Moving them to self-service couldn't mean forcing them to learn a completely different business process. The product preserved familiar commercial concepts while removing unnecessary friction.",
+      ],
+      wrongTitle: "The goal wasn't",
+      wrong: "Make customers use the website.",
+      rightTitle: "It was",
+      right: "Make the website easier than calling."
+    },
+
+    transformation: {
+      title: "The transformation",
+      before: {
+        label: "BEFORE · Sales-assisted",
+        items: [
+          "Phone",
+          "Email",
+          "Printed catalogs",
+          "Manual quotations",
+          "Manual order follow-up",
+          "Fragmented processes"
+        ]
+      },
+      after: {
+        label: "AFTER · Self-service",
+        items: [
+          "Search",
+          "Product discovery",
+          "Quotes",
+          "Orders",
+          "Account management",
+          "Tracking",
+          "Support",
+          "Returns"
+        ]
+      }
+    },
+
+    outcome: {
+      title: "The outcome",
+      intro:
+        "The product brought commercial and operational processes into one B2B commerce experience serving customers across Spain and Portugal.",
+      sections: [
+        {
+          title: "Product discovery",
+          items: [
+            "Customers could search a large scientific catalog through search, categories, brands, filters, suggestions and related products."
+          ]
+        },
+        {
+          title: "Purchasing",
+          items: [
+            "Different purchasing conditions could coexist within one experience — from direct purchases and variants to product families and quotation-based products."
+          ]
+        },
+        {
+          title: "Customer autonomy",
+          items: [
+            "Organizations could manage buyers, permissions, addresses and purchasing activity through the platform."
+          ]
+        },
+        {
+          title: "Beyond the purchase",
+          items: [
+            "Logistics, support, returns and incidents became part of the customer experience rather than disconnected processes."
+          ]
+        }
+      ],
+      glanceTitle: "Outcome at a glance",
+      glance: [
+        { value: "2 years", label: "Product evolution" },
+        { value: "Spain + Portugal", label: "Multi-market experience" },
+        { value: "500k+ products", label: "Large catalog" },
+        { value: "Buy · Configure · Quote · Restricted", label: "Multiple purchasing paths" }
+      ],
+      reflectionTitle: "Reflection",
+      reflectionLead: "B2B commerce is not just e-commerce.",
+      reflectionItems: [
+        "Behind every product is a set of business rules.",
+        "Behind every buyer is an organization.",
+        "Behind every order is an operational process.",
+        "My role was to connect those layers and turn them into an experience that felt coherent to the customer."
+      ],
+      reflectionClose:
+        "The best self-service experiences don't make the business simpler. They make its complexity easier for customers to navigate."
+    }
   }
 };
 
