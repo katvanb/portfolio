@@ -503,6 +503,38 @@ const en = {
         "Details have been generalized to protect client confidentiality."
     },
 
+    productMap: {
+      id: "ASSET 01",
+      label: "Product map",
+      platformLabel: "CREDENTIAL PLATFORM",
+      levels: [
+        { number: "01", title: "Platform", chips: ["Organizations", "Roles", "Reporting"] },
+        { number: "02", title: "Organization", chips: ["Members", "Credentials", "Settings"] }
+      ],
+      lifecycleTitle: "Credential lifecycle",
+      lifecycleSteps: ["Create", "Assign", "Issue", "Report"],
+      footer: "Multi-tenant · Role-based · Self-service"
+    },
+
+    roleMatrix: {
+      id: "ASSET 03",
+      label: "Role & permission model",
+      heading: "WHO IS RESPONSIBLE FOR WHAT?",
+      roles: [
+        { title: "PLATFORM ADMIN", items: ["Organizations", "Members", "Credentials", "Reports"] },
+        { title: "ORG ADMIN", items: ["Organizations", "Members", "Credentials", "Reports"] },
+        { title: "SECONDARY ADMIN", items: ["Members", "Credentials", "Limited reporting"] },
+        { title: "ACCREDITED", items: ["Own credentials", "Own information"] }
+      ],
+      hierarchyLabel: "THE HIERARCHY",
+      hierarchyRoot: "PLATFORM",
+      hierarchyBranches: [
+        { name: "Organization A", children: ["Org Admin", "Secondary Admin", "Accredited"] },
+        { name: "Organization B", children: ["Org Admin", "Accredited"] }
+      ],
+      footer: "Permissions followed organizational responsibility, not individual actions."
+    },
+
     challenge: {
       eyebrow: "THE CHALLENGE",
       title: "There was a business model, but no product yet.",
@@ -554,14 +586,6 @@ const en = {
       ],
       roleGoal:
         "The goal wasn't to create more roles. It was to make responsibility explicit.",
-      matrixTitle: "Role & permission model",
-      matrixColumns: ["Role", "Organizations", "Members", "Credentials", "Reports"],
-      matrixRows: [
-        ["Platform Admin", "✓", "✓", "✓", "✓"],
-        ["Org Admin", "✓", "✓", "✓", "✓"],
-        ["Secondary Admin", "—", "✓", "✓", "Limited"],
-        ["Accredited", "—", "—", "Own", "Own"]
-      ],
       asset: { id: "ASSET 03", label: "Role & permission model" }
     },
 
@@ -625,12 +649,39 @@ const en = {
         "Edge cases",
         "Validation states"
       ],
-      callouts: [
-        "Role visibility adapts to the user's responsibility.",
-        "Actions are available only when the user's permission model allows them."
-      ],
-      assetFlow: { id: "ASSET 05", label: "Before / after flow" },
-      assetUi: { id: "ASSET 06", label: "Organization & member management UI" }
+      mgmtUi: {
+        id: "ASSET 06",
+        label: "Organization & member management UI",
+        title: "Organizations",
+        newMember: "+ New member",
+        orgName: "Acme Organization",
+        orgMeta: "48 members · 3 admins",
+        membersTitle: "Members",
+        searchPlaceholder: "Search members…",
+        filterLabel: "Filter ▾",
+        columns: ["Name", "Role", "Status"],
+        rows: [
+          { name: "Ana Torres", role: "Org Admin", status: "Active" },
+          { name: "Luis Pérez", role: "Secondary Admin", status: "Active" },
+          { name: "Marta Ruiz", role: "Accredited", status: "Pending" },
+          { name: "Carlos Díaz", role: "Accredited", status: "Active" }
+        ],
+        detailLabel: "MEMBER",
+        detailName: "Marta Ruiz",
+        roleLabel: "Role",
+        roleValue: "Accredited ▾",
+        orgLabel: "Organization",
+        orgValue: "Acme Organization",
+        credsLabel: "Credentials",
+        credsValue: "12 issued · 2 pending",
+        cancel: "Cancel",
+        save: "Save",
+        callouts: [
+          { number: "01", title: "Role visibility", text: "Users only see actions their responsibility allows." },
+          { number: "02", title: "Self-service", text: "Organizations manage members without internal intervention." },
+          { number: "03", title: "Validation", text: "Role changes respect organizational constraints." }
+        ]
+      }
     },
 
     workflow: {

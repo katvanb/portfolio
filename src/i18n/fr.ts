@@ -503,6 +503,38 @@ const fr = {
         "Les détails ont été généralisés pour protéger la confidentialité du client."
     },
 
+    productMap: {
+      id: "ASSET 01",
+      label: "Carte du produit",
+      platformLabel: "PLATEFORME DE CRÉDENTIALS",
+      levels: [
+        { number: "01", title: "Plateforme", chips: ["Organisations", "Rôles", "Reporting"] },
+        { number: "02", title: "Organisation", chips: ["Membres", "Crédentials", "Paramètres"] }
+      ],
+      lifecycleTitle: "Cycle de vie de la crédential",
+      lifecycleSteps: ["Créer", "Attribuer", "Délivrer", "Suivi"],
+      footer: "Multi-tenant · Basé sur les rôles · Autonome"
+    },
+
+    roleMatrix: {
+      id: "ASSET 03",
+      label: "Modèle de rôles et permissions",
+      heading: "QUI EST RESPONSABLE DE QUOI ?",
+      roles: [
+        { title: "ADMIN PLATEFORME", items: ["Organisations", "Membres", "Crédentials", "Rapports"] },
+        { title: "ADMIN ORG", items: ["Organisations", "Membres", "Crédentials", "Rapports"] },
+        { title: "ADMIN SECONDAIRE", items: ["Membres", "Crédentials", "Rapports limités"] },
+        { title: "ACCRÉDITÉ", items: ["Ses credentials", "Ses informations"] }
+      ],
+      hierarchyLabel: "LA HIÉRARCHIE",
+      hierarchyRoot: "PLATEFORME",
+      hierarchyBranches: [
+        { name: "Organisation A", children: ["Admin Org", "Admin Secondaire", "Accrédité"] },
+        { name: "Organisation B", children: ["Admin Org", "Accrédité"] }
+      ],
+      footer: "Les permissions suivaient la responsabilité organisationnelle, pas les actions individuelles."
+    },
+
     challenge: {
       eyebrow: "LE DÉFI",
       title: "Il y avait un modèle business, mais pas encore de produit.",
@@ -554,14 +586,6 @@ const fr = {
       ],
       roleGoal:
         "L'objectif n'était pas de créer plus de rôles. C'était de rendre la responsabilité explicite.",
-      matrixTitle: "Modèle de rôles et permissions",
-      matrixColumns: ["Rôle", "Organisations", "Membres", "Credentials", "Rapports"],
-      matrixRows: [
-        ["Admin de plateforme", "✓", "✓", "✓", "✓"],
-        ["Admin d'organisation", "✓", "✓", "✓", "✓"],
-        ["Admin secondaire", "—", "✓", "✓", "Limité"],
-        ["Accrédité", "—", "—", "Propres", "Propres"]
-      ],
       asset: { id: "ASSET 03", label: "Modèle de rôles et permissions" }
     },
 
@@ -625,12 +649,39 @@ const fr = {
         "Cas limites",
         "États de validation"
       ],
-      callouts: [
-        "La visibilité du rôle s'adapte à la responsabilité de l'utilisateur.",
-        "Les actions ne sont disponibles que lorsque le modèle de permissions de l'utilisateur le permet."
-      ],
-      assetFlow: { id: "ASSET 05", label: "Parcours avant / après" },
-      assetUi: { id: "ASSET 06", label: "UI de gestion d'organisation et de membres" }
+      mgmtUi: {
+        id: "ASSET 06",
+        label: "UI de gestion d'organisation et de membres",
+        title: "Organisations",
+        newMember: "+ Nouveau membre",
+        orgName: "Organisation Acme",
+        orgMeta: "48 membres · 3 admins",
+        membersTitle: "Membres",
+        searchPlaceholder: "Rechercher des membres…",
+        filterLabel: "Filtrer ▾",
+        columns: ["Nom", "Rôle", "Statut"],
+        rows: [
+          { name: "Ana Torres", role: "Admin Org", status: "Actif" },
+          { name: "Luis Pérez", role: "Admin Secondaire", status: "Actif" },
+          { name: "Marta Ruiz", role: "Accréditée", status: "En attente" },
+          { name: "Carlos Díaz", role: "Accrédité", status: "Actif" }
+        ],
+        detailLabel: "MEMBRE",
+        detailName: "Marta Ruiz",
+        roleLabel: "Rôle",
+        roleValue: "Accréditée ▾",
+        orgLabel: "Organisation",
+        orgValue: "Organisation Acme",
+        credsLabel: "Crédentials",
+        credsValue: "12 délivrées · 2 en attente",
+        cancel: "Annuler",
+        save: "Enregistrer",
+        callouts: [
+          { number: "01", title: "Visibilité du rôle", text: "Les utilisateurs ne voient que les actions que leur responsabilité autorise." },
+          { number: "02", title: "Libre-service", text: "Les organisations gèrent leurs membres sans intervention interne." },
+          { number: "03", title: "Validation", text: "Les changements de rôle respectent les contraintes organisationnelles." }
+        ]
+      }
     },
 
     workflow: {

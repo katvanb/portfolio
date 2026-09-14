@@ -1,6 +1,6 @@
 ---
 import SectionHeading from "../shared/SectionHeading.astro";
-import Asset from "../shared/Asset.astro";
+import OrganizationManagement from "./OrganizationManagement.astro";
 
 interface Props {
   number: string;
@@ -16,19 +16,37 @@ interface Props {
   afterFlow: string[];
   contributionTitle: string;
   contribution: string[];
-  callouts: string[];
-  assetFlow: { id: string; label: string };
-  assetUi: { id: string; label: string };
+  mgmtUi: {
+    id: string;
+    label: string;
+    title: string;
+    newMember: string;
+    orgName: string;
+    orgMeta: string;
+    membersTitle: string;
+    searchPlaceholder: string;
+    filterLabel: string;
+    columns: string[];
+    rows: { name: string; role: string; status: string }[];
+    detailLabel: string;
+    detailName: string;
+    roleLabel: string;
+    roleValue: string;
+    orgLabel: string;
+    orgValue: string;
+    credsLabel: string;
+    credsValue: string;
+    cancel: string;
+    save: string;
+    callouts: { number: string; title: string; text: string }[];
+  };
 }
 
 const {
   number, title, paragraphs, items, transition, resultTitle, resultText,
   beforeTitle, beforeFlow, afterTitle, afterFlow,
-  contributionTitle, contribution, callouts, assetFlow, assetUi
+  contributionTitle, contribution, mgmtUi
 } = Astro.props;
-
-const flowImage = `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-05.png`;
-const uiImage = `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-06.png`;
 ---
 
 <section class="self-service" id="self-service">
@@ -122,21 +140,32 @@ const uiImage = `${import.meta.env.BASE_URL}images/case-studies/credential-platf
 
     </div>
 
-    <div class="callouts">
-
-      {
-        callouts.map((callout) => (
-          <blockquote>{callout}</blockquote>
-        ))
-      }
-
-    </div>
-
   </div>
 
-  <Asset id={assetFlow.id} label={assetFlow.label} image={flowImage} />
-
-  <Asset id={assetUi.id} label={assetUi.label} image={uiImage} />
+  <OrganizationManagement
+    id={mgmtUi.id}
+    label={mgmtUi.label}
+    title={mgmtUi.title}
+    newMember={mgmtUi.newMember}
+    orgName={mgmtUi.orgName}
+    orgMeta={mgmtUi.orgMeta}
+    membersTitle={mgmtUi.membersTitle}
+    searchPlaceholder={mgmtUi.searchPlaceholder}
+    filterLabel={mgmtUi.filterLabel}
+    columns={mgmtUi.columns}
+    rows={mgmtUi.rows}
+    detailLabel={mgmtUi.detailLabel}
+    detailName={mgmtUi.detailName}
+    roleLabel={mgmtUi.roleLabel}
+    roleValue={mgmtUi.roleValue}
+    orgLabel={mgmtUi.orgLabel}
+    orgValue={mgmtUi.orgValue}
+    credsLabel={mgmtUi.credsLabel}
+    credsValue={mgmtUi.credsValue}
+    cancel={mgmtUi.cancel}
+    save={mgmtUi.save}
+    callouts={mgmtUi.callouts}
+  />
 
 </section>
 
@@ -360,36 +389,6 @@ h3 {
   font-size: var(--font-size-small);
 
   color: var(--color-text-secondary);
-
-}
-
-
-.callouts {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: var(--space-sm);
-
-}
-
-
-.callouts blockquote {
-
-  margin: 0;
-
-  padding: var(--space-md) var(--space-lg);
-
-  border-left: 3px solid var(--color-accent);
-
-  background: var(--color-bg-secondary);
-
-  color: var(--color-text-primary);
-
-  font-size: var(--font-size-body);
-
-  line-height: 1.6;
 
 }
 

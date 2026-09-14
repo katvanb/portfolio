@@ -1,0 +1,563 @@
+---
+interface Row {
+  name: string;
+  role: string;
+  status: string;
+}
+
+interface Callout {
+  number: string;
+  title: string;
+  text: string;
+}
+
+interface Props {
+  id: string;
+  label: string;
+  title: string;
+  newMember: string;
+  orgName: string;
+  orgMeta: string;
+  membersTitle: string;
+  searchPlaceholder: string;
+  filterLabel: string;
+  columns: string[];
+  rows: Row[];
+  detailLabel: string;
+  detailName: string;
+  roleLabel: string;
+  roleValue: string;
+  orgLabel: string;
+  orgValue: string;
+  credsLabel: string;
+  credsValue: string;
+  cancel: string;
+  save: string;
+  callouts: Callout[];
+}
+
+const {
+  id, label, title, newMember,
+  orgName, orgMeta, membersTitle, searchPlaceholder, filterLabel,
+  columns, rows,
+  detailLabel, detailName,
+  roleLabel, roleValue, orgLabel, orgValue, credsLabel, credsValue,
+  cancel, save, callouts
+} = Astro.props;
+
+function initials(name: string) {
+  return name.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
+}
+
+const selectedRow = 2;
+---
+
+<figure class="management-wrap">
+
+  <figure class="stage">
+
+    <div class="ui-grid">
+
+      <!-- Main panel -->
+      <div class="main-panel">
+
+        <div class="panel-bar">
+          <span class="panel-title">{title}</span>
+          <span class="new-member-btn">{newMember}</span>
+        </div>
+
+        <div class="org-summary">
+          <span class="org-name">{orgName}</span>
+          <span class="org-meta">{orgMeta}</span>
+        </div>
+
+        <div class="members-section">
+
+          <div class="members-head">
+            <span class="members-title">{membersTitle}</span>
+          </div>
+
+          <div class="members-toolbar">
+            <span class="search-box">{searchPlaceholder}</span>
+            <span class="filter-btn">{filterLabel}</span>
+          </div>
+
+          <div class="table-head">
+            <span>{columns[0]}</span>
+            <span>{columns[1]}</span>
+            <span>{columns[2]}</span>
+          </div>
+
+          <div class="table-rows">
+
+            {rows.map((row, index) => (
+              <div class:list={["table-row", index === selectedRow && "selected"]}>
+
+                <span class="row-name">
+                  <span class:list={["avatar", `accent-${index}`]}>{initials(row.name)}</span>
+                  {row.name}
+                </span>
+
+                <span class="row-role">{row.role}</span>
+
+                <span class:list={["row-status", row.status.toLowerCase() === "active" ? "active" : "pending"]}>
+                  <span class="status-dot"></span>
+                  {row.status}
+                </span>
+
+                <span class="row-actions">•••</span>
+
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Detail panel -->
+      <div class="detail-panel">
+
+        <span class="detail-label">{detailLabel}</span>
+
+        <span class="detail-name">{detailName}</span>
+
+        <div class="detail-field">
+          <span class="field-label">{roleLabel}</span>
+          <span class="field-select">{roleValue}</span>
+        </div>
+
+        <div class="detail-field">
+          <span class="field-label">{orgLabel}</span>
+          <span class="field-value">{orgValue}</span>
+        </div>
+
+        <div class="detail-field">
+          <span class="field-label">{credsLabel}</span>
+          <span class="field-value">{credsValue}</span>
+        </div>
+
+        <div class="detail-footer">
+          <span class="btn-cancel">{cancel}</span>
+          <span class="btn-save">{save}</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Callouts -->
+    <div class="callouts">
+
+      {callouts.map((callout) => (
+        <div class="callout-card">
+
+          <span class="callout-number">{callout.number}</span>
+
+          <span class="callout-title">{callout.title}</span>
+
+          <span class="callout-text">{callout.text}</span>
+
+        </div>
+      ))}
+
+    </div>
+
+  </figure>
+
+  <figcaption class="mgmt-caption">
+
+    <span class="mgmt-id">{id}</span>
+
+    <span class="mgmt-label">{label}</span>
+
+  </figcaption>
+
+</figure>
+
+
+<style>
+
+.management-wrap {
+  margin: var(--space-lg) 0;
+}
+
+/* =========================
+   Stage
+========================= */
+
+.stage {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  padding: var(--space-xl) var(--space-lg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  margin: 0;
+}
+
+/* =========================
+   Grid
+========================= */
+
+.ui-grid {
+  display: grid;
+  grid-template-columns: 1fr minmax(240px, 0.55fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+/* =========================
+   Main panel
+========================= */
+
+.main-panel {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-primary);
+}
+
+.panel-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.panel-title {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-body);
+  font-weight: 600;
+}
+
+.new-member-btn {
+  padding: 6px 14px;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-primary);
+  color: var(--color-accent);
+  font-size: var(--font-size-small);
+  font-weight: 500;
+}
+
+.org-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.org-name {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-body);
+  font-weight: 600;
+}
+
+.org-meta {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
+
+/* =========================
+   Members
+========================= */
+
+.members-section {
+  padding: 0;
+}
+
+.members-head {
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.members-title {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-body);
+  font-weight: 600;
+}
+
+.members-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.search-box {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
+
+.filter-btn {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
+
+.table-head {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 0.9fr 40px;
+  padding: var(--space-sm) var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.table-head span {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.table-rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 0.9fr 40px;
+  align-items: center;
+  padding: var(--space-sm) var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.table-row.selected {
+  background: var(--color-accent-soft);
+  border-left: 3px solid var(--color-accent);
+}
+
+.row-name {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-small);
+  font-weight: 500;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: var(--font-size-micro);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.accent-0 { background: #FBE4D5; color: #E8752F; }
+.accent-1 { background: #e0e7f9; color: #3978C9; }
+.accent-2 { background: #e0efe6; color: #3F8F5F; }
+.accent-3 { background: #f3e5f5; color: #8056B8; }
+
+[data-theme="dark"] .accent-0 { background: #332a18; }
+[data-theme="dark"] .accent-1 { background: #1c2536; }
+[data-theme="dark"] .accent-2 { background: #1e3025; }
+[data-theme="dark"] .accent-3 { background: #271c36; }
+
+.row-role {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
+
+.row-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-small);
+}
+
+.row-status.active {
+  color: #3f8f5f;
+}
+
+.row-status.pending {
+  color: #E8752F;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.row-actions {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+  text-align: center;
+  cursor: default;
+  letter-spacing: 0.15em;
+}
+
+/* =========================
+   Detail panel
+========================= */
+
+.detail-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-primary);
+  align-self: start;
+}
+
+.detail-label {
+  color: var(--color-text-secondary);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-label);
+  letter-spacing: 0.1em;
+}
+
+.detail-name {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: 600;
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.detail-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field-label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-label);
+}
+
+.field-value {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-small);
+}
+
+.field-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-small);
+}
+
+.detail-footer {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.btn-cancel {
+  padding: var(--space-xs) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-primary);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
+
+.btn-save {
+  padding: var(--space-xs) var(--space-md);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: #fff;
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  margin-left: auto;
+}
+
+/* =========================
+   Callouts
+========================= */
+
+.callouts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-md);
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.callout-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-primary);
+}
+
+.callout-number {
+  color: var(--color-accent);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-label);
+  letter-spacing: 0.05em;
+}
+
+.callout-title {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-body);
+  font-weight: 600;
+}
+
+.callout-text {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+  line-height: 1.6;
+}
+
+/* =========================
+   Caption
+========================= */
+
+.mgmt-caption {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.mgmt-id {
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-small);
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+}
+
+.mgmt-label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 900px) {
+
+  .ui-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .callouts {
+    grid-template-columns: 1fr;
+  }
+
+  .stage {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+}
+
+</style>

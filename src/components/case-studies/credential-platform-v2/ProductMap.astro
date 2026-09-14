@@ -1,0 +1,358 @@
+---
+interface Level {
+  number: string;
+  title: string;
+  chips: string[];
+}
+
+interface Props {
+  id: string;
+  label: string;
+  platformLabel: string;
+  levels: Level[];
+  lifecycleTitle: string;
+  lifecycleSteps: string[];
+  footer: string;
+}
+
+const {
+  id,
+  label,
+  platformLabel,
+  levels,
+  lifecycleTitle,
+  lifecycleSteps,
+  footer
+} = Astro.props;
+---
+
+<figure class="product-map">
+
+  <figure class="map-stage">
+
+    <div class="map-head">
+      <span class="map-head-label">{platformLabel}</span>
+    </div>
+
+    <div class="map-body">
+
+      {
+        levels.map((level, index) => (
+          <div class="map-level">
+
+            <div class="level-row">
+
+              <span class="level-number">{level.number}</span>
+
+              <div class="level-content">
+
+                <span class="level-title">{level.title}</span>
+
+                <div class="level-chips">
+                  {
+                    level.chips.map((chip) => (
+                      <span class="level-chip">{chip}</span>
+                    ))
+                  }
+                </div>
+
+              </div>
+
+            </div>
+
+            {
+              index < levels.length - 1 && (
+                <div class="level-connector">
+                  <span class="connector-line"></span>
+                  <span class="connector-arrow"></span>
+                </div>
+              )
+            }
+
+          </div>
+        ))
+      }
+
+      <div class="map-lifecycle">
+
+        <div class="level-row">
+
+          <span class="level-number">{String(Number(levels.length) + 1).padStart(2, "0")}</span>
+
+          <div class="level-content">
+
+            <span class="level-title">{lifecycleTitle}</span>
+
+            <div class="lifecycle-flow">
+
+              {
+                lifecycleSteps.map((step, index) => (
+                  <>
+                    <span class="lifecycle-step">{step}</span>
+                    {index < lifecycleSteps.length - 1 && (
+                      <span class="lifecycle-arrow">→</span>
+                    )}
+                  </>
+                ))
+              }
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="map-foot">
+      <span>{footer}</span>
+    </div>
+
+  </figure>
+
+  <figcaption class="map-caption">
+
+    <span class="map-id">
+      {id}
+    </span>
+
+    <span class="map-label">
+      {label}
+    </span>
+
+  </figcaption>
+
+</figure>
+
+
+<style>
+
+.product-map {
+  margin: var(--space-lg) 0;
+}
+
+/* =========================
+   Stage
+========================= */
+
+.map-stage {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  padding: var(--space-xl) var(--space-lg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  margin: 0;
+}
+
+/* =========================
+   Head
+========================= */
+
+.map-head {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.map-head-label {
+  padding: var(--space-xs) var(--space-xl);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-primary);
+  color: var(--color-accent);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-h3);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+}
+
+/* =========================
+   Levels
+========================= */
+
+.map-body {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.level-row {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: var(--space-md);
+}
+
+.level-number {
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-label);
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  padding-top: 6px;
+}
+
+.level-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.level-title {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: 500;
+}
+
+.level-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.level-chip {
+  padding: 4px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-bg-primary);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
+
+/* =========================
+   Connector
+========================= */
+
+.level-connector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+  position: relative;
+}
+
+.connector-line {
+  width: 2px;
+  height: 100%;
+  background: var(--color-accent);
+  opacity: 0.45;
+}
+
+.connector-arrow {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-bottom: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
+  transform: rotate(45deg);
+  margin-top: 24px;
+}
+
+/* =========================
+   Lifecycle
+========================= */
+
+.map-lifecycle {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-lg);
+}
+
+.lifecycle-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm) var(--space-xs);
+}
+
+.lifecycle-step {
+  padding: var(--space-xs) var(--space-md);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-small);
+  font-weight: 500;
+}
+
+.lifecycle-arrow {
+  color: var(--color-accent);
+  font-size: var(--font-size-small);
+}
+
+/* =========================
+   Foot
+========================= */
+
+.map-foot {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.map-foot span {
+  color: var(--color-text-secondary);
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* =========================
+   Caption
+========================= */
+
+.map-caption {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.map-id {
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-small);
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+}
+
+.map-label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 600px) {
+
+  .map-stage {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .map-head-label {
+    font-size: var(--font-size-body);
+    padding: var(--space-xs) var(--space-md);
+  }
+
+  .level-row {
+    grid-template-columns: 40px 1fr;
+    gap: var(--space-sm);
+  }
+
+  .map-foot span {
+    white-space: normal;
+    text-align: center;
+    line-height: 1.7;
+  }
+
+}
+
+</style>
