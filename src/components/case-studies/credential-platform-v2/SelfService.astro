@@ -55,24 +55,34 @@ const {
 
   <div class="body">
 
-    {
-      paragraphs.map((paragraph) => (
-        <p>{paragraph}</p>
-      ))
-    }
+    <div class="paragraphs">
 
-    <ul>
-      {items.map((item) => (
-        <li>{item}</li>
-      ))}
-    </ul>
-
-    <div class="transition">
       {
-        transition.map((line) => (
-          <p>{line}</p>
+        paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
         ))
       }
+
+    </div>
+
+    <div class="items-quote">
+
+      <div class="quote">
+
+        {
+          transition.map((line) => (
+            <p>{line}</p>
+          ))
+        }
+
+      </div>
+
+      <ul class="bullet-list">
+        {items.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+
     </div>
 
     <p class="result-title">{resultTitle}</p>
@@ -203,13 +213,57 @@ const {
 }
 
 
-ul {
+.paragraphs {
 
   display: flex;
 
   flex-direction: column;
 
-  gap: var(--space-sm);
+  gap: 0;
+
+}
+
+
+.items-quote {
+
+  display: grid;
+
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+
+  align-items: center;
+
+  gap: var(--space-lg);
+
+  margin: var(--space-sm) 0;
+
+}
+
+
+.quote {
+
+  border-left: 3px solid var(--color-accent);
+
+  padding-left: var(--space-md);
+
+}
+
+
+.quote p {
+
+  margin: 0;
+
+  color: var(--color-text-primary) !important;
+
+  font-size: var(--font-size-body-lg) !important;
+
+  line-height: var(--line-height-body-lg) !important;
+
+  font-weight: 500;
+
+}
+
+
+.bullet-list {
 
   margin: 0;
 
@@ -219,34 +273,27 @@ ul {
 
   font-size: var(--font-size-body);
 
-  line-height: 1.7;
+  line-height: 1.9;
 
 }
 
 
-ul li::marker {
+.bullet-list li::marker {
 
   color: var(--color-accent);
 
 }
 
 
-.transition {
+@media (max-width: 700px) {
 
-  padding: var(--space-md);
+  .items-quote {
 
-  border-left: 3px solid var(--color-accent);
+    grid-template-columns: 1fr;
 
-  background: var(--color-bg-secondary);
+    gap: var(--space-md);
 
-}
-
-
-.transition p {
-
-  color: var(--color-text-primary) !important;
-
-  font-size: var(--font-size-body) !important;
+  }
 
 }
 
@@ -380,15 +427,17 @@ h3 {
 
   padding: var(--space-xs) var(--space-md);
 
-  border: 1px solid var(--color-border);
+  border: none;
 
   border-radius: 999px;
 
   background: var(--color-bg-secondary);
 
+  font-family: var(--font-family-primary);
+
   font-size: var(--font-size-small);
 
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
 
 }
 

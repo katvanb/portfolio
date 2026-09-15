@@ -1,42 +1,42 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import en from "../../i18n/en";
-import Index from "../../components/case-studies/shared/Index.astro";
-import { calculateReadingTime } from "../../utils/readingTime";
-import Hero from "../../components/case-studies/shared/CaseStudyHero.astro";
-import Challenge from "../../components/case-studies/b2b-commerce-v2/Challenge.astro";
-import ProductModel from "../../components/case-studies/b2b-commerce-v2/ProductModel.astro";
-import ProductDetail from "../../components/case-studies/b2b-commerce-v2/ProductDetail.astro";
-import SearchEcosystem from "../../components/case-studies/b2b-commerce-v2/SearchEcosystem.astro";
-import TwoMarkets from "../../components/case-studies/b2b-commerce-v2/TwoMarkets.astro";
-import Organization from "../../components/case-studies/b2b-commerce-v2/Organization.astro";
-import PostPurchase from "../../components/case-studies/b2b-commerce-v2/PostPurchase.astro";
-import Adoption from "../../components/case-studies/b2b-commerce-v2/Adoption.astro";
-import Transformation from "../../components/case-studies/b2b-commerce-v2/Transformation.astro";
-import Outcome from "../../components/case-studies/b2b-commerce-v2/Outcome.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import es from "../../../i18n/es";
+import Index from "../../../components/case-studies/shared/Index.astro";
+import { calculateReadingTime } from "../../../utils/readingTime";
+import Hero from "../../../components/case-studies/shared/CaseStudyHero.astro";
+import Challenge from "../../../components/case-studies/b2b-commerce-v2/Challenge.astro";
+import ProductModel from "../../../components/case-studies/b2b-commerce-v2/ProductModel.astro";
+import ProductDetail from "../../../components/case-studies/b2b-commerce-v2/ProductDetail.astro";
+import SearchEcosystem from "../../../components/case-studies/b2b-commerce-v2/SearchEcosystem.astro";
+import TwoMarkets from "../../../components/case-studies/b2b-commerce-v2/TwoMarkets.astro";
+import Organization from "../../../components/case-studies/b2b-commerce-v2/Organization.astro";
+import PostPurchase from "../../../components/case-studies/b2b-commerce-v2/PostPurchase.astro";
+import Adoption from "../../../components/case-studies/b2b-commerce-v2/Adoption.astro";
+import Transformation from "../../../components/case-studies/b2b-commerce-v2/Transformation.astro";
+import Outcome from "../../../components/case-studies/b2b-commerce-v2/Outcome.astro";
 
-const t = en;
+const t = es;
 
 const readingTime = calculateReadingTime(t.b2bCommerceV2);
 ---
 
 <BaseLayout
-  title="B2B Commerce Platform"
+  title="Plataforma de comercio B2B"
   content={t}
 >
 
   <Index
     sections={[
-      { id: "challenge", label: "The Challenge" },
-      { id: "product-model", label: "Product Model" },
-      { id: "product-detail", label: "Product Detail" },
-      { id: "search", label: "Search" },
-      { id: "two-markets", label: "Two Markets" },
-      { id: "organization", label: "Organization" },
-      { id: "post-purchase", label: "Post-purchase" },
-      { id: "adoption", label: "Adoption" },
-      { id: "transformation", label: "What Changed" },
-      { id: "outcome", label: "Outcome" },
+      { id: "challenge", label: "El desafío" },
+      { id: "product-model", label: "Modelo de producto" },
+      { id: "product-detail", label: "Ficha de producto" },
+      { id: "search", label: "Búsqueda" },
+      { id: "two-markets", label: "Dos mercados" },
+      { id: "organization", label: "Organización" },
+      { id: "post-purchase", label: "Post-compra" },
+      { id: "adoption", label: "Adopción" },
+      { id: "transformation", label: "Qué cambió" },
+      { id: "outcome", label: "Resultado" },
     ]}
   />
 

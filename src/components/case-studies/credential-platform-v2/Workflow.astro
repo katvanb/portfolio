@@ -1,68 +1,22 @@
 ---
 import SectionHeading from "../shared/SectionHeading.astro";
-import BulkAssignmentPrototype from "./BulkAssignmentPrototype.astro";
-
-interface Step {
-  number: string;
-  name: string;
-  prompt?: string;
-  templates?: string[];
-  drop?: string;
-  or?: string;
-  choose?: string;
-  found?: string;
-  foundLabel?: string;
-  valid?: string;
-  validLabel?: string;
-  attention?: string;
-  attentionLabel?: string;
-  colName?: string;
-  colStatus?: string;
-  rows?: { name: string; attention?: boolean }[];
-  more?: string;
-  ready?: string;
-  stats?: { value: string; label: string }[];
-  button?: string;
-}
-
-interface Prototype {
-  id: string;
-  label: string;
-  title: string;
-  beforeTitle: string;
-  beforeItems: string[];
-  afterTitle: string;
-  afterSteps: string[];
-  stepPrefix: string;
-  back: string;
-  next: string;
-  selected: string;
-  dropTitle: string;
-  csvBadge: string;
-  steps: Step[];
-  successTitle: string;
-  successDone: string;
-  startOver: string;
-}
 
 interface Props {
   number: string;
   title: string;
   paragraphs: string[];
   approachTitle: string;
-  approachText: string;
   approachSteps: string[];
   templateTitle: string;
   templateText: string;
   bulkTitle: string;
   bulkText: string;
   stat: { value: string; label: string };
-  prototype: Prototype;
 }
 
 const {
-  number, title, paragraphs, approachTitle, approachText, approachSteps,
-  templateTitle, templateText, bulkTitle, bulkText, stat, prototype
+  number, title, paragraphs, approachTitle, approachSteps,
+  templateTitle, templateText, bulkTitle, bulkText, stat
 } = Astro.props;
 ---
 
@@ -72,56 +26,61 @@ const {
 
   <div class="body">
 
-    {
-      paragraphs.map((paragraph) => (
-        <p>{paragraph}</p>
-      ))
-    }
-
-    <p class="result-title">{approachTitle}</p>
-
-    <p>{approachText}</p>
-
-    <div class="approach-steps">
+    <div class="paragraphs">
 
       {
-        approachSteps.map((step, index) => (
-          <span class="approach-wrap">
-
-            <span class="approach-chip">{step}</span>
-
-            {
-              index < approachSteps.length - 1 && (
-                <span class="approach-arrow">→</span>
-              )
-            }
-
-          </span>
+        paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
         ))
       }
 
     </div>
 
-    <div class="tiles">
+    <p class="result-title">{approachTitle}</p>
 
-      <div class="tile">
+    <figure class="workflow-diagram">
 
-        <h4>{templateTitle}</h4>
+      <div class="diagram-steps">
 
-        <p>{templateText}</p>
+        {
+          approachSteps.map((step, index) => (
+            <span class="diagram-wrap">
+
+              <span class="diagram-chip">{step}</span>
+
+              {
+                index < approachSteps.length - 1 && (
+                  <span class="diagram-arrow">→</span>
+                )
+              }
+
+            </span>
+          ))
+        }
 
       </div>
 
+      <div class="diagram-notes">
 
-      <div class="tile">
+        <div class="note-card">
 
-        <h4>{bulkTitle}</h4>
+          <h4>{templateTitle}</h4>
 
-        <p>{bulkText}</p>
+          <p>{templateText}</p>
+
+        </div>
+
+        <div class="note-card">
+
+          <h4>{bulkTitle}</h4>
+
+          <p>{bulkText}</p>
+
+        </div>
 
       </div>
 
-    </div>
+    </figure>
 
     <div class="stat">
 
@@ -132,26 +91,6 @@ const {
     </div>
 
   </div>
-
-  <BulkAssignmentPrototype
-    id={prototype.id}
-    label={prototype.label}
-    title={prototype.title}
-    beforeTitle={prototype.beforeTitle}
-    beforeItems={prototype.beforeItems}
-    afterTitle={prototype.afterTitle}
-    afterSteps={prototype.afterSteps}
-    stepPrefix={prototype.stepPrefix}
-    steps={prototype.steps}
-    back={prototype.back}
-    next={prototype.next}
-    selected={prototype.selected}
-    dropTitle={prototype.dropTitle}
-    csvBadge={prototype.csvBadge}
-    successTitle={prototype.successTitle}
-    successDone={prototype.successDone}
-    startOver={prototype.startOver}
-  />
 
 </section>
 
@@ -172,6 +111,17 @@ const {
   flex-direction: column;
 
   gap: var(--space-md);
+
+}
+
+
+.paragraphs {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0;
 
 }
 
@@ -202,7 +152,26 @@ const {
 }
 
 
-.approach-steps {
+/* =========================
+   Diagram
+========================= */
+
+.workflow-diagram {
+
+  margin: 0;
+
+  border: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+
+  border-radius: var(--radius-sm);
+
+  background: var(--color-accent-soft);
+
+  padding: var(--space-lg);
+
+}
+
+
+.diagram-steps {
 
   display: flex;
 
@@ -215,7 +184,7 @@ const {
 }
 
 
-.approach-wrap {
+.diagram-wrap {
 
   display: inline-flex;
 
@@ -226,26 +195,28 @@ const {
 }
 
 
-.approach-chip {
+.diagram-chip {
 
   padding: var(--space-xs) var(--space-md);
 
-  border: 1px solid var(--color-accent);
+  border: none;
 
-  color: var(--color-accent);
+  border-radius: 999px;
 
-  font-family: "Courier New", Courier, monospace;
+  background: var(--color-bg-secondary);
+
+  font-family: var(--font-family-primary);
 
   font-size: var(--font-size-small);
 
-  letter-spacing: 0.03em;
+  color: var(--color-text-primary);
 
   white-space: nowrap;
 
 }
 
 
-.approach-arrow {
+.diagram-arrow {
 
   color: var(--color-accent);
 
@@ -254,7 +225,7 @@ const {
 }
 
 
-.tiles {
+.diagram-notes {
 
   display: grid;
 
@@ -262,39 +233,55 @@ const {
 
   gap: var(--space-md);
 
-}
-
-
-.tile {
-
-  padding: var(--space-lg);
-
-  border: 1px solid var(--color-border);
-
-  background: var(--color-bg-secondary);
+  margin-top: var(--space-lg);
 
 }
 
 
-.tile h4 {
+.note-card {
 
-  margin: 0 0 var(--space-sm);
+  padding: var(--space-md);
 
-  font-size: var(--font-size-body);
+  border-left: 3px solid var(--color-accent);
+
+  background: var(--color-bg-primary);
+
+}
+
+
+.note-card h4 {
+
+  margin: 0 0 var(--space-xs);
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-label);
 
   font-weight: 600;
 
-  color: var(--color-text-primary);
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  color: var(--color-accent);
 
 }
 
 
-.tile p {
+.note-card p {
+
+  color: var(--color-text-secondary) !important;
 
   font-size: var(--font-size-body) !important;
 
+  line-height: var(--line-height-body) !important;
+
 }
 
+
+/* =========================
+   Stat
+========================= */
 
 .stat {
 
@@ -303,12 +290,6 @@ const {
   align-items: baseline;
 
   gap: var(--space-md);
-
-  padding: var(--space-xl);
-
-  border: 1px solid var(--color-accent);
-
-  background: var(--color-bg-secondary);
 
 }
 
@@ -333,6 +314,17 @@ const {
   color: var(--color-text-secondary);
 
   font-size: var(--font-size-body);
+
+}
+
+
+@media (max-width: 640px) {
+
+  .diagram-notes {
+
+    grid-template-columns: 1fr;
+
+  }
 
 }
 

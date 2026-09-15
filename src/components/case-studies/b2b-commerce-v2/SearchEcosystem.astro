@@ -12,6 +12,9 @@ interface Props {
   flowNote: string;
   ui: {
     label: string;
+    tabs: string[];
+    inStock: string;
+    onDemand: string;
     inputPlaceholder: string;
     recentTitle: string;
     recent: string[];
@@ -110,7 +113,7 @@ const {
           aria-controls="search-state-0"
         >
           <span class="step-number">01</span>
-          <span class="step-name">Search input</span>
+          <span class="step-name">{ui.tabs[0]}</span>
         </button>
 
         <button
@@ -121,7 +124,7 @@ const {
           aria-controls="search-state-1"
         >
           <span class="step-number">02</span>
-          <span class="step-name">Results</span>
+          <span class="step-name">{ui.tabs[1]}</span>
         </button>
 
         <button
@@ -132,7 +135,7 @@ const {
           aria-controls="search-state-2"
         >
           <span class="step-number">03</span>
-          <span class="step-name">Product discovery</span>
+          <span class="step-name">{ui.tabs[2]}</span>
         </button>
 
       </div>
@@ -236,7 +239,7 @@ const {
                       <strong>{item.name}</strong>
                       <span class="result-sku">{item.sku}</span>
                       <span class:list={["result-avail", index < 3 && "ok"]}>
-                        {index < 3 ? "In stock" : "On demand"}
+                        {index < 3 ? ui.inStock : ui.onDemand}
                       </span>
                     </div>
 
@@ -913,7 +916,7 @@ const {
    Responsive
 ========================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1150px) {
 
   .steps {
     grid-template-columns: 1fr;

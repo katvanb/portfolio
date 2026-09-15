@@ -13,7 +13,6 @@ interface Props {
   roleIntro: string;
   roleFrom: string[];
   roleParagraphs: string[];
-  roleGoal: string;
   asset: { id: string; label: string };
   roleMatrix: {
     heading: string;
@@ -27,7 +26,7 @@ interface Props {
 
 const {
   number, title, paragraphs, layersTitle, layers, layersNote,
-  roleTitle, roleIntro, roleFrom, roleParagraphs, roleGoal,
+  roleTitle, roleIntro, roleFrom, roleParagraphs,
   asset, roleMatrix
 } = Astro.props;
 
@@ -46,47 +45,67 @@ const { heading, roles, hierarchyLabel, hierarchyRoot, hierarchyBranches, footer
       ))
     }
 
-    <h3>{layersTitle}</h3>
+    <div class="layers-block">
 
-    <div class="layers">
+      <div class="layers-head">
 
-      {
-        layers.map((layer) => (
-          <article class="layer-card">
+        <h3>{layersTitle}</h3>
 
-            <h4>{layer.title}</h4>
+        <p class="layers-subtitle">{layersNote}</p>
 
-            <p>{layer.description}</p>
+      </div>
 
-          </article>
-        ))
-      }
+      <div class="layers">
+
+        {
+          layers.map((layer) => (
+            <article class="layer-card">
+
+              <h4>{layer.title}</h4>
+
+              <p class="layer-desc">{layer.description}</p>
+
+              <span class="layer-hint">↳</span>
+
+            </article>
+          ))
+        }
+
+      </div>
 
     </div>
 
-    <p class="layers-note">{layersNote}</p>
-
     <h3>{roleTitle}</h3>
 
-    <p>{roleIntro}</p>
+    <div class="role-box">
 
-    <div class="flow-chips">
+      <p class="role-intro">{roleIntro}</p>
 
-      {
-        roleFrom.map((step, index) => (
-          <span class="flow-chip-wrap">
+      <div class="flow-chips" data-reveal-flow>
 
-            <span class="flow-chip">{step}</span>
+        {
+          roleFrom.map((step, index) => (
+            <span class="flow-chip-wrap">
 
-            {
-              index < roleFrom.length - 1 && (
-                <span class="flow-arrow">→</span>
-              )
-            }
+              <span
+                class="flow-chip"
+                style={`animation-delay: ${index * 0.45}s`}
+              >{step}</span>
 
-          </span>
-        ))
-      }
+              {
+                index < roleFrom.length - 1 && (
+                  <span
+                    class="flow-arrow"
+                    style={`animation-delay: ${index * 0.45 + 0.25}s`}
+                  >→</span>
+                )
+              }
+
+            </span>
+          ))
+        }
+
+      </div>
 
     </div>
 
@@ -95,8 +114,6 @@ const { heading, roles, hierarchyLabel, hierarchyRoot, hierarchyBranches, footer
         <p>{paragraph}</p>
       ))
     }
-
-    <p class="role-goal">{roleGoal}</p>
 
   </div>
 
@@ -149,7 +166,7 @@ const { heading, roles, hierarchyLabel, hierarchyRoot, hierarchyBranches, footer
 
 h3 {
 
-  margin: var(--space-lg) 0 0;
+  margin: 0;
 
   font-size: var(--font-size-h3);
 
@@ -160,59 +177,214 @@ h3 {
 }
 
 
-.layers {
+/* =========================
+   Two layers
+========================= */
+
+.layers-block {
 
   display: grid;
 
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
 
-  gap: var(--space-md);
+  align-items: start;
+
+  gap: var(--space-lg);
+
+  margin-top: var(--space-md);
+
+}
+
+
+.layers-head {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-xs);
+
+}
+
+
+.layers-head h3 {
+
+  margin: 0;
+
+}
+
+
+.layers-subtitle {
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body) !important;
+
+  line-height: var(--line-height-body) !important;
+
+}
+
+
+.layers {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-sm);
 
 }
 
 
 .layer-card {
 
+  position: relative;
+
+  min-height: 200px;
+
   padding: var(--space-lg);
+
+  padding-right: var(--space-xl);
 
   border: 1px solid var(--color-border);
 
   background: var(--color-bg-secondary);
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-xs);
+
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 
 }
 
 
 .layer-card h4 {
 
-  margin: 0 0 var(--space-sm);
+  margin: 0;
 
   font-size: var(--font-size-body);
 
   font-weight: 600;
 
-  color: var(--color-accent);
-
-  letter-spacing: 0.03em;
+  color: var(--color-text-primary);
 
 }
 
 
-.layer-card p {
+.layer-desc {
 
   margin: 0;
 
+  color: var(--color-text-secondary);
+
   font-size: var(--font-size-body) !important;
+
+  line-height: var(--line-height-body) !important;
+
+  opacity: 0;
+
+  transform: translateY(4px);
+
+  transition: opacity 0.25s ease, transform 0.25s ease;
 
 }
 
 
-.layers-note {
+.layer-card:hover .layer-desc {
 
-  padding: var(--space-md);
+  opacity: 1;
 
-  border-left: 3px solid var(--color-accent);
+  transform: none;
 
-  background: var(--color-bg-secondary);
+}
+
+
+.layer-hint {
+
+  position: absolute;
+
+  right: var(--space-sm);
+
+  bottom: var(--space-sm);
+
+  width: 30px;
+
+  height: 30px;
+
+  border-radius: 50%;
+
+  border: 1px solid var(--color-accent);
+
+  color: var(--color-accent);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: var(--font-size-body);
+
+  line-height: 1;
+
+  transition: background 0.2s ease, color 0.2s ease;
+
+}
+
+
+.layer-card:hover {
+
+  border-color: var(--color-accent);
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  transform: translateY(-2px);
+
+}
+
+
+.layer-card:hover .layer-hint {
+
+  background: var(--color-accent);
+
+  color: var(--color-bg-primary);
+
+}
+
+
+/* =========================
+   Role model
+========================= */
+
+.role-box {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-md);
+
+  margin-top: var(--space-md);
+
+  padding: var(--space-lg);
+
+  border: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+
+  border-radius: var(--radius-sm);
+
+  background: var(--color-accent-soft);
+
+}
+
+
+.role-intro {
+
+  margin: 0 !important;
 
 }
 
@@ -241,21 +413,96 @@ h3 {
 }
 
 
+.flow-chip,
+.flow-arrow {
+
+  opacity: 0;
+
+}
+
+
+.flow-chips.is-visible .flow-chip,
+.flow-chips.is-visible .flow-arrow {
+
+  animation: dissolve-in 0.5s ease forwards;
+
+}
+
+
+@keyframes dissolve-in {
+
+  from {
+
+    opacity: 0;
+
+    transform: translateY(6px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+  }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  .flow-chip,
+  .flow-arrow {
+
+    opacity: 1;
+
+  }
+
+  .flow-chips.is-visible .flow-chip,
+  .flow-chips.is-visible .flow-arrow {
+
+    animation: none;
+
+  }
+
+  .layer-desc {
+
+    transition: none;
+
+  }
+
+}
+
+
 .flow-chip {
 
   padding: var(--space-xs) var(--space-md);
 
-  border: 1px solid var(--color-border);
+  border: none;
+
+  border-radius: 999px;
 
   background: var(--color-bg-secondary);
 
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-family-primary);
 
   font-size: var(--font-size-small);
 
-  letter-spacing: 0.03em;
+  letter-spacing: 0;
+
+  color: var(--color-text-primary);
 
   white-space: nowrap;
+
+  transition: background 0.2s ease;
+
+}
+
+
+.flow-chip:hover {
+
+  background: color-mix(in srgb, var(--color-text-primary) 8%, var(--color-bg-secondary));
 
 }
 
@@ -269,16 +516,55 @@ h3 {
 }
 
 
-.role-goal {
+/* =========================
+   Responsive
+========================= */
 
-  padding: var(--space-md);
+@media (max-width: 700px) {
 
-  border: 1px solid var(--color-border);
+  .layers-block {
 
-  color: var(--color-text-primary) !important;
+    grid-template-columns: 1fr;
 
-  font-weight: 500;
+    gap: var(--space-md);
+
+  }
 
 }
 
 </style>
+
+
+<script>
+
+  const flow = document.querySelector("[data-reveal-flow]");
+
+  if (flow) {
+
+    const observer = new IntersectionObserver(
+
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if (entry.isIntersecting) {
+
+            flow.classList.add("is-visible");
+
+            observer.disconnect();
+
+          }
+
+        });
+
+      },
+
+      { threshold: 0.3 }
+
+    );
+
+    observer.observe(flow);
+
+  }
+
+</script>

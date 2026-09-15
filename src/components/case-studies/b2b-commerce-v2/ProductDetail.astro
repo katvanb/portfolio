@@ -21,6 +21,7 @@ interface Props {
   closing: string;
   ui: {
     label: string;
+    imageLabel: string;
     brand: string;
     name: string;
     sku: string;
@@ -42,7 +43,6 @@ interface Props {
     quoteInfo: string;
   };
   callouts: Callout[];
-  takeaway: string;
 }
 
 const {
@@ -58,8 +58,7 @@ const {
   paths,
   closing,
   ui,
-  callouts,
-  takeaway
+  callouts
 } = Astro.props;
 ---
 
@@ -143,7 +142,7 @@ const {
                 <div class="product-art">
                   <span class="art-bottle"></span>
                 </div>
-                <span class="art-label">PRODUCT IMAGE</span>
+                <span class="art-label">{ui.imageLabel}</span>
               </div>
 
               <div class="thumbnails">
@@ -250,8 +249,6 @@ const {
     </div>
 
   </div>
-
-  <p class="takeaway">{takeaway}</p>
 
 </section>
 
@@ -829,22 +826,6 @@ const {
 }
 
 /* =========================
-   Takeaway
-========================= */
-
-.takeaway {
-  max-width: 760px;
-  margin: var(--space-xl) 0 0;
-  padding: var(--space-lg);
-  border-left: 3px solid var(--color-accent);
-  background: var(--color-bg-secondary);
-  color: var(--color-text-primary);
-  font-size: var(--font-size-h3);
-  line-height: var(--line-height-h3);
-  font-weight: 500;
-}
-
-/* =========================
    Responsive
 ========================= */
 
@@ -857,10 +838,6 @@ const {
   .pdp-left {
     border-right: none;
     border-bottom: 1px solid var(--color-border);
-  }
-
-  .callouts {
-    grid-template-columns: 1fr 1fr;
   }
 
 }
@@ -878,6 +855,14 @@ const {
   .pdp-right,
   .pdp-left {
     padding: var(--space-md);
+  }
+
+}
+
+@media (max-width: 420px) {
+
+  .art-bottle {
+    transform: scale(0.6);
   }
 
 }

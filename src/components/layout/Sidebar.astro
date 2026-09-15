@@ -52,7 +52,13 @@ const activePage =
     <a href={prefix} class="profile">
 
       <div class="avatar">
-        KG
+        <img
+          class="avatar-img"
+          src={`${base}images/home/my-notion-face-portrait.png`}
+          alt=""
+          width={40}
+          height={40}
+        />
       </div>
 
 
@@ -294,13 +300,20 @@ const activePage =
 
   border-radius: 50%;
 
-  background: var(--color-accent);
+  overflow: hidden;
 
-  display: grid;
+}
 
-  place-items: center;
 
-  font-weight: 600;
+.avatar-img {
+
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
 
 }
 

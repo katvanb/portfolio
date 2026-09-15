@@ -503,23 +503,10 @@ const en = {
         "Details have been generalized to protect client confidentiality."
     },
 
-    productMap: {
-      id: "ASSET 01",
-      label: "Product map",
-      platformLabel: "CREDENTIAL PLATFORM",
-      levels: [
-        { number: "01", title: "Platform", chips: ["Organizations", "Roles", "Reporting"] },
-        { number: "02", title: "Organization", chips: ["Members", "Credentials", "Settings"] }
-      ],
-      lifecycleTitle: "Credential lifecycle",
-      lifecycleSteps: ["Create", "Assign", "Issue", "Report"],
-      footer: "Multi-tenant · Role-based · Self-service"
-    },
-
     roleMatrix: {
       id: "ASSET 03",
       label: "Role & permission model",
-      heading: "WHO IS RESPONSIBLE FOR WHAT?",
+      heading: "Who is responsible for what?",
       roles: [
         { title: "PLATFORM ADMIN", items: ["Organizations", "Members", "Credentials", "Reports"] },
         { title: "ORG ADMIN", items: ["Organizations", "Members", "Credentials", "Reports"] },
@@ -537,31 +524,27 @@ const en = {
 
     challenge: {
       eyebrow: "THE CHALLENGE",
-      title: "There was a business model, but no product yet.",
+      title: "There was a business model, but no product.",
       paragraphs: [
-        "The founders knew what they wanted to sell and had a reference for the type of platform they wanted to build.",
-        "What was missing was the system behind it."
+        "The founders had a reference platform, but needed the architecture to make it work."
       ],
-      listTitle: "I needed to define:",
+      listTitle: "I had to define:",
       items: [
         "who the different actors were",
         "how organizations related to each other",
         "what each role could see and manage",
         "how credentials moved through their lifecycle",
-        "how multiple organizations could coexist",
-        "how the product could evolve as the business changed"
+        "how multiple organizations could coexist"
       ],
       closing:
-        "The challenge wasn't reproducing the reference product. It was turning an idea into a product architecture that could actually work.",
-      asset: { id: "ASSET 02", label: "Product architecture diagram" }
+        "The challenge wasn't copying the reference. It was turning an idea into a product that could actually operate."
     },
 
     businessModel: {
       number: "01",
       title: "Turn the business model into a product",
       paragraphs: [
-        "I started by mapping the business rules, organizational relationships, responsibilities and operational workflows with stakeholders.",
-        "Rather than reproducing the reference product, I translated the business model into a structure that could support the platform we were actually building."
+        "I mapped business rules, organizational relationships, and operational workflows with stakeholders."
       ],
       layersTitle: "Two layers emerged",
       layers: [
@@ -571,30 +554,27 @@ const en = {
         },
         {
           title: "Organization management",
-          description:
-            "Managing people, credentials and day-to-day operations within each organization."
+          description: "Managing people, credentials, and daily operations."
         }
       ],
       layersNote:
-        "This separation became the foundation for the platform's multi-tenant model.",
-      roleTitle: "The role model evolved",
-      roleIntro: "The initial model was simple:",
+        "This separation became the foundation for the multi-tenant model.",
+      roleTitle: "Role model evolution",
+      roleIntro: "Initial:",
       roleFrom: ["Platform", "Organization", "Administrator", "Operator"],
       roleParagraphs: [
-        "As the product became real, that structure was no longer enough.",
-        "I reworked it into a hierarchy supporting parent organizations, sub-organizations and different levels of responsibility."
+        "As the product grew, this wasn't enough.",
+        "I reworked it to support parent organizations, sub-organizations, and levels of responsibility. The goal wasn't more roles — it was making responsibility explicit."
       ],
-      roleGoal:
-        "The goal wasn't to create more roles. It was to make responsibility explicit.",
-      asset: { id: "ASSET 03", label: "Role & permission model" }
+      asset: { id: "ASSET 03", label: "Role hierarchy evolution" }
     },
 
     evolution: {
       number: "02",
-      title: "The first launch revealed the real product",
+      title: "Let real use cases shape the product",
       paragraphs: [
-        "The first organization changed the project.",
-        "Until then, many decisions were based on requirements and assumptions. Once real organizations started using the platform, those assumptions were tested against actual workflows."
+        "The first organization changed everything.",
+        "Assumptions were tested against real workflows."
       ],
       gapsTitle: "New customers exposed gaps around:",
       gaps: [
@@ -602,21 +582,10 @@ const en = {
         "permissions",
         "assignment workflows",
         "reporting",
-        "organizational structure"
+        "organization structure"
       ],
-      closing: "The product had to evolve with them.",
       shift:
-        "This shifted my role from defining the initial product to continuously shaping the system as real use cases emerged.",
-      timeline: [
-        "Business idea",
-        "Initial product",
-        "First organization",
-        "Real workflows",
-        "New edge cases",
-        "Product evolution",
-        "4 organizations"
-      ],
-      asset: { id: "ASSET 04", label: "Product evolution" }
+        "My role shifted from defining the initial product to continuously shaping the system as real use cases emerged."
     },
 
     selfService: {
@@ -688,108 +657,26 @@ const en = {
       number: "04",
       title: "Turn credential issuance into a scalable workflow",
       paragraphs: [
-        "A typical course could have 20–50 accredited users.",
-        "The original workflow required entering information through an extensive form, one person at a time.",
-        "That meant effort increased directly with the number of recipients."
+        "A typical course had 20–50 accredited users.",
+        "The original workflow required an extensive form, one person at a time.",
+        "Effort scaled with recipients."
       ],
       approachTitle: "I changed the unit of work.",
-      approachText: "Instead of creating every credential from scratch:",
       approachSteps: ["Define once", "Reuse", "Assign in bulk"],
       templateTitle: "Reusable credential templates",
       templateText:
-        "Organizations could create a credential once and reuse or duplicate it.",
+        "Create once, reuse or duplicate.",
       bulkTitle: "Bulk assignment",
       bulkText:
-        "Organizations could prepare recipient information and upload it through CSV. With the data ready, a multiple assignment could take approximately 2 minutes.",
-      stat: { value: "~2 min", label: "for a bulk assignment" },
-      prototype: {
-        id: "ASSET 07 – 08",
-        label: "Interactive bulk assignment prototype",
-        title: "Credential issuance — from one-by-one to bulk",
-        beforeTitle: "BEFORE",
-        beforeItems: [
-          "Recipient 1 → Form",
-          "Recipient 2 → Form",
-          "Recipient 3 → Form",
-          "…",
-          "Recipient 50 → Form"
-        ],
-        afterTitle: "AFTER",
-        afterSteps: ["Template", "CSV", "Validation", "Review", "Assign"],
-        stepPrefix: "Step",
-        back: "Back",
-        next: "Next",
-        selected: "Selected",
-        dropTitle: "Drop your CSV here",
-        csvBadge: "CSV",
-        steps: [
-          {
-            number: "01",
-            name: "Credential template",
-            prompt: "Select a credential",
-            templates: [
-              "Course completion — Level 1",
-              "Accreditation — BLS",
-              "Certified technician"
-            ]
-          },
-          {
-            number: "02",
-            name: "Upload CSV",
-            drop: "Drop your CSV here",
-            or: "or",
-            choose: "Choose file"
-          },
-          {
-            number: "03",
-            name: "Validation",
-            found: "48",
-            foundLabel: "recipients found",
-            valid: "46",
-            validLabel: "valid",
-            attention: "2",
-            attentionLabel: "need attention"
-          },
-          {
-            number: "04",
-            name: "Review",
-            colName: "Recipient",
-            colStatus: "Status",
-            validLabel: "Valid",
-            attentionLabel: "Need attention",
-            rows: [
-              { name: "Ana Torres" },
-              { name: "Carlos Díaz", attention: true },
-              { name: "Elena Gómez" },
-              { name: "Luis Pérez" },
-              { name: "Marta Ruiz", attention: true },
-              { name: "Sergio Blanco" }
-            ],
-            more: "+ 42 more"
-          },
-          {
-            number: "05",
-            name: "Assign",
-            ready: "Ready to assign",
-            stats: [
-              { value: "48", label: "recipients" },
-              { value: "1", label: "credential" },
-              { value: "~2 min", label: "est. time" }
-            ],
-            button: "Assign credentials"
-          }
-        ],
-        successTitle: "48 credentials assigned",
-        successDone: "Completed",
-        startOver: "↻"
-      }
+        "Prepare recipient data and upload it through CSV. A bulk assignment took approximately 2 minutes.",
+      stat: { value: "~2 min", label: "for a bulk assignment" }
     },
 
     accreditedUX: {
       number: "05",
       title: "Make the experience clearer for accredited users",
       paragraphs: [
-        "Scaling the administrative side revealed another issue: some workflows were technically correct but difficult to understand.",
+        "Some workflows were technically correct but hard to understand.",
         "Users struggled with:"
       ],
       issues: ["unfamiliar labels", "long registration", "information required too early"],
@@ -835,29 +722,25 @@ const en = {
       ],
       navTitle: "Context-aware navigation",
       navParagraphs: [
-        "The same principle shaped the information architecture.",
-        "Users didn't need every module available in the platform."
+        "Context-aware navigation adapted to the user's level of responsibility."
       ],
-      navFormulaText: "Navigation adapted to:",
+      navFormulaText: "Navigation follows:",
       navFormula: "Role + organization + responsibility",
       navExampleTitle: "ORG ADMIN",
       navExample: ["Dashboard", "Organizations", "Members", "Credentials", "Reports"],
       navCaptionBefore: "Admin navigation",
-      navCaptionAfter: "Accredited navigation",
-      asset: { id: "ASSET 10", label: "IA + navigation" }
+      navCaptionAfter: "Accredited navigation"
     },
 
     reporting: {
       number: "07",
       title: "Make reporting reflect the organization",
       paragraphs: [
-        "The problem wasn't simply a lack of reports.",
-        "The business hadn't yet fully defined what each organizational level needed to understand. That created duplicated information and reports that didn't answer the right questions."
+        "The problem wasn't a lack of reports — it was that the business hadn't defined what each organizational level needed to understand. This created duplicated information."
       ],
-      approachTitle:
-        "I restructured reporting around visibility levels rather than creating completely separate reporting experiences for every role.",
+      approachTitle: "I restructured reporting around visibility levels.",
       approachText:
-        "The same reporting ecosystem could serve different users while information was filtered according to organizational responsibility.",
+        "One reporting system, different visibility.",
       modelTitle: "One reporting system",
       modelSubtitle: "Different visibility",
       screens: [
@@ -865,16 +748,15 @@ const en = {
         "Organization-level report",
         "Filtered view"
       ],
-      annotation: "Same reporting foundation, different visibility.",
-      asset: { id: "ASSET 11", label: "Reporting model + UI" }
+      annotation: "Same reporting foundation, different visibility."
     },
 
     expansion: {
       number: "08",
-      title: "Expand the product beyond its original market",
+      title: "Expand beyond the original market",
       paragraphs: [
-        "As more organizations joined, the product eventually supported four organizations across Colombia and Spain.",
-        "The Spanish opportunity introduced new considerations:"
+        "The platform grew to support four organizations across Colombia and Spain.",
+        "Spain introduced new considerations:"
       ],
       considerations: [
         "GDPR",
@@ -887,8 +769,8 @@ const en = {
       noteTitle: "These weren't simply additional screens.",
       noteText: "They challenged assumptions embedded in the original product.",
       conclusion:
-        "The architecture therefore had to evolve from supporting a specific business model and market into supporting different customers and contexts.",
-      diagramTitle: "INITIAL ASSUMPTIONS",
+        "The architecture evolved from supporting a specific business model to supporting different customers and contexts.",
+      diagramTitle: "MARKET EXPANSION",
       diagram: [
         "Colombia",
         "Real customers",
@@ -896,8 +778,7 @@ const en = {
         "Spain",
         "New requirements",
         "Adaptable product architecture"
-      ],
-      asset: { id: "ASSET 12", label: "Expansion / adaptation diagram" }
+      ]
     },
 
     whatChanged: {
@@ -930,7 +811,7 @@ const en = {
         "The architecture was no longer tied to the original reference product."
       ],
       closing: "It had become a system that could adapt.",
-      montageTitle: "A system designed to evolve.",
+      montageTitle: "Screens",
       montage: [
         "Dashboard",
         "Organization management",
@@ -938,8 +819,7 @@ const en = {
         "Bulk assignment",
         "Reports",
         "User profile"
-      ],
-      asset: { id: "ASSET 14", label: "Final product montage" }
+      ]
     },
 
     lessons: {
@@ -1184,37 +1064,35 @@ const en = {
   b2bCommerceV2: {
     hero: {
       tag: "B2B COMMERCE · SCIENTIFIC SUPPLIES",
-      title: "From sales-assisted purchasing to self-service",
+      title: "From sales-assisted purchasing to self-service B2B commerce",
       description: [
-        "Designing a B2B commerce platform for scientific supplies, where products, customers, markets, and purchasing rules all came with their own conditions.",
+        "A scientific supplies company had customers, products, and established sales processes—but no digital experience connecting them.",
+        "Customers purchased through sales teams, phone calls, and printed catalogs. Departments operated with different rules and processes.",
       ],
-      role: "Product Designer",
+      role: "Product Designer (end-to-end)",
       timeline: "2 years",
-      team: "Product · UX/UI · Engineering · QA · Client Development · Business Stakeholders",
+      team: "Sales · Marketing · Procurement · Accounting · Engineering",
       focus: "Product strategy · Discovery · B2B commerce · UX/UI · Search · Product architecture · Self-service",
       ndaText:
-        "Due to an NDA, some business details and product visuals have been generalized while preserving the design process and design decisions.",
+        "Due to an NDA, business details and product visuals have been generalized while preserving the design process and design decisions.",
     },
 
     challenge: {
-      title: "The Brief",
+      title: "The Challenge",
       paragraphs: [
-        "Build a B2B commerce experience similar to Fisher Scientific.",
-        "The business already had customers, products and established sales processes. What it didn't have was a digital experience that brought those pieces together.",
-        "Customers were used to purchasing through sales teams, while departments operated with different processes and rules.",
+        "The brief was to build a B2B commerce experience similar to Fisher Scientific.",
       ],
       pivotLabel: "The challenge",
       pivot:
         "The challenge wasn't putting a catalog online.",
       pivotAfter:
-        "It was turning a complex purchasing operation into a self-service experience customers could actually use.",
-      summaryLabel: "The 30-second summary",
+        "It was turning a complex, fragmented purchasing operation into a self-service experience customers could actually use.",
+      summaryLabel: "Before / After",
       before: {
         label: "BEFORE",
-        sublabel: "Sales-assisted purchasing",
+        sublabel: "Sales-assisted",
         items: [
           "Phone",
-          "Email",
           "Printed catalogs",
           "Quotes",
           "Manual tracking",
@@ -1223,7 +1101,7 @@ const en = {
       },
       after: {
         label: "AFTER",
-        sublabel: "Self-service commerce",
+        sublabel: "Self-service",
         items: [
           "Search",
           "Product discovery",
@@ -1240,10 +1118,10 @@ const en = {
       number: "01",
       title: "Turn fragmented business processes into one product model",
       paragraphs: [
-        "Before designing the interface, I needed to understand how the business actually worked.",
-        "Sales, marketing, procurement, accounting and development each had a different perspective on the same commercial process. I facilitated discovery workshops and mapped those perspectives into a shared product model.",
+        "Before designing anything, I needed to understand how the business actually worked.",
+        "Sales, marketing, procurement, accounting, and development each had a different perspective on the same commercial process. I facilitated discovery workshops and mapped those perspectives into a shared product model.",
       ],
-      departmentsTitle: "Different departments. Different versions of the same process.",
+      departmentsTitle: "Different departments. Different views of the same process.",
       departments: [
         { name: "Sales", note: "Customer relationships · Commercial processes" },
         { name: "Marketing", note: "Products · Promotions · Content" },
@@ -1253,7 +1131,7 @@ const en = {
       ],
       synthesisLabel: "Synthesis",
       outputsTitle: "One shared product model",
-      outputsNote: "The output wasn't a screen. It was a shared understanding of the business that could guide product decisions across teams.",
+      outputsNote: "The output wasn't a screen. It was a shared understanding that could guide product decisions across teams.",
       outputs: [
         "Business rules",
         "User roles",
@@ -1266,20 +1144,18 @@ const en = {
       number: "02",
       title: "Design a product detail experience around purchasing decisions",
       paragraphs: [
-        "The product detail page became one of the hardest problems in the platform. This wasn't a conventional catalog.",
+        "This was the hardest problem. This wasn't a conventional catalog.",
       ],
       variantsTitle: "Products could have:",
       variants: [
-        "no variants",
-        "multiple variants",
-        "product families",
-        "quotation-based purchasing",
-        "purchase restrictions",
-        "special handling requirements"
+        "No variants, multiple variants, or product families",
+        "Quotation-based purchasing",
+        "Purchase restrictions (authorization required)",
+        "Special handling (hazardous materials, dry ice)"
       ],
       variantsClosing:
         "For some scientific products, customers might need authorization to purchase them. Others required special handling because of hazardous materials or dry ice.",
-      questionsTitle: "So the product page needed to answer more than:",
+      questionsTitle: "So the product page needed to answer:",
       questions: [
         "What is this product?",
         "Can I buy it?",
@@ -1296,9 +1172,10 @@ const en = {
         "Purchase restriction"
       ],
       closing:
-        "The challenge was exposing the right information at the right moment without turning the product page into a wall of business rules.",
+        "The challenge was exposing the right information at the right moment without turning the page into a wall of business rules.",
       ui: {
         label: "Conceptual product detail — anonymized",
+        imageLabel: "PRODUCT IMAGE",
         brand: "SCIENTIFIC SUPPLIES",
         name: "Cell Culture Medium X",
         sku: "SKU 4521-900ML",
@@ -1324,17 +1201,15 @@ const en = {
         { number: "02", title: "Purchasing path", text: "Buy vs. request quotation" },
         { number: "03", title: "Eligibility", text: "Authorization requirements" },
         { number: "04", title: "Special handling", text: "Hazardous materials / dry ice" }
-      ],
-      takeaway:
-        "I understand business rules and know how to translate them into UI."
+      ]
     },
 
     searchEcosystem: {
       number: "03",
       title: "Make a large scientific catalog searchable",
       paragraphs: [
-        "Search became one of the main ways customers navigated the catalog. Professional buyers could arrive with a precise query — product name, brand, SKU or characteristics — while others needed to explore.",
-        "I designed search to support both behaviors.",
+        "Search became a primary navigation method. Professional buyers arrived with precise queries—product name, brand, SKU—while others needed to explore.",
+        "I designed search as a discovery system—not a field.",
       ],
       systemTitle: "Search wasn't a field. It was a discovery system.",
       system: [
@@ -1344,7 +1219,6 @@ const en = {
         "Popular searches",
         "Categories",
         "Brands",
-        "Products",
         "Filters",
         "Similar products",
         "Promotions"
@@ -1354,6 +1228,9 @@ const en = {
       flowNote: "The goal was to help customers move from intent to the right product without requiring them to understand the underlying catalog structure.",
       ui: {
         label: "Search ecosystem — conceptual",
+        tabs: ["Search input", "Results", "Product discovery"],
+        inStock: "In stock",
+        onDemand: "On demand",
         inputPlaceholder: "Search products, brands, SKUs…",
         recentTitle: "Recent searches",
         recent: ["DNA extraction", "Pipettes", "Serum"],
@@ -1386,13 +1263,13 @@ const en = {
       number: "04",
       title: "Design one platform for two markets",
       paragraphs: [
-        "The platform served customers in Spain and Portugal. The experience needed to remain consistent while allowing market-specific behavior around language, products, stock, promotions, content and commercial conditions.",
+        "The platform served customers in Spain and Portugal. Language, products, stock, promotions, content, and commercial conditions differed—but the goal wasn't two storefronts.",
       ],
-      closing: "The goal was not to create two separate storefronts.",
-      closing2: "It was to create one system with different contexts.",
+      closing: "The goal wasn't two storefronts.",
+      closing2: "It was one system with different contexts: consistent experience, market-specific behavior.",
       platformLabel: "ONE PLATFORM",
-      spain: { label: "SPAIN", items: ["Spanish", "Catalog", "Stock", "Promotions", "Content"] },
-      portugal: { label: "PORTUGAL", items: ["Portuguese", "Catalog", "Stock", "Promotions", "Content"] },
+      spain: { label: "SPAIN", items: ["Spanish", "Catalog", "Stock", "Promotions", "Content", "Commercial conditions"] },
+      portugal: { label: "PORTUGAL", items: ["Portuguese", "Catalog", "Stock", "Promotions", "Content", "Commercial conditions"] },
       sharedNote: "Shared experience + market-specific behavior"
     },
 
@@ -1400,14 +1277,14 @@ const en = {
       number: "05",
       title: "Design self-service around the organization",
       paragraphs: [
-        "B2B purchasing isn't always an individual activity. The product needed to represent the organization behind the buyer: authorized buyers, permissions, shipping addresses, individual activity, team activity and order history.",
+        "B2B purchasing isn't an individual activity. The product needed to represent the organization behind the buyer: authorized buyers, permissions, shipping addresses, individual activity, team activity, and order history.",
       ],
       questionsIntro: "The experience had to answer not only",
       questions: [
         "What can I buy?",
         "What can I do on behalf of my organization?"
       ],
-      goal: "The goal was to reduce the need for customers to contact sales for routine account and purchasing tasks.",
+      goal: "The goal was to reduce the need for customers to contact sales for routine tasks.",
       quote: "The customer wasn't just a buyer. They were an organization.",
       ui: {
         label: "Conceptual account screens — anonymized",
@@ -1434,9 +1311,9 @@ const en = {
       number: "06",
       title: "Connect purchasing with what happens after checkout",
       paragraphs: [
-        "The digital experience didn't stop at checkout. I worked with developers and stakeholders to translate logistics information into a customer-facing experience, including packaging, shipment progress and delivery documentation.",
+        "The experience didn't stop at checkout. I worked with developers and stakeholders to translate logistics into a customer-facing experience: packaging, shipment progress, and delivery documentation.",
       ],
-      needsTitle: "The experience also needed to handle what happened when something went wrong.",
+      needsTitle: "It also needed to handle what happens when something goes wrong:",
       needs: ["Returns", "Incidents", "Technical support", "Customer requests"],
       principleTitle: "The customer shouldn't have to understand the company's internal structure to get help.",
       orderTitle: "Order",
@@ -1448,10 +1325,11 @@ const en = {
     },
 
     adoption: {
-      title: "Designing for adoption",
+      number: "07",
+      title: "Design for adoption, not just launch",
       paragraphs: [
-        "Existing customers already knew how to buy. They knew who to call, who to email, how to request a quotation and who to contact when something went wrong.",
-        "Moving them to self-service couldn't mean forcing them to learn a completely different business process. The product preserved familiar commercial concepts while removing unnecessary friction.",
+        "Existing customers already knew how to buy. They knew who to call, who to email, how to request a quotation.",
+        "Moving them to self-service couldn't mean forcing them to learn a completely different process. The product preserved familiar commercial concepts while removing unnecessary friction.",
       ],
       wrongTitle: "The goal wasn't",
       wrong: "Make customers use the website.",
@@ -1460,7 +1338,7 @@ const en = {
     },
 
     transformation: {
-      title: "The transformation",
+      title: "What Changed",
       before: {
         label: "BEFORE · Sales-assisted",
         items: [
@@ -1488,41 +1366,41 @@ const en = {
     },
 
     outcome: {
-      title: "The outcome",
+      title: "Outcome",
       intro:
         "The product brought commercial and operational processes into one B2B commerce experience serving customers across Spain and Portugal.",
       sections: [
         {
           title: "Product discovery",
           items: [
-            "Customers could search a large scientific catalog through search, categories, brands, filters, suggestions and related products."
+            "Search, categories, brands, filters, suggestions, and related products."
           ]
         },
         {
           title: "Purchasing",
           items: [
-            "Different purchasing conditions could coexist within one experience — from direct purchases and variants to product families and quotation-based products."
+            "Direct purchases, variants, product families, and quotation-based products coexisting in one experience."
           ]
         },
         {
           title: "Customer autonomy",
           items: [
-            "Organizations could manage buyers, permissions, addresses and purchasing activity through the platform."
+            "Organizations manage buyers, permissions, addresses, and purchasing activity."
           ]
         },
         {
           title: "Beyond the purchase",
           items: [
-            "Logistics, support, returns and incidents became part of the customer experience rather than disconnected processes."
+            "Logistics, support, returns, and incidents became part of the customer experience."
           ]
         }
       ],
-      glanceTitle: "Outcome at a glance",
+      glanceTitle: "Metrics at a glance",
       glance: [
         { value: "2 years", label: "Product evolution" },
-        { value: "Spain + Portugal", label: "Multi-market experience" },
+        { value: "Spain + Portugal", label: "Markets" },
         { value: "500k+ products", label: "Large catalog" },
-        { value: "Buy · Configure · Quote · Restricted", label: "Multiple purchasing paths" }
+        { value: "Buy · Configure · Quote · Restricted", label: "Purchasing paths" }
       ],
       reflectionTitle: "Reflection",
       reflectionLead: "B2B commerce is not just e-commerce.",

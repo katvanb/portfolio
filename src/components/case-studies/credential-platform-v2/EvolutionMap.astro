@@ -1,0 +1,368 @@
+---
+interface Column {
+  stage: string;
+  start: string;
+  result: string;
+  outcomes: string[];
+}
+
+interface Props {
+  id: string;
+  label: string;
+  title: string;
+  columns: Column[];
+}
+
+const { id, label, title, columns } = Astro.props;
+
+let step = 0;
+const delay = () => `${step++ * 0.35}s`;
+---
+
+<figure class="evolution-map">
+
+  <figure class="map-stage" data-reveal-flow>
+
+    <div class="map-title anim" style={`animation-delay: ${delay()}`}>
+      {title}
+    </div>
+
+    <div class="map-cols">
+
+      {
+        columns.map((column) => (
+
+          <div class="map-col">
+
+            <span class="stage-label anim" style={`animation-delay: ${delay()}`}>
+              {column.stage}
+            </span>
+
+            <div class="stage-body">
+
+              <span class="start-chip anim" style={`animation-delay: ${delay()}`}>
+                {column.start}
+              </span>
+
+              <span class="connector anim" style={`animation-delay: ${delay()}`}>
+                <span class="connector-line"></span>
+                <span class="connector-arrow"></span>
+              </span>
+
+              <span class="result-chip anim" style={`animation-delay: ${delay()}`}>
+                {column.result}
+              </span>
+
+              {
+                column.outcomes.length > 0 && (
+                  <>
+                    <span class="connector anim" style={`animation-delay: ${delay()}`}>
+                      <span class="connector-line"></span>
+                      <span class="connector-arrow"></span>
+                    </span>
+
+                    <div class="outcomes">
+                      {
+                        column.outcomes.map((outcome) => (
+                          <span class="outcome-chip anim" style={`animation-delay: ${delay()}`}>
+                            {outcome}
+                          </span>
+                        ))
+                      }
+                    </div>
+                  </>
+                )
+              }
+
+            </div>
+
+          </div>
+
+        ))
+      }
+
+    </div>
+
+  </figure>
+
+  <figcaption class="map-caption">
+
+    <span class="map-id">
+      {id}
+    </span>
+
+    <span class="map-label">
+      {label}
+    </span>
+
+  </figcaption>
+
+</figure>
+
+
+<style>
+
+.evolution-map {
+  margin: var(--space-lg) 0;
+}
+
+/* =========================
+   Stage
+========================= */
+
+.map-stage {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  padding: var(--space-xl) var(--space-lg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  margin: 0;
+}
+
+/* =========================
+   Title
+========================= */
+
+.map-title {
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-h3);
+  font-weight: 600;
+}
+
+/* =========================
+   Columns
+========================= */
+
+.map-cols {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-lg);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.map-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+
+.stage-label {
+  margin-bottom: var(--space-md);
+  padding: var(--space-xs) var(--space-md);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-primary);
+  color: var(--color-accent);
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.stage-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.start-chip {
+  padding: var(--space-xs) var(--space-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-primary);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+  text-align: center;
+}
+
+.result-chip {
+  padding: var(--space-xs) var(--space-md);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+/* =========================
+   Connector
+========================= */
+
+.connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40px;
+  position: relative;
+}
+
+.connector-line {
+  width: 2px;
+  height: 100%;
+  background: var(--color-accent);
+  opacity: 0.45;
+}
+
+.connector-arrow {
+  position: absolute;
+  bottom: 0;
+  width: 7px;
+  height: 7px;
+  border-bottom: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
+  transform: rotate(45deg);
+}
+
+/* =========================
+   Outcomes
+========================= */
+
+.outcomes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+}
+
+.outcome-chip {
+  padding: 4px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-bg-primary);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+  text-align: center;
+}
+
+/* =========================
+   Caption
+========================= */
+
+.map-caption {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.map-id {
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--font-size-small);
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+}
+
+.map-label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
+
+/* =========================
+   Animation
+========================= */
+
+.anim {
+  opacity: 0;
+}
+
+.map-stage.is-visible .anim {
+  animation: dissolve-in 0.5s ease forwards;
+}
+
+@keyframes dissolve-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim {
+    opacity: 1;
+  }
+  .map-stage.is-visible .anim {
+    animation: none;
+  }
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 900px) {
+
+  .map-cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-xl) var(--space-lg);
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .map-stage {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .map-cols {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .stage-label {
+    white-space: normal;
+    text-align: center;
+    width: 100%;
+  }
+
+}
+
+</style>
+
+<script>
+
+  const root = document.querySelector(".evolution-map");
+
+  const stage = root ? root.querySelector("[data-reveal-flow]") : null;
+
+  if (stage) {
+
+    const observer = new IntersectionObserver(
+
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if (entry.isIntersecting) {
+
+            stage.classList.add("is-visible");
+
+            observer.disconnect();
+
+          }
+
+        });
+
+      },
+
+      { threshold: 0.3 }
+
+    );
+
+    observer.observe(stage);
+
+  }
+
+</script>

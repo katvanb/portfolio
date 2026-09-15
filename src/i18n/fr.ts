@@ -503,23 +503,10 @@ const fr = {
         "Les détails ont été généralisés pour protéger la confidentialité du client."
     },
 
-    productMap: {
-      id: "ASSET 01",
-      label: "Carte du produit",
-      platformLabel: "PLATEFORME DE CRÉDENTIALS",
-      levels: [
-        { number: "01", title: "Plateforme", chips: ["Organisations", "Rôles", "Reporting"] },
-        { number: "02", title: "Organisation", chips: ["Membres", "Crédentials", "Paramètres"] }
-      ],
-      lifecycleTitle: "Cycle de vie de la crédential",
-      lifecycleSteps: ["Créer", "Attribuer", "Délivrer", "Suivi"],
-      footer: "Multi-tenant · Basé sur les rôles · Autonome"
-    },
-
     roleMatrix: {
       id: "ASSET 03",
       label: "Modèle de rôles et permissions",
-      heading: "QUI EST RESPONSABLE DE QUOI ?",
+      heading: "Qui est responsable de quoi ?",
       roles: [
         { title: "ADMIN PLATEFORME", items: ["Organisations", "Membres", "Crédentials", "Rapports"] },
         { title: "ADMIN ORG", items: ["Organisations", "Membres", "Crédentials", "Rapports"] },
@@ -537,10 +524,9 @@ const fr = {
 
     challenge: {
       eyebrow: "LE DÉFI",
-      title: "Il y avait un modèle business, mais pas encore de produit.",
+      title: "Il y avait un modèle business, mais pas de produit.",
       paragraphs: [
-        "Les fondateurs savaient quoi vendre et disposaient d'une référence du type de plateforme qu'ils voulaient construire.",
-        "Ce qui manquait, c'était le système derrière."
+        "Les fondateurs disposaient d'une plateforme de référence, mais il manquait l'architecture pour la faire fonctionner."
       ],
       listTitle: "Je devais définir :",
       items: [
@@ -548,20 +534,17 @@ const fr = {
         "comment les organisations étaient liées entre elles",
         "ce que chaque rôle pouvait voir et gérer",
         "comment les credentials traversaient leur cycle de vie",
-        "comment plusieurs organisations pouvaient coexister",
-        "comment le produit pouvait évoluer à mesure que le business changeait"
+        "comment plusieurs organisations pouvaient coexister"
       ],
       closing:
-        "Le défi n'était pas de reproduire le produit de référence. C'était de transformer une idée en une architecture produit réellement fonctionnelle.",
-      asset: { id: "ASSET 02", label: "Diagramme d'architecture produit" }
+        "Le défi n'était pas de copier la référence. C'était de transformer une idée en un produit capable d'opérer réellement."
     },
 
     businessModel: {
       number: "01",
       title: "Transformer le modèle business en produit",
       paragraphs: [
-        "J'ai commencé par cartographier les règles business, les relations entre organisations, les responsabilités et les parcours opérationnels avec les parties prenantes.",
-        "Plutôt que de reproduire le produit de référence, j'ai traduit le modèle business en une structure capable de soutenir la plateforme que nous construisions réellement."
+        "J'ai cartographié les règles business, les relations entre organisations et les parcours opérationnels avec les parties prenantes."
       ],
       layersTitle: "Deux couches ont émergé",
       layers: [
@@ -571,30 +554,27 @@ const fr = {
         },
         {
           title: "Gestion de l'organisation",
-          description:
-            "Gérer les personnes, les credentials et les opérations quotidiennes au sein de chaque organisation."
+          description: "Gérer les personnes, les credentials et les opérations quotidiennes."
         }
       ],
       layersNote:
-        "Cette séparation est devenue le fondement du modèle multi-tenant de la plateforme.",
-      roleTitle: "Le modèle de rôles a évolué",
-      roleIntro: "Le modèle initial était simple :",
+        "Cette séparation était la fondation du modèle multi-tenant de la plateforme.",
+      roleTitle: "Évolution du modèle de rôles",
+      roleIntro: "Initial :",
       roleFrom: ["Plateforme", "Organisation", "Administrateur", "Opérateur"],
       roleParagraphs: [
-        "À mesure que le produit devenait réel, cette structure ne suffisait plus.",
-        "Je l'ai retravaillée en une hiérarchie prenant en charge les organisations parentes, les sous-organisations et différents niveaux de responsabilité."
+        "À mesure que le produit grandissait, cela ne suffisait plus.",
+        "Je l'ai retravaillé pour prendre en charge les organisations parentes, les sous-organisations et les niveaux de responsabilité. L'objectif n'était pas plus de rôles — c'était de rendre la responsabilité explicite."
       ],
-      roleGoal:
-        "L'objectif n'était pas de créer plus de rôles. C'était de rendre la responsabilité explicite.",
-      asset: { id: "ASSET 03", label: "Modèle de rôles et permissions" }
+      asset: { id: "ASSET 03", label: "Évolution de la hiérarchie de rôles" }
     },
 
     evolution: {
       number: "02",
-      title: "Le premier lancement a révélé le vrai produit",
+      title: "Laisser les cas d'usage réels façonner le produit",
       paragraphs: [
-        "La première organisation a changé le projet.",
-        "Jusqu'alors, beaucoup de décisions reposaient sur des exigences et des hypothèses. Dès que des organisations réelles ont commencé à utiliser la plateforme, ces hypothèses ont été confrontées à des parcours réels."
+        "La première organisation a tout changé.",
+        "Les hypothèses ont été confrontées à des parcours réels."
       ],
       gapsTitle: "Les nouveaux clients ont exposé des lacunes autour de :",
       gaps: [
@@ -604,19 +584,8 @@ const fr = {
         "rapports",
         "structure organisationnelle"
       ],
-      closing: "Le produit devait évoluer avec eux.",
       shift:
-        "Cela a fait passer mon rôle de la définition du produit initial au façonnage continu du système à mesure que des cas d'usage réels apparaissaient.",
-      timeline: [
-        "Idée business",
-        "Produit initial",
-        "Première organisation",
-        "Parcours réels",
-        "Nouveaux cas limites",
-        "Évolution du produit",
-        "4 organisations"
-      ],
-      asset: { id: "ASSET 04", label: "Évolution du produit" }
+        "Mon rôle est passé de la définition du produit initial au façonnage continu du système à mesure que des cas d'usage réels apparaissaient."
     },
 
     selfService: {
@@ -688,108 +657,26 @@ const fr = {
       number: "04",
       title: "Faire de l'émission de credentials un parcours scalable",
       paragraphs: [
-        "Un cours typique pouvait avoir entre 20 et 50 utilisateurs accrédités.",
-        "Le parcours initial imposait de saisir les informations via un formulaire long, une personne à la fois.",
-        "Cela signifiait que l'effort augmentait directement avec le nombre de destinataires."
+        "Un cours typique comptait entre 20 et 50 utilisateurs accrédités.",
+        "Le parcours initial imposait un formulaire long, une personne à la fois.",
+        "L'effort augmentait avec les destinataires."
       ],
       approachTitle: "J'ai changé l'unité de travail.",
-      approachText: "Au lieu de créer chaque credential de zéro :",
       approachSteps: ["Définir une fois", "Réutiliser", "Assigner en masse"],
       templateTitle: "Modèles de credentials réutilisables",
       templateText:
-        "Les organisations pouvaient créer un credential une seule fois puis le réutiliser ou le dupliquer.",
+        "Créer une fois, réutiliser ou dupliquer.",
       bulkTitle: "Assignation en masse",
       bulkText:
-        "Les organisations pouvaient préparer les informations des destinataires et les télécharger via CSV. Une fois les données prêtes, une assignation multiple prenait environ 2 minutes.",
-      stat: { value: "~2 min", label: "pour une assignation en masse" },
-      prototype: {
-        id: "ASSET 07 – 08",
-        label: "Prototype interactif d'attribution par lot",
-        title: "Émission de credentials — d'un par un au lot",
-        beforeTitle: "AVANT",
-        beforeItems: [
-          "Destinataire 1 → Formulaire",
-          "Destinataire 2 → Formulaire",
-          "Destinataire 3 → Formulaire",
-          "…",
-          "Destinataire 50 → Formulaire"
-        ],
-        afterTitle: "APRÈS",
-        afterSteps: ["Modèle", "CSV", "Validation", "Revue", "Attribuer"],
-        stepPrefix: "Étape",
-        back: "Retour",
-        next: "Suivant",
-        selected: "Sélectionné",
-        dropTitle: "Déposez votre CSV ici",
-        csvBadge: "CSV",
-        steps: [
-          {
-            number: "01",
-            name: "Modèle de credential",
-            prompt: "Sélectionner un credential",
-            templates: [
-              "Fin de formation — Niveau 1",
-              "Accréditation — BLS",
-              "Technicien certifié"
-            ]
-          },
-          {
-            number: "02",
-            name: "Importer le CSV",
-            drop: "Déposez votre CSV ici",
-            or: "ou",
-            choose: "Choisir un fichier"
-          },
-          {
-            number: "03",
-            name: "Validation",
-            found: "48",
-            foundLabel: "destinataires trouvés",
-            valid: "46",
-            validLabel: "valides",
-            attention: "2",
-            attentionLabel: "à vérifier"
-          },
-          {
-            number: "04",
-            name: "Revue",
-            colName: "Destinataire",
-            colStatus: "Statut",
-            validLabel: "Valide",
-            attentionLabel: "Attention requise",
-            rows: [
-              { name: "Ana Torres" },
-              { name: "Carlos Díaz", attention: true },
-              { name: "Elena Gómez" },
-              { name: "Luis Pérez" },
-              { name: "Marta Ruiz", attention: true },
-              { name: "Sergio Blanco" }
-            ],
-            more: "+ 42 de plus"
-          },
-          {
-            number: "05",
-            name: "Attribuer",
-            ready: "Prêt à attribuer",
-            stats: [
-              { value: "48", label: "destinataires" },
-              { value: "1", label: "credential" },
-              { value: "~2 min", label: "temps est." }
-            ],
-            button: "Attribuer les credentials"
-          }
-        ],
-        successTitle: "48 credentials attribuées",
-        successDone: "Terminé",
-        startOver: "↻"
-      }
+        "Préparer les données des destinataires et les télécharger via CSV. Une assignation en masse prenait environ 2 minutes.",
+      stat: { value: "~2 min", label: "pour une assignation en masse" }
     },
 
     accreditedUX: {
       number: "05",
       title: "Rendre l'expérience plus claire pour les utilisateurs accrédités",
       paragraphs: [
-        "Passer à l'échelle le côté administratif a révélé un autre problème : certains parcours étaient techniquement corrects mais difficiles à comprendre.",
+        "Certains parcours étaient techniquement corrects mais difficiles à comprendre.",
         "Les utilisateurs butaient sur :"
       ],
       issues: ["des libellés peu familiers", "un enregistrement long", "des informations demandées trop tôt"],
@@ -835,29 +722,25 @@ const fr = {
       ],
       navTitle: "Navigation contextuelle",
       navParagraphs: [
-        "Le même principe a façonné l'architecture de l'information.",
-        "Les utilisateurs n'avaient pas besoin de tous les modules disponibles dans la plateforme."
+        "La navigation contextuelle s'adaptait au niveau de responsabilité de l'utilisateur."
       ],
-      navFormulaText: "La navigation s'adaptait à :",
+      navFormulaText: "La navigation suit :",
       navFormula: "Rôle + organisation + responsabilité",
       navExampleTitle: "ADMIN D'ORG",
       navExample: ["Dashboard", "Organisations", "Membres", "Credentials", "Rapports"],
       navCaptionBefore: "Navigation admin",
-      navCaptionAfter: "Navigation accrédité",
-      asset: { id: "ASSET 10", label: "AI + navigation" }
+      navCaptionAfter: "Navigation accrédité"
     },
 
     reporting: {
       number: "07",
       title: "Faire refléter l'organisation dans les rapports",
       paragraphs: [
-        "Le problème n'était pas simplement un manque de rapports.",
-        "Le business n'avait pas encore pleinement défini ce que chaque niveau organisationnel devait comprendre. Cela créait des informations dupliquées et des rapports qui ne répondaient pas aux bonnes questions."
+        "Le problème n'était pas un manque de rapports — c'était que le business n'avait pas défini ce que chaque niveau organisationnel devait comprendre. Cela créait des informations dupliquées."
       ],
-      approachTitle:
-        "J'ai restructuré les rapports autour de niveaux de visibilité plutôt que de créer des expériences de reporting entièrement séparées pour chaque rôle.",
+      approachTitle: "J'ai restructuré les rapports autour de niveaux de visibilité.",
       approachText:
-        "Le même écosystème de rapports pouvait servir différents utilisateurs tandis que les informations étaient filtrées selon la responsabilité organisationnelle.",
+        "Un système de rapports, une visibilité différente.",
       modelTitle: "Un système de rapports",
       modelSubtitle: "Visibilité différente",
       screens: [
@@ -865,16 +748,15 @@ const fr = {
         "Rapport au niveau organisation",
         "Vue filtrée"
       ],
-      annotation: "Même base de rapports, visibilité différente.",
-      asset: { id: "ASSET 11", label: "Modèle de reporting + UI" }
+      annotation: "Même base de rapports, visibilité différente."
     },
 
     expansion: {
       number: "08",
-      title: "Étendre le produit au-delà de son marché d'origine",
+      title: "S'étendre au-delà du marché d'origine",
       paragraphs: [
-        "À mesure que d'autres organisations ont rejoint la plateforme, le produit a fini par soutenir quatre organisations en Colombie et en Espagne.",
-        "L'opportunité espagnole a introduit de nouvelles considérations :"
+        "La plateforme a grandi pour soutenir quatre organisations en Colombie et en Espagne.",
+        "L'Espagne a introduit de nouvelles considérations :"
       ],
       considerations: [
         "GDPR",
@@ -887,8 +769,8 @@ const fr = {
       noteTitle: "Ce n'étaient pas simplement des écrans supplémentaires.",
       noteText: "Ils remettaient en question des hypothèses ancrées dans le produit d'origine.",
       conclusion:
-        "L'architecture a donc dû évoluer d'un modèle business et d'un marché spécifiques vers le soutien de différents clients et contextes.",
-      diagramTitle: "HYPOTHÈSES INITIALES",
+        "L'architecture a évolué d'un modèle business spécifique vers le soutien de différents clients et contextes.",
+      diagramTitle: "EXPANSION DU MARCHÉ",
       diagram: [
         "Colombie",
         "Clients réels",
@@ -896,8 +778,7 @@ const fr = {
         "Espagne",
         "Nouvelles exigences",
         "Architecture produit adaptable"
-      ],
-      asset: { id: "ASSET 12", label: "Diagramme d'expansion / adaptation" }
+      ]
     },
 
     whatChanged: {
@@ -930,7 +811,7 @@ const fr = {
         "L'architecture n'était plus liée au produit de référence d'origine."
       ],
       closing: "Il était devenu un système capable de s'adapter.",
-      montageTitle: "Un système conçu pour évoluer.",
+      montageTitle: "Écrans",
       montage: [
         "Dashboard",
         "Gestion de l'organisation",
@@ -938,8 +819,7 @@ const fr = {
         "Assignation en masse",
         "Rapports",
         "Profil utilisateur"
-      ],
-      asset: { id: "ASSET 14", label: "Montage du produit final" }
+      ]
     },
 
     lessons: {
@@ -1181,8 +1061,362 @@ const fr = {
           ]
         }
     },
-  }
+},
+
+  b2bCommerceV2: {
+    hero: {
+      tag: "COMMERCE B2B · FOURNITURES SCIENTIFIQUES",
+      title: "D'achats assistés par la vente à un commerce B2B en libre-service",
+      description: [
+        "Une entreprise de fournitures scientifiques avait des clients, des produits et des processus de vente établis, mais aucune expérience numérique pour les relier.",
+        "Les clients achetaient par l'intermédiaire des équipes commerciales, par téléphone et par catalogues imprimés. Les départements fonctionnaient avec des règles et des processus différents.",
+      ],
+      role: "Product Designer (de bout en bout)",
+      timeline: "2 ans",
+      team: "Ventes · Marketing · Achats · Comptabilité · Ingénierie",
+      focus: "Stratégie produit · Discovery · Commerce B2B · UX/UI · Recherche · Architecture produit · Libre-service",
+      ndaText:
+        "En raison d'un accord de confidentialité (NDA), les détails commerciaux et certains visuels produits ont été généralisés, tout en préservant le processus de conception et les décisions de conception.",
+    },
+
+    challenge: {
+      title: "Le défi",
+      paragraphs: [
+        "La demande était de construire une expérience de commerce B2B similaire à celle de Fisher Scientific.",
+      ],
+      pivotLabel: "Le défi",
+      pivot: "Le défi n'était pas de mettre un catalogue en ligne.",
+      pivotAfter:
+        "C'était de transformer une opération d'achat complexe et fragmentée en une expérience en libre-service réellement utilisable par les clients.",
+      summaryLabel: "Avant / Après",
+      before: {
+        label: "AVANT",
+        sublabel: "Assisté par la vente",
+        items: [
+          "Téléphone",
+          "Catalogues imprimés",
+          "Devis",
+          "Suivi manuel",
+          "Départements fragmentés"
+        ]
+      },
+      after: {
+        label: "APRÈS",
+        sublabel: "Libre-service",
+        items: [
+          "Recherche",
+          "Découverte produit",
+          "Devis",
+          "Commandes",
+          "Gestion du compte",
+          "Suivi",
+          "Support"
+        ]
+      }
+    },
+
+    productModel: {
+      number: "01",
+      title: "Transformer des processus métier fragmentés en un modèle produit unique",
+      paragraphs: [
+        "Avant de concevoir quoi que ce soit, je devais comprendre comment l'entreprise fonctionnait réellement.",
+        "Les ventes, le marketing, les achats, la comptabilité et le développement avaient chacun une perspective différente du même processus commercial. J'ai animé des ateliers de discovery et cartographié ces perspectives dans un modèle produit partagé.",
+      ],
+      departmentsTitle: "Des départements différents. Des vues différentes du même processus.",
+      departments: [
+        { name: "Ventes", note: "Relations clients · Processus commerciaux" },
+        { name: "Marketing", note: "Produits · Promotions · Contenu" },
+        { name: "Achats", note: "Disponibilité · Approvisionnement" },
+        { name: "Comptabilité", note: "Conditions clients · Règles commerciales" },
+        { name: "Développement", note: "Systèmes · Données · Contraintes techniques" }
+      ],
+      synthesisLabel: "Synthèse",
+      outputsTitle: "Un modèle produit partagé",
+      outputsNote: "Le résultat n'était pas un écran. C'était une compréhension partagée qui pouvait guider les décisions produit entre les équipes.",
+      outputs: [
+        "Règles métier",
+        "Rôles utilisateur",
+        "Logique produit",
+        "Contraintes système"
+      ]
+    },
+
+    productDetail: {
+      number: "02",
+      title: "Concevoir une fiche produit autour des décisions d'achat",
+      paragraphs: [
+        "C'était le problème le plus difficile. Ce n'était pas un catalogue classique.",
+      ],
+      variantsTitle: "Les produits pouvaient avoir :",
+      variants: [
+        "Aucune variante, plusieurs variantes ou familles de produits",
+        "Achat basé sur devis",
+        "Restrictions d'achat (autorisation requise)",
+        "Manipulation spéciale (matières dangereuses, glace carbonique)"
+      ],
+      variantsClosing:
+        "Pour certains produits scientifiques, les clients pouvaient avoir besoin d'une autorisation pour les acheter. D'autres exigeaient une manipulation spéciale en raison de matières dangereuses ou de la glace carbonique.",
+      questionsTitle: "La fiche produit devait donc répondre à :",
+      questions: [
+        "Qu'est-ce que ce produit ?",
+        "Puis-je l'acheter ?",
+        "Quelle version me faut-il ?",
+        "Quelles conditions s'appliquent ?",
+        "Ai-je besoin d'un devis ?"
+      ],
+      pathsTitle: "Une expérience produit, plusieurs parcours d'achat",
+      paths: [
+        "Achat direct",
+        "Sélection de variante",
+        "Famille de produits",
+        "Demander un devis",
+        "Restriction d'achat"
+      ],
+      closing:
+        "Le défi était d'exposer la bonne information au bon moment sans transformer la page en un mur de règles métier.",
+      ui: {
+        label: "Fiche produit conceptuelle — anonymisée",
+        imageLabel: "IMAGE DU PRODUIT",
+        brand: "FOURNITURES SCIENTIFIQUES",
+        name: "Milieu de culture cellulaire X",
+        sku: "SKU 4521-900ML",
+        priceLabel: "Prix",
+        priceValue: "Sur demande",
+        quoteLabel: "OU",
+        availability: "En stock · Expédition sous 48 h",
+        variantLabel: "Choisir la taille",
+        variants: ["500 ml", "1 L", "2 L"],
+        conditionLabel: "Conditions d'achat",
+        condition: "Autorisation requise",
+        conditionNote: "Matière dangereuse — achat restreint",
+        handlingLabel: "Manipulation spéciale",
+        handling: "Expédition avec glace carbonique",
+        handlingNote: "Conditionné avec glace carbonique — livraison express",
+        buyButton: "Ajouter au panier",
+        quoteButton: "Demander un devis",
+        infoLabel: "Éligible à la commande",
+        quoteInfo: "Le prix doit être confirmé par les ventes"
+      },
+      callouts: [
+        { number: "01", title: "Configuration du produit", text: "Variantes / familles" },
+        { number: "02", title: "Parcours d'achat", text: "Acheter vs. demander un devis" },
+        { number: "03", title: "Éligibilité", text: "Exigences d'autorisation" },
+        { number: "04", title: "Manipulation spéciale", text: "Matières dangereuses / glace carbonique" }
+      ]
+    },
+
+    searchEcosystem: {
+      number: "03",
+      title: "Rendre un vaste catalogue scientifique recherchable",
+      paragraphs: [
+        "La recherche est devenue une méthode de navigation primaire. Les acheteurs professionnels arrivaient avec des requêtes précises — nom du produit, marque, SKU — tandis que d'autres avaient besoin d'explorer.",
+        "J'ai conçu la recherche comme un système de découverte, pas comme un champ.",
+      ],
+      systemTitle: "La recherche n'était pas un champ. C'était un système de découverte.",
+      system: [
+        "Autocomplétion",
+        "Suggestions",
+        "Recherches récentes",
+        "Recherches populaires",
+        "Catégories",
+        "Marques",
+        "Filtres",
+        "Produits similaires",
+        "Promotions"
+      ],
+      flowTitle: "De la recherche à la décision produit",
+      flow: ["Recherche", "Suggestions", "Résultats", "Filtres", "Produit", "Décision"],
+      flowNote: "L'objectif était d'aider les clients à passer de l'intention au bon produit sans leur demander de comprendre la structure sous-jacente du catalogue.",
+      ui: {
+        label: "Écosystème de recherche — conceptuel",
+        tabs: ["Saisie de recherche", "Résultats", "Découverte produit"],
+        inStock: "En stock",
+        onDemand: "Sur demande",
+        inputPlaceholder: "Rechercher produits, marques, SKU…",
+        recentTitle: "Recherches récentes",
+        recent: ["Extraction d'ADN", "Pipettes", "Sérum"],
+        popularTitle: "Recherches populaires",
+        popular: ["Culture cellulaire", "Microplaques", "Tampons"],
+        suggestedTitle: "Suggéré",
+        categoriesLabel: "Catégories",
+        categories: ["Biologie moléculaire"],
+        productsLabel: "Produits",
+        products: ["Agarose LE"],
+        resultsTitle: "Résultats",
+        filtersTitle: "Filtres",
+        filters: ["Marque", "Catégorie", "Disponibilité"],
+        activeFilter: "En stock",
+        resultItems: [
+          { name: "Agarose LE", brand: "SciBrand", sku: "SKU 2214" },
+          { name: "Agarose SEAKEM", brand: "SciBrand", sku: "SKU 2218" },
+          { name: "Tris-acétate", brand: "BioLab", sku: "SKU 8810" },
+          { name: "SYBR Safe", brand: "BioLab", sku: "SKU 9004" }
+        ],
+        discoveryTitle: "Découverte produit",
+        relatedTitle: "Produits associés",
+        related: ["Agarose LM", "Tampon de charge", "Ladder 1 kb"],
+        promoTitle: "Promotions",
+        promos: ["-20 % sur les tampons", "Livraison offerte en chaîne du froid"]
+      }
+    },
+
+    twoMarkets: {
+      number: "04",
+      title: "Concevoir une seule plateforme pour deux marchés",
+      paragraphs: [
+        "La plateforme servait des clients en Espagne et au Portugal. La langue, les produits, le stock, les promotions, le contenu et les conditions commerciales différaient — mais l'objectif n'était pas deux boutiques.",
+      ],
+      closing: "L'objectif n'était pas deux boutiques.",
+      closing2: "C'était un seul système avec des contextes différents : une expérience cohérente, un comportement propre à chaque marché.",
+      platformLabel: "UNE PLATEFORME",
+      spain: { label: "ESPAGNE", items: ["Espagnol", "Catalogue", "Stock", "Promotions", "Contenu", "Conditions commerciales"] },
+      portugal: { label: "PORTUGAL", items: ["Portugais", "Catalogue", "Stock", "Promotions", "Contenu", "Conditions commerciales"] },
+      sharedNote: "Expérience partagée + comportement propre au marché"
+    },
+
+    organization: {
+      number: "05",
+      title: "Concevoir le libre-service autour de l'organisation",
+      paragraphs: [
+        "L'achat B2B n'est pas une activité individuelle. Le produit devait représenter l'organisation derrière l'acheteur : acheteurs autorisés, permissions, adresses de livraison, activité individuelle, activité d'équipe et historique de commandes.",
+      ],
+      questionsIntro: "L'expérience devait répondre non seulement à",
+      questions: [
+        "Que puis-je acheter ?",
+        "Que puis-je faire au nom de mon organisation ?"
+      ],
+      goal: "L'objectif était de réduire le besoin des clients de contacter les ventes pour des tâches routinières.",
+      quote: "Le client n'était pas seulement un acheteur. C'était une organisation.",
+      ui: {
+        label: "Écrans de compte conceptuels — anonymisés",
+        orgTab: "Organisation",
+        orgItems: ["Membres", "Rôles et permissions", "Adresses", "Activité"],
+        ordersTab: "Commandes",
+        ordersItems: ["Historique", "Statut", "Détails"],
+        memberName: "M. García",
+        memberRole: "Acheteur",
+        memberStatus: "Autorisé",
+        addressLabel: "Adresse de livraison",
+        address: "Madrid — Lab 3, Av. Principal 12",
+        activityLabel: "Dernière activité",
+        activity: "Commande #4821 · il y a 2 jours",
+        orderRow: [
+          { id: "#4817", status: "Livré", date: "02 sept." },
+          { id: "#4821", status: "En transit", date: "09 sept." },
+          { id: "#4830", status: "En cours", date: "12 sept." }
+        ]
+      }
+    },
+
+    postPurchase: {
+      number: "06",
+      title: "Relier l'achat à ce qui se passe après le checkout",
+      paragraphs: [
+        "L'expérience ne s'arrêtait pas au checkout. J'ai travaillé avec les développeurs et les parties prenantes pour traduire la logistique en expérience orientée client : emballage, progression de l'expédition et documentation de livraison.",
+      ],
+      needsTitle: "Elle devait aussi gérer ce qui se passe quand quelque chose tourne mal :",
+      needs: ["Retours", "Incidents", "Support technique", "Demandes clients"],
+      principleTitle: "Le client ne devrait pas avoir à comprendre la structure interne de l'entreprise pour obtenir de l'aide.",
+      orderTitle: "Commande",
+      orderFlow: ["Commande", "Emballage", "Expédition", "Livraison"],
+      problemTitle: "Problème",
+      problemFlow: ["Incident", "Support / Retour", "Acheminement interne", "Résolution"],
+      principleA: "Le client décrit le problème.",
+      principleB: "Le système l'achemine au bon endroit."
+    },
+
+    adoption: {
+      number: "07",
+      title: "Concevoir pour l'adoption, pas seulement pour le lancement",
+      paragraphs: [
+        "Les clients existants savaient déjà acheter. Ils savaient qui appeler, à qui écrire, comment demander un devis.",
+        "Les amener au libre-service ne pouvait pas signifier les obliger à apprendre un processus complètement différent. Le produit préservait les concepts commerciaux connus tout en supprimant les frictions inutiles.",
+      ],
+      wrongTitle: "L'objectif n'était pas",
+      wrong: "Faire que les clients utilisent le site web.",
+      rightTitle: "C'était",
+      right: "Rendre le site web plus facile que d'appeler."
+    },
+
+    transformation: {
+      title: "Ce qui a changé",
+      before: {
+        label: "AVANT · Assisté par la vente",
+        items: [
+          "Téléphone",
+          "E-mail",
+          "Catalogues imprimés",
+          "Devis manuels",
+          "Suivi manuel des commandes",
+          "Processus fragmentés"
+        ]
+      },
+      after: {
+        label: "APRÈS · Libre-service",
+        items: [
+          "Recherche",
+          "Découverte produit",
+          "Devis",
+          "Commandes",
+          "Gestion du compte",
+          "Suivi",
+          "Support",
+          "Retours"
+        ]
+      }
+    },
+
+    outcome: {
+      title: "Résultat",
+      intro:
+        "Le produit a réuni les processus commerciaux et opérationnels dans une expérience de commerce B2B unique au service des clients en Espagne et au Portugal.",
+      sections: [
+        {
+          title: "Découverte produit",
+          items: [
+            "Recherche, catégories, marques, filtres, suggestions et produits associés."
+          ]
+        },
+        {
+          title: "Achat",
+          items: [
+            "Achats directs, variantes, familles de produits et produits basés sur devis coexistant dans une seule expérience."
+          ]
+        },
+        {
+          title: "Autonomie du client",
+          items: [
+            "Les organisations gèrent les acheteurs, les permissions, les adresses et l'activité d'achat."
+          ]
+        },
+        {
+          title: "Au-delà de l'achat",
+          items: [
+            "La logistique, le support, les retours et les incidents ont fait partie de l'expérience client."
+          ]
+        }
+      ],
+      glanceTitle: "Indicateurs en un coup d'œil",
+      glance: [
+        { value: "2 ans", label: "Évolution produit" },
+        { value: "Espagne + Portugal", label: "Marchés" },
+        { value: "500k+ produits", label: "Vaste catalogue" },
+        { value: "Acheter · Configurer · Devis · Restreint", label: "Parcours d'achat" }
+      ],
+      reflectionTitle: "Réflexion",
+      reflectionLead: "Le commerce B2B n'est pas qu'un simple e-commerce.",
+      reflectionItems: [
+        "Derrière chaque produit se cache un ensemble de règles métier.",
+        "Derrière chaque acheteur se cache une organisation.",
+        "Derrière chaque commande se cache un processus opérationnel.",
+        "Mon rôle était de relier ces couches et d'en faire une expérience cohérente pour le client."
+      ],
+      reflectionClose:
+        "Les meilleures expériences en libre-service ne rendent pas l'entreprise plus simple. Elles rendent sa complexité plus facile à naviguer pour les clients."
+    }
+  },
 
 };
+
 
 export default fr;

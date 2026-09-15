@@ -1,6 +1,5 @@
 ---
 import SectionHeading from "../shared/SectionHeading.astro";
-import Asset from "../shared/Asset.astro";
 
 interface Props {
   number: string;
@@ -12,12 +11,9 @@ interface Props {
   conclusion: string;
   diagramTitle: string;
   diagram: string[];
-  asset: { id: string; label: string };
 }
 
-const { number, title, paragraphs, considerations, noteTitle, noteText, conclusion, diagramTitle, diagram, asset } = Astro.props;
-
-const assetImage = `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-12.png`;
+const { number, title, paragraphs, considerations, noteTitle, noteText, conclusion, diagramTitle, diagram } = Astro.props;
 ---
 
 <section class="expansion" id="expansion">
@@ -82,8 +78,6 @@ const assetImage = `${import.meta.env.BASE_URL}images/case-studies/credential-pl
 
   </div>
 
-  <Asset id={asset.id} label={asset.label} image={assetImage} />
-
 </section>
 
 
@@ -126,26 +120,66 @@ const assetImage = `${import.meta.env.BASE_URL}images/case-studies/credential-pl
 
   flex-wrap: wrap;
 
-  gap: var(--space-sm);
+  justify-content: center;
+
+  gap: var(--space-md);
+
+  margin: var(--space-sm) 0;
 
 }
 
 
 .consideration-tag {
 
-  padding: var(--space-xs) var(--space-md);
+  display: inline-flex;
 
-  border: 1px solid var(--color-border);
+  align-items: center;
 
-  border-radius: 999px;
+  justify-content: center;
 
-  background: var(--color-bg-secondary);
+  width: 160px;
+
+  height: 120px;
+
+  padding: var(--space-sm) var(--space-md);
+
+  background: color-mix(in srgb, var(--accent-yellow) 22%, var(--color-bg-primary));
+
+  color: color-mix(in srgb, var(--accent-yellow) 68%, var(--color-text-primary));
 
   font-family: "Courier New", Courier, monospace;
 
   font-size: var(--font-size-small);
 
-  color: var(--color-text-secondary);
+  font-weight: 600;
+
+  letter-spacing: 0.02em;
+
+  text-align: center;
+
+  line-height: 1.5;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  transform: rotate(-1.5deg);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+}
+
+
+.consideration-tag:nth-child(even) {
+
+  transform: rotate(1.2deg);
+
+}
+
+
+.consideration-tag:hover {
+
+  transform: rotate(0deg) translateY(-4px);
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 
 }
 

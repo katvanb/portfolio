@@ -24,6 +24,8 @@ const {
 } = Astro.props;
 
 const assetImage = `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-09.png`;
+
+const mentalSteps = mentalBold.split(" → ");
 ---
 
 <section class="accredited-ux" id="accredited-ux">
@@ -50,7 +52,25 @@ const assetImage = `${import.meta.env.BASE_URL}images/case-studies/credential-pl
 
     <p>{mentalTitle}</p>
 
-    <p class="mental-bold">{mentalBold}</p>
+    <div class="mental-flow">
+
+      {
+        mentalSteps.map((step, index) => (
+          <span class="mental-wrap">
+
+            <span class="mental-chip">{step}</span>
+
+            {
+              index < mentalSteps.length - 1 && (
+                <span class="mental-arrow">→</span>
+              )
+            }
+
+          </span>
+        ))
+      }
+
+    </div>
 
     <p>{mentalText}</p>
 
@@ -174,36 +194,81 @@ const assetImage = `${import.meta.env.BASE_URL}images/case-studies/credential-pl
 
   padding: var(--space-xs) var(--space-md);
 
-  border: 1px solid var(--color-border);
+  border: none;
 
   border-radius: 999px;
 
   background: var(--color-bg-secondary);
 
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-family-primary);
 
   font-size: var(--font-size-small);
 
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
 
 }
 
 
-.mental-bold {
+.mental-flow {
 
-  padding: var(--space-md) var(--space-lg);
+  align-self: flex-start;
 
-  border: 1px solid var(--color-accent);
+  display: flex;
 
-  color: var(--color-accent) !important;
+  flex-wrap: wrap;
 
-  font-family: "Courier New", Courier, monospace;
+  align-items: center;
 
-  font-weight: 600 !important;
+  gap: var(--space-sm);
 
-  letter-spacing: 0.02em;
+  padding: var(--space-lg);
 
-  width: fit-content;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+
+  border-radius: var(--radius-sm);
+
+  background: var(--color-accent-soft);
+
+}
+
+
+.mental-wrap {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: var(--space-sm);
+
+}
+
+
+.mental-chip {
+
+  padding: var(--space-xs) var(--space-md);
+
+  border: none;
+
+  border-radius: 999px;
+
+  background: var(--color-bg-secondary);
+
+  font-family: var(--font-family-primary);
+
+  font-size: var(--font-size-small);
+
+  color: var(--color-text-primary);
+
+  white-space: nowrap;
+
+}
+
+
+.mental-arrow {
+
+  color: var(--color-accent);
+
+  font-size: var(--font-size-h3);
 
 }
 
@@ -300,20 +365,24 @@ const assetImage = `${import.meta.env.BASE_URL}images/case-studies/credential-pl
 
   display: flex;
 
-  flex-direction: column;
+  flex-wrap: wrap;
 
   gap: var(--space-sm);
+
+  margin-top: var(--space-md);
 
 }
 
 
 .annotation {
 
+  flex: 1 1 200px;
+
   display: flex;
 
   align-items: center;
 
-  gap: var(--space-md);
+  gap: var(--space-sm);
 
   padding: var(--space-sm) var(--space-md);
 
@@ -333,6 +402,23 @@ const assetImage = `${import.meta.env.BASE_URL}images/case-studies/credential-pl
   color: var(--color-accent);
 
   font-weight: 700;
+
+}
+
+
+@media (max-width: 900px) {
+
+  .annotations {
+
+    flex-direction: column;
+
+  }
+
+  .annotation {
+
+    flex: none;
+
+  }
 
 }
 

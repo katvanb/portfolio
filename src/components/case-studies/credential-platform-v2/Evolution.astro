@@ -1,6 +1,5 @@
 ---
 import SectionHeading from "../shared/SectionHeading.astro";
-import Asset from "../shared/Asset.astro";
 
 interface Props {
   number: string;
@@ -8,15 +7,10 @@ interface Props {
   paragraphs: string[];
   gapsTitle: string;
   gaps: string[];
-  closing: string;
   shift: string;
-  timeline: string[];
-  asset: { id: string; label: string };
 }
 
-const { number, title, paragraphs, gapsTitle, gaps, closing, shift, timeline, asset } = Astro.props;
-
-const assetImage = `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-04.png`;
+const { number, title, paragraphs, gapsTitle, gaps, shift } = Astro.props;
 ---
 
 <section class="evolution" id="evolution">
@@ -25,11 +19,15 @@ const assetImage = `${import.meta.env.BASE_URL}images/case-studies/credential-pl
 
   <div class="body">
 
-    {
-      paragraphs.map((paragraph) => (
-        <p>{paragraph}</p>
-      ))
-    }
+    <div class="paragraphs">
+
+      {
+        paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))
+      }
+
+    </div>
 
     <p class="gaps-title">{gapsTitle}</p>
 
@@ -43,35 +41,9 @@ const assetImage = `${import.meta.env.BASE_URL}images/case-studies/credential-pl
 
     </div>
 
-    <p>{closing}</p>
-
     <p class="shift">{shift}</p>
 
-    <div class="timeline">
-
-      {
-        timeline.map((step, index) => (
-          <div class="timeline-item">
-
-            <span class="timeline-dot"></span>
-
-            <span class="timeline-step">{step}</span>
-
-            {
-              index < timeline.length - 1 && (
-                <span class="timeline-line"></span>
-              )
-            }
-
-          </div>
-        ))
-      }
-
-    </div>
-
   </div>
-
-  <Asset id={asset.id} label={asset.label} image={assetImage} />
 
 </section>
 
@@ -92,6 +64,17 @@ const assetImage = `${import.meta.env.BASE_URL}images/case-studies/credential-pl
   flex-direction: column;
 
   gap: var(--space-md);
+
+}
+
+
+.paragraphs {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0;
 
 }
 
@@ -124,6 +107,8 @@ const assetImage = `${import.meta.env.BASE_URL}images/case-studies/credential-pl
 
   flex-wrap: wrap;
 
+  margin-top: calc(var(--space-xs) - var(--space-md));
+
   gap: var(--space-sm);
 
 }
@@ -133,17 +118,17 @@ const assetImage = `${import.meta.env.BASE_URL}images/case-studies/credential-pl
 
   padding: var(--space-xs) var(--space-md);
 
-  border: 1px solid var(--color-border);
+  border: none;
 
   border-radius: 999px;
 
   background: var(--color-bg-secondary);
 
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-family-primary);
 
   font-size: var(--font-size-small);
 
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
 
 }
 
@@ -157,82 +142,6 @@ const assetImage = `${import.meta.env.BASE_URL}images/case-studies/credential-pl
   background: var(--color-bg-secondary);
 
   color: var(--color-text-primary) !important;
-
-}
-
-
-.timeline {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 0;
-
-  margin-top: var(--space-md);
-
-}
-
-
-.timeline-item {
-
-  display: grid;
-
-  grid-template-columns: 12px 1fr;
-
-  align-items: center;
-
-  gap: var(--space-md);
-
-}
-
-
-.timeline-dot {
-
-  width: 12px;
-
-  height: 12px;
-
-  border-radius: 50%;
-
-  background: var(--color-accent);
-
-}
-
-
-.timeline-line {
-
-  grid-column: 1;
-
-  width: 2px;
-
-  height: 28px;
-
-  margin: 0 auto;
-
-  background: var(--color-border);
-
-}
-
-
-.timeline-step {
-
-  grid-column: 2;
-
-  padding: var(--space-xs) 0;
-
-  color: var(--color-text-secondary);
-
-  font-size: var(--font-size-body);
-
-}
-
-
-.timeline-item:last-child .timeline-step {
-
-  color: var(--color-text-primary);
-
-  font-weight: 600;
 
 }
 
