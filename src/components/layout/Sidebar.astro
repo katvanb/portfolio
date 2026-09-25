@@ -9,18 +9,25 @@ import fr from "../../i18n/fr";
 
 const pathname = Astro.url.pathname;
 
-const isSpanish = pathname.includes("/es");
-const isFrench = pathname.includes("/fr");
+const base = import.meta.env.BASE_URL;
+
+// BASE_URL ya viene con barra final ("/portfolio/"). La quitamos para poder
+// componer prefijos sin generar una barra doble ("/portfolio//es/" -> 404).
+const baseRoot = base.replace(/\/+$/, "");
+
+const esPrefix = `${baseRoot}/es/`;
+const frPrefix = `${baseRoot}/fr/`;
+
+// Comparacion por segmento, no por subcadena: "includes('/es')" tambien
+// coincidiria con cualquier ruta que contenga esos caracteres en otro segmento.
+const isSpanish =
+  pathname === `${baseRoot}/es` || pathname.startsWith(esPrefix);
+const isFrench =
+  pathname === `${baseRoot}/fr` || pathname.startsWith(frPrefix);
 
 const t = isFrench ? fr : isSpanish ? es : en;
 
-const base = import.meta.env.BASE_URL;
-
-const prefix = isFrench
-  ? `${base}/fr/`
-  : isSpanish
-    ? `${base}/es/`
-    : `${base}/`;
+const prefix = isFrench ? frPrefix : isSpanish ? esPrefix : base;
 
 const activePage =
   pathname.includes("/writings/")

@@ -1,0 +1,215 @@
+---
+interface Props {
+  id: string;
+  label: string;
+  note?: string;
+  ratio?: string;
+}
+
+const { id, label, note, ratio = "16 / 10" } = Astro.props;
+---
+
+<figure class="screenshot">
+
+  <div class="frame" style={`aspect-ratio: ${ratio};`}>
+
+    <div class="chrome" aria-hidden="true">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+    <div class="marker">
+
+      <span class="asset-id">
+        {id}
+      </span>
+
+      <span class="asset-label">
+        {label}
+      </span>
+
+    </div>
+
+  </div>
+
+  <figcaption>
+
+    <span class="caption-id">
+      {id}
+    </span>
+
+    <span class="caption-label">
+      {label}
+    </span>
+
+    {
+      note && (
+        <span class="caption-note">
+          {note}
+        </span>
+      )
+    }
+
+  </figcaption>
+
+</figure>
+
+
+<style>
+
+.screenshot {
+  margin: var(--space-lg) 0;
+}
+
+
+.frame {
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 100%;
+
+  border: 1px dashed var(--color-border);
+
+  border-radius: var(--radius-md);
+
+  background:
+
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      var(--color-bg-secondary) 10px,
+      var(--color-bg-secondary) 20px
+    );
+
+}
+
+
+.chrome {
+
+  position: absolute;
+
+  top: var(--space-sm);
+
+  left: var(--space-sm);
+
+  display: flex;
+
+  gap: 6px;
+
+}
+
+
+.dot {
+
+  width: 8px;
+
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: var(--color-border);
+
+}
+
+
+.marker {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: var(--space-xs);
+
+  padding: 0 var(--space-md);
+
+  text-align: center;
+
+}
+
+
+.asset-id {
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-small);
+
+  color: var(--color-accent);
+
+  letter-spacing: 0.05em;
+
+}
+
+
+.asset-label {
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+
+  line-height: var(--line-height-body);
+
+}
+
+
+figcaption {
+
+  display: flex;
+
+  align-items: baseline;
+
+  flex-wrap: wrap;
+
+  gap: var(--space-sm);
+
+  margin-top: var(--space-sm);
+
+}
+
+
+.caption-id {
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-small);
+
+  color: var(--color-accent);
+
+  letter-spacing: 0.05em;
+
+}
+
+
+.caption-label {
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+}
+
+
+.caption-note {
+
+  flex-basis: 100%;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+  font-style: italic;
+
+  opacity: 0.8;
+
+}
+
+</style>

@@ -1,39 +1,28 @@
 ---
 import SectionHeading from "../shared/SectionHeading.astro";
-import Screenshot from "../shared/Screenshot.astro";
 
 interface Props {
   eyebrow: string;
   title: string;
   paragraphs: string[];
-  painsTitle: string;
-  pains: { title: string; text: string }[];
-  latentTitle: string;
-  latent: { title: string; text: string }[];
-  contextTitle: string;
-  context: { label: string; value: string }[];
+  objectivesTitle: string;
+  objectiveGroups: { version: string; items: string[] }[];
+  risksTitle: string;
+  risks: { title: string; text: string }[];
   pivotLabel: string;
   pivot: string;
-  mandateLabel: string;
-  mandate: string;
-  screenshot: { id: string; label: string; note: string };
 }
 
 const {
   eyebrow,
   title,
   paragraphs,
-  painsTitle,
-  pains,
-  latentTitle,
-  latent,
-  contextTitle,
-  context,
+  objectivesTitle,
+  objectiveGroups,
+  risksTitle,
+  risks,
   pivotLabel,
   pivot,
-  mandateLabel,
-  mandate,
-  screenshot,
 } = Astro.props;
 ---
 
@@ -42,67 +31,53 @@ const {
   <SectionHeading number="00" title={title} eyebrow={eyebrow} />
 
   <div class="body">
-
     {
       paragraphs.map((paragraph) => (
         <p>{paragraph}</p>
       ))
     }
-
   </div>
 
   <h3 class="sub-title">
-    {painsTitle}
+    {objectivesTitle}
   </h3>
 
-  <ol class="pains">
+  <div class="objectives">
     {
-      pains.map((pain) => (
-        <li>
-          <span class="pain-title">
-            {pain.title}
+      objectiveGroups.map((group) => (
+        <div class="objective-group">
+
+          <span class="version">
+            {group.version}
           </span>
-          <span class="pain-text">
-            {pain.text}
-          </span>
-        </li>
+
+          <ul>
+            {
+              group.items.map((item) => (
+                <li>{item}</li>
+              ))
+            }
+          </ul>
+
+        </div>
       ))
     }
-  </ol>
+  </div>
 
   <h3 class="sub-title">
-    {latentTitle}
+    {risksTitle}
   </h3>
 
-  <ul class="latent">
+  <ul class="risks">
     {
-      latent.map((item) => (
+      risks.map((risk) => (
         <li>
-          <span class="latent-title">
-            {item.title}
-          </span>
-          <span class="latent-text">
-            {item.text}
-          </span>
+          <span class="risk-title">{risk.title}</span>
+          <span class="risk-text">{risk.text}</span>
         </li>
       ))
     }
   </ul>
-
-  <h3 class="sub-title">
-    {contextTitle}
-  </h3>
-
-  <dl class="context">
-    {
-      context.map((row) => (
-        <div class="context-row">
-          <dt>{row.label}</dt>
-          <dd>{row.value}</dd>
-        </div>
-      ))
-    }
-  </dl>
 
   <div class="pivot">
 
@@ -115,24 +90,6 @@ const {
     </p>
 
   </div>
-
-  <div class="mandate">
-
-    <span class="mandate-label">
-      {mandateLabel}
-    </span>
-
-    <p class="mandate-text">
-      {mandate}
-    </p>
-
-  </div>
-
-  <Screenshot
-    id={screenshot.id}
-    label={screenshot.label}
-    note={screenshot.note}
-  />
 
 </section>
 
@@ -153,7 +110,6 @@ const {
   flex-direction: column;
 
   gap: var(--space-md);
-
 }
 
 
@@ -166,7 +122,6 @@ const {
   font-size: var(--font-size-body-lg);
 
   line-height: var(--line-height-body-lg);
-
 }
 
 
@@ -179,11 +134,88 @@ const {
   line-height: var(--line-height-h3);
 
   font-weight: var(--font-weight-h3);
-
 }
 
 
-.pains {
+.objectives {
+
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 0;
+
+  border-top: 1px solid var(--color-border);
+
+  border-left: 1px solid var(--color-border);
+}
+
+
+.objective-group {
+
+  padding: var(--space-md);
+
+  border-right: 1px solid var(--color-border);
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+
+.version {
+
+  display: block;
+
+  margin-bottom: var(--space-sm);
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-small);
+
+  color: var(--color-accent);
+
+  letter-spacing: 0.05em;
+}
+
+
+.objective-group ul {
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+
+.objective-group li {
+
+  position: relative;
+
+  padding-left: var(--space-md);
+
+  margin-bottom: var(--space-xs);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+  line-height: 1.6;
+}
+
+
+.objective-group li::before {
+
+  position: absolute;
+
+  left: 0;
+
+  content: "·";
+
+  color: var(--color-accent);
+}
+
+
+.risks {
 
   display: grid;
 
@@ -197,16 +229,13 @@ const {
 
   list-style: none;
 
-  counter-reset: pain;
-
   border-top: 1px solid var(--color-border);
 
   border-left: 1px solid var(--color-border);
-
 }
 
 
-.pains li {
+.risks li {
 
   display: flex;
 
@@ -219,165 +248,30 @@ const {
   border-right: 1px solid var(--color-border);
 
   border-bottom: 1px solid var(--color-border);
-
-  counter-increment: pain;
-
 }
 
 
-.pains li::before {
-
-  content: "0" counter(pain);
-
-  font-family: "Courier New", Courier, monospace;
-
-  font-size: var(--font-size-small);
-
-  color: var(--color-accent);
-
-  letter-spacing: 0.05em;
-
-}
-
-
-.pain-title {
+.risk-title {
 
   color: var(--color-text-primary);
 
   font-size: var(--font-size-body);
 
   font-weight: 500;
-
-  line-height: 1.4;
-
 }
 
 
-.pain-text {
+.risk-text {
 
   color: var(--color-text-secondary);
 
   font-size: var(--font-size-small);
 
-  line-height: 1.5;
-
+  line-height: 1.6;
 }
 
 
-.latent {
-
-  display: grid;
-
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-
-  gap: 0;
-
-  margin: 0;
-
-  padding: 0;
-
-  list-style: none;
-
-  border-top: 1px solid var(--color-border);
-
-  border-left: 1px solid var(--color-border);
-
-}
-
-
-.latent li {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: var(--space-xs);
-
-  padding: var(--space-md);
-
-  border-right: 1px solid var(--color-border);
-
-  border-bottom: 1px solid var(--color-border);
-
-}
-
-
-.latent-title {
-
-  color: var(--color-text-primary);
-
-  font-size: var(--font-size-body);
-
-  font-weight: 500;
-
-}
-
-
-.latent-text {
-
-  color: var(--color-text-secondary);
-
-  font-size: var(--font-size-small);
-
-  line-height: 1.5;
-
-}
-
-
-.context {
-
-  margin: 0;
-
-  border-top: 1px solid var(--color-border);
-
-}
-
-
-.context-row {
-
-  display: grid;
-
-  grid-template-columns: minmax(140px, 25%) 1fr;
-
-  gap: var(--space-md);
-
-  padding: var(--space-sm) 0;
-
-  border-bottom: 1px solid var(--color-border);
-
-}
-
-
-.context dt {
-
-  color: var(--color-text-secondary);
-
-  font-family: "Courier New", Courier, monospace;
-
-  font-size: var(--font-size-small);
-
-  letter-spacing: 0.05em;
-
-  text-transform: uppercase;
-
-}
-
-
-.context dd {
-
-  margin: 0;
-
-  color: var(--color-text-primary);
-
-  font-size: var(--font-size-body);
-
-  line-height: 1.55;
-
-}
-
-
-.pivot,
-.mandate {
+.pivot {
 
   margin-top: var(--space-lg);
 
@@ -385,25 +279,11 @@ const {
 
   border-radius: var(--radius-md);
 
-}
-
-
-.pivot {
-
   background: var(--color-accent-soft);
-
 }
 
 
-.mandate {
-
-  background: var(--color-bg-secondary);
-
-}
-
-
-.pivot-label,
-.mandate-label {
+.pivot-label {
 
   display: block;
 
@@ -416,11 +296,12 @@ const {
   letter-spacing: 0.08em;
 
   text-transform: uppercase;
-
 }
 
 
 .pivot-text {
+
+  max-width: 800px;
 
   margin: 0;
 
@@ -431,38 +312,15 @@ const {
   line-height: var(--line-height-h3);
 
   font-weight: var(--font-weight-h3);
-
 }
 
 
-.mandate-text {
+@media (max-width: 900px) {
 
-  margin: 0;
-
-  color: var(--color-text-secondary);
-
-  font-size: var(--font-size-body);
-
-  line-height: 1.6;
-
-}
-
-
-@media (max-width: 768px) {
-
-  .pains,
-  .latent {
+  .objectives,
+  .risks {
 
     grid-template-columns: 1fr;
-
-  }
-
-
-  .context-row {
-
-    grid-template-columns: 1fr;
-
-    gap: var(--space-xs);
 
   }
 

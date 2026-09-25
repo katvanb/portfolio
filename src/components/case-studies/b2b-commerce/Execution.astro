@@ -1,0 +1,394 @@
+---
+import SectionHeading from "../shared/SectionHeading.astro";
+
+interface Props {
+  number: string;
+  title: string;
+  paragraphs: string[];
+  feasibilityTitle: string;
+  feasibility: string[];
+  resistanceTitle: string;
+  resistanceIntro: string;
+  resistance: { stakeholder: string; resisted: string; action: string }[];
+  validationTitle: string;
+  validation: { label: string; text: string }[];
+  supervisionTitle: string;
+  supervision: string;
+}
+
+const {
+  number,
+  title,
+  paragraphs,
+  feasibilityTitle,
+  feasibility,
+  resistanceTitle,
+  resistanceIntro,
+  resistance,
+  validationTitle,
+  validation,
+  supervisionTitle,
+  supervision,
+} = Astro.props;
+---
+
+<section class="execution" id="execution">
+
+  <SectionHeading number={number} title={title} />
+
+  <div class="body">
+    {
+      paragraphs.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))
+    }
+  </div>
+
+  <h3 class="sub-title">
+    {feasibilityTitle}
+  </h3>
+
+  <ul class="constraints">
+    {
+      feasibility.map((item) => (
+        <li>{item}</li>
+      ))
+    }
+  </ul>
+
+  <h3 class="sub-title">
+    {resistanceTitle}
+  </h3>
+
+  <p class="intro">
+    {resistanceIntro}
+  </p>
+
+  <ul class="stakeholders">
+    {
+      resistance.map((item) => (
+        <li>
+          <span class="who">{item.stakeholder}</span>
+          <span class="resisted">{item.resisted}</span>
+          <span class="action">{item.action}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <h3 class="sub-title">
+    {validationTitle}
+  </h3>
+
+  <ul class="validation">
+    {
+      validation.map((item) => (
+        <li>
+          <span class="v-label">{item.label}</span>
+          <span class="v-text">{item.text}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="supervision">
+
+    <span class="supervision-label">
+      {supervisionTitle}
+    </span>
+
+    <p class="supervision-text">
+      {supervision}
+    </p>
+
+  </div>
+
+</section>
+
+
+<style>
+
+.execution {
+  margin-top: var(--section-spacing);
+}
+
+
+.body {
+
+  max-width: 800px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-md);
+}
+
+
+.body p {
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: var(--line-height-body-lg);
+}
+
+
+.sub-title {
+
+  margin: var(--space-xl) 0 var(--space-md);
+
+  padding-top: var(--space-lg);
+
+  border-top: 1px solid var(--color-border);
+
+  font-size: var(--font-size-h3);
+
+  line-height: var(--line-height-h3);
+
+  font-weight: var(--font-weight-h3);
+}
+
+
+.intro {
+
+  max-width: 800px;
+
+  margin: 0 0 var(--space-md);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.6;
+}
+
+
+.constraints {
+
+  display: grid;
+
+  gap: 0;
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+
+  border-top: 1px solid var(--color-border);
+
+  border-left: 1px solid var(--color-border);
+}
+
+
+.constraints li {
+
+  position: relative;
+
+  padding: var(--space-sm) var(--space-md) var(--space-sm) var(--space-xl);
+
+  border-right: 1px solid var(--color-border);
+
+  border-bottom: 1px solid var(--color-border);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.6;
+}
+
+
+.constraints li::before {
+
+  position: absolute;
+
+  top: var(--space-sm);
+
+  left: var(--space-md);
+
+  content: "×";
+
+  color: var(--color-accent);
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-small);
+}
+
+
+.stakeholders {
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+
+  border-top: 1px solid var(--color-border);
+}
+
+
+.stakeholders li {
+
+  display: grid;
+
+  grid-template-columns: minmax(120px, 18%) 1fr 1.4fr;
+
+  gap: var(--space-md);
+
+  padding: var(--space-md) 0;
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+
+.who {
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-small);
+
+  color: var(--color-accent);
+
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+
+.resisted {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-body);
+  line-height: 1.6;
+}
+
+
+.action {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-body);
+  line-height: 1.6;
+}
+
+
+.validation {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 0;
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+
+  border-top: 1px solid var(--color-border);
+
+  border-left: 1px solid var(--color-border);
+}
+
+
+.validation li {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-xs);
+
+  padding: var(--space-md);
+
+  border-right: 1px solid var(--color-border);
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+
+.v-label {
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-body);
+
+  font-weight: 500;
+}
+
+
+.v-text {
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+  line-height: 1.6;
+}
+
+
+.supervision {
+
+  margin-top: var(--space-lg);
+
+  padding: var(--space-md) var(--space-lg);
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-accent-soft);
+}
+
+
+.supervision-label {
+
+  display: block;
+
+  margin-bottom: var(--space-xs);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-label);
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+
+.supervision-text {
+
+  max-width: 800px;
+
+  margin: 0;
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: var(--line-height-body-lg);
+}
+
+
+@media (max-width: 900px) {
+
+  .stakeholders li {
+
+    grid-template-columns: 1fr;
+
+    gap: var(--space-xs);
+
+  }
+
+
+  .validation {
+
+    grid-template-columns: 1fr;
+
+  }
+
+}
+
+</style>

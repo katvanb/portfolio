@@ -35,8 +35,8 @@ const en = {
           description:
             "Designing a scalable credential management platform for multiple organizations and complex user roles.",
           tags: ["Product Strategy", "Systems Design", "Architecture", "Enterprise UX"],
-          link: `${import.meta.env.BASE_URL}work/credential-platform-v2/`,
-          image: `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-01.png`
+          link: `${import.meta.env.BASE_URL}work/credential-platform/`,
+          image: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/asset-01.png`
         },
 
         {
@@ -45,8 +45,8 @@ const en = {
           description:
             "Transforming a traditional sales process into a self-service commerce experience for professional buyers.",
           tags: ["Product Discovery", "Complex UX", "Self-Service", "Business Systems"],
-          link: `${import.meta.env.BASE_URL}work/b2b-commerce-v2/`,
-          image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce-platform/cover.png`
+          link: `${import.meta.env.BASE_URL}work/b2b-commerce/`,
+          image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce/cover.png`
         }
 
       ],
@@ -170,1250 +170,833 @@ const en = {
     description: "I'm working on something here. Check back soon.",
     backLabel: "View my work",
   },
-
   credentialPlatform: {
     hero: {
-      tag: "ENTERPRISE SaaS · EDTECH · DIGITAL CREDENTIALS",
-      title: "Creating structure for a growing credentialing ecosystem.",
-      description:
-        "Designing a multi-tenant credentialing system with layered role hierarchies, reporting requirements, and scalable organization structures.",
-      role: "Product Designer",
-      timeline: "2 years",
-      team:
-        "Product Designer, UX/UI Designer, Developers, QA, PM, Product Stakeholders",
-    },
-
-    challenge: {
-      eyebrow: "THE CHALLENGE",
-      title: "Turning business requirements into a scalable product structure.",
-  
-      business: {
-        title: "BUSINESS PROBLEM",
-        items: [
-          "No scalable structure for managing digital credentials.",
-          "Lack of clarity in organizational hierarchies.",
-          "No unified system for multi-organization management.",
-          "Reporting requirements were undefined and inconsistent."
-        ]
-      },
-  
-      product: {
-        title: "PRODUCT PROBLEM",
-        items: [
-          "System was initially built by replicating competitor functionality.",
-          "High complexity due to interconnected workflows.",
-          "Lack of clarity between platform-level vs organization-level logic.",
-          "Undefined user roles and permissions structure."
-        ]
-      },
-  
-      role: {
-        title: "MY FOCUS",
-        items: [
-          "Product discovery",
-          "System architecture",
-          "Role & permissions",
-          "Information architecture",
-          "Workflows & edge cases"
-        ]
-      }
-    },
-    
-    contribution: {
-      eyebrow: "MY CONTRIBUTION",
-      title: "From product discovery to implementation.",
-    
-      items: [
-        "Led product discovery and requirement analysis with business stakeholders.",
-        "Defined RBAC, multi-tenant architecture, and credential lifecycle logic.",
-        "Designed user flows, information architecture, and functional specifications.",
-        "Co-designed the initial product release and reviewed subsequent UI implementations.",
-        "Collaborated with engineering and QA to validate workflows, edge cases, and implementation consistency."
-      ]
-    },
-
-    understandingSystem: {
-      title: "Understanding the system",
-      description:
-        "The platform was designed around two complementary systems: platform governance and organization management. Role-based permissions determined how users interacted with each layer."
-    },
-
-    multiTenantArchitecture: {
-      title: "Multi-tenant Architecture"
-    },
-
-    roleHierarchy: {
-      title: "Role Hierarchy (RBAC)",
-    
-      roles: [
-        {
-          role: "Global Sys Admin",
-          platform: "✔️",
-          organization: "✔️",
-          credential: "—",
-          reports: "Platform-wide",
-          experience: "—"
-        },
-        {
-          role: "Multi-Organization Admin",
-          platform: "✔️",
-          organization: "✔️",
-          credential: "—",
-          reports: "Multi-org",
-          experience: "—"
-        },
-        {
-          role: "Organization Admin",
-          platform: "—",
-          organization: "✔️",
-          credential: "✔️",
-          reports: "Organization",
-          experience: "—"
-        },
-        {
-          role: "Secondary Admin",
-          platform: "—",
-          organization: "Limited",
-          credential: "✔️",
-          reports: "Limited",
-          experience: "—"
-        },
-        {
-          role: "Accredited",
-          platform: "—",
-          organization: "—",
-          credential: "—",
-          reports: "Own Activity",
-          experience: "✔️"
-        },
-        {
-          role: "Guest",
-          platform: "—",
-          organization: "—",
-          credential: "—",
-          reports: "—",
-          experience: "View Shared Credentials"
-        }
-      ],
-    
-      insight: {
-        title: "Turning business rules into a scalable access model.",
-        description:
-          "I translated fragmented business rules into a clear role and permission model, separating platform governance from organizational operations and user-facing experiences. This gave the product a consistent foundation for defining workflows, permissions, and future roles."
-      }
-    },
-
-    credentialLifecycle: {
-      title: "Credential Lifecycle",
-      alt: "Credential lifecycle flow showing the main stages and interactions of the credentialing process."
-    },
-
-    informationArchitecture: {
-      title: "Information Architecture (High Level)",
-    
-      description:
-        "The platform exposes a different navigation structure depending on the user's organizational context, ensuring each role accesses only the modules relevant to its responsibilities.",
-    
-      principleTitle: "Design Principle",
-    
-      principleHeadline: "Context-aware navigation.",
-    
-      principleDescription:
-        "Instead of exposing every module to every user, the platform adapts its information architecture according to organizational scope and responsibilities. This reduced navigation complexity while supporting a scalable multi-tenant architecture."
-    },
-
-    reportingComplexity: {
-      title: "Reporting Complexity",
-    
-      columns: {
-        report: "Report / Insight",
-        globalPlatform: "Global Platform",
-        holding: "Holding (Multi-org)",
-        organization: "Organization",
-        accredited: "Accredited"
-      },
-    
-      rows: [
-        {
-          name: "Organizational Overview",
-          values: ["✔️", "Assigned Organizations", "➖", "➖"]
-        },
-        {
-          name: "Plan & Subscription Status",
-          values: ["✔️", "✔️", "Current Plan", "➖"]
-        },
-        {
-          name: "Plan Consumption",
-          values: ["✔️", "✔️", "Own Usage", "➖"]
-        },
-        {
-          name: "Organizational Members",
-          values: ["✔️", "✔️", "✔️", "➖"]
-        },
-        {
-          name: "Credential Inventory",
-          values: ["✔️", "Shared Database", "✔️", "Own Credentials"]
-        },
-        {
-          name: "Credential Assignments",
-          values: ["✔️", "✔️", "✔️", "Own Assignments"]
-        },
-        {
-          name: "Assignment Status",
-          values: ["✔️", "✔️", "✔️", "Own Status"]
-        },
-        {
-          name: "Credential Sharing Analytics",
-          values: ["✔️", "✔️", "✔️", "Personal Activity"]
-        },
-        {
-          name: "Administrator Activity",
-          values: ["✔️", "✔️", "✔️", "➖"]
-        },
-        {
-          name: "System Activity Logs",
-          values: ["✔️", "✔️", "Organization Logs", "➖"]
-        },
-        {
-          name: "Export Reports",
-          values: ["✔️", "✔️", "✔️", "➖"]
-        }
-      ],
-
-      insight:
-        "Reporting was designed using progressive visibility rather than creating different reporting modules for each role. Every user accessed the same reporting ecosystem, but the available data was filtered according to their level of responsibility, reducing interface complexity while maintaining a consistent reporting experience across the platform."
-    },
-
-    constraints: {
-      title: "Constraints & Design Decisions",
-    
-      items: [
-        {
-          number: "01",
-          title: "Aligning Features with Business Architecture",
-    
-          decisionLabel: "Decision",
-          decision:
-            "Designed workflows around the client's business model instead of replicating competitor features.",
-    
-          tradeoffLabel: "Trade-off",
-          tradeoff:
-            "More discovery upfront, but a product that could evolve beyond feature parity."
-        },
-    
-        {
-          number: "02",
-          title: "Separating Governance from Operations",
-    
-          decisionLabel: "Decision",
-          decision:
-            "Separated platform governance, organization management, and credential ownership into independent layers.",
-    
-          tradeoffLabel: "Trade-off",
-          tradeoff:
-            "Higher implementation complexity in exchange for long-term scalability."
-        },
-    
-        {
-          number: "03",
-          title: "Designing Around Responsibilities",
-    
-          decisionLabel: "Decision",
-          decision:
-            "Grouped permissions by responsibilities instead of individual actions to simplify access management.",
-    
-          tradeoffLabel: "Trade-off",
-          tradeoff:
-            "More analysis upfront, significantly lower maintenance as the platform grew."
-        },
-    
-        {
-          number: "04",
-          title: "Optimizing for Bulk Operations",
-    
-          decisionLabel: "Decision",
-          decision:
-            "Prioritized batch credential issuance with CSV validation over individual workflows.",
-    
-          tradeoffLabel: "Trade-off",
-          tradeoff:
-            "A more complex flow that dramatically improved administrative efficiency."
-        },
-    
-        {
-          number: "05",
-          title: "Designing Reporting for Growth",
-    
-          decisionLabel: "Decision",
-          decision:
-            "Structured reporting by visibility level rather than fixed dashboards.",
-    
-          tradeoffLabel: "Trade-off",
-          tradeoff:
-            "More flexible reporting architecture despite evolving business requirements."
-        }
-      ]
-    },
-
-    quote:
-      "Great product design is about designing architectures that keep complexity manageable as products evolve.",
-
-    impact: {
-        title: "Impact",
-    
-        impact: [
-          "Successfully adopted by multiple organizations in Colombia.",
-          "Established a scalable multi-tenant architecture for different organizational models.",
-          "Standardized credential issuance through reusable workflows and role-based permissions.",
-          "Improved administrative efficiency through bulk operations and self-service."
-        ],
-    
-        highlights: [
-          "6 Roles",
-          "2 System Layers",
-          "5 Credential States",
-          "Multi-tenant Architecture",
-          "Live Enterprise Product"
-        ],
-    
-        reflection: {
-          title: "Reflection",
-    
-          items: [
-            "This project reinforced that enterprise products are rarely limited by interface complexity—they're limited by business complexity.",
-            "Translating evolving business rules into a scalable architecture required balancing flexibility, governance, and usability. It strengthened my ability to transform ambiguous business requirements into scalable product architectures that balance governance, usability, and long-term growth."
-          ]
-        }
-      },
-  },
-
-  credentialPlatformV2: {
-    hero: {
-      tag: "CASE STUDY",
-      title: "From an idea to a scalable credentialing platform",
+      tag: "CREDENTIAL PLATFORM · EDUCATION AND CORPORATE SECTOR",
+      title: "From a linear institution to a multi-organization system",
       description: [
-        "A business concept became a live multi-tenant credentialing platform supporting four organizations across Colombia and Spain.",
-        "I defined the product structure, organizational model, roles and permissions, information architecture, core workflows, and interaction patterns — working closely with product, engineering and QA as the platform evolved."
+        "A B2B platform where educational institutions, corporations and certifying bodies issue, manage and verify digital credentials —degrees, certificates, badges and micro-credentials— using international standards such as Blockchain, Open Badges and W3C Verifiable Credentials.",
+        "The project was 0 → 1. I designed the organizational model, the role and permission system, the credit logic and the workflows that make issuing credentials at scale possible without the operation collapsing."
       ],
-      role: "Product Designer",
-      timeline: "2 years",
-      team: "Product · UX/UI · Engineering · QA · Stakeholders",
-      focus: "Product strategy · Product architecture · UX/UI · IA · Roles & permissions · Workflows · Edge cases",
+      role: "Product Designer (de facto lead on UI/UX and the technical team)",
+      timeline: "2 years · 3 feature releases (2 product + 1 technical) · 4th iteration in planning",
+      team: "PM (direct manager) · 1 UI/UX Designer · 2 engineers · 1 QA",
+      focus: "2 founders (systems engineers) with a mandate to replicate a sector competitor",
       ndaText:
         "Details have been generalized to protect client confidentiality."
     },
 
-    roleMatrix: {
-      id: "ASSET 03",
-      label: "Role & permission model",
-      heading: "Who is responsible for what?",
-      roles: [
-        { title: "PLATFORM ADMIN", items: ["Organizations", "Members", "Credentials", "Reports"] },
-        { title: "ORG ADMIN", items: ["Organizations", "Members", "Credentials", "Reports"] },
-        { title: "SECONDARY ADMIN", items: ["Members", "Credentials", "Limited reporting"] },
-        { title: "ACCREDITED", items: ["Own credentials", "Own information"] }
-      ],
-      hierarchyLabel: "THE HIERARCHY",
-      hierarchyRoot: "PLATFORM",
-      hierarchyBranches: [
-        { name: "Organization A", children: ["Org Admin", "Secondary Admin", "Accredited"] },
-        { name: "Organization B", children: ["Org Admin", "Accredited"] }
-      ],
-      footer: "Permissions followed organizational responsibility, not individual actions."
-    },
-
     challenge: {
-      eyebrow: "THE CHALLENGE",
-      title: "There was a business model, but no product.",
+      eyebrow: "The Challenge",
+      title: "Issuing credentials at scale was manual, slow and untraceable",
       paragraphs: [
-        "The founders had a reference platform, but needed the architecture to make it work."
+        "A technology company in the education sector wanted to build from scratch a B2B platform so that educational institutions, corporations and certifying bodies could issue, manage and verify digital credentials —degrees, certificates, badges and micro-credentials— using international standards such as Blockchain, Open Badges and W3C Verifiable Credentials.",
+        "The project was 0 → 1. There was no prior platform. Institutions issued credentials manually: data in spreadsheets, designs in external tools, sent one by one by email or in physical print."
       ],
-      listTitle: "I had to define:",
-      items: [
-        "who the different actors were",
-        "how organizations related to each other",
-        "what each role could see and manage",
-        "how credentials moved through their lifecycle",
-        "how multiple organizations could coexist"
-      ],
-      closing:
-        "The challenge wasn't copying the reference. It was turning an idea into a product that could actually operate."
-    },
-
-    businessModel: {
-      number: "01",
-      title: "Turn the business model into a product",
-      paragraphs: [
-        "I mapped business rules, organizational relationships, and operational workflows with stakeholders."
-      ],
-      layersTitle: "Two layers emerged",
-      layers: [
+      painsTitle: "Three concrete pains",
+      pains: [
         {
-          title: "Platform governance",
-          description: "Managing the platform and its organizations."
+          title: "Manual, slow issuance",
+          text: "Moving data into certificates one by one, with external designs and manual sending."
         },
         {
-          title: "Organization management",
-          description: "Managing people, credentials, and daily operations."
+          title: "No traceability",
+          text: "Nobody knew with certainty who received what, who assigned it, when, or in which state. The information existed, but you had to ask colleagues or email the accredited."
+        },
+        {
+          title: "No institutional self-service",
+          text: "Institutions depended on manual processes to issue, assign and follow up."
         }
       ],
-      layersNote:
-        "This separation became the foundation for the multi-tenant model.",
-      roleTitle: "Role model evolution",
-      roleIntro: "Initial:",
-      roleFrom: ["Platform", "Organization", "Administrator", "Operator"],
-      roleParagraphs: [
-        "As the product grew, this wasn't enough.",
-        "I reworked it to support parent organizations, sub-organizations, and levels of responsibility. The goal wasn't more roles — it was making responsibility explicit."
+      latentTitle: "Latent pains",
+      latent: [
+        {
+          title: "Fraud",
+          text: "There was no way to verify a credential except calling the institution."
+        },
+        {
+          title: "Impossible to scale",
+          text: "To other types of institution, recognized in future versions."
+        }
       ],
-      asset: { id: "ASSET 03", label: "Role hierarchy evolution" }
-    },
-
-    evolution: {
-      number: "02",
-      title: "Let real use cases shape the product",
-      paragraphs: [
-        "The first organization changed everything.",
-        "Assumptions were tested against real workflows."
+      contextTitle: "Business context",
+      context: [
+        {
+          label: "Billing model",
+          value: "Per assigned credential (not issued — creating credentials is free), per accredited (no matter how many credentials they obtain), with a free trial version."
+        },
+        {
+          label: "Initial market",
+          value: "Colombia. Pilot with 2 companies of 20–50 accredited each."
+        },
+        {
+          label: "Future expansion",
+          value: "Europe, with Europass and ELM requirements."
+        }
       ],
-      gapsTitle: "New customers exposed gaps around:",
-      gaps: [
-        "self-service",
-        "permissions",
-        "assignment workflows",
-        "reporting",
-        "organization structure"
-      ],
-      shift:
-        "My role shifted from defining the initial product to continuously shaping the system as real use cases emerged."
-    },
-
-    selfService: {
-      number: "03",
-      title: "Replace operational work with self-service",
-      paragraphs: [
-        "Initially, clients depended on the internal team for operational changes.",
-        "They needed the team to:"
-      ],
-      items: [
-        "create organizations",
-        "add members",
-        "change roles",
-        "modify plan credits",
-        "manage consumption"
-      ],
-      transition: ["That worked at a small scale.", "It wouldn't scale."],
-      resultTitle: "I moved those operations into the product.",
-      resultText:
-        "Clients could create organizations, add members and manage roles themselves.",
-      beforeTitle: "Before",
-      beforeFlow: ["Client request", "Internal team", "Manual change"],
-      afterTitle: "After",
-      afterFlow: ["Client", "Organization settings", "Change completed"],
-      contributionTitle: "Design contribution",
-      contribution: [
-        "Self-service architecture",
-        "Permission logic",
-        "UI flow",
-        "Edge cases",
-        "Validation states"
-      ],
-      mgmtUi: {
-        id: "ASSET 06",
-        label: "Organization & member management UI",
-        title: "Organizations",
-        newMember: "+ New member",
-        orgName: "Acme Organization",
-        orgMeta: "48 members · 3 admins",
-        membersTitle: "Members",
-        searchPlaceholder: "Search members…",
-        filterLabel: "Filter ▾",
-        columns: ["Name", "Role", "Status"],
-        rows: [
-          { name: "Ana Torres", role: "Org Admin", status: "Active" },
-          { name: "Luis Pérez", role: "Secondary Admin", status: "Active" },
-          { name: "Marta Ruiz", role: "Accredited", status: "Pending" },
-          { name: "Carlos Díaz", role: "Accredited", status: "Active" }
-        ],
-        detailLabel: "MEMBER",
-        detailName: "Marta Ruiz",
-        roleLabel: "Role",
-        roleValue: "Accredited ▾",
-        orgLabel: "Organization",
-        orgValue: "Acme Organization",
-        credsLabel: "Credentials",
-        credsValue: "12 issued · 2 pending",
-        cancel: "Cancel",
-        save: "Save",
-        callouts: [
-          { number: "01", title: "Role visibility", text: "Users only see actions their responsibility allows." },
-          { number: "02", title: "Self-service", text: "Organizations manage members without internal intervention." },
-          { number: "03", title: "Validation", text: "Role changes respect organizational constraints." }
-        ]
+      pivotLabel: "The design challenge was not…",
+      pivot:
+        "Building a certificate platform. It was designing the system of organizations, roles, permissions and plans that would make it possible to issue credentials at scale without the operation collapsing.",
+      mandateLabel: "Initial stakeholder mandate",
+      mandate:
+        "Replicate the model of a sector competitor. My work was to translate that ambition into a proprietary, scalable system aligned with international standards.",
+      screenshot: {
+        id: "SHOT 01",
+        label: "Platform hero — main screen or collage of the key views",
+        note: "Replace with a real capture. Suggested: the credential list with its filters, the clearest expression of the product."
       }
     },
 
-    workflow: {
-      number: "04",
-      title: "Turn credential issuance into a scalable workflow",
+    vision: {
+      number: "01",
+      title: "Product Vision: From Linear Institution to Multi-Organization System",
       paragraphs: [
-        "A typical course had 20–50 accredited users.",
-        "The original workflow required an extensive form, one person at a time.",
-        "Effort scaled with recipients."
+        "At the beginning there were no multi-organizations. The model was a linear institution: a single chain of roles from the person who managed the platform globally down to the accredited.",
+        "As the product evolved, the model mutated into organization plus multi-organization."
       ],
-      approachTitle: "I changed the unit of work.",
-      approachSteps: ["Define once", "Reuse", "Assign in bulk"],
-      templateTitle: "Reusable credential templates",
-      templateText:
-        "Create once, reuse or duplicate.",
-      bulkTitle: "Bulk assignment",
-      bulkText:
-        "Prepare recipient data and upload it through CSV. A bulk assignment took approximately 2 minutes.",
-      stat: { value: "~2 min", label: "for a bulk assignment" }
+      beforeTitle: "Linear institution",
+      beforeRoles: [
+        "Platform owner",
+        "Main administrator",
+        "Secondary administrator",
+        "Operator",
+        "Accredited"
+      ],
+      afterTitle: "Simple organization",
+      afterRoles: [
+        "Main administrator",
+        "Secondary administrator",
+        "Accredited"
+      ],
+      multiTitle: "Multi-organization",
+      multiIntro:
+        "When a main organization needs to manage a network of entities with their own administrators and accreditations:",
+      orgAdmin:
+        "Organization administrator — creates and manages sub-organizations, requests plans and redistributes credits",
+      subLabel: "Sub-organization",
+      subRoles: [
+        "Main administrator",
+        "Secondary administrator",
+        "Accredited"
+      ],
+      decisionTitle: "The strategic decision",
+      decisionText:
+        "I proposed every role and hierarchy, based on benchmarking the competitor and on what stakeholders expressed as a need (\"I want to be able to see this\", \"this person needs to know such and such\"). I did not receive a role model — I designed it.",
+      futureTitle: "Future vision",
+      future: [
+        "Accredited search portal",
+        "White-label expansion",
+        "Adaptation to other countries"
+      ],
+      screenshot: {
+        id: "SHOT 02",
+        label: "Role model diagram — linear institution vs. multi-organization",
+        note: "Replace with the real diagram. This is the single most important visual in the case study."
+      }
     },
 
-    accreditedUX: {
-      number: "05",
-      title: "Make the experience clearer for accredited users",
-      paragraphs: [
-        "Some workflows were technically correct but hard to understand.",
-        "Users struggled with:"
+    sharedCatalog: {
+      number: "02",
+      title: "Key Decision 1: Shared Credentials, Specific Assignments",
+      questionLabel: "The first question",
+      question:
+        "When designing multi-organization, does each sub-organization have its own credentials, or do they share the catalog?",
+      rejectedLabel: "Rejected alternative",
+      rejected: "Each sub-organization with its own credentials.",
+      decisionLabel: "Decision taken",
+      decision:
+        "All created credentials are available to every sub-organization, but assignments belong to the specific sub-organization that made them.",
+      whyTitle: "Why",
+      why: [
+        "Avoids credential duplication — the same badge can be used by several sub-organizations.",
+        "Maintains traceability: each assignment belongs to one sub-organization, and histories never mix.",
+        "Lets a sub-organization see every available credential while only managing its own assignments."
       ],
-      issues: ["unfamiliar labels", "long registration", "information required too early"],
-      mentalTitle:
-        "I redesigned the entry experience around a simpler mental model:",
-      mentalBold: "Get into the product → Complete your profile",
-      mentalText:
-        "Instead of requiring everything during account creation, users could access their account through a dedicated link and complete or edit their profile afterward.",
-      beforeTitle: "Before",
-      beforeFlow: ["Invitation", "Long registration", "Account"],
-      afterTitle: "After",
-      afterFlow: ["Invitation", "Account", "Complete profile"],
-      annotations: [
-        "Reduced initial cognitive load",
-        "Deferred non-essential information",
-        "Clearer separation of tasks"
+      uiTitle: "How it showed in the UI/UX",
+      ui: [
+        "Sub-organizations see all credentials.",
+        "On entry, only their own assignments are shown; the ones that do not belong to them appear as unassigned.",
+        "The activity history records which administrator made the assignment, and to whom (individual or batch)."
       ],
-      asset: { id: "ASSET 09", label: "UX before / after" }
+      typesTitle: "Credential types",
+      types: [
+        "Certificate or badge.",
+        "May carry a record of achievement (constancia).",
+        "May belong to a collection: when the system detects that an accredited passed a course (via Global Certifica, Moodle or an integrated API), it automatically assigns the next credential in the collection."
+      ],
+      screenshot: {
+        id: "SHOT 03",
+        label: "Credential list with assignment state per sub-organization",
+        note: "Replace with a real capture. The unassigned state next to owned assignments is what makes the decision legible."
+      }
     },
 
-    permissions: {
-      number: "06",
-      title: "Design permissions around responsibility",
-      paragraphs: [
-        "As organizations became more autonomous, permissions became a core product problem."
+    creditDistribution: {
+      number: "03",
+      title: "Key Decision 2: Distributed Credits vs. Real-Time Consumption",
+      questionLabel: "The question the billing model forced",
+      question:
+        "The per-credit billing model (assigned credential, accredited) forced a decision on how credits are managed between the main organization and its sub-organizations.",
+      rejectedLabel: "Rejected alternative",
+      rejected: "Real-time consumption shared across all sub-organizations.",
+      decisionLabel: "Decision taken",
+      decision:
+        "Credits are assigned to the main organization, which redistributes them among its sub-organizations.",
+      whyTitle: "Why",
+      why: [
+        "Clear history: if consumption is global, the history mixes sub-organizations. If it is specific per sub-organization, the history is filterable and understandable.",
+        "Component reuse: it allowed reusing the existing activity history modal, avoiding filters that would also affect report generation.",
+        "Controlled operation: real-time consumption across sub-organizations was chaotic to follow."
       ],
-      wrongQIntro: "The question wasn't:",
-      wrongQuestion: "What can this user click?",
-      rightQIntro: "It was:",
-      rightQuestion:
-        "What information and actions should this person be responsible for?",
-      modelText:
-        "I structured permissions around organizational responsibility rather than treating every action as an isolated permission.",
-      modelTitle: "The model accounted for:",
-      model: [
-        "platform governance",
-        "parent organizations",
-        "sub-organizations",
-        "primary and secondary administrators",
-        "credential management",
-        "reporting",
-        "accredited users"
+      uiTitle: "How it showed in the UI/UX",
+      ui: [
+        "The main organization has a modal to distribute credits.",
+        "It sees how many sub-organizations it has, whether they have credits or not, and how many they have consumed.",
+        "It sees how the consumption of the total plan changes over time.",
+        "Main administrators can request credits from their organization administrator (if multi-organization) or plans from Global Certifica."
       ],
-      navTitle: "Context-aware navigation",
-      navParagraphs: [
-        "Context-aware navigation adapted to the user's level of responsibility."
-      ],
-      navFormulaText: "Navigation follows:",
-      navFormula: "Role + organization + responsibility",
-      navExampleTitle: "ORG ADMIN",
-      navExample: ["Dashboard", "Organizations", "Members", "Credentials", "Reports"],
-      navCaptionBefore: "Admin navigation",
-      navCaptionAfter: "Accredited navigation"
-    },
-
-    reporting: {
-      number: "07",
-      title: "Make reporting reflect the organization",
-      paragraphs: [
-        "The problem wasn't a lack of reports — it was that the business hadn't defined what each organizational level needed to understand. This created duplicated information."
-      ],
-      approachTitle: "I restructured reporting around visibility levels.",
-      approachText:
-        "One reporting system, different visibility.",
-      modelTitle: "One reporting system",
-      modelSubtitle: "Different visibility",
-      screens: [
-        "Platform-level report",
-        "Organization-level report",
-        "Filtered view"
-      ],
-      annotation: "Same reporting foundation, different visibility."
-    },
-
-    expansion: {
-      number: "08",
-      title: "Expand beyond the original market",
-      paragraphs: [
-        "The platform grew to support four organizations across Colombia and Spain.",
-        "Spain introduced new considerations:"
-      ],
-      considerations: [
-        "GDPR",
-        "currency",
-        "geolocation",
-        "education systems",
-        "organizational structures",
-        "white-label requirements"
-      ],
-      noteTitle: "These weren't simply additional screens.",
-      noteText: "They challenged assumptions embedded in the original product.",
-      conclusion:
-        "The architecture evolved from supporting a specific business model to supporting different customers and contexts.",
-      diagramTitle: "MARKET EXPANSION",
-      diagram: [
-        "Colombia",
-        "Real customers",
-        "New market",
-        "Spain",
-        "New requirements",
-        "Adaptable product architecture"
-      ]
-    },
-
-    whatChanged: {
-      title: "What changed",
-      columns: ["From", "To"],
-      rows: [
-        ["Business idea", "Product strategy + architecture"],
-        ["Reference product", "Business-specific product"],
-        ["Internal operational dependency", "Client self-service"],
-        ["One-by-one issuance", "Bulk assignment"],
-        ["One-off credentials", "Reusable templates"],
-        ["Flat role model", "Hierarchical organization model"],
-        ["Fixed reporting", "Visibility-based reporting"],
-        ["Colombia assumptions", "Colombia + Spain"],
-        ["Initial launch", "4 organizations"]
-      ],
-      metrics: [
-        { value: "2 years", label: "Product evolution" },
-        { value: "4", label: "Organizations · Colombia + Spain" },
-        { value: "20–50", label: "Users in a typical bulk assignment" },
-        { value: "~2 min", label: "Bulk assignment workflow" }
-      ]
-    },
-
-    outcome: {
-      title: "Outcome",
-      paragraphs: [
-        "The product moved from an initial business idea to a live multi-tenant credentialing platform.",
-        "Organizations could manage their own structure and members. Credential teams could create reusable templates and assign credentials in bulk. Roles and permissions evolved with increasingly sophisticated organizational structures. Reporting became aligned with organizational visibility.",
-        "The architecture was no longer tied to the original reference product."
-      ],
-      closing: "It had become a system that could adapt.",
-      montageTitle: "Screens",
-      montage: [
-        "Dashboard",
-        "Organization management",
-        "Credential builder",
-        "Bulk assignment",
-        "Reports",
-        "User profile"
-      ]
-    },
-
-    lessons: {
-      title: "What I learned",
-      heading: "Designing the system, not just the screen",
-      paragraphs: [
-        "The hardest part wasn't designing individual screens.",
-        "It was making product decisions while the business itself was still taking shape.",
-        "Requirements were incomplete. Organizational structures evolved. Real customers challenged assumptions.",
-        "My role was to create enough structure to support the business today without making tomorrow's changes unnecessarily expensive."
-      ],
-      quote:
-        "Good product design doesn't just solve today's workflow. It creates enough structure for the product to evolve without breaking."
-    }
-  },
-
-  b2bCommercePlatform: {
-    hero: {
-      tag: "B2B COMMERCE · SCIENTIFIC SUPPLIES",
-      title: "From sales-assisted purchasing to self-service.",
-      description:
-        "Transforming fragmented purchasing workflows into a centralized digital experience for enterprise customers across Spain and Portugal.",
-      role: "Product Designer",
-      timeline: "2 years",
-      team:
-        "Product Designer, UX/UI Designer, Developers, QA, PM, Client Development Team, Business Stakeholders",
-      ndaText:
-        "Due to a Non-Disclosure Agreement (NDA), some business details and product visuals have been generalized while preserving the design process, challenges, and outcomes.",
-    },
-
-    challenge: {
-      title: "The Challenge",
-
-      before: {
-        label: "Before",
-        image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce-platform/before.png`,
-        items: [
-          "Phone",
-          "Email",
-          "Printed Catalogs",
-          "Quotes",
-          "Manual tracking",
-          "Fragmented departments"
-        ]
-      },
-
-      after: {
-        label: "After",
-        image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce-platform/after.png`,
-        items: [
-          "Self-service",
-          "Search",
-          "Quotes",
-          "Orders",
-          "Tracking",
-          "Purchase history"
-        ]
-      },
-
-      goal: {
-      label: "Goal",
-      description:
-        "Transform fragmented commercial operations into a unified self-service experience where enterprise customers could independently search products, request quotations, monitor orders, and manage purchasing activities from a single platform."
-      },
-    },
-
-    contribution: {
-      eyebrow: "My Contribution",
-
-      title: "Shaping the product from the inside out",
-
-      description:
-        "Throughout the project, I led product discovery and requirements analysis across major releases, translating business needs and operational complexity into implementation-ready product requirements.",
-
-      items: [
-        "Facilitating cross-functional discovery workshops with business stakeholders",
-
-        "Leading requirement analysis and translating business needs into product requirements",
-
-        "Defining user flows, use cases, information architecture, navigation, and functional logic",
-
-        "Designing search behavior and key product interactions",
-
-        "Co-designing key product interfaces during the initial release and establishing patterns that guided subsequent releases",
-
-        "Producing functional specifications and collaborating closely with engineering throughout implementation",
-
-        "Serving as the product design reference during implementation, validating interaction logic, edge cases, navigation, and design consistency across engineering and QA",
-
-        "Supporting QA and reviewing subsequent UI designs to ensure alignment with business rules, workflows, technical constraints, and the evolving product"
-      ],
-
-      note:
-        "Although technical ERP integrations were implemented by the client's engineering team, I worked closely with stakeholders and developers to define how enterprise data should translate into meaningful user experiences."
-    },
-
-    businessDiscovery: {
-      title: "Business Discovery",
-      departments: [
-        "Sales",
-        "Marketing",
-        "Procurement",
-        "Accounting",
-        "Development"
-      ],
-      workshops: "Discovery Workshops",
-      sharedUnderstanding: "Shared Understanding",
-      note: "Different departments described the same workflow differently."
-    },
-
-    constraints: {
-      title: "Constraints",
-
-      items: [
+      align:
+        "How it aligned with stakeholders: I presented both options and both sides agreed that distributing credits was better than real-time consumption.",
+      screenshots: [
         {
-          number: "01",
-          title: "Legacy business processes",
-
-          decisionLabel: "Decision",
-          decision:
-            "Used the competitor experience as a reference while adapting it to the client's business rules, refining and automating existing processes where possible.",
-
-          tradeoffLabel: "Trade-off",
-          tradeoff:
-            "More discovery and process analysis upfront, but a familiar experience that still reflected how the business actually operated."
+          id: "SHOT 04",
+          label: "Credit distribution modal",
+          note: "Replace with a real capture."
         },
-
         {
-          number: "02",
-          title: "Organizational silos",
-
-          decisionLabel: "Decision",
-          decision:
-            "Mapped how different departments understood and interacted with the same commercial processes to identify gaps, dependencies, and conflicting assumptions.",
-
-          tradeoffLabel: "Trade-off",
-          tradeoff:
-            "More alignment work upfront, but fewer assumptions carried into the product."
-        },
-
-        {
-          number: "03",
-          title: "ERP-driven data",
-
-          decisionLabel: "Decision",
-          decision:
-            "Designed the platform around the ERP as the source of truth, allowing the underlying data structure to evolve without repeatedly changing the user-facing experience.",
-
-          tradeoffLabel: "Trade-off",
-          tradeoff:
-            "More dependency on the ERP and more upfront architectural work, but a more consistent product experience as the business data evolved."
-        },
-
-        {
-          number: "04",
-          title: "Constantly evolving product information",
-
-          decisionLabel: "Decision",
-          decision:
-            "Designed a compact visual hierarchy for product categories, balancing imagery, density, and scanability across a large and constantly changing catalog.",
-
-          tradeoffLabel: "Trade-off",
-          tradeoff:
-            "Less room for each category to be visually prominent, but a faster way to scan and navigate a broad product range."
-        },
-
-        {
-          number: "05",
-          title: "Complex purchasing rules",
-
-          decisionLabel: "Decision",
-          decision:
-            "Translated customer-specific pricing, accounts, quotes, inventory, and purchasing conditions into flows that could be understood and managed through the platform.",
-
-          tradeoffLabel: "Trade-off",
-          tradeoff:
-            "More conditional logic, but a more accurate self-service experience for professional buyers."
-        },
-
-        {
-          number: "06",
-          title: "Incremental implementation across multiple releases",
-
-          decisionLabel: "Decision",
-          decision:
-            "Designed foundations that could evolve across multiple releases instead of treating each release as a separate product.",
-
-          tradeoffLabel: "Trade-off",
-          tradeoff:
-            "Some improvements had to be phased over time, but the experience could evolve without repeatedly rebuilding its foundations."
+          id: "SHOT 05",
+          label: "Plan consumption panel",
+          note: "Replace with a real capture."
         }
       ]
+    },
+
+    historyModal: {
+      number: "04",
+      title: "Key Decision 3: Reuse the History Modal vs. Add Filters",
+      questionLabel: "Connected to the previous decision",
+      question:
+        "This decision follows directly from the credit distribution model.",
+      rejectedLabel: "Rejected alternative",
+      rejected:
+        "Add filters to the history modal in order to support global consumption.",
+      decisionLabel: "Decision taken",
+      decision:
+        "Keep the existing modal and make the history specific to each sub-organization.",
+      whyTitle: "Why",
+      why: [
+        "Adding filters would also have affected report generation.",
+        "The existing modal already covered the use case if consumption were handled per sub-organization.",
+        "Lower technical complexity, greater clarity for the user."
+      ],
+      uiTitle: "How it showed in the UI/UX",
+      ui: [
+        "The activity history modal was not modified: the same component now serves a narrower, per-sub-organization scope.",
+        "Report generation inherited the specificity without new filter states to design, test and translate."
+      ],
+      closing:
+        "This is systems thinking: a UX decision (history clarity) plus a technical decision (component reuse) plus a product decision (reports do not get more complicated). Three layers, one choice."
+    },
+
+    systems: {
+      number: "05",
+      title: "Systems Thinking: Roles, Permissions, Visibility and Audit",
+      paragraphs: [
+        "The heart of the product is not the credentials. It is who can see what, who can do what, and how it is all recorded.",
+        "Everything below was designed by me and documented as the contract the engineering team built from."
+      ],
+      matrixTitle: "History visibility matrix by role",
+      matrixColumns: [
+        "Role",
+        "Sees own activity",
+        "Sees others' activity",
+        "Can request credits"
+      ],
+      matrixRows: [
+        [
+          "Main administrator",
+          "Yes",
+          "Yes",
+          "From its organization administrator (multi) or from Global Certifica"
+        ],
+        ["Secondary administrator", "Yes", "No", "No"],
+        [
+          "Organization administrator",
+          "Yes",
+          "Yes (its sub-organizations)",
+          "From Global Certifica"
+        ],
+        ["Platform owner", "Yes", "Yes (global)", "N/A"]
+      ],
+      statesTitle: "Assignment states",
+      statesIntro:
+        "All organization roles can see the state of an assignment to an accredited:",
+      states: [
+        "Pending",
+        "Accepted",
+        "Rejected",
+        "Expired",
+        "Shared",
+        "Downloaded",
+        "Revoked (executed by an administrator)"
+      ],
+      eventsTitle: "Events recorded in the history (all with time and date)",
+      events: [
+        "Assignment of a credential to accredited X by administrator Y.",
+        "Assignment of a credential to batch X by administrator Y.",
+        "Creation of credential Z by administrator Y.",
+        "Distribution of N credits to sub-organization A.",
+        "Credential edited by administrator Y."
+      ],
+      eventsNote:
+        "Automatic events: plan payment reminders, pending credential reminders, expired credential reminders.",
+      docsTitle: "Documentation as an implementation contract",
+      docs: [
+        {
+          title: "Flow diagrams",
+          text: "To show parallel flows and how one role's actions affect another."
+        },
+        {
+          title: "Visibility tables",
+          text: "Of history and events, broken down by role."
+        },
+        {
+          title: "Use cases",
+          text: "With a full record of every event and permission involved."
+        }
+      ],
+      docsClosing:
+        "This was not only communication: it was the implementation contract the engineering team used to build.",
+      screenshots: [
+        {
+          id: "SHOT 06",
+          label: "Role flow diagram",
+          note: "Replace with the real diagram."
+        },
+        {
+          id: "SHOT 07",
+          label: "Visibility table by role",
+          note: "Replace with a real capture of the table used in implementation."
+        }
+      ]
+    },
+
+    leadership: {
+      number: "06",
+      title: "Leadership: Managing Resistant Stakeholders and Aligning on Evidence",
+      contextTitle: "Context",
+      context: [
+        "The stakeholders were two founders, systems engineers, with a mandate to replicate a competitor. They had no defined business rules: they would send videos of the competitor saying \"this is how it should work\".",
+        "My work was to work out what could be adjusted, what could not, and to propose the model."
+      ],
+      resistanceTitle: "Resistance",
+      resistance: [
+        {
+          title: "Constant",
+          text: "Decisions were questioned without technical context."
+        },
+        {
+          title: "Hard to explain",
+          text: "How one role's actions affected the roles below it, and how to handle cases outside the happy path."
+        },
+        {
+          title: "Friction at the worst moments",
+          text: "My manager handled most of it, but when he was on vacation I stepped in."
+        }
+      ],
+      approachTitle: "How I managed it",
+      approach: [
+        {
+          title: "Flow diagrams",
+          text: "So they could understand parallel flows and cross-role effects."
+        },
+        {
+          title: "Visibility tables",
+          text: "Of history and events, broken down by role."
+        },
+        {
+          title: "Use cases",
+          text: "With a record of events and permissions."
+        },
+        {
+          title: "Alignment by evidence",
+          text: "On the credit decision I presented both options and both sides agreed on distribution."
+        }
+      ],
+      processTitle: "Validation process",
+      process:
+        "About 90% of reviews happened in the meeting, then I re-sent them by email to have a record —because when something did not turn out as expected, the claim was that it had not been explained properly.",
+      debtTitle: "The product debt nobody owned",
+      debt:
+        "During a period I was not present, features were added without systemic vision. That generated product debt which affected scalability. I detected it when I returned and documented it as technical debt. It was not fully remediated at the time, but it became visible on the improvements list.",
+      closing:
+        "Managing this context was not about being louder. It was about making the system legible enough that decisions could be reviewed on evidence instead of on preference."
+    },
+
+    tradeoffs: {
+      number: "07",
+      title: "Trade-offs: What We Sacrificed",
+      intro:
+        "Every decision in this case had a cost. These are the ones we accepted knowingly.",
+      columns: ["Dimension", "Priority", "Cost"],
+      rows: [
+        [
+          "Role flexibility",
+          "Above simplicity",
+          "Complexity in permissions and visibility"
+        ],
+        [
+          "Audit rigor",
+          "Above simplicity",
+          "A thicket of interactions between roles"
+        ],
+        [
+          "Delivery speed",
+          "Above scalability",
+          "Product debt"
+        ],
+        [
+          "Lack of a complete vision",
+          "Stakeholders iterated as we went",
+          "Difficulty planning the architecture"
+        ],
+        [
+          "Real-time notifications",
+          "Discarded",
+          "Only batch notifications and reminders"
+        ]
+      ],
+      closing:
+        "These trade-offs are realistic and honest. Acknowledging the cost of a decision is more valuable than presenting a flawless project."
     },
 
     impact: {
-      title: "Impact",
-    
-        impactSections: [
-          {
-            title: "Customer Self-Service",
-            items: [
-              "Quotations initiated through the platform",
-              "Order tracking adoption",
-              "Purchase history and reorder usage",
-              "Shopping list adoption"
-            ]
-          },
-
-          {
-            title: "Operational Efficiency",
-            items: [
-              "Product availability inquiries",
-              "Order status inquiries",
-              "Quotation status inquiries",
-              "Purchases based on outdated catalogs"
-            ]
-          },
-
-          {
-            title: "Product Discovery",
-            items: [
-              "Search success rate",
-              "Product detail engagement",
-              "Search refinement rate",
-              "Successful product identification before quotation"
-            ]
-          }
+      number: "08",
+      title: "Impact: What We Know (Without Formal Metrics)",
+      limitationTitle: "Honest limitation",
+      limitation:
+        "The company never defined formal metrics. Measurement relied on stakeholder satisfaction —what was requested versus what was delivered— not on end-user behavior.",
+      columns: ["Area", "Before", "After", "Evidence"],
+      rows: [
+        [
+          "Credential issuance",
+          "Manual, one by one",
+          "Individual or batch assignment",
+          "Shipped functionality"
         ],
-    
-        reflection: {
-          title: "Reflection",
-    
-          items: [
-            "Digital transformation starts with understanding how a business operates, where information breaks down, and how systems can restore clarity and autonomy.",
-            "This project strengthened my ability to navigate ambiguity, facilitate cross-functional conversations, and translate complex operational workflows into scalable digital experiences.",
-            "The most valuable lesson was that self-service is not simply about moving transactions online. It is about giving customers the information and visibility they need to act with confidence."
-          ]
-        }
+        [
+          "Traceability",
+          "Asking colleagues or by email",
+          "Activity history by role, with events, time and date",
+          "Shipped functionality"
+        ],
+        [
+          "Institutional self-service",
+          "Dependence on manual processes",
+          "Organizations and sub-organizations manage their own assignments and credits",
+          "Shipped functionality"
+        ],
+        [
+          "Verification",
+          "Calling the institution",
+          "Verification via blockchain and W3C standards",
+          "Shipped functionality"
+        ],
+        [
+          "Scalability",
+          "Linear institution",
+          "Multi-organization with roles and permissions",
+          "Shipped functionality"
+        ],
+        [
+          "Product debt",
+          "—",
+          "Features added without systemic vision",
+          "Documented, still pending remediation"
+        ]
+      ],
+      tableNote:
+        "The evidence column reads \"shipped functionality\" on purpose. Where I do not have a metric, I say so instead of inventing one.",
+      evolutionTitle: "Evolution",
+      evolution: [
+        "2 years of development.",
+        "3 feature releases: 2 product + 1 technical.",
+        "4th iteration in planning."
+      ],
+      pendingTitle: "Still pending",
+      pending: [
+        "Formal product analytics",
+        "Accredited portal",
+        "White label",
+        "Adaptation to other countries",
+        "Europass and ELM requirements"
+      ],
+      quoteLabel: "Impact statement",
+      quote:
+        "I designed from scratch a B2B digital credential platform for educational institutions and corporations, defining the model of organizations, roles, permissions, activity history and credit plans that supports the product's current operation."
+    },
+
+    reflections: {
+      number: "09",
+      title: "Reflections and Future Vision",
+      intro:
+        "This project was not only a UI/UX redesign. It was the design of the business system that makes issuing credentials at scale possible.",
+      contributionTitle: "My greatest contribution as a designer",
+      contribution: [
+        "Defining roles, hierarchies and permissions from scratch —they did not come in the brief.",
+        "Designing the multi-organization model with shared credentials and specific assignments.",
+        "Defining the logic of plans, credits and distribution between sub-organizations.",
+        "Documenting the system with diagrams, tables and use cases that served as the implementation contract.",
+        "Holding product decisions with evidence in a high-friction stakeholder context.",
+        "Detecting and documenting the product debt generated by features added without systemic vision."
+      ],
+      roadmapTitle: "Roadmap",
+      roadmap: [
+        "Accredited search portal",
+        "White-label expansion",
+        "Adaptation to other countries (Europass, ELM)",
+        "Formal product analytics",
+        "Remediation of product debt"
+      ]
     },
   },
-
-  b2bCommerceV2: {
+  b2bCommerce: {
     hero: {
-      tag: "B2B COMMERCE · SCIENTIFIC SUPPLIES",
-      title: "From sales-assisted purchasing to self-service B2B commerce",
+      tag: "B2B COMMERCE · LABORATORY SUPPLY DISTRIBUTION",
+      title: "From assisted selling to self-service",
       description: [
-        "A scientific supplies company had customers, products, and established sales processes—but no digital experience connecting them.",
-        "Customers purchased through sales teams, phone calls, and printed catalogs. Departments operated with different rules and processes.",
+        "A leading distributor of materials, reagents and equipment for laboratories in the Basque Country ran on a completely manual process: orders by phone and email, catalogs in PDF, quotes by email and incident management with no platform. The ERP was internal; the end customer never touched it.",
+        "My work was to translate a fragmented, manual business model into a self-service system that was reliable, scalable, and would not cannibalize the customer relationship."
       ],
-      role: "Product Designer (end-to-end)",
-      timeline: "2 years",
-      team: "Sales · Marketing · Procurement · Accounting · Engineering",
-      focus: "Product strategy · Discovery · B2B commerce · UX/UI · Search · Product architecture · Self-service",
+      role: "Product Designer (leading 1 UI/UX Designer and supervising 3 developers)",
+      timeline: "2 years · 3 versions shipped · 4th in planning",
+      team: "PM (direct manager) · Client PO · Engineering · Marketing · Sales · Operations",
+      focus: "Constant benchmark: Fisher Scientific, the main competitor",
       ndaText:
-        "Due to an NDA, business details and product visuals have been generalized while preserving the design process and design decisions.",
+        "Details have been generalized to protect client confidentiality."
     },
 
     challenge: {
-      title: "The Challenge",
+      eyebrow: "The Challenge",
+      title: "A 100% manual business model",
       paragraphs: [
-        "The brief was to build a B2B commerce experience similar to Fisher Scientific.",
+        "A leading distributor of laboratory materials, reagents and equipment in the Basque Country operated a completely manual process: orders by phone and email, catalogs in PDF, quotes by email, and incident management with no platform. The ERP was internal; the end customer never touched it.",
+        "Problem number one was operational cost: every order, complaint, return or quote required human intervention. Self-service did not exist.",
+        "The strategic pressure: the CEO wanted to replicate Fisher Scientific, the main competitor. That set a constant constraint — every product decision was compared against that benchmark."
       ],
-      pivotLabel: "The challenge",
-      pivot:
-        "The challenge wasn't putting a catalog online.",
-      pivotAfter:
-        "It was turning a complex, fragmented purchasing operation into a self-service experience customers could actually use.",
-      summaryLabel: "Before / After",
-      before: {
-        label: "BEFORE",
-        sublabel: "Sales-assisted",
-        items: [
-          "Phone",
-          "Printed catalogs",
-          "Quotes",
-          "Manual tracking",
-          "Fragmented departments"
-        ]
-      },
-      after: {
-        label: "AFTER",
-        sublabel: "Self-service",
-        items: [
-          "Search",
-          "Product discovery",
-          "Quotes",
-          "Orders",
-          "Account management",
-          "Tracking",
-          "Support"
-        ]
-      }
-    },
-
-    productModel: {
-      number: "01",
-      title: "Turn fragmented business processes into one product model",
-      paragraphs: [
-        "Before designing anything, I needed to understand how the business actually worked.",
-        "Sales, marketing, procurement, accounting, and development each had a different perspective on the same commercial process. I facilitated discovery workshops and mapped those perspectives into a shared product model.",
-      ],
-      departmentsTitle: "Different departments. Different views of the same process.",
-      departments: [
-        { name: "Sales", note: "Customer relationships · Commercial processes" },
-        { name: "Marketing", note: "Products · Promotions · Content" },
-        { name: "Procurement", note: "Availability · Purchasing" },
-        { name: "Accounting", note: "Customer conditions · Commercial rules" },
-        { name: "Development", note: "Systems · Data · Technical constraints" }
-      ],
-      synthesisLabel: "Synthesis",
-      outputsTitle: "One shared product model",
-      outputsNote: "The output wasn't a screen. It was a shared understanding that could guide product decisions across teams.",
-      outputs: [
-        "Business rules",
-        "User roles",
-        "Product logic",
-        "System constraints"
-      ]
-    },
-
-    productDetail: {
-      number: "02",
-      title: "Design a product detail experience around purchasing decisions",
-      paragraphs: [
-        "This was the hardest problem. This wasn't a conventional catalog.",
-      ],
-      variantsTitle: "Products could have:",
-      variants: [
-        "No variants, multiple variants, or product families",
-        "Quotation-based purchasing",
-        "Purchase restrictions (authorization required)",
-        "Special handling (hazardous materials, dry ice)"
-      ],
-      variantsClosing:
-        "For some scientific products, customers might need authorization to purchase them. Others required special handling because of hazardous materials or dry ice.",
-      questionsTitle: "So the product page needed to answer:",
-      questions: [
-        "What is this product?",
-        "Can I buy it?",
-        "Which version do I need?",
-        "What conditions apply?",
-        "Do I need a quotation?"
-      ],
-      pathsTitle: "One product experience, multiple purchasing paths",
-      paths: [
-        "Direct purchase",
-        "Variant selection",
-        "Product family",
-        "Request quotation",
-        "Purchase restriction"
-      ],
-      closing:
-        "The challenge was exposing the right information at the right moment without turning the page into a wall of business rules.",
-      ui: {
-        label: "Conceptual product detail — anonymized",
-        imageLabel: "PRODUCT IMAGE",
-        brand: "SCIENTIFIC SUPPLIES",
-        name: "Cell Culture Medium X",
-        sku: "SKU 4521-900ML",
-        priceLabel: "Price",
-        priceValue: "On request",
-        quoteLabel: "OR",
-        availability: "In stock · Ships in 48h",
-        variantLabel: "Select size",
-        variants: ["500 ml", "1 L", "2 L"],
-        conditionLabel: "Purchase conditions",
-        condition: "Authorization required",
-        conditionNote: "Hazardous material — restricted purchase",
-        handlingLabel: "Special handling",
-        handling: "Dry ice shipping",
-        handlingNote: "Packaged with dry ice — expedited delivery",
-        buyButton: "Add to cart",
-        quoteButton: "Request quotation",
-        infoLabel: "Eligible for order",
-        quoteInfo: "Price must be confirmed by sales"
-      },
-      callouts: [
-        { number: "01", title: "Product configuration", text: "Variants / families" },
-        { number: "02", title: "Purchasing path", text: "Buy vs. request quotation" },
-        { number: "03", title: "Eligibility", text: "Authorization requirements" },
-        { number: "04", title: "Special handling", text: "Hazardous materials / dry ice" }
-      ]
-    },
-
-    searchEcosystem: {
-      number: "03",
-      title: "Make a large scientific catalog searchable",
-      paragraphs: [
-        "Search became a primary navigation method. Professional buyers arrived with precise queries—product name, brand, SKU—while others needed to explore.",
-        "I designed search as a discovery system—not a field.",
-      ],
-      systemTitle: "Search wasn't a field. It was a discovery system.",
-      system: [
-        "Autocomplete",
-        "Suggestions",
-        "Recent searches",
-        "Popular searches",
-        "Categories",
-        "Brands",
-        "Filters",
-        "Similar products",
-        "Promotions"
-      ],
-      flowTitle: "From search to product decision",
-      flow: ["Search", "Suggestions", "Results", "Filters", "Product", "Decision"],
-      flowNote: "The goal was to help customers move from intent to the right product without requiring them to understand the underlying catalog structure.",
-      ui: {
-        label: "Search ecosystem — conceptual",
-        tabs: ["Search input", "Results", "Product discovery"],
-        inStock: "In stock",
-        onDemand: "On demand",
-        inputPlaceholder: "Search products, brands, SKUs…",
-        recentTitle: "Recent searches",
-        recent: ["DNA extraction", "Pipettes", "Serum"],
-        popularTitle: "Popular searches",
-        popular: ["Cell culture", "Microplates", "Buffers"],
-        suggestedTitle: "Suggested",
-        categoriesLabel: "Categories",
-        categories: ["Molecular Biology"],
-        productsLabel: "Products",
-        products: ["Agarose LE"],
-        resultsTitle: "Results",
-        filtersTitle: "Filters",
-        filters: ["Brand", "Category", "Availability"],
-        activeFilter: "In stock",
-        resultItems: [
-          { name: "Agarose LE", brand: "SciBrand", sku: "SKU 2214" },
-          { name: "Agarose SEAKEM", brand: "SciBrand", sku: "SKU 2218" },
-          { name: "Tris-Acetate", brand: "BioLab", sku: "SKU 8810" },
-          { name: "SYBR Safe", brand: "BioLab", sku: "SKU 9004" }
-        ],
-        discoveryTitle: "Product discovery",
-        relatedTitle: "Related products",
-        related: ["Agarose LM", "Loading buffer", "Ladder 1kb"],
-        promoTitle: "Promotions",
-        promos: ["20% on buffers", "Free shipping on cold-chain"]
-      }
-    },
-
-    twoMarkets: {
-      number: "04",
-      title: "Design one platform for two markets",
-      paragraphs: [
-        "The platform served customers in Spain and Portugal. Language, products, stock, promotions, content, and commercial conditions differed—but the goal wasn't two storefronts.",
-      ],
-      closing: "The goal wasn't two storefronts.",
-      closing2: "It was one system with different contexts: consistent experience, market-specific behavior.",
-      platformLabel: "ONE PLATFORM",
-      spain: { label: "SPAIN", items: ["Spanish", "Catalog", "Stock", "Promotions", "Content", "Commercial conditions"] },
-      portugal: { label: "PORTUGAL", items: ["Portuguese", "Catalog", "Stock", "Promotions", "Content", "Commercial conditions"] },
-      sharedNote: "Shared experience + market-specific behavior"
-    },
-
-    organization: {
-      number: "05",
-      title: "Design self-service around the organization",
-      paragraphs: [
-        "B2B purchasing isn't an individual activity. The product needed to represent the organization behind the buyer: authorized buyers, permissions, shipping addresses, individual activity, team activity, and order history.",
-      ],
-      questionsIntro: "The experience had to answer not only",
-      questions: [
-        "What can I buy?",
-        "What can I do on behalf of my organization?"
-      ],
-      goal: "The goal was to reduce the need for customers to contact sales for routine tasks.",
-      quote: "The customer wasn't just a buyer. They were an organization.",
-      ui: {
-        label: "Conceptual account screens — anonymized",
-        orgTab: "Organization",
-        orgItems: ["Members", "Roles & permissions", "Addresses", "Activity"],
-        ordersTab: "Orders",
-        ordersItems: ["History", "Status", "Details"],
-        memberName: "M. García",
-        memberRole: "Buyer",
-        memberStatus: "Authorized",
-        addressLabel: "Shipping address",
-        address: "Madrid — Lab 3, Av. Principal 12",
-        activityLabel: "Last activity",
-        activity: "Order #4821 · 2 days ago",
-        orderRow: [
-          { id: "#4817", status: "Delivered", date: "Sep 02" },
-          { id: "#4821", status: "In transit", date: "Sep 09" },
-          { id: "#4830", status: "Processing", date: "Sep 12" }
-        ]
-      }
-    },
-
-    postPurchase: {
-      number: "06",
-      title: "Connect purchasing with what happens after checkout",
-      paragraphs: [
-        "The experience didn't stop at checkout. I worked with developers and stakeholders to translate logistics into a customer-facing experience: packaging, shipment progress, and delivery documentation.",
-      ],
-      needsTitle: "It also needed to handle what happens when something goes wrong:",
-      needs: ["Returns", "Incidents", "Technical support", "Customer requests"],
-      principleTitle: "The customer shouldn't have to understand the company's internal structure to get help.",
-      orderTitle: "Order",
-      orderFlow: ["Order", "Packaging", "Shipment", "Delivery"],
-      problemTitle: "Problem",
-      problemFlow: ["Issue", "Support / Return", "Internal routing", "Resolution"],
-      principleA: "Customer describes the problem.",
-      principleB: "The system routes it to the right place."
-    },
-
-    adoption: {
-      number: "07",
-      title: "Design for adoption, not just launch",
-      paragraphs: [
-        "Existing customers already knew how to buy. They knew who to call, who to email, how to request a quotation.",
-        "Moving them to self-service couldn't mean forcing them to learn a completely different process. The product preserved familiar commercial concepts while removing unnecessary friction.",
-      ],
-      wrongTitle: "The goal wasn't",
-      wrong: "Make customers use the website.",
-      rightTitle: "It was",
-      right: "Make the website easier than calling."
-    },
-
-    transformation: {
-      title: "What Changed",
-      before: {
-        label: "BEFORE · Sales-assisted",
-        items: [
-          "Phone",
-          "Email",
-          "Printed catalogs",
-          "Manual quotations",
-          "Manual order follow-up",
-          "Fragmented processes"
-        ]
-      },
-      after: {
-        label: "AFTER · Self-service",
-        items: [
-          "Search",
-          "Product discovery",
-          "Quotes",
-          "Orders",
-          "Account management",
-          "Tracking",
-          "Support",
-          "Returns"
-        ]
-      }
-    },
-
-    outcome: {
-      title: "Outcome",
-      intro:
-        "The product brought commercial and operational processes into one B2B commerce experience serving customers across Spain and Portugal.",
-      sections: [
+      objectivesTitle: "Business objectives",
+      objectiveGroups: [
         {
-          title: "Product discovery",
+          version: "V1",
           items: [
-            "Search, categories, brands, filters, suggestions, and related products."
+            "The customer sees prices, descriptions and specifications in real time.",
+            "The customer can place orders without assistance.",
+            "The customer understands product families, variants and conditions.",
+            "The customer knows when to request a quote."
           ]
         },
         {
-          title: "Purchasing",
+          version: "V2",
           items: [
-            "Direct purchases, variants, product families, and quotation-based products coexisting in one experience."
+            "Improve product search.",
+            "Allow generating quotes.",
+            "Visualize own purchase history and that of contacts.",
+            "Show promotions and apply them.",
+            "Know delivery times and order statuses."
           ]
         },
         {
-          title: "Customer autonomy",
+          version: "V3",
           items: [
-            "Organizations manage buyers, permissions, addresses, and purchasing activity."
-          ]
-        },
-        {
-          title: "Beyond the purchase",
-          items: [
-            "Logistics, support, returns, and incidents became part of the customer experience."
+            "Improve technical support and route every request to the right department."
           ]
         }
       ],
-      glanceTitle: "Metrics at a glance",
-      glance: [
-        { value: "2 years", label: "Product evolution" },
-        { value: "Spain + Portugal", label: "Markets" },
-        { value: "500k+ products", label: "Large catalog" },
-        { value: "Buy · Configure · Quote · Restricted", label: "Purchasing paths" }
+      risksTitle: "Identified risks",
+      risks: [
+        {
+          title: "Adoption curve",
+          text: "Customers were accustomed to the manual process."
+        },
+        {
+          title: "Incomplete product data",
+          text: "Incomplete information leads to wrong purchases and returns."
+        },
+        {
+          title: "Findability",
+          text: "Difficulty finding products or similar alternatives."
+        }
       ],
-      reflectionTitle: "Reflection",
-      reflectionLead: "B2B commerce is not just e-commerce.",
-      reflectionItems: [
-        "Behind every product is a set of business rules.",
-        "Behind every buyer is an organization.",
-        "Behind every order is an operational process.",
-        "My role was to connect those layers and turn them into an experience that felt coherent to the customer."
+      pivotLabel: "The design challenge was not…",
+      pivot:
+        "Putting a catalog online. It was translating a fragmented, manual business model into a self-service system that was reliable, scalable, and would not cannibalize the customer relationship."
+    },
+
+    vision: {
+      number: "01",
+      title: "Product Vision: From Digitizing a Catalog to Building a Commerce System",
+      paragraphs: [
+        "My first decision was to define the product vision. We could not replicate the PDF catalog or copy Fisher Scientific without first understanding our own business."
       ],
-      reflectionClose:
-        "The best self-service experiences don't make the business simpler. They make its complexity easier for customers to navigate."
-    }
-  }
+      discoveryTitle: "Discovery",
+      discoveryStats: [
+        { value: "28", label: "meetings in one month" },
+        { value: "6", label: "departments involved" },
+        { value: "1", label: "shared set of criteria" }
+      ],
+      discoveryText:
+        "I led 28 meetings in one month with 6 departments — Sales, Operations, Marketing, and the team that structured the catalog categories — to map the real process and unify criteria. Every department had its own understanding and its own inconsistencies.",
+      insightLabel: "The key insight",
+      insight:
+        "The business did not sell products. It sold access to products, with pricing rules and conditions specific to each customer. The complexity was not in the catalog, it was in the business rules.",
+      decisionLabel: "The strategic decision",
+      decision:
+        "Instead of building a traditional e-commerce, we designed a Commerce System with a unified product model. The user can search for a product, buy it if the system allows it, or request a quote if it does not.",
+      flowTitle: "The flow this opened up",
+      flow: [
+        { step: "SEARCH", text: "Find a product by name, SKU, brand or category." },
+        { step: "BUY OR QUOTE", text: "The system decides which path is available for this customer and this product." },
+        { step: "HISTORY", text: "Every quote and order accumulates activity on the customer record." },
+        { step: "REORDER", text: "A whole order can be reordered, or marked as a favorite." }
+      ],
+      enablesTitle: "What this left open for",
+      enables: [
+        "Automated approval flows.",
+        "Activity history on top of a quote.",
+        "Reordering a complete order.",
+        "Marking orders as favorites."
+      ],
+      futureTitle: "Future vision",
+      future:
+        "A system that supports self-managed permissions for contacts who supervise other contacts.",
+      screenshot: {
+        id: "SHOT 01",
+        label: "Commerce System diagram — search → buy or quote → history → reorder",
+        note: "Replace with the real diagram. This is the diagram that explains the whole product in one image."
+      }
+    },
+
+    systems: {
+      number: "02",
+      title: "Systems Thinking: Designing for Real Complexity",
+      paragraphs: [
+        "The business rules were more complex than the interface. Every part of this section is a decision to make that complexity legible instead of hiding it."
+      ],
+      model: {
+        title: "The customer / contact model",
+        text:
+          "We discovered that a customer behaves like an organization with multiple members who share benefits. Each customer has a code; contacts (employees) purchase with that code and inherit its discounts. The customer sees all activity from their contacts.",
+        chain: ["ORGANIZATION", "CONTACTS", "ACTIVITY"],
+        outcomesTitle: "Modeling it this way allowed:",
+        outcomes: [
+          "Purchase history per contact and consolidated.",
+          "A foundation for future permissions.",
+          "Pre-filled checkout — because more than 85% of order creators are employees, not owners."
+        ]
+      },
+      pdp: {
+        title: "The product detail page (PDP)",
+        text:
+          "There is no single happy path. There are branches depending on the product type: variants, conditions, hazardous materials, dry ice. The goal is always the same: search → select → add to cart → buy.",
+        branchesTitle: "Branches on the PDP:",
+        branches: [
+          "Variants depend on the product, not on the customer.",
+          "What affects the customer is whether they have a default discount on that product.",
+          "And whether they can request a quote for the whole order to get a better price."
+        ],
+        affectsTitle: "What actually varies per customer:",
+        affects: [
+          {
+            label: "Default discount",
+            text: "Whether the customer already has an automatic discount on that product."
+          },
+          {
+            label: "Quote on the full order",
+            text: "Whether the customer can request a quote for the complete order to obtain a better price."
+          }
+        ],
+        tradeoffLabel: "The trade-off",
+        tradeoff:
+          "We reconciled business rules that collided (automatic discount vs. manual quote) by prioritizing that every order be valid on the first attempt. This reduced errors and returns, at the cost of not offering one-click purchasing."
+      },
+      orders: {
+        title: "Operational complexity: delivery notes",
+        stat: {
+          value: "65%",
+          label: "of orders were split across several delivery notes while belonging to a single order"
+        },
+        text:
+          "The order detail could not be a flat list. So the hierarchy had to show what belongs to which delivery without losing the overall view.",
+        chain: ["ORDER", "DELIVERY NOTE", "LINE"]
+      },
+      search: {
+        title: "Search as a work tool",
+        text:
+          "Search is not a search box. For professional buyers it is a discovery tool, so I designed it as one.",
+        capabilities: [
+          "Search by name, SKU, brand and category.",
+          "Suggest similar products (requested by Marketing)."
+        ]
+      },
+      screenshots: [
+        {
+          id: "SHOT 02",
+          label: "PDP decision tree — variants, conditions, discount vs. quote",
+          note: "Replace with a real capture. The branch where discount and quote compete is the one to show."
+        },
+        {
+          id: "SHOT 03",
+          label: "Hierarchical order detail — order → delivery note → line",
+          note: "Replace with a real capture. The nesting has to be visible at a glance."
+        },
+        {
+          id: "SHOT 04",
+          label: "Unified search — SKU, brand, category, similar products",
+          note: "Replace with a real capture."
+        }
+      ]
+    },
+
+    execution: {
+      number: "03",
+      title: "Execution and Leadership: Aligning the Organization",
+      paragraphs: [
+        "Success depended on two things at once: that it was technically possible, and that the departments adopted it."
+      ],
+      feasibilityTitle: "What made it technically hard",
+      feasibility: [
+        "Data storage limits.",
+        "Inventory updated biweekly via Excel.",
+        "Disconnection between product images and products."
+      ],
+      resistanceTitle: "Managing resistance",
+      resistanceIntro:
+        "Three groups pushed back, each for a different reason. Each one needed a different answer.",
+      resistance: [
+        {
+          stakeholder: "Sales",
+          resisted: "Resisted because \"the processes could not be done 100% in the platform\".",
+          action:
+            "My role was to map which areas of the process could be integrated and which could not, and to propose a hybrid model."
+        },
+        {
+          stakeholder: "Marketing",
+          resisted: "Resisted because they wanted specific Google Analytics metrics.",
+          action:
+            "I suggested implementing the most relevant ones first and explaining which were the priority. It remains pending."
+        },
+        {
+          stakeholder: "CEO",
+          resisted: "Wanted to copy Fisher Scientific.",
+          action:
+            "My work was to use the benchmark as a reference rather than a copy, and to find the middle ground between what Marketing wanted, what engineering approved, and what the CEO demanded."
+        }
+      ],
+      validationTitle: "How we validated",
+      validation: [
+        { label: "Analysis", text: "Workshops with the departments." },
+        { label: "Design", text: "Reviews with stakeholders." },
+        {
+          label: "Interaction",
+          text: "Prototypes to evaluate system response, background processes and real-time changes."
+        },
+        {
+          label: "A/B testing",
+          text: "With the company's own employees — testing with real users was not permitted."
+        },
+        { label: "After launch", text: "Feedback from real users after every deployment." }
+      ],
+      supervisionTitle: "Technical supervision",
+      supervision:
+        "I supervised a team of 3 developers so that what shipped matched the use cases, the designs and the business rules. I also ran QA testing alongside the QA person."
+    },
+
+    impact: {
+      number: "04",
+      title: "Impact: What We Know (Without Formal Metrics)",
+      limitationTitle: "Honest limitation",
+      limitation:
+        "The company never defined formal metrics. Measurement relied on stakeholder satisfaction — what was requested versus what was delivered — not on end-user behavior.",
+      columns: ["Area", "Before", "After", "Evidence"],
+      rows: [
+        [
+          "Order management",
+          "100% by phone and email",
+          "Self-service in the portal",
+          "Fewer calls for order management"
+        ],
+        [
+          "Technical support",
+          "Direct emails with no record",
+          "Tickets centralized in the platform and the ERP",
+          "Departments receive tickets from the platform"
+        ],
+        [
+          "Product updates",
+          "Slow, uncoordinated process",
+          "Almost immediate for the customer",
+          "Internal feedback from Operations"
+        ],
+        [
+          "Quotes",
+          "Manual, by email",
+          "Generable in the platform",
+          "Shipped in V2"
+        ],
+        [
+          "Purchase history",
+          "Did not exist for the customer",
+          "Own history and contacts' history visible",
+          "Shipped in V2"
+        ],
+        [
+          "Reorder",
+          "Manual",
+          "Complete order reorderable and markable as favorite",
+          "Shipped in V2"
+        ]
+      ],
+      tableNote:
+        "Where I have a qualitative signal I say so; where I do not have a metric I leave the cell as it is rather than inventing one.",
+      evolutionTitle: "Product evolution",
+      evolution: [
+        "3 versions shipped in 2 years.",
+        "4th version in planning."
+      ],
+      pendingTitle: "Still pending",
+      pending: [
+        "Analytics",
+        "Advanced customer / contact management",
+        "Returns",
+        "Incidents",
+        "Quotes with automated approval flows"
+      ],
+      quoteLabel: "Impact statement",
+      quote:
+        "I digitalized a 100% manual process (phone, email, PDFs) into a self-service platform that today manages orders, quotes and technical support, reducing operational calls and centralizing customer activity in the ERP."
+    },
+
+    reflections: {
+      number: "05",
+      title: "Reflections and Future Vision",
+      intro:
+        "This project was not only a UI/UX redesign. It was the re-architecture of the company's digital business model, under strong technical constraints and an organizational culture resistant to change.",
+      contributionTitle: "My greatest contribution as a designer",
+      contribution: [
+        "Defining the product vision from the business, not from the UI.",
+        "Unifying departments that were operating with different logics.",
+        "Designing a system that supports the present and enables the future — permissions, approvals, analytics.",
+        "Supervising the implementation so the business logic did not get lost in the code."
+      ],
+      roadmapTitle: "Roadmap — next 12 months",
+      roadmap: [
+        "Instrument product analytics (Google Analytics or otherwise).",
+        "Advanced permission management for contacts.",
+        "Returns and incident flows.",
+        "Quotes with automated approval flows."
+      ]
+    },
+  },
 };
 
 export default en;

@@ -1,0 +1,457 @@
+---
+import SectionHeading from "../shared/SectionHeading.astro";
+import Screenshot from "../shared/Screenshot.astro";
+
+interface Props {
+  number: string;
+  title: string;
+  paragraphs: string[];
+  model: {
+    title: string;
+    text: string;
+    chain: string[];
+    outcomesTitle: string;
+    outcomes: string[];
+  };
+  pdp: {
+    title: string;
+    text: string;
+    branchesTitle: string;
+    branches: string[];
+    affectsTitle: string;
+    affects: { label: string; text: string }[];
+    tradeoffLabel: string;
+    tradeoff: string;
+  };
+  orders: {
+    title: string;
+    stat: { value: string; label: string };
+    text: string;
+    chain: string[];
+  };
+  search: {
+    title: string;
+    text: string;
+    capabilities: string[];
+  };
+  screenshots: { id: string; label: string; note: string }[];
+}
+
+const {
+  number,
+  title,
+  paragraphs,
+  model,
+  pdp,
+  orders,
+  search,
+  screenshots,
+} = Astro.props;
+---
+
+<section class="systems" id="systems">
+
+  <SectionHeading number={number} title={title} />
+
+  <div class="body">
+    {
+      paragraphs.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))
+    }
+  </div>
+
+  <h3 class="sub-title">
+    {model.title}
+  </h3>
+
+  <p class="block-text">
+    {model.text}
+  </p>
+
+  <div class="chain">
+    {
+      model.chain.map((node, index) => (
+        <>
+          <span class="chain-node">{node}</span>
+          {index < model.chain.length - 1 && <span class="chain-arrow" aria-hidden="true">→</span>}
+        </>
+      ))
+    }
+  </div>
+
+  <p class="sub-label">
+    {model.outcomesTitle}
+  </p>
+
+  <ul class="list">
+    {
+      model.outcomes.map((item) => (
+        <li>{item}</li>
+      ))
+    }
+  </ul>
+
+  <h3 class="sub-title">
+    {pdp.title}
+  </h3>
+
+  <p class="block-text">
+    {pdp.text}
+  </p>
+
+  <p class="sub-label">
+    {pdp.branchesTitle}
+  </p>
+
+  <ul class="list">
+    {
+      pdp.branches.map((item) => (
+        <li>{item}</li>
+      ))
+    }
+  </ul>
+
+  <p class="sub-label">
+    {pdp.affectsTitle}
+  </p>
+
+  <ul class="list">
+    {
+      pdp.affects.map((item) => (
+        <li>
+          <span class="affect-label">{item.label}</span>
+          <span class="affect-text">{item.text}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="tradeoff">
+
+    <span class="tradeoff-label">
+      {pdp.tradeoffLabel}
+    </span>
+
+    <p class="tradeoff-text">
+      {pdp.tradeoff}
+    </p>
+
+  </div>
+
+  <h3 class="sub-title">
+    {orders.title}
+  </h3>
+
+  <div class="stat-inline">
+
+    <span class="stat-value">{orders.stat.value}</span>
+
+    <span class="stat-label">{orders.stat.label}</span>
+
+  </div>
+
+  <p class="block-text">
+    {orders.text}
+  </p>
+
+  <div class="chain">
+    {
+      orders.chain.map((node, index) => (
+        <>
+          <span class="chain-node">{node}</span>
+          {index < orders.chain.length - 1 && <span class="chain-arrow" aria-hidden="true">→</span>}
+        </>
+      ))
+    }
+  </div>
+
+  <h3 class="sub-title">
+    {search.title}
+  </h3>
+
+  <p class="block-text">
+    {search.text}
+  </p>
+
+  <ul class="list">
+    {
+      search.capabilities.map((item) => (
+        <li>{item}</li>
+      ))
+    }
+  </ul>
+
+  {
+    screenshots.map((screenshot) => (
+      <Screenshot
+        id={screenshot.id}
+        label={screenshot.label}
+        note={screenshot.note}
+      />
+    ))
+  }
+
+</section>
+
+
+<style>
+
+.systems {
+  margin-top: var(--section-spacing);
+}
+
+
+.body {
+
+  max-width: 800px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-md);
+}
+
+
+.body p {
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: var(--line-height-body-lg);
+}
+
+
+.sub-title {
+
+  margin: var(--space-xl) 0 var(--space-md);
+
+  padding-top: var(--space-lg);
+
+  border-top: 1px solid var(--color-border);
+
+  font-size: var(--font-size-h3);
+
+  line-height: var(--line-height-h3);
+
+  font-weight: var(--font-weight-h3);
+}
+
+
+.block-text {
+
+  max-width: 800px;
+
+  margin: 0 0 var(--space-md);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.65;
+}
+
+
+.sub-label {
+
+  margin: var(--space-md) 0 var(--space-sm);
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-body);
+
+  font-weight: 500;
+}
+
+
+.chain {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  gap: var(--space-sm);
+
+  margin: var(--space-md) 0;
+}
+
+
+.chain-node {
+
+  padding: var(--space-xs) var(--space-md);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-sm);
+
+  background: var(--color-bg-secondary);
+
+  color: var(--color-text-primary);
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-small);
+
+  letter-spacing: 0.05em;
+}
+
+
+.chain-arrow {
+
+  color: var(--color-accent);
+
+  font-size: var(--font-size-body);
+}
+
+
+.list {
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+
+  border-top: 1px solid var(--color-border);
+
+  border-left: 1px solid var(--color-border);
+}
+
+
+.list li {
+
+  position: relative;
+
+  padding: var(--space-sm) var(--space-md) var(--space-sm) var(--space-xl);
+
+  border-right: 1px solid var(--color-border);
+
+  border-bottom: 1px solid var(--color-border);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.6;
+}
+
+
+.list li::before {
+
+  position: absolute;
+
+  top: var(--space-sm);
+
+  left: var(--space-md);
+
+  content: "→";
+
+  color: var(--color-accent);
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-small);
+}
+
+
+.affect-label {
+
+  display: block;
+
+  color: var(--color-text-primary);
+
+  font-weight: 500;
+}
+
+
+.affect-text {
+  color: var(--color-text-secondary);
+}
+
+
+.tradeoff {
+
+  margin-top: var(--space-lg);
+
+  padding: var(--space-md) var(--space-lg);
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-accent-soft);
+}
+
+
+.tradeoff-label {
+
+  display: block;
+
+  margin-bottom: var(--space-xs);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-label);
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+
+.tradeoff-text {
+
+  max-width: 800px;
+
+  margin: 0;
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: var(--line-height-body-lg);
+}
+
+
+.stat-inline {
+
+  display: flex;
+
+  align-items: baseline;
+
+  gap: var(--space-md);
+
+  margin-bottom: var(--space-md);
+}
+
+
+.stat-value {
+
+  font-size: var(--font-size-display);
+
+  line-height: 1;
+
+  font-weight: 600;
+
+  color: var(--color-accent);
+
+  letter-spacing: -0.02em;
+}
+
+
+.stat-label {
+
+  max-width: 420px;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.5;
+}
+
+</style>

@@ -1,0 +1,151 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import en from "../../i18n/en";
+import Index from "../../components/case-studies/shared/Index.astro";
+import { calculateReadingTime } from "../../utils/readingTime";
+import Hero from "../../components/case-studies/shared/CaseStudyHero.astro";
+import Challenge from "../../components/case-studies/b2b-commerce/Challenge.astro";
+import CommerceVision from "../../components/case-studies/b2b-commerce/CommerceVision.astro";
+import SystemsThinking from "../../components/case-studies/b2b-commerce/SystemsThinking.astro";
+import Execution from "../../components/case-studies/b2b-commerce/Execution.astro";
+import Impact from "../../components/case-studies/shared/Impact.astro";
+import Reflections from "../../components/case-studies/shared/Reflections.astro";
+
+const t = en;
+
+const c = t.b2bCommerce;
+
+const readingTime = calculateReadingTime(c);
+---
+
+<BaseLayout
+  title="B2B Commerce Platform"
+  content={t}
+>
+
+  <Index
+    sections={[
+      { id: "challenge", label: "The Challenge" },
+      { id: "vision", label: "Product Vision" },
+      { id: "systems", label: "Real Complexity" },
+      { id: "execution", label: "Execution & Leadership" },
+      { id: "impact", label: "Impact" },
+      { id: "reflections", label: "Reflections" },
+    ]}
+  />
+
+  <div class="case-study">
+
+    <Hero
+      content={c.hero}
+      readingTime={readingTime}
+      nda
+    />
+
+    <Challenge
+      eyebrow={c.challenge.eyebrow}
+      title={c.challenge.title}
+      paragraphs={c.challenge.paragraphs}
+      objectivesTitle={c.challenge.objectivesTitle}
+      objectiveGroups={c.challenge.objectiveGroups}
+      risksTitle={c.challenge.risksTitle}
+      risks={c.challenge.risks}
+      pivotLabel={c.challenge.pivotLabel}
+      pivot={c.challenge.pivot}
+    />
+
+    <CommerceVision
+      number={c.vision.number}
+      title={c.vision.title}
+      paragraphs={c.vision.paragraphs}
+      discoveryTitle={c.vision.discoveryTitle}
+      discoveryStats={c.vision.discoveryStats}
+      discoveryText={c.vision.discoveryText}
+      insightLabel={c.vision.insightLabel}
+      insight={c.vision.insight}
+      decisionLabel={c.vision.decisionLabel}
+      decision={c.vision.decision}
+      flowTitle={c.vision.flowTitle}
+      flow={c.vision.flow}
+      enablesTitle={c.vision.enablesTitle}
+      enables={c.vision.enables}
+      futureTitle={c.vision.futureTitle}
+      future={c.vision.future}
+      screenshot={c.vision.screenshot}
+    />
+
+    <SystemsThinking
+      number={c.systems.number}
+      title={c.systems.title}
+      paragraphs={c.systems.paragraphs}
+      model={c.systems.model}
+      pdp={c.systems.pdp}
+      orders={c.systems.orders}
+      search={c.systems.search}
+      screenshots={c.systems.screenshots}
+    />
+
+    <Execution
+      number={c.execution.number}
+      title={c.execution.title}
+      paragraphs={c.execution.paragraphs}
+      feasibilityTitle={c.execution.feasibilityTitle}
+      feasibility={c.execution.feasibility}
+      resistanceTitle={c.execution.resistanceTitle}
+      resistanceIntro={c.execution.resistanceIntro}
+      resistance={c.execution.resistance}
+      validationTitle={c.execution.validationTitle}
+      validation={c.execution.validation}
+      supervisionTitle={c.execution.supervisionTitle}
+      supervision={c.execution.supervision}
+    />
+
+    <Impact
+      number={c.impact.number}
+      title={c.impact.title}
+      limitationTitle={c.impact.limitationTitle}
+      limitation={c.impact.limitation}
+      columns={c.impact.columns}
+      rows={c.impact.rows}
+      tableNote={c.impact.tableNote}
+      evolutionTitle={c.impact.evolutionTitle}
+      evolution={c.impact.evolution}
+      pendingTitle={c.impact.pendingTitle}
+      pending={c.impact.pending}
+      quoteLabel={c.impact.quoteLabel}
+      quote={c.impact.quote}
+    />
+
+    <Reflections
+      number={c.reflections.number}
+      title={c.reflections.title}
+      intro={c.reflections.intro}
+      contributionTitle={c.reflections.contributionTitle}
+      contribution={c.reflections.contribution}
+      roadmapTitle={c.reflections.roadmapTitle}
+      roadmap={c.reflections.roadmap}
+    />
+
+  </div>
+
+</BaseLayout>
+
+<style>
+
+  .case-study {
+    width: 100%;
+  }
+
+  .case-study {
+    --section-spacing: clamp(88px, 9vw, 160px);
+  }
+
+  @media (min-width: 1201px) {
+
+    .case-study {
+      padding-right: 180px;
+    }
+
+  }
+
+</style>

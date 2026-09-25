@@ -1,0 +1,287 @@
+---
+import SectionHeading from "../shared/SectionHeading.astro";
+
+interface Props {
+  number: string;
+  title: string;
+  contextTitle: string;
+  context: string[];
+  resistanceTitle: string;
+  resistance: { title: string; text: string }[];
+  approachTitle: string;
+  approach: { title: string; text: string }[];
+  processTitle: string;
+  process: string;
+  debtTitle: string;
+  debt: string;
+  closing: string;
+}
+
+const {
+  number,
+  title,
+  contextTitle,
+  context,
+  resistanceTitle,
+  resistance,
+  approachTitle,
+  approach,
+  processTitle,
+  process,
+  debtTitle,
+  debt,
+  closing,
+} = Astro.props;
+---
+
+<section class="alignment" id="leadership">
+
+  <SectionHeading number={number} title={title} />
+
+  <h3 class="sub-title">
+    {contextTitle}
+  </h3>
+
+  <div class="prose">
+    {
+      context.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))
+    }
+  </div>
+
+  <h3 class="sub-title">
+    {resistanceTitle}
+  </h3>
+
+  <ul class="cards">
+    {
+      resistance.map((item) => (
+        <li>
+          <span class="card-title">{item.title}</span>
+          <span class="card-text">{item.text}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <h3 class="sub-title">
+    {approachTitle}
+  </h3>
+
+  <ul class="cards">
+    {
+      approach.map((item) => (
+        <li>
+          <span class="card-title">{item.title}</span>
+          <span class="card-text">{item.text}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="process">
+
+    <span class="process-label">
+      {processTitle}
+    </span>
+
+    <p class="process-text">
+      {process}
+    </p>
+
+  </div>
+
+  <div class="debt">
+
+    <span class="debt-label">
+      {debtTitle}
+    </span>
+
+    <p class="debt-text">
+      {debt}
+    </p>
+
+  </div>
+
+  <p class="closing">
+    {closing}
+  </p>
+
+</section>
+
+
+<style>
+
+.alignment {
+  margin-top: var(--section-spacing);
+}
+
+
+.sub-title {
+
+  margin: var(--space-xl) 0 var(--space-md);
+
+  font-size: var(--font-size-h3);
+
+  line-height: var(--line-height-h3);
+
+  font-weight: var(--font-weight-h3);
+}
+
+
+.prose {
+
+  max-width: 800px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-md);
+}
+
+
+.prose p {
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: var(--line-height-body-lg);
+}
+
+
+.cards {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 0;
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+
+  border-top: 1px solid var(--color-border);
+
+  border-left: 1px solid var(--color-border);
+}
+
+
+.cards li {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-xs);
+
+  padding: var(--space-md);
+
+  border-right: 1px solid var(--color-border);
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+
+.card-title {
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-body);
+
+  font-weight: 500;
+}
+
+
+.card-text {
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+  line-height: 1.6;
+}
+
+
+.process,
+.debt {
+
+  margin-top: var(--space-lg);
+
+  padding: var(--space-md) var(--space-lg);
+
+  border-radius: var(--radius-md);
+}
+
+
+.process {
+  background: var(--color-bg-secondary);
+}
+
+
+.debt {
+  background: var(--color-accent-soft);
+}
+
+
+.process-label,
+.debt-label {
+
+  display: block;
+
+  margin-bottom: var(--space-xs);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-label);
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+
+.process-text,
+.debt-text {
+
+  margin: 0;
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.6;
+}
+
+
+.closing {
+
+  max-width: 800px;
+
+  margin: var(--space-lg) 0 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: var(--line-height-body-lg);
+}
+
+@media (max-width: 768px) {
+
+  .cards {
+
+    grid-template-columns: 1fr;
+
+  }
+
+}
+
+</style>

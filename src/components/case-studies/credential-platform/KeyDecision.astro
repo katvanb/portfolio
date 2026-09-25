@@ -1,0 +1,416 @@
+---
+import SectionHeading from "../shared/SectionHeading.astro";
+import Screenshot from "../shared/Screenshot.astro";
+
+interface Props {
+  id: string;
+  number: string;
+  title: string;
+  questionLabel: string;
+  question: string;
+  rejectedLabel: string;
+  rejected: string;
+  decisionLabel: string;
+  decision: string;
+  whyTitle: string;
+  why: string[];
+  uiTitle: string;
+  ui: string[];
+  align?: string;
+  typesTitle?: string;
+  types?: string[];
+  closing?: string;
+  screenshots?: { id: string; label: string; note: string }[];
+}
+
+const {
+  id,
+  number,
+  title,
+  questionLabel,
+  question,
+  rejectedLabel,
+  rejected,
+  decisionLabel,
+  decision,
+  whyTitle,
+  why,
+  uiTitle,
+  ui,
+  align,
+  typesTitle,
+  types,
+  closing,
+  screenshots = [],
+} = Astro.props;
+---
+
+<section class="decision" id={id}>
+
+  <SectionHeading number={number} title={title} />
+
+  <div class="question">
+
+    <span class="question-label">
+      {questionLabel}
+    </span>
+
+    <p class="question-text">
+      {question}
+    </p>
+
+  </div>
+
+  <div class="options">
+
+    <div class="option rejected">
+
+      <span class="option-label">
+        {rejectedLabel}
+      </span>
+
+      <p class="option-text">
+        {rejected}
+      </p>
+
+    </div>
+
+
+    <div class="option taken">
+
+      <span class="option-label">
+        {decisionLabel}
+      </span>
+
+      <p class="option-text">
+        {decision}
+      </p>
+
+    </div>
+
+  </div>
+
+  <h3 class="sub-title">
+    {whyTitle}
+  </h3>
+
+  <ul class="reasons">
+    {
+      why.map((reason) => (
+        <li>{reason}</li>
+      ))
+    }
+  </ul>
+
+  <h3 class="sub-title">
+    {uiTitle}
+  </h3>
+
+  <ul class="ui-list">
+    {
+      ui.map((item) => (
+        <li>{item}</li>
+      ))
+    }
+  </ul>
+
+  {
+    typesTitle && types && (
+      <>
+        <h3 class="sub-title">{typesTitle}</h3>
+        <ul class="ui-list">
+          {types.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </>
+    )
+  }
+
+  {
+    align && (
+      <div class="align">
+        <p>{align}</p>
+      </div>
+    )
+  }
+
+  {
+    closing && (
+      <p class="closing">
+        {closing}
+      </p>
+    )
+  }
+
+  {
+    screenshots.map((screenshot) => (
+      <Screenshot
+        id={screenshot.id}
+        label={screenshot.label}
+        note={screenshot.note}
+      />
+    ))
+  }
+
+</section>
+
+
+<style>
+
+.decision {
+  margin-top: var(--section-spacing);
+}
+
+
+.question {
+
+  max-width: 800px;
+
+  padding: var(--space-md) var(--space-lg);
+
+  border-left: 2px solid var(--color-accent);
+
+  background: var(--color-bg-secondary);
+
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+
+.question-label {
+
+  display: block;
+
+  margin-bottom: var(--space-xs);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-label);
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+}
+
+
+.question-text {
+
+  margin: 0;
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-h3);
+
+  line-height: var(--line-height-h3);
+
+  font-weight: var(--font-weight-h3);
+
+}
+
+
+.options {
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 0;
+
+  margin-top: var(--space-lg);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-md);
+
+  overflow: hidden;
+}
+
+
+.option {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-xs);
+
+  padding: var(--space-lg);
+
+}
+
+
+.option.rejected {
+
+  background: var(--color-bg-secondary);
+}
+
+
+.option.taken {
+
+  background: var(--color-accent-soft);
+}
+
+
+.option-label {
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-label);
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+
+.option.taken .option-label {
+  color: var(--color-accent);
+}
+
+
+.option-text {
+
+  margin: 0;
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: var(--line-height-body-lg);
+
+}
+
+
+.sub-title {
+
+  margin: var(--space-xl) 0 var(--space-md);
+
+  font-size: var(--font-size-h3);
+
+  line-height: var(--line-height-h3);
+
+  font-weight: var(--font-weight-h3);
+}
+
+
+.reasons,
+.ui-list {
+
+  display: grid;
+
+  gap: 0;
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+
+  border-top: 1px solid var(--color-border);
+
+  border-left: 1px solid var(--color-border);
+}
+
+
+.reasons li,
+.ui-list li {
+
+  position: relative;
+
+  padding: var(--space-sm) var(--space-md) var(--space-sm) var(--space-xl);
+
+  border-right: 1px solid var(--color-border);
+
+  border-bottom: 1px solid var(--color-border);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.6;
+}
+
+
+.reasons li::before,
+.ui-list li::before {
+
+  position: absolute;
+
+  top: var(--space-sm);
+
+  left: var(--space-md);
+
+  color: var(--color-accent);
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-small);
+}
+
+
+.reasons li::before {
+  content: "→";
+}
+
+
+.ui-list li::before {
+  content: "·";
+}
+
+
+.align {
+
+  margin-top: var(--space-lg);
+
+  padding: var(--space-md) var(--space-lg);
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-bg-secondary);
+}
+
+
+.align p {
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.6;
+}
+
+
+.closing {
+
+  max-width: 800px;
+
+  margin: var(--space-lg) 0 0;
+
+  padding: var(--space-md) var(--space-lg);
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-accent-soft);
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: var(--line-height-body-lg);
+}
+
+
+@media (max-width: 768px) {
+
+  .options {
+
+    grid-template-columns: 1fr;
+
+  }
+
+}
+
+</style>

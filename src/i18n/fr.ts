@@ -35,8 +35,8 @@ const fr = {
           description:
             "Conception d'une plateforme évolutive de gestion des certifications pour plusieurs organisations et des rôles utilisateurs complexes.",
           tags: ["Product Strategy", "Systems Design", "Architecture", "Enterprise UX"],
-          link: `${import.meta.env.BASE_URL}fr/work/credential-platform-v2/`,
-          image: `${import.meta.env.BASE_URL}images/case-studies/credential-platform-v2/asset-01.png`
+          link: `${import.meta.env.BASE_URL}fr/work/credential-platform/`,
+          image: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/asset-01.png`
         },
 
         {
@@ -45,8 +45,8 @@ const fr = {
           description:
             "Transformation d'un processus commercial traditionnel en une expérience d'achat en libre-service pour les acheteurs professionnels.",
           tags: ["Product Discovery", "Complex UX", "Self-Service", "Business Systems"],
-          link: `${import.meta.env.BASE_URL}fr/work/b2b-commerce-platform/`,
-          image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce-platform/cover.png`
+          link: `${import.meta.env.BASE_URL}fr/work/b2b-commerce/`,
+          image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce/cover.png`
         }
 
       ],
@@ -170,1250 +170,832 @@ const fr = {
     description: "Je travaille sur quelque chose ici. Revenez bientôt.",
     backLabel: "Voir mon travail",
   },
-
   credentialPlatform: {
     hero: {
-      tag: "SaaS ENTERPRISE · EDTECH · CERTIFICATS NUMÉRIQUES",
-      title: "Créer une structure pour un écosystème de certification en croissance.",
-      description:
-        "Conception d'un système multi-tenant de gestion des certifications avec des hiérarchies de rôles, des niveaux de reporting et des structures organisationnelles évolutives.",
-      role: "Product Designer",
-      timeline: "2 ans",
-      team:
-        "Product Designer, UX/UI Designer, Développeurs, QA, PM, Parties prenantes produit",
-    },
-
-    challenge: {
-      eyebrow: "LE DÉFI",
-      title: "Transformer les exigences métier en une structure produit évolutive.",
-  
-      business: {
-        title: "PROBLÈME MÉTIER",
-        items: [
-          "Absence de structure évolutive pour la gestion des certificats numériques.",
-          "Manque de clarté dans les hiérarchies organisationnelles.",
-          "Pas de système unifié pour la gestion multi-organisation.",
-          "Les exigences de reporting n'étaient pas définies et inconsistantes."
-        ]
-      },
-  
-      product: {
-        title: "PROBLÈME PRODUIT",
-        items: [
-          "Le système avait été initialement construit en replicant les fonctionnalités d'un concurrent.",
-          "Forte complexité due à l'interconnexion des flux de travail.",
-          "Manque de clarté entre la logique au niveau plateforme et au niveau organisation.",
-          "Structure de rôles et permissions utilisateur non définie."
-        ]
-      },
-  
-      role: {
-        title: "MON FOCAL POINT",
-        items: [
-          "Discovery produit",
-          "Architecture du système",
-          "Rôles & permissions",
-          "Architecture de l'information",
-          "Flux de travail & cas limites"
-        ]
-      }
-    },
-    
-    contribution: {
-      eyebrow: "MA CONTRIBUTION",
-      title: "Du discovery produit à l'implémentation.",
-    
-      items: [
-        "Pilotage du discovery produit et de l'analyse des exigences avec les parties prenantes métier.",
-        "Définition du RBAC, de l'architecture multi-tenant et de la logique du cycle de vie des certifications.",
-        "Conception des parcours utilisateurs, de l'architecture de l'information et des spécifications fonctionnelles.",
-        "Co-conception de la version initiale du produit et revue des implémentations UI successives.",
-        "Collaboration avec l'ingénierie et le QA pour valider les flux de travail, les cas limites et la cohérence de l'implémentation."
-      ]
-    },
-
-    understandingSystem: {
-      title: "Comprendre le système",
-      description:
-        "La plateforme a été conçue autour de deux systèmes complémentaires : la gouvernance de la plateforme et la gestion des organisations. Les permissions basées sur les rôles déterminaient la manière dont les utilisateurs interagissaient avec chaque couche."
-    },
-
-    multiTenantArchitecture: {
-      title: "Architecture multi-tenant"
-    },
-
-    roleHierarchy: {
-      title: "Hiérarchie des rôles (RBAC)",
-    
-      roles: [
-        {
-          role: "Admin Global",
-          platform: "✔️",
-          organization: "✔️",
-          credential: "—",
-          reports: "Plateforme entière",
-          experience: "—"
-        },
-        {
-          role: "Admin Multi-Organisation",
-          platform: "✔️",
-          organization: "✔️",
-          credential: "—",
-          reports: "Multi-organisation",
-          experience: "—"
-        },
-        {
-          role: "Admin Organisation",
-          platform: "—",
-          organization: "✔️",
-          credential: "✔️",
-          reports: "Organisation",
-          experience: "—"
-        },
-        {
-          role: "Admin Secondaire",
-          platform: "—",
-          organization: "Limité",
-          credential: "✔️",
-          reports: "Limité",
-          experience: "—"
-        },
-        {
-          role: "Accrédité",
-          platform: "—",
-          organization: "—",
-          credential: "—",
-          reports: "Activité propre",
-          experience: "✔️"
-        },
-        {
-          role: "Invité",
-          platform: "—",
-          organization: "—",
-          credential: "—",
-          reports: "—",
-          experience: "Voir les certificats partagés"
-        }
-      ],
-    
-      insight: {
-        title: "Transformer les règles métier en un modèle d'accès évolutif.",
-        description:
-          "J'ai traduit des règles métier fragmentées en un modèle clair de rôles et permissions, en séparant la gouvernance de la plateforme des opérations organisationnelles et des expériences utilisateur. Cela a fourni une base cohérente pour définir les flux de travail, les permissions et les rôles futurs."
-      }
-    },
-
-    credentialLifecycle: {
-      title: "Cycle de vie des certificats",
-      alt: "Flux du cycle de vie des certificats montrant les principales étapes et interactions du processus de certification."
-    },
-
-    informationArchitecture: {
-      title: "Architecture de l'information (vue haute)",
-    
-      description:
-        "La plateforme présente une structure de navigation différente selon le contexte organisationnel de l'utilisateur, garantissant que chaque rôle n'accède qu'aux modules pertinents pour ses responsabilités.",
-    
-      principleTitle: "Principe de design",
-    
-      principleHeadline: "Navigation contextualisée.",
-    
-      principleDescription:
-        "Plutôt que d'exposer chaque module à chaque utilisateur, la plateforme adapte son architecture de l'information en fonction de la portée organisationnelle et des responsabilités. Cela a réduit la complexité de navigation tout en soutenant une architecture multi-tenant évolutive."
-    },
-
-    reportingComplexity: {
-      title: "Complexité du reporting",
-    
-      columns: {
-        report: "Rapport / Insight",
-        globalPlatform: "Plateforme globale",
-        holding: "Holding (multi-org)",
-        organization: "Organisation",
-        accredited: "Accrédité"
-      },
-    
-      rows: [
-        {
-          name: "Vue organisationnelle",
-          values: ["✔️", "Organisations assignées", "➖", "➖"]
-        },
-        {
-          name: "Statut du plan et de l'abonnement",
-          values: ["✔️", "✔️", "Plan actuel", "➖"]
-        },
-        {
-          name: "Consommation du plan",
-          values: ["✔️", "✔️", "Usage propre", "➖"]
-        },
-        {
-          name: "Membres de l'organisation",
-          values: ["✔️", "✔️", "✔️", "➖"]
-        },
-        {
-          name: "Inventaire des certificats",
-          values: ["✔️", "Base de données partagée", "✔️", "Certificats propres"]
-        },
-        {
-          name: "Attributions de certificats",
-          values: ["✔️", "✔️", "✔️", "Attributions propres"]
-        },
-        {
-          name: "Statut des attributions",
-          values: ["✔️", "✔️", "✔️", "Statut propre"]
-        },
-        {
-          name: "Analytique de partage des certificats",
-          values: ["✔️", "✔️", "✔️", "Activité personnelle"]
-        },
-        {
-          name: "Activité des administrateurs",
-          values: ["✔️", "✔️", "✔️", "➖"]
-        },
-        {
-          name: "Journaux d'activité du système",
-          values: ["✔️", "✔️", "Journaux de l'organisation", "➖"]
-        },
-        {
-          name: "Export des rapports",
-          values: ["✔️", "✔️", "✔️", "➖"]
-        }
-      ],
-
-      insight:
-        "Le reporting a été conçu en utilisant une visibilité progressive plutôt que de créer des modules de reporting différents pour chaque rôle. Tous les utilisateurs accédaient au même écosystème de reporting, mais les données disponibles étaient filtrées selon leur niveau de responsabilité, réduisant la complexité de l'interface tout en maintenant une expérience de reporting cohérente sur l'ensemble de la plateforme."
-    },
-
-    constraints: {
-      title: "Contraintes & décisions de design",
-    
-      items: [
-        {
-          number: "01",
-          title: "Aligner les fonctionnalités sur l'architecture métier",
-    
-          decisionLabel: "Décision",
-          decision:
-            "Conception des flux autour du modèle métier du client plutôt que de replicer les fonctionnalités d'un concurrent.",
-    
-          tradeoffLabel: "Compromis",
-          tradeoff:
-            "Plus de discovery en amont, mais un produit capable d'évoluer au-delà de la parité fonctionnelle."
-        },
-    
-        {
-          number: "02",
-          title: "Séparer la gouvernance des opérations",
-    
-          decisionLabel: "Décision",
-          decision:
-            "Séparation de la gouvernance de la plateforme, de la gestion des organisations et de la propriété des certificats en couches indépendantes.",
-    
-          tradeoffLabel: "Compromis",
-          tradeoff:
-            "Complexité d'implémentation accrue en échange d'une évolutivité à long terme."
-        },
-    
-        {
-          number: "03",
-          title: "Concevoir selon les responsabilités",
-    
-          decisionLabel: "Décision",
-          decision:
-            "Regroupement des permissions par responsabilités plutôt que par actions individuelles pour simplifier la gestion des accès.",
-    
-          tradeoffLabel: "Compromis",
-          tradeoff:
-            "Plus d'analyse en amont, mais une réduction significative de la maintenance à mesure que la plateforme grandissait."
-        },
-    
-        {
-          number: "04",
-          title: "Optimiser pour les opérations en masse",
-    
-          decisionLabel: "Décision",
-          decision:
-            "Priorité donnée à l'émission massive de certificats avec validation CSV plutôt qu'aux flux individuels.",
-    
-          tradeoffLabel: "Compromis",
-          tradeoff:
-            "Un flux plus complexe qui a considérablement amélioré l'efficacité administrative."
-        },
-    
-        {
-          number: "05",
-          title: "Concevoir le reporting pour la croissance",
-    
-          decisionLabel: "Décision",
-          decision:
-            "Structuration du reporting par niveau de visibilité plutôt que par tableaux de bord figés.",
-    
-          tradeoffLabel: "Compromis",
-          tradeoff:
-            "Une architecture de reporting plus flexible face à des exigences métier en évolution."
-        }
-      ]
-    },
-
-    quote:
-      "Le bon design produit consiste à concevoir des architectures qui maintiennent la complexité maîtrisée à mesure que les produits évoluent.",
-
-    impact: {
-        title: "Impact",
-    
-        impact: [
-          "Adopté avec succès par plusieurs organisations en Colombie.",
-          "Mise en place d'une architecture multi-tenant évolutive pour différents modèles organisationnels.",
-          "Standardisation de l'émission de certificats via des flux réutilisables et des permissions basées sur les rôles.",
-          "Amélioration de l'efficacité administrative grâce aux opérations en masse et au libre-service."
-        ],
-    
-        highlights: [
-          "6 Rôles",
-          "2 couches système",
-          "5 états de certificat",
-          "Architecture multi-tenant",
-          "Produit enterprise en production"
-        ],
-    
-        reflection: {
-          title: "Réflexion",
-    
-          items: [
-            "Ce projet a renforcé ma conviction selon laquelle les produits enterprise sont rarement limités par la complexité de l'interface — ils le sont par la complexité métier.",
-            "Traduire des règles métier en évolution en une architecture évolutive a nécessité d'équilibrer flexibilité, gouvernance et utilisabilité. Cela a renforcé ma capacité à transformer des exigences métier floues en architectures produit évolutives qui concilient gouvernance, utilisabilité et croissance à long terme."
-          ]
-        }
-      },
-  },
-
-  credentialPlatformV2: {
-    hero: {
-      tag: "ÉTUDE DE CAS",
-      title: "D'une idée à une plateforme de credentials scalable",
+      tag: "PLATEFORME DE CERTIFICATS · SECTEUR ÉDUCATION ET ENTREPRISE",
+      title: "D'une institution linéaire à un système multi-organisation",
       description: [
-        "Un concept business est devenu une plateforme de credentials multi-tenant en production, soutenant quatre organisations en Colombie et en Espagne.",
-        "J'ai défini la structure du produit, le modèle organisationnel, les rôles et permissions, l'architecture de l'information, les parcours principaux et les patterns d'interaction — en travaillant en étroite collaboration avec le produit, l'ingénierie et la QA pendant que la plateforme évoluait."
+        "Une plateforme B2B où les établissements scolaires, les entreprises et les organismes certificateurs émettent, gèrent et vérifient des certificats numériques —diplômes, certificats, badges et micro-certifications— en s'appuyant sur des standards internationaux tels que Blockchain, Open Badges et les Certificats Vérifiables du W3C.",
+        "Le projet partait de zéro. J'ai conçu le modèle organisationnel, le système de rôles et de permissions, la logique de crédits et les parcours qui permettent d'émettre des certificats à grande échelle sans que l'opération ne s'effondre."
       ],
-      role: "Product Designer",
-      timeline: "2 ans",
-      team: "Produit · UX/UI · Ingénierie · QA · Parties prenantes",
-      focus: "Stratégie produit · Architecture produit · UX/UI · AI · Rôles et permissions · Parcours · Cas limites",
+      role: "Product Designer (leadership de facto sur l'UI/UX et l'équipe technique)",
+      timeline: "2 ans · 3 livraisons de fonctionnalités (2 produit + 1 technique) · 4e itération en planification",
+      team: "PM (manager direct) · 1 UI/UX Designer · 2 développeurs · 1 QA",
+      focus: "2 fondatrices (ingénieures système) avec le mandat de répliquer un concurrent du secteur",
       ndaText:
-        "Les détails ont été généralisés pour protéger la confidentialité du client."
-    },
-
-    roleMatrix: {
-      id: "ASSET 03",
-      label: "Modèle de rôles et permissions",
-      heading: "Qui est responsable de quoi ?",
-      roles: [
-        { title: "ADMIN PLATEFORME", items: ["Organisations", "Membres", "Crédentials", "Rapports"] },
-        { title: "ADMIN ORG", items: ["Organisations", "Membres", "Crédentials", "Rapports"] },
-        { title: "ADMIN SECONDAIRE", items: ["Membres", "Crédentials", "Rapports limités"] },
-        { title: "ACCRÉDITÉ", items: ["Ses credentials", "Ses informations"] }
-      ],
-      hierarchyLabel: "LA HIÉRARCHIE",
-      hierarchyRoot: "PLATEFORME",
-      hierarchyBranches: [
-        { name: "Organisation A", children: ["Admin Org", "Admin Secondaire", "Accrédité"] },
-        { name: "Organisation B", children: ["Admin Org", "Accrédité"] }
-      ],
-      footer: "Les permissions suivaient la responsabilité organisationnelle, pas les actions individuelles."
+        "Les détails ont été généralisés afin de protéger la confidentialité du client."
     },
 
     challenge: {
-      eyebrow: "LE DÉFI",
-      title: "Il y avait un modèle business, mais pas de produit.",
+      eyebrow: "Le Défi",
+      title: "Émettre des certificats à grande échelle était manuel, lent et non traçable",
       paragraphs: [
-        "Les fondateurs disposaient d'une plateforme de référence, mais il manquait l'architecture pour la faire fonctionner."
+        "Une entreprise de solutions technologiques pour le secteur éducatif voulait construire de zéro une plateforme B2B permettant aux établissements scolaires, aux entreprises et aux organismes certificateurs d'émettre, gérer et vérifier des certificats numériques —diplômes, certificats, badges et micro-certifications— en s'appuyant sur des standards internationaux tels que Blockchain, Open Badges et les Certificats Vérifiables du W3C.",
+        "Le projet partait de zéro. Il n'y avait aucune plateforme antérieure. Les établissements émettent manuellement : les données dans des tableurs, les designs dans des outils externes, envoyés un par un par e-mail ou en impression physique."
       ],
-      listTitle: "Je devais définir :",
-      items: [
-        "qui étaient les différents acteurs",
-        "comment les organisations étaient liées entre elles",
-        "ce que chaque rôle pouvait voir et gérer",
-        "comment les credentials traversaient leur cycle de vie",
-        "comment plusieurs organisations pouvaient coexister"
+      painsTitle: "Trois douleurs concrètes",
+      pains: [
+        {
+          title: "Émission manuelle et lente",
+          text: "Saisir les données une par une dans les certificats, avec des designs externes et un envoi manuel."
+        },
+        {
+          title: "Absence de traçabilité",
+          text: "Personne ne savait avec certitude qui avait reçu quoi, qui l'avait attribué, quand, ni dans quel état. L'information existait, mais il fallait demander à des collègues ou écrire à la personne certifiée."
+        },
+        {
+          title: "Pas d'auto-gestion pour l'établissement",
+          text: "Les établissements dépendaient de processus manuels pour émettre, attribuer et suivre."
+        }
+      ],
+      latentTitle: "Douleurs latentes",
+      latent: [
+        {
+          title: "Fraude",
+          text: "Aucun moyen de vérifier un certificat, sinon d'appeler l'établissement."
+        },
+        {
+          title: "Impossibilité de passer à l'échelle",
+          text: "Vers d'autres types d'établissements, reconnu dans les versions futures."
+        }
+      ],
+      contextTitle: "Contexte business",
+      context: [
+        {
+          label: "Modèle de facturation",
+          value: "Par certificat attribué (non émis — créer des certificats est gratuit), par personne certifiée (peu importe le nombre de certificats obtenus), avec une version d'essai gratuite."
+        },
+        {
+          label: "Marché initial",
+          value: "Colombie. Pilote avec 2 entreprises de 20 à 50 personnes certifiées chacune."
+        },
+        {
+          label: "Expansion future",
+          value: "Europe, avec les exigences Europass et ELM."
+        }
+      ],
+      pivotLabel: "Le défi de conception n'était pas…",
+      pivot:
+        "De faire une plateforme de certificats. Il s'agissait de concevoir le système d'organisations, de rôles, de permissions et de plans qui rendrait possible l'émission de certificats à grande échelle sans que l'opération ne s'effondre.",
+      mandateLabel: "Mandat initial des parties prenantes",
+      mandate:
+        "Répliquer le modèle d'un concurrent du secteur. Mon travail consistait à traduire cette ambition en un système propriétaire, scalable et aligné sur les standards internationaux.",
+      screenshot: {
+        id: "SHOT 01",
+        label: "Hero du projet — écran principal ou collage des vues clés",
+        note: "Remplacer par une capture réelle. Suggestion : la liste des certificats avec ses filtres, l'expression la plus claire du produit."
+      }
+    },
+
+    vision: {
+      number: "01",
+      title: "Vision Produit : D'une Institution Linéaire à un Système Multi-Organisation",
+      paragraphs: [
+        "Au départ, il n'y avait pas de multi-organisations. Le modèle était une institution linéaire : une seule chaîne de rôles, de la personne qui gérait la plateforme à l'échelle globale jusqu'à la personne certifiée.",
+        "À mesure que le produit évoluait, le modèle a muté en organisation + multi-organisation."
+      ],
+      beforeTitle: "Institution linéaire",
+      beforeRoles: [
+        "Responsable plateforme",
+        "Administrateur principal",
+        "Administrateur secondaire",
+        "Opérateur",
+        "Personne certifiée"
+      ],
+      afterTitle: "Organisation simple",
+      afterRoles: [
+        "Administrateur principal",
+        "Administrateur secondaire",
+        "Personne certifiée"
+      ],
+      multiTitle: "Multi-organisation",
+      multiIntro:
+        "Lorsqu'une organisation principale doit gérer un réseau d'entités avec leurs propres administrateurs et certifications :",
+      orgAdmin:
+        "Administrateur d'organisation — crée et gère les sous-organisations, demande des plans et redistribue les crédits",
+      subLabel: "Sous-organisation",
+      subRoles: [
+        "Administrateur principal",
+        "Administrateur secondaire",
+        "Personne certifiée"
+      ],
+      decisionTitle: "La décision stratégique",
+      decisionText:
+        "J'ai proposé tous les rôles et toutes les hiérarchies, en m'appuyant sur le benchmark du concurrent et sur ce que les parties prenantes exprimaient comme un besoin (« je veux pouvoir voir cela », « cette personne a besoin de savoir tel ou tel chose »). Je n'ai pas reçu de modèle de rôles ; je l'ai conçu.",
+      futureTitle: "Vision future",
+      future: [
+        "Portail de recherche de personnes certifiées",
+        "Extension en marque blanche",
+        "Adaptation à d'autres pays"
+      ],
+      screenshot: {
+        id: "SHOT 02",
+        label: "Diagramme du modèle de rôles — institution linéaire vs. multi-organisation",
+        note: "Remplacer par le vrai diagramme. C'est le visuel le plus important de l'étude de cas."
+      }
+    },
+
+    sharedCatalog: {
+      number: "02",
+      title: "Décision Clé 1 : Certificats Partagés, Attributions Spécifiques",
+      questionLabel: "La première question",
+      question:
+        "Lors de la conception de la multi-organisation, chaque sous-organisation a-t-elle ses propres certificats, ou partagent-elles le catalogue ?",
+      rejectedLabel: "Alternative écartée",
+      rejected: "Chaque sous-organisation avec ses propres certificats.",
+      decisionLabel: "Décision retenue",
+      decision:
+        "Tous les certificats créés sont mis à disposition de toutes les sous-organisations, mais les attributions appartiennent à la sous-organisation spécifique qui les a effectuées.",
+      whyTitle: "Pourquoi",
+      why: [
+        "Évite la duplication de certificats : un même badge peut être utilisé par plusieurs sous-organisations.",
+        "Maintient la traçabilité : chaque attribution appartient à une sous-organisation et les historiques ne se mélangent jamais.",
+        "Permet à une sous-organisation de voir tous les certificats disponibles tout en ne gérant que ses propres attributions."
+      ],
+      uiTitle: "Comment cela s'est reflété dans l'UI/UX",
+      ui: [
+        "Les sous-organisations voient tous les certificats.",
+        "À l'entrée, seules leurs attributions sont affichées ; celles qui ne leur appartiennent pas apparaissent comme non attribuées.",
+        "L'historique d'activité enregistre quel administrateur a fait l'attribution, et à qui (individuel ou lot)."
+      ],
+      typesTitle: "Types de certificat",
+      types: [
+        "Certificat ou badge.",
+        "Ils peuvent porter une attestation.",
+        "Ils peuvent appartenir à une collection : lorsque le système détecte qu'une personne certifiée a validé un cours (via Global Certifica, Moodle ou une API intégrée), il attribue automatiquement le certificat suivant de la collection."
+      ],
+      screenshot: {
+        id: "SHOT 03",
+        label: "Liste des certificats avec état d'attribution par sous-organisation",
+        note: "Remplacer par une capture réelle. L'état non attribué à côté des attributions propres est ce qui rend la décision lisible."
+      }
+    },
+
+    creditDistribution: {
+      number: "03",
+      title: "Décision Clé 2 : Crédits Distribués vs. Consommation en Temps Réel",
+      questionLabel: "La question imposée par le modèle de facturation",
+      question:
+        "Le modèle de facturation par crédits (certificat attribué, personne certifiée) a obligé à décider comment les crédits sont gérés entre l'organisation principale et ses sous-organisations.",
+      rejectedLabel: "Alternative écartée",
+      rejected: "Consommation en temps réel partagée entre toutes les sous-organisations.",
+      decisionLabel: "Décision retenue",
+      decision:
+        "Les crédits sont attribués à l'organisation principale, qui les redistribue ensuite entre ses sous-organisations.",
+      whyTitle: "Pourquoi",
+      why: [
+        "Historique clair : si la consommation est globale, l'historique mélange les sous-organisations. Si elle est spécifique par sous-organisation, l'historique est filtrable et compréhensible.",
+        "Réutilisation de composants : cela a permis de réutiliser la modale d'historique d'activité existante, en évitant d'ajouter des filtres qui auraient aussi affecté la génération de rapports.",
+        "Opération maîtrisée : la consommation en temps réel entre sous-organisations était chaotique à suivre."
+      ],
+      uiTitle: "Comment cela s'est reflété dans l'UI/UX",
+      ui: [
+        "L'organisation principale dispose d'une modale pour distribuer les crédits.",
+        "Elle voit combien elle a de sous-organisations, si elles ont des crédits ou non, et combien elles en ont consommés.",
+        "Elle voit comment la consommation du plan total évolue dans le temps.",
+        "Les administrateurs principaux peuvent demander des crédits à leur administrateur d'organisation (si multi-organisation) ou des plans à Global Certifica."
+      ],
+      align:
+        "Alignement avec les parties prenantes : j'ai présenté les deux options et les deux parties ont convenu que la distribution des crédits était préférable à la consommation en temps réel.",
+      screenshots: [
+        {
+          id: "SHOT 04",
+          label: "Modale de distribution des crédits",
+          note: "Remplacer par une capture réelle."
+        },
+        {
+          id: "SHOT 05",
+          label: "Panneau de consommation du plan",
+          note: "Remplacer par une capture réelle."
+        }
+      ]
+    },
+
+    historyModal: {
+      number: "04",
+      title: "Décision Clé 3 : Réutiliser la Modale d'Historique vs. Ajouter des Filtres",
+      questionLabel: "Directement liée à la décision précédente",
+      question:
+        "Cette décision découle directement du modèle de distribution des crédits.",
+      rejectedLabel: "Alternative écartée",
+      rejected:
+        "Ajouter des filtres à la modale d'historique afin de gérer une consommation globale.",
+      decisionLabel: "Décision retenue",
+      decision:
+        "Conserver la modale existante et rendre l'historique spécifique à chaque sous-organisation.",
+      whyTitle: "Pourquoi",
+      why: [
+        "Ajouter des filtres aurait aussi affecté la génération de rapports.",
+        "La modale existante couvrait déjà le cas d'usage si la consommation était gérée par sous-organisation.",
+        "Moins de complexité technique, plus de clarté pour l'utilisateur."
+      ],
+      uiTitle: "Comment cela s'est reflété dans l'UI/UX",
+      ui: [
+        "La modale d'historique d'activité n'a pas été modifiée : le même composant sert désormais un périmètre plus restreint, par sous-organisation.",
+        "La génération de rapports a hérité de la spécificité sans nouveaux états de filtre à concevoir, tester et traduire."
       ],
       closing:
-        "Le défi n'était pas de copier la référence. C'était de transformer une idée en un produit capable d'opérer réellement."
+        "C'est de la pensée systémique : une décision UX (clarté de l'historique) plus une décision technique (réutilisation d'un composant) plus une décision produit (les rapports ne se complexifient pas). Trois couches, un seul choix."
     },
 
-    businessModel: {
-      number: "01",
-      title: "Transformer le modèle business en produit",
-      paragraphs: [
-        "J'ai cartographié les règles business, les relations entre organisations et les parcours opérationnels avec les parties prenantes."
-      ],
-      layersTitle: "Deux couches ont émergé",
-      layers: [
-        {
-          title: "Gouvernance de la plateforme",
-          description: "Gérer la plateforme et ses organisations."
-        },
-        {
-          title: "Gestion de l'organisation",
-          description: "Gérer les personnes, les credentials et les opérations quotidiennes."
-        }
-      ],
-      layersNote:
-        "Cette séparation était la fondation du modèle multi-tenant de la plateforme.",
-      roleTitle: "Évolution du modèle de rôles",
-      roleIntro: "Initial :",
-      roleFrom: ["Plateforme", "Organisation", "Administrateur", "Opérateur"],
-      roleParagraphs: [
-        "À mesure que le produit grandissait, cela ne suffisait plus.",
-        "Je l'ai retravaillé pour prendre en charge les organisations parentes, les sous-organisations et les niveaux de responsabilité. L'objectif n'était pas plus de rôles — c'était de rendre la responsabilité explicite."
-      ],
-      asset: { id: "ASSET 03", label: "Évolution de la hiérarchie de rôles" }
-    },
-
-    evolution: {
-      number: "02",
-      title: "Laisser les cas d'usage réels façonner le produit",
-      paragraphs: [
-        "La première organisation a tout changé.",
-        "Les hypothèses ont été confrontées à des parcours réels."
-      ],
-      gapsTitle: "Les nouveaux clients ont exposé des lacunes autour de :",
-      gaps: [
-        "libre-service",
-        "permissions",
-        "parcours d'assignation",
-        "rapports",
-        "structure organisationnelle"
-      ],
-      shift:
-        "Mon rôle est passé de la définition du produit initial au façonnage continu du système à mesure que des cas d'usage réels apparaissaient."
-    },
-
-    selfService: {
-      number: "03",
-      title: "Remplacer le travail opérationnel par le libre-service",
-      paragraphs: [
-        "Au départ, les clients dépendaient de l'équipe interne pour les changements opérationnels.",
-        "Ils avaient besoin que l'équipe :"
-      ],
-      items: [
-        "crée des organisations",
-        "ajoute des membres",
-        "change les rôles",
-        "modifie les crédits du plan",
-        "gère la consommation"
-      ],
-      transition: ["Cela fonctionnait à petite échelle.", "Cela n'allait pas passer à l'échelle."],
-      resultTitle: "J'ai déplacé ces opérations dans le produit.",
-      resultText:
-        "Les clients pouvaient créer des organisations, ajouter des membres et gérer les rôles eux-mêmes.",
-      beforeTitle: "Avant",
-      beforeFlow: ["Demande client", "Équipe interne", "Changement manuel"],
-      afterTitle: "Après",
-      afterFlow: ["Client", "Paramètres de l'organisation", "Changement effectué"],
-      contributionTitle: "Contribution design",
-      contribution: [
-        "Architecture libre-service",
-        "Logique de permissions",
-        "Parcours UI",
-        "Cas limites",
-        "États de validation"
-      ],
-      mgmtUi: {
-        id: "ASSET 06",
-        label: "UI de gestion d'organisation et de membres",
-        title: "Organisations",
-        newMember: "+ Nouveau membre",
-        orgName: "Organisation Acme",
-        orgMeta: "48 membres · 3 admins",
-        membersTitle: "Membres",
-        searchPlaceholder: "Rechercher des membres…",
-        filterLabel: "Filtrer ▾",
-        columns: ["Nom", "Rôle", "Statut"],
-        rows: [
-          { name: "Ana Torres", role: "Admin Org", status: "Actif" },
-          { name: "Luis Pérez", role: "Admin Secondaire", status: "Actif" },
-          { name: "Marta Ruiz", role: "Accréditée", status: "En attente" },
-          { name: "Carlos Díaz", role: "Accrédité", status: "Actif" }
-        ],
-        detailLabel: "MEMBRE",
-        detailName: "Marta Ruiz",
-        roleLabel: "Rôle",
-        roleValue: "Accréditée ▾",
-        orgLabel: "Organisation",
-        orgValue: "Organisation Acme",
-        credsLabel: "Crédentials",
-        credsValue: "12 délivrées · 2 en attente",
-        cancel: "Annuler",
-        save: "Enregistrer",
-        callouts: [
-          { number: "01", title: "Visibilité du rôle", text: "Les utilisateurs ne voient que les actions que leur responsabilité autorise." },
-          { number: "02", title: "Libre-service", text: "Les organisations gèrent leurs membres sans intervention interne." },
-          { number: "03", title: "Validation", text: "Les changements de rôle respectent les contraintes organisationnelles." }
-        ]
-      }
-    },
-
-    workflow: {
-      number: "04",
-      title: "Faire de l'émission de credentials un parcours scalable",
-      paragraphs: [
-        "Un cours typique comptait entre 20 et 50 utilisateurs accrédités.",
-        "Le parcours initial imposait un formulaire long, une personne à la fois.",
-        "L'effort augmentait avec les destinataires."
-      ],
-      approachTitle: "J'ai changé l'unité de travail.",
-      approachSteps: ["Définir une fois", "Réutiliser", "Assigner en masse"],
-      templateTitle: "Modèles de credentials réutilisables",
-      templateText:
-        "Créer une fois, réutiliser ou dupliquer.",
-      bulkTitle: "Assignation en masse",
-      bulkText:
-        "Préparer les données des destinataires et les télécharger via CSV. Une assignation en masse prenait environ 2 minutes.",
-      stat: { value: "~2 min", label: "pour une assignation en masse" }
-    },
-
-    accreditedUX: {
+    systems: {
       number: "05",
-      title: "Rendre l'expérience plus claire pour les utilisateurs accrédités",
+      title: "Pensée Systémique : Rôles, Permissions, Visibilité et Audit",
       paragraphs: [
-        "Certains parcours étaient techniquement corrects mais difficiles à comprendre.",
-        "Les utilisateurs butaient sur :"
+        "Le cœur du produit n'est pas le certificat. C'est qui peut voir quoi, qui peut faire quoi, et comment tout cela est enregistré.",
+        "Tout ce qui suit a été conçu par moi et documenté comme le contrat avec lequel l'équipe technique a construit."
       ],
-      issues: ["des libellés peu familiers", "un enregistrement long", "des informations demandées trop tôt"],
-      mentalTitle:
-        "J'ai redessiné l'expérience d'entrée autour d'un modèle mental plus simple :",
-      mentalBold: "Entrer dans le produit → Compléter son profil",
-      mentalText:
-        "Au lieu d'exiger tout à la création du compte, les utilisateurs pouvaient accéder à leur compte via un lien dédié et compléter ou modifier leur profil ensuite.",
-      beforeTitle: "Avant",
-      beforeFlow: ["Invitation", "Enregistrement long", "Compte"],
-      afterTitle: "Après",
-      afterFlow: ["Invitation", "Compte", "Compléter le profil"],
-      annotations: [
-        "Charge cognitive initiale réduite",
-        "Informations non essentielles différées",
-        "Séparation plus claire des tâches"
+      matrixTitle: "Matrice de visibilité de l'historique par rôle",
+      matrixColumns: [
+        "Rôle",
+        "Voit sa propre activité",
+        "Voit celle des autres",
+        "Peut demander des crédits"
       ],
-      asset: { id: "ASSET 09", label: "UX avant / après" }
-    },
-
-    permissions: {
-      number: "06",
-      title: "Concevoir les permissions autour de la responsabilité",
-      paragraphs: [
-        "À mesure que les organisations gagnaient en autonomie, les permissions sont devenues un problème produit central."
+      matrixRows: [
+        [
+          "Administrateur principal",
+          "Oui",
+          "Oui",
+          "À son administrateur d'organisation (multi) ou à Global Certifica"
+        ],
+        ["Administrateur secondaire", "Oui", "Non", "Non"],
+        [
+          "Administrateur d'organisation",
+          "Oui",
+          "Oui (ses sous-organisations)",
+          "À Global Certifica"
+        ],
+        ["Responsable plateforme", "Oui", "Oui (global)", "S.O."]
       ],
-      wrongQIntro: "La question n'était pas :",
-      wrongQuestion: "Sur quoi cet utilisateur peut-il cliquer ?",
-      rightQIntro: "C'était :",
-      rightQuestion:
-        "Quelles informations et actions cette personne doit-elle gérer ?",
-      modelText:
-        "J'ai structuré les permissions autour de la responsabilité organisationnelle plutôt que de traiter chaque action comme une permission isolée.",
-      modelTitle: "Le modèle couvrait :",
-      model: [
-        "gouvernance de la plateforme",
-        "organisations parentes",
-        "sous-organisations",
-        "administrateurs primaires et secondaires",
-        "gestion des credentials",
-        "rapports",
-        "utilisateurs accrédités"
+      statesTitle: "États d'une attribution",
+      statesIntro:
+        "Tous les rôles d'organisation peuvent voir l'état d'une attribution à une personne certifiée :",
+      states: [
+        "En attente",
+        "Acceptée",
+        "Refusée",
+        "Expirée",
+        "Partagée",
+        "Téléchargée",
+        "Révoquée (exécutée par un administrateur)"
       ],
-      navTitle: "Navigation contextuelle",
-      navParagraphs: [
-        "La navigation contextuelle s'adaptait au niveau de responsabilité de l'utilisateur."
+      eventsTitle: "Événements enregistrés dans l'historique (tous avec heure et date)",
+      events: [
+        "Attribution du certificat à la personne certifiée X par l'administrateur Y.",
+        "Attribution du certificat au lot X par l'administrateur Y.",
+        "Création du certificat Z par l'administrateur Y.",
+        "Distribution de N crédits à la sous-organisation A.",
+        "Certificat modifié par l'administrateur Y."
       ],
-      navFormulaText: "La navigation suit :",
-      navFormula: "Rôle + organisation + responsabilité",
-      navExampleTitle: "ADMIN D'ORG",
-      navExample: ["Dashboard", "Organisations", "Membres", "Credentials", "Rapports"],
-      navCaptionBefore: "Navigation admin",
-      navCaptionAfter: "Navigation accrédité"
-    },
-
-    reporting: {
-      number: "07",
-      title: "Faire refléter l'organisation dans les rapports",
-      paragraphs: [
-        "Le problème n'était pas un manque de rapports — c'était que le business n'avait pas défini ce que chaque niveau organisationnel devait comprendre. Cela créait des informations dupliquées."
-      ],
-      approachTitle: "J'ai restructuré les rapports autour de niveaux de visibilité.",
-      approachText:
-        "Un système de rapports, une visibilité différente.",
-      modelTitle: "Un système de rapports",
-      modelSubtitle: "Visibilité différente",
-      screens: [
-        "Rapport au niveau plateforme",
-        "Rapport au niveau organisation",
-        "Vue filtrée"
-      ],
-      annotation: "Même base de rapports, visibilité différente."
-    },
-
-    expansion: {
-      number: "08",
-      title: "S'étendre au-delà du marché d'origine",
-      paragraphs: [
-        "La plateforme a grandi pour soutenir quatre organisations en Colombie et en Espagne.",
-        "L'Espagne a introduit de nouvelles considérations :"
-      ],
-      considerations: [
-        "GDPR",
-        "devise",
-        "géolocalisation",
-        "systèmes éducatifs",
-        "structures organisationnelles",
-        "exigences de marque blanche"
-      ],
-      noteTitle: "Ce n'étaient pas simplement des écrans supplémentaires.",
-      noteText: "Ils remettaient en question des hypothèses ancrées dans le produit d'origine.",
-      conclusion:
-        "L'architecture a évolué d'un modèle business spécifique vers le soutien de différents clients et contextes.",
-      diagramTitle: "EXPANSION DU MARCHÉ",
-      diagram: [
-        "Colombie",
-        "Clients réels",
-        "Nouveau marché",
-        "Espagne",
-        "Nouvelles exigences",
-        "Architecture produit adaptable"
-      ]
-    },
-
-    whatChanged: {
-      title: "Ce qui a changé",
-      columns: ["De", "Vers"],
-      rows: [
-        ["Idée business", "Stratégie + architecture produit"],
-        ["Produit de référence", "Produit spécifique au business"],
-        ["Dépendance opérationnelle interne", "Libre-service client"],
-        ["Émission un par un", "Assignation en masse"],
-        ["Credentials uniques", "Modèles réutilisables"],
-        ["Modèle de rôles plat", "Modèle organisationnel hiérarchique"],
-        ["Rapports fixes", "Rapports basés sur la visibilité"],
-        ["Hypothèses Colombie", "Colombie + Espagne"],
-        ["Lancement initial", "4 organisations"]
-      ],
-      metrics: [
-        { value: "2 ans", label: "Évolution du produit" },
-        { value: "4", label: "Organisations · Colombie + Espagne" },
-        { value: "20–50", label: "Utilisateurs dans une assignation en masse typique" },
-        { value: "~2 min", label: "Parcours d'assignation en masse" }
-      ]
-    },
-
-    outcome: {
-      title: "Résultat",
-      paragraphs: [
-        "Le produit est passé d'une idée business initiale à une plateforme de credentials multi-tenant en production.",
-        "Les organisations pouvaient gérer leur propre structure et leurs membres. Les équipes credentials pouvaient créer des modèles réutilisables et assigner des credentials en masse. Les rôles et permissions ont évolué avec des structures organisationnelles de plus en plus sophistiquées. Le reporting s'est aligné sur la visibilité organisationnelle.",
-        "L'architecture n'était plus liée au produit de référence d'origine."
-      ],
-      closing: "Il était devenu un système capable de s'adapter.",
-      montageTitle: "Écrans",
-      montage: [
-        "Dashboard",
-        "Gestion de l'organisation",
-        "Constructeur de credentials",
-        "Assignation en masse",
-        "Rapports",
-        "Profil utilisateur"
-      ]
-    },
-
-    lessons: {
-      title: "Ce que j'ai appris",
-      heading: "Concevoir le système, pas seulement l'écran",
-      paragraphs: [
-        "La partie la plus difficile n'était pas de concevoir des écrans individuels.",
-        "C'était de prendre des décisions produit alors que le business lui-même prenait encore forme.",
-        "Les exigences étaient incomplètes. Les structures organisationnelles évoluaient. De vrais clients remettaient en question les hypothèses.",
-        "Mon rôle était de créer suffisamment de structure pour soutenir le business aujourd'hui sans rendre inutilement coûteux les changements de demain."
-      ],
-      quote:
-        "Un bon design produit ne résout pas seulement le parcours d'aujourd'hui. Il crée suffisamment de structure pour que le produit évolue sans se casser."
-    }
-  },
-
-  b2bCommercePlatform: {
-    hero: {
-      tag: "COMMERCE B2B · FOURNITURES SCIENTIFIQUES",
-      title: "Des achats assistés par la vente au libre-service.",
-      description:
-        "Transformation de flux d'achat fragmentés en une expérience numérique centralisée pour des clients enterprise en Espagne et au Portugal.",
-      role: "Product Designer",
-      timeline: "2 ans",
-      team:
-        "Product Designer, UX/UI Designer, Développeurs, QA, PM, Équipe de développement client, Parties prenantes métier",
-      ndaText:
-        "En raison d'un accord de confidentialité (NDA), certains détails métier et éléments visuels du produit ont été généralisés, tout en préservant le processus de design, les défis et les résultats.",
-    },
-
-    challenge: {
-      title: "Le défi",
-
-      before: {
-        label: "Avant",
-        image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce-platform/before.png`,
-        items: [
-          "Téléphone",
-          "Email",
-          "Catalogues imprimés",
-          "Devis",
-          "Suivi manuel",
-          "Départements fragmentés"
-        ]
-      },
-
-      after: {
-        label: "Après",
-        image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce-platform/after.png`,
-        items: [
-          "Libre-service",
-          "Recherche",
-          "Devis",
-          "Commandes",
-          "Suivi",
-          "Historique d'achat"
-        ]
-      },
-
-      goal: {
-      label: "Objectif",
-      description:
-        "Transformer des opérations commerciales fragmentées en une expérience unifiée de libre-service où les clients enterprise peuvent rechercher des produits, demander des devis, suivre des commandes et gérer leurs activités d'achat depuis une plateforme unique."
-      },
-    },
-
-    contribution: {
-      eyebrow: "Ma contribution",
-
-      title: "Façonner le produit de l'intérieur",
-
-      description:
-        "Tout au long du projet, j'ai piloté le discovery produit et l'analyse des exigences lors des grandes versions, en traduisant les besoins métier et la complexité opérationnelle en exigences produit prêtes pour l'implémentation.",
-
-      items: [
-        "Animation d'ateliers de discovery transversaux avec les parties prenantes métier",
-
-        "Pilotage de l'analyse des exigences et traduction des besoins métier en exigences produit",
-
-        "Définition des parcours utilisateurs, cas d'utilisation, architecture de l'information, navigation et logique fonctionnelle",
-
-        "Conception du comportement de recherche et des interactions clés du produit",
-
-        "Co-conception des interfaces clés lors de la version initiale et définition de patterns pour les versions suivantes",
-
-        "Rédaction des spécifications fonctionnelles et collaboration étroite avec l'ingénierie pendant l'implémentation",
-
-        "Référence design produit pendant l'implémentation, validation de la logique d'interaction, des cas limites, de la navigation et de la cohérence du design entre l'ingénierie et le QA",
-
-        "Soutien au QA et revue des designs successifs pour garantir l'alignement avec les règles métier, les flux de travail, les contraintes techniques et l'évolution du produit"
-      ],
-
-      note:
-        "Bien que les intégrations techniques avec l'ERP aient été implémentées par l'équipe d'ingénierie du client, j'ai travaillé en étroite collaboration avec les parties prenantes et les développeurs pour définir comment les données enterprise devaient se traduire en expériences utilisateur significatives."
-    },
-
-    businessDiscovery: {
-      title: "Discovery métier",
-      departments: [
-        "Vente",
-        "Marketing",
-        "Achats",
-        "Comptabilité",
-        "Développement"
-      ],
-      workshops: "Ateliers de discovery",
-      sharedUnderstanding: "Compréhension commune",
-      note: "Les différents départements décrivaient le même flux de travail de manière différente."
-    },
-
-    constraints: {
-      title: "Contraintes",
-
-      items: [
+      eventsNote:
+        "Événements automatiques : rappels de paiement de plan, rappels de certificat en attente, rappels de certificat expiré.",
+      docsTitle: "La documentation comme contrat d'implémentation",
+      docs: [
         {
-          number: "01",
-          title: "Processus métier hérités",
-
-          decisionLabel: "Décision",
-          decision:
-            "Utilisation de l'expérience du concurrent comme référence tout en l'adaptant aux règles métier du client, en affinant et automatisant les processus existants lorsque c'était possible.",
-
-          tradeoffLabel: "Compromis",
-          tradeoff:
-            "Plus de discovery et d'analyse de processus en amont, mais une expérience familière qui reflétait toujours la réalité opérationnelle du métier."
+          title: "Diagrammes de flux",
+          text: "Pour montrer les flux parallèles et la façon dont les actions d'un rôle affectent un autre."
         },
-
         {
-          number: "02",
-          title: "Silos organisationnels",
-
-          decisionLabel: "Décision",
-          decision:
-            "Cartographie de la manière dont les différents départements comprenaient et interagissaient avec les mêmes processus commerciaux pour identifier les écarts, les dépendances et les hypothèses contradictoires.",
-
-          tradeoffLabel: "Compromis",
-          tradeoff:
-            "Plus de travail d'alignement en amont, mais moins d'hypothèses reportées sur le produit."
+          title: "Tableaux de visibilité",
+          text: "De l'historique et des événements, déclinés par rôle."
         },
-
         {
-          number: "03",
-          title: "Données pilotées par l'ERP",
-
-          decisionLabel: "Décision",
-          decision:
-            "Conception de la plateforme autour de l'ERP comme source de vérité, permettant à la structure de données d'évoluer sans modifier répétitivement l'expérience utilisateur.",
-
-          tradeoffLabel: "Compromis",
-          tradeoff:
-            "Plus de dépendance à l'ERP et un travail d'architecture initial plus important, mais une expérience produit plus cohérente à mesure que les données métier évoluaient."
+          title: "Cas d'usage",
+          text: "Avec un enregistrement de tous les événements et permissions impliquées."
+        }
+      ],
+      docsClosing:
+        "Ce n'était pas seulement de la communication : c'était le contrat d'implémentation que l'équipe technique a utilisé pour construire.",
+      screenshots: [
+        {
+          id: "SHOT 06",
+          label: "Diagramme de flux des rôles",
+          note: "Remplacer par le vrai diagramme."
         },
-
         {
-          number: "04",
-          title: "Informations produit en constante évolution",
-
-          decisionLabel: "Décision",
-          decision:
-            "Conception d'une hiérarchie visuelle compacte pour les catégories de produits, en équilibrant les images, la densité et la facilité de parcours dans un catalogue large et en constante évolution.",
-
-          tradeoffLabel: "Compromis",
-          tradeoff:
-            "Moins de place pour chaque catégorie pour se démarquer visuellement, mais un moyen plus rapide de parcourir et naviguer dans une large gamme de produits."
-        },
-
-        {
-          number: "05",
-          title: "Règles d'achat complexes",
-
-          decisionLabel: "Décision",
-          decision:
-            "Traduction des tarifs spécifiques au client, comptes, devis, stock et conditions d'achat en des flux compréhensibles et gérables depuis la plateforme.",
-
-          tradeoffLabel: "Compromis",
-          tradeoff:
-            "Plus de logique conditionnelle, mais une expérience de libre-service plus précise pour les acheteurs professionnels."
-        },
-
-        {
-          number: "06",
-          title: "Implémentation incrémentale sur plusieurs versions",
-
-          decisionLabel: "Décision",
-          decision:
-            "Conception de fondations capables d'évoluer sur plusieurs versions, plutôt que de traiter chaque version comme un produit indépendant.",
-
-          tradeoffLabel: "Compromis",
-          tradeoff:
-            "Certaines améliorations ont dû être échelonnées dans le temps, mais l'expérience a pu évoluer sans reconstruire constamment ses fondations."
+          id: "SHOT 07",
+          label: "Tableau de visibilité par rôle",
+          note: "Remplacer par une capture réelle du tableau utilisé en implémentation."
         }
       ]
+    },
+
+    leadership: {
+      number: "06",
+      title: "Leadership : Gérer des Parties Prenantes Résistantes et S'aligner sur des Preuves",
+      contextTitle: "Contexte",
+      context: [
+        "Les parties prenantes étaient deux fondatrices, ingénieures système, avec le mandat de répliquer un concurrent. Elles n'avaient aucune règle métier définie : elles envoyaient des vidéos du concurrent en disant « ça devrait fonctionner comme ça ».",
+        "Mon travail consistait à déterminer ce qui pouvait être ajusté, ce qui ne pouvait pas l'être, et à proposer le modèle."
+      ],
+      resistanceTitle: "Résistance",
+      resistance: [
+        {
+          title: "Constante",
+          text: "Les décisions étaient remises en question sans contexte technique."
+        },
+        {
+          title: "Difficile à expliquer",
+          text: "Comment les actions d'un rôle affectaient les rôles en dessous, ou comment gérer les cas hors du chemin nominal."
+        },
+        {
+          title: "Des frictions aux pire moments",
+          text: "Mon manager gérait l'essentiel, mais lorsqu'il était en congé, je prenais le relais."
+        }
+      ],
+      approachTitle: "Comment je l'ai géré",
+      approach: [
+        {
+          title: "Diagrammes de flux",
+          text: "Pour qu'ils comprennent les flux parallèles et les effets croisés entre rôles."
+        },
+        {
+          title: "Tableaux de visibilité",
+          text: "De l'historique et des événements, déclinés par rôle."
+        },
+        {
+          title: "Cas d'usage",
+          text: "Avec un enregistrement des événements et des permissions."
+        },
+        {
+          title: "Alignement par les preuves",
+          text: "Sur la décision des crédits, j'ai présenté les deux options et les deux parties ont convenu de la distribution."
+        }
+      ],
+      processTitle: "Processus de validation",
+      process:
+        "Environ 90% des revalidations ont eu lieu en réunion, puis je les renvoyais par e-mail pour en garder une trace — parce que quand quelque chose ne se passait pas comme prévu, la réponse était que ce n'avait pas été correctement expliqué.",
+      debtTitle: "La dette produit que personne ne possédait",
+      debt:
+        "Durant une période où j'étais absente, des fonctionnalités ont été ajoutées sans vision systémique. Cela a généré une dette produit qui a affecté la scalabilité. Je l'ai détectée à mon retour et je l'ai documentée comme dette technique. Elle n'a pas été entièrement résolue à l'époque, mais elle est devenue visible sur la liste des améliorations.",
+      closing:
+        "Gérer ce contexte ne consistait pas à parler plus fort. Il consistait à rendre le système suffisamment lisible pour que les décisions puissent être évaluées sur des preuves et non sur des préférences."
+    },
+
+    tradeoffs: {
+      number: "07",
+      title: "Arbitrages : Ce que Nous avons Sacrifié",
+      intro:
+        "Chaque décision de ce cas avait un coût. Voici celles que nous avons acceptées en connaissance de cause.",
+      columns: ["Dimension", "Priorité", "Coût"],
+      rows: [
+        [
+          "Flexibilité des rôles",
+          "Au-dessus de la simplicité",
+          "Complexité des permissions et de la visibilité"
+        ],
+        [
+          "Rigueur de l'audit",
+          "Au-dessus de la simplicité",
+          "Un enchevêtrement d'interactions entre rôles"
+        ],
+        [
+          "Vitesse de livraison",
+          "Au-dessus de la scalabilité",
+          "Dette produit"
+        ],
+        [
+          "Absence de vision complète",
+          "Les parties prenantes itéraient au fil de l'eau",
+          "Difficulté à planifier l'architecture"
+        ],
+        [
+          "Notifications en temps réel",
+          "Écartées",
+          "Uniquement des notifications par lots et des rappels"
+        ]
+      ],
+      closing:
+        "Ces arbitrages sont réalistes et honnêtes. Reconnaître le coût d'une décision vaut davantage que de présenter un projet sans faille."
     },
 
     impact: {
-      title: "Impact",
-    
-        impactSections: [
-          {
-            title: "Libre-service client",
-            items: [
-              "Devis initiés via la plateforme",
-              "Adoption du suivi de commandes",
-              "Utilisation de l'historique d'achat et du réapprovisionnement",
-              "Adoption des listes d'achat"
-            ]
-          },
+      number: "08",
+      title: "Impact : Ce que Nous Savons (Sans Métriques Formelles)",
+      limitationTitle: "Limitation honnête",
+      limitation:
+        "L'entreprise n'a jamais défini de métriques formelles. La mesure reposait sur la satisfaction des parties prenantes — ce qui était demandé versus ce qui a été livré — et non sur le comportement des utilisateurs finaux.",
+      columns: ["Domaine", "Avant", "Après", "Preuve"],
+      rows: [
+        [
+          "Émission de certificats",
+          "Manuelle, un par un",
+          "Attribution individuelle ou par lot",
+          "Fonctionnalité livrée"
+        ],
+        [
+          "Traçabilité",
+          "En demandant à des collègues ou par e-mail",
+          "Historique d'activité par rôle, avec événements, heure et date",
+          "Fonctionnalité livrée"
+        ],
+        [
+          "Auto-gestion de l'établissement",
+          "Dépendance à des processus manuels",
+          "Les organisations et sous-organisations gèrent leurs propres attributions et crédits",
+          "Fonctionnalité livrée"
+        ],
+        [
+          "Vérification",
+          "En appelant l'établissement",
+          "Vérification par blockchain et standards W3C",
+          "Fonctionnalité livrée"
+        ],
+        [
+          "Scalabilité",
+          "Institution linéaire",
+          "Multi-organisation avec rôles et permissions",
+          "Fonctionnalité livrée"
+        ],
+        [
+          "Dette produit",
+          "—",
+          "Fonctionnalités ajoutées sans vision systémique",
+          "Documentée, en attente de remédiation"
+        ]
+      ],
+      tableNote:
+        "La colonne Preuve indique volontairement « Fonctionnalité livrée ». Quand je n'ai pas de métrique, je le dis au lieu d'en inventer une.",
+      evolutionTitle: "Évolution",
+      evolution: [
+        "2 ans de développement.",
+        "3 livraisons de fonctionnalités : 2 produit + 1 technique.",
+        "4e itération en planification."
+      ],
+      pendingTitle: "En attente",
+      pending: [
+        "Analytique produit formelle",
+        "Portail des personnes certifiées",
+        "Marque blanche",
+        "Adaptation à d'autres pays",
+        "Exigences Europass et ELM"
+      ],
+      quoteLabel: "Phrase d'impact",
+      quote:
+        "J'ai conçu de zéro une plateforme B2B d'émission de certificats numériques pour des établissements scolaires et des entreprises, en définissant le modèle d'organisations, de rôles, de permissions, d'historique d'activité et de plans de crédits qui soutient l'opération actuelle du produit."
+    },
 
-          {
-            title: "Efficacité opérationnelle",
-            items: [
-              "Demandes de disponibilité de produits",
-              "Demandes de statut de commande",
-              "Demandes de statut de devis",
-              "Achats basés sur des catalogs obsolètes"
-            ]
-          },
+    reflections: {
+      number: "09",
+      title: "Réflexions et Vision Future",
+      intro:
+        "Ce projet n'était pas qu'une refonte d'UI/UX. C'était la conception du système métier qui rend possible l'émission de certificats à grande échelle.",
+      contributionTitle: "Ma plus grande contribution en tant que designer",
+      contribution: [
+        "Définir les rôles, hiérarchies et permissions à partir de zéro : ils ne venaient pas du brief.",
+        "Concevoir le modèle multi-organisation avec certificats partagés et attributions spécifiques.",
+        "Définir la logique des plans, des crédits et de la distribution entre sous-organisations.",
+        "Documenter le système avec diagrammes, tableaux et cas d'usage qui ont servi de contrat d'implémentation.",
+        "Tenir les décisions produit avec des preuves dans un contexte de forte friction avec les parties prenantes.",
+        "Détecter et documenter la dette produit générée par des fonctionnalités ajoutées sans vision systémique."
+      ],
+      roadmapTitle: "Feuille de route",
+      roadmap: [
+        "Portail de recherche de personnes certifiées",
+        "Extension en marque blanche",
+        "Adaptation à d'autres pays (Europass, ELM)",
+        "Analytique produit formelle",
+        "Remédiation de la dette produit"
+      ]
+    },
+  },
+  b2bCommerce: {
+    hero: {
+      tag: "B2B COMMERCE · DISTRIBUTION DE FOURNITURES DE LABORATOIRE",
+      title: "De la vente assistée à l'auto-service",
+      description: [
+        "Un distributeur leader de matériel, réactifs et équipements pour laboratoires du Pays Basque fonctionnait avec un processus entièrement manuel : commandes par téléphone et e-mail, catalogues en PDF, devis par e-mail et gestion des incidents sans plateforme. L'ERP était interne ; le client final n'y touchait jamais.",
+        "Mon travail consistait à traduire un modèle d'affaires fragmenté et manuel en un système d'auto-service fiable, scalable, et qui ne cannibalise pas la relation client."
+      ],
+      role: "Product Designer (encadrant 1 UI/UX Designer et supervisant 3 développeurs)",
+      timeline: "2 ans · 3 versions livrées · 4e en planification",
+      team: "PM (manager direct) · PO client · Équipe technique · Marketing · Ventes · Opérations",
+      focus: "Référence constante : Fisher Scientific, le concurrent principal",
+      ndaText:
+        "Les détails ont été généralisés afin de protéger la confidentialité du client."
+    },
 
+    challenge: {
+      eyebrow: "Le Défi",
+      title: "Un modèle d'affaires 100% manuel",
+      paragraphs: [
+        "Un distributeur leader de matériel, réactifs et équipements pour laboratoires du Pays Basque fonctionnait avec un processus entièrement manuel : commandes par téléphone et e-mail, catalogues en PDF, devis par e-mail et gestion des incidents sans plateforme. L'ERP était interne ; le client final n'y touchait jamais.",
+        "Le premier problème était le coût opérationnel : chaque commande, réclamation, retour ou devis exigeait une intervention humaine. L'auto-service n'existait pas.",
+        "La pression stratégique : le PDG voulait répliquer Fisher Scientific, son principal concurrent. Cela a posé une contrainte permanente — chaque décision produit était comparée à cette référence."
+      ],
+      objectivesTitle: "Objectifs business",
+      objectiveGroups: [
+        {
+          version: "V1",
+          items: [
+            "Le client voit prix, descriptions et spécifications en temps réel.",
+            "Le client peut commander sans assistance.",
+            "Le client comprend les familles de produits, variantes et conditions.",
+            "Le client sait quand demander un devis."
+          ]
+        },
+        {
+          version: "V2",
+          items: [
+            "Améliorer la recherche de produits.",
+            "Permettre de générer des devis.",
+            "Visualiser son propre historique d'achats et celui de ses contacts.",
+            "Afficher les promotions et les appliquer.",
+            "Connaître les délais de livraison et les statuts de commande."
+          ]
+        },
+        {
+          version: "V3",
+          items: [
+            "Améliorer le support technique et orienter chaque demande vers le bon département."
+          ]
+        }
+      ],
+      risksTitle: "Risques identifiés",
+      risks: [
+        {
+          title: "Courbe d'adoption",
+          text: "Les clients étaient habitués au processus manuel."
+        },
+        {
+          title: "Données produit incomplètes",
+          text: "Une information incomplète entraîne des achats erronés et des retours."
+        },
+        {
+          title: "Trouver un produit",
+          text: "Difficulté à trouver un produit ou des alternatives similaires."
+        }
+      ],
+      pivotLabel: "Le défi de conception n'était pas…",
+      pivot:
+        "Mettre un catalogue en ligne. Il s'agissait de traduire un modèle d'affaires fragmenté et manuel en un système d'auto-service fiable, scalable, et qui ne cannibalise pas la relation client."
+    },
+
+    vision: {
+      number: "01",
+      title: "Vision Produit : De la Digitalisation d'un Catalogue à un Système de Commerce",
+      paragraphs: [
+        "Ma première décision a été de définir la vision produit. Nous ne pouvions ni répliquer le catalogue PDF ni copier Fisher Scientific sans comprendre d'abord notre propre activité."
+      ],
+      discoveryTitle: "Découverte",
+      discoveryStats: [
+        { value: "28", label: "réunions en un mois" },
+        { value: "6", label: "départements impliqués" },
+        { value: "1", label: "jeu de critères unifié" }
+      ],
+      discoveryText:
+        "J'ai animé 28 réunions en un mois avec 6 départements — Ventes, Opérations, Marketing et l'équipe qui structurait les catégories du catalogue — pour cartographier le processus réel et unifier les critères. Chaque département avait sa propre compréhension et ses propres incohérences.",
+      insightLabel: "L'insight clé",
+      insight:
+        "L'activité ne vendait pas des produits. Elle vendait l'accès aux produits, avec des règles de prix et des conditions propres à chaque client. La complexité n'était pas dans le catalogue, elle était dans les règles métier.",
+      decisionLabel: "La décision stratégique",
+      decision:
+        "Au lieu de construire un e-commerce traditionnel, nous avons conçu un Système de Commerce avec un modèle produit unifié. L'utilisateur peut chercher un produit, l'acheter si le système le permet, ou demander un devis sinon.",
+      flowTitle: "Le parcours que cela a ouvert",
+      flow: [
+        { step: "CHERCHER", text: "Trouver un produit par nom, référence, marque ou catégorie." },
+        { step: "ACHETER OU DEVISER", text: "Le système décide quel chemin est ouvert pour ce client et ce produit." },
+        { step: "HISTORIQUE", text: "Chaque devis et chaque commande alimentent l'historique du client." },
+        { step: "RECOMMANDER", text: "Une commande complète peut être repassée, ou marquée comme favorite." }
+      ],
+      enablesTitle: "Ce que cela a laissé ouvert",
+      enables: [
+        "Flux d'approbation automatisés.",
+        "Historique d'activité au-dessus d'un devis.",
+        "Repasser une commande complète.",
+        "Marquer des commandes comme favorites."
+      ],
+      futureTitle: "Vision future",
+      future:
+        "Un système qui gère en auto-service les permissions des contacts qui supervisent d'autres contacts.",
+      screenshot: {
+        id: "SHOT 01",
+        label: "Diagramme du Système de Commerce — chercher → acheter ou deviser → historique → recommander",
+        note: "Remplacer par le vrai diagramme. C'est celui qui explique tout le produit en une image."
+      }
+    },
+
+    systems: {
+      number: "02",
+      title: "Pensée Systémique : Concevoir pour une Complexité Réelle",
+      paragraphs: [
+        "Les règles métier étaient plus complexes que l'interface. Chaque partie de cette section est une décision visant à rendre cette complexité lisible plutôt qu'à la cacher."
+      ],
+      model: {
+        title: "Le modèle client / contact",
+        text:
+          "Nous avons découvert qu'un client se comporte comme une organisation avec plusieurs membres qui partagent les mêmes avantages. Chaque client a un code ; les contacts (employés) commandent avec ce code et en héritent des remises. Le client voit toute l'activité de ses contacts.",
+        chain: ["ORGANISATION", "CONTACTS", "ACTIVITÉ"],
+        outcomesTitle: "Modéliser ainsi a permis :",
+        outcomes: [
+          "Un historique d'achats par contact et consolidé.",
+          "Une base pour les permissions futures.",
+          "Un tunnel de commande pré-rempli, car plus de 85% des créateurs de commandes sont des employés, pas des propriétaires."
+        ]
+      },
+      pdp: {
+        title: "La page détail produit (PDP)",
+        text:
+          "Il n'existe pas de chemin nominal unique. Il y a des branches selon le type de produit : variantes, conditions, matières dangereuses, glace sèche. L'objectif reste toujours le même : chercher → sélectionner → ajouter au panier → acheter.",
+        branchesTitle: "Branches sur la PDP :",
+        branches: [
+          "Les variantes dépendent du produit, pas du client.",
+          "Ce qui concerne le client est de savoir s'il a une remise par défaut sur ce produit.",
+          "Et s'il peut demander un devis sur la commande complète pour obtenir un meilleur prix."
+        ],
+        affectsTitle: "Ce qui varie réellement par client :",
+        affects: [
           {
-            title: "Découverte de produits",
-            items: [
-              "Taux de réussite des recherches",
-              "Engagement sur les fiches produit",
-              "Taux d'affinement de recherche",
-              "Identification réussie du produit avant la demande de devis"
-            ]
+            label: "Remise par défaut",
+            text: "Si le client a déjà une remise automatique sur ce produit."
+          },
+          {
+            label: "Devis sur la commande complète",
+            text: "Si le client peut demander un devis sur la commande complète pour obtenir un meilleur prix."
           }
         ],
-    
-        reflection: {
-          title: "Réflexion",
-    
-          items: [
-            "La transformation numérique commence par comprendre comment une entreprise opère, où l'information se perd et comment concevoir des systèmes qui rétablissent la clarté et l'autonomie.",
-
-            "Ce projet a renforcé ma capacité à naviguer dans l'ambiguïté, à faciliter les conversations transversales et à transformer des flux opérationnels complexes en expériences numériques évolutives.",
-
-            "La leçon la plus précieuse a été de comprendre que le libre-service ne consiste pas simplement à déplacer les transactions en ligne. Il s'agit de donner aux clients l'information et la visibilité dont ils ont besoin pour agir en toute confiance."
-          ]
+        tradeoffLabel: "L'arbitrage",
+        tradeoff:
+          "Nous avons réconcilié des règles métier qui entraient en conflit — remise automatique contre devis manuel — en privilégiant que chaque commande soit valide dès la première tentative. Cela a réduit les erreurs et les retours, au prix de ne pas proposer d'achat en un clic."
+      },
+      orders: {
+        title: "La complexité opérationnelle : bons de livraison",
+        stat: {
+          value: "65%",
+          label: "des commandes étaient réparties sur plusieurs bons de livraison tout en appartenant à une seule commande"
+        },
+        text:
+          "Le détail de commande ne pouvait pas être une liste plate. La hiérarchie devait montrer ce qui appartenait à quelle livraison sans perdre la vue d'ensemble.",
+        chain: ["COMMANDE", "BON DE LIVRAISON", "LIGNE"]
+      },
+      search: {
+        title: "La recherche comme outil de travail",
+        text:
+          "La recherche n'est pas une barre de recherche. Pour un acheteur professionnel, c'est un outil de découverte — et c'est comme cela que je l'ai conçue.",
+        capabilities: [
+          "Recherche par nom, référence, marque et catégorie.",
+          "Suggestion de produits similaires (demandée par le Marketing)."
+        ]
+      },
+      screenshots: [
+        {
+          id: "SHOT 02",
+          label: "Arbre de décision de la PDP — variantes, conditions, remise contre devis",
+          note: "Remplacer par une capture réelle. La branche où remise et devis s'affrontent est celle à montrer."
+        },
+        {
+          id: "SHOT 03",
+          label: "Détail de commande hiérarchique — commande → bon de livraison → ligne",
+          note: "Remplacer par une capture réelle. L'imbrication doit être visible d'un coup d'œil."
+        },
+        {
+          id: "SHOT 04",
+          label: "Recherche unifiée — référence, marque, catégorie, produits similaires",
+          note: "Remplacer par une capture réelle."
         }
-    },
-},
-
-  b2bCommerceV2: {
-    hero: {
-      tag: "COMMERCE B2B · FOURNITURES SCIENTIFIQUES",
-      title: "D'achats assistés par la vente à un commerce B2B en libre-service",
-      description: [
-        "Une entreprise de fournitures scientifiques avait des clients, des produits et des processus de vente établis, mais aucune expérience numérique pour les relier.",
-        "Les clients achetaient par l'intermédiaire des équipes commerciales, par téléphone et par catalogues imprimés. Les départements fonctionnaient avec des règles et des processus différents.",
-      ],
-      role: "Product Designer (de bout en bout)",
-      timeline: "2 ans",
-      team: "Ventes · Marketing · Achats · Comptabilité · Ingénierie",
-      focus: "Stratégie produit · Discovery · Commerce B2B · UX/UI · Recherche · Architecture produit · Libre-service",
-      ndaText:
-        "En raison d'un accord de confidentialité (NDA), les détails commerciaux et certains visuels produits ont été généralisés, tout en préservant le processus de conception et les décisions de conception.",
-    },
-
-    challenge: {
-      title: "Le défi",
-      paragraphs: [
-        "La demande était de construire une expérience de commerce B2B similaire à celle de Fisher Scientific.",
-      ],
-      pivotLabel: "Le défi",
-      pivot: "Le défi n'était pas de mettre un catalogue en ligne.",
-      pivotAfter:
-        "C'était de transformer une opération d'achat complexe et fragmentée en une expérience en libre-service réellement utilisable par les clients.",
-      summaryLabel: "Avant / Après",
-      before: {
-        label: "AVANT",
-        sublabel: "Assisté par la vente",
-        items: [
-          "Téléphone",
-          "Catalogues imprimés",
-          "Devis",
-          "Suivi manuel",
-          "Départements fragmentés"
-        ]
-      },
-      after: {
-        label: "APRÈS",
-        sublabel: "Libre-service",
-        items: [
-          "Recherche",
-          "Découverte produit",
-          "Devis",
-          "Commandes",
-          "Gestion du compte",
-          "Suivi",
-          "Support"
-        ]
-      }
-    },
-
-    productModel: {
-      number: "01",
-      title: "Transformer des processus métier fragmentés en un modèle produit unique",
-      paragraphs: [
-        "Avant de concevoir quoi que ce soit, je devais comprendre comment l'entreprise fonctionnait réellement.",
-        "Les ventes, le marketing, les achats, la comptabilité et le développement avaient chacun une perspective différente du même processus commercial. J'ai animé des ateliers de discovery et cartographié ces perspectives dans un modèle produit partagé.",
-      ],
-      departmentsTitle: "Des départements différents. Des vues différentes du même processus.",
-      departments: [
-        { name: "Ventes", note: "Relations clients · Processus commerciaux" },
-        { name: "Marketing", note: "Produits · Promotions · Contenu" },
-        { name: "Achats", note: "Disponibilité · Approvisionnement" },
-        { name: "Comptabilité", note: "Conditions clients · Règles commerciales" },
-        { name: "Développement", note: "Systèmes · Données · Contraintes techniques" }
-      ],
-      synthesisLabel: "Synthèse",
-      outputsTitle: "Un modèle produit partagé",
-      outputsNote: "Le résultat n'était pas un écran. C'était une compréhension partagée qui pouvait guider les décisions produit entre les équipes.",
-      outputs: [
-        "Règles métier",
-        "Rôles utilisateur",
-        "Logique produit",
-        "Contraintes système"
       ]
     },
 
-    productDetail: {
-      number: "02",
-      title: "Concevoir une fiche produit autour des décisions d'achat",
-      paragraphs: [
-        "C'était le problème le plus difficile. Ce n'était pas un catalogue classique.",
-      ],
-      variantsTitle: "Les produits pouvaient avoir :",
-      variants: [
-        "Aucune variante, plusieurs variantes ou familles de produits",
-        "Achat basé sur devis",
-        "Restrictions d'achat (autorisation requise)",
-        "Manipulation spéciale (matières dangereuses, glace carbonique)"
-      ],
-      variantsClosing:
-        "Pour certains produits scientifiques, les clients pouvaient avoir besoin d'une autorisation pour les acheter. D'autres exigeaient une manipulation spéciale en raison de matières dangereuses ou de la glace carbonique.",
-      questionsTitle: "La fiche produit devait donc répondre à :",
-      questions: [
-        "Qu'est-ce que ce produit ?",
-        "Puis-je l'acheter ?",
-        "Quelle version me faut-il ?",
-        "Quelles conditions s'appliquent ?",
-        "Ai-je besoin d'un devis ?"
-      ],
-      pathsTitle: "Une expérience produit, plusieurs parcours d'achat",
-      paths: [
-        "Achat direct",
-        "Sélection de variante",
-        "Famille de produits",
-        "Demander un devis",
-        "Restriction d'achat"
-      ],
-      closing:
-        "Le défi était d'exposer la bonne information au bon moment sans transformer la page en un mur de règles métier.",
-      ui: {
-        label: "Fiche produit conceptuelle — anonymisée",
-        imageLabel: "IMAGE DU PRODUIT",
-        brand: "FOURNITURES SCIENTIFIQUES",
-        name: "Milieu de culture cellulaire X",
-        sku: "SKU 4521-900ML",
-        priceLabel: "Prix",
-        priceValue: "Sur demande",
-        quoteLabel: "OU",
-        availability: "En stock · Expédition sous 48 h",
-        variantLabel: "Choisir la taille",
-        variants: ["500 ml", "1 L", "2 L"],
-        conditionLabel: "Conditions d'achat",
-        condition: "Autorisation requise",
-        conditionNote: "Matière dangereuse — achat restreint",
-        handlingLabel: "Manipulation spéciale",
-        handling: "Expédition avec glace carbonique",
-        handlingNote: "Conditionné avec glace carbonique — livraison express",
-        buyButton: "Ajouter au panier",
-        quoteButton: "Demander un devis",
-        infoLabel: "Éligible à la commande",
-        quoteInfo: "Le prix doit être confirmé par les ventes"
-      },
-      callouts: [
-        { number: "01", title: "Configuration du produit", text: "Variantes / familles" },
-        { number: "02", title: "Parcours d'achat", text: "Acheter vs. demander un devis" },
-        { number: "03", title: "Éligibilité", text: "Exigences d'autorisation" },
-        { number: "04", title: "Manipulation spéciale", text: "Matières dangereuses / glace carbonique" }
-      ]
-    },
-
-    searchEcosystem: {
+    execution: {
       number: "03",
-      title: "Rendre un vaste catalogue scientifique recherchable",
+      title: "Exécution et Leadership : Aligner l'Organisation",
       paragraphs: [
-        "La recherche est devenue une méthode de navigation primaire. Les acheteurs professionnels arrivaient avec des requêtes précises — nom du produit, marque, SKU — tandis que d'autres avaient besoin d'explorer.",
-        "J'ai conçu la recherche comme un système de découverte, pas comme un champ.",
+        "Le succès dépendait de deux choses à la fois : que ce soit techniquement possible, et que les départements l'adoptent."
       ],
-      systemTitle: "La recherche n'était pas un champ. C'était un système de découverte.",
-      system: [
-        "Autocomplétion",
-        "Suggestions",
-        "Recherches récentes",
-        "Recherches populaires",
-        "Catégories",
-        "Marques",
-        "Filtres",
-        "Produits similaires",
-        "Promotions"
+      feasibilityTitle: "Ce qui rendait la chose techniquement difficile",
+      feasibility: [
+        "Limites de stockage des données.",
+        "Stock mis à jour tous les quinze jours via Excel.",
+        "Déconnexion entre les images et les produits."
       ],
-      flowTitle: "De la recherche à la décision produit",
-      flow: ["Recherche", "Suggestions", "Résultats", "Filtres", "Produit", "Décision"],
-      flowNote: "L'objectif était d'aider les clients à passer de l'intention au bon produit sans leur demander de comprendre la structure sous-jacente du catalogue.",
-      ui: {
-        label: "Écosystème de recherche — conceptuel",
-        tabs: ["Saisie de recherche", "Résultats", "Découverte produit"],
-        inStock: "En stock",
-        onDemand: "Sur demande",
-        inputPlaceholder: "Rechercher produits, marques, SKU…",
-        recentTitle: "Recherches récentes",
-        recent: ["Extraction d'ADN", "Pipettes", "Sérum"],
-        popularTitle: "Recherches populaires",
-        popular: ["Culture cellulaire", "Microplaques", "Tampons"],
-        suggestedTitle: "Suggéré",
-        categoriesLabel: "Catégories",
-        categories: ["Biologie moléculaire"],
-        productsLabel: "Produits",
-        products: ["Agarose LE"],
-        resultsTitle: "Résultats",
-        filtersTitle: "Filtres",
-        filters: ["Marque", "Catégorie", "Disponibilité"],
-        activeFilter: "En stock",
-        resultItems: [
-          { name: "Agarose LE", brand: "SciBrand", sku: "SKU 2214" },
-          { name: "Agarose SEAKEM", brand: "SciBrand", sku: "SKU 2218" },
-          { name: "Tris-acétate", brand: "BioLab", sku: "SKU 8810" },
-          { name: "SYBR Safe", brand: "BioLab", sku: "SKU 9004" }
-        ],
-        discoveryTitle: "Découverte produit",
-        relatedTitle: "Produits associés",
-        related: ["Agarose LM", "Tampon de charge", "Ladder 1 kb"],
-        promoTitle: "Promotions",
-        promos: ["-20 % sur les tampons", "Livraison offerte en chaîne du froid"]
-      }
-    },
-
-    twoMarkets: {
-      number: "04",
-      title: "Concevoir une seule plateforme pour deux marchés",
-      paragraphs: [
-        "La plateforme servait des clients en Espagne et au Portugal. La langue, les produits, le stock, les promotions, le contenu et les conditions commerciales différaient — mais l'objectif n'était pas deux boutiques.",
-      ],
-      closing: "L'objectif n'était pas deux boutiques.",
-      closing2: "C'était un seul système avec des contextes différents : une expérience cohérente, un comportement propre à chaque marché.",
-      platformLabel: "UNE PLATEFORME",
-      spain: { label: "ESPAGNE", items: ["Espagnol", "Catalogue", "Stock", "Promotions", "Contenu", "Conditions commerciales"] },
-      portugal: { label: "PORTUGAL", items: ["Portugais", "Catalogue", "Stock", "Promotions", "Contenu", "Conditions commerciales"] },
-      sharedNote: "Expérience partagée + comportement propre au marché"
-    },
-
-    organization: {
-      number: "05",
-      title: "Concevoir le libre-service autour de l'organisation",
-      paragraphs: [
-        "L'achat B2B n'est pas une activité individuelle. Le produit devait représenter l'organisation derrière l'acheteur : acheteurs autorisés, permissions, adresses de livraison, activité individuelle, activité d'équipe et historique de commandes.",
-      ],
-      questionsIntro: "L'expérience devait répondre non seulement à",
-      questions: [
-        "Que puis-je acheter ?",
-        "Que puis-je faire au nom de mon organisation ?"
-      ],
-      goal: "L'objectif était de réduire le besoin des clients de contacter les ventes pour des tâches routinières.",
-      quote: "Le client n'était pas seulement un acheteur. C'était une organisation.",
-      ui: {
-        label: "Écrans de compte conceptuels — anonymisés",
-        orgTab: "Organisation",
-        orgItems: ["Membres", "Rôles et permissions", "Adresses", "Activité"],
-        ordersTab: "Commandes",
-        ordersItems: ["Historique", "Statut", "Détails"],
-        memberName: "M. García",
-        memberRole: "Acheteur",
-        memberStatus: "Autorisé",
-        addressLabel: "Adresse de livraison",
-        address: "Madrid — Lab 3, Av. Principal 12",
-        activityLabel: "Dernière activité",
-        activity: "Commande #4821 · il y a 2 jours",
-        orderRow: [
-          { id: "#4817", status: "Livré", date: "02 sept." },
-          { id: "#4821", status: "En transit", date: "09 sept." },
-          { id: "#4830", status: "En cours", date: "12 sept." }
-        ]
-      }
-    },
-
-    postPurchase: {
-      number: "06",
-      title: "Relier l'achat à ce qui se passe après le checkout",
-      paragraphs: [
-        "L'expérience ne s'arrêtait pas au checkout. J'ai travaillé avec les développeurs et les parties prenantes pour traduire la logistique en expérience orientée client : emballage, progression de l'expédition et documentation de livraison.",
-      ],
-      needsTitle: "Elle devait aussi gérer ce qui se passe quand quelque chose tourne mal :",
-      needs: ["Retours", "Incidents", "Support technique", "Demandes clients"],
-      principleTitle: "Le client ne devrait pas avoir à comprendre la structure interne de l'entreprise pour obtenir de l'aide.",
-      orderTitle: "Commande",
-      orderFlow: ["Commande", "Emballage", "Expédition", "Livraison"],
-      problemTitle: "Problème",
-      problemFlow: ["Incident", "Support / Retour", "Acheminement interne", "Résolution"],
-      principleA: "Le client décrit le problème.",
-      principleB: "Le système l'achemine au bon endroit."
-    },
-
-    adoption: {
-      number: "07",
-      title: "Concevoir pour l'adoption, pas seulement pour le lancement",
-      paragraphs: [
-        "Les clients existants savaient déjà acheter. Ils savaient qui appeler, à qui écrire, comment demander un devis.",
-        "Les amener au libre-service ne pouvait pas signifier les obliger à apprendre un processus complètement différent. Le produit préservait les concepts commerciaux connus tout en supprimant les frictions inutiles.",
-      ],
-      wrongTitle: "L'objectif n'était pas",
-      wrong: "Faire que les clients utilisent le site web.",
-      rightTitle: "C'était",
-      right: "Rendre le site web plus facile que d'appeler."
-    },
-
-    transformation: {
-      title: "Ce qui a changé",
-      before: {
-        label: "AVANT · Assisté par la vente",
-        items: [
-          "Téléphone",
-          "E-mail",
-          "Catalogues imprimés",
-          "Devis manuels",
-          "Suivi manuel des commandes",
-          "Processus fragmentés"
-        ]
-      },
-      after: {
-        label: "APRÈS · Libre-service",
-        items: [
-          "Recherche",
-          "Découverte produit",
-          "Devis",
-          "Commandes",
-          "Gestion du compte",
-          "Suivi",
-          "Support",
-          "Retours"
-        ]
-      }
-    },
-
-    outcome: {
-      title: "Résultat",
-      intro:
-        "Le produit a réuni les processus commerciaux et opérationnels dans une expérience de commerce B2B unique au service des clients en Espagne et au Portugal.",
-      sections: [
+      resistanceTitle: "Gérer la résistance",
+      resistanceIntro:
+        "Trois groupes ont poussé en sens contraire, chacun pour une raison différente. Chacun avait besoin d'une réponse différente.",
+      resistance: [
         {
-          title: "Découverte produit",
-          items: [
-            "Recherche, catégories, marques, filtres, suggestions et produits associés."
-          ]
+          stakeholder: "Ventes",
+          resisted: "Résistaient parce que « les processus ne pouvaient pas être réalisés à 100% dans la plateforme ».",
+          action:
+            "Mon rôle a été de cartographier quelles parties du processus pouvaient être intégrées et lesquelles non, et de proposer un modèle hybride."
         },
         {
-          title: "Achat",
-          items: [
-            "Achats directs, variantes, familles de produits et produits basés sur devis coexistant dans une seule expérience."
-          ]
+          stakeholder: "Marketing",
+          resisted: "Résistaient parce qu'ils voulaient des métriques Google Analytics spécifiques.",
+          action:
+            "J'ai suggéré d'implémenter d'abord les plus pertinentes et d'expliquer lesquelles étaient prioritaires. Cela reste en attente."
         },
         {
-          title: "Autonomie du client",
-          items: [
-            "Les organisations gèrent les acheteurs, les permissions, les adresses et l'activité d'achat."
-          ]
-        },
-        {
-          title: "Au-delà de l'achat",
-          items: [
-            "La logistique, le support, les retours et les incidents ont fait partie de l'expérience client."
-          ]
+          stakeholder: "PDG",
+          resisted: "Voulait copier Fisher Scientific.",
+          action:
+            "Mon travail a été d'utiliser la référence comme repère et non comme copie, et de trouver le juste milieu entre ce que le Marketing voulait, ce que l'équipe technique approuvait et ce que le PDG exigeait."
         }
       ],
-      glanceTitle: "Indicateurs en un coup d'œil",
-      glance: [
-        { value: "2 ans", label: "Évolution produit" },
-        { value: "Espagne + Portugal", label: "Marchés" },
-        { value: "500k+ produits", label: "Vaste catalogue" },
-        { value: "Acheter · Configurer · Devis · Restreint", label: "Parcours d'achat" }
+      validationTitle: "Comment nous avons validé",
+      validation: [
+        { label: "Analyse", text: "Ateliers avec les départements." },
+        { label: "Design", text: "Revues avec les parties prenantes." },
+        {
+          label: "Interaction",
+          text: "Prototypes pour évaluer la réponse du système, les processus de fond et les changements en temps réel."
+        },
+        {
+          label: "A/B testing",
+          text: "Avec les employés de l'entreprise elle-même — tester avec de vrais utilisateurs n'était pas autorisé."
+        },
+        { label: "Après lancement", text: "Retours d'utilisateurs réels après chaque déploiement." }
       ],
-      reflectionTitle: "Réflexion",
-      reflectionLead: "Le commerce B2B n'est pas qu'un simple e-commerce.",
-      reflectionItems: [
-        "Derrière chaque produit se cache un ensemble de règles métier.",
-        "Derrière chaque acheteur se cache une organisation.",
-        "Derrière chaque commande se cache un processus opérationnel.",
-        "Mon rôle était de relier ces couches et d'en faire une expérience cohérente pour le client."
+      supervisionTitle: "Supervision technique",
+      supervision:
+        "J'ai supervisé une équipe de 3 développeurs pour que ce qui est livré corresponde aux cas d'usage, aux designs et aux règles métier. J'ai également fait les tests QA aux côtés de la personne QA."
+    },
+
+    impact: {
+      number: "04",
+      title: "Impact : Ce que Nous Savons (Sans Métriques Formelles)",
+      limitationTitle: "Limitation honnête",
+      limitation:
+        "L'entreprise n'a jamais défini de métriques formelles. La mesure reposait sur la satisfaction des parties prenantes — ce qui était demandé versus ce qui a été livré — et non sur le comportement des utilisateurs finaux.",
+      columns: ["Domaine", "Avant", "Après", "Preuve"],
+      rows: [
+        [
+          "Gestion des commandes",
+          "100% par téléphone et e-mail",
+          "Auto-service sur le portail",
+          "Moins d'appels pour la gestion des commandes"
+        ],
+        [
+          "Support technique",
+          "E-mails directs sans traçabilité",
+          "Tickets centralisés sur la plateforme et l'ERP",
+          "Les départements reçoivent les tickets depuis la plateforme"
+        ],
+        [
+          "Mise à jour des produits",
+          "Processus lent et désorganisé",
+          "Quasi immédiate pour le client",
+          "Retours internes des Opérations"
+        ],
+        [
+          "Devis",
+          "Manuels, par e-mail",
+          "Générables sur la plateforme",
+          "Livré en V2"
+        ],
+        [
+          "Historique d'achats",
+          "Inexistant pour le client",
+          "Son propre historique et celui de ses contacts visibles",
+          "Livré en V2"
+        ],
+        [
+          "Commande récurrente",
+          "Manuelle",
+          "Commande complète repassable et marquable comme favorite",
+          "Livré en V2"
+        ]
       ],
-      reflectionClose:
-        "Les meilleures expériences en libre-service ne rendent pas l'entreprise plus simple. Elles rendent sa complexité plus facile à naviguer pour les clients."
-    }
+      tableNote:
+        "Là où j'ai un signal qualitatif je le dis ; là où je n'ai pas de métrique je laisse la cellule telle quelle plutôt que d'en inventer une.",
+      evolutionTitle: "Évolution du produit",
+      evolution: [
+        "3 versions livrées en 2 ans.",
+        "4e version en planification."
+      ],
+      pendingTitle: "En attente",
+      pending: [
+        "Analytique",
+        "Gestion avancée client / contact",
+        "Retours",
+        "Incidents",
+        "Devis avec flux d'approbation automatisés"
+      ],
+      quoteLabel: "Phrase d'impact",
+      quote:
+        "J'ai numérisé un processus 100% manuel — téléphone, e-mail, PDF — en une plateforme d'auto-service qui gère aujourd'hui commandes, devis et support technique, réduisant les appels opérationnels et centralisant l'activité client dans l'ERP."
+    },
+
+    reflections: {
+      number: "05",
+      title: "Réflexions et Vision Future",
+      intro:
+        "Ce projet n'était pas qu'une refonte d'UI/UX. C'était la re-architecture du modèle d'affaires numérique de l'entreprise, sous de fortes contraintes techniques et une culture organisationnelle résistante au changement.",
+      contributionTitle: "Ma plus grande contribution en tant que designer",
+      contribution: [
+        "Définir la vision produit depuis le métier, pas depuis l'UI.",
+        "Unifier des départements qui fonctionnaient avec des logiques différentes.",
+        "Concevoir un système qui soutient le présent et ouvre le futur — permissions, approbations, analytique.",
+        "Superviser l'implémentation pour que la logique métier ne se perde pas dans le code."
+      ],
+      roadmapTitle: "Feuille de route — 12 prochains mois",
+      roadmap: [
+        "Instrumenter l'analytique produit (Google Analytics ou autre).",
+        "Gestion avancée des permissions pour les contacts.",
+        "Flux de retours et d'incidents.",
+        "Devis avec flux d'approbation automatisés."
+      ]
+    },
   },
 
 };

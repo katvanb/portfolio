@@ -1,0 +1,480 @@
+---
+import SectionHeading from "../shared/SectionHeading.astro";
+import Screenshot from "../shared/Screenshot.astro";
+
+interface Props {
+  number: string;
+  title: string;
+  paragraphs: string[];
+  discoveryTitle: string;
+  discoveryStats: { value: string; label: string }[];
+  discoveryText: string;
+  insightLabel: string;
+  insight: string;
+  decisionLabel: string;
+  decision: string;
+  flowTitle: string;
+  flow: { step: string; text: string }[];
+  enablesTitle: string;
+  enables: string[];
+  futureTitle: string;
+  future: string;
+  screenshot: { id: string; label: string; note: string };
+}
+
+const {
+  number,
+  title,
+  paragraphs,
+  discoveryTitle,
+  discoveryStats,
+  discoveryText,
+  insightLabel,
+  insight,
+  decisionLabel,
+  decision,
+  flowTitle,
+  flow,
+  enablesTitle,
+  enables,
+  futureTitle,
+  future,
+  screenshot,
+} = Astro.props;
+---
+
+<section class="vision" id="vision">
+
+  <SectionHeading number={number} title={title} />
+
+  <div class="body">
+    {
+      paragraphs.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))
+    }
+  </div>
+
+  <h3 class="sub-title">
+    {discoveryTitle}
+  </h3>
+
+  <div class="stats">
+    {
+      discoveryStats.map((stat) => (
+        <div class="stat">
+          <span class="stat-value">{stat.value}</span>
+          <span class="stat-label">{stat.label}</span>
+        </div>
+      ))
+    }
+  </div>
+
+  <p class="discovery-text">
+    {discoveryText}
+  </p>
+
+  <div class="insight">
+
+    <span class="insight-label">
+      {insightLabel}
+    </span>
+
+    <p class="insight-text">
+      {insight}
+    </p>
+
+  </div>
+
+  <div class="decision">
+
+    <span class="decision-label">
+      {decisionLabel}
+    </span>
+
+    <p class="decision-text">
+      {decision}
+    </p>
+
+  </div>
+
+  <h3 class="sub-title">
+    {flowTitle}
+  </h3>
+
+  <ol class="flow">
+    {
+      flow.map((step) => (
+        <li>
+          <span class="flow-step">{step.step}</span>
+          <span class="flow-text">{step.text}</span>
+        </li>
+      ))
+    }
+  </ol>
+
+  <h3 class="sub-title">
+    {enablesTitle}
+  </h3>
+
+  <ul class="enables">
+    {
+      enables.map((item) => (
+        <li>{item}</li>
+      ))
+    }
+  </ul>
+
+  <div class="future">
+
+    <span class="future-label">
+      {futureTitle}
+    </span>
+
+    <p class="future-text">
+      {future}
+    </p>
+
+  </div>
+
+  <Screenshot
+    id={screenshot.id}
+    label={screenshot.label}
+    note={screenshot.note}
+  />
+
+</section>
+
+
+<style>
+
+.vision {
+  margin-top: var(--section-spacing);
+}
+
+
+.body {
+
+  max-width: 800px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-md);
+}
+
+
+.body p {
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: var(--line-height-body-lg);
+}
+
+
+.sub-title {
+
+  margin: var(--space-xl) 0 var(--space-md);
+
+  font-size: var(--font-size-h3);
+
+  line-height: var(--line-height-h3);
+
+  font-weight: var(--font-weight-h3);
+}
+
+
+.stats {
+
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  border-top: 1px solid var(--color-border);
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+
+.stat {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: var(--space-xs);
+
+  padding: var(--space-lg) var(--space-md);
+
+  text-align: center;
+
+  border-right: 1px solid var(--color-border);
+}
+
+
+.stat:last-child {
+  border-right: none;
+}
+
+
+.stat-value {
+
+  font-size: var(--font-size-display);
+
+  line-height: 1;
+
+  font-weight: 600;
+
+  color: var(--color-accent);
+
+  letter-spacing: -0.02em;
+}
+
+
+.stat-label {
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+  line-height: 1.4;
+}
+
+
+.discovery-text {
+
+  max-width: 800px;
+
+  margin: var(--space-md) 0 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.6;
+}
+
+
+.insight,
+.decision {
+
+  margin-top: var(--space-lg);
+
+  padding: var(--space-md) var(--space-lg);
+
+  border-radius: var(--radius-md);
+}
+
+
+.insight {
+  background: var(--color-bg-secondary);
+}
+
+
+.decision {
+  background: var(--color-accent-soft);
+}
+
+
+.insight-label,
+.decision-label,
+.future-label {
+
+  display: block;
+
+  margin-bottom: var(--space-xs);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-label);
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+
+.insight-text {
+
+  margin: 0;
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-h3);
+
+  line-height: var(--line-height-h3);
+
+  font-weight: var(--font-weight-h3);
+}
+
+
+.decision-text {
+
+  max-width: 800px;
+
+  margin: 0;
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: var(--line-height-body-lg);
+}
+
+
+.flow {
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+
+  border-top: 1px solid var(--color-border);
+}
+
+
+.flow li {
+
+  display: flex;
+
+  align-items: baseline;
+
+  gap: var(--space-md);
+
+  padding: var(--space-sm) var(--space-md);
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+
+.flow-step {
+
+  flex-shrink: 0;
+
+  min-width: 180px;
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-small);
+
+  color: var(--color-accent);
+
+  letter-spacing: 0.05em;
+}
+
+
+.flow-text {
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.6;
+}
+
+
+.enables {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 0;
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+
+  border-top: 1px solid var(--color-border);
+
+  border-left: 1px solid var(--color-border);
+}
+
+
+.enables li {
+
+  padding: var(--space-sm) var(--space-md);
+
+  border-right: 1px solid var(--color-border);
+
+  border-bottom: 1px solid var(--color-border);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.6;
+}
+
+
+.future {
+
+  margin-top: var(--space-lg);
+
+  padding: var(--space-md) var(--space-lg);
+
+  border-left: 2px solid var(--color-accent);
+
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+
+  background: var(--color-bg-secondary);
+}
+
+
+.future-text {
+
+  margin: 0;
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.6;
+}
+
+
+@media (max-width: 768px) {
+
+  .stats,
+  .enables {
+
+    grid-template-columns: 1fr;
+
+  }
+
+
+  .stat {
+
+    border-right: none;
+
+    border-bottom: 1px solid var(--color-border);
+
+  }
+
+
+  .stat:last-child {
+    border-bottom: none;
+  }
+
+
+  .flow li {
+
+    flex-direction: column;
+
+    gap: var(--space-xs);
+
+  }
+
+}
+
+</style>

@@ -1,0 +1,197 @@
+---
+import SectionHeading from "../shared/SectionHeading.astro";
+
+interface Props {
+  number: string;
+  title: string;
+  intro: string;
+  contributionTitle: string;
+  contribution: string[];
+  roadmapTitle: string;
+  roadmap: string[];
+}
+
+const {
+  number,
+  title,
+  intro,
+  contributionTitle,
+  contribution,
+  roadmapTitle,
+  roadmap,
+} = Astro.props;
+---
+
+<section class="reflections" id="reflections">
+
+  <SectionHeading number={number} title={title} />
+
+  <p class="intro">
+    {intro}
+  </p>
+
+  <h3 class="sub-title">
+    {contributionTitle}
+  </h3>
+
+  <ol class="contribution">
+    {
+      contribution.map((item) => (
+        <li>{item}</li>
+      ))
+    }
+  </ol>
+
+  <h3 class="sub-title">
+    {roadmapTitle}
+  </h3>
+
+  <ul class="roadmap">
+    {
+      roadmap.map((item) => (
+        <li>{item}</li>
+      ))
+    }
+  </ul>
+
+</section>
+
+
+<style>
+
+.reflections {
+  margin-top: var(--section-spacing);
+}
+
+
+.intro {
+
+  max-width: 800px;
+
+  margin: 0 0 var(--space-lg);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: var(--line-height-body-lg);
+}
+
+
+.sub-title {
+
+  margin: var(--space-xl) 0 var(--space-md);
+
+  font-size: var(--font-size-h3);
+
+  line-height: var(--line-height-h3);
+
+  font-weight: var(--font-weight-h3);
+}
+
+
+.contribution {
+
+  display: grid;
+
+  gap: 0;
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+
+  counter-reset: contribution;
+
+  border-top: 1px solid var(--color-border);
+
+  border-left: 1px solid var(--color-border);
+}
+
+
+.contribution li {
+
+  position: relative;
+
+  padding: var(--space-md) var(--space-md) var(--space-md) var(--space-2xl);
+
+  border-right: 1px solid var(--color-border);
+
+  border-bottom: 1px solid var(--color-border);
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.6;
+
+  counter-increment: contribution;
+}
+
+
+.contribution li::before {
+
+  position: absolute;
+
+  top: var(--space-md);
+
+  left: var(--space-md);
+
+  content: counter(contribution, decimal-leading-zero);
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-small);
+
+  color: var(--color-accent);
+
+}
+
+
+.roadmap {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 0;
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+
+  border-top: 1px solid var(--color-border);
+
+  border-left: 1px solid var(--color-border);
+}
+
+
+.roadmap li {
+
+  padding: var(--space-sm) var(--space-md);
+
+  border-right: 1px solid var(--color-border);
+
+  border-bottom: 1px solid var(--color-border);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+
+  .roadmap {
+
+    grid-template-columns: 1fr;
+
+  }
+
+}
+
+</style>

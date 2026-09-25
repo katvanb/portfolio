@@ -1,0 +1,451 @@
+---
+import SectionHeading from "../shared/SectionHeading.astro";
+import Screenshot from "../shared/Screenshot.astro";
+
+interface Props {
+  number: string;
+  title: string;
+  paragraphs: string[];
+  beforeTitle: string;
+  beforeRoles: string[];
+  afterTitle: string;
+  afterRoles: string[];
+  multiTitle: string;
+  multiIntro: string;
+  orgAdmin: string;
+  subLabel: string;
+  subRoles: string[];
+  decisionTitle: string;
+  decisionText: string;
+  futureTitle: string;
+  future: string[];
+  screenshot: { id: string; label: string; note: string };
+}
+
+const {
+  number,
+  title,
+  paragraphs,
+  beforeTitle,
+  beforeRoles,
+  afterTitle,
+  afterRoles,
+  multiTitle,
+  multiIntro,
+  orgAdmin,
+  subLabel,
+  subRoles,
+  decisionTitle,
+  decisionText,
+  futureTitle,
+  future,
+  screenshot,
+} = Astro.props;
+---
+
+<section class="role-model" id="vision">
+
+  <SectionHeading number={number} title={title} />
+
+  <div class="body">
+    {
+      paragraphs.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))
+    }
+  </div>
+
+  <div class="models">
+
+    <div class="model">
+
+      <span class="model-label">
+        {beforeTitle}
+      </span>
+
+      <ul class="roles">
+        {
+          beforeRoles.map((role) => (
+            <li>{role}</li>
+          ))
+        }
+      </ul>
+
+    </div>
+
+
+    <div class="model">
+
+      <span class="model-label">
+        {afterTitle}
+      </span>
+
+      <ul class="roles">
+        {
+          afterRoles.map((role) => (
+            <li>{role}</li>
+          ))
+        }
+      </ul>
+
+      <p class="model-note">
+        {multiIntro}
+      </p>
+
+      <div class="multi">
+
+        <div class="multi-head">
+          {orgAdmin}
+        </div>
+
+        <div class="sub">
+
+          <span class="sub-label">
+            {subLabel}
+          </span>
+
+          <ul class="roles nested">
+            {
+              subRoles.map((role) => (
+                <li>{role}</li>
+              ))
+            }
+          </ul>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="decision">
+
+    <span class="decision-label">
+      {decisionTitle}
+    </span>
+
+    <p class="decision-text">
+      {decisionText}
+    </p>
+
+  </div>
+
+  <div class="future">
+
+    <span class="future-label">
+      {futureTitle}
+    </span>
+
+    <ul class="future-list">
+      {
+        future.map((item) => (
+          <li>{item}</li>
+        ))
+      }
+    </ul>
+
+  </div>
+
+  <Screenshot
+    id={screenshot.id}
+    label={screenshot.label}
+    note={screenshot.note}
+  />
+
+</section>
+
+
+<style>
+
+.role-model {
+  margin-top: var(--section-spacing);
+}
+
+
+.body {
+
+  max-width: 800px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-md);
+
+}
+
+
+.body p {
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: var(--line-height-body-lg);
+
+}
+
+
+.models {
+
+  display: grid;
+
+  grid-template-columns: 1fr 1.4fr;
+
+  gap: var(--space-lg);
+
+  margin-top: var(--space-xl);
+
+}
+
+
+.model-label {
+
+  display: block;
+
+  margin-bottom: var(--space-sm);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-label);
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+}
+
+
+.roles {
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+
+  border-top: 1px solid var(--color-border);
+
+}
+
+
+.roles li {
+
+  padding: var(--space-sm) var(--space-md);
+
+  border-bottom: 1px solid var(--color-border);
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-body);
+
+}
+
+
+.model-note {
+
+  margin: var(--space-md) 0 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+  line-height: 1.5;
+
+}
+
+
+.multi {
+
+  margin-top: var(--space-sm);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-sm);
+
+  overflow: hidden;
+
+}
+
+
+.multi-head {
+
+  padding: var(--space-sm) var(--space-md);
+
+  background: var(--color-accent-soft);
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-body);
+
+  font-weight: 500;
+
+}
+
+
+.sub {
+
+  padding: var(--space-sm) var(--space-md) var(--space-md) var(--space-lg);
+
+  border-top: 1px solid var(--color-border);
+
+}
+
+
+.sub-label {
+
+  display: block;
+
+  margin: var(--space-sm) 0 var(--space-xs);
+
+  color: var(--color-text-secondary);
+
+  font-family: "Courier New", Courier, monospace;
+
+  font-size: var(--font-size-small);
+
+  letter-spacing: 0.05em;
+
+}
+
+
+.roles.nested {
+
+  border-top: none;
+
+}
+
+
+.roles.nested li {
+
+  padding-left: 0;
+
+  border-bottom: 1px solid var(--color-border);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+}
+
+
+.roles.nested li:last-child {
+  border-bottom: none;
+}
+
+
+.decision {
+
+  margin-top: var(--space-xl);
+
+  padding: var(--space-md) var(--space-lg);
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-accent-soft);
+}
+
+
+.decision-label {
+
+  display: block;
+
+  margin-bottom: var(--space-xs);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-label);
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+}
+
+
+.decision-text {
+
+  margin: 0;
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-h3);
+
+  line-height: var(--line-height-h3);
+
+  font-weight: var(--font-weight-h3);
+
+}
+
+
+.future {
+
+  margin-top: var(--space-lg);
+
+}
+
+
+.future-label {
+
+  display: block;
+
+  margin-bottom: var(--space-sm);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-label);
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+}
+
+
+.future-list {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: var(--space-xs);
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+
+}
+
+
+.future-list li {
+
+  padding: var(--space-xs) var(--space-md);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 999px;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+}
+
+
+@media (max-width: 768px) {
+
+  .models {
+
+    grid-template-columns: 1fr;
+
+  }
+
+}
+
+</style>

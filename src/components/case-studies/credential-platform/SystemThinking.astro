@@ -1,0 +1,409 @@
+---
+import SectionHeading from "../shared/SectionHeading.astro";
+import Screenshot from "../shared/Screenshot.astro";
+
+interface Props {
+  number: string;
+  title: string;
+  paragraphs: string[];
+  matrixTitle: string;
+  matrixColumns: string[];
+  matrixRows: string[][];
+  statesTitle: string;
+  statesIntro: string;
+  states: string[];
+  eventsTitle: string;
+  events: string[];
+  eventsNote: string;
+  docsTitle: string;
+  docs: { title: string; text: string }[];
+  docsClosing: string;
+  screenshots: { id: string; label: string; note: string }[];
+}
+
+const {
+  number,
+  title,
+  paragraphs,
+  matrixTitle,
+  matrixColumns,
+  matrixRows,
+  statesTitle,
+  statesIntro,
+  states,
+  eventsTitle,
+  events,
+  eventsNote,
+  docsTitle,
+  docs,
+  docsClosing,
+  screenshots,
+} = Astro.props;
+---
+
+<section class="systems" id="systems">
+
+  <SectionHeading number={number} title={title} />
+
+  <div class="body">
+    {
+      paragraphs.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))
+    }
+  </div>
+
+  <h3 class="sub-title">
+    {matrixTitle}
+  </h3>
+
+  <div class="table-wrap">
+
+    <table>
+
+      <thead>
+        <tr>
+          {
+            matrixColumns.map((column) => (
+              <th>{column}</th>
+            ))
+          }
+        </tr>
+      </thead>
+
+      <tbody>
+        {
+          matrixRows.map((row) => (
+            <tr>
+              {
+                row.map((cell, index) => (
+                  <td class={index === 0 ? "role" : undefined}>
+                    {cell}
+                  </td>
+                ))
+              }
+            </tr>
+          ))
+        }
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <h3 class="sub-title">
+    {statesTitle}
+  </h3>
+
+  <p class="states-intro">
+    {statesIntro}
+  </p>
+
+  <ul class="states">
+    {
+      states.map((state) => (
+        <li>{state}</li>
+      ))
+    }
+  </ul>
+
+  <h3 class="sub-title">
+    {eventsTitle}
+  </h3>
+
+  <ul class="events">
+    {
+      events.map((event) => (
+        <li>{event}</li>
+      ))
+    }
+  </ul>
+
+  <p class="events-note">
+    {eventsNote}
+  </p>
+
+  <h3 class="sub-title">
+    {docsTitle}
+  </h3>
+
+  <ul class="docs">
+    {
+      docs.map((doc) => (
+        <li>
+          <span class="doc-title">{doc.title}</span>
+          <span class="doc-text">{doc.text}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="docs-closing">
+    {docsClosing}
+  </p>
+
+  {
+    screenshots.map((screenshot) => (
+      <Screenshot
+        id={screenshot.id}
+        label={screenshot.label}
+        note={screenshot.note}
+      />
+    ))
+  }
+
+</section>
+
+
+<style>
+
+.systems {
+  margin-top: var(--section-spacing);
+}
+
+
+.body {
+
+  max-width: 800px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-md);
+
+}
+
+
+.body p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-body-lg);
+}
+
+
+.sub-title {
+
+  margin: var(--space-xl) 0 var(--space-md);
+
+  font-size: var(--font-size-h3);
+
+  line-height: var(--line-height-h3);
+
+  font-weight: var(--font-weight-h3);
+}
+
+
+.table-wrap {
+
+  width: 100%;
+
+  overflow-x: auto;
+
+  border: 1px solid var(--color-border);
+}
+
+
+table {
+
+  width: 100%;
+
+  border-collapse: collapse;
+
+  font-size: var(--font-size-body);
+}
+
+
+th {
+
+  padding: var(--space-md);
+
+  text-align: left;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-label);
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  border-bottom: 1px solid var(--color-border);
+
+  background: var(--color-bg-secondary);
+
+  white-space: nowrap;
+}
+
+
+td {
+
+  padding: var(--space-sm) var(--space-md);
+
+  border-bottom: 1px solid var(--color-border);
+
+  vertical-align: top;
+
+  line-height: 1.5;
+
+  color: var(--color-text-secondary);
+}
+
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+
+td.role {
+
+  color: var(--color-text-primary);
+
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+
+.states-intro {
+
+  max-width: 800px;
+
+  margin: 0 0 var(--space-md);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.6;
+}
+
+
+.states {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: var(--space-xs);
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+
+.states li {
+
+  padding: var(--space-xs) var(--space-md);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 999px;
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-small);
+}
+
+
+.events,
+.docs {
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+
+  border-top: 1px solid var(--color-border);
+}
+
+
+.events li {
+
+  padding: var(--space-sm) var(--space-md);
+
+  border-bottom: 1px solid var(--color-border);
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-body);
+
+  line-height: 1.6;
+}
+
+
+.events-note {
+
+  margin: var(--space-sm) 0 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+  font-style: italic;
+
+  line-height: 1.6;
+}
+
+
+.docs li {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-xs);
+
+  padding: var(--space-md);
+
+  border-right: 1px solid var(--color-border);
+
+  border-bottom: 1px solid var(--color-border);
+
+  border-left: 1px solid var(--color-border);
+}
+
+
+.doc-title {
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-body);
+
+  font-weight: 500;
+}
+
+
+.doc-text {
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-small);
+
+  line-height: 1.6;
+}
+
+
+.docs-closing {
+
+  margin: var(--space-md) 0 0;
+
+  padding: var(--space-md) var(--space-lg);
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-accent-soft);
+
+  color: var(--color-text-primary);
+
+  font-size: var(--font-size-body-lg);
+
+  line-height: var(--line-height-body-lg);
+}
+
+</style>
