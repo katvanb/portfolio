@@ -72,33 +72,19 @@ const fr = {
 
 
     pointOfView: {
-
       title: "J'ai tendance à aller une couche plus loin.",
 
       paragraphs: [
-
-        "Un produit commence rarement là où le brief le dit.",
-
-        "Une demande de nouvelle fonctionnalité peut en réalité être un problème métier.",
-
-        "Un écran qui prête à confusion peut en réalité être un problème de permissions.",
-
-        "Une « limitation technique » peut être une décision que personne n'a revisitée.",
-
-        "Alors j'aime suivre le fil.",
-
-        "Je parle aux personnes qui connaissent le métier. Je demande comment les choses fonctionnent aujourd'hui, où elles cassent et pourquoi elles en sont arrivées là. Je cartographie ce qui dépend de quoi, je remets en question les hypothèses et j'entre dans les détails quand les détails comptent.",
-
-        "Parfois, cela mène à un nouveau parcours.",
-
-        "Parfois, cela change la structure du produit.",
-
-        "Parfois, cela signifie dire non.",
-
-        "<strong>Je n'ai pas besoin de décider de tout. Je veux juste comprendre assez pour aider à prendre les bonnes décisions.</strong>"
-
+      "Un produit commence rarement là où le brief le dit.",
+      "Une demande de fonctionnalité peut être un problème métier.",
+      "Un écran confus peut être un problème de permissions.",
+      "Une « limitation technique » peut être une décision que personne n'a revisitée.",
+      "C'est pourquoi je suis le fil : je parle à celles et ceux qui connaissent le métier, je demande comment ça fonctionne aujourd'hui, où ça casse et pourquoi on en est arrivé là. Je cartographie les dépendances, je questionne les hypothèses et j'entre dans le détail quand il compte.",
+      "Parfois cela mène à un nouveau parcours.",
+      "Parfois cela change la structure du produit.",
+      "Parfois cela signifie dire non.",
+      "<strong>Je n'ai pas besoin de décider de tout. Juste comprendre assez pour aider à prendre les bonnes décisions.</strong>"
       ]
-
     },
 
 

@@ -74,33 +74,19 @@ const es = {
 
 
     pointOfView: {
-
       title: "Tiendo a ir una capa más profunda.",
 
       paragraphs: [
-
-        "Un producto rara vez empieza donde dice el brief.",
-
-        "Una petición de una nueva funcionalidad puede ser en realidad un problema de negocio.",
-
-        "Una pantalla confusa puede ser en realidad un problema de permisos.",
-
-        "Una “limitación técnica” puede ser una decisión que nadie ha vuelto a revisar.",
-
-        "Así que me gusta seguir el hilo.",
-
-        "Hablo con las personas que conocen el negocio. Pregunto cómo funcionan las cosas hoy, dónde se rompen y por qué han terminado así. Mapeo qué depende de qué, cuestiono supuestos y entro en los detalles cuando los detalles importan.",
-
-        "A veces eso lleva a un flujo nuevo.",
-
-        "A veces cambia la estructura del producto.",
-
-        "A veces significa decir que no.",
-
-        "<strong>No necesito ser dueña de cada decisión. Solo quiero entender lo suficiente para ayudar a tomar las correctas.</strong>"
-
+      "Un producto rara vez empieza donde dice el brief.",
+      "Una petición de funcionalidad puede ser un problema de negocio.",
+      "Una pantalla confusa puede ser un problema de permisos.",
+      "Una “limitación técnica” puede ser una decisión que nadie revisó.",
+      "Por eso sigo el hilo: hablo con quienes conocen el negocio, pregunto cómo funciona hoy, dónde se rompe y por qué llegó ahí. Mapeo dependencias, cuestiono supuestos y entro en detalle cuando importa.",
+      "A veces eso lleva a un flujo nuevo.",
+      "A veces cambia la estructura del producto.",
+      "A veces significa decir que no.",
+      "<strong>No necesito ser dueña de cada decisión. Solo entender lo suficiente para ayudar a tomar las correctas.</strong>"
       ]
-
     },
 
 

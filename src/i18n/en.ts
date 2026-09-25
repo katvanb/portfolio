@@ -72,33 +72,19 @@ const en = {
 
 
     pointOfView: {
-
       title: "I tend to go one layer deeper.",
 
       paragraphs: [
-
-        "A product rarely starts where the brief says it does.",
-
-        "A request for a new feature might actually be a business problem.",
-
-        "A confusing screen might actually be a permissions problem.",
-
-        "A “technical limitation” might be a decision nobody has revisited yet.",
-
-        "So I like to follow the thread.",
-
-        "I talk to the people who know the business. I ask how things work today, where they break, and why they've ended up that way. I map what depends on what, challenge assumptions, and get into the details when the details matter.",
-
-        "Sometimes that leads to a new flow.",
-
-        "Sometimes it changes the product structure.",
-
-        "Sometimes it means saying no.",
-
-        "<strong>I don't need to own every decision. I do want to understand enough to help make the right ones.</strong>"
-
+      "A product rarely starts where the brief says it does.",
+      "A feature request might be a business problem.",
+      "A confusing screen might be a permissions problem.",
+      "A “technical limitation” might be a decision nobody has revisited.",
+      "So I follow the thread: I talk to the people who know the business, I ask how things work today, where they break and why they got there. I map dependencies, question assumptions and get into the detail when it matters.",
+      "Sometimes that leads to a new flow.",
+      "Sometimes it changes the product structure.",
+      "Sometimes it means saying no.",
+      "<strong>I don't need to own every decision. Just understand enough to help make the right ones.</strong>"
       ]
-
     },
 
 
