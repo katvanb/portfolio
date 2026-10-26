@@ -156,6 +156,14 @@ const fr = {
     description: "Je travaille sur quelque chose ici. Revenez bientôt.",
     backLabel: "Voir mon travail",
   },
+  caseStudy: {
+    role: "Rôle",
+    timeline: "Chronologie",
+    team: "Équipe",
+    focus: "Focus",
+    readingTimeSuffix: "min de lecture",
+    sectionsAriaLabel: "Sections de l'étude de cas",
+  },
   credentialPlatform: {
     hero: {
       tag: "PLATEFORME DE CERTIFICATS · SECTEUR ÉDUCATION ET ENTREPRISE",
@@ -177,7 +185,7 @@ const fr = {
       title: "Émettre des certificats à grande échelle était manuel, lent et non traçable",
       paragraphs: [
         "Une entreprise de solutions technologiques pour le secteur éducatif voulait construire de zéro une plateforme B2B permettant aux établissements scolaires, aux entreprises et aux organismes certificateurs d'émettre, gérer et vérifier des certificats numériques —diplômes, certificats, badges et micro-certifications— en s'appuyant sur des standards internationaux tels que Blockchain, Open Badges et les Certificats Vérifiables du W3C.",
-        "Le projet partait de zéro. Il n'y avait aucune plateforme antérieure. Les établissements émettent manuellement : les données dans des tableurs, les designs dans des outils externes, envoyés un par un par e-mail ou en impression physique."
+        "Le projet partait de zéro. Il n'y avait aucune plateforme antérieure. Les établissements émettaient manuellement : les données dans des tableurs, les designs dans des outils externes, envoyés un par un par e-mail ou en impression physique."
       ],
       painsTitle: "Trois douleurs concrètes",
       pains: [
@@ -277,7 +285,8 @@ const fr = {
       screenshot: {
         id: "SHOT 02",
         label: "Diagramme du modèle de rôles — institution linéaire vs. multi-organisation",
-        note: "Remplacer par le vrai diagramme. C'est le visuel le plus important de l'étude de cas."
+        note: "Diagramme du modèle de rôles montrant l'institution linéaire face à la structure multi-organisation.",
+        src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-2.png`
       }
     },
 
@@ -310,11 +319,38 @@ const fr = {
         "Ils peuvent porter une attestation.",
         "Ils peuvent appartenir à une collection : lorsque le système détecte qu'une personne certifiée a validé un cours (via Global Certifica, Moodle ou une API intégrée), il attribue automatiquement le certificat suivant de la collection."
       ],
-      screenshot: {
-        id: "SHOT 03",
-        label: "Liste des certificats avec état d'attribution par sous-organisation",
-        note: "Remplacer par une capture réelle. L'état non attribué à côté des attributions propres est ce qui rend la décision lisible."
-      }
+      screenshots: [
+        {
+          id: "SHOT 03.1.1",
+          label: "Liste des certificats et état d'attribution — 1/6",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.1.1.jpg`
+        },
+        {
+          id: "SHOT 03.1.2",
+          label: "Liste des certificats et état d'attribution — 2/6",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.1.2.jpg`
+        },
+        {
+          id: "SHOT 03.2.1",
+          label: "Liste des certificats et état d'attribution — 3/6",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.2.1.jpg`
+        },
+        {
+          id: "SHOT 03.2.2",
+          label: "Liste des certificats et état d'attribution — 4/6",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.2.2.jpg`
+        },
+        {
+          id: "SHOT 03.3.1",
+          label: "Liste des certificats et état d'attribution — 5/6",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.3.1.jpg`
+        },
+        {
+          id: "SHOT 03.3.2",
+          label: "Liste des certificats et état d'attribution — 6/6",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.3.2.jpg`
+        }
+      ]
     },
 
     creditDistribution: {
@@ -347,7 +383,7 @@ const fr = {
         {
           id: "SHOT 04",
           label: "Modale de distribution des crédits",
-          note: "Remplacer par une capture réelle."
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-4.jpg`
         },
         {
           id: "SHOT 05",
@@ -455,9 +491,14 @@ const fr = {
         "Ce n'était pas seulement de la communication : c'était le contrat d'implémentation que l'équipe technique a utilisé pour construire.",
       screenshots: [
         {
-          id: "SHOT 06",
-          label: "Diagramme de flux des rôles",
-          note: "Remplacer par le vrai diagramme."
+          id: "SHOT 06.1",
+          label: "Diagramme de flux des rôles — 1/2",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.1.jpg`
+        },
+        {
+          id: "SHOT 06.2",
+          label: "Diagramme de flux des rôles — 2/2",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.2.jpg`
         },
         {
           id: "SHOT 07",

@@ -20,7 +20,8 @@ interface Props {
   typesTitle?: string;
   types?: string[];
   closing?: string;
-  screenshots?: { id: string; label: string; note: string }[];
+  screenshots?: { id: string; label: string; note?: string; src?: string }[];
+  screenshotsLayout?: "stack" | "pairs";
 }
 
 const {
@@ -42,7 +43,24 @@ const {
   types,
   closing,
   screenshots = [],
+  screenshotsLayout = "stack",
 } = Astro.props;
+
+const screenshotRows = screenshots.reduce<
+  { id: string; label: string; note?: string; src?: string }[][]
+>((rows, screenshot, index) => {
+  if (screenshotsLayout === "pairs") {
+    if (index % 2 === 0) {
+      rows.push([screenshot]);
+    } else {
+      rows[rows.length - 1].push(screenshot);
+    }
+  } else {
+    rows.push([screenshot]);
+  }
+
+  return rows;
+}, []);
 ---
 
 <section class="decision" id={id}>
@@ -144,13 +162,27 @@ const {
   }
 
   {
-    screenshots.map((screenshot) => (
-      <Screenshot
-        id={screenshot.id}
-        label={screenshot.label}
-        note={screenshot.note}
-      />
-    ))
+    screenshotRows.map((row) =>
+      row.length > 1 ? (
+        <div class="screenshot-pair">
+          {row.map((screenshot) => (
+            <Screenshot
+              id={screenshot.id}
+              label={screenshot.label}
+              note={screenshot.note}
+              src={screenshot.src}
+            />
+          ))}
+        </div>
+      ) : (
+        <Screenshot
+          id={row[0].id}
+          label={row[0].label}
+          note={row[0].note}
+          src={row[0].src}
+        />
+      )
+    )
   }
 
 </section>
@@ -403,11 +435,40 @@ const {
 }
 
 
+.screenshot-pair {
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  align-items: start;
+
+  gap: var(--space-md);
+
+  margin: var(--space-lg) 0;
+
+}
+
+
+.screenshot-pair > :global(.screenshot) {
+  margin: 0;
+}
+
+
 @media (max-width: 768px) {
 
   .options {
 
     grid-template-columns: 1fr;
+
+  }
+
+
+  .screenshot-pair {
+
+    grid-template-columns: 1fr;
+
+    gap: var(--space-lg);
 
   }
 

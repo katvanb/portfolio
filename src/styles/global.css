@@ -18,6 +18,20 @@
 }
 
 
+/* El cursor personalizado no se monta cuando el usuario pide
+   movimiento reducido; en ese caso devolvemos el cursor nativo. */
+
+@media (pointer: fine) and (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    cursor: auto !important;
+  }
+
+}
+
+
 html {
   font-family: var(--font-family-primary);
   background: var(--color-bg-primary);

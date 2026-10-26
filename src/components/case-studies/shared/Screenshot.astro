@@ -4,32 +4,64 @@ interface Props {
   label: string;
   note?: string;
   ratio?: string;
+  src?: string;
 }
 
-const { id, label, note, ratio = "16 / 10" } = Astro.props;
+const {
+  id,
+  label,
+  note,
+  ratio = "16 / 10",
+  src,
+} = Astro.props;
+
+const hasImage = Boolean(src);
 ---
 
 <figure class="screenshot">
 
-  <div class="frame" style={`aspect-ratio: ${ratio};`}>
+  <div
+    class:list={["frame", { "has-image": hasImage }]}
+    style={hasImage ? undefined : `aspect-ratio: ${ratio};`}
+  >
 
-    <div class="chrome" aria-hidden="true">
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </div>
+    {
+      src ? (
+        <button
+          type="button"
+          class="image-trigger"
+          data-lightbox
+        >
+          <img
+            class="image"
+            src={src}
+            alt={label}
+            loading="lazy"
+            decoding="async"
+          />
+        </button>
+      ) : (
+        <>
+          <div class="chrome" aria-hidden="true">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
 
-    <div class="marker">
+          <div class="marker">
 
-      <span class="asset-id">
-        {id}
-      </span>
+            <span class="asset-id">
+              {id}
+            </span>
 
-      <span class="asset-label">
-        {label}
-      </span>
+            <span class="asset-label">
+              {label}
+            </span>
 
-    </div>
+          </div>
+        </>
+      )
+    }
 
   </div>
 
@@ -88,6 +120,85 @@ const { id, label, note, ratio = "16 / 10" } = Astro.props;
       var(--color-bg-secondary) 10px,
       var(--color-bg-secondary) 20px
     );
+
+}
+
+
+.frame.has-image {
+
+  border-style: solid;
+
+  background: var(--color-bg-secondary);
+
+  overflow: hidden;
+
+}
+
+
+.image-trigger {
+
+  display: block;
+
+  width: 100%;
+
+  padding: 0;
+
+  border: 0;
+
+  background: none;
+
+  cursor: zoom-in;
+
+  overflow: hidden;
+
+}
+
+
+.image-trigger:focus-visible {
+
+  outline: 2px solid var(--color-accent);
+
+  outline-offset: -2px;
+
+}
+
+
+.image {
+
+  display: block;
+
+  width: 100%;
+
+  height: auto;
+
+  transition: transform .45s cubic-bezier(.2, .7, .3, 1);
+
+}
+
+
+.image-trigger:hover .image,
+.image-trigger:focus-visible .image {
+
+  transform: scale(1.04);
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  .image {
+
+    transition: none;
+
+  }
+
+
+  .image-trigger:hover .image,
+  .image-trigger:focus-visible .image {
+
+    transform: none;
+
+  }
 
 }
 

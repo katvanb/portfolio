@@ -15,15 +15,17 @@ const t = fr;
 
 const c = t.b2bCommerce;
 
-const readingTime = calculateReadingTime(c);
+const readingTime = calculateReadingTime(c, t.caseStudy.readingTimeSuffix);
 ---
 
 <BaseLayout
   title="B2B Commerce Platform"
   content={t}
+  lang="fr"
 >
 
   <Index
+    ariaLabel={t.caseStudy.sectionsAriaLabel}
     sections={[
       { id: "challenge", label: "Le défi" },
       { id: "vision", label: "Vision produit" },
@@ -39,6 +41,7 @@ const readingTime = calculateReadingTime(c);
     <Hero
       content={c.hero}
       readingTime={readingTime}
+      labels={t.caseStudy}
       nda
     />
 

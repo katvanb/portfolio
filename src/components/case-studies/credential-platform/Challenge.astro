@@ -16,7 +16,7 @@ interface Props {
   pivot: string;
   mandateLabel: string;
   mandate: string;
-  screenshot: { id: string; label: string; note: string };
+  screenshot: { id: string; label: string; note?: string; src?: string };
 }
 
 const {
@@ -132,6 +132,7 @@ const {
     id={screenshot.id}
     label={screenshot.label}
     note={screenshot.note}
+    src={screenshot.src}
   />
 
 </section>

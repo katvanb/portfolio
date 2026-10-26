@@ -1,0 +1,877 @@
+---
+interface Props {
+  lang?: string;
+}
+
+const { lang = "en" } = Astro.props;
+
+const labels: Record<string, { preview: string; close: string }> = {
+  en: { preview: "Image preview", close: "Close image" },
+  es: { preview: "Vista previa de la imagen", close: "Cerrar imagen" },
+  fr: { preview: "Aperçu de l'image", close: "Fermer l'image" },
+};
+
+const copy = labels[lang] ?? labels.en;
+---
+
+<dialog
+  class="lightbox"
+  id="lightbox"
+  aria-label={copy.preview}
+>
+
+  <button
+    type="button"
+    class="lightbox-close"
+    data-lightbox-close
+    aria-label={copy.close}
+  >
+    <span aria-hidden="true">×</span>
+  </button>
+
+  <img
+    class="lightbox-image"
+    id="lightbox-image"
+    alt=""
+    decoding="async"
+    draggable="false"
+  />
+
+</dialog>
+
+
+<style>
+
+.lightbox {
+
+  position: fixed;
+
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  max-width: none;
+  max-height: none;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #fff;
+
+  overflow: hidden;
+
+}
+
+
+.lightbox:not([open]) {
+  display: none;
+}
+
+
+.lightbox[open] {
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  touch-action: none;
+  overscroll-behavior: contain;
+
+}
+
+
+.lightbox::backdrop {
+
+  background: rgba(8, 8, 10, 0.92);
+
+  backdrop-filter: blur(6px);
+
+}
+
+
+.lightbox-image {
+
+  display: block;
+
+  width: auto;
+  height: auto;
+
+  max-width: 80vw;
+  max-height: 85vh;
+
+  object-fit: contain;
+
+  border-radius: var(--radius-md);
+
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.55);
+
+  transform-origin: center center;
+
+  will-change: transform;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+
+  touch-action: none;
+
+  animation: lightbox-image-in 0.25s ease-out;
+
+}
+
+
+.lightbox-image.is-animating {
+
+  transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.3, 1);
+
+}
+
+
+.lightbox-close {
+
+  position: fixed;
+
+  top: clamp(16px, 2.5vw, 32px);
+  right: clamp(16px, 2.5vw, 32px);
+
+  z-index: 1;
+
+  display: grid;
+  place-items: center;
+
+  width: 44px;
+  height: 44px;
+
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+
+  background: rgba(20, 20, 24, 0.72);
+
+  color: #fff;
+
+  font-size: 28px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    transform .2s ease;
+
+}
+
+
+.lightbox-close:hover {
+
+  border-color: var(--color-accent);
+
+  background: var(--color-accent);
+
+  transform: scale(1.06);
+
+}
+
+
+.lightbox-close:focus-visible {
+
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+
+}
+
+
+/* Fallback nativo para quien navega con movimiento reducido:
+   en ese caso no se monta el cursor personalizado. */
+
+@media (pointer: fine) and (prefers-reduced-motion: reduce) {
+
+  .lightbox[open],
+  .lightbox[open] * {
+    cursor: grab !important;
+  }
+
+  .lightbox[open][data-dragging="true"],
+  .lightbox[open][data-dragging="true"] * {
+    cursor: grabbing !important;
+  }
+
+  .lightbox[open] .lightbox-close {
+    cursor: pointer !important;
+  }
+
+}
+
+
+@keyframes lightbox-image-in {
+
+  from {
+
+    opacity: 0;
+
+  }
+
+  to {
+
+    opacity: 1;
+
+  }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  .lightbox-image {
+    animation: none;
+  }
+
+  .lightbox-image.is-animating {
+    transition: none;
+  }
+
+  .lightbox-close {
+    transition: none;
+  }
+
+}
+
+</style>
+
+
+<script>
+
+const dialog =
+  document.getElementById("lightbox") as HTMLDialogElement | null;
+
+const lightboxImage =
+  document.getElementById("lightbox-image") as HTMLImageElement | null;
+
+const customCursor =
+  document.getElementById("cursor");
+
+const MIN_SCALE = 1;
+const MAX_SCALE = 6;
+const TAP_ZOOM_SCALE = 2.5;
+
+let openedFrom: HTMLElement | null = null;
+
+let scale = 1;
+let translateX = 0;
+let translateY = 0;
+
+let baseWidth = 0;
+let baseHeight = 0;
+
+let suppressClick = false;
+let animationTimer: number | null = null;
+
+const pointers = new Map<number, { x: number; y: number }>();
+
+let dragPointerId: number | null = null;
+let dragStartX = 0;
+let dragStartY = 0;
+let dragStartTranslateX = 0;
+let dragStartTranslateY = 0;
+let dragMoved = false;
+let dragStartedAt = 0;
+
+let pinching = false;
+let pinchStartDistance = 1;
+let pinchStartScale = 1;
+let pinchPointX = 0;
+let pinchPointY = 0;
+
+
+const clamp = (value: number, min: number, max: number) =>
+  Math.min(max, Math.max(min, value));
+
+
+const lockScroll = (locked: boolean) => {
+
+  document.documentElement.style.overflow =
+    locked ? "hidden" : "";
+
+  document.body.style.overflow =
+    locked ? "hidden" : "";
+
+};
+
+
+const setCursorMode = (mode: "grab" | "grabbing" | null) => {
+
+  if (!customCursor) return;
+
+  customCursor.classList.toggle("cursor-grab", mode === "grab");
+  customCursor.classList.toggle("cursor-grabbing", mode === "grabbing");
+
+};
+
+
+const setDragging = (dragging: boolean) => {
+
+  // Si el visor ya se cerró (p. ej. Escape mientras se arrastra),
+  // no debe quedar el cursor en modo mano sobre la página.
+  if (!dialog?.open) {
+
+    if (dialog) {
+      delete dialog.dataset.dragging;
+    }
+
+    setCursorMode(null);
+
+    return;
+
+  }
+
+  if (dragging) {
+    dialog.dataset.dragging = "true";
+  } else {
+    delete dialog.dataset.dragging;
+  }
+
+  setCursorMode(dragging ? "grabbing" : "grab");
+
+};
+
+
+const applyTransform = (animate = false) => {
+
+  if (!lightboxImage) return;
+
+  if (animationTimer !== null) {
+
+    window.clearTimeout(animationTimer);
+    animationTimer = null;
+
+  }
+
+  lightboxImage.classList.toggle("is-animating", animate);
+
+  lightboxImage.style.transform =
+    `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
+
+  if (animate) {
+
+    animationTimer = window.setTimeout(() => {
+
+      lightboxImage.classList.remove("is-animating");
+      animationTimer = null;
+
+    }, 300);
+
+  }
+
+};
+
+
+const clampTranslation = () => {
+
+  const maxX = Math.max(
+    0,
+    (baseWidth * scale - window.innerWidth) / 2
+  );
+
+  const maxY = Math.max(
+    0,
+    (baseHeight * scale - window.innerHeight) / 2
+  );
+
+  translateX = clamp(translateX, -maxX, maxX);
+  translateY = clamp(translateY, -maxY, maxY);
+
+};
+
+
+const syncBaseSize = () => {
+
+  if (!lightboxImage) return;
+
+  // clientWidth/Height ignoran el transform, así que siempre
+  // devuelven el tamaño real al 100% del visor.
+  baseWidth = lightboxImage.clientWidth;
+  baseHeight = lightboxImage.clientHeight;
+
+  clampTranslation();
+  applyTransform();
+
+};
+
+
+const resetZoom = () => {
+
+  scale = MIN_SCALE;
+  translateX = 0;
+  translateY = 0;
+
+  if (animationTimer !== null) {
+
+    window.clearTimeout(animationTimer);
+    animationTimer = null;
+
+  }
+
+  lightboxImage?.classList.remove("is-animating");
+
+  if (lightboxImage) {
+    lightboxImage.style.transform = "";
+  }
+
+};
+
+
+const zoomTo = (
+  nextScale: number,
+  clientX: number,
+  clientY: number,
+  animate = false
+) => {
+
+  const target = clamp(nextScale, MIN_SCALE, MAX_SCALE);
+
+  if (Math.abs(target - scale) < 0.0001) return;
+
+  const originX = clientX - window.innerWidth / 2;
+  const originY = clientY - window.innerHeight / 2;
+
+  // Punto de la imagen que quedará fijo bajo el cursor.
+  const pointX = (originX - translateX) / scale;
+  const pointY = (originY - translateY) / scale;
+
+  scale = target;
+
+  if (scale === MIN_SCALE) {
+
+    translateX = 0;
+    translateY = 0;
+
+  } else {
+
+    translateX = originX - pointX * scale;
+    translateY = originY - pointY * scale;
+
+  }
+
+  clampTranslation();
+  applyTransform(animate);
+
+};
+
+
+const toggleZoomAt = (clientX: number, clientY: number) => {
+
+  if (scale > MIN_SCALE + 0.01) {
+
+    scale = MIN_SCALE;
+    translateX = 0;
+    translateY = 0;
+
+    applyTransform(true);
+
+    return;
+
+  }
+
+  zoomTo(TAP_ZOOM_SCALE, clientX, clientY, true);
+
+};
+
+
+const openLightbox = (trigger: HTMLElement) => {
+
+  if (!dialog || !lightboxImage) return;
+
+  const source = trigger.querySelector("img");
+
+  if (!source) return;
+
+  const src = source.currentSrc || source.src;
+
+  if (!src) return;
+
+  lightboxImage.src = src;
+  lightboxImage.alt = source.alt;
+
+  openedFrom = trigger;
+
+  if (!dialog.open) {
+
+    resetZoom();
+
+    dialog.showModal();
+    lockScroll(true);
+
+    // El cursor personalizado vive fuera del top layer del <dialog>,
+    // así que lo movemos dentro para que siga visible sobre el overlay.
+    if (customCursor && customCursor.parentElement !== dialog) {
+      dialog.appendChild(customCursor);
+    }
+
+    setCursorMode("grab");
+
+  }
+
+  if (lightboxImage.complete) {
+    window.requestAnimationFrame(syncBaseSize);
+  }
+
+};
+
+
+const closeLightbox = () => {
+
+  if (dialog?.open) {
+    dialog.close();
+  }
+
+};
+
+
+const pointerPair = () => [...pointers.values()];
+
+
+const onPointerDown = (event: PointerEvent) => {
+
+  if (!lightboxImage || !dialog?.open) return;
+
+  if (event.pointerType === "mouse" && event.button !== 0) return;
+
+  const target = event.target as HTMLElement | null;
+
+  if (target?.closest("[data-lightbox-close]")) return;
+
+  const onImage = target === lightboxImage;
+
+  pointers.set(event.pointerId, {
+    x: event.clientX,
+    y: event.clientY,
+  });
+
+  if (event.pointerType === "touch" && pointers.size === 2) {
+
+    const [a, b] = pointerPair();
+
+    const midX = (a.x + b.x) / 2;
+    const midY = (a.y + b.y) / 2;
+
+    pinching = true;
+    dragPointerId = null;
+    dragMoved = true;
+    dragStartedAt = performance.now();
+
+    pinchStartDistance = Math.max(
+      1,
+      Math.hypot(a.x - b.x, a.y - b.y)
+    );
+    pinchStartScale = scale;
+
+    pinchPointX =
+      (midX - window.innerWidth / 2 - translateX) / scale;
+    pinchPointY =
+      (midY - window.innerHeight / 2 - translateY) / scale;
+
+    setDragging(true);
+    event.preventDefault();
+
+    return;
+
+  }
+
+  if (pinching) return;
+
+  // Solo la imagen se puede arrastrar; el fondo sigue cerrando el visor.
+  if (!onImage) return;
+
+  dragPointerId = event.pointerId;
+  dragStartX = event.clientX;
+  dragStartY = event.clientY;
+  dragStartTranslateX = translateX;
+  dragStartTranslateY = translateY;
+  dragMoved = false;
+  dragStartedAt = performance.now();
+
+  setDragging(true);
+
+};
+
+
+const onPointerMove = (event: PointerEvent) => {
+
+  const stored = pointers.get(event.pointerId);
+
+  if (!stored) return;
+
+  stored.x = event.clientX;
+  stored.y = event.clientY;
+
+  if (pinching && pointers.size >= 2) {
+
+    const [a, b] = pointerPair();
+
+    const distance = Math.max(
+      1,
+      Math.hypot(a.x - b.x, a.y - b.y)
+    );
+
+    const midX = (a.x + b.x) / 2;
+    const midY = (a.y + b.y) / 2;
+
+    scale = clamp(
+      pinchStartScale * (distance / pinchStartDistance),
+      MIN_SCALE,
+      MAX_SCALE
+    );
+
+    if (scale === MIN_SCALE) {
+
+      translateX = 0;
+      translateY = 0;
+
+    } else {
+
+      translateX =
+        midX - window.innerWidth / 2 - pinchPointX * scale;
+      translateY =
+        midY - window.innerHeight / 2 - pinchPointY * scale;
+
+    }
+
+    clampTranslation();
+    applyTransform();
+
+    event.preventDefault();
+
+    return;
+
+  }
+
+  if (dragPointerId !== event.pointerId) return;
+
+  const dx = event.clientX - dragStartX;
+  const dy = event.clientY - dragStartY;
+
+  if (!dragMoved && Math.hypot(dx, dy) > 6) {
+    dragMoved = true;
+  }
+
+  if (dragMoved && scale > MIN_SCALE) {
+
+    translateX = dragStartTranslateX + dx;
+    translateY = dragStartTranslateY + dy;
+
+    clampTranslation();
+    applyTransform();
+
+    event.preventDefault();
+
+  }
+
+};
+
+
+const onPointerEnd = (event: PointerEvent, cancelled = false) => {
+
+  if (!pointers.has(event.pointerId)) return;
+
+  const wasDragPointer = dragPointerId === event.pointerId;
+  const wasPinching = pinching;
+
+  pointers.delete(event.pointerId);
+
+  if (wasPinching) {
+
+    if (pointers.size < 2) {
+
+      pinching = false;
+
+      const remaining = [...pointers.entries()][0];
+
+      if (remaining) {
+
+        dragPointerId = remaining[0];
+        dragStartX = remaining[1].x;
+        dragStartY = remaining[1].y;
+        dragStartTranslateX = translateX;
+        dragStartTranslateY = translateY;
+        dragMoved = true;
+        dragStartedAt = performance.now();
+
+      } else {
+
+        dragPointerId = null;
+        setDragging(false);
+
+      }
+
+    }
+
+    // Un gesto nunca debe cerrar el visor.
+    suppressClick = true;
+
+    window.setTimeout(() => {
+      suppressClick = false;
+    }, 0);
+
+    return;
+
+  }
+
+  if (!wasDragPointer) return;
+
+  dragPointerId = null;
+
+  const tapped =
+    !cancelled &&
+    !dragMoved &&
+    event.pointerType !== "mouse" &&
+    performance.now() - dragStartedAt < 400;
+
+  if (dragMoved) {
+
+    // Evita que el click sintético posterior cierre el visor.
+    suppressClick = true;
+
+    window.setTimeout(() => {
+      suppressClick = false;
+    }, 0);
+
+  }
+
+  setDragging(false);
+
+  if (tapped) {
+    toggleZoomAt(event.clientX, event.clientY);
+  }
+
+};
+
+
+if (lightboxImage) {
+
+  lightboxImage.addEventListener("load", syncBaseSize);
+
+  lightboxImage.addEventListener("dblclick", (event) => {
+
+    event.preventDefault();
+    toggleZoomAt(event.clientX, event.clientY);
+
+  });
+
+}
+
+
+if (dialog) {
+
+  dialog.addEventListener("pointerdown", onPointerDown);
+
+}
+
+
+window.addEventListener("pointermove", onPointerMove);
+window.addEventListener("pointerup", (event) => onPointerEnd(event));
+window.addEventListener("pointercancel", (event) => onPointerEnd(event, true));
+
+
+window.addEventListener("resize", () => {
+
+  if (dialog?.open) {
+    syncBaseSize();
+  }
+
+});
+
+
+if (dialog) {
+
+  dialog.addEventListener("wheel", (event) => {
+
+    if (!dialog.open) return;
+
+    event.preventDefault();
+
+    const delta =
+      event.deltaMode === 1 ? event.deltaY * 16 : event.deltaY;
+
+    const factor = Math.exp(-delta * 0.0015);
+
+    zoomTo(scale * factor, event.clientX, event.clientY);
+
+  }, { passive: false });
+
+
+  dialog.addEventListener("click", (event) => {
+
+    if (suppressClick) return;
+
+    if (event.target === dialog) {
+      closeLightbox();
+    }
+
+  });
+
+
+  dialog.addEventListener("close", () => {
+
+    lockScroll(false);
+
+    setCursorMode(null);
+    delete dialog.dataset.dragging;
+
+    pointers.clear();
+    dragPointerId = null;
+    pinching = false;
+    dragMoved = false;
+
+    resetZoom();
+    lightboxImage?.removeAttribute("src");
+
+    if (customCursor && customCursor.parentElement === dialog) {
+      document.body.appendChild(customCursor);
+    }
+
+    openedFrom?.focus();
+    openedFrom = null;
+
+  });
+
+}
+
+
+document.addEventListener("click", (event) => {
+
+  const target = event.target as HTMLElement | null;
+
+  if (!target) return;
+
+
+  if (target.closest("[data-lightbox-close]")) {
+
+    event.preventDefault();
+    closeLightbox();
+
+    return;
+
+  }
+
+
+  const trigger = target.closest<HTMLElement>("[data-lightbox]");
+
+  if (trigger) {
+
+    event.preventDefault();
+    openLightbox(trigger);
+
+  }
+
+});
+
+</script>

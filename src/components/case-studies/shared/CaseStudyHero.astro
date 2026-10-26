@@ -14,9 +14,26 @@ interface Props {
   readingTime?: string;
   nda?: boolean;
   ndaText?: string;
+  labels?: {
+    role: string;
+    timeline: string;
+    team: string;
+    focus: string;
+  };
 }
 
-const { content, readingTime, nda = false, ndaText } = Astro.props;
+const {
+  content,
+  readingTime,
+  nda = false,
+  ndaText,
+  labels = {
+    role: "Role",
+    timeline: "Timeline",
+    team: "Team",
+    focus: "Focus",
+  },
+} = Astro.props;
 ---
 
 <section class="case-study-hero">
@@ -70,7 +87,7 @@ const { content, readingTime, nda = false, ndaText } = Astro.props;
       <div class="metadata-item">
 
         <span class="label">
-          ROLE
+          {labels.role}
         </span>
 
         <p>
@@ -83,7 +100,7 @@ const { content, readingTime, nda = false, ndaText } = Astro.props;
       <div class="metadata-item">
 
         <span class="label">
-          TIMELINE
+          {labels.timeline}
         </span>
 
         <p>
@@ -98,7 +115,7 @@ const { content, readingTime, nda = false, ndaText } = Astro.props;
     <div class="metadata-item team">
 
       <span class="label">
-        TEAM
+        {labels.team}
       </span>
 
       <p>
@@ -113,7 +130,7 @@ const { content, readingTime, nda = false, ndaText } = Astro.props;
         <div class="metadata-item team">
 
           <span class="label">
-            FOCUS
+            {labels.focus}
           </span>
 
           <p>

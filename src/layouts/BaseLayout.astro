@@ -2,7 +2,8 @@
 import "../styles/global.css";
 import Sidebar from "../components/layout/Sidebar.astro";
 import Footer from "../components/layout/Footer.astro";
-import { Eye } from "lucide-astro";
+import Lightbox from "../components/layout/Lightbox.astro";
+import { Eye, Hand, HandFist } from "lucide-astro";
 
 interface Props {
   title: string;
@@ -33,6 +34,8 @@ const { title, description = "Product Designer portfolio", content, lang = "en" 
     <div class="cursor" id="cursor" aria-hidden="true">
       <Eye class="cursor-eye" size={14} />
       <span class="cursor-chip-text" id="cursor-chip-text"></span>
+      <Hand class="cursor-hand cursor-hand-grab" size={18} />
+      <HandFist class="cursor-hand cursor-hand-grabbing" size={18} />
     </div>
 
     <div class="layout">
@@ -44,6 +47,8 @@ const { title, description = "Product Designer portfolio", content, lang = "en" 
           <Footer content={content.footer} />
         </main>
     </div>
+
+    <Lightbox lang={lang} />
 
   </body>
 </html>
@@ -199,6 +204,41 @@ main {
 }
 
 #cursor.cursor-chip .cursor-chip-text {
+  display: block;
+}
+
+
+/* ========================================
+   Cursor hand (lightbox grab / drag)
+======================================== */
+
+.cursor-hand {
+  display: none;
+}
+
+
+#cursor.cursor-grab,
+#cursor.cursor-grabbing {
+
+  display: grid;
+  place-items: center;
+
+  width: 40px;
+  height: 40px;
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+
+  background: rgba(12, 12, 16, 0.62);
+
+  color: #fff;
+
+  backdrop-filter: blur(4px);
+
+}
+
+
+#cursor.cursor-grab .cursor-hand-grab,
+#cursor.cursor-grabbing .cursor-hand-grabbing {
   display: block;
 }
 

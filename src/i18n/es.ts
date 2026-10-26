@@ -158,6 +158,14 @@ const es = {
     description: "Estoy trabajando en algo aquí. Vuelve pronto.",
     backLabel: "Ver mi trabajo",
   },
+  caseStudy: {
+    role: "Rol",
+    timeline: "Cronología",
+    team: "Equipo",
+    focus: "Enfoque",
+    readingTimeSuffix: "min de lectura",
+    sectionsAriaLabel: "Secciones del caso de estudio",
+  },
   credentialPlatform: {
     hero: {
       tag: "PLATAFORMA DE CREDENCIALES · SECTOR EDUCATIVO Y CORPORATIVO",
@@ -175,10 +183,10 @@ const es = {
     },
 
     challenge: {
-      eyebrow: "El Desafío",
+      eyebrow: "El desafío",
       title: "Emitir credenciales a escala era manual, lento y sin trazabilidad",
       paragraphs: [
-        "Una empresa de soluciones tecnológicas para el sector educativo quería construir desde cero una plataforma B2B para que instituciones educativas, corporaciones y entes certificadoras pudieran emitir, gestionar y verificar credenciales digitales —títulos, certificados, insignias y microcredenciales— usando estándares internacionales como Blockchain, Open Badges y credenciales verificables de la W3C.",
+        "Una empresa de soluciones tecnológicas para el sector educativo quería construir desde cero una plataforma B2B para que instituciones educativas, corporaciones y entes certificadores pudieran emitir, gestionar y verificar credenciales digitales —títulos, certificados, insignias y microcredenciales— usando estándares internacionales como Blockchain, Open Badges y credenciales verificables de la W3C.",
         "El proyecto era 0 → 1. No había plataforma previa. Las instituciones emitían credenciales de forma manual: datos en hojas de cálculo, diseños en herramientas externas, envío uno a uno por email o impresión física."
       ],
       painsTitle: "Tres dolores concretos",
@@ -279,7 +287,8 @@ const es = {
       screenshot: {
         id: "SHOT 02",
         label: "Diagrama del modelo de roles — institución lineal vs. multi-organización",
-        note: "Reemplazar con el diagrama real. Es el visual más importante del caso de estudio."
+        note: "Diagrama del modelo de roles mostrando la institución lineal frente a la estructura multi-organización.",
+        src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-2.png`
       }
     },
 
@@ -310,13 +319,40 @@ const es = {
       types: [
         "Certificado o insignia.",
         "Pueden tener constancia.",
-        "Pueden pertenecen a una colección: el sistema, al detectar que un acreditado aprobó un curso (vía Global Certifica, Moodle o API integrada), asigna automáticamente la siguiente credencial de la colección."
+        "Pueden pertenecer a una colección: el sistema, al detectar que un acreditado aprobó un curso (vía Global Certifica, Moodle o API integrada), asigna automáticamente la siguiente credencial de la colección."
       ],
-      screenshot: {
-        id: "SHOT 03",
-        label: "Listado de credenciales con estado de asignación por sub-organización",
-        note: "Reemplazar con una captura real. El estado sin asignación junto a las asignaciones propias es lo que hace legible la decisión."
-      }
+      screenshots: [
+        {
+          id: "SHOT 03.1.1",
+          label: "Listado de credenciales y estado de asignación — 1/6",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.1.1.jpg`
+        },
+        {
+          id: "SHOT 03.1.2",
+          label: "Listado de credenciales y estado de asignación — 2/6",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.1.2.jpg`
+        },
+        {
+          id: "SHOT 03.2.1",
+          label: "Listado de credenciales y estado de asignación — 3/6",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.2.1.jpg`
+        },
+        {
+          id: "SHOT 03.2.2",
+          label: "Listado de credenciales y estado de asignación — 4/6",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.2.2.jpg`
+        },
+        {
+          id: "SHOT 03.3.1",
+          label: "Listado de credenciales y estado de asignación — 5/6",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.3.1.jpg`
+        },
+        {
+          id: "SHOT 03.3.2",
+          label: "Listado de credenciales y estado de asignación — 6/6",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.3.2.jpg`
+        }
+      ]
     },
 
     creditDistribution: {
@@ -349,7 +385,7 @@ const es = {
         {
           id: "SHOT 04",
           label: "Modal de distribución de créditos",
-          note: "Reemplazar con una captura real."
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-4.jpg`
         },
         {
           id: "SHOT 05",
@@ -457,9 +493,14 @@ const es = {
         "Esto no fue solo comunicación: fue el contrato de implementación que el equipo técnico usó para construir.",
       screenshots: [
         {
-          id: "SHOT 06",
-          label: "Diagrama de flujo de roles",
-          note: "Reemplazar con el diagrama real."
+          id: "SHOT 06.1",
+          label: "Diagrama de flujo de roles — 1/2",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.1.jpg`
+        },
+        {
+          id: "SHOT 06.2",
+          label: "Diagrama de flujo de roles — 2/2",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.2.jpg`
         },
         {
           id: "SHOT 07",
@@ -516,7 +557,7 @@ const es = {
         "Cerca del 90% de las revisiones ocurrieron en reunión, y luego las reenviaba por correo para tener constancia —porque cuando algo no salía como esperaban, la respuesta era que no se había explicado bien.",
       debtTitle: "La deuda de producto que nadie era dueño",
       debt:
-        "En un periodo en que no estuve, se añadieron funcionalidades sin visión sistémica. Eso generó deuda de producto que afectan la escalabilidad. Lo detecté al reincorporarme y lo documenté como deuda técnica. No se remedió del todo en su momento, pero quedó visible en la lista de mejoras.",
+        "En un periodo en que no estuve, se añadieron funcionalidades sin visión sistémica. Eso generó deuda de producto que afecta la escalabilidad. Lo detecté al reincorporarme y lo documenté como deuda técnica. No se remedió del todo en su momento, pero quedó visible en la lista de mejoras.",
       closing:
         "Gestionar este contexto no consistía en hablar más fuerte. Consistía en hacer el sistema lo bastante legible para que las decisiones se pudieran revisar con evidencia y no con preferencia."
     },

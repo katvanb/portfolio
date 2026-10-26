@@ -1,6 +1,9 @@
 const WORDS_PER_MINUTE = 180;
 
-export function calculateReadingTime(content: unknown): string {
+export function calculateReadingTime(
+  content: unknown,
+  suffix = "min read"
+): string {
   const text = extractText(content);
 
   const wordCount = text
@@ -14,7 +17,7 @@ export function calculateReadingTime(content: unknown): string {
     Math.ceil(wordCount / WORDS_PER_MINUTE)
   );
 
-  return `${minutes} min read`;
+  return `${minutes} ${suffix}`;
 }
 
 function extractText(value: unknown): string {

@@ -19,7 +19,7 @@ interface Props {
   decisionText: string;
   futureTitle: string;
   future: string[];
-  screenshot: { id: string; label: string; note: string };
+  screenshot: { id: string; label: string; note?: string; src?: string };
 }
 
 const {
@@ -88,6 +88,10 @@ const {
         }
       </ul>
 
+      <span class="model-label multi-label">
+        {multiTitle}
+      </span>
+
       <p class="model-note">
         {multiIntro}
       </p>
@@ -152,6 +156,7 @@ const {
     id={screenshot.id}
     label={screenshot.label}
     note={screenshot.note}
+    src={screenshot.src}
   />
 
 </section>
@@ -216,6 +221,13 @@ const {
   letter-spacing: 0.08em;
 
   text-transform: uppercase;
+
+}
+
+
+.multi-label {
+
+  margin-top: var(--space-lg);
 
 }
 

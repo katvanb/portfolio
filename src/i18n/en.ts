@@ -156,6 +156,14 @@ const en = {
     description: "I'm working on something here. Check back soon.",
     backLabel: "View my work",
   },
+  caseStudy: {
+    role: "Role",
+    timeline: "Timeline",
+    team: "Team",
+    focus: "Focus",
+    readingTimeSuffix: "min read",
+    sectionsAriaLabel: "Case study sections",
+  },
   credentialPlatform: {
     hero: {
       tag: "CREDENTIAL PLATFORM · EDUCATION AND CORPORATE SECTOR",
@@ -277,7 +285,8 @@ const en = {
       screenshot: {
         id: "SHOT 02",
         label: "Role model diagram — linear institution vs. multi-organization",
-        note: "Replace with the real diagram. This is the single most important visual in the case study."
+        note: "Role model diagram showing linear institution vs multi-organization structure.",
+        src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-2.png`
       }
     },
 
@@ -310,11 +319,38 @@ const en = {
         "May carry a record of achievement (constancia).",
         "May belong to a collection: when the system detects that an accredited passed a course (via Global Certifica, Moodle or an integrated API), it automatically assigns the next credential in the collection."
       ],
-      screenshot: {
-        id: "SHOT 03",
-        label: "Credential list with assignment state per sub-organization",
-        note: "Replace with a real capture. The unassigned state next to owned assignments is what makes the decision legible."
-      }
+      screenshots: [
+        {
+          id: "SHOT 03.1.1",
+          label: "Credential list and assignment state — 1/6",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.1.1.jpg`
+        },
+        {
+          id: "SHOT 03.1.2",
+          label: "Credential list and assignment state — 2/6",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.1.2.jpg`
+        },
+        {
+          id: "SHOT 03.2.1",
+          label: "Credential list and assignment state — 3/6",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.2.1.jpg`
+        },
+        {
+          id: "SHOT 03.2.2",
+          label: "Credential list and assignment state — 4/6",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.2.2.jpg`
+        },
+        {
+          id: "SHOT 03.3.1",
+          label: "Credential list and assignment state — 5/6",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.3.1.jpg`
+        },
+        {
+          id: "SHOT 03.3.2",
+          label: "Credential list and assignment state — 6/6",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.3.2.jpg`
+        }
+      ]
     },
 
     creditDistribution: {
@@ -347,7 +383,7 @@ const en = {
         {
           id: "SHOT 04",
           label: "Credit distribution modal",
-          note: "Replace with a real capture."
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-4.jpg`
         },
         {
           id: "SHOT 05",
@@ -455,9 +491,14 @@ const en = {
         "This was not only communication: it was the implementation contract the engineering team used to build.",
       screenshots: [
         {
-          id: "SHOT 06",
-          label: "Role flow diagram",
-          note: "Replace with the real diagram."
+          id: "SHOT 06.1",
+          label: "Role flow diagram — 1/2",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.1.jpg`
+        },
+        {
+          id: "SHOT 06.2",
+          label: "Role flow diagram — 2/2",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.2.jpg`
         },
         {
           id: "SHOT 07",

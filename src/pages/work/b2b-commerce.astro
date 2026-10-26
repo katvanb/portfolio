@@ -15,7 +15,7 @@ const t = en;
 
 const c = t.b2bCommerce;
 
-const readingTime = calculateReadingTime(c);
+const readingTime = calculateReadingTime(c, t.caseStudy.readingTimeSuffix);
 ---
 
 <BaseLayout
@@ -24,6 +24,7 @@ const readingTime = calculateReadingTime(c);
 >
 
   <Index
+    ariaLabel={t.caseStudy.sectionsAriaLabel}
     sections={[
       { id: "challenge", label: "The Challenge" },
       { id: "vision", label: "Product Vision" },
@@ -39,6 +40,7 @@ const readingTime = calculateReadingTime(c);
     <Hero
       content={c.hero}
       readingTime={readingTime}
+      labels={t.caseStudy}
       nda
     />
 

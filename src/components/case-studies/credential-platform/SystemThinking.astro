@@ -18,7 +18,7 @@ interface Props {
   docsTitle: string;
   docs: { title: string; text: string }[];
   docsClosing: string;
-  screenshots: { id: string; label: string; note: string }[];
+  screenshots: { id: string; label: string; note?: string; src?: string }[];
 }
 
 const {
@@ -142,15 +142,18 @@ const {
     {docsClosing}
   </p>
 
-  {
-    screenshots.map((screenshot) => (
-      <Screenshot
-        id={screenshot.id}
-        label={screenshot.label}
-        note={screenshot.note}
-      />
-    ))
-  }
+  <div class="screenshots-stack">
+    {
+      screenshots.map((screenshot) => (
+        <Screenshot
+          id={screenshot.id}
+          label={screenshot.label}
+          note={screenshot.note}
+          src={screenshot.src}
+        />
+      ))
+    }
+  </div>
 
 </section>
 
@@ -404,6 +407,23 @@ td.role {
   font-size: var(--font-size-body-lg);
 
   line-height: var(--line-height-body-lg);
+}
+
+
+.screenshots-stack {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-lg);
+
+  margin: var(--space-lg) 0;
+}
+
+
+.screenshots-stack > :global(.screenshot) {
+  margin: 0;
 }
 
 </style>

@@ -6,15 +6,16 @@ interface IndexSection {
 
 interface Props {
   sections: IndexSection[];
+  ariaLabel?: string;
 }
 
-const { sections } = Astro.props;
+const { sections, ariaLabel = "Case study sections" } = Astro.props;
 ---
 
 <nav
   class="case-study-index"
   id="case-study-index"
-  aria-label="Case study sections"
+  aria-label={ariaLabel}
 >
 
   <div class="index-items">
