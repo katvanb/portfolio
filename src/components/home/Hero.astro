@@ -149,15 +149,22 @@ h2 {
 
     grid-template-columns: 1fr;
 
-    gap: var(--space-xl);
+    gap: var(--space-lg);
 
     padding: var(--space-2xl) 0;
 
   }
 
+  .hero-text {
+    order: 1;
+  }
 
   .hero-visual {
-    display: none;
+    display: block;
+    order: 2;
+    width: 100%;
+    max-width: 320px;
+    justify-self: start;
   }
 
 }
