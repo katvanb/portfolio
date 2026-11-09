@@ -5,6 +5,7 @@ interface Props {
   note?: string;
   ratio?: string;
   src?: string;
+  padded?: boolean;
 }
 
 const {
@@ -13,6 +14,7 @@ const {
   note,
   ratio = "16 / 10",
   src,
+  padded = false,
 } = Astro.props;
 
 const hasImage = Boolean(src);
@@ -21,7 +23,7 @@ const hasImage = Boolean(src);
 <figure class="screenshot">
 
   <div
-    class:list={["frame", { "has-image": hasImage }]}
+    class:list={["frame", { "has-image": hasImage, padded: padded && hasImage }]}
     style={hasImage ? undefined : `aspect-ratio: ${ratio};`}
   >
 
@@ -131,6 +133,20 @@ const hasImage = Boolean(src);
   background: var(--color-bg-secondary);
 
   overflow: hidden;
+
+}
+
+
+.frame.padded {
+
+  padding: var(--space-md);
+
+}
+
+
+.frame.padded .image-trigger {
+
+  border-radius: var(--radius-sm);
 
 }
 
@@ -250,13 +266,17 @@ const hasImage = Boolean(src);
 
 .asset-id {
 
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-family-pixel);
 
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-chip);
+
+  font-weight: var(--font-weight-chip);
+
+  line-height: var(--line-height-chip);
 
   color: var(--color-accent);
 
-  letter-spacing: 0.05em;
+  letter-spacing: var(--letter-spacing-chip);
 
 }
 
@@ -289,13 +309,17 @@ figcaption {
 
 .caption-id {
 
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-family-pixel);
 
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-chip);
+
+  font-weight: var(--font-weight-chip);
+
+  line-height: var(--line-height-chip);
 
   color: var(--color-accent);
 
-  letter-spacing: 0.05em;
+  letter-spacing: var(--letter-spacing-chip);
 
 }
 

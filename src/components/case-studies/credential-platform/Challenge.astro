@@ -1,6 +1,5 @@
 ---
 import SectionHeading from "../shared/SectionHeading.astro";
-import Screenshot from "../shared/Screenshot.astro";
 
 interface Props {
   eyebrow: string;
@@ -16,7 +15,6 @@ interface Props {
   pivot: string;
   mandateLabel: string;
   mandate: string;
-  screenshot: { id: string; label: string; note?: string; src?: string };
 }
 
 const {
@@ -33,7 +31,6 @@ const {
   pivot,
   mandateLabel,
   mandate,
-  screenshot,
 } = Astro.props;
 ---
 
@@ -127,13 +124,6 @@ const {
     </p>
 
   </div>
-
-  <Screenshot
-    id={screenshot.id}
-    label={screenshot.label}
-    note={screenshot.note}
-    src={screenshot.src}
-  />
 
 </section>
 
@@ -230,13 +220,17 @@ const {
 
   content: "0" counter(pain);
 
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-family-pixel);
 
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-chip);
+
+  font-weight: var(--font-weight-chip);
+
+  line-height: var(--line-height-chip);
 
   color: var(--color-accent);
 
-  letter-spacing: 0.05em;
+  letter-spacing: var(--letter-spacing-chip);
 
 }
 
@@ -353,11 +347,15 @@ const {
 
   color: var(--color-text-secondary);
 
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-family-pixel);
 
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-chip);
 
-  letter-spacing: 0.05em;
+  font-weight: var(--font-weight-chip);
+
+  line-height: var(--line-height-chip);
+
+  letter-spacing: var(--letter-spacing-chip);
 
   text-transform: uppercase;
 

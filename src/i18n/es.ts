@@ -133,6 +133,7 @@ const es = {
 
   sidebar: {
     navigation: {
+      home: "Inicio",
       work: "Trabajo",
       experiments: "Experimentos",
       fun: "Escritos",
@@ -142,13 +143,9 @@ const es = {
       downloadCV: "Descargar CV",
       linkedin: "LinkedIn",
       email: "Email",
-    },
-
-    preferences: {
-      typography: "Tamaño del texto",
-      typographyLarge: "Grande",
-      typographyMedium: "Mediana",
-      typographySmall: "Pequeña",
+      navigation: "Navegación",
+      toggleNavigation: "Abrir o cerrar navegación",
+      openSidebar: "Abrir barra lateral",
     },
   },
 
@@ -163,6 +160,9 @@ const es = {
     timeline: "Cronología",
     team: "Equipo",
     focus: "Enfoque",
+    summaryLabel: "Resumen",
+    longVersionLabel: "Versión larga",
+    descriptionModeLabel: "Elegir extensión del caso de estudio",
     readingTimeSuffix: "min de lectura",
     sectionsAriaLabel: "Secciones del caso de estudio",
   },
@@ -170,10 +170,13 @@ const es = {
     hero: {
       tag: "PLATAFORMA DE CREDENCIALES · SECTOR EDUCATIVO Y CORPORATIVO",
       title: "De institución lineal a sistema multi-organización",
+      summary:
+        "Una plataforma B2B de credenciales de extremo a extremo. Diseñé el modelo organizacional, los roles, los permisos y la lógica de créditos para emitir y verificar credenciales digitales a escala.",
       description: [
         "Una plataforma B2B donde instituciones educativas, corporaciones y entes certificadores emiten, gestionan y verifican credenciales digitales —títulos, certificados, insignias y microcredenciales— usando estándares internacionales como Blockchain, Open Badges y credenciales verificables de la W3C.",
         "El proyecto fue 0 → 1. Diseñé el modelo organizacional, el sistema de roles y permisos, la lógica de créditos y los flujos que hacen posible emitir credenciales a escala sin que la operación colapse."
       ],
+      heroImage: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/asset-01.png`,
       role: "Product Designer (liderazgo de facto sobre UI/UX y equipo técnico)",
       timeline: "2 años · 3 cortes de funcionalidades (2 de producto + 1 técnico) · 4ª iteración en planificación",
       team: "PM (mi jefe directo) · 1 UI/UX Designer · 2 programadores · 1 QA",
@@ -235,12 +238,7 @@ const es = {
         "Hacer una plataforma de certificados. Era diseñar el sistema de organizaciones, roles, permisos y planes que hiciera posible emitir credenciales a escala sin que la operación colapsara.",
       mandateLabel: "Mandato inicial de los stakeholders",
       mandate:
-        "Replicar el modelo de un competidor del sector. Mi trabajo fue traducir esa ambición en un sistema propio, escalable y alineado a estándares internacionales.",
-      screenshot: {
-        id: "SHOT 01",
-        label: "Hero del proyecto — pantalla principal o collage de las vistas clave",
-        note: "Reemplazar con una captura real. Sugerencia: el listado de credenciales con sus filtros, la expresión más clara del producto."
-      }
+        "Replicar el modelo de un competidor del sector. Mi trabajo fue traducir esa ambición en un sistema propio, escalable y alineado a estándares internacionales."
     },
 
     vision: {
@@ -288,7 +286,8 @@ const es = {
         id: "SHOT 02",
         label: "Diagrama del modelo de roles — institución lineal vs. multi-organización",
         note: "Diagrama del modelo de roles mostrando la institución lineal frente a la estructura multi-organización.",
-        src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-2.png`
+        src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-2.png`,
+        padded: true
       }
     },
 
@@ -462,7 +461,7 @@ const es = {
         "Vencida",
         "Compartida",
         "Descargada",
-        "Revocada (la ejecuta un administrador)"
+        "Revocada"
       ],
       eventsTitle: "Eventos registrados en el historial (todos con hora y fecha)",
       events: [
@@ -495,12 +494,14 @@ const es = {
         {
           id: "SHOT 06.1",
           label: "Diagrama de flujo de roles — 1/2",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.1.jpg`
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.1.jpg`,
+          padded: true
         },
         {
           id: "SHOT 06.2",
           label: "Diagrama de flujo de roles — 2/2",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.2.jpg`
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.2.jpg`,
+          padded: true
         },
         {
           id: "SHOT 07",
@@ -693,10 +694,13 @@ const es = {
     hero: {
       tag: "B2B COMMERCE · DISTRIBUCIÓN DE SUMINISTROS PARA LABORATORIOS",
       title: "De la venta asistida al autoservicio",
+      summary:
+        "Una plataforma B2B de autoservicio para un distribuidor de laboratorio. Convertí un modelo de venta manual por teléfono y email en un sistema fiable de pedidos, cotizaciones e historial.",
       description: [
         "Un distribuidor líder de material, reactivos y equipamiento para laboratorios en el País Vasco operaba con un proceso completamente manual: pedidos por teléfono y email, catálogos en PDF, cotizaciones por correo y gestión de incidencias sin plataforma. Su ERP era interno; el cliente final nunca lo tocaba.",
         "Mi trabajo fue traducir un modelo de negocio fragmentado y manual en un sistema de autoservicio que fuera confiable, escalable y que no canibalizara la relación con el cliente."
       ],
+      heroImage: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce/cover.png`,
       role: "Product Designer (liderando 1 UI/UX Designer y supervisando a 3 programadores)",
       timeline: "2 años · 3 versiones desplegadas · 4ª en planificación",
       team: "PM (mi jefe directo) · PO del cliente · Equipo técnico · Marketing · Ventas · Operaciones",
@@ -797,12 +801,7 @@ const es = {
       ],
       futureTitle: "Visión a futuro",
       future:
-        "Que el sistema soportara autogestión de permisos para contactos que supervisan a otros contactos.",
-      screenshot: {
-        id: "SHOT 01",
-        label: "Diagrama del Sistema de Comercio — buscar → comprar o cotizar → historial → recompra",
-        note: "Reemplazar con el diagrama real. Es el diagrama que explica todo el producto en una sola imagen."
-      }
+        "Que el sistema soportara autogestión de permisos para contactos que supervisan a otros contactos."
     },
 
     systems: {

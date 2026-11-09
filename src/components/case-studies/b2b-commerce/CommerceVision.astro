@@ -1,6 +1,5 @@
 ---
 import SectionHeading from "../shared/SectionHeading.astro";
-import Screenshot from "../shared/Screenshot.astro";
 
 interface Props {
   number: string;
@@ -19,7 +18,6 @@ interface Props {
   enables: string[];
   futureTitle: string;
   future: string;
-  screenshot: { id: string; label: string; note: string };
 }
 
 const {
@@ -39,7 +37,6 @@ const {
   enables,
   futureTitle,
   future,
-  screenshot,
 } = Astro.props;
 ---
 
@@ -136,12 +133,6 @@ const {
     </p>
 
   </div>
-
-  <Screenshot
-    id={screenshot.id}
-    label={screenshot.label}
-    note={screenshot.note}
-  />
 
 </section>
 
@@ -361,9 +352,13 @@ const {
 
   min-width: 180px;
 
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-family-pixel);
 
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-chip);
+
+  font-weight: var(--font-weight-chip);
+
+  line-height: var(--line-height-chip);
 
   color: var(--color-accent);
 

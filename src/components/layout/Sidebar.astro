@@ -1,63 +1,61 @@
 ---
-import { Sun, Moon, Mail, Linkedin, Download, ArrowLeft, ArrowRight, Menu, X, Check } from "lucide-astro";
+import {
+  Sun,
+  Moon,
+  Mail,
+  Linkedin,
+  Download,
+  Menu,
+  X,
+  Check,
+  PanelLeftClose,
+  PanelLeftOpen,
+  Folder,
+  FolderOpen,
+  FileText,
+  ChevronRight
+} from "lucide-astro";
 import LanguageSelector from "../navigation/LanguageSelector.astro";
 import AccentPicker from "../navigation/AccentPicker.astro";
-import TypeScale from "../navigation/TypeScale.astro";
 import en from "../../i18n/en";
 import es from "../../i18n/es";
 import fr from "../../i18n/fr";
 
 const pathname = Astro.url.pathname;
-
 const base = import.meta.env.BASE_URL;
-
-// BASE_URL ya viene con barra final ("/portfolio/"). La quitamos para poder
-// componer prefijos sin generar una barra doble ("/portfolio//es/" -> 404).
 const baseRoot = base.replace(/\/+$/, "");
 
 const esPrefix = `${baseRoot}/es/`;
 const frPrefix = `${baseRoot}/fr/`;
 
-// Comparacion por segmento, no por subcadena: "includes('/es')" tambien
-// coincidiria con cualquier ruta que contenga esos caracteres en otro segmento.
 const isSpanish =
   pathname === `${baseRoot}/es` || pathname.startsWith(esPrefix);
 const isFrench =
   pathname === `${baseRoot}/fr` || pathname.startsWith(frPrefix);
 
 const t = isFrench ? fr : isSpanish ? es : en;
-
 const prefix = isFrench ? frPrefix : isSpanish ? esPrefix : base;
 
-const activePage =
-  pathname.includes("/writings/")
-    ? "fun"
-    : pathname.includes("/experiments/")
-      ? "experiments"
-      : "work";
+const normalize = (path: string) => path.replace(/\/+$/, "");
+
+const isHome = normalize(pathname) === normalize(prefix);
+const isB2BCommerce = pathname.includes("/work/b2b-commerce");
+const isCredentialPlatform = pathname.includes("/work/credential-platform");
+const isWork = isB2BCommerce || isCredentialPlatform;
+const isWritings = pathname.includes("/writings");
+const isExperiments = pathname.includes("/experiments");
+
+const homeHref = prefix;
+const workHref = `${prefix}#work`;
+const b2bHref = `${prefix}work/b2b-commerce/`;
+const credentialHref = `${prefix}work/credential-platform/`;
+const writingsHref = `${prefix}writings/`;
+const experimentsHref = `${prefix}experiments/`;
 ---
 
-
 <aside class="sidebar" id="sidebar">
-
   <div class="top">
-
-    <button
-      class="toggle"
-      id="sidebar-toggle"
-      aria-label="Toggle navigation"
-      aria-expanded="false"
-    >
-      <ArrowLeft class="arrow-open" size={18} />
-      <ArrowRight class="arrow-close" size={18} />
-
-      <Menu class="mobile-menu-icon" size={22} />
-      <X class="mobile-close-icon" size={22} />
-    </button>
-
-
-    <a href={prefix} class="profile">
-
+    <a href={homeHref} class="profile">
       <div class="avatar">
         <img
           class="avatar-img"
@@ -68,56 +66,106 @@ const activePage =
         />
       </div>
 
-
       <div class="info">
-        <h1>
-          Katherine Gaspare
-        </h1>
-
-        <p>
-          Product Designer + Systems Engineer
-        </p>
+        <h1>Katherine Gaspare</h1>
+        <p>Product Designer + Systems Engineer</p>
       </div>
-
     </a>
 
+    <button
+      class="toggle"
+      id="sidebar-toggle"
+      aria-label={t.sidebar.actions.toggleNavigation}
+      aria-expanded="true"
+      aria-controls="sidebar"
+    >
+      <PanelLeftClose class="icon-panel-close" size={18} />
+      <PanelLeftOpen class="icon-panel-open" size={18} />
+      <Menu class="mobile-menu-icon" size={22} />
+      <X class="mobile-close-icon" size={22} />
+    </button>
   </div>
 
+  <nav class="navigation" aria-label={t.sidebar.actions.navigation}>
+    <a
+      href={homeHref}
+      class:list={["tree-item", { active: isHome }]}
+      aria-current={isHome ? "page" : undefined}
+      title={t.sidebar.navigation.home}
+    >
+      <FileText class="tree-icon file-icon" size={16} />
+      <span class="tree-label">index.html</span>
+    </a>
 
-  <nav class="navigation">
+    <details
+      class:list={["tree-folder", { active: isWork }]}
+      id="work-folder"
+      open
+    >
+      <summary class="tree-item folder-row" title={t.sidebar.navigation.work}>
+        <ChevronRight class="tree-chevron" size={14} />
+        <Folder class="tree-icon folder-icon folder-closed" size={16} />
+        <FolderOpen class="tree-icon folder-icon folder-open" size={16} />
+        <span class="tree-label">work/</span>
+      </summary>
 
-      <a
-        href={`${prefix}#work`}
-        class:list={{ active: activePage === "work" }}
-      >
-        {t.sidebar.navigation.work}
-      </a>
+      <div class="tree-children">
+        <a
+          href={workHref}
+          class="tree-item tree-child"
+          title={t.sidebar.navigation.work}
+        >
+          <FileText class="tree-icon file-icon" size={16} />
+          <span class="tree-label">selected-work</span>
+        </a>
 
-      <a
-        href={`${prefix}writings`}
-        class:list={{ active: activePage === "fun" }}
-      >
-        {t.sidebar.navigation.fun}
-      </a>
+        <a
+          href={b2bHref}
+          class:list={["tree-item", "tree-child", { active: isB2BCommerce }]}
+          aria-current={isB2BCommerce ? "page" : undefined}
+          title="B2B Commerce"
+        >
+          <FileText class="tree-icon file-icon" size={16} />
+          <span class="tree-label">b2b-commerce.md</span>
+        </a>
 
-      <a
-        href={`${prefix}experiments`}
-        class:list={{ active: activePage === "experiments" }}
-      >
-        {t.sidebar.navigation.experiments}
-      </a>
+        <a
+          href={credentialHref}
+          class:list={["tree-item", "tree-child", { active: isCredentialPlatform }]}
+          aria-current={isCredentialPlatform ? "page" : undefined}
+          title="Credential Platform"
+        >
+          <FileText class="tree-icon file-icon" size={16} />
+          <span class="tree-label">credential-platform.md</span>
+        </a>
+      </div>
+    </details>
 
+    <a
+      href={writingsHref}
+      class:list={["tree-item", { active: isWritings }]}
+      aria-current={isWritings ? "page" : undefined}
+      title={t.sidebar.navigation.fun}
+    >
+      <FileText class="tree-icon file-icon" size={16} />
+      <span class="tree-label">writings.md</span>
+    </a>
+
+    <a
+      href={experimentsHref}
+      class:list={["tree-item", { active: isExperiments }]}
+      aria-current={isExperiments ? "page" : undefined}
+      title={t.sidebar.navigation.experiments}
+    >
+      <FileText class="tree-icon file-icon" size={16} />
+      <span class="tree-label">experiments.md</span>
+    </a>
   </nav>
 
-
   <div class="bottom">
-
     <div class="actions">
-
       <div class="preferences">
-
         <div class="preferences-row">
-
           <button
             class="icon-button"
             id="theme-toggle"
@@ -128,39 +176,26 @@ const activePage =
           </button>
 
           <AccentPicker />
-
         </div>
 
         <div class="preferences-row">
-
-          <TypeScale labels={t.sidebar.preferences} />
-
           <LanguageSelector />
-
         </div>
-
       </div>
 
-
       <a
-        href={`${import.meta.env.BASE_URL}Katherine-Gaspare-CV.pdf`}
+        href={`${base}Katherine-Gaspare-CV.pdf`}
         class="cv-link"
         target="_blank"
         rel="noopener noreferrer"
       >
         <Download size={16} />
-
-        <span>
-          {t.sidebar.actions.downloadCV}
-        </span>
+        <span>{t.sidebar.actions.downloadCV}</span>
       </a>
-
     </div>
 
-
     <div class="contact">
-
-      <a 
+      <a
         href="https://www.linkedin.com/in/katherine-gaspare/"
         target="_blank"
         rel="noopener noreferrer"
@@ -168,723 +203,364 @@ const activePage =
         aria-label={t.sidebar.actions.linkedin}
       >
         <Linkedin size={18} />
-
-        <span>
-          {t.sidebar.actions.linkedin}
-        </span>
+        <span>{t.sidebar.actions.linkedin}</span>
       </a>
 
+      <span class="separator">|</span>
 
-      <span class="separator">
-        |
-      </span>
-
-
-      <button 
+      <button
         class="email"
         id="email-button"
         aria-label={t.sidebar.actions.email}
       >
-
         <Mail class="email-icon" size={18} />
         <Check class="email-check" size={18} />
-
-        <span>
-          {t.sidebar.actions.email}
-        </span>
+        <span>{t.sidebar.actions.email}</span>
       </button>
-
     </div>
-
   </div>
-
-
 </aside>
 
+<button
+  class="sidebar-reopen"
+  id="sidebar-reopen"
+  aria-label={t.sidebar.actions.openSidebar}
+  title={t.sidebar.actions.openSidebar}
+>
+  <PanelLeftOpen size={18} />
+</button>
 
 <style>
-
 .sidebar {
-
   position: fixed;
-
   top: 0;
-
   left: 0;
-
   height: 100vh;
-
   width: var(--sidebar-width);
-
   background: var(--color-bg-secondary);
-
-  box-sizing: border-box;
-
   border-right: 1px solid var(--color-border);
-
-  padding: var(--space-lg);
-
+  padding: var(--space-lg) var(--space-md);
   display: flex;
-
   flex-direction: column;
-
-  gap: var(--space-xl);
-
-  transition: width .3s ease,
-              padding .3s ease;
-
+  gap: var(--space-lg);
+  overflow: hidden;
   z-index: 100;
-
+  transition:
+    width .3s ease,
+    padding .3s ease,
+    border-color .3s ease,
+    visibility 0s linear 0s;
 }
 
-
-.toggle {
-
-  background: transparent;
-
-  border: none;
-
-  color: var(--color-text-secondary);
-
-  cursor: pointer;
-
-  margin-bottom: var(--space-md);
-
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-shrink: 0;
 }
-
 
 .profile {
-
   display: flex;
-
   align-items: center;
-
   gap: 10px;
-
-}
-
-
-.info {
-
   min-width: 0;
-
-  max-width: 150px;
-
 }
-
-
-.info h1 {
-
-  font-size: 15px;
-
-  line-height: 1.2;
-
-  letter-spacing: -0.01em;
-
-  font-weight: 600;
-
-}
-
-
-.info p {
-
-  color: var(--color-text-secondary);
-
-  font-size: 12px;
-
-  line-height: 1.3;
-
-}
-
 
 .avatar {
-
   width: 40px;
-
   height: 40px;
-
   flex-shrink: 0;
-
   border-radius: 50%;
-
   overflow: hidden;
-
 }
-
 
 .avatar-img {
-
   width: 100%;
-
   height: 100%;
-
   display: block;
-
   object-fit: cover;
-
 }
 
-
-/* Navigation */
-
-.navigation {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: var(--space-sm);
-
+.info {
+  min-width: 0;
+  max-width: 170px;
 }
 
+.info h1 {
+  font-size: 15px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
 
-.navigation a {
-
-  font-family: var(--font-family-ui);
-
-  font-size: var(--font-size-navigation);
-
-  font-weight: var(--font-weight-navigation);
-
+.info p {
   color: var(--color-text-secondary);
-
-  padding: 4px 0;
-
-  transition: color .2s ease;
-
+  font-size: 12px;
+  line-height: 1.3;
 }
 
-
-.navigation a:hover {
-
-  color: var(--color-accent);
-
-}
-
-
-.navigation a.active {
-
-  color: var(--color-accent);
-
-}
-
-
-/* Bottom section */
-
-.bottom {
-
-  margin-top: auto;
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: var(--space-lg);
-
-}
-
-
-/* Theme + Language + CV */
-
-.actions {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: var(--space-md);
-
-}
-
-
-.preferences {
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: flex-start;
-
-  justify-content: flex-start;
-
-  gap: var(--space-sm);
-
-}
-
-
-.preferences-row {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: var(--space-md);
-
-}
-
-
-.icon-button {
-
+.toggle {
   width: 36px;
-
   height: 36px;
-
   display: grid;
-
   place-items: center;
-
-  background: transparent;
-
-  border: 1px solid var(--color-border);
-
-  border-radius: var(--radius-sm);
-
-  cursor: pointer;
-
-  color: var(--color-text-primary);
-
-  transition: background .2s ease;
-
-}
-
-
-.icon-button:hover {
-
-  background: var(--color-accent-soft);
-
-}
-
-
-#theme-moon {
-  display: none;
-}
-
-
-/* Contact */
-
-.contact {
-
-  display: flex;
-
-  flex-direction: row;
-
-  align-items: center;
-
-  gap: var(--space-sm);
-
-  white-space: nowrap;
-
-}
-
-
-.contact a,
-.contact button {
-
-  background: none;
-
-  border: none;
-
+  flex-shrink: 0;
   padding: 0;
-
-  margin: 0;
-
-  color: var(--color-text-secondary);
-
-  cursor: pointer;
-
-  font-size: var(--font-size-body);
-
-  font-family: inherit;
-
-}
-
-
-.contact a:hover,
-.contact button:hover {
-
-  color: var(--color-text-primary);
-
-}
-
-
-.actions a {
-
-  color: var(--color-text-secondary);
-
-}
-
-
-.actions a:hover {
-
-  color: var(--color-text-primary);
-
-}
-
-
-/* Collapsed state */
-
-.sidebar.collapsed {
-
-  width: var(--sidebar-collapsed);
-
-  padding: var(--space-md);
-
-  align-items: center;
-
-}
-
-
-/* Hide text content */
-
-.sidebar.collapsed .info,
-.sidebar.collapsed .navigation a,
-.sidebar.collapsed .actions a {
-
-  display: none;
-
-}
-
-
-
-/* Center avatar */
-
-.sidebar.collapsed .profile {
-
-  justify-content: center;
-
-}
-
-
-/* Center theme */
-
-.sidebar.collapsed .preferences {
-
-  justify-content: center;
-
-  align-items: center;
-
-  flex-direction: column;
-
-  gap: var(--space-md);
-
-}
-
-
-.sidebar.collapsed .preferences-row {
-
-  flex-direction: column;
-
-  justify-content: center;
-
-  align-items: center;
-
-  gap: var(--space-md);
-
-}
-
-
-/* Collapsed contact */
-
-.sidebar.collapsed .bottom {
-
-  gap: var(--space-md);
-
-}
-
-
-.sidebar.collapsed .contact {
-
-  display: flex !important;
-
-  flex-direction: column;
-
-  gap: var(--space-md);
-
-  align-items: center;
-
-}
-
-
-.sidebar.collapsed .separator {
-
-  display: none;
-
-}
-
-
-.sidebar.collapsed .contact span {
-
-  display: none;
-
-}
-
-
-.sidebar.collapsed .contact a,
-.sidebar.collapsed .contact button {
-
-  width: 36px;
-
-  height: 36px;
-
-  display: grid;
-
-  place-items: center;
-
+  background: transparent;
   border: 1px solid var(--color-border);
-
   border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    color .2s ease;
+}
 
+.toggle:hover {
+  background: var(--color-surface-hover);
   color: var(--color-text-primary);
-
 }
 
-
-.sidebar.collapsed .contact a span,
-.sidebar.collapsed .contact button span {
-
-  display: none;
-
-}
-
-
-.cv-link,
-.linkedin,
-.email {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: var(--space-sm);
-
-}
-
-
-.arrow-close {
-  display:none;
-}
-
-
-.sidebar.collapsed .arrow-open {
-  display:none;
-}
-
-
-.sidebar.collapsed .arrow-close {
-  display:block;
-}
-
-
-.sidebar.no-transition {
-  transition: none;
-}
-
-
-/* ========================================
-   Mobile navbar
-======================================== */
-
+.icon-panel-open,
 .mobile-menu-icon,
 .mobile-close-icon {
   display: none;
 }
 
-@media (max-width: 768px) {
-
-  .sidebar {
-    width: 100%;
-    height: auto;
-
-    top: 0;
-    left: 0;
-
-    padding: var(--space-md);
-
-    display: block;
-
-    border-right: none;
-    border-bottom: 1px solid var(--color-border);
-
-    background: var(--color-bg-secondary);
-
-    z-index: 1000;
-
-    transition:
-      max-height .3s ease,
-      padding .3s ease;
-  }
-
-
-  .sidebar .top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: var(--space-md);
-  }
-
-
-  .sidebar .profile {
-    flex: 1;
-    min-width: 0;
-
-    display: flex;
-    align-items: center;
-
-    gap: 10px;
-  }
-
-
-  .sidebar .avatar {
-    width: 40px;
-    height: 40px;
-  }
-
-
-  .sidebar .info {
-    max-width: none;
-  }
-
-
-  .sidebar .info h1 {
-    font-size: 15px;
-  }
-
-
-  .sidebar .info p {
-    font-size: 11px;
-  }
-
-
-  /* Menu button */
-
-  .sidebar .toggle {
-    order: 2;
-
-    width: 40px;
-    height: 40px;
-
-    margin: 0;
-    padding: 0;
-
-    display: grid;
-    place-items: center;
-
-    flex-shrink: 0;
-
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-
-    color: var(--color-text-primary);
-  }
-
-
-  /* Closed by default */
-
-  .sidebar .navigation,
-  .sidebar .bottom {
-    display: none;
-  }
-
-
-  /* Open */
-
-.sidebar.mobile-open {
-  height: 100dvh;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  padding: var(--space-md);
-  box-sizing: border-box;
+.sidebar.collapsed .icon-panel-close {
+  display: none;
 }
 
-.sidebar.mobile-open .navigation {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  margin-top: var(--space-xl);
-}
-
-.sidebar.mobile-open .navigation a {
+.sidebar.collapsed .icon-panel-open {
   display: block;
-  padding: var(--space-sm) 0;
-  color: var(--color-text-primary);
-  font-size: var(--font-size-body-lg);
 }
 
-.sidebar.mobile-open .bottom {
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding-right: 2px;
+}
+
+.tree-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 5px 8px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-pixel);
+  font-size: var(--font-size-tree);
+  line-height: 1;
+  letter-spacing: .02em;
+  overflow: hidden;
+  transition:
+    background .18s ease,
+    color .18s ease;
+}
+
+.tree-item:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text-primary);
+}
+
+.tree-item.active,
+.tree-folder.active > summary {
+  background: var(--color-accent-soft);
+  color: var(--color-text-primary);
+}
+
+.tree-item.active .file-icon,
+.tree-folder.active > summary .folder-icon {
+  color: var(--color-accent);
+}
+
+.tree-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tree-icon {
+  flex-shrink: 0;
+}
+
+.file-icon {
+  color: var(--color-text-secondary);
+}
+
+.folder-icon {
+  color: var(--color-folder);
+}
+
+.folder-open {
+  display: none;
+}
+
+.tree-folder[open] > summary .folder-closed {
+  display: none;
+}
+
+.tree-folder[open] > summary .folder-open {
+  display: block;
+}
+
+.tree-chevron {
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+  transition: transform .2s ease;
+}
+
+.tree-folder[open] > summary .tree-chevron {
+  transform: rotate(90deg);
+}
+
+.tree-folder > summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.tree-folder > summary::-webkit-details-marker {
+  display: none;
+}
+
+.tree-folder > summary::marker {
+  content: "";
+}
+
+.tree-children {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-left: 15px;
+  padding-left: 10px;
+  border-left: 1px solid var(--color-border);
+}
+
+.tree-folder:not([open]) > .tree-children {
+  display: none;
+}
+
+.tree-folder[open] > .tree-children {
+  margin-top: 2px;
+}
+
+.tree-child {
+  min-height: 31px;
+  padding: 4px 8px;
+}
+
+.bottom {
+  margin-top: auto;
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
-  margin-top: auto;
+  flex-shrink: 0;
 }
 
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
 
-/* Mobile icon */
+.preferences {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--space-sm);
+}
 
-.sidebar .arrow-open,
-.sidebar .arrow-close {
+.preferences-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.icon-button {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--color-text-primary);
+  transition: background .2s ease;
+}
+
+.icon-button:hover {
+  background: var(--color-accent-soft);
+}
+
+#theme-moon {
   display: none;
 }
 
-
-.sidebar .mobile-menu-icon {
-  display: block;
+.contact {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-sm);
+  white-space: nowrap;
 }
 
-
-.sidebar .mobile-close-icon {
-  display: none;
+.contact a,
+.contact button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  font-size: var(--font-size-body);
+  font-family: inherit;
 }
 
-
-.sidebar.mobile-open .mobile-menu-icon {
-  display: none;
+.contact a:hover,
+.contact button:hover {
+  color: var(--color-text-primary);
 }
 
-
-.sidebar.mobile-open .mobile-close-icon {
-  display: block;
+.actions a {
+  color: var(--color-text-secondary);
 }
 
-
-  /* Important:
-     mobile does not affect desktop layout */
-
-  .sidebar.collapsed {
-    width: 100%;
-    padding: var(--space-md);
-
-    align-items: initial;
-  }
-
-
-  .sidebar.collapsed .info,
-  .sidebar.collapsed .navigation a,
-  .sidebar.collapsed .actions a {
-    display: block;
-  }
-
-
-  .sidebar.collapsed .profile {
-    justify-content: initial;
-  }
-
+.actions a:hover {
+  color: var(--color-text-primary);
 }
 
-/* Email */
+.cv-link,
+.linkedin,
+.email {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
 
 .email-check {
   display: none;
 }
 
 .email.copied {
-  color: #3A8F6B !important;
+  color: var(--color-success) !important;
 }
 
 .email.copied .email-check {
   display: block;
-  color: #3A8F6B !important;
+  color: var(--color-success) !important;
 }
 
 .email.copied .email-icon {
@@ -892,23 +568,213 @@ const activePage =
 }
 
 .email.copied span {
-  color: #3A8F6B !important;
+  color: var(--color-success) !important;
 }
 
+.sidebar.collapsed {
+  width: 0;
+  padding-left: 0;
+  padding-right: 0;
+  border-right-color: transparent;
+  visibility: hidden;
+  transition:
+    width .3s ease,
+    padding .3s ease,
+    border-color .3s ease,
+    visibility 0s linear .3s;
+}
+
+.sidebar-reopen {
+  position: fixed;
+  top: 24px;
+  left: 0;
+  z-index: 101;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 46px;
+  padding: 0;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-left: none;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    color .2s ease;
+}
+
+.sidebar-reopen:hover {
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.sidebar.collapsed + .sidebar-reopen {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
+    padding: var(--space-md);
+    display: block;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg-secondary);
+    z-index: 1000;
+    overflow: hidden;
+    visibility: visible;
+    transition:
+      max-height .3s ease,
+      padding .3s ease;
+  }
+
+  .sidebar .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+  }
+
+  .sidebar .profile {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .sidebar .info {
+    max-width: none;
+  }
+
+  .sidebar .info h1 {
+    font-size: 15px;
+  }
+
+  .sidebar .info p {
+    font-size: 11px;
+  }
+
+  .sidebar .toggle {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-primary);
+  }
+
+  .sidebar .icon-panel-close,
+  .sidebar .icon-panel-open,
+  .sidebar.collapsed .icon-panel-close,
+  .sidebar.collapsed .icon-panel-open {
+    display: none;
+  }
+
+  .sidebar .mobile-menu-icon {
+    display: block;
+  }
+
+  .sidebar .mobile-close-icon {
+    display: none;
+  }
+
+  .sidebar.mobile-open .mobile-menu-icon {
+    display: none;
+  }
+
+  .sidebar.mobile-open .mobile-close-icon {
+    display: block;
+  }
+
+  .sidebar .navigation,
+  .sidebar .bottom {
+    display: none;
+  }
+
+  .sidebar.mobile-open {
+    height: 100dvh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    overflow: hidden;
+  }
+
+  .sidebar.mobile-open .navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 0;
+    overflow-y: auto;
+  }
+
+  .sidebar.mobile-open .bottom {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin-top: auto;
+  }
+
+  .sidebar.mobile-open .tree-item {
+    min-height: 42px;
+    padding: 7px 10px;
+    font-size: 20px;
+  }
+
+  .sidebar.mobile-open .tree-child {
+    min-height: 38px;
+  }
+
+  .sidebar.collapsed {
+    width: 100%;
+    padding: var(--space-md);
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    visibility: visible;
+    overflow: hidden;
+    transition:
+      max-height .3s ease,
+      padding .3s ease;
+  }
+
+  .sidebar-reopen {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .tree-item,
+  .tree-chevron,
+  .toggle,
+  .sidebar-reopen {
+    transition: none;
+  }
+}
 </style>
 
-
 <script>
-
 const sidebar = document.getElementById("sidebar");
 const toggle = document.getElementById("sidebar-toggle");
+const reopen = document.getElementById("sidebar-reopen");
 const layout = document.querySelector(".layout");
-const isMobile =
-  window.matchMedia("(max-width: 768px)").matches;
-
-// =========================
-// Theme
-// =========================
+const mobileQuery = window.matchMedia("(max-width: 768px)");
+const isMobile = () => mobileQuery.matches;
 
 const themeToggle = document.getElementById("theme-toggle");
 const themeMoon = document.getElementById("theme-moon");
@@ -932,31 +798,21 @@ const initialTheme: Theme =
 
 root.setAttribute("data-theme", initialTheme);
 
-
 const updateThemeIcon = (theme: Theme) => {
-
   if (!themeMoon || !themeSun) return;
 
   if (theme === "light") {
-
     themeMoon.style.display = "block";
     themeSun.style.display = "none";
-
   } else {
-
     themeMoon.style.display = "none";
     themeSun.style.display = "block";
-
   }
-
 };
-
 
 updateThemeIcon(initialTheme);
 
-
 themeToggle?.addEventListener("click", () => {
-
   const currentTheme: Theme =
     root.getAttribute("data-theme") === "light"
       ? "light"
@@ -968,129 +824,143 @@ themeToggle?.addEventListener("click", () => {
       : "dark";
 
   root.setAttribute("data-theme", newTheme);
-
   localStorage.setItem("theme", newTheme);
-
   updateThemeIcon(newTheme);
-
 });
 
+const setCollapsed = (collapsed: boolean) => {
+  if (!sidebar) return;
 
-// =========================
-// Sidebar initial state
-// =========================
+  sidebar.classList.toggle("collapsed", collapsed);
+  layout?.classList.toggle("collapsed", collapsed);
+  toggle?.setAttribute("aria-expanded", String(!collapsed));
+
+  if (collapsed && !isMobile()) {
+    sidebar.setAttribute("inert", "");
+  } else {
+    sidebar.removeAttribute("inert");
+  }
+};
+
+const closeMobileMenu = () => {
+  sidebar?.classList.remove("mobile-open");
+  toggle?.setAttribute("aria-expanded", "false");
+  document.body.style.overflow = "";
+};
+
+const openMobileMenu = () => {
+  sidebar?.classList.add("mobile-open");
+  toggle?.setAttribute("aria-expanded", "true");
+  document.body.style.overflow = "hidden";
+};
 
 const sidebarHasBeenUsed =
   localStorage.getItem("sidebar-used") === "true";
 
-
-if (!isMobile && sidebarHasBeenUsed) {
-
-  sidebar?.classList.add("collapsed");
-
-  layout?.classList.add("collapsed");
-
+if (!isMobile() && sidebarHasBeenUsed) {
+  setCollapsed(true);
+} else if (isMobile()) {
+  toggle?.setAttribute("aria-expanded", "false");
 }
 
-
-// =========================
-// Auto-collapse on scroll
-// =========================
-
 toggle?.addEventListener("click", () => {
-
   if (!sidebar) return;
 
-
-  // =========================
-  // Mobile
-  // =========================
-
-  if (isMobile) {
-
-    const isOpen =
-      sidebar.classList.toggle("mobile-open");
-
-
-    toggle.setAttribute(
-      "aria-expanded",
-      String(isOpen)
-    );
-
+  if (isMobile()) {
+    if (sidebar.classList.contains("mobile-open")) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
 
     return;
-
   }
 
+  const collapsed = !sidebar.classList.contains("collapsed");
 
-  // =========================
-  // Desktop
-  // =========================
+  setCollapsed(collapsed);
 
-  const isCollapsed =
-    sidebar.classList.toggle("collapsed");
-
-
-  layout?.classList.toggle(
-    "collapsed",
-    isCollapsed
-  );
-
+  if (collapsed) {
+    reopen?.focus({ preventScroll: true });
+  }
 });
 
+let ignoreAutoCollapseUntil = 0;
+let lastScrollY = window.scrollY;
 
-// =========================
-// Auto-collapse on scroll
-// =========================
+reopen?.addEventListener("click", () => {
+  ignoreAutoCollapseUntil = performance.now() + 800;
+  setCollapsed(false);
+  toggle?.focus({ preventScroll: true });
+});
 
 window.addEventListener(
   "scroll",
   () => {
+    if (!sidebar || isMobile()) return;
 
-    if (!sidebar) return;
+    const currentScrollY = window.scrollY;
+    const scrollChanged = currentScrollY !== lastScrollY;
+    lastScrollY = currentScrollY;
 
-
-    // Mobile no usa auto-collapse
-    if (isMobile) return;
-
-
-    if (window.scrollY <= 20) return;
-
+    if (performance.now() < ignoreAutoCollapseUntil) return;
+    if (!scrollChanged) return;
+    if (currentScrollY <= 20) return;
 
     if (!sidebar.classList.contains("collapsed")) {
-
-      sidebar.classList.add("collapsed");
-
-      layout?.classList.add("collapsed");
-
+      setCollapsed(true);
     }
 
-
-    localStorage.setItem(
-      "sidebar-used",
-      "true"
-    );
-
+    localStorage.setItem("sidebar-used", "true");
   },
   { passive: true }
 );
 
+mobileQuery.addEventListener("change", (event) => {
+  if (event.matches) {
+    sidebar?.classList.remove("collapsed");
+    layout?.classList.remove("collapsed");
+    sidebar?.removeAttribute("inert");
+    closeMobileMenu();
+    return;
+  }
 
-const workLink = document.querySelector('a[href$="#work"]');
+  sidebar?.classList.remove("mobile-open");
+  document.body.style.overflow = "";
+  setCollapsed(localStorage.getItem("sidebar-used") === "true");
+});
 
+const workFolder =
+  document.getElementById("work-folder") as HTMLDetailsElement | null;
+
+const storedWorkFolder = localStorage.getItem("sidebar.work-folder");
+
+if (workFolder) {
+  if (workFolder.classList.contains("active")) {
+    workFolder.open = true;
+  } else if (storedWorkFolder === "closed") {
+    workFolder.open = false;
+  } else if (storedWorkFolder === "open") {
+    workFolder.open = true;
+  }
+
+  workFolder.addEventListener("toggle", () => {
+    localStorage.setItem(
+      "sidebar.work-folder",
+      workFolder.open ? "open" : "closed"
+    );
+  });
+}
 
 const workLinks = document.querySelectorAll('a[href$="#work"]');
 
 workLinks.forEach((workLink) => {
-
   workLink.addEventListener("click", (event) => {
+    closeMobileMenu();
 
     const target = document.getElementById("work");
 
-    // Estamos en Home
-
     if (target) {
-
       event.preventDefault();
 
       const start = window.scrollY;
@@ -1107,15 +977,12 @@ workLinks.forEach((workLink) => {
       let startTime: number | null = null;
 
       const easeInOut = (t: number) => {
-
         return t < 0.5
           ? 2 * t * t
           : 1 - Math.pow(-2 * t + 2, 2) / 2;
-
       };
 
       const animateScroll = (currentTime: number) => {
-
         if (startTime === null) {
           startTime = currentTime;
         }
@@ -1131,65 +998,39 @@ workLinks.forEach((workLink) => {
         if (progress < 1) {
           requestAnimationFrame(animateScroll);
         }
-
       };
 
       requestAnimationFrame(animateScroll);
 
       return;
-
     }
-
-
-    // Estamos en otra página
 
     event.preventDefault();
 
-    sessionStorage.setItem(
-      "scroll-to-work",
-      "true"
-    );
+    sessionStorage.setItem("scroll-to-work", "true");
 
     const href = workLink.getAttribute("href");
 
     if (!href) return;
 
-    // Quitamos #work para evitar que el navegador
-    // salte directamente a la sección.
-
     const homeUrl = href.split("#")[0];
 
     window.location.href = homeUrl || "/";
-
   });
-
 });
 
-
-
-// Si venimos de otra página hacia Work
-
 window.addEventListener("load", () => {
-
-  const shouldScroll =
-    sessionStorage.getItem("scroll-to-work");
-
+  const shouldScroll = sessionStorage.getItem("scroll-to-work");
 
   if (!shouldScroll) return;
 
-
-  const target =
-    document.getElementById("work");
-
+  const target = document.getElementById("work");
 
   if (!target) return;
 
-
   sessionStorage.removeItem("scroll-to-work");
 
-
   setTimeout(() => {
-
     const start = window.scrollY;
     const offset = 80;
 
@@ -1203,16 +1044,13 @@ window.addEventListener("load", () => {
 
     let startTime: number | null = null;
 
-
     const easeInOut = (t: number) => {
       return t < 0.5
         ? 2 * t * t
         : 1 - Math.pow(-2 * t + 2, 2) / 2;
     };
 
-
     const animateScroll = (currentTime: number) => {
-
       if (startTime === null) {
         startTime = currentTime;
       }
@@ -1220,67 +1058,42 @@ window.addEventListener("load", () => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
 
-
       window.scrollTo(
         0,
         start + distance * easeInOut(progress)
       );
 
-
       if (progress < 1) {
         requestAnimationFrame(animateScroll);
       }
-
     };
 
-
     requestAnimationFrame(animateScroll);
-
   }, 100);
-
 });
 
-const emailButton =
-  document.getElementById("email-button");
+const emailButton = document.getElementById("email-button");
 
 emailButton?.addEventListener("click", async () => {
-
   try {
-
-    await navigator.clipboard.writeText(
-      "katherine.gaspare@gmail.com"
-    );
+    await navigator.clipboard.writeText("katherine.gaspare@gmail.com");
 
     emailButton.classList.add("copied");
 
-    const emailText =
-      emailButton.querySelector("span");
+    const emailText = emailButton.querySelector("span");
 
     if (!emailText) return;
 
-    const originalText =
-      emailText.textContent;
+    const originalText = emailText.textContent;
 
     emailText.textContent = "Copied";
 
     setTimeout(() => {
-
       emailButton.classList.remove("copied");
-
-      emailText.textContent =
-        originalText;
-
+      emailText.textContent = originalText;
     }, 1500);
-
   } catch (error) {
-
-    console.error(
-      "Could not copy email:",
-      error
-    );
-
+    console.error("Could not copy email:", error);
   }
-
 });
-
 </script>

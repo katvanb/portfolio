@@ -22,6 +22,12 @@ const { title, description = "Product Designer portfolio", content, lang = "en" 
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500&family=Space+Grotesk:wght@500;700&family=VT323&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="icon"
       type="image/png"
@@ -65,14 +71,16 @@ const { title, description = "Product Designer portfolio", content, lang = "en" 
 
 }
 
-
 main {
 
   grid-column: 2;
   
   padding: 0 var(--space-xl);
 
+  width: 100%;
+
   min-width: 0;
+
 }
 
 

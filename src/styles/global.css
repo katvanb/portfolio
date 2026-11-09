@@ -1,5 +1,4 @@
 @import "./tokens.css";
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500&display=swap");
 
 
 * {
@@ -33,7 +32,7 @@
 
 
 html {
-  font-family: var(--font-family-primary);
+  font-family: var(--font-family-body);
   background: var(--color-bg-primary);
   color: var(--color-text-primary);
 }
@@ -55,6 +54,13 @@ h2,
 h3,
 p {
   margin: 0;
+}
+
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-family-heading);
 }
 
 

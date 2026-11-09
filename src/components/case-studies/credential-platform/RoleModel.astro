@@ -19,7 +19,7 @@ interface Props {
   decisionText: string;
   futureTitle: string;
   future: string[];
-  screenshot: { id: string; label: string; note?: string; src?: string };
+  screenshot: { id: string; label: string; note?: string; src?: string; padded?: boolean };
 }
 
 const {
@@ -157,6 +157,7 @@ const {
     label={screenshot.label}
     note={screenshot.note}
     src={screenshot.src}
+    padded={screenshot.padded}
   />
 
 </section>
@@ -316,11 +317,15 @@ const {
 
   color: var(--color-text-secondary);
 
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-family-pixel);
 
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-chip);
 
-  letter-spacing: 0.05em;
+  font-weight: var(--font-weight-chip);
+
+  line-height: var(--line-height-chip);
+
+  letter-spacing: var(--letter-spacing-chip);
 
 }
 

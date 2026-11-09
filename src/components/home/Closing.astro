@@ -126,7 +126,7 @@ const { content } = Astro.props;
 
   font-weight: var(--font-weight-links);
 
-  color: var(--color-text-primary);
+  color: var(--color-primary);
 
   transition: color .2s ease;
 
@@ -144,12 +144,12 @@ const { content } = Astro.props;
 
 
 .cta.copied {
-  color: #3A8F6B;
+  color: var(--color-success);
 }
 
 .cta.copied .cta-check {
   display: block;
-  color: #3A8F6B;
+  color: var(--color-success);
 }
 
 .cta.copied .cta-mail {
@@ -157,7 +157,7 @@ const { content } = Astro.props;
 }
 
 .cta.copied span {
-  color: #3A8F6B;
+  color: var(--color-success);
 }
 
 </style>

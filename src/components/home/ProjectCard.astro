@@ -67,11 +67,15 @@ const { title, tags, link, image, action } = Astro.props;
 
   margin: 0;
 
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-family-pixel);
 
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-chip);
 
-  letter-spacing: 0.05em;
+  font-weight: var(--font-weight-chip);
+
+  line-height: var(--line-height-chip);
+
+  letter-spacing: var(--letter-spacing-chip);
 
   color: #fff;
 

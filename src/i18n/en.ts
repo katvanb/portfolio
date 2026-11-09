@@ -131,6 +131,7 @@ const en = {
 
   sidebar: {
     navigation: {
+      home: "Home",
       work: "Work",
       experiments: "Experiments",
       fun: "Writings",
@@ -140,13 +141,9 @@ const en = {
       downloadCV: "Download CV",
       linkedin: "LinkedIn",
       email: "Email",
-    },
-
-    preferences: {
-      typography: "Text size",
-      typographyLarge: "Large",
-      typographyMedium: "Medium",
-      typographySmall: "Small",
+      navigation: "Navigation",
+      toggleNavigation: "Toggle navigation",
+      openSidebar: "Open sidebar",
     },
   },
 
@@ -161,6 +158,9 @@ const en = {
     timeline: "Timeline",
     team: "Team",
     focus: "Focus",
+    summaryLabel: "Summary",
+    longVersionLabel: "Long version",
+    descriptionModeLabel: "Choose case study length",
     readingTimeSuffix: "min read",
     sectionsAriaLabel: "Case study sections",
   },
@@ -168,10 +168,13 @@ const en = {
     hero: {
       tag: "CREDENTIAL PLATFORM · EDUCATION AND CORPORATE SECTOR",
       title: "From a linear institution to a multi-organization system",
+      summary:
+        "An end-to-end B2B credential platform. I designed the organizational model, roles, permissions and credit logic that let institutions issue and verify digital credentials at scale.",
       description: [
         "A B2B platform where educational institutions, corporations and certifying bodies issue, manage and verify digital credentials —degrees, certificates, badges and micro-credentials— using international standards such as Blockchain, Open Badges and W3C Verifiable Credentials.",
         "The project was 0 → 1. I designed the organizational model, the role and permission system, the credit logic and the workflows that make issuing credentials at scale possible without the operation collapsing."
       ],
+      heroImage: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/asset-01.png`,
       role: "Product Designer (de facto lead on UI/UX and the technical team)",
       timeline: "2 years · 3 feature releases (2 product + 1 technical) · 4th iteration in planning",
       team: "PM (direct manager) · 1 UI/UX Designer · 2 engineers · 1 QA",
@@ -233,12 +236,7 @@ const en = {
         "Building a certificate platform. It was designing the system of organizations, roles, permissions and plans that would make it possible to issue credentials at scale without the operation collapsing.",
       mandateLabel: "Initial stakeholder mandate",
       mandate:
-        "Replicate the model of a sector competitor. My work was to translate that ambition into a proprietary, scalable system aligned with international standards.",
-      screenshot: {
-        id: "SHOT 01",
-        label: "Platform hero — main screen or collage of the key views",
-        note: "Replace with a real capture. Suggested: the credential list with its filters, the clearest expression of the product."
-      }
+        "Replicate the model of a sector competitor. My work was to translate that ambition into a proprietary, scalable system aligned with international standards."
     },
 
     vision: {
@@ -286,7 +284,8 @@ const en = {
         id: "SHOT 02",
         label: "Role model diagram — linear institution vs. multi-organization",
         note: "Role model diagram showing linear institution vs multi-organization structure.",
-        src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-2.png`
+        src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-2.png`,
+        padded: true
       }
     },
 
@@ -460,7 +459,7 @@ const en = {
         "Expired",
         "Shared",
         "Downloaded",
-        "Revoked (executed by an administrator)"
+        "Revoked"
       ],
       eventsTitle: "Events recorded in the history (all with time and date)",
       events: [
@@ -493,12 +492,14 @@ const en = {
         {
           id: "SHOT 06.1",
           label: "Role flow diagram — 1/2",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.1.jpg`
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.1.jpg`,
+          padded: true
         },
         {
           id: "SHOT 06.2",
           label: "Role flow diagram — 2/2",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.2.jpg`
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.2.jpg`,
+          padded: true
         },
         {
           id: "SHOT 07",
@@ -691,10 +692,13 @@ const en = {
     hero: {
       tag: "B2B COMMERCE · LABORATORY SUPPLY DISTRIBUTION",
       title: "From assisted selling to self-service",
+      summary:
+        "A B2B self-service commerce platform for a laboratory distributor. I turned a manual phone-and-email sales model into a reliable system for ordering, quoting and account history.",
       description: [
         "A leading distributor of materials, reagents and equipment for laboratories in the Basque Country ran on a completely manual process: orders by phone and email, catalogs in PDF, quotes by email and incident management with no platform. The ERP was internal; the end customer never touched it.",
         "My work was to translate a fragmented, manual business model into a self-service system that was reliable, scalable, and would not cannibalize the customer relationship."
       ],
+      heroImage: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce/cover.png`,
       role: "Product Designer (leading 1 UI/UX Designer and supervising 3 developers)",
       timeline: "2 years · 3 versions shipped · 4th in planning",
       team: "PM (direct manager) · Client PO · Engineering · Marketing · Sales · Operations",
@@ -795,12 +799,7 @@ const en = {
       ],
       futureTitle: "Future vision",
       future:
-        "A system that supports self-managed permissions for contacts who supervise other contacts.",
-      screenshot: {
-        id: "SHOT 01",
-        label: "Commerce System diagram — search → buy or quote → history → reorder",
-        note: "Replace with the real diagram. This is the diagram that explains the whole product in one image."
-      }
+        "A system that supports self-managed permissions for contacts who supervise other contacts."
     },
 
     systems: {

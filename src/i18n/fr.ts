@@ -131,6 +131,7 @@ const fr = {
 
   sidebar: {
     navigation: {
+      home: "Accueil",
       work: "Projets",
       experiments: "Expérimentations",
       fun: "Écrits",
@@ -140,13 +141,9 @@ const fr = {
       downloadCV: "Télécharger le CV",
       linkedin: "LinkedIn",
       email: "Email",
-    },
-
-    preferences: {
-      typography: "Taille du texte",
-      typographyLarge: "Grand",
-      typographyMedium: "Moyen",
-      typographySmall: "Petit",
+      navigation: "Navigation",
+      toggleNavigation: "Ouvrir ou fermer la navigation",
+      openSidebar: "Ouvrir la barre latérale",
     },
   },
 
@@ -161,6 +158,9 @@ const fr = {
     timeline: "Chronologie",
     team: "Équipe",
     focus: "Focus",
+    summaryLabel: "Résumé",
+    longVersionLabel: "Version longue",
+    descriptionModeLabel: "Choisir la longueur de l'étude de cas",
     readingTimeSuffix: "min de lecture",
     sectionsAriaLabel: "Sections de l'étude de cas",
   },
@@ -168,10 +168,13 @@ const fr = {
     hero: {
       tag: "PLATEFORME DE CERTIFICATS · SECTEUR ÉDUCATION ET ENTREPRISE",
       title: "D'une institution linéaire à un système multi-organisation",
+      summary:
+        "Une plateforme B2B de certificats de bout en bout. J'ai conçu le modèle organisationnel, les rôles, les permissions et la logique de crédits pour émettre et vérifier des certificats numériques à grande échelle.",
       description: [
         "Une plateforme B2B où les établissements scolaires, les entreprises et les organismes certificateurs émettent, gèrent et vérifient des certificats numériques —diplômes, certificats, badges et micro-certifications— en s'appuyant sur des standards internationaux tels que Blockchain, Open Badges et les Certificats Vérifiables du W3C.",
         "Le projet partait de zéro. J'ai conçu le modèle organisationnel, le système de rôles et de permissions, la logique de crédits et les parcours qui permettent d'émettre des certificats à grande échelle sans que l'opération ne s'effondre."
       ],
+      heroImage: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/asset-01.png`,
       role: "Product Designer (leadership de facto sur l'UI/UX et l'équipe technique)",
       timeline: "2 ans · 3 livraisons de fonctionnalités (2 produit + 1 technique) · 4e itération en planification",
       team: "PM (manager direct) · 1 UI/UX Designer · 2 développeurs · 1 QA",
@@ -233,12 +236,7 @@ const fr = {
         "De faire une plateforme de certificats. Il s'agissait de concevoir le système d'organisations, de rôles, de permissions et de plans qui rendrait possible l'émission de certificats à grande échelle sans que l'opération ne s'effondre.",
       mandateLabel: "Mandat initial des parties prenantes",
       mandate:
-        "Répliquer le modèle d'un concurrent du secteur. Mon travail consistait à traduire cette ambition en un système propriétaire, scalable et aligné sur les standards internationaux.",
-      screenshot: {
-        id: "SHOT 01",
-        label: "Hero du projet — écran principal ou collage des vues clés",
-        note: "Remplacer par une capture réelle. Suggestion : la liste des certificats avec ses filtres, l'expression la plus claire du produit."
-      }
+        "Répliquer le modèle d'un concurrent du secteur. Mon travail consistait à traduire cette ambition en un système propriétaire, scalable et aligné sur les standards internationaux."
     },
 
     vision: {
@@ -286,7 +284,8 @@ const fr = {
         id: "SHOT 02",
         label: "Diagramme du modèle de rôles — institution linéaire vs. multi-organisation",
         note: "Diagramme du modèle de rôles montrant l'institution linéaire face à la structure multi-organisation.",
-        src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-2.png`
+        src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-2.png`,
+        padded: true
       }
     },
 
@@ -460,7 +459,7 @@ const fr = {
         "Expirée",
         "Partagée",
         "Téléchargée",
-        "Révoquée (exécutée par un administrateur)"
+        "Révoquée"
       ],
       eventsTitle: "Événements enregistrés dans l'historique (tous avec heure et date)",
       events: [
@@ -493,12 +492,14 @@ const fr = {
         {
           id: "SHOT 06.1",
           label: "Diagramme de flux des rôles — 1/2",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.1.jpg`
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.1.jpg`,
+          padded: true
         },
         {
           id: "SHOT 06.2",
           label: "Diagramme de flux des rôles — 2/2",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.2.jpg`
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.2.jpg`,
+          padded: true
         },
         {
           id: "SHOT 07",
@@ -691,10 +692,13 @@ const fr = {
     hero: {
       tag: "B2B COMMERCE · DISTRIBUTION DE FOURNITURES DE LABORATOIRE",
       title: "De la vente assistée à l'auto-service",
+      summary:
+        "Une plateforme B2B en libre-service pour un distributeur de laboratoire. J'ai transformé un modèle de vente manuel par téléphone et e-mail en un système fiable de commandes, devis et historique.",
       description: [
         "Un distributeur leader de matériel, réactifs et équipements pour laboratoires du Pays Basque fonctionnait avec un processus entièrement manuel : commandes par téléphone et e-mail, catalogues en PDF, devis par e-mail et gestion des incidents sans plateforme. L'ERP était interne ; le client final n'y touchait jamais.",
         "Mon travail consistait à traduire un modèle d'affaires fragmenté et manuel en un système d'auto-service fiable, scalable, et qui ne cannibalise pas la relation client."
       ],
+      heroImage: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce/cover.png`,
       role: "Product Designer (encadrant 1 UI/UX Designer et supervisant 3 développeurs)",
       timeline: "2 ans · 3 versions livrées · 4e en planification",
       team: "PM (manager direct) · PO client · Équipe technique · Marketing · Ventes · Opérations",
@@ -795,12 +799,7 @@ const fr = {
       ],
       futureTitle: "Vision future",
       future:
-        "Un système qui gère en auto-service les permissions des contacts qui supervisent d'autres contacts.",
-      screenshot: {
-        id: "SHOT 01",
-        label: "Diagramme du Système de Commerce — chercher → acheter ou deviser → historique → recommander",
-        note: "Remplacer par le vrai diagramme. C'est celui qui explique tout le produit en une image."
-      }
+        "Un système qui gère en auto-service les permissions des contacts qui supervisent d'autres contacts."
     },
 
     systems: {
