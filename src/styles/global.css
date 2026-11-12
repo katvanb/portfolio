@@ -1,4 +1,5 @@
 @import "./tokens.css";
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Inter:wght@400;500;600&display=swap");
 
 
 * {
@@ -32,7 +33,7 @@
 
 
 html {
-  font-family: var(--font-family-body);
+  font-family: var(--font-family-primary);
   background: var(--color-bg-primary);
   color: var(--color-text-primary);
 }
@@ -54,13 +55,6 @@ h2,
 h3,
 p {
   margin: 0;
-}
-
-
-h1,
-h2,
-h3 {
-  font-family: var(--font-family-heading);
 }
 
 
@@ -94,9 +88,22 @@ a {
 }
 
 
-main {
-  max-width: var(--container-width);
-  margin: 0 auto;
+.eyebrow {
+
+  font-family: var(--font-family-ui);
+
+  font-size: var(--font-size-label);
+
+  font-weight: 600;
+
+  letter-spacing: 0;
+
+  line-height: var(--line-height-label);
+
+  text-transform: uppercase;
+
+  color: var(--color-label);
+
 }
 
 
@@ -110,52 +117,5 @@ main {
   background: var(--color-accent);
 
   color: var(--color-bg-primary);
-
-}
-
-
-/* Hero typewriter */
-
-.hero-typewriter {
-
-  color: var(--color-accent);
-
-  font-weight: var(--font-weight-label);
-
-  white-space: nowrap;
-
-}
-
-
-.hero-caret {
-
-  display: inline-block;
-
-  width: 2px;
-
-  height: 1em;
-
-  margin-left: 2px;
-
-  vertical-align: -0.125em;
-
-  background: var(--color-accent);
-
-  animation: hero-caret-blink 1s steps(2, start) infinite;
-
-}
-
-
-@keyframes hero-caret-blink {
-
-  0%,
-  49% {
-    opacity: 1;
-  }
-
-  50%,
-  100% {
-    opacity: 0;
-  }
 
 }

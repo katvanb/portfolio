@@ -4,47 +4,39 @@ const fr = {
 
     hero: {
 
-      title: "Bonjour, je suis Katherine.",
+      eyebrow: "DESIGNEUSE ET INGÉNIEURE",
+
+      name: "Katherine Gaspare",
 
       paragraphs: [
 
-        "Je suis <strong>Lead Produit Design</strong> et j'aime comprendre comment les choses fonctionnent réellement.",
+        "Un produit commence rarement avec le brief, alors je suis le fil :",
 
-        "Je me déplace entre <strong class=\"hero-typewriter\" data-words=\"direction produit|systèmes|UX|implémentation\"><span class=\"tw-text\">direction produit</span><span class=\"hero-caret\" aria-hidden=\"true\"></span></strong>",
+        "Je parle à celles et ceux qui connaissent le métier, je demande comment ça fonctionne aujourd'hui, où ça casse et pourquoi on en est arrivé là. Je cartographie les dépendances, je questionne les hypothèses et j'entre dans le détail quand il compte.",
 
-        "Je me rapproche du problème autant qu'il le faut pour prendre une bonne décision.",
+        "Je n'ai pas besoin de décider de tout. Juste comprendre assez pour aider à prendre les bonnes décisions.",
 
       ],
 
     },
 
 
-    buttons: {
-      work: "Voir mes projets"
-    },
-
     work: {
 
-      title: "Projets sur lesquels j'ai travaillé",
+      eyebrow: "PROJETS SÉLECTIONNÉS",
 
       projects: [
 
         {
           title: "D'une idée à une plateforme de certification évolutive",
-          category: "SaaS Enterprise · Certificats numériques",
-          description:
-            "Conception d'une plateforme évolutive de gestion des certifications pour plusieurs organisations et des rôles utilisateurs complexes.",
-          tags: ["Product Strategy", "Systems Design", "Architecture", "Enterprise UX"],
+          tags: ["stratégie produit", "design de systèmes", "architecture", "ux entreprise"],
           link: `${import.meta.env.BASE_URL}fr/work/credential-platform/`,
           image: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/asset-01.png`
         },
 
         {
           title: "Des achats assistés vers le libre-service",
-          category: "Commerce B2B · Plateforme entreprise",
-          description:
-            "Transformation d'un processus commercial traditionnel en une expérience d'achat en libre-service pour les acheteurs professionnels.",
-          tags: ["Product Discovery", "Complex UX", "Self-Service", "Business Systems"],
+          tags: ["découverte produit", "ux complexe", "libre-service", "systèmes métier"],
           link: `${import.meta.env.BASE_URL}fr/work/b2b-commerce/`,
           image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce/cover.png`
         }
@@ -56,53 +48,11 @@ const fr = {
     },
 
 
-    options: {
+    experience: {
 
-      fun: {
-        title: "Écrits",
-        link: `${import.meta.env.BASE_URL}fr/writings/`
-      },
+      eyebrow: "EXPÉRIENCE",
 
-      experiments: {
-        title: "Expérimentations",
-        link: `${import.meta.env.BASE_URL}fr/experiments/`
-      }
-
-    },
-
-
-    pointOfView: {
-      title: "J'ai tendance à aller une couche plus loin.",
-
-      paragraphs: [
-      "Un produit commence rarement là où le brief le dit.",
-      "Une demande de fonctionnalité peut être un problème métier.",
-      "Un écran confus peut être un problème de permissions.",
-      "Une « limitation technique » peut être une décision que personne n'a revisitée.",
-      "C'est pourquoi je suis le fil : je parle à celles et ceux qui connaissent le métier, je demande comment ça fonctionne aujourd'hui, où ça casse et pourquoi on en est arrivé là. Je cartographie les dépendances, je questionne les hypothèses et j'entre dans le détail quand il compte.",
-      "Parfois cela mène à un nouveau parcours.",
-      "Parfois cela change la structure du produit.",
-      "Parfois cela signifie dire non.",
-      "<strong>Je n'ai pas besoin de décider de tout. Juste comprendre assez pour aider à prendre les bonnes décisions.</strong>"
-      ]
-    },
-
-
-    beyond: {
-
-      title: "Au-delà de l'écran.",
-
-      paragraphs: [
-
-        "J'aime avoir une vie qui ne ressemble pas au travail.",
-
-        "Je bouge, j'explore, j'apprends, je crée des choses, je disparais dans la nature un moment, je sors, je reste à la maison, je lis, j'expérimente et je passe un temps déraisonnable avec mes chats.",
-
-        "Le travail est important pour moi.",
-
-        "Ce n'est tout simplement pas le tableau complet."
-
-      ]
+      paragraphs: [],
 
     },
 
@@ -127,24 +77,26 @@ const fr = {
 
     linkedin: "LinkedIn",
 
+    resume: "CV",
+
+    credit: "Conçu + codé par Katherine",
+
   },
 
-  sidebar: {
-    navigation: {
-      home: "Accueil",
-      work: "Projets",
-      experiments: "Expérimentations",
-      fun: "Écrits",
-    },
+  controls: {
 
-    actions: {
-      downloadCV: "Télécharger le CV",
-      linkedin: "LinkedIn",
-      email: "Email",
-      navigation: "Navigation",
-      toggleNavigation: "Ouvrir ou fermer la navigation",
-      openSidebar: "Ouvrir la barre latérale",
-    },
+    language: "Changer de langue",
+
+    theme: "Changer de thème",
+
+    accent: "Changer la couleur d'accent",
+
+    surpriseMe: "Surprends-moi",
+
+    toggleSidebar: "Afficher ou masquer la barre latérale",
+
+    files: "Fichiers du portfolio",
+
   },
 
   underConstruction: {
@@ -158,9 +110,6 @@ const fr = {
     timeline: "Chronologie",
     team: "Équipe",
     focus: "Focus",
-    summaryLabel: "Résumé",
-    longVersionLabel: "Version longue",
-    descriptionModeLabel: "Choisir la longueur de l'étude de cas",
     readingTimeSuffix: "min de lecture",
     sectionsAriaLabel: "Sections de l'étude de cas",
   },
@@ -168,13 +117,10 @@ const fr = {
     hero: {
       tag: "PLATEFORME DE CERTIFICATS · SECTEUR ÉDUCATION ET ENTREPRISE",
       title: "D'une institution linéaire à un système multi-organisation",
-      summary:
-        "Une plateforme B2B de certificats de bout en bout. J'ai conçu le modèle organisationnel, les rôles, les permissions et la logique de crédits pour émettre et vérifier des certificats numériques à grande échelle.",
       description: [
         "Une plateforme B2B où les établissements scolaires, les entreprises et les organismes certificateurs émettent, gèrent et vérifient des certificats numériques —diplômes, certificats, badges et micro-certifications— en s'appuyant sur des standards internationaux tels que Blockchain, Open Badges et les Certificats Vérifiables du W3C.",
         "Le projet partait de zéro. J'ai conçu le modèle organisationnel, le système de rôles et de permissions, la logique de crédits et les parcours qui permettent d'émettre des certificats à grande échelle sans que l'opération ne s'effondre."
       ],
-      heroImage: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/asset-01.png`,
       role: "Product Designer (leadership de facto sur l'UI/UX et l'équipe technique)",
       timeline: "2 ans · 3 livraisons de fonctionnalités (2 produit + 1 technique) · 4e itération en planification",
       team: "PM (manager direct) · 1 UI/UX Designer · 2 développeurs · 1 QA",
@@ -236,7 +182,12 @@ const fr = {
         "De faire une plateforme de certificats. Il s'agissait de concevoir le système d'organisations, de rôles, de permissions et de plans qui rendrait possible l'émission de certificats à grande échelle sans que l'opération ne s'effondre.",
       mandateLabel: "Mandat initial des parties prenantes",
       mandate:
-        "Répliquer le modèle d'un concurrent du secteur. Mon travail consistait à traduire cette ambition en un système propriétaire, scalable et aligné sur les standards internationaux."
+        "Répliquer le modèle d'un concurrent du secteur. Mon travail consistait à traduire cette ambition en un système propriétaire, scalable et aligné sur les standards internationaux.",
+      screenshot: {
+        id: "SHOT 01",
+        label: "Hero du projet — écran principal ou collage des vues clés",
+        note: "Remplacer par une capture réelle. Suggestion : la liste des certificats avec ses filtres, l'expression la plus claire du produit."
+      }
     },
 
     vision: {
@@ -284,8 +235,7 @@ const fr = {
         id: "SHOT 02",
         label: "Diagramme du modèle de rôles — institution linéaire vs. multi-organisation",
         note: "Diagramme du modèle de rôles montrant l'institution linéaire face à la structure multi-organisation.",
-        src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-2.png`,
-        padded: true
+        src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-2.png`
       }
     },
 
@@ -459,7 +409,7 @@ const fr = {
         "Expirée",
         "Partagée",
         "Téléchargée",
-        "Révoquée"
+        "Révoquée (exécutée par un administrateur)"
       ],
       eventsTitle: "Événements enregistrés dans l'historique (tous avec heure et date)",
       events: [
@@ -492,14 +442,12 @@ const fr = {
         {
           id: "SHOT 06.1",
           label: "Diagramme de flux des rôles — 1/2",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.1.jpg`,
-          padded: true
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.1.jpg`
         },
         {
           id: "SHOT 06.2",
           label: "Diagramme de flux des rôles — 2/2",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.2.jpg`,
-          padded: true
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.2.jpg`
         },
         {
           id: "SHOT 07",
@@ -692,13 +640,10 @@ const fr = {
     hero: {
       tag: "B2B COMMERCE · DISTRIBUTION DE FOURNITURES DE LABORATOIRE",
       title: "De la vente assistée à l'auto-service",
-      summary:
-        "Une plateforme B2B en libre-service pour un distributeur de laboratoire. J'ai transformé un modèle de vente manuel par téléphone et e-mail en un système fiable de commandes, devis et historique.",
       description: [
         "Un distributeur leader de matériel, réactifs et équipements pour laboratoires du Pays Basque fonctionnait avec un processus entièrement manuel : commandes par téléphone et e-mail, catalogues en PDF, devis par e-mail et gestion des incidents sans plateforme. L'ERP était interne ; le client final n'y touchait jamais.",
         "Mon travail consistait à traduire un modèle d'affaires fragmenté et manuel en un système d'auto-service fiable, scalable, et qui ne cannibalise pas la relation client."
       ],
-      heroImage: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce/cover.png`,
       role: "Product Designer (encadrant 1 UI/UX Designer et supervisant 3 développeurs)",
       timeline: "2 ans · 3 versions livrées · 4e en planification",
       team: "PM (manager direct) · PO client · Équipe technique · Marketing · Ventes · Opérations",
@@ -799,7 +744,12 @@ const fr = {
       ],
       futureTitle: "Vision future",
       future:
-        "Un système qui gère en auto-service les permissions des contacts qui supervisent d'autres contacts."
+        "Un système qui gère en auto-service les permissions des contacts qui supervisent d'autres contacts.",
+      screenshot: {
+        id: "SHOT 01",
+        label: "Diagramme du Système de Commerce — chercher → acheter ou deviser → historique → recommander",
+        note: "Remplacer par le vrai diagramme. C'est celui qui explique tout le produit en une image."
+      }
     },
 
     systems: {

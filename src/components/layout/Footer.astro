@@ -3,6 +3,8 @@ interface Props {
   content: {
     email: string;
     linkedin: string;
+    resume: string;
+    credit: string;
   };
 }
 
@@ -15,7 +17,7 @@ const { content } = Astro.props;
   <div class="footer-content">
 
     <p class="credit">
-      Designed + Coded by Katherine
+      {content.credit}
     </p>
 
 
@@ -52,7 +54,7 @@ const { content } = Astro.props;
         rel="noopener noreferrer"
       >
         <span>
-          Resume
+          {content.resume}
         </span>
       </a>
 
@@ -67,11 +69,25 @@ const { content } = Astro.props;
 
 .footer {
 
-  margin-top: 160px;
+  position: fixed;
 
-  padding: var(--space-xl) 0 var(--space-lg);
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: var(--footer-height);
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 0 40px;
+
+  background: var(--color-chrome);
 
   border-top: 1px solid var(--color-border);
+
+  z-index: 250;
 
 }
 
@@ -84,9 +100,9 @@ const { content } = Astro.props;
 
   align-items: center;
 
-  flex-wrap: wrap;
-
   gap: var(--space-lg);
+
+  width: 100%;
 
 }
 
@@ -95,9 +111,11 @@ const { content } = Astro.props;
 
   margin: 0;
 
-  color: var(--color-text-secondary);
+  color: var(--color-text-muted);
 
-  font-size: var(--font-size-body);
+  font-size: 14px;
+
+  white-space: nowrap;
 
 }
 
@@ -108,9 +126,7 @@ const { content } = Astro.props;
 
   align-items: center;
 
-  flex-wrap: wrap;
-
-  gap: var(--space-lg);
+  gap: 34px;
 
 }
 
@@ -130,11 +146,11 @@ const { content } = Astro.props;
 
   margin: 0;
 
-  color: var(--color-text-secondary);
+  color: var(--color-text-muted);
 
   cursor: pointer;
 
-  font-size: var(--font-size-body);
+  font-size: 14px;
 
   font-family: inherit;
 
@@ -164,20 +180,56 @@ const { content } = Astro.props;
 
 @media (max-width: 768px) {
 
+  .footer {
+
+    padding: 0 24px;
+
+  }
+
+
   .footer-content {
 
-    flex-direction: column;
+    gap: var(--space-sm);
 
-    align-items: flex-start;
+  }
 
-    gap: var(--space-md);
+
+  .credit {
+
+    font-size: 12px;
 
   }
 
 
   .actions {
 
-    gap: var(--space-md);
+    gap: 16px;
+
+  }
+
+
+  .actions a,
+  .actions button {
+
+    font-size: 12px;
+
+  }
+
+}
+
+
+@media (max-width: 560px) {
+
+  .footer-content {
+
+    justify-content: center;
+
+  }
+
+
+  .credit {
+
+    display: none;
 
   }
 

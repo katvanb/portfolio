@@ -4,47 +4,39 @@ const en = {
 
     hero: {
 
-      title: "Hi, I'm Katherine.",
+      eyebrow: "DESIGNER & ENGINEER",
+
+      name: "Katherine Gaspare",
 
       paragraphs: [
 
-        "I'm a <strong>Product Design Lead</strong> who likes figuring out how things actually work.",
+        "A product rarely starts with the brief, so I follow the thread:",
 
-        "I move between <strong class=\"hero-typewriter\" data-words=\"product direction|systems|UX|implementation\"><span class=\"tw-text\">product direction</span><span class=\"hero-caret\" aria-hidden=\"true\"></span></strong>",
+        "I talk to the people who know the business, I ask how things work today, where they break and why they got there. I map dependencies, question assumptions and get into the detail when it matters.",
 
-        "Getting as close to the problem as I need to make a good decision.",
+        "I don't need to own every decision. Just understand enough to help make the right ones.",
 
       ],
 
     },
 
 
-    buttons: {
-      work: "View my work"
-    },
-
     work: {
 
-      title: "Projects I've worked on",
+      eyebrow: "SELECTED WORK",
 
       projects: [
 
         {
           title: "From an idea to a scalable credentialing platform",
-          category: "Enterprise SaaS · Digital Credentials",
-          description:
-            "Designing a scalable credential management platform for multiple organizations and complex user roles.",
-          tags: ["Product Strategy", "Systems Design", "Architecture", "Enterprise UX"],
+          tags: ["product strategy", "system design", "architecture", "enterprise ux"],
           link: `${import.meta.env.BASE_URL}work/credential-platform/`,
           image: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/asset-01.png`
         },
 
         {
-          title: "From sales-assisted to self-service",
-          category: "B2B Commerce · Enterprise Platform",
-          description:
-            "Transforming a traditional sales process into a self-service commerce experience for professional buyers.",
-          tags: ["Product Discovery", "Complex UX", "Self-Service", "Business Systems"],
+          title: "Turning a sales-assisted business into a self-service one",
+          tags: ["product discovery", "complex ux", "self-service", "business systems"],
           link: `${import.meta.env.BASE_URL}work/b2b-commerce/`,
           image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce/cover.png`
         }
@@ -56,53 +48,11 @@ const en = {
     },
 
 
-    options: {
+    experience: {
 
-      fun: {
-        title: "Writings",
-        link: `${import.meta.env.BASE_URL}writings/`
-      },
+      eyebrow: "EXPERIENCE",
 
-      experiments: {
-        title: "Experiments",
-        link: `${import.meta.env.BASE_URL}experiments/`
-      }
-
-    },
-
-
-    pointOfView: {
-      title: "I tend to go one layer deeper.",
-
-      paragraphs: [
-      "A product rarely starts where the brief says it does.",
-      "A feature request might be a business problem.",
-      "A confusing screen might be a permissions problem.",
-      "A “technical limitation” might be a decision nobody has revisited.",
-      "So I follow the thread: I talk to the people who know the business, I ask how things work today, where they break and why they got there. I map dependencies, question assumptions and get into the detail when it matters.",
-      "Sometimes that leads to a new flow.",
-      "Sometimes it changes the product structure.",
-      "Sometimes it means saying no.",
-      "<strong>I don't need to own every decision. Just understand enough to help make the right ones.</strong>"
-      ]
-    },
-
-
-    beyond: {
-
-      title: "Beyond the screen.",
-
-      paragraphs: [
-
-        "I like having a life that doesn't look like work.",
-
-        "I move, explore, learn, make things, disappear into nature for a while, go out, stay in, read, experiment, and spend an unreasonable amount of time with my cats.",
-
-        "Work is important to me.",
-
-        "It just isn't the whole picture."
-
-      ]
+      paragraphs: [],
 
     },
 
@@ -127,24 +77,26 @@ const en = {
 
     linkedin: "LinkedIn",
 
+    resume: "Resume",
+
+    credit: "Designed + Coded by Katherine",
+
   },
 
-  sidebar: {
-    navigation: {
-      home: "Home",
-      work: "Work",
-      experiments: "Experiments",
-      fun: "Writings",
-    },
+  controls: {
 
-    actions: {
-      downloadCV: "Download CV",
-      linkedin: "LinkedIn",
-      email: "Email",
-      navigation: "Navigation",
-      toggleNavigation: "Toggle navigation",
-      openSidebar: "Open sidebar",
-    },
+    language: "Change language",
+
+    theme: "Toggle theme",
+
+    accent: "Change accent color",
+
+    surpriseMe: "Surprise me",
+
+    toggleSidebar: "Toggle sidebar",
+
+    files: "Portfolio files",
+
   },
 
   underConstruction: {
@@ -158,9 +110,6 @@ const en = {
     timeline: "Timeline",
     team: "Team",
     focus: "Focus",
-    summaryLabel: "Summary",
-    longVersionLabel: "Long version",
-    descriptionModeLabel: "Choose case study length",
     readingTimeSuffix: "min read",
     sectionsAriaLabel: "Case study sections",
   },
@@ -168,13 +117,10 @@ const en = {
     hero: {
       tag: "CREDENTIAL PLATFORM · EDUCATION AND CORPORATE SECTOR",
       title: "From a linear institution to a multi-organization system",
-      summary:
-        "An end-to-end B2B credential platform. I designed the organizational model, roles, permissions and credit logic that let institutions issue and verify digital credentials at scale.",
       description: [
         "A B2B platform where educational institutions, corporations and certifying bodies issue, manage and verify digital credentials —degrees, certificates, badges and micro-credentials— using international standards such as Blockchain, Open Badges and W3C Verifiable Credentials.",
         "The project was 0 → 1. I designed the organizational model, the role and permission system, the credit logic and the workflows that make issuing credentials at scale possible without the operation collapsing."
       ],
-      heroImage: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/asset-01.png`,
       role: "Product Designer (de facto lead on UI/UX and the technical team)",
       timeline: "2 years · 3 feature releases (2 product + 1 technical) · 4th iteration in planning",
       team: "PM (direct manager) · 1 UI/UX Designer · 2 engineers · 1 QA",
@@ -236,7 +182,12 @@ const en = {
         "Building a certificate platform. It was designing the system of organizations, roles, permissions and plans that would make it possible to issue credentials at scale without the operation collapsing.",
       mandateLabel: "Initial stakeholder mandate",
       mandate:
-        "Replicate the model of a sector competitor. My work was to translate that ambition into a proprietary, scalable system aligned with international standards."
+        "Replicate the model of a sector competitor. My work was to translate that ambition into a proprietary, scalable system aligned with international standards.",
+      screenshot: {
+        id: "SHOT 01",
+        label: "Platform hero — main screen or collage of the key views",
+        note: "Replace with a real capture. Suggested: the credential list with its filters, the clearest expression of the product."
+      }
     },
 
     vision: {
@@ -284,8 +235,7 @@ const en = {
         id: "SHOT 02",
         label: "Role model diagram — linear institution vs. multi-organization",
         note: "Role model diagram showing linear institution vs multi-organization structure.",
-        src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-2.png`,
-        padded: true
+        src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-2.png`
       }
     },
 
@@ -459,7 +409,7 @@ const en = {
         "Expired",
         "Shared",
         "Downloaded",
-        "Revoked"
+        "Revoked (executed by an administrator)"
       ],
       eventsTitle: "Events recorded in the history (all with time and date)",
       events: [
@@ -492,14 +442,12 @@ const en = {
         {
           id: "SHOT 06.1",
           label: "Role flow diagram — 1/2",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.1.jpg`,
-          padded: true
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.1.jpg`
         },
         {
           id: "SHOT 06.2",
           label: "Role flow diagram — 2/2",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.2.jpg`,
-          padded: true
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.2.jpg`
         },
         {
           id: "SHOT 07",
@@ -692,13 +640,10 @@ const en = {
     hero: {
       tag: "B2B COMMERCE · LABORATORY SUPPLY DISTRIBUTION",
       title: "From assisted selling to self-service",
-      summary:
-        "A B2B self-service commerce platform for a laboratory distributor. I turned a manual phone-and-email sales model into a reliable system for ordering, quoting and account history.",
       description: [
         "A leading distributor of materials, reagents and equipment for laboratories in the Basque Country ran on a completely manual process: orders by phone and email, catalogs in PDF, quotes by email and incident management with no platform. The ERP was internal; the end customer never touched it.",
         "My work was to translate a fragmented, manual business model into a self-service system that was reliable, scalable, and would not cannibalize the customer relationship."
       ],
-      heroImage: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce/cover.png`,
       role: "Product Designer (leading 1 UI/UX Designer and supervising 3 developers)",
       timeline: "2 years · 3 versions shipped · 4th in planning",
       team: "PM (direct manager) · Client PO · Engineering · Marketing · Sales · Operations",
@@ -799,7 +744,12 @@ const en = {
       ],
       futureTitle: "Future vision",
       future:
-        "A system that supports self-managed permissions for contacts who supervise other contacts."
+        "A system that supports self-managed permissions for contacts who supervise other contacts.",
+      screenshot: {
+        id: "SHOT 01",
+        label: "Commerce System diagram — search → buy or quote → history → reorder",
+        note: "Replace with the real diagram. This is the diagram that explains the whole product in one image."
+      }
     },
 
     systems: {

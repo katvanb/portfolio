@@ -4,49 +4,39 @@ const es = {
 
     hero: {
 
-      title: "Hola, soy Katherine.",
+      eyebrow: "DISEÑADORA E INGENIERA",
+
+      name: "Katherine Gaspare",
 
       paragraphs: [
 
-        "Soy <strong>Líder de Diseño de Producto</strong> y me gusta descubrir cómo funcionan realmente las cosas.",
+        "Un producto rara vez empieza con el brief, así que sigo el hilo:",
 
-        "Me muevo entre <strong class=\"hero-typewriter\" data-words=\"dirección de producto|sistemas|UX|implementación\"><span class=\"tw-text\">dirección de producto</span><span class=\"hero-caret\" aria-hidden=\"true\"></span></strong>",
+        "Hablo con quienes conocen el negocio, pregunto cómo funciona hoy, dónde se rompe y por qué llegó ahí. Mapeo dependencias, cuestiono supuestos y entro en detalle cuando importa.",
 
-        "Me acerco al problema lo suficiente como para tomar una buena decisión.",
+        "No necesito ser dueña de cada decisión. Solo entender lo suficiente para ayudar a tomar las correctas.",
 
       ],
 
     },
 
 
-    buttons: {
-      work: "Ver mi trabajo"
-    },
-
     work: {
 
-      title:
-        "Proyectos en los que he trabajado",
+      eyebrow: "TRABAJOS SELECCIONADOS",
 
       projects: [
 
         {
           title: "De una idea a una plataforma de credenciales escalable",
-          category: "Enterprise SaaS · Credenciales Digitales",
-          description:
-            "Diseño de una plataforma escalable de gestión de credenciales para múltiples organizaciones y roles complejos.",
-          tags: ["Product Strategy", "Systems Design", "Architecture", "Enterprise UX"],
+          tags: ["estrategia de producto", "diseño de sistemas", "arquitectura", "ux empresarial"],
           link: `${import.meta.env.BASE_URL}es/work/credential-platform/`,
           image: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/asset-01.png`
         },
 
-
         {
-          title: "De compras asistidas a autoservicio.",
-          category: "B2B Commerce · Plataforma Empresarial",
-          description:
-            "Transformación de un proceso comercial tradicional en una experiencia de autoservicio para compradores profesionales.",
-          tags: ["Product Discovery", "Complex UX", "Self-Service", "Business Systems"],
+          title: "De compras asistidas a autoservicio",
+          tags: ["descubrimiento de producto", "ux compleja", "autoservicio", "sistemas de negocio"],
           link: `${import.meta.env.BASE_URL}es/work/b2b-commerce/`,
           image: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce/cover.png`
         }
@@ -58,53 +48,11 @@ const es = {
     },
 
 
-    options: {
+    experience: {
 
-      fun: {
-        title: "Escritos",
-        link: `${import.meta.env.BASE_URL}es/writings/`
-      },
+      eyebrow: "EXPERIENCIA",
 
-      experiments: {
-        title: "Experimentos",
-        link: `${import.meta.env.BASE_URL}es/experiments/`
-      }
-
-    },
-
-
-    pointOfView: {
-      title: "Tiendo a ir una capa más profunda.",
-
-      paragraphs: [
-      "Un producto rara vez empieza donde dice el brief.",
-      "Una petición de funcionalidad puede ser un problema de negocio.",
-      "Una pantalla confusa puede ser un problema de permisos.",
-      "Una “limitación técnica” puede ser una decisión que nadie revisó.",
-      "Por eso sigo el hilo: hablo con quienes conocen el negocio, pregunto cómo funciona hoy, dónde se rompe y por qué llegó ahí. Mapeo dependencias, cuestiono supuestos y entro en detalle cuando importa.",
-      "A veces eso lleva a un flujo nuevo.",
-      "A veces cambia la estructura del producto.",
-      "A veces significa decir que no.",
-      "<strong>No necesito ser dueña de cada decisión. Solo entender lo suficiente para ayudar a tomar las correctas.</strong>"
-      ]
-    },
-
-
-    beyond: {
-
-      title: "Más allá de la pantalla.",
-
-      paragraphs: [
-
-        "Me gusta tener una vida que no parezca trabajo.",
-
-        "Me muevo, exploro, aprendo, creo cosas, desaparezco en la naturaleza por un tiempo, salgo, me quedo en casa, leo, experimento y paso una cantidad irracional de tiempo con mis gatos.",
-
-        "El trabajo es importante para mí.",
-
-        "Simplemente no es el cuadro completo."
-
-      ]
+      paragraphs: [],
 
     },
 
@@ -129,24 +77,26 @@ const es = {
 
     linkedin: "LinkedIn",
 
+    resume: "Currículum",
+
+    credit: "Diseñado + programado por Katherine",
+
   },
 
-  sidebar: {
-    navigation: {
-      home: "Inicio",
-      work: "Trabajo",
-      experiments: "Experimentos",
-      fun: "Escritos",
-    },
-  
-    actions: {
-      downloadCV: "Descargar CV",
-      linkedin: "LinkedIn",
-      email: "Email",
-      navigation: "Navegación",
-      toggleNavigation: "Abrir o cerrar navegación",
-      openSidebar: "Abrir barra lateral",
-    },
+  controls: {
+
+    language: "Cambiar idioma",
+
+    theme: "Cambiar tema",
+
+    accent: "Cambiar color de acento",
+
+    surpriseMe: "Sorpréndeme",
+
+    toggleSidebar: "Mostrar u ocultar barra lateral",
+
+    files: "Archivos del portafolio",
+
   },
 
   underConstruction: {
@@ -160,9 +110,6 @@ const es = {
     timeline: "Cronología",
     team: "Equipo",
     focus: "Enfoque",
-    summaryLabel: "Resumen",
-    longVersionLabel: "Versión larga",
-    descriptionModeLabel: "Elegir extensión del caso de estudio",
     readingTimeSuffix: "min de lectura",
     sectionsAriaLabel: "Secciones del caso de estudio",
   },
@@ -170,13 +117,10 @@ const es = {
     hero: {
       tag: "PLATAFORMA DE CREDENCIALES · SECTOR EDUCATIVO Y CORPORATIVO",
       title: "De institución lineal a sistema multi-organización",
-      summary:
-        "Una plataforma B2B de credenciales de extremo a extremo. Diseñé el modelo organizacional, los roles, los permisos y la lógica de créditos para emitir y verificar credenciales digitales a escala.",
       description: [
         "Una plataforma B2B donde instituciones educativas, corporaciones y entes certificadores emiten, gestionan y verifican credenciales digitales —títulos, certificados, insignias y microcredenciales— usando estándares internacionales como Blockchain, Open Badges y credenciales verificables de la W3C.",
         "El proyecto fue 0 → 1. Diseñé el modelo organizacional, el sistema de roles y permisos, la lógica de créditos y los flujos que hacen posible emitir credenciales a escala sin que la operación colapse."
       ],
-      heroImage: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/asset-01.png`,
       role: "Product Designer (liderazgo de facto sobre UI/UX y equipo técnico)",
       timeline: "2 años · 3 cortes de funcionalidades (2 de producto + 1 técnico) · 4ª iteración en planificación",
       team: "PM (mi jefe directo) · 1 UI/UX Designer · 2 programadores · 1 QA",
@@ -238,7 +182,12 @@ const es = {
         "Hacer una plataforma de certificados. Era diseñar el sistema de organizaciones, roles, permisos y planes que hiciera posible emitir credenciales a escala sin que la operación colapsara.",
       mandateLabel: "Mandato inicial de los stakeholders",
       mandate:
-        "Replicar el modelo de un competidor del sector. Mi trabajo fue traducir esa ambición en un sistema propio, escalable y alineado a estándares internacionales."
+        "Replicar el modelo de un competidor del sector. Mi trabajo fue traducir esa ambición en un sistema propio, escalable y alineado a estándares internacionales.",
+      screenshot: {
+        id: "SHOT 01",
+        label: "Hero del proyecto — pantalla principal o collage de las vistas clave",
+        note: "Reemplazar con una captura real. Sugerencia: el listado de credenciales con sus filtros, la expresión más clara del producto."
+      }
     },
 
     vision: {
@@ -286,8 +235,7 @@ const es = {
         id: "SHOT 02",
         label: "Diagrama del modelo de roles — institución lineal vs. multi-organización",
         note: "Diagrama del modelo de roles mostrando la institución lineal frente a la estructura multi-organización.",
-        src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-2.png`,
-        padded: true
+        src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-2.png`
       }
     },
 
@@ -461,7 +409,7 @@ const es = {
         "Vencida",
         "Compartida",
         "Descargada",
-        "Revocada"
+        "Revocada (la ejecuta un administrador)"
       ],
       eventsTitle: "Eventos registrados en el historial (todos con hora y fecha)",
       events: [
@@ -494,14 +442,12 @@ const es = {
         {
           id: "SHOT 06.1",
           label: "Diagrama de flujo de roles — 1/2",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.1.jpg`,
-          padded: true
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.1.jpg`
         },
         {
           id: "SHOT 06.2",
           label: "Diagrama de flujo de roles — 2/2",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.2.jpg`,
-          padded: true
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.2.jpg`
         },
         {
           id: "SHOT 07",
@@ -694,13 +640,10 @@ const es = {
     hero: {
       tag: "B2B COMMERCE · DISTRIBUCIÓN DE SUMINISTROS PARA LABORATORIOS",
       title: "De la venta asistida al autoservicio",
-      summary:
-        "Una plataforma B2B de autoservicio para un distribuidor de laboratorio. Convertí un modelo de venta manual por teléfono y email en un sistema fiable de pedidos, cotizaciones e historial.",
       description: [
         "Un distribuidor líder de material, reactivos y equipamiento para laboratorios en el País Vasco operaba con un proceso completamente manual: pedidos por teléfono y email, catálogos en PDF, cotizaciones por correo y gestión de incidencias sin plataforma. Su ERP era interno; el cliente final nunca lo tocaba.",
         "Mi trabajo fue traducir un modelo de negocio fragmentado y manual en un sistema de autoservicio que fuera confiable, escalable y que no canibalizara la relación con el cliente."
       ],
-      heroImage: `${import.meta.env.BASE_URL}images/case-studies/b2b-commerce/cover.png`,
       role: "Product Designer (liderando 1 UI/UX Designer y supervisando a 3 programadores)",
       timeline: "2 años · 3 versiones desplegadas · 4ª en planificación",
       team: "PM (mi jefe directo) · PO del cliente · Equipo técnico · Marketing · Ventas · Operaciones",
@@ -801,7 +744,12 @@ const es = {
       ],
       futureTitle: "Visión a futuro",
       future:
-        "Que el sistema soportara autogestión de permisos para contactos que supervisan a otros contactos."
+        "Que el sistema soportara autogestión de permisos para contactos que supervisan a otros contactos.",
+      screenshot: {
+        id: "SHOT 01",
+        label: "Diagrama del Sistema de Comercio — buscar → comprar o cotizar → historial → recompra",
+        note: "Reemplazar con el diagrama real. Es el diagrama que explica todo el producto en una sola imagen."
+      }
     },
 
     systems: {

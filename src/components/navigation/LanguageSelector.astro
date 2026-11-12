@@ -1,4 +1,14 @@
 ---
+import { Languages } from "lucide-astro";
+
+interface Props {
+  labels: {
+    language: string;
+  };
+}
+
+const { labels } = Astro.props;
+
 const currentPath = Astro.url.pathname;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -16,42 +26,35 @@ const currentLanguage =
 
   <button 
     class="language-trigger"
-    aria-label="Change language"
+    aria-label={`${labels.language} (${currentLanguage})`}
     id="language-trigger"
   >
 
-    <span>
-      {currentLanguage}
-    </span>
-
-    <svg 
-      class="chevron"
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <polyline points="6 9 12 15 18 9"></polyline>
-    </svg>
+    <Languages size={17} />
 
   </button>
 
 
   <div class="language-menu" id="language-menu">
 
-    <button data-language="en">
+    <button
+      data-language="en"
+      class:list={{ active: currentLanguage === "EN" }}
+    >
       EN
     </button>
 
-    <button data-language="es">
+    <button
+      data-language="es"
+      class:list={{ active: currentLanguage === "ES" }}
+    >
       ES
     </button>
 
-    <button data-language="fr">
+    <button
+      data-language="fr"
+      class:list={{ active: currentLanguage === "FR" }}
+    >
       FR
     </button>
 
@@ -71,34 +74,37 @@ const currentLanguage =
 
 .language-trigger {
 
-  height: 36px;
+  width: 32px;
+  height: 32px;
 
-  display: flex;
+  display: grid;
 
-  align-items: center;
-
-  gap: 8px;
+  place-items: center;
 
   background: transparent;
 
   border: 1px solid var(--color-border);
 
-  border-radius: var(--radius-sm);
+  border-radius: 8px;
 
-  color: var(--color-text-primary);
+  color: var(--color-text-secondary);
 
-  padding: 0 12px;
+  padding: 0;
 
   cursor: pointer;
 
-  font-family: inherit;
+  transition:
+    background .2s ease,
+    color .2s ease;
 
 }
 
 
-.chevron {
+.language-trigger:hover {
 
-  transition: transform .2s ease;
+  background: var(--color-bg-primary);
+
+  color: var(--color-text-primary);
 
 }
 
@@ -109,21 +115,23 @@ const currentLanguage =
 
   top: calc(100% + 8px);
 
-  left: 0;
+  right: 0;
 
-  min-width: 100%;
+  min-width: 84px;
 
-  background: var(--color-bg-secondary);
+  background: var(--color-bg-primary);
 
   border: 1px solid var(--color-border);
 
   border-radius: var(--radius-sm);
 
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .12);
+
   padding: 6px;
 
   display: none;
 
-  z-index: 10;
+  z-index: 400;
 
 }
 
@@ -156,6 +164,15 @@ const currentLanguage =
 }
 
 
+.language-menu button.active {
+
+  color: var(--color-accent);
+
+  font-weight: 600;
+
+}
+
+
 .language-selector.open .language-menu {
 
   display: flex;
@@ -163,14 +180,6 @@ const currentLanguage =
   flex-direction: column;
 
 }
-
-
-.language-selector.open .chevron {
-
-  transform: rotate(180deg);
-
-}
-
 
 </style>
 

@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Topbar from "../components/layout/Topbar.astro";
 import Sidebar from "../components/layout/Sidebar.astro";
 import Footer from "../components/layout/Footer.astro";
 import Lightbox from "../components/layout/Lightbox.astro";
@@ -10,9 +11,10 @@ interface Props {
   description?: string;
   content: any;
   lang?: string;
+  narrow?: boolean;
 }
 
-const { title, description = "Product Designer portfolio", content, lang = "en" } = Astro.props;
+const { title, description = "Product Designer portfolio", content, lang = "en", narrow = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -22,12 +24,6 @@ const { title, description = "Product Designer portfolio", content, lang = "en" 
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500&family=Space+Grotesk:wght@500;700&family=VT323&display=swap"
-      rel="stylesheet"
-    />
     <link
       rel="icon"
       type="image/png"
@@ -46,12 +42,18 @@ const { title, description = "Product Designer portfolio", content, lang = "en" 
 
     <div class="layout">
 
-        <Sidebar />
+        <Topbar content={content.controls} />
+
+        <Sidebar content={content.controls} />
 
         <main>
-          <slot />
-          <Footer content={content.footer} />
+          <div class:list={{ content: true, narrow }}>
+            <slot />
+          </div>
         </main>
+
+        <Footer content={content.footer} />
+
     </div>
 
     <Lightbox lang={lang} />
@@ -63,30 +65,48 @@ const { title, description = "Product Designer portfolio", content, lang = "en" 
 
 .layout {
 
-  display: grid;
+  --current-sidebar: var(--sidebar-width);
 
-  grid-template-columns: var(--sidebar-width) 1fr;
-
-  transition: grid-template-columns .3s ease;
-
-}
-
-main {
-
-  grid-column: 2;
-  
-  padding: 0 var(--space-xl);
-
-  width: 100%;
-
-  min-width: 0;
+  min-height: 100vh;
 
 }
 
 
 .layout.collapsed {
 
-  grid-template-columns: var(--sidebar-collapsed) 1fr;
+  --current-sidebar: var(--sidebar-collapsed);
+
+}
+
+
+main {
+
+  margin-left: var(--current-sidebar);
+
+  padding:
+    calc(var(--topbar-height) + 72px)
+    var(--space-xl)
+    calc(var(--footer-height) + var(--space-2xl));
+
+  min-width: 0;
+
+  transition: margin-left .3s ease;
+
+}
+
+
+.content {
+
+  max-width: var(--container-width);
+
+  margin: 0 auto;
+
+}
+
+
+.content.narrow {
+
+  max-width: 748px;
 
 }
 
@@ -96,16 +116,21 @@ main {
   .layout,
   .layout.collapsed {
 
-    display: block;
-
-    transition: none;
+    --current-sidebar: 0px;
 
   }
 
 
   main {
 
-    padding: 0 var(--space-md);
+    margin-left: 0;
+
+    padding:
+      calc(var(--topbar-height) + var(--space-lg))
+      var(--space-md)
+      calc(var(--footer-height) + var(--space-xl));
+
+    transition: none;
 
   }
 

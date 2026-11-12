@@ -1,0 +1,71 @@
+---
+interface Props {
+  content: {
+    eyebrow: string;
+    paragraphs: string[];
+  };
+}
+
+const { content } = Astro.props;
+---
+
+
+<section class="experience">
+
+  <p class="eyebrow">
+    {content.eyebrow}
+  </p>
+
+  {
+    content.paragraphs.length > 0 && (
+      <div class="body">
+        {content.paragraphs.map((paragraph) => (
+          <p set:html={paragraph} />
+        ))}
+      </div>
+    )
+  }
+
+</section>
+
+
+<style>
+
+.experience {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+
+  padding: 0 0 96px;
+
+}
+
+
+.body {
+
+  max-width: 748px;
+
+}
+
+
+.body p {
+
+  color: var(--color-text-secondary);
+
+  font-size: 21px;
+
+  line-height: 23px;
+
+}
+
+
+.body p + p {
+
+  margin-top: 23px;
+
+}
+
+</style>

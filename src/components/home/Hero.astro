@@ -1,46 +1,44 @@
 ---
-
 interface Props {
-
   content: {
-
-    title: string;
-
+    eyebrow: string;
+    name: string;
     paragraphs: string[];
-
   };
-
 }
 
-
 const { content } = Astro.props;
-
 ---
 
 
 <section class="hero">
 
+  <div class="hero-visual">
+    <img
+      src={`${import.meta.env.BASE_URL}images/home/profile.jpeg`}
+      alt={content.name}
+      loading="eager"
+    />
+  </div>
+
+
   <div class="hero-text">
 
-    <h2>
+    <p class="eyebrow">
+      {content.eyebrow}
+    </p>
 
-      {content.title}
-
-    </h2>
-
-    {content.paragraphs.map((paragraph) => (
-      <p class="description" set:html={paragraph} />
-    ))}
+    <h1 class="name">
+      {content.name}
+    </h1>
 
   </div>
 
 
-  <div class="hero-visual" aria-hidden="true">
-    <img
-      src={`${import.meta.env.BASE_URL}images/home/profile.jpeg`}
-      alt=""
-      loading="lazy"
-    />
+  <div class="paragraphs">
+    {content.paragraphs.map((paragraph) => (
+      <p set:html={paragraph} />
+    ))}
   </div>
 
 </section>
@@ -52,211 +50,140 @@ const { content } = Astro.props;
 
   display: grid;
 
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: 140px minmax(0, 1fr);
 
-  gap: var(--space-2xl);
+  column-gap: 16px;
+  row-gap: 2px;
 
-  align-items: center;
+  align-items: start;
 
-  padding: var(--space-2xl) 0;
-
-  max-width: 1100px;
-}
-
-
-/* =========================
-   Text column
-========================= */
-
-.hero-text {
-  min-width: 0;
-}
-h2 {
-
-  font-size: var(--font-size-h2);
-
-  line-height: var(--line-height-h2);
-
-  font-weight: var(--font-weight-h2);
-
-  letter-spacing: var(--letter-spacing-h2);
-
-  color: var(--color-primary);
-
-  margin-bottom: var(--space-lg);
+  padding: 0 0 72px;
 
 }
 
-
-.description {
-
-  color: var(--color-text-secondary);
-
-  font-size: var(--font-size-body-lg);
-
-  line-height: var(--line-height-body-lg);
-
-  max-width: 650px;
-
-}
-
-
-.description + .description {
-
-  margin-top: var(--space-sm);
-
-}
-/* =========================
-   Visual column
-========================= */
 
 .hero-visual {
 
+  width: 140px;
+
   aspect-ratio: 1;
 
-  border-radius: 0;
-
-  border: 1px solid var(--color-border);
+  border-radius: 12px;
 
   overflow: hidden;
 
   background: var(--color-bg-secondary);
+
 }
+
 
 .hero-visual img {
 
   display: block;
 
   width: 100%;
-
   height: 100%;
 
   object-fit: cover;
+
 }
 
 
-/* =========================
-   Typewriter
-========================= */
+.hero-text {
 
-/* Estilos globales en src/styles/global.css */
+  min-width: 0;
+
+}
 
 
-/* =========================
-   Responsive
-========================= */
+.name {
+
+  margin: 8px 0 0;
+
+  font-size: 47px;
+
+  line-height: 1.05;
+
+  font-weight: 500;
+
+  letter-spacing: -0.03em;
+
+  color: var(--color-accent);
+
+}
+
+
+.paragraphs {
+
+  grid-column: 1 / -1;
+
+}
+
+
+.paragraphs p {
+
+  color: var(--color-text-secondary);
+
+  font-size: 21px;
+
+  line-height: 23px;
+
+  overflow-wrap: break-word;
+
+}
+
+
+.paragraphs p + p {
+
+  margin-top: 23px;
+
+}
+
+
 @media (max-width: 768px) {
 
   .hero {
 
     grid-template-columns: 1fr;
 
-    gap: var(--space-lg);
+    row-gap: 16px;
 
-    padding: var(--space-2xl) 0;
+    padding: 0 0 64px;
 
   }
 
-  .hero-text {
-    order: 1;
-  }
 
   .hero-visual {
-    display: block;
-    order: 2;
-    width: 100%;
-    max-width: 320px;
-    justify-self: start;
+
+    width: 120px;
+
+  }
+
+
+  .name {
+
+    margin-top: 6px;
+
+    font-size: clamp(36px, 11vw, 47px);
+
+  }
+
+
+  .paragraphs p {
+
+    font-size: 18px;
+
+    line-height: 26px;
+
+  }
+
+
+  .paragraphs p + p {
+
+    margin-top: 18px;
+
   }
 
 }
 
 </style>
-
-
-<script>
-
-const typewriter =
-  document.querySelector(".hero-typewriter");
-
-
-if (typewriter) {
-
-  const textEl = typewriter.querySelector(".tw-text");
-
-  const raw =
-    typewriter.getAttribute("data-words") || "";
-
-  const words =
-    raw.split("|").map((w) => w.trim()).filter(Boolean);
-
-
-  const TYPE_DELAY = 90;
-  const DELETE_DELAY = 45;
-  const HOLD_TYPED = 2000;
-  const HOLD_EMPTY = 400;
-
-
-  let index = 0;
-  let deleting = false;
-
-
-  const tick = () => {
-
-    const word = words[index];
-    const current = textEl ? textEl.textContent || "" : "";
-
-
-    if (deleting) {
-
-      if (current.length === 0) {
-
-        deleting = false;
-
-        index = (index + 1) % words.length;
-
-        window.setTimeout(tick, HOLD_EMPTY);
-
-        return;
-
-      }
-
-
-      if (textEl) {
-        textEl.textContent = current.slice(0, -1);
-      }
-
-      window.setTimeout(tick, DELETE_DELAY);
-
-      return;
-
-    }
-
-
-    if (current.length === word.length) {
-
-      deleting = true;
-
-      window.setTimeout(tick, HOLD_TYPED);
-
-      return;
-
-    }
-
-
-    if (textEl) {
-      textEl.textContent = word.slice(0, current.length + 1);
-    }
-
-    window.setTimeout(tick, TYPE_DELAY);
-
-  };
-
-
-  if (words.length > 0) {
-    window.setTimeout(tick, 800);
-  }
-
-}
-
-</script>

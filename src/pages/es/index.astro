@@ -3,25 +3,19 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import es from "../../i18n/es";
 import Hero from "../../components/home/Hero.astro";
 import Work from "../../components/home/Work.astro";
-import PointOfView from "../../components/home/PointOfView.astro";
-import Options from "../../components/home/Options.astro";
-import Beyond from "../../components/home/Beyond.astro";
+import Experience from "../../components/home/Experience.astro";
 import Closing from "../../components/home/Closing.astro";
 
 const t = es;
 ---
 
-<BaseLayout title="Katherine Gaspare | Product Designer" content={t}>
+<BaseLayout title="Katherine Gaspare | Product Designer" content={t} lang="es" narrow>
   
   <Hero content={t.home.hero} />
 
   <Work content={t.home.work} />
 
-  <PointOfView content={t.home.pointOfView} />
-
-  <Options items={Object.values(t.home.options)} />
-
-  <Beyond content={t.home.beyond} />
+  <Experience content={t.home.experience} />
 
   <Closing content={t.home.closing} />
 

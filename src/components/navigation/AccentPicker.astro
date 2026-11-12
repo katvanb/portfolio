@@ -4,6 +4,15 @@ interface Accent {
   value: string;
 }
 
+interface Props {
+  labels: {
+    accent: string;
+    surpriseMe: string;
+  };
+}
+
+const { labels } = Astro.props;
+
 const accents: Accent[] = [
   { name: "Red", value: "red" },
   { name: "Orange", value: "orange" },
@@ -23,7 +32,7 @@ const accents: Accent[] = [
   <button
     class="accent-trigger"
     id="accent-trigger"
-    aria-label="Change accent color"
+    aria-label={labels.accent}
     aria-expanded="false"
   >
     <span class="accent-preview"></span>
@@ -62,7 +71,7 @@ const accents: Accent[] = [
       <span class="rainbow-icon">🌈</span>
 
       <span>
-        Surprise me
+        {labels.surpriseMe}
       </span>
     </button>
 
@@ -79,8 +88,8 @@ const accents: Accent[] = [
 
 
 .accent-trigger {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
 
   display: grid;
   place-items: center;
@@ -90,7 +99,7 @@ const accents: Accent[] = [
   background: transparent;
 
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
+  border-radius: 8px;
 
   cursor: pointer;
 
@@ -101,7 +110,7 @@ const accents: Accent[] = [
 
 
 .accent-trigger:hover {
-  background: var(--color-accent-soft);
+  background: var(--color-bg-primary);
 }
 
 
@@ -118,14 +127,14 @@ const accents: Accent[] = [
 .accent-menu {
   position: absolute;
 
-  left: 0;
-  bottom: calc(100% + 10px);
+  right: 0;
+  top: calc(100% + 8px);
 
   width: 190px;
 
   padding: var(--space-sm);
 
-  background: var(--color-bg-secondary);
+  background: var(--color-bg-primary);
 
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -135,14 +144,14 @@ const accents: Accent[] = [
   opacity: 0;
   visibility: hidden;
 
-  transform: translateY(6px);
+  transform: translateY(-6px);
 
   transition:
     opacity .2s ease,
     transform .2s ease,
     visibility .2s ease;
 
-  z-index: 200;
+  z-index: 400;
 }
 
 
@@ -418,7 +427,7 @@ const savedAccent =
   localStorage.getItem("accent");
 
 const initialAccent =
-  savedAccent || "orange";
+  savedAccent || "blue";
 
 
 applyAccent(initialAccent);

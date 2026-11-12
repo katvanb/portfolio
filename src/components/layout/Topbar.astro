@@ -1,0 +1,471 @@
+---
+import { Moon, Sun, PanelLeft, FileCode2, FileText } from "lucide-astro";
+import LanguageSelector from "../navigation/LanguageSelector.astro";
+import AccentPicker from "../navigation/AccentPicker.astro";
+import en from "../../i18n/en";
+import es from "../../i18n/es";
+import fr from "../../i18n/fr";
+
+interface Props {
+  content: {
+    language: string;
+    theme: string;
+    accent: string;
+    surpriseMe: string;
+    toggleSidebar: string;
+  };
+}
+
+const { content } = Astro.props;
+
+const pathname = Astro.url.pathname;
+
+const base = import.meta.env.BASE_URL;
+
+// BASE_URL viene con barra final; la quitamos para componer prefijos.
+const baseRoot = base.replace(/\/+$/, "");
+
+const esPrefix = `${baseRoot}/es/`;
+const frPrefix = `${baseRoot}/fr/`;
+
+const isSpanish =
+  pathname === `${baseRoot}/es` || pathname.startsWith(esPrefix);
+const isFrench =
+  pathname === `${baseRoot}/fr` || pathname.startsWith(frPrefix);
+
+const t = isFrench ? fr : isSpanish ? es : en;
+
+const prefix = isFrench ? frPrefix : isSpanish ? esPrefix : base;
+
+// Archivo activo que se muestra en la pill de la barra superior.
+const activeFile = pathname.includes("/work/b2b-commerce")
+  ? "b2b-commerce.md"
+  : pathname.includes("/work/credential-platform")
+    ? "credential-platform.md"
+    : "index.html";
+
+const ActiveIcon = activeFile.endsWith(".md") ? FileText : FileCode2;
+---
+
+<header class="topbar">
+
+  <div class="topbar-left">
+
+    <a href={prefix} class="identity">
+
+      <span class="avatar">
+        <img
+          src={`${base}images/home/my-notion-face-portrait.png`}
+          alt=""
+          width={40}
+          height={40}
+        />
+      </span>
+
+      <span class="name">
+        Katherine Gaspare
+      </span>
+
+    </a>
+
+
+    <button
+      class="panel-toggle"
+      id="sidebar-toggle"
+      aria-label={content.toggleSidebar}
+      aria-expanded="false"
+      aria-controls="sidebar"
+    >
+      <PanelLeft size={18} />
+    </button>
+
+
+    <span class="file-pill">
+      <ActiveIcon size={20} />
+      <span>{activeFile}</span>
+    </span>
+
+  </div>
+
+
+  <div class="topbar-right">
+
+    <LanguageSelector labels={{ language: content.language }} />
+
+    <button
+      class="icon-button"
+      id="theme-toggle"
+      aria-label={content.theme}
+    >
+      <Moon id="theme-moon" size={17} />
+      <Sun id="theme-sun" size={17} />
+    </button>
+
+    <AccentPicker
+      labels={{
+        accent: content.accent,
+        surpriseMe: content.surpriseMe,
+      }}
+    />
+
+  </div>
+
+</header>
+
+
+<style>
+
+.topbar {
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: var(--topbar-height);
+
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: var(--space-sm);
+
+  padding: 0 24px;
+
+  background: var(--color-chrome);
+
+  z-index: 300;
+
+}
+
+
+.topbar::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: var(--current-sidebar, var(--sidebar-width));
+  right: 0;
+  bottom: 0;
+
+  height: 1px;
+
+  background: var(--color-border);
+
+}
+
+
+.topbar-left {
+
+  display: flex;
+
+  align-items: center;
+
+  height: 56px;
+
+  gap: 10px;
+
+  min-width: 0;
+
+}
+
+
+.identity {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 0;
+
+}
+
+
+.avatar {
+
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  overflow: hidden;
+
+}
+
+
+.avatar img {
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+}
+
+
+.name {
+
+  font-family: var(--font-family-ui);
+
+  font-size: 16px;
+
+  font-weight: 500;
+
+  line-height: 1.2;
+
+  color: var(--color-text-secondary);
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+}
+
+
+.panel-toggle,
+.icon-button {
+
+  width: 32px;
+  height: 32px;
+
+  display: grid;
+
+  place-items: center;
+
+  padding: 0;
+
+  background: transparent;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 8px;
+
+  color: var(--color-text-secondary);
+
+  cursor: pointer;
+
+  transition:
+    background .2s ease,
+    color .2s ease;
+
+}
+
+
+.panel-toggle:hover,
+.icon-button:hover {
+
+  background: var(--color-bg-primary);
+
+  color: var(--color-text-primary);
+
+}
+
+
+.file-pill {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  height: 56px;
+
+  margin-left: 17px;
+
+  padding: 0 28px;
+
+  border-radius: 10px 10px 0 0;
+
+  background: var(--color-bg-primary);
+
+  border: 1px solid var(--color-border);
+
+  border-bottom: none;
+
+  font-family: var(--font-family-ui);
+
+  font-size: 17px;
+
+  line-height: 1.2;
+
+  color: var(--color-text-secondary);
+
+  white-space: nowrap;
+
+  position: relative;
+
+  z-index: 1;
+
+}
+
+
+.file-pill svg {
+
+  flex-shrink: 0;
+
+}
+
+
+.topbar-right {
+
+  display: flex;
+
+  align-items: center;
+
+  height: 56px;
+
+  gap: 10px;
+
+}
+
+
+#theme-sun {
+
+  display: none;
+
+}
+
+
+:global(.layout.collapsed) .identity {
+
+  display: none;
+
+}
+
+
+@media (max-width: 768px) {
+
+  .topbar {
+
+    padding: 0 16px;
+
+    gap: 8px;
+
+  }
+
+
+  .identity {
+
+    display: none;
+
+  }
+
+
+  .file-pill {
+
+    margin-left: 12px;
+
+  }
+
+}
+
+
+@media (max-width: 640px) {
+
+  .file-pill {
+
+    padding: 0 14px;
+
+    gap: 8px;
+
+    font-size: 14px;
+
+  }
+
+
+  .file-pill svg {
+
+    width: 18px;
+    height: 18px;
+
+  }
+
+}
+
+</style>
+
+
+<script>
+
+// =========================
+// Theme
+// =========================
+
+const themeToggle = document.getElementById("theme-toggle");
+const themeMoon = document.getElementById("theme-moon");
+const themeSun = document.getElementById("theme-sun");
+
+const root = document.documentElement;
+
+type Theme = "light" | "dark";
+
+const savedTheme = localStorage.getItem("theme");
+
+const systemTheme: Theme =
+  window.matchMedia("(prefers-color-scheme: light)").matches
+    ? "light"
+    : "dark";
+
+const initialTheme: Theme =
+  savedTheme === "light" || savedTheme === "dark"
+    ? savedTheme
+    : systemTheme;
+
+root.setAttribute("data-theme", initialTheme);
+
+
+const updateThemeIcon = (theme: Theme) => {
+
+  if (!themeMoon || !themeSun) return;
+
+  if (theme === "light") {
+
+    themeMoon.style.display = "block";
+    themeSun.style.display = "none";
+
+  } else {
+
+    themeMoon.style.display = "none";
+    themeSun.style.display = "block";
+
+  }
+
+};
+
+
+updateThemeIcon(initialTheme);
+
+
+themeToggle?.addEventListener("click", () => {
+
+  const currentTheme: Theme =
+    root.getAttribute("data-theme") === "light"
+      ? "light"
+      : "dark";
+
+  const newTheme: Theme =
+    currentTheme === "dark"
+      ? "light"
+      : "dark";
+
+  root.setAttribute("data-theme", newTheme);
+
+  localStorage.setItem("theme", newTheme);
+
+  updateThemeIcon(newTheme);
+
+});
+
+</script>
