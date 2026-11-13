@@ -172,13 +172,11 @@ const {
 
 .body {
 
-  max-width: 800px;
-
   display: flex;
 
   flex-direction: column;
 
-  gap: var(--space-md);
+  gap: var(--gap-elements);
 
 }
 
@@ -189,9 +187,9 @@ const {
 
   color: var(--color-text-secondary);
 
-  font-size: var(--font-size-body-lg);
+  font-size: var(--text-body);
 
-  line-height: var(--line-height-body-lg);
+  line-height: var(--line-height-body);
 
 }
 
@@ -204,7 +202,7 @@ const {
 
   gap: var(--space-lg);
 
-  margin-top: var(--space-xl);
+  margin-top: var(--gap-blocks);
 
 }
 
@@ -213,22 +211,28 @@ const {
 
   display: block;
 
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--gap-label);
 
-  color: var(--color-text-secondary);
+  color: var(--color-accent);
 
-  font-size: var(--font-size-label);
+  font-family: var(--font-mono);
 
-  letter-spacing: 0.08em;
+  font-size: 1rem;
 
   text-transform: uppercase;
+
+  font-weight: var(--weight-medium);
+
+  letter-spacing: 0;
+
+  line-height: var(--line-height-label);
 
 }
 
 
 .multi-label {
 
-  margin-top: var(--space-lg);
+  margin-top: var(--space-md);
 
 }
 
@@ -248,26 +252,26 @@ const {
 
 .roles li {
 
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--padding-table-cell);
 
   border-bottom: 1px solid var(--color-border);
 
   color: var(--color-text-primary);
 
-  font-size: var(--font-size-body);
+  font-size: var(--text-body);
 
 }
 
 
 .model-note {
 
-  margin: var(--space-md) 0 0;
+  margin: var(--space-sm) 0 0;
 
   color: var(--color-text-secondary);
 
-  font-size: var(--font-size-small);
+  font-size: var(--text-table);
 
-  line-height: 1.5;
+  line-height: var(--line-height-small);
 
 }
 
@@ -287,22 +291,22 @@ const {
 
 .multi-head {
 
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--padding-table-cell);
 
   background: var(--color-accent-soft);
 
   color: var(--color-text-primary);
 
-  font-size: var(--font-size-body);
+  font-size: var(--text-body);
 
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 
 }
 
 
 .sub {
 
-  padding: var(--space-sm) var(--space-md) var(--space-md) var(--space-lg);
+  padding: var(--space-sm);
 
   border-top: 1px solid var(--color-border);
 
@@ -313,19 +317,17 @@ const {
 
   display: block;
 
-  margin: var(--space-sm) 0 var(--space-xs);
+  margin: 0 0 var(--space-xs);
 
-  color: var(--color-text-secondary);
+  color: var(--color-accent);
 
-  font-family: var(--font-family-pixel);
+  font-family: var(--font-mono);
 
-  font-size: var(--font-size-chip);
+  font-size: 1rem;
 
-  font-weight: var(--font-weight-chip);
+  text-transform: uppercase;
 
-  line-height: var(--line-height-chip);
-
-  letter-spacing: var(--letter-spacing-chip);
+  letter-spacing: 0;
 
 }
 
@@ -345,7 +347,7 @@ const {
 
   color: var(--color-text-secondary);
 
-  font-size: var(--font-size-small);
+  font-size: var(--text-table);
 
 }
 
@@ -357,13 +359,16 @@ const {
 
 .decision {
 
-  margin-top: var(--space-xl);
+  margin-top: var(--gap-blocks);
 
-  padding: var(--space-md) var(--space-lg);
+  padding: var(--padding-callout);
 
-  border-radius: var(--radius-md);
+  border-left: var(--border-callout) solid var(--color-accent);
 
-  background: var(--color-accent-soft);
+  background: var(--color-bg-callout);
+
+  border-radius: var(--radius-callout);
+
 }
 
 
@@ -371,15 +376,21 @@ const {
 
   display: block;
 
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--gap-label);
 
-  color: var(--color-text-secondary);
+  color: var(--color-accent);
 
-  font-size: var(--font-size-label);
+  font-family: var(--font-mono);
 
-  letter-spacing: 0.08em;
+  font-size: 1rem;
 
   text-transform: uppercase;
+
+  font-weight: var(--weight-medium);
+
+  letter-spacing: 0;
+
+  line-height: var(--line-height-label);
 
 }
 
@@ -390,18 +401,18 @@ const {
 
   color: var(--color-text-primary);
 
-  font-size: var(--font-size-h3);
+  font-size: var(--text-subheading);
 
   line-height: var(--line-height-h3);
 
-  font-weight: var(--font-weight-h3);
+  font-weight: var(--weight-medium);
 
 }
 
 
 .future {
 
-  margin-top: var(--space-lg);
+  margin-top: var(--gap-elements);
 
 }
 
@@ -410,15 +421,21 @@ const {
 
   display: block;
 
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--gap-label);
 
-  color: var(--color-text-secondary);
+  color: var(--color-accent);
 
-  font-size: var(--font-size-label);
+  font-family: var(--font-mono);
 
-  letter-spacing: 0.08em;
+  font-size: 1rem;
 
   text-transform: uppercase;
+
+  font-weight: var(--weight-medium);
+
+  letter-spacing: 0;
+
+  line-height: var(--line-height-label);
 
 }
 
@@ -442,15 +459,15 @@ const {
 
 .future-list li {
 
-  padding: var(--space-xs) var(--space-md);
+  padding: var(--space-xs) var(--space-sm);
 
   border: 1px solid var(--color-border);
 
-  border-radius: 999px;
+  border-radius: var(--radius-full);
 
   color: var(--color-text-secondary);
 
-  font-size: var(--font-size-small);
+  font-size: var(--text-table);
 
 }
 

@@ -115,7 +115,7 @@ const { content } = Astro.props;
 
   color: var(--color-text-muted);
 
-  font-size: 14px;
+  font-size: var(--font-size-micro);
 
   white-space: nowrap;
 
@@ -152,9 +152,9 @@ const { content } = Astro.props;
 
   cursor: pointer;
 
-  font-size: 14px;
+  font-size: var(--font-size-micro);
 
-  font-family: inherit;
+  font-family: var(--font-body);
 
   white-space: nowrap;
 
@@ -172,11 +172,11 @@ const { content } = Astro.props;
 /* Email copy state */
 
 .email.copied {
-  color: var(--color-success) !important;
+  color: #3A8F6B !important;
 }
 
 .email.copied span {
-  color: var(--color-success) !important;
+  color: #3A8F6B !important;
 }
 
 

@@ -227,7 +227,7 @@ const descriptionModeLabel = labels.descriptionModeLabel ?? "Choose case study l
 
   flex-direction: column;
 
-  gap: var(--space-xl);
+  gap: var(--gap-blocks);
 
   margin-top: var(--space-xl);
 
@@ -236,7 +236,7 @@ const descriptionModeLabel = labels.descriptionModeLabel ?? "Choose case study l
 
 .hero-content {
 
-  max-width: 900px;
+  max-width: var(--content-width);
 
 }
 
@@ -275,15 +275,21 @@ const descriptionModeLabel = labels.descriptionModeLabel ?? "Choose case study l
 
   display: block;
 
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--gap-label);
 
-  color: var(--color-text-secondary);
+  color: var(--color-accent);
 
-  font-size: var(--font-size-small);
+  font-family: var(--font-mono);
 
-  letter-spacing: 0.08em;
+  font-size: 1rem;
 
   text-transform: uppercase;
+
+  font-weight: var(--weight-medium);
+
+  letter-spacing: 0;
+
+  line-height: var(--line-height-label);
 
 }
 
@@ -292,37 +298,37 @@ h1 {
 
   margin: 0;
 
-  max-width: 900px;
+  max-width: var(--content-width);
 
-  font-size: var(--font-size-display);
+  font-size: var(--text-h1);
 
-  line-height: var(--line-height-display);
+  line-height: var(--line-height-h1);
 
-  font-weight: var(--font-weight-display);
+  font-weight: var(--weight-medium);
 
-  letter-spacing: var(--letter-spacing-display);
+  letter-spacing: var(--letter-spacing-h1);
 
 }
 
 
 .description {
 
-  max-width: 700px;
+  max-width: var(--content-width);
 
-  margin: var(--space-lg) 0 0;
+  margin: var(--gap-elements) 0 0;
 
   color: var(--color-text-secondary);
 
-  font-size: var(--font-size-body-lg);
+  font-size: var(--text-body);
 
-  line-height: var(--line-height-body-lg);
+  line-height: var(--line-height-body);
 
 }
 
 
 .description + .description {
 
-  margin-top: var(--space-sm);
+  margin-top: var(--gap-label);
 
 }
 
@@ -358,9 +364,9 @@ h1 {
 
   color: var(--color-text-secondary);
 
-  font-family: var(--font-family-pixel);
+  font-family: var(--font-mono);
 
-  font-size: var(--font-size-body);
+  font-size: 1rem;
 
   line-height: 1.2;
 
@@ -431,42 +437,40 @@ h1 {
 
 
 .nda-disclaimer {
-  max-width: 700px;
+  max-width: var(--content-width);
 
-  margin: var(--space-lg) 0 0;
+  margin: var(--gap-elements) 0 0;
 
-  padding:
-    var(--space-md)
-    var(--space-lg);
+  padding: var(--padding-callout);
 
-  border-radius:
-    var(--radius-md);
+  border-left: var(--border-callout) solid var(--color-accent);
 
-  background:
-    var(--color-bg-secondary);
+  border-radius: var(--radius-callout);
 
-  color:
-    var(--color-text-secondary);
+  background: var(--color-bg-callout);
 
-  font-size:
-    var(--font-size-small);
+  color: var(--color-text-secondary);
 
-  font-style:
-    italic;
+  font-size: var(--text-table);
 
-  line-height:
-    1.6;
+  font-style: italic;
+
+  line-height: var(--line-height-small);
 }
 
 
 .reading-time {
   display: block;
 
-  margin-top: var(--space-md);
+  margin-top: var(--gap-label);
 
   color: var(--color-text-secondary);
 
-  font-size: var(--font-size-small);
+  font-family: var(--font-mono);
+
+  font-size: 1rem;
+
+  text-transform: uppercase;
 }
 
 
@@ -494,7 +498,7 @@ h1 {
 
   grid-template-columns: 1fr 1fr;
 
-  gap: var(--space-xl);
+  gap: var(--gap-elements);
 
 }
 
@@ -512,19 +516,19 @@ h1 {
 
 .label {
 
-  color: var(--color-text-secondary);
+  color: var(--color-accent);
 
-  font-family: var(--font-family-pixel);
+  font-family: var(--font-mono);
 
-  font-size: var(--font-size-chip);
-
-  font-weight: var(--font-weight-chip);
-
-  line-height: var(--line-height-chip);
-
-  letter-spacing: var(--letter-spacing-chip);
+  font-size: 1rem;
 
   text-transform: uppercase;
+
+  font-weight: var(--weight-medium);
+
+  letter-spacing: 0;
+
+  line-height: var(--line-height-label);
 
 }
 
@@ -533,9 +537,11 @@ h1 {
 
   margin: 0;
 
-  font-size: var(--font-size-small);
+  color: var(--color-text-primary);
 
-  line-height: 1.5;
+  font-size: var(--text-body);
+
+  line-height: var(--line-height-body);
 
   white-space: normal;
 
@@ -544,7 +550,7 @@ h1 {
 
 .team {
 
-  margin-top: var(--space-xl);
+  margin-top: var(--gap-elements);
 
 }
 
@@ -553,7 +559,7 @@ h1 {
 
   h1 {
 
-    font-size: var(--font-size-h2);
+    font-size: 2rem;
 
   }
 
@@ -562,14 +568,14 @@ h1 {
 
     grid-template-columns: 1fr;
 
-    gap: var(--space-lg);
+    gap: var(--gap-elements);
 
   }
 
 
   .team {
 
-    margin-top: var(--space-lg);
+    margin-top: var(--gap-elements);
 
   }
 

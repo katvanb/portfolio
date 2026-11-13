@@ -60,7 +60,7 @@ const { content } = Astro.props;
 
   align-items: start;
 
-  padding: 0 0 72px;
+  padding: 0 0 var(--gap-blocks);
 
 }
 
@@ -71,7 +71,9 @@ const { content } = Astro.props;
 
   aspect-ratio: 1;
 
-  border-radius: 12px;
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-avatar);
 
   overflow: hidden;
 
@@ -101,17 +103,17 @@ const { content } = Astro.props;
 
 .name {
 
-  margin: 8px 0 0;
+  margin: var(--gap-label) 0 0;
 
-  font-size: 47px;
+  font-size: var(--font-size-h1);
 
-  line-height: 1.05;
+  line-height: var(--line-height-h1);
 
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 
-  letter-spacing: -0.03em;
+  letter-spacing: var(--letter-spacing-h1);
 
-  color: var(--color-accent);
+  color: var(--color-highlight);
 
 }
 
@@ -127,9 +129,9 @@ const { content } = Astro.props;
 
   color: var(--color-text-secondary);
 
-  font-size: 21px;
+  font-size: var(--font-size-body);
 
-  line-height: 23px;
+  line-height: var(--line-height-body);
 
   overflow-wrap: break-word;
 
@@ -138,7 +140,7 @@ const { content } = Astro.props;
 
 .paragraphs p + p {
 
-  margin-top: 23px;
+  margin-top: var(--space-md);
 
 }
 
@@ -151,7 +153,7 @@ const { content } = Astro.props;
 
     row-gap: 16px;
 
-    padding: 0 0 64px;
+    padding: 0 0 var(--gap-blocks);
 
   }
 
@@ -165,25 +167,25 @@ const { content } = Astro.props;
 
   .name {
 
-    margin-top: 6px;
+    margin-top: var(--gap-label);
 
-    font-size: clamp(36px, 11vw, 47px);
+    font-size: clamp(32px, 10vw, 40px);
 
   }
 
 
   .paragraphs p {
 
-    font-size: 18px;
+    font-size: var(--font-size-body);
 
-    line-height: 26px;
+    line-height: var(--line-height-body);
 
   }
 
 
   .paragraphs p + p {
 
-    margin-top: 18px;
+    margin-top: var(--space-md);
 
   }
 

@@ -56,9 +56,9 @@ const { content } = Astro.props;
 
   flex-direction: column;
 
-  gap: 20px;
+  gap: var(--gap-elements);
 
-  padding: 0 0 80px;
+  padding: 0 0 var(--gap-blocks);
 
   container-type: inline-size;
 
@@ -71,7 +71,7 @@ const { content } = Astro.props;
 
   grid-template-columns: repeat(2, minmax(0, 1fr));
 
-  gap: 18px;
+  gap: var(--gap-cards);
 
 }
 

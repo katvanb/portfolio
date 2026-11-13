@@ -197,15 +197,13 @@ const screenshotRows = screenshots.reduce<
 
 .question {
 
-  max-width: 800px;
+  padding: var(--padding-callout);
 
-  padding: var(--space-md) var(--space-lg);
+  border-left: var(--border-callout) solid var(--color-accent);
 
-  border-left: 2px solid var(--color-accent);
+  background: var(--color-bg-callout);
 
-  background: var(--color-bg-secondary);
-
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  border-radius: var(--radius-callout);
 }
 
 
@@ -213,16 +211,21 @@ const screenshotRows = screenshots.reduce<
 
   display: block;
 
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--gap-label);
 
-  color: var(--color-text-secondary);
+  color: var(--color-accent);
 
-  font-size: var(--font-size-label);
+  font-family: var(--font-mono);
 
-  letter-spacing: 0.08em;
+  font-size: 1rem;
 
   text-transform: uppercase;
 
+  font-weight: var(--weight-medium);
+
+  letter-spacing: 0;
+
+  line-height: var(--line-height-label);
 }
 
 
@@ -232,12 +235,11 @@ const screenshotRows = screenshots.reduce<
 
   color: var(--color-text-primary);
 
-  font-size: var(--font-size-h3);
+  font-size: var(--text-subheading);
 
   line-height: var(--line-height-h3);
 
-  font-weight: var(--font-weight-h3);
-
+  font-weight: var(--weight-medium);
 }
 
 
@@ -249,11 +251,11 @@ const screenshotRows = screenshots.reduce<
 
   gap: 0;
 
-  margin-top: var(--space-lg);
+  margin-top: var(--gap-elements);
 
   border: 1px solid var(--color-border);
 
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
 
   overflow: hidden;
 }
@@ -267,7 +269,7 @@ const screenshotRows = screenshots.reduce<
 
   gap: var(--space-xs);
 
-  padding: var(--space-lg);
+  padding: var(--space-md);
 
 }
 
@@ -288,11 +290,15 @@ const screenshotRows = screenshots.reduce<
 
   color: var(--color-text-secondary);
 
-  font-size: var(--font-size-label);
+  font-family: var(--font-mono);
 
-  letter-spacing: 0.08em;
+  font-size: 1rem;
 
   text-transform: uppercase;
+
+  font-weight: var(--weight-medium);
+
+  letter-spacing: 0;
 }
 
 
@@ -307,22 +313,21 @@ const screenshotRows = screenshots.reduce<
 
   color: var(--color-text-primary);
 
-  font-size: var(--font-size-body-lg);
+  font-size: var(--text-body);
 
-  line-height: var(--line-height-body-lg);
-
+  line-height: var(--line-height-body);
 }
 
 
 .sub-title {
 
-  margin: var(--space-xl) 0 var(--space-md);
+  margin: var(--gap-blocks) 0 var(--gap-elements);
 
-  font-size: var(--font-size-h3);
+  font-size: var(--text-subheading);
 
   line-height: var(--line-height-h3);
 
-  font-weight: var(--font-weight-h3);
+  font-weight: var(--weight-medium);
 }
 
 
@@ -350,7 +355,7 @@ const screenshotRows = screenshots.reduce<
 
   position: relative;
 
-  padding: var(--space-sm) var(--space-md) var(--space-sm) var(--space-xl);
+  padding: var(--space-sm) var(--space-sm) var(--space-sm) var(--space-xl);
 
   border-right: 1px solid var(--color-border);
 
@@ -358,9 +363,9 @@ const screenshotRows = screenshots.reduce<
 
   color: var(--color-text-secondary);
 
-  font-size: var(--font-size-body);
+  font-size: var(--text-body);
 
-  line-height: 1.6;
+  line-height: var(--line-height-body);
 }
 
 
@@ -371,17 +376,15 @@ const screenshotRows = screenshots.reduce<
 
   top: var(--space-sm);
 
-  left: var(--space-md);
+  left: var(--space-sm);
 
   color: var(--color-accent);
 
-  font-family: var(--font-family-pixel);
+  font-family: var(--font-mono);
 
-  font-size: var(--font-size-chip);
+  font-size: 1rem;
 
-  font-weight: var(--font-weight-chip);
-
-  line-height: var(--line-height-chip);
+  text-transform: uppercase;
 }
 
 
@@ -397,13 +400,15 @@ const screenshotRows = screenshots.reduce<
 
 .align {
 
-  margin-top: var(--space-lg);
+  margin-top: var(--gap-elements);
 
-  padding: var(--space-md) var(--space-lg);
+  padding: var(--padding-callout);
 
-  border-radius: var(--radius-md);
+  border-left: var(--border-callout) solid var(--color-accent);
 
-  background: var(--color-bg-secondary);
+  background: var(--color-bg-callout);
+
+  border-radius: var(--radius-callout);
 }
 
 
@@ -413,29 +418,29 @@ const screenshotRows = screenshots.reduce<
 
   color: var(--color-text-secondary);
 
-  font-size: var(--font-size-body);
+  font-size: var(--text-body);
 
-  line-height: 1.6;
+  line-height: var(--line-height-body);
 }
 
 
 .closing {
 
-  max-width: 800px;
+  margin: var(--gap-elements) 0 0;
 
-  margin: var(--space-lg) 0 0;
+  padding: var(--padding-callout);
 
-  padding: var(--space-md) var(--space-lg);
+  border-left: var(--border-callout) solid var(--color-accent);
 
-  border-radius: var(--radius-md);
+  background: var(--color-bg-callout);
 
-  background: var(--color-accent-soft);
+  border-radius: var(--radius-callout);
 
   color: var(--color-text-primary);
 
-  font-size: var(--font-size-body-lg);
+  font-size: var(--text-body);
 
-  line-height: var(--line-height-body-lg);
+  line-height: var(--line-height-body);
 }
 
 
@@ -447,9 +452,9 @@ const screenshotRows = screenshots.reduce<
 
   align-items: start;
 
-  gap: var(--space-md);
+  gap: var(--gap-grid);
 
-  margin: var(--space-lg) 0;
+  margin: var(--gap-elements) 0;
 
 }
 
@@ -472,7 +477,7 @@ const screenshotRows = screenshots.reduce<
 
     grid-template-columns: 1fr;
 
-    gap: var(--space-lg);
+    gap: var(--gap-elements);
 
   }
 

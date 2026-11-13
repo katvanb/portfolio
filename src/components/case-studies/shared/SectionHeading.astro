@@ -40,7 +40,7 @@ const { number, title, eyebrow } = Astro.props;
 <style>
 
 .section-heading {
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--gap-elements);
 }
 
 
@@ -48,15 +48,21 @@ const { number, title, eyebrow } = Astro.props;
 
   display: block;
 
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--gap-label);
 
-  color: var(--color-text-secondary);
+  color: var(--color-accent);
 
-  font-size: var(--font-size-small);
+  font-family: var(--font-mono);
 
-  letter-spacing: 0.08em;
+  font-size: 1rem;
 
   text-transform: uppercase;
+
+  font-weight: var(--weight-medium);
+
+  letter-spacing: 0;
+
+  line-height: var(--line-height-label);
 
 }
 
@@ -74,17 +80,15 @@ const { number, title, eyebrow } = Astro.props;
 
 .section-number {
 
-  font-family: var(--font-family-pixel);
+  font-family: var(--font-mono);
 
-  font-size: var(--font-size-chip);
+  font-size: 1rem;
 
-  font-weight: var(--font-weight-chip);
-
-  line-height: var(--line-height-chip);
+  text-transform: uppercase;
 
   color: var(--color-accent);
 
-  letter-spacing: var(--letter-spacing-chip);
+  letter-spacing: 0;
 
 }
 

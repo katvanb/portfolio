@@ -181,11 +181,13 @@ const activeFile = pathname.includes("/work/b2b-commerce")
 
   border-radius: 8px;
 
-  font-family: var(--font-family-ui);
+  font-family: var(--font-mono);
 
-  font-size: 15px;
+  font-size: 1rem;
 
-  font-weight: 400;
+  text-transform: uppercase;
+
+  font-weight: var(--weight-medium);
 
   line-height: 1.2;
 
@@ -215,7 +217,7 @@ const activeFile = pathname.includes("/work/b2b-commerce")
 
 .row:hover {
 
-  background: var(--color-bg-primary);
+  background: var(--color-bg-selected);
 
   color: var(--color-text-primary);
 
@@ -224,16 +226,9 @@ const activeFile = pathname.includes("/work/b2b-commerce")
 
 .row.active {
 
-  background: #D4DDE6;
+  background: var(--color-bg-selected);
 
   color: var(--color-text-primary);
-
-}
-
-
-:global([data-theme="dark"]) .row.active {
-
-  background: #26303B;
 
 }
 
@@ -241,6 +236,16 @@ const activeFile = pathname.includes("/work/b2b-commerce")
 .row.active svg {
 
   color: inherit;
+
+  opacity: 1;
+
+}
+
+
+.folder .folder-open-icon,
+.folder .folder-closed-icon {
+
+  color: var(--color-folder);
 
   opacity: 1;
 

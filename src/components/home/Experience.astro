@@ -74,9 +74,9 @@ const { content } = Astro.props;
 
   flex-direction: column;
 
-  gap: 20px;
+  gap: var(--gap-elements);
 
-  padding: 0 0 80px;
+  padding: 0 0 var(--gap-blocks);
 
 }
 
@@ -127,15 +127,17 @@ const { content } = Astro.props;
 
   color: var(--color-text-muted);
 
-  font-family: var(--font-family-ui);
+  font-family: var(--font-mono);
 
-  font-size: 12.5px;
+  font-size: 1rem;
 
-  font-weight: 500;
+  text-transform: uppercase;
+
+  font-weight: var(--weight-medium);
 
   line-height: 1.3;
 
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
 
   font-variant-numeric: tabular-nums;
 
@@ -148,13 +150,13 @@ const { content } = Astro.props;
 
   color: var(--color-text-primary);
 
-  font-size: 18px;
+  font-size: var(--font-size-h3);
 
-  line-height: 1.3;
+  line-height: var(--line-height-h3);
 
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 
 }
 
@@ -165,9 +167,9 @@ const { content } = Astro.props;
 
   color: var(--color-text-secondary);
 
-  font-family: var(--font-family-ui);
+  font-family: var(--font-body);
 
-  font-size: 14.5px;
+  font-size: var(--font-size-small);
 
   line-height: 1.4;
 
@@ -178,13 +180,13 @@ const { content } = Astro.props;
 
   max-width: 560px;
 
-  margin-top: 8px;
+  margin-top: var(--space-xs);
 
   color: var(--color-text-secondary);
 
-  font-size: 15.5px;
+  font-size: var(--font-size-small);
 
-  line-height: 21px;
+  line-height: var(--line-height-small);
 
 }
 
@@ -220,16 +222,16 @@ const { content } = Astro.props;
 
   .role {
 
-    font-size: 17px;
+    font-size: var(--font-size-h3);
 
   }
 
 
   .summary {
 
-    font-size: 15px;
+    font-size: var(--font-size-small);
 
-    line-height: 21px;
+    line-height: var(--line-height-small);
 
   }
 

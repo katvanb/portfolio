@@ -93,7 +93,7 @@ const hasImage = Boolean(src);
 <style>
 
 .screenshot {
-  margin: var(--space-lg) 0;
+  margin: var(--gap-elements) 0;
 }
 
 
@@ -111,7 +111,7 @@ const hasImage = Boolean(src);
 
   border: 1px dashed var(--color-border);
 
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-image-lg);
 
   background:
 
@@ -266,17 +266,15 @@ const hasImage = Boolean(src);
 
 .asset-id {
 
-  font-family: var(--font-family-pixel);
+  font-family: var(--font-mono);
 
-  font-size: var(--font-size-chip);
+  font-size: 1rem;
 
-  font-weight: var(--font-weight-chip);
-
-  line-height: var(--line-height-chip);
+  text-transform: uppercase;
 
   color: var(--color-accent);
 
-  letter-spacing: var(--letter-spacing-chip);
+  letter-spacing: 0;
 
 }
 
@@ -300,26 +298,24 @@ figcaption {
 
   flex-wrap: wrap;
 
-  gap: var(--space-sm);
+  gap: var(--gap-caption);
 
-  margin-top: var(--space-sm);
+  margin-top: var(--gap-caption);
 
 }
 
 
 .caption-id {
 
-  font-family: var(--font-family-pixel);
+  font-family: var(--font-mono);
 
-  font-size: var(--font-size-chip);
+  font-size: 1rem;
 
-  font-weight: var(--font-weight-chip);
-
-  line-height: var(--line-height-chip);
+  text-transform: uppercase;
 
   color: var(--color-accent);
 
-  letter-spacing: var(--letter-spacing-chip);
+  letter-spacing: 0;
 
 }
 

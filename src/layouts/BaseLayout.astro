@@ -67,7 +67,9 @@ const { title, description = "Product Designer portfolio", content, lang = "en",
 
   --current-sidebar: var(--sidebar-width);
 
-  min-height: 100vh;
+  width: 100vw;
+
+  height: 100vh;
 
 }
 
@@ -84,9 +86,9 @@ main {
   margin-left: var(--current-sidebar);
 
   padding:
-    calc(var(--topbar-height) + 72px)
-    var(--space-xl)
-    calc(var(--footer-height) + var(--space-2xl));
+    calc(var(--topbar-height) + var(--space-lg))
+    var(--space-lg)
+    calc(var(--footer-height) + var(--space-lg));
 
   min-width: 0;
 
@@ -97,16 +99,18 @@ main {
 
 .content {
 
+  width: 100%;
+
   max-width: var(--container-width);
 
-  margin: 0 auto;
+  margin-inline: auto;
 
 }
 
 
 .content.narrow {
 
-  max-width: 748px;
+  max-width: var(--content-width);
 
 }
 
@@ -128,7 +132,7 @@ main {
     padding:
       calc(var(--topbar-height) + var(--space-lg))
       var(--space-md)
-      calc(var(--footer-height) + var(--space-xl));
+      calc(var(--footer-height) + var(--space-lg));
 
     transition: none;
 
@@ -224,6 +228,7 @@ main {
   align-items: center;
   gap: 7px;
 
+  font-family: var(--font-body);
   font-size: 12px;
   font-weight: 500;
 

@@ -137,13 +137,11 @@ const {
 
 .body {
 
-  max-width: 800px;
-
   display: flex;
 
   flex-direction: column;
 
-  gap: var(--space-md);
+  gap: var(--gap-elements);
 
 }
 
@@ -154,22 +152,22 @@ const {
 
   color: var(--color-text-secondary);
 
-  font-size: var(--font-size-body-lg);
+  font-size: var(--text-body);
 
-  line-height: var(--line-height-body-lg);
+  line-height: var(--line-height-body);
 
 }
 
 
 .sub-title {
 
-  margin: var(--space-xl) 0 var(--space-md);
+  margin: var(--gap-blocks) 0 var(--gap-elements);
 
-  font-size: var(--font-size-h3);
+  font-size: var(--text-subheading);
 
   line-height: var(--line-height-h3);
 
-  font-weight: var(--font-weight-h3);
+  font-weight: var(--weight-medium);
 
 }
 
@@ -205,7 +203,7 @@ const {
 
   gap: var(--space-xs);
 
-  padding: var(--space-md);
+  padding: var(--space-sm);
 
   border-right: 1px solid var(--color-border);
 
@@ -220,17 +218,15 @@ const {
 
   content: "0" counter(pain);
 
-  font-family: var(--font-family-pixel);
+  font-family: var(--font-mono);
 
-  font-size: var(--font-size-chip);
+  font-size: 1rem;
 
-  font-weight: var(--font-weight-chip);
-
-  line-height: var(--line-height-chip);
+  text-transform: uppercase;
 
   color: var(--color-accent);
 
-  letter-spacing: var(--letter-spacing-chip);
+  letter-spacing: 0;
 
 }
 
@@ -239,9 +235,9 @@ const {
 
   color: var(--color-text-primary);
 
-  font-size: var(--font-size-body);
+  font-size: var(--text-body);
 
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 
   line-height: 1.4;
 
@@ -252,9 +248,9 @@ const {
 
   color: var(--color-text-secondary);
 
-  font-size: var(--font-size-small);
+  font-size: var(--text-table);
 
-  line-height: 1.5;
+  line-height: var(--line-height-small);
 
 }
 
@@ -288,7 +284,7 @@ const {
 
   gap: var(--space-xs);
 
-  padding: var(--space-md);
+  padding: var(--space-sm);
 
   border-right: 1px solid var(--color-border);
 
@@ -301,9 +297,9 @@ const {
 
   color: var(--color-text-primary);
 
-  font-size: var(--font-size-body);
+  font-size: var(--text-body);
 
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 
 }
 
@@ -312,9 +308,9 @@ const {
 
   color: var(--color-text-secondary);
 
-  font-size: var(--font-size-small);
+  font-size: var(--text-table);
 
-  line-height: 1.5;
+  line-height: var(--line-height-small);
 
 }
 
@@ -334,7 +330,7 @@ const {
 
   grid-template-columns: minmax(140px, 25%) 1fr;
 
-  gap: var(--space-md);
+  gap: var(--gap-elements);
 
   padding: var(--space-sm) 0;
 
@@ -345,19 +341,15 @@ const {
 
 .context dt {
 
-  color: var(--color-text-secondary);
+  color: var(--color-accent);
 
-  font-family: var(--font-family-pixel);
+  font-family: var(--font-mono);
 
-  font-size: var(--font-size-chip);
-
-  font-weight: var(--font-weight-chip);
-
-  line-height: var(--line-height-chip);
-
-  letter-spacing: var(--letter-spacing-chip);
+  font-size: 1rem;
 
   text-transform: uppercase;
+
+  letter-spacing: 0;
 
 }
 
@@ -368,9 +360,9 @@ const {
 
   color: var(--color-text-primary);
 
-  font-size: var(--font-size-body);
+  font-size: var(--text-body);
 
-  line-height: 1.55;
+  line-height: var(--line-height-body);
 
 }
 
@@ -378,25 +370,15 @@ const {
 .pivot,
 .mandate {
 
-  margin-top: var(--space-lg);
+  margin-top: var(--gap-elements);
 
-  padding: var(--space-md) var(--space-lg);
+  padding: var(--padding-callout);
 
-  border-radius: var(--radius-md);
+  border-left: var(--border-callout) solid var(--color-accent);
 
-}
+  background: var(--color-bg-callout);
 
-
-.pivot {
-
-  background: var(--color-accent-soft);
-
-}
-
-
-.mandate {
-
-  background: var(--color-bg-secondary);
+  border-radius: var(--radius-callout);
 
 }
 
@@ -406,15 +388,21 @@ const {
 
   display: block;
 
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--gap-label);
 
-  color: var(--color-text-secondary);
+  color: var(--color-accent);
 
-  font-size: var(--font-size-label);
+  font-family: var(--font-mono);
 
-  letter-spacing: 0.08em;
+  font-size: 1rem;
 
   text-transform: uppercase;
+
+  font-weight: var(--weight-medium);
+
+  letter-spacing: 0;
+
+  line-height: var(--line-height-label);
 
 }
 
@@ -425,11 +413,11 @@ const {
 
   color: var(--color-text-primary);
 
-  font-size: var(--font-size-h3);
+  font-size: var(--text-subheading);
 
   line-height: var(--line-height-h3);
 
-  font-weight: var(--font-weight-h3);
+  font-weight: var(--weight-medium);
 
 }
 
@@ -440,9 +428,9 @@ const {
 
   color: var(--color-text-secondary);
 
-  font-size: var(--font-size-body);
+  font-size: var(--text-body);
 
-  line-height: 1.6;
+  line-height: var(--line-height-body);
 
 }
 

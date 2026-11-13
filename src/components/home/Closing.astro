@@ -65,9 +65,9 @@ const { content } = Astro.props;
 
   text-align: center;
 
-  gap: 12px;
+  gap: var(--gap-label);
 
-  padding: 0 0 96px;
+  padding: 0 0 var(--gap-blocks);
 
 }
 
@@ -78,11 +78,13 @@ const { content } = Astro.props;
 
   max-width: none;
 
-  font-size: 30px;
+  font-family: var(--font-display);
 
-  line-height: 1.15;
+  font-size: var(--font-size-h2);
 
-  font-weight: var(--font-weight-h2);
+  line-height: var(--line-height-h2);
+
+  font-weight: var(--weight-bold);
 
   letter-spacing: var(--letter-spacing-h2);
 
@@ -99,9 +101,9 @@ const { content } = Astro.props;
 
   color: var(--color-text-secondary);
 
-  font-size: 15.5px;
+  font-size: var(--font-size-small);
 
-  line-height: 21px;
+  line-height: var(--line-height-small);
 
 }
 
@@ -114,7 +116,7 @@ const { content } = Astro.props;
 
   gap: 8px;
 
-  margin-top: 12px;
+  margin-top: var(--gap-label);
 
   padding: 0;
 
@@ -122,13 +124,13 @@ const { content } = Astro.props;
 
   border: none;
 
-  font-family: var(--font-family-ui);
+  font-family: var(--font-body);
 
-  font-size: 16px;
+  font-size: var(--font-size-body);
 
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 
-  color: var(--color-primary);
+  color: var(--color-text-primary);
 
   transition: color .2s ease;
 
@@ -146,12 +148,12 @@ const { content } = Astro.props;
 
 
 .cta.copied {
-  color: var(--color-success);
+  color: #3A8F6B;
 }
 
 .cta.copied .cta-check {
   display: block;
-  color: var(--color-success);
+  color: #3A8F6B;
 }
 
 .cta.copied .cta-mail {
@@ -159,7 +161,7 @@ const { content } = Astro.props;
 }
 
 .cta.copied span {
-  color: var(--color-success);
+  color: #3A8F6B;
 }
 
 </style>

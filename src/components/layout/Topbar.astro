@@ -193,7 +193,9 @@ const ActiveIcon = activeFile.endsWith(".md") ? FileText : FileCode2;
 
   flex-shrink: 0;
 
-  border-radius: 50%;
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-avatar);
 
   overflow: hidden;
 
@@ -214,11 +216,11 @@ const ActiveIcon = activeFile.endsWith(".md") ? FileText : FileCode2;
 
 .name {
 
-  font-family: var(--font-family-ui);
+  font-family: var(--font-body);
 
   font-size: 16px;
 
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 
   line-height: 1.2;
 
@@ -294,9 +296,11 @@ const ActiveIcon = activeFile.endsWith(".md") ? FileText : FileCode2;
 
   border-bottom: none;
 
-  font-family: var(--font-family-ui);
+  font-family: var(--font-mono);
 
-  font-size: 17px;
+  font-size: 1rem;
+
+  text-transform: uppercase;
 
   line-height: 1.2;
 

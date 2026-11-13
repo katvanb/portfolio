@@ -59,7 +59,9 @@ const { title, tags, link, image, action } = Astro.props;
 
   aspect-ratio: 366 / 250;
 
-  border-radius: 8px;
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-image-lg);
 
   overflow: hidden;
 
@@ -93,15 +95,15 @@ const { title, tags, link, image, action } = Astro.props;
 
   position: absolute;
 
-  top: 8px;
-  left: 16px;
-  right: 16px;
+  top: var(--gap-grid);
+  left: var(--gap-grid);
+  right: var(--gap-grid);
 
   display: flex;
 
   flex-wrap: wrap;
 
-  gap: 6px;
+  gap: var(--gap-grid);
 
   z-index: 2;
 
@@ -110,17 +112,19 @@ const { title, tags, link, image, action } = Astro.props;
 
 .tag {
 
-  padding: 2px 5px;
+  padding: 4px 8px;
 
-  border-radius: 999px;
+  border-radius: var(--radius-full);
 
-  background: rgba(249, 249, 251, .92);
+  background: rgba(255, 255, 255, .92);
 
-  color: #64748B;
+  color: var(--color-text-secondary);
 
-  font-family: var(--font-family-ui);
+  font-family: var(--font-body);
 
-  font-size: 9px;
+  font-size: var(--font-size-small);
+
+  font-weight: var(--weight-medium);
 
   line-height: 1.2;
 
@@ -150,21 +154,23 @@ const { title, tags, link, image, action } = Astro.props;
 
   position: absolute;
 
-  left: 16px;
-  right: 16px;
+  left: var(--space-sm);
+  right: var(--space-sm);
   bottom: 14px;
 
   margin: 0;
 
   color: #F9F9FB;
 
-  font-size: 19px;
+  font-family: var(--font-display);
 
-  line-height: 21px;
+  font-size: var(--font-size-h3);
 
-  font-weight: 500;
+  line-height: 1.2;
 
-  letter-spacing: -0.01em;
+  font-weight: var(--weight-medium);
+
+  letter-spacing: 0;
 
   z-index: 2;
 

@@ -44,35 +44,33 @@ const { number, title, intro, columns, rows, closing } = Astro.props;
 
 .intro {
 
-  max-width: 800px;
-
-  margin: 0 0 var(--space-lg);
+  margin: 0 0 var(--gap-elements);
 
   color: var(--color-text-secondary);
 
-  font-size: var(--font-size-body-lg);
+  font-size: var(--text-body);
 
-  line-height: var(--line-height-body-lg);
+  line-height: var(--line-height-body);
 }
 
 
 .closing {
 
-  max-width: 800px;
+  margin: var(--gap-elements) 0 0;
 
-  margin: var(--space-lg) 0 0;
+  padding: var(--padding-callout);
 
-  padding: var(--space-md) var(--space-lg);
+  border-left: var(--border-callout) solid var(--color-accent);
 
-  border-radius: var(--radius-md);
+  background: var(--color-bg-callout);
 
-  background: var(--color-accent-soft);
+  border-radius: var(--radius-callout);
 
   color: var(--color-text-primary);
 
-  font-size: var(--font-size-body-lg);
+  font-size: var(--text-body);
 
-  line-height: var(--line-height-body-lg);
+  line-height: var(--line-height-body);
 }
 
 </style>

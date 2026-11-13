@@ -56,15 +56,15 @@ const { content, backHref } = Astro.props;
 
 .badge {
 
-  font-family: var(--font-family-ui);
+  font-family: var(--font-mono);
 
-  font-size: var(--font-size-label);
-
-  font-weight: var(--font-weight-label);
-
-  letter-spacing: var(--letter-spacing-label);
+  font-size: 1rem;
 
   text-transform: uppercase;
+
+  font-weight: var(--weight-medium);
+
+  letter-spacing: 0;
 
   color: var(--color-accent);
 
@@ -74,14 +74,14 @@ const { content, backHref } = Astro.props;
 
   padding: 4px 14px;
 
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--gap-blocks);
 
 }
 
 
 h1 {
 
-  font-size: var(--font-size-h1);
+  font-size: var(--text-h1);
 
   line-height: var(--line-height-h1);
 
@@ -92,11 +92,11 @@ h1 {
 
 .description {
 
-  margin-top: var(--space-lg);
+  margin-top: var(--gap-elements);
 
-  font-size: var(--font-size-body-lg);
+  font-size: var(--text-body);
 
-  line-height: var(--line-height-body-lg);
+  line-height: var(--line-height-body);
 
   color: var(--color-text-secondary);
 
@@ -109,11 +109,11 @@ h1 {
 
   margin-top: var(--space-2xl);
 
-  font-family: var(--font-family-ui);
+  font-family: var(--font-body);
 
   font-size: var(--font-size-links);
 
-  font-weight: var(--font-weight-links);
+  font-weight: var(--weight-medium);
 
   color: var(--color-text-secondary);
 
