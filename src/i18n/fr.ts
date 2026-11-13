@@ -52,7 +52,33 @@ const fr = {
 
       eyebrow: "EXPÉRIENCE",
 
-      paragraphs: [],
+      entries: [
+
+        {
+          role: "Designer Produit",
+          company: "Bertoni Solutions GmbH",
+          period: "Nov 2021 — Aujourd'hui",
+          summary:
+            "Design de bout en bout de produits SaaS, e-commerce et systèmes institutionnels. Découverte avec les parties prenantes, exigences, parcours, documentation et accompagnement de l'ingénierie et du QA.",
+        },
+
+        {
+          role: "Designer Produit freelance",
+          company: "Red Activa",
+          period: "2022",
+          summary:
+            "Landing page responsive pour une entreprise de services financiers, conçue et développée dans Webflow avec une équipe de deux développeurs.",
+        },
+
+        {
+          role: "Designer UX/UI",
+          company: "cloutZOO",
+          period: "Mars 2020 — Juil. 2021",
+          summary:
+            "Expériences mobiles et web pour un réseau social qui connectait les personnes à des services et des emplois.",
+        },
+
+      ],
 
     },
 
@@ -80,6 +106,8 @@ const fr = {
     resume: "CV",
 
     credit: "Conçu + codé par Katherine",
+
+    copied: "Copié",
 
   },
 

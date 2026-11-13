@@ -1,8 +1,15 @@
 ---
+interface Entry {
+  role: string;
+  company: string;
+  period: string;
+  summary?: string;
+}
+
 interface Props {
   content: {
     eyebrow: string;
-    paragraphs: string[];
+    entries: Entry[];
   };
 }
 
@@ -16,15 +23,45 @@ const { content } = Astro.props;
     {content.eyebrow}
   </p>
 
-  {
-    content.paragraphs.length > 0 && (
-      <div class="body">
-        {content.paragraphs.map((paragraph) => (
-          <p set:html={paragraph} />
-        ))}
-      </div>
-    )
-  }
+
+  <ol class="entries">
+
+    {
+      content.entries.map((entry) => (
+
+        <li class="entry">
+
+          <span class="period">
+            {entry.period}
+          </span>
+
+
+          <div class="detail">
+
+            <h3 class="role">
+              {entry.role}
+            </h3>
+
+            <p class="company">
+              {entry.company}
+            </p>
+
+            {
+              entry.summary && (
+                <p class="summary">
+                  {entry.summary}
+                </p>
+              )
+            }
+
+          </div>
+
+        </li>
+
+      ))
+    }
+
+  </ol>
 
 </section>
 
@@ -39,32 +76,162 @@ const { content } = Astro.props;
 
   gap: 20px;
 
-  padding: 0 0 96px;
+  padding: 0 0 80px;
 
 }
 
 
-.body {
+.entries {
 
-  max-width: 748px;
+  list-style: none;
+
+  margin: 0;
+  padding: 0;
 
 }
 
 
-.body p {
+.entry {
+
+  display: grid;
+
+  grid-template-columns: max-content minmax(0, 1fr);
+
+  column-gap: 24px;
+
+  padding: 22px 0;
+
+  border-top: 1px solid var(--color-border);
+
+  border-top-color: color-mix(
+    in srgb,
+    var(--color-border) 55%,
+    transparent
+  );
+
+}
+
+
+.entry:first-child {
+
+  padding-top: 0;
+
+  border-top: 0;
+
+}
+
+
+.period {
+
+  padding-top: 3px;
+
+  color: var(--color-text-muted);
+
+  font-family: var(--font-family-ui);
+
+  font-size: 12.5px;
+
+  font-weight: 500;
+
+  line-height: 1.3;
+
+  letter-spacing: 0.01em;
+
+  font-variant-numeric: tabular-nums;
+
+}
+
+
+.role {
+
+  margin: 0;
+
+  color: var(--color-text-primary);
+
+  font-size: 18px;
+
+  line-height: 1.3;
+
+  font-weight: 500;
+
+  letter-spacing: -0.01em;
+
+}
+
+
+.company {
+
+  margin-top: 4px;
 
   color: var(--color-text-secondary);
 
-  font-size: 21px;
+  font-family: var(--font-family-ui);
 
-  line-height: 23px;
+  font-size: 14.5px;
+
+  line-height: 1.4;
 
 }
 
 
-.body p + p {
+.summary {
 
-  margin-top: 23px;
+  max-width: 560px;
+
+  margin-top: 8px;
+
+  color: var(--color-text-secondary);
+
+  font-size: 15.5px;
+
+  line-height: 21px;
+
+}
+
+
+@media (max-width: 640px) {
+
+  .experience {
+
+    padding: 0 0 64px;
+
+  }
+
+
+  .entry {
+
+    grid-template-columns: 1fr;
+
+    row-gap: 6px;
+
+    padding: 20px 0;
+
+  }
+
+
+  .period {
+
+    order: -1;
+
+    padding-top: 0;
+
+  }
+
+
+  .role {
+
+    font-size: 17px;
+
+  }
+
+
+  .summary {
+
+    font-size: 15px;
+
+    line-height: 21px;
+
+  }
 
 }
 

@@ -5,6 +5,7 @@ interface Props {
     linkedin: string;
     resume: string;
     credit: string;
+    copied: string;
   };
 }
 
@@ -26,6 +27,7 @@ const { content } = Astro.props;
       <button
         class="email"
         id="footer-email-button"
+        data-copied={content.copied}
         aria-label={content.email}
       >
         <span>
@@ -261,7 +263,8 @@ emailButton?.addEventListener("click", async () => {
     const originalText =
       emailText.textContent;
 
-    emailText.textContent = "Copied";
+    emailText.textContent =
+      emailButton.getAttribute("data-copied") || "Copied";
 
     setTimeout(() => {
 

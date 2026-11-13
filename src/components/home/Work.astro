@@ -60,6 +60,8 @@ const { content } = Astro.props;
 
   padding: 0 0 80px;
 
+  container-type: inline-size;
+
 }
 
 
@@ -74,7 +76,10 @@ const { content } = Astro.props;
 }
 
 
-@media (max-width: 768px) {
+/* Between the desktop and mobile layouts the sidebar narrows the content
+   enough that two cards per row would crush the tags and titles. */
+
+@container (max-width: 640px) {
 
   .projects {
 

@@ -52,7 +52,33 @@ const en = {
 
       eyebrow: "EXPERIENCE",
 
-      paragraphs: [],
+      entries: [
+
+        {
+          role: "Product Designer",
+          company: "Bertoni Solutions GmbH",
+          period: "Nov 2021 — Present",
+          summary:
+            "End-to-end design of SaaS, e-commerce and institutional systems. Discovery with stakeholders, requirements, flows, documentation and implementation support with engineering and QA.",
+        },
+
+        {
+          role: "Freelance Product Designer",
+          company: "Red Activa",
+          period: "2022",
+          summary:
+            "Responsive landing page for a financial services company, designed and built in Webflow with a two-developer team.",
+        },
+
+        {
+          role: "UX/UI Designer",
+          company: "cloutZOO",
+          period: "Mar 2020 — Jul 2021",
+          summary:
+            "Mobile and web experiences for a social networking platform connecting people with services and jobs.",
+        },
+
+      ],
 
     },
 
@@ -80,6 +106,8 @@ const en = {
     resume: "Resume",
 
     credit: "Designed + Coded by Katherine",
+
+    copied: "Copied",
 
   },
 

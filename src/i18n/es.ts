@@ -52,7 +52,33 @@ const es = {
 
       eyebrow: "EXPERIENCIA",
 
-      paragraphs: [],
+      entries: [
+
+        {
+          role: "Diseñadora de Producto",
+          company: "Bertoni Solutions GmbH",
+          period: "Nov 2021 — Actualidad",
+          summary:
+            "Diseño end-to-end de productos SaaS, e-commerce y sistemas institucionales. Descubrimiento con stakeholders, requisitos, flujos, documentación y acompañamiento a ingeniería y QA.",
+        },
+
+        {
+          role: "Diseñadora de Producto freelance",
+          company: "Red Activa",
+          period: "2022",
+          summary:
+            "Landing page responsive para una empresa de servicios financieros, diseñada y construida en Webflow junto a un equipo de dos desarrolladores.",
+        },
+
+        {
+          role: "Diseñadora UX/UI",
+          company: "cloutZOO",
+          period: "Mar 2020 — Jul 2021",
+          summary:
+            "Experiencias móviles y web para una red social que conectaba personas con servicios y empleos.",
+        },
+
+      ],
 
     },
 
@@ -80,6 +106,8 @@ const es = {
     resume: "Currículum",
 
     credit: "Diseñado + programado por Katherine",
+
+    copied: "Copiado",
 
   },
 
