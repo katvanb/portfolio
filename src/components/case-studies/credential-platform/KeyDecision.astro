@@ -4,7 +4,8 @@ import Screenshot from "../shared/Screenshot.astro";
 
 interface Props {
   id: string;
-  number: string;
+  eyebrow?: string;
+  number?: string;
   title: string;
   questionLabel: string;
   question: string;
@@ -26,6 +27,7 @@ interface Props {
 
 const {
   id,
+  eyebrow,
   number,
   title,
   questionLabel,
@@ -65,7 +67,7 @@ const screenshotRows = screenshots.reduce<
 
 <section class="decision" id={id}>
 
-  <SectionHeading number={number} title={title} />
+  <SectionHeading number={number} title={title} eyebrow={eyebrow} />
 
   <div class="question">
 

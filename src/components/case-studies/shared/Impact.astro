@@ -3,7 +3,8 @@ import SectionHeading from "../shared/SectionHeading.astro";
 import DataTable from "../shared/DataTable.astro";
 
 interface Props {
-  number: string;
+  eyebrow?: string;
+  number?: string;
   title: string;
   limitationTitle: string;
   limitation: string;
@@ -19,6 +20,7 @@ interface Props {
 }
 
 const {
+  eyebrow,
   number,
   title,
   limitationTitle,
@@ -37,7 +39,7 @@ const {
 
 <section class="impact" id="impact">
 
-  <SectionHeading number={number} title={title} />
+  <SectionHeading number={number} title={title} eyebrow={eyebrow} />
 
   <div class="limitation">
 

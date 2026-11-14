@@ -3,7 +3,8 @@ import SectionHeading from "../shared/SectionHeading.astro";
 import DataTable from "../shared/DataTable.astro";
 
 interface Props {
-  number: string;
+  eyebrow?: string;
+  number?: string;
   title: string;
   intro: string;
   columns: string[];
@@ -11,12 +12,12 @@ interface Props {
   closing: string;
 }
 
-const { number, title, intro, columns, rows, closing } = Astro.props;
+const { eyebrow, number, title, intro, columns, rows, closing } = Astro.props;
 ---
 
 <section class="tradeoffs" id="tradeoffs">
 
-  <SectionHeading number={number} title={title} />
+  <SectionHeading number={number} title={title} eyebrow={eyebrow} />
 
   <p class="intro">
     {intro}

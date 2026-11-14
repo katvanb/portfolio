@@ -149,7 +149,7 @@ const en = {
         "A B2B platform where educational institutions, corporations and certifying bodies issue, manage and verify digital credentials —degrees, certificates, badges and micro-credentials— using international standards such as Blockchain, Open Badges and W3C Verifiable Credentials.",
         "The project was 0 → 1. I designed the organizational model, the role and permission system, the credit logic and the workflows that make issuing credentials at scale possible without the operation collapsing."
       ],
-      role: "Product Designer (de facto lead on UI/UX and the technical team)",
+      role: "Product Designer",
       timeline: "2 years · 3 feature releases (2 product + 1 technical) · 4th iteration in planning",
       team: "PM (direct manager) · 1 UI/UX Designer · 2 engineers · 1 QA",
       focus: "2 founders (systems engineers) with a mandate to replicate a sector competitor",
@@ -164,22 +164,25 @@ const en = {
         "A technology company in the education sector wanted to build from scratch a B2B platform so that educational institutions, corporations and certifying bodies could issue, manage and verify digital credentials —degrees, certificates, badges and micro-credentials— using international standards such as Blockchain, Open Badges and W3C Verifiable Credentials.",
         "The project was 0 → 1. There was no prior platform. Institutions issued credentials manually: data in spreadsheets, designs in external tools, sent one by one by email or in physical print."
       ],
-      painsTitle: "Three concrete pains",
+      painsTitle: "Pains",
       pains: [
         {
           title: "Manual, slow issuance",
-          text: "Moving data into certificates one by one, with external designs and manual sending."
+          text: "Moving data into certificates one by one, with external designs and manual sending.",
+          chip: "Data in spreadsheets"
         },
         {
           title: "No traceability",
-          text: "Nobody knew with certainty who received what, who assigned it, when, or in which state. The information existed, but you had to ask colleagues or email the accredited."
+          text: "Nobody knew with certainty who received what, who assigned it, when, or in which state. The information existed, but you had to ask colleagues or email the accredited.",
+          chip: "Designs in external tools"
         },
         {
           title: "No institutional self-service",
-          text: "Institutions depended on manual processes to issue, assign and follow up."
+          text: "Institutions depended on manual processes to issue, assign and follow up.",
+          chip: "One-by-one by email or print"
         }
       ],
-      latentTitle: "Latent pains",
+      latentTitle: "Latent ones",
       latent: [
         {
           title: "Fraud",
@@ -191,26 +194,18 @@ const en = {
         }
       ],
       contextTitle: "Business context",
+      contextLead: "B2B SaaS model (pay-per-credential).",
       context: [
-        {
-          label: "Billing model",
-          value: "Per assigned credential (not issued — creating credentials is free), per accredited (no matter how many credentials they obtain), with a free trial version."
-        },
-        {
-          label: "Initial market",
-          value: "Colombia. Pilot with 2 companies of 20–50 accredited each."
-        },
-        {
-          label: "Future expansion",
-          value: "Europe, with Europass and ELM requirements."
-        }
+        "Scale: 120 institutional clients across Colombia and Europe.",
+        "Volume: ~100 active assignments per client.",
+        "Model: Account-based pricing with custom certification tracks."
       ],
-      pivotLabel: "The design challenge was not…",
+      pivotLabel: "Design challenge",
       pivot:
-        "Building a certificate platform. It was designing the system of organizations, roles, permissions and plans that would make it possible to issue credentials at scale without the operation collapsing.",
+        "Building a certificate platform. Design the orgs, roles, permissions, and plans so credentials can be issued at scale without operational collapse.",
       mandateLabel: "Initial stakeholder mandate",
       mandate:
-        "Replicate the model of a sector competitor. My work was to translate that ambition into a proprietary, scalable system aligned with international standards.",
+        "Replicate a sector competitor's model. My work: turn that ambition into a proprietary, scalable, standards-aligned system.",
       screenshot: {
         id: "SHOT 01",
         label: "Platform hero — main screen or collage of the key views",
@@ -219,8 +214,8 @@ const en = {
     },
 
     vision: {
-      number: "01",
-      title: "Product Vision: From Linear Institution to Multi-Organization System",
+      eyebrow: "Key Decision 1",
+      title: "From Linear Institution to Multi-Organization System",
       paragraphs: [
         "At the beginning there were no multi-organizations. The model was a linear institution: a single chain of roles from the person who managed the platform globally down to the accredited.",
         "As the product evolved, the model mutated into organization plus multi-organization."
@@ -268,8 +263,8 @@ const en = {
     },
 
     sharedCatalog: {
-      number: "02",
-      title: "Key Decision 1: Shared Credentials, Specific Assignments",
+      eyebrow: "Key Decision 2",
+      title: "Shared Credentials, Specific Assignments",
       questionLabel: "The first question",
       question:
         "When designing multi-organization, does each sub-organization have its own credentials, or do they share the catalog?",
@@ -331,8 +326,8 @@ const en = {
     },
 
     creditDistribution: {
-      number: "03",
-      title: "Key Decision 2: Distributed Credits vs. Real-Time Consumption",
+      eyebrow: "Key Decision 3",
+      title: "Distributed Credits vs. Real-Time Consumption",
       questionLabel: "The question the billing model forced",
       question:
         "The per-credit billing model (assigned credential, accredited) forced a decision on how credits are managed between the main organization and its sub-organizations.",
@@ -370,63 +365,39 @@ const en = {
       ]
     },
 
-    historyModal: {
-      number: "04",
-      title: "Key Decision 3: Reuse the History Modal vs. Add Filters",
-      questionLabel: "Connected to the previous decision",
-      question:
-        "This decision follows directly from the credit distribution model.",
-      rejectedLabel: "Rejected alternative",
-      rejected:
-        "Add filters to the history modal in order to support global consumption.",
-      decisionLabel: "Decision taken",
-      decision:
-        "Keep the existing modal and make the history specific to each sub-organization.",
-      whyTitle: "Why",
-      why: [
-        "Adding filters would also have affected report generation.",
-        "The existing modal already covered the use case if consumption were handled per sub-organization.",
-        "Lower technical complexity, greater clarity for the user."
-      ],
-      uiTitle: "How it showed in the UI/UX",
-      ui: [
-        "The activity history modal was not modified: the same component now serves a narrower, per-sub-organization scope.",
-        "Report generation inherited the specificity without new filter states to design, test and translate."
-      ],
-      closing:
-        "This is systems thinking: a UX decision (history clarity) plus a technical decision (component reuse) plus a product decision (reports do not get more complicated). Three layers, one choice."
-    },
-
     systems: {
-      number: "05",
-      title: "Systems Thinking: Roles, Permissions, Visibility and Audit",
+      eyebrow: "System Thinking",
+      title: "Roles, Permissions, Visibility and Audit",
       paragraphs: [
         "The heart of the product is not the credentials. It is who can see what, who can do what, and how it is all recorded.",
-        "Everything below was designed by me and documented as the contract the engineering team built from."
+        "Everything below was designed by me and documented as the specification the engineering team built from."
       ],
       matrixTitle: "History visibility matrix by role",
-      matrixColumns: [
-        "Role",
-        "Sees own activity",
-        "Sees others' activity",
-        "Can request credits"
-      ],
+      matrixColumns: ["Role", "View activity", "Assign credentials", "Edit history"],
       matrixRows: [
-        [
-          "Main administrator",
-          "Yes",
-          "Yes",
-          "From its organization administrator (multi) or from Global Certifica"
-        ],
-        ["Secondary administrator", "Yes", "No", "No"],
-        [
-          "Organization administrator",
-          "Yes",
-          "Yes (its sub-organizations)",
-          "From Global Certifica"
-        ],
-        ["Platform owner", "Yes", "Yes (global)", "N/A"]
+        ["Platform Admin", "All orgs", "Yes", "No"],
+        ["Org Admin", "Own org only", "Own org only", "No"],
+        ["Accredited", "Own history", "No", "No"]
       ],
+      matrixCaption:
+        "Designed a strict RBAC (Role-Based Access Control) model where visibility is restricted top-down.",
+      uxDecision: {
+        label: "UX Decision: History modal vs. filters",
+        items: [
+          {
+            label: "The Trade-off:",
+            text: "We needed to show history across the platform, but power users wanted to filter hundreds of entries."
+          },
+          {
+            label: "The Solution:",
+            text: "We chose to reuse the existing History Modal instead of building a complex, filtered view."
+          },
+          {
+            label: "Why:",
+            text: "It prioritized visibility for average users, avoided component duplication, and maintained a consistent UX without adding unnecessary technical debt."
+          }
+        ]
+      },
       statesTitle: "Assignment states",
       statesIntro:
         "All organization roles can see the state of an assignment to an accredited:",
@@ -486,8 +457,8 @@ const en = {
     },
 
     leadership: {
-      number: "06",
-      title: "Leadership: Managing Resistant Stakeholders and Aligning on Evidence",
+      eyebrow: "Leadership",
+      title: "Managing Resistant Stakeholders and Aligning on Evidence",
       contextTitle: "Context",
       context: [
         "The stakeholders were two founders, systems engineers, with a mandate to replicate a competitor. They had no defined business rules: they would send videos of the competitor saying \"this is how it should work\".",
@@ -538,8 +509,8 @@ const en = {
     },
 
     tradeoffs: {
-      number: "07",
-      title: "Trade-offs: What We Sacrificed",
+      eyebrow: "Trade-offs",
+      title: "What We Sacrificed",
       intro:
         "Every decision in this case had a cost. These are the ones we accepted knowingly.",
       columns: ["Dimension", "Priority", "Cost"],
@@ -575,8 +546,8 @@ const en = {
     },
 
     impact: {
-      number: "08",
-      title: "Impact: What We Know (Without Formal Metrics)",
+      eyebrow: "Impact",
+      title: "What We Know (Without Formal Metrics)",
       limitationTitle: "Honest limitation",
       limitation:
         "The company never defined formal metrics. Measurement relied on stakeholder satisfaction —what was requested versus what was delivered— not on end-user behavior.",
@@ -641,11 +612,8 @@ const en = {
     },
 
     reflections: {
-      number: "09",
-      title: "Reflections and Future Vision",
-      intro:
-        "This project was not only a UI/UX redesign. It was the design of the business system that makes issuing credentials at scale possible.",
-      contributionTitle: "My greatest contribution as a designer",
+      eyebrow: "Contribution",
+      title: "As a Designer",
       contribution: [
         "Defining roles, hierarchies and permissions from scratch —they did not come in the brief.",
         "Designing the multi-organization model with shared credentials and specific assignments.",
@@ -653,14 +621,6 @@ const en = {
         "Documenting the system with diagrams, tables and use cases that served as the implementation contract.",
         "Holding product decisions with evidence in a high-friction stakeholder context.",
         "Detecting and documenting the product debt generated by features added without systemic vision."
-      ],
-      roadmapTitle: "Roadmap",
-      roadmap: [
-        "Accredited search portal",
-        "White-label expansion",
-        "Adaptation to other countries (Europass, ELM)",
-        "Formal product analytics",
-        "Remediation of product debt"
       ]
     },
   },

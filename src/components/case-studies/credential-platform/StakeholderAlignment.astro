@@ -2,7 +2,8 @@
 import SectionHeading from "../shared/SectionHeading.astro";
 
 interface Props {
-  number: string;
+  eyebrow?: string;
+  number?: string;
   title: string;
   contextTitle: string;
   context: string[];
@@ -18,6 +19,7 @@ interface Props {
 }
 
 const {
+  eyebrow,
   number,
   title,
   contextTitle,
@@ -36,7 +38,7 @@ const {
 
 <section class="alignment" id="leadership">
 
-  <SectionHeading number={number} title={title} />
+  <SectionHeading number={number} title={title} eyebrow={eyebrow} />
 
   <h3 class="sub-title">
     {contextTitle}

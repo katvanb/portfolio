@@ -6,11 +6,12 @@ interface Props {
   title: string;
   paragraphs: string[];
   painsTitle: string;
-  pains: { title: string; text: string }[];
+  pains: { title: string; text: string; chip?: string }[];
   latentTitle: string;
   latent: { title: string; text: string }[];
   contextTitle: string;
-  context: { label: string; value: string }[];
+  contextLead: string;
+  context: string[];
   pivotLabel: string;
   pivot: string;
   mandateLabel: string;
@@ -26,6 +27,7 @@ const {
   latentTitle,
   latent,
   contextTitle,
+  contextLead,
   context,
   pivotLabel,
   pivot,
@@ -62,6 +64,13 @@ const {
           <span class="pain-text">
             {pain.text}
           </span>
+          {
+            pain.chip && (
+              <span class="chip">
+                {pain.chip}
+              </span>
+            )
+          }
         </li>
       ))
     }
@@ -90,16 +99,17 @@ const {
     {contextTitle}
   </h3>
 
-  <dl class="context">
+  <p class="context-lead">
+    {contextLead}
+  </p>
+
+  <ul class="context-list">
     {
-      context.map((row) => (
-        <div class="context-row">
-          <dt>{row.label}</dt>
-          <dd>{row.value}</dd>
-        </div>
+      context.map((item) => (
+        <li>{item}</li>
       ))
     }
-  </dl>
+  </ul>
 
   <div class="pivot">
 
@@ -255,6 +265,33 @@ const {
 }
 
 
+.chip {
+
+  align-self: flex-start;
+
+  margin-top: var(--space-xs);
+
+  padding: 4px 8px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-full);
+
+  color: var(--color-text-secondary);
+
+  font-family: var(--font-mono);
+
+  font-size: 1rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0;
+
+  line-height: var(--line-height-label);
+
+}
+
+
 .latent {
 
   display: grid;
@@ -315,50 +352,41 @@ const {
 }
 
 
-.context {
+.context-lead {
+
+  margin: 0 0 var(--gap-label);
+
+  color: var(--color-text-primary);
+
+  font-size: var(--text-body);
+
+  font-weight: var(--weight-medium);
+
+  line-height: var(--line-height-body);
+
+}
+
+
+.context-list {
 
   margin: 0;
+
+  padding: 0;
+
+  list-style: none;
 
   border-top: 1px solid var(--color-border);
 
 }
 
 
-.context-row {
+.context-list li {
 
-  display: grid;
-
-  grid-template-columns: minmax(140px, 25%) 1fr;
-
-  gap: var(--gap-elements);
-
-  padding: var(--space-sm) 0;
+  padding: var(--padding-table-cell);
 
   border-bottom: 1px solid var(--color-border);
 
-}
-
-
-.context dt {
-
-  color: var(--color-accent);
-
-  font-family: var(--font-mono);
-
-  font-size: 1rem;
-
-  text-transform: uppercase;
-
-  letter-spacing: 0;
-
-}
-
-
-.context dd {
-
-  margin: 0;
-
-  color: var(--color-text-primary);
+  color: var(--color-text-secondary);
 
   font-size: var(--text-body);
 
@@ -441,15 +469,6 @@ const {
   .latent {
 
     grid-template-columns: 1fr;
-
-  }
-
-
-  .context-row {
-
-    grid-template-columns: 1fr;
-
-    gap: var(--space-xs);
 
   }
 

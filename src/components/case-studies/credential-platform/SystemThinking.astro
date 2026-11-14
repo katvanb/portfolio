@@ -3,12 +3,15 @@ import SectionHeading from "../shared/SectionHeading.astro";
 import Screenshot from "../shared/Screenshot.astro";
 
 interface Props {
-  number: string;
+  eyebrow?: string;
+  number?: string;
   title: string;
   paragraphs: string[];
   matrixTitle: string;
   matrixColumns: string[];
   matrixRows: string[][];
+  matrixCaption?: string;
+  uxDecision?: { label: string; items: { label: string; text: string }[] };
   statesTitle: string;
   statesIntro: string;
   states: string[];
@@ -22,12 +25,15 @@ interface Props {
 }
 
 const {
+  eyebrow,
   number,
   title,
   paragraphs,
   matrixTitle,
   matrixColumns,
   matrixRows,
+  matrixCaption,
+  uxDecision,
   statesTitle,
   statesIntro,
   states,
@@ -43,7 +49,7 @@ const {
 
 <section class="systems" id="systems">
 
-  <SectionHeading number={number} title={title} />
+  <SectionHeading number={number} title={title} eyebrow={eyebrow} />
 
   <div class="body">
     {
@@ -90,6 +96,33 @@ const {
     </table>
 
   </div>
+
+  {
+    matrixCaption && (
+      <p class="table-caption">
+        {matrixCaption}
+      </p>
+    )
+  }
+
+  {
+    uxDecision && (
+      <div class="ux-decision">
+        <span class="ux-decision-label">
+          {uxDecision.label}
+        </span>
+
+        <ul class="ux-decision-list">
+          {uxDecision.items.map((item) => (
+            <li>
+              <span class="ux-decision-item-label">{item.label}</span>
+              <span class="ux-decision-item-text">{item.text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
 
   <h3 class="sub-title">
     {statesTitle}
@@ -261,6 +294,100 @@ td {
 
 tr:last-child td {
   border-bottom: none;
+}
+
+
+.table-caption {
+
+  margin: var(--space-sm) 0 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--text-table);
+
+  font-style: italic;
+
+  line-height: var(--line-height-small);
+}
+
+
+.ux-decision {
+
+  margin-top: var(--gap-elements);
+
+  padding: var(--padding-callout);
+
+  border-left: var(--border-callout) solid var(--color-accent);
+
+  background: var(--color-bg-callout);
+
+  border-radius: var(--radius-callout);
+}
+
+
+.ux-decision-label {
+
+  display: block;
+
+  margin-bottom: var(--gap-label);
+
+  color: var(--color-accent);
+
+  font-family: var(--font-mono);
+
+  font-size: 1rem;
+
+  text-transform: uppercase;
+
+  font-weight: var(--weight-medium);
+
+  letter-spacing: 0;
+
+  line-height: var(--line-height-label);
+}
+
+
+.ux-decision-list {
+
+  display: grid;
+
+  gap: var(--space-sm);
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+
+.ux-decision-list li {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-xs);
+}
+
+
+.ux-decision-item-label {
+
+  color: var(--color-text-primary);
+
+  font-size: var(--text-body);
+
+  font-weight: var(--weight-medium);
+}
+
+
+.ux-decision-item-text {
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--text-body);
+
+  line-height: var(--line-height-body);
 }
 
 

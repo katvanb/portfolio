@@ -3,7 +3,8 @@ import SectionHeading from "../shared/SectionHeading.astro";
 import Screenshot from "../shared/Screenshot.astro";
 
 interface Props {
-  number: string;
+  eyebrow?: string;
+  number?: string;
   title: string;
   paragraphs: string[];
   beforeTitle: string;
@@ -23,6 +24,7 @@ interface Props {
 }
 
 const {
+  eyebrow,
   number,
   title,
   paragraphs,
@@ -45,7 +47,7 @@ const {
 
 <section class="role-model" id="vision">
 
-  <SectionHeading number={number} title={title} />
+  <SectionHeading number={number} title={title} eyebrow={eyebrow} />
 
   <div class="body">
     {

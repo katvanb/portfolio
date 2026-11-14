@@ -2,37 +2,47 @@
 import SectionHeading from "../shared/SectionHeading.astro";
 
 interface Props {
-  number: string;
+  eyebrow?: string;
+  number?: string;
   title: string;
-  intro: string;
-  contributionTitle: string;
+  intro?: string;
+  contributionTitle?: string;
   contribution: string[];
-  roadmapTitle: string;
-  roadmap: string[];
+  roadmapTitle?: string;
+  roadmap?: string[];
 }
 
 const {
+  eyebrow,
   number,
   title,
   intro,
   contributionTitle,
   contribution,
   roadmapTitle,
-  roadmap,
+  roadmap = [],
 } = Astro.props;
 ---
 
 <section class="reflections" id="reflections">
 
-  <SectionHeading number={number} title={title} />
+  <SectionHeading number={number} title={title} eyebrow={eyebrow} />
 
-  <p class="intro">
-    {intro}
-  </p>
+  {
+    intro && (
+      <p class="intro">
+        {intro}
+      </p>
+    )
+  }
 
-  <h3 class="sub-title">
-    {contributionTitle}
-  </h3>
+  {
+    contributionTitle && (
+      <h3 class="sub-title">
+        {contributionTitle}
+      </h3>
+    )
+  }
 
   <ol class="contribution">
     {
@@ -42,17 +52,21 @@ const {
     }
   </ol>
 
-  <h3 class="sub-title">
-    {roadmapTitle}
-  </h3>
+  {
+    roadmap.length > 0 && (
+      <>
+        <h3 class="sub-title">
+          {roadmapTitle}
+        </h3>
 
-  <ul class="roadmap">
-    {
-      roadmap.map((item) => (
-        <li>{item}</li>
-      ))
-    }
-  </ul>
+        <ul class="roadmap">
+          {roadmap.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </>
+    )
+  }
 
 </section>
 

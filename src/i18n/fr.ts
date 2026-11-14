@@ -149,7 +149,7 @@ const fr = {
         "Une plateforme B2B où les établissements scolaires, les entreprises et les organismes certificateurs émettent, gèrent et vérifient des certificats numériques —diplômes, certificats, badges et micro-certifications— en s'appuyant sur des standards internationaux tels que Blockchain, Open Badges et les Certificats Vérifiables du W3C.",
         "Le projet partait de zéro. J'ai conçu le modèle organisationnel, le système de rôles et de permissions, la logique de crédits et les parcours qui permettent d'émettre des certificats à grande échelle sans que l'opération ne s'effondre."
       ],
-      role: "Product Designer (leadership de facto sur l'UI/UX et l'équipe technique)",
+      role: "Product Designer",
       timeline: "2 ans · 3 livraisons de fonctionnalités (2 produit + 1 technique) · 4e itération en planification",
       team: "PM (manager direct) · 1 UI/UX Designer · 2 développeurs · 1 QA",
       focus: "2 fondatrices (ingénieures système) avec le mandat de répliquer un concurrent du secteur",
@@ -164,22 +164,25 @@ const fr = {
         "Une entreprise de solutions technologiques pour le secteur éducatif voulait construire de zéro une plateforme B2B permettant aux établissements scolaires, aux entreprises et aux organismes certificateurs d'émettre, gérer et vérifier des certificats numériques —diplômes, certificats, badges et micro-certifications— en s'appuyant sur des standards internationaux tels que Blockchain, Open Badges et les Certificats Vérifiables du W3C.",
         "Le projet partait de zéro. Il n'y avait aucune plateforme antérieure. Les établissements émettaient manuellement : les données dans des tableurs, les designs dans des outils externes, envoyés un par un par e-mail ou en impression physique."
       ],
-      painsTitle: "Trois douleurs concrètes",
+      painsTitle: "Douleurs",
       pains: [
         {
           title: "Émission manuelle et lente",
-          text: "Saisir les données une par une dans les certificats, avec des designs externes et un envoi manuel."
+          text: "Saisir les données une par une dans les certificats, avec des designs externes et un envoi manuel.",
+          chip: "Données dans des tableurs"
         },
         {
           title: "Absence de traçabilité",
-          text: "Personne ne savait avec certitude qui avait reçu quoi, qui l'avait attribué, quand, ni dans quel état. L'information existait, mais il fallait demander à des collègues ou écrire à la personne certifiée."
+          text: "Personne ne savait avec certitude qui avait reçu quoi, qui l'avait attribué, quand, ni dans quel état. L'information existait, mais il fallait demander à des collègues ou écrire à la personne certifiée.",
+          chip: "Designs dans des outils externes"
         },
         {
           title: "Pas d'auto-gestion pour l'établissement",
-          text: "Les établissements dépendaient de processus manuels pour émettre, attribuer et suivre."
+          text: "Les établissements dépendaient de processus manuels pour émettre, attribuer et suivre.",
+          chip: "Un par un par e-mail ou impression"
         }
       ],
-      latentTitle: "Douleurs latentes",
+      latentTitle: "Latentes",
       latent: [
         {
           title: "Fraude",
@@ -191,26 +194,18 @@ const fr = {
         }
       ],
       contextTitle: "Contexte business",
+      contextLead: "Modèle B2B SaaS (paiement par certificat).",
       context: [
-        {
-          label: "Modèle de facturation",
-          value: "Par certificat attribué (non émis — créer des certificats est gratuit), par personne certifiée (peu importe le nombre de certificats obtenus), avec une version d'essai gratuite."
-        },
-        {
-          label: "Marché initial",
-          value: "Colombie. Pilote avec 2 entreprises de 20 à 50 personnes certifiées chacune."
-        },
-        {
-          label: "Expansion future",
-          value: "Europe, avec les exigences Europass et ELM."
-        }
+        "Échelle : 120 clients institutionnels en Colombie et en Europe.",
+        "Volume : ~100 attributions actives par client.",
+        "Modèle : Tarification par compte avec parcours de certification personnalisés."
       ],
-      pivotLabel: "Le défi de conception n'était pas…",
+      pivotLabel: "Défi de conception",
       pivot:
-        "De faire une plateforme de certificats. Il s'agissait de concevoir le système d'organisations, de rôles, de permissions et de plans qui rendrait possible l'émission de certificats à grande échelle sans que l'opération ne s'effondre.",
+        "De faire une plateforme de certificats. Concevoir les organisations, les rôles, les permissions et les plans afin d'émettre des certificats à grande échelle sans que l'opération ne s'effondre.",
       mandateLabel: "Mandat initial des parties prenantes",
       mandate:
-        "Répliquer le modèle d'un concurrent du secteur. Mon travail consistait à traduire cette ambition en un système propriétaire, scalable et aligné sur les standards internationaux.",
+        "Répliquer le modèle d'un concurrent du secteur. Mon travail : transformer cette ambition en un système propriétaire, scalable et aligné sur les standards.",
       screenshot: {
         id: "SHOT 01",
         label: "Hero du projet — écran principal ou collage des vues clés",
@@ -219,8 +214,8 @@ const fr = {
     },
 
     vision: {
-      number: "01",
-      title: "Vision Produit : D'une Institution Linéaire à un Système Multi-Organisation",
+      eyebrow: "Décision clé 1",
+      title: "D'une Institution Linéaire à un Système Multi-Organisation",
       paragraphs: [
         "Au départ, il n'y avait pas de multi-organisations. Le modèle était une institution linéaire : une seule chaîne de rôles, de la personne qui gérait la plateforme à l'échelle globale jusqu'à la personne certifiée.",
         "À mesure que le produit évoluait, le modèle a muté en organisation + multi-organisation."
@@ -268,8 +263,8 @@ const fr = {
     },
 
     sharedCatalog: {
-      number: "02",
-      title: "Décision Clé 1 : Certificats Partagés, Attributions Spécifiques",
+      eyebrow: "Décision clé 2",
+      title: "Certificats Partagés, Attributions Spécifiques",
       questionLabel: "La première question",
       question:
         "Lors de la conception de la multi-organisation, chaque sous-organisation a-t-elle ses propres certificats, ou partagent-elles le catalogue ?",
@@ -331,8 +326,8 @@ const fr = {
     },
 
     creditDistribution: {
-      number: "03",
-      title: "Décision Clé 2 : Crédits Distribués vs. Consommation en Temps Réel",
+      eyebrow: "Décision clé 3",
+      title: "Crédits Distribués vs. Consommation en Temps Réel",
       questionLabel: "La question imposée par le modèle de facturation",
       question:
         "Le modèle de facturation par crédits (certificat attribué, personne certifiée) a obligé à décider comment les crédits sont gérés entre l'organisation principale et ses sous-organisations.",
@@ -370,63 +365,39 @@ const fr = {
       ]
     },
 
-    historyModal: {
-      number: "04",
-      title: "Décision Clé 3 : Réutiliser la Modale d'Historique vs. Ajouter des Filtres",
-      questionLabel: "Directement liée à la décision précédente",
-      question:
-        "Cette décision découle directement du modèle de distribution des crédits.",
-      rejectedLabel: "Alternative écartée",
-      rejected:
-        "Ajouter des filtres à la modale d'historique afin de gérer une consommation globale.",
-      decisionLabel: "Décision retenue",
-      decision:
-        "Conserver la modale existante et rendre l'historique spécifique à chaque sous-organisation.",
-      whyTitle: "Pourquoi",
-      why: [
-        "Ajouter des filtres aurait aussi affecté la génération de rapports.",
-        "La modale existante couvrait déjà le cas d'usage si la consommation était gérée par sous-organisation.",
-        "Moins de complexité technique, plus de clarté pour l'utilisateur."
-      ],
-      uiTitle: "Comment cela s'est reflété dans l'UI/UX",
-      ui: [
-        "La modale d'historique d'activité n'a pas été modifiée : le même composant sert désormais un périmètre plus restreint, par sous-organisation.",
-        "La génération de rapports a hérité de la spécificité sans nouveaux états de filtre à concevoir, tester et traduire."
-      ],
-      closing:
-        "C'est de la pensée systémique : une décision UX (clarté de l'historique) plus une décision technique (réutilisation d'un composant) plus une décision produit (les rapports ne se complexifient pas). Trois couches, un seul choix."
-    },
-
     systems: {
-      number: "05",
-      title: "Pensée Systémique : Rôles, Permissions, Visibilité et Audit",
+      eyebrow: "Pensée systémique",
+      title: "Rôles, Permissions, Visibilité et Audit",
       paragraphs: [
         "Le cœur du produit n'est pas le certificat. C'est qui peut voir quoi, qui peut faire quoi, et comment tout cela est enregistré.",
-        "Tout ce qui suit a été conçu par moi et documenté comme le contrat avec lequel l'équipe technique a construit."
+        "Tout ce qui suit a été conçu par moi et documenté comme la spécification avec laquelle l'équipe technique a construit."
       ],
       matrixTitle: "Matrice de visibilité de l'historique par rôle",
-      matrixColumns: [
-        "Rôle",
-        "Voit sa propre activité",
-        "Voit celle des autres",
-        "Peut demander des crédits"
-      ],
+      matrixColumns: ["Rôle", "Voir l'activité", "Attribuer des certificats", "Modifier l'historique"],
       matrixRows: [
-        [
-          "Administrateur principal",
-          "Oui",
-          "Oui",
-          "À son administrateur d'organisation (multi) ou à Global Certifica"
-        ],
-        ["Administrateur secondaire", "Oui", "Non", "Non"],
-        [
-          "Administrateur d'organisation",
-          "Oui",
-          "Oui (ses sous-organisations)",
-          "À Global Certifica"
-        ],
-        ["Responsable plateforme", "Oui", "Oui (global)", "S.O."]
+        ["Admin plateforme", "Toutes les orgs", "Oui", "Non"],
+        ["Admin organisation", "Sa propre org", "Sa propre org", "Non"],
+        ["Personne certifiée", "Son propre historique", "Non", "Non"]
       ],
+      matrixCaption:
+        "J'ai conçu un modèle RBAC strict (contrôle d'accès basé sur les rôles) où la visibilité est restreinte de haut en bas.",
+      uxDecision: {
+        label: "Décision UX : modale d'historique vs. filtres",
+        items: [
+          {
+            label: "Le compromis :",
+            text: "Nous devions afficher l'historique de toute la plateforme, mais les utilisateurs avancés voulaient filtrer des centaines d'entrées."
+          },
+          {
+            label: "La solution :",
+            text: "Nous avons choisi de réutiliser la modale d'historique existante plutôt que de construire une vue complexe avec filtres."
+          },
+          {
+            label: "Pourquoi :",
+            text: "Cela privilégiait la visibilité pour l'utilisateur moyen, évitait la duplication de composants et maintenait une UX cohérente sans ajouter de dette technique inutile."
+          }
+        ]
+      },
       statesTitle: "États d'une attribution",
       statesIntro:
         "Tous les rôles d'organisation peuvent voir l'état d'une attribution à une personne certifiée :",
@@ -486,8 +457,8 @@ const fr = {
     },
 
     leadership: {
-      number: "06",
-      title: "Leadership : Gérer des Parties Prenantes Résistantes et S'aligner sur des Preuves",
+      eyebrow: "Leadership",
+      title: "Gérer des Parties Prenantes Résistantes et S'aligner sur des Preuves",
       contextTitle: "Contexte",
       context: [
         "Les parties prenantes étaient deux fondatrices, ingénieures système, avec le mandat de répliquer un concurrent. Elles n'avaient aucune règle métier définie : elles envoyaient des vidéos du concurrent en disant « ça devrait fonctionner comme ça ».",
@@ -538,8 +509,8 @@ const fr = {
     },
 
     tradeoffs: {
-      number: "07",
-      title: "Arbitrages : Ce que Nous avons Sacrifié",
+      eyebrow: "Arbitrages",
+      title: "Ce que Nous avons Sacrifié",
       intro:
         "Chaque décision de ce cas avait un coût. Voici celles que nous avons acceptées en connaissance de cause.",
       columns: ["Dimension", "Priorité", "Coût"],
@@ -575,8 +546,8 @@ const fr = {
     },
 
     impact: {
-      number: "08",
-      title: "Impact : Ce que Nous Savons (Sans Métriques Formelles)",
+      eyebrow: "Impact",
+      title: "Ce que Nous Savons (Sans Métriques Formelles)",
       limitationTitle: "Limitation honnête",
       limitation:
         "L'entreprise n'a jamais défini de métriques formelles. La mesure reposait sur la satisfaction des parties prenantes — ce qui était demandé versus ce qui a été livré — et non sur le comportement des utilisateurs finaux.",
@@ -641,11 +612,8 @@ const fr = {
     },
 
     reflections: {
-      number: "09",
-      title: "Réflexions et Vision Future",
-      intro:
-        "Ce projet n'était pas qu'une refonte d'UI/UX. C'était la conception du système métier qui rend possible l'émission de certificats à grande échelle.",
-      contributionTitle: "Ma plus grande contribution en tant que designer",
+      eyebrow: "Contribution",
+      title: "En tant que Designer",
       contribution: [
         "Définir les rôles, hiérarchies et permissions à partir de zéro : ils ne venaient pas du brief.",
         "Concevoir le modèle multi-organisation avec certificats partagés et attributions spécifiques.",
@@ -653,14 +621,6 @@ const fr = {
         "Documenter le système avec diagrammes, tableaux et cas d'usage qui ont servi de contrat d'implémentation.",
         "Tenir les décisions produit avec des preuves dans un contexte de forte friction avec les parties prenantes.",
         "Détecter et documenter la dette produit générée par des fonctionnalités ajoutées sans vision systémique."
-      ],
-      roadmapTitle: "Feuille de route",
-      roadmap: [
-        "Portail de recherche de personnes certifiées",
-        "Extension en marque blanche",
-        "Adaptation à d'autres pays (Europass, ELM)",
-        "Analytique produit formelle",
-        "Remédiation de la dette produit"
       ]
     },
   },
