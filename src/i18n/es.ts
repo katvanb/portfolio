@@ -214,9 +214,22 @@ const es = {
       eyebrow: "Decisión clave 1",
       title: "De Institución Lineal a Sistema Multi-Organización",
       paragraphs: [
-        "Al inicio no existían multi-organizaciones. El modelo era una institución lineal: una única cadena de roles desde quien gestionaba la plataforma a nivel global hasta el acreditado.",
-        "Conforme el producto evolucionó, el modelo mutó a organización + multi-organización."
+        "Al principio era una institución lineal, luego, el modelo mutó a organización + multi-organización."
       ],
+      comparison: {
+        positiveLabel: "Multi-organización",
+        positive: [
+          "Jerarquía anidada (Plataforma > Institución > Sub-organización).",
+          "Control administrativo granular en cada nivel.",
+          { lead: "Por qué:", text: "Escaló manteniendo un modelo mental sencillo para el usuario." }
+        ],
+        negativeLabel: "Modelo lineal",
+        negative: [
+          "Un único administrador lo gestiona todo.",
+          "Jerarquía rígida y plana.",
+          { lead: "Por qué falló:", text: "Imposible escalar a más de 120 organizaciones." }
+        ]
+      },
       beforeTitle: "Institución lineal",
       beforeRoles: [
         "Responsable de plataforma",

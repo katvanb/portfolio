@@ -5,7 +5,7 @@ interface Props {
   eyebrow?: string;
 }
 
-const { number, title, eyebrow } = Astro.props;
+const { title, eyebrow } = Astro.props;
 ---
 
 <div class="section-heading">
@@ -19,14 +19,6 @@ const { number, title, eyebrow } = Astro.props;
   }
 
   <div class="heading-row">
-
-    {
-      number && (
-        <span class="section-number">
-          {number}
-        </span>
-      )
-    }
 
     <h2>
       {title}
@@ -74,21 +66,6 @@ const { number, title, eyebrow } = Astro.props;
   align-items: baseline;
 
   gap: var(--space-md);
-
-}
-
-
-.section-number {
-
-  font-family: var(--font-mono);
-
-  font-size: 1rem;
-
-  text-transform: uppercase;
-
-  color: var(--color-accent);
-
-  letter-spacing: 0;
 
 }
 

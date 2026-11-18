@@ -1,9 +1,11 @@
 ---
+type Item = string | { lead: string; text: string };
+
 interface Props {
   positiveLabel: string;
-  positive: string[];
+  positive: Item[];
   negativeLabel: string;
-  negative: string[];
+  negative: Item[];
 }
 
 const { positiveLabel, positive, negativeLabel, negative } = Astro.props;
@@ -22,7 +24,9 @@ const { positiveLabel, positive, negativeLabel, negative } = Astro.props;
     <ul class="items">
       {
         positive.map((item) => (
-          <li>{item}</li>
+          <li>
+            {typeof item === "string" ? item : <><strong>{item.lead}</strong> {item.text}</>}
+          </li>
         ))
       }
     </ul>
@@ -41,7 +45,9 @@ const { positiveLabel, positive, negativeLabel, negative } = Astro.props;
     <ul class="items">
       {
         negative.map((item) => (
-          <li>{item}</li>
+          <li>
+            {typeof item === "string" ? item : <><strong>{item.lead}</strong> {item.text}</>}
+          </li>
         ))
       }
     </ul>
@@ -141,28 +147,47 @@ const { positiveLabel, positive, negativeLabel, negative } = Astro.props;
 
   .items {
 
-    display: flex;
-
-    flex-direction: column;
-
-    gap: var(--space-xs);
-
     margin: 0;
 
-    padding: 0;
+    padding-left: 1.25rem;
 
-    list-style: none;
+    list-style: disc;
+
+  }
+
+
+  .items li + li {
+
+    margin-top: var(--space-xs);
 
   }
 
 
   .items li {
 
+    padding-left: 2px;
+
     color: var(--color-text-secondary);
 
     font-size: var(--text-table);
 
     line-height: var(--line-height-small);
+
+  }
+
+
+  .items li::marker {
+
+    color: var(--color-accent);
+
+  }
+
+
+  .items strong {
+
+    color: var(--color-text-primary);
+
+    font-weight: var(--weight-bold);
 
   }
 

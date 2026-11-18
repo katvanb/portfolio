@@ -214,9 +214,22 @@ const fr = {
       eyebrow: "Décision clé 1",
       title: "D'une Institution Linéaire à un Système Multi-Organisation",
       paragraphs: [
-        "Au départ, il n'y avait pas de multi-organisations. Le modèle était une institution linéaire : une seule chaîne de rôles, de la personne qui gérait la plateforme à l'échelle globale jusqu'à la personne certifiée.",
-        "À mesure que le produit évoluait, le modèle a muté en organisation + multi-organisation."
+        "Au début, c'était une institution linéaire, puis, le modèle a muté en organisation + multi-organisation."
       ],
+      comparison: {
+        positiveLabel: "Multi-organisation",
+        positive: [
+          "Hiérarchie imbriquée (Plateforme > Établissement > Sous-organisation).",
+          "Contrôle administratif granulaire à chaque niveau.",
+          { lead: "Pourquoi :", text: "Cela a permis de passer à l'échelle tout en gardant un modèle mental simple pour l'utilisateur." }
+        ],
+        negativeLabel: "Modèle linéaire",
+        negative: [
+          "Un seul administrateur gère tout.",
+          "Hiérarchie rigide et plate.",
+          { lead: "Pourquoi cela a échoué :", text: "Impossible de passer à l'échelle pour plus de 120 organisations." }
+        ]
+      },
       beforeTitle: "Institution linéaire",
       beforeRoles: [
         "Responsable plateforme",

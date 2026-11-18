@@ -214,9 +214,22 @@ const en = {
       eyebrow: "Key Decision 1",
       title: "From Linear Institution to Multi-Organization System",
       paragraphs: [
-        "At the beginning there were no multi-organizations. The model was a linear institution: a single chain of roles from the person who managed the platform globally down to the accredited.",
-        "As the product evolved, the model mutated into organization plus multi-organization."
+        "At the beginning it was a linear institution, then, the model mutated into organization plus multi-organization."
       ],
+      comparison: {
+        positiveLabel: "Multi organization",
+        positive: [
+          "Nested hierarchy (Platform > Institution > Sub-org).",
+          "Granular admin control at each level.",
+          { lead: "Why:", text: "It scaled while keeping a simple mental model for the user." }
+        ],
+        negativeLabel: "Linear model",
+        negative: [
+          "Single admin manages everything.",
+          "Rigid, flat hierarchy.",
+          { lead: "Why it failed:", text: "Impossible to scale to 120+ organizations." }
+        ]
+      },
       beforeTitle: "Linear institution",
       beforeRoles: [
         "Platform owner",
