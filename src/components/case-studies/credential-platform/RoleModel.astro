@@ -1,6 +1,7 @@
 ---
 import SectionHeading from "../shared/SectionHeading.astro";
 import Screenshot from "../shared/Screenshot.astro";
+import Comparison from "../shared/Comparison.astro";
 
 interface Props {
   eyebrow?: string;
@@ -21,6 +22,12 @@ interface Props {
   futureTitle: string;
   future: string[];
   screenshot: { id: string; label: string; note?: string; src?: string; padded?: boolean };
+  comparison?: {
+    positiveLabel: string;
+    positive: string[];
+    negativeLabel: string;
+    negative: string[];
+  };
 }
 
 const {
@@ -42,6 +49,7 @@ const {
   futureTitle,
   future,
   screenshot,
+  comparison,
 } = Astro.props;
 ---
 
@@ -56,6 +64,17 @@ const {
       ))
     }
   </div>
+
+  {
+    comparison && (
+      <Comparison
+        positiveLabel={comparison.positiveLabel}
+        positive={comparison.positive}
+        negativeLabel={comparison.negativeLabel}
+        negative={comparison.negative}
+      />
+    )
+  }
 
   <div class="models">
 

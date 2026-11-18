@@ -45,6 +45,10 @@
   /* Folder icons */
   --color-folder: #D9A514;
 
+  /* Comparison markers */
+  --color-check: #16A34A;
+  --color-cross: #DC2626;
+
 
   /* ========================================
      Accent palette
@@ -218,6 +222,9 @@
   --color-label: #F04438;
   --color-highlight: #7DA2FF;
   --color-folder: #D9A514;
+
+  --color-check: #4ADE80;
+  --color-cross: #F87171;
 
 }
 

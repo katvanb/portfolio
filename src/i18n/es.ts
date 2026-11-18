@@ -164,7 +164,7 @@ const es = {
         "Una empresa de soluciones tecnológicas para el sector educativo quería construir desde cero una plataforma B2B para que instituciones educativas, corporaciones y entes certificadores pudieran emitir, gestionar y verificar credenciales digitales —títulos, certificados, insignias y microcredenciales— usando estándares internacionales como Blockchain, Open Badges y credenciales verificables de la W3C.",
         "El proyecto era 0 → 1. No había plataforma previa. Las instituciones emitían credenciales de forma manual: datos en hojas de cálculo, diseños en herramientas externas, envío uno a uno por email o impresión física."
       ],
-      painsTitle: "Dolores",
+      painsTitle: "DOLORES",
       pains: [
         {
           title: "Emisión manual y lenta",
@@ -182,7 +182,7 @@ const es = {
           chip: "Uno a uno por email o impresión"
         }
       ],
-      latentTitle: "Latentes",
+      latentTitle: "LATENTES",
       latent: [
         {
           title: "Fraude",
@@ -200,17 +200,14 @@ const es = {
         "Volumen: ~100 asignaciones activas por cliente.",
         "Modelo: Precio basado en cuenta con itinerarios de certificación personalizados."
       ],
-      pivotLabel: "Reto de diseño",
+      pivotLabel: "RETO DE DISEÑO",
+      pivotTitle: "Crear una plataforma de certificados.",
       pivot:
-        "Hacer una plataforma de certificados. Diseñar las organizaciones, los roles, los permisos y los planes para poder emitir credenciales a escala sin que la operación colapse.",
+        "Diseñar las organizaciones, los roles, los permisos y los planes para poder emitir credenciales a escala sin que la operación colapse.",
       mandateLabel: "Mandato inicial de los stakeholders",
+      mandateTitle: "Replicar el modelo de un competidor del sector.",
       mandate:
-        "Replicar el modelo de un competidor del sector. Mi trabajo: convertir esa ambición en un sistema propio, escalable y alineado a estándares.",
-      screenshot: {
-        id: "SHOT 01",
-        label: "Hero del proyecto — pantalla principal o collage de las vistas clave",
-        note: "Reemplazar con una captura real. Sugerencia: el listado de credenciales con sus filtros, la expresión más clara del producto."
-      }
+        "Mi trabajo: convertir esa ambición en un sistema propio, escalable y alineado a estándares."
     },
 
     vision: {
@@ -258,7 +255,6 @@ const es = {
         id: "SHOT 02",
         label: "Diagrama del modelo de roles — institución lineal vs. multi-organización",
         note: "Diagrama del modelo de roles mostrando la institución lineal frente a la estructura multi-organización.",
-        src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-2.png`
       }
     },
 
@@ -295,32 +291,26 @@ const es = {
         {
           id: "SHOT 03.1.1",
           label: "Listado de credenciales y estado de asignación — 1/6",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.1.1.jpg`
         },
         {
           id: "SHOT 03.1.2",
           label: "Listado de credenciales y estado de asignación — 2/6",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.1.2.jpg`
         },
         {
           id: "SHOT 03.2.1",
           label: "Listado de credenciales y estado de asignación — 3/6",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.2.1.jpg`
         },
         {
           id: "SHOT 03.2.2",
           label: "Listado de credenciales y estado de asignación — 4/6",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.2.2.jpg`
         },
         {
           id: "SHOT 03.3.1",
           label: "Listado de credenciales y estado de asignación — 5/6",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.3.1.jpg`
         },
         {
           id: "SHOT 03.3.2",
           label: "Listado de credenciales y estado de asignación — 6/6",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.3.2.jpg`
         }
       ]
     },
@@ -355,7 +345,6 @@ const es = {
         {
           id: "SHOT 04",
           label: "Modal de distribución de créditos",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-4.jpg`
         },
         {
           id: "SHOT 05",
@@ -441,17 +430,10 @@ const es = {
         {
           id: "SHOT 06.1",
           label: "Diagrama de flujo de roles — 1/2",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.1.jpg`
         },
         {
           id: "SHOT 06.2",
           label: "Diagrama de flujo de roles — 2/2",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.2.jpg`
-        },
-        {
-          id: "SHOT 07",
-          label: "Tabla de visibilidad por rol",
-          note: "Reemplazar con una captura real de la tabla usada en implementación."
         }
       ]
     },

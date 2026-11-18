@@ -11,12 +11,12 @@ interface Props {
   columns: string[];
   rows: string[][];
   tableNote: string;
-  evolutionTitle: string;
-  evolution: string[];
-  pendingTitle: string;
-  pending: string[];
-  quoteLabel: string;
-  quote: string;
+  evolutionTitle?: string;
+  evolution?: string[];
+  pendingTitle?: string;
+  pending?: string[];
+  quoteLabel?: string;
+  quote?: string;
 }
 
 const {
@@ -60,41 +60,57 @@ const {
     note={tableNote}
   />
 
-  <h3 class="sub-title">
-    {evolutionTitle}
-  </h3>
+  {
+    evolutionTitle && evolution && (
+      <>
+        <h3 class="sub-title">
+          {evolutionTitle}
+        </h3>
 
-  <ul class="evolution">
-    {
-      evolution.map((item) => (
-        <li>{item}</li>
-      ))
-    }
-  </ul>
+        <ul class="evolution">
+          {
+            evolution.map((item) => (
+              <li>{item}</li>
+            ))
+          }
+        </ul>
+      </>
+    )
+  }
 
-  <h3 class="sub-title">
-    {pendingTitle}
-  </h3>
+  {
+    pendingTitle && pending && (
+      <>
+        <h3 class="sub-title">
+          {pendingTitle}
+        </h3>
 
-  <ul class="pending">
-    {
-      pending.map((item) => (
-        <li>{item}</li>
-      ))
-    }
-  </ul>
+        <ul class="pending">
+          {
+            pending.map((item) => (
+              <li>{item}</li>
+            ))
+          }
+        </ul>
+      </>
+    )
+  }
 
-  <figure class="quote">
+  {
+    quoteLabel && quote && (
+      <figure class="quote">
 
-    <blockquote>
-      {quote}
-    </blockquote>
+        <blockquote>
+          {quote}
+        </blockquote>
 
-    <figcaption>
-      {quoteLabel}
-    </figcaption>
+        <figcaption>
+          {quoteLabel}
+        </figcaption>
 
-  </figure>
+      </figure>
+    )
+  }
 
 </section>
 

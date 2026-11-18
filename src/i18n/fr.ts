@@ -164,7 +164,7 @@ const fr = {
         "Une entreprise de solutions technologiques pour le secteur éducatif voulait construire de zéro une plateforme B2B permettant aux établissements scolaires, aux entreprises et aux organismes certificateurs d'émettre, gérer et vérifier des certificats numériques —diplômes, certificats, badges et micro-certifications— en s'appuyant sur des standards internationaux tels que Blockchain, Open Badges et les Certificats Vérifiables du W3C.",
         "Le projet partait de zéro. Il n'y avait aucune plateforme antérieure. Les établissements émettaient manuellement : les données dans des tableurs, les designs dans des outils externes, envoyés un par un par e-mail ou en impression physique."
       ],
-      painsTitle: "Douleurs",
+      painsTitle: "DOULEURS",
       pains: [
         {
           title: "Émission manuelle et lente",
@@ -182,7 +182,7 @@ const fr = {
           chip: "Un par un par e-mail ou impression"
         }
       ],
-      latentTitle: "Latentes",
+      latentTitle: "LATENTES",
       latent: [
         {
           title: "Fraude",
@@ -200,17 +200,14 @@ const fr = {
         "Volume : ~100 attributions actives par client.",
         "Modèle : Tarification par compte avec parcours de certification personnalisés."
       ],
-      pivotLabel: "Défi de conception",
+      pivotLabel: "DÉFI DE CONCEPTION",
+      pivotTitle: "Créer une plateforme de certificats.",
       pivot:
-        "De faire une plateforme de certificats. Concevoir les organisations, les rôles, les permissions et les plans afin d'émettre des certificats à grande échelle sans que l'opération ne s'effondre.",
+        "Concevoir les organisations, les rôles, les permissions et les plans afin d'émettre des certificats à grande échelle sans que l'opération ne s'effondre.",
       mandateLabel: "Mandat initial des parties prenantes",
+      mandateTitle: "Répliquer le modèle d'un concurrent du secteur.",
       mandate:
-        "Répliquer le modèle d'un concurrent du secteur. Mon travail : transformer cette ambition en un système propriétaire, scalable et aligné sur les standards.",
-      screenshot: {
-        id: "SHOT 01",
-        label: "Hero du projet — écran principal ou collage des vues clés",
-        note: "Remplacer par une capture réelle. Suggestion : la liste des certificats avec ses filtres, l'expression la plus claire du produit."
-      }
+        "Mon travail : transformer cette ambition en un système propriétaire, scalable et aligné sur les standards."
     },
 
     vision: {
@@ -258,7 +255,6 @@ const fr = {
         id: "SHOT 02",
         label: "Diagramme du modèle de rôles — institution linéaire vs. multi-organisation",
         note: "Diagramme du modèle de rôles montrant l'institution linéaire face à la structure multi-organisation.",
-        src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-2.png`
       }
     },
 
@@ -295,32 +291,26 @@ const fr = {
         {
           id: "SHOT 03.1.1",
           label: "Liste des certificats et état d'attribution — 1/6",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.1.1.jpg`
         },
         {
           id: "SHOT 03.1.2",
           label: "Liste des certificats et état d'attribution — 2/6",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.1.2.jpg`
         },
         {
           id: "SHOT 03.2.1",
           label: "Liste des certificats et état d'attribution — 3/6",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.2.1.jpg`
         },
         {
           id: "SHOT 03.2.2",
           label: "Liste des certificats et état d'attribution — 4/6",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.2.2.jpg`
         },
         {
           id: "SHOT 03.3.1",
           label: "Liste des certificats et état d'attribution — 5/6",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.3.1.jpg`
         },
         {
           id: "SHOT 03.3.2",
           label: "Liste des certificats et état d'attribution — 6/6",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-3.3.2.jpg`
         }
       ]
     },
@@ -355,7 +345,6 @@ const fr = {
         {
           id: "SHOT 04",
           label: "Modale de distribution des crédits",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-4.jpg`
         },
         {
           id: "SHOT 05",
@@ -441,17 +430,10 @@ const fr = {
         {
           id: "SHOT 06.1",
           label: "Diagramme de flux des rôles — 1/2",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.1.jpg`
         },
         {
           id: "SHOT 06.2",
           label: "Diagramme de flux des rôles — 2/2",
-          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/shot-6.2.jpg`
-        },
-        {
-          id: "SHOT 07",
-          label: "Tableau de visibilité par rôle",
-          note: "Remplacer par une capture réelle du tableau utilisé en implémentation."
         }
       ]
     },

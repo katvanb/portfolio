@@ -73,9 +73,13 @@ const descriptionModeLabel = labels.descriptionModeLabel ?? "Choose case study l
         {content.tag}
     </span>
 
-    <h1>
+    <div class="title-frame">
+
+      <h1>
         {content.title}
-    </h1>
+      </h1>
+
+    </div>
 
     {
       content.summary ? (
@@ -290,6 +294,21 @@ const descriptionModeLabel = labels.descriptionModeLabel ?? "Choose case study l
   letter-spacing: 0;
 
   line-height: var(--line-height-label);
+
+}
+
+
+.title-frame {
+
+  width: 100%;
+
+  padding: var(--space-md);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-bg-callout);
 
 }
 
