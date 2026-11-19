@@ -161,9 +161,11 @@
   --gap-blocks: 80px;    /* Between vertical blocks */
   --gap-elements: 32px;  /* Between elements inside a block */
   --gap-label: 16px;     /* Label to content */
+  --gap-card-label: 12px; /* Card label to content */
   --gap-cards: 16px;     /* Horizontal cards */
   --gap-grid: 8px;       /* Image grid (vertical & horizontal) */
   --gap-caption: 8px;    /* Image to caption */
+  --quote-width: 100%;   /* Quote block width */
 
   /* Component paddings */
   --padding-callout: 12px 8px;
