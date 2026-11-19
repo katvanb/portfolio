@@ -288,7 +288,11 @@ const ActiveIcon = activeFile.endsWith(".md") ? FileText : FileCode2;
 
   left: var(--current-sidebar, var(--sidebar-width));
 
-  bottom: 0;
+  top: 50%;
+
+  bottom: auto;
+
+  transform: translateY(-50%);
 
   height: 45px;
 
@@ -302,11 +306,13 @@ const ActiveIcon = activeFile.endsWith(".md") ? FileText : FileCode2;
 
   border-bottom: none;
 
+  border-left: none;
+
   font-family: var(--font-display);
 
   font-size: 1rem;
 
-  text-transform: uppercase;
+  text-transform: lowercase;
 
   line-height: 1.2;
 
@@ -359,9 +365,13 @@ const ActiveIcon = activeFile.endsWith(".md") ? FileText : FileCode2;
 
   left: auto;
 
+  top: auto;
+
   bottom: auto;
 
-  align-self: flex-end;
+  transform: none;
+
+  align-self: center;
 
 }
 
@@ -390,9 +400,13 @@ const ActiveIcon = activeFile.endsWith(".md") ? FileText : FileCode2;
 
     left: auto;
 
+    top: auto;
+
     bottom: auto;
 
-    align-self: flex-end;
+    transform: none;
+
+    align-self: center;
 
     margin-left: 12px;
 
