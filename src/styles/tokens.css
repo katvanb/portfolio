@@ -101,6 +101,7 @@
 
   /* Font weights — everything is Medium, only quotes are Bold */
   --weight-medium: 500;
+  --weight-semibold: 600;
   --weight-bold: 700;
 
   --font-weight-display: 500;

@@ -47,34 +47,46 @@ const {
     {quote}
   </blockquote>
 
-  <h3 class="sub-title">
-    {resistanceTitle}
-  </h3>
+  <div class="table-pair">
 
-  <div class="labeled-table">
-    {
-      resistance.map((item) => (
-        <div class="labeled-row">
-          <span class="row-title">{item.title}</span>
-          <span class="row-text">{item.text}</span>
-        </div>
-      ))
-    }
-  </div>
+    <div class="table-column">
 
-  <h3 class="sub-title">
-    {managedTitle}
-  </h3>
+      <h3 class="sub-title">
+        {resistanceTitle}
+      </h3>
 
-  <div class="labeled-table">
-    {
-      managed.map((item) => (
-        <div class="labeled-row">
-          <span class="row-title">{item.title}</span>
-          <span class="row-text">{item.text}</span>
-        </div>
-      ))
-    }
+      <div class="labeled-table">
+        {
+          resistance.map((item) => (
+            <div class="labeled-row">
+              <span class="row-title">{item.title}</span>
+              <span class="row-text">{item.text}</span>
+            </div>
+          ))
+        }
+      </div>
+
+    </div>
+
+    <div class="table-column">
+
+      <h3 class="sub-title">
+        {managedTitle}
+      </h3>
+
+      <div class="labeled-table">
+        {
+          managed.map((item) => (
+            <div class="labeled-row">
+              <span class="row-title">{item.title}</span>
+              <span class="row-text">{item.text}</span>
+            </div>
+          ))
+        }
+      </div>
+
+    </div>
+
   </div>
 
   <Comparison
@@ -113,25 +125,37 @@ const {
 
 .quote {
 
-  margin: 0;
-
-  padding-left: var(--space-md);
-
-  border-left: var(--border-callout) solid var(--color-accent);
+  margin: 0 0 var(--gap-elements);
 
   color: var(--color-text-primary);
 
-  font-size: var(--text-subheading);
+  font-size: var(--text-block-title);
 
   line-height: var(--line-height-h3);
 
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-bold);
+
+  text-align: center;
+}
+
+.table-pair {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: var(--gap-elements);
+}
+
+.table-column {
+
+  min-width: 0;
 }
 
 
 .sub-title {
 
-  margin: var(--gap-blocks) 0 var(--gap-elements);
+  margin: 0 0 var(--gap-elements);
 
   font-size: var(--text-subheading);
 
@@ -167,9 +191,9 @@ const {
 
   color: var(--color-text-primary);
 
-  font-size: var(--text-body);
+  font-size: var(--text-table);
 
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-semibold);
 }
 
 
@@ -192,6 +216,14 @@ const {
   font-size: var(--text-body);
 
   line-height: var(--line-height-body);
+}
+
+@media (max-width: 768px) {
+
+  .table-pair {
+
+    grid-template-columns: 1fr;
+  }
 }
 
 </style>

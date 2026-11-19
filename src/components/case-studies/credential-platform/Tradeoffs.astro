@@ -9,10 +9,9 @@ interface Props {
   intro: string;
   columns: string[];
   rows: string[][];
-  closing: string;
 }
 
-const { eyebrow, number, title, intro, columns, rows, closing } = Astro.props;
+const { eyebrow, number, title, intro, columns, rows } = Astro.props;
 ---
 
 <section class="tradeoffs" id="tradeoffs">
@@ -29,10 +28,6 @@ const { eyebrow, number, title, intro, columns, rows, closing } = Astro.props;
     emphasis={[0, 1]}
   />
 
-  <p class="closing">
-    {closing}
-  </p>
-
 </section>
 
 
@@ -48,26 +43,6 @@ const { eyebrow, number, title, intro, columns, rows, closing } = Astro.props;
   margin: 0 0 var(--gap-elements);
 
   color: var(--color-text-secondary);
-
-  font-size: var(--text-body);
-
-  line-height: var(--line-height-body);
-}
-
-
-.closing {
-
-  margin: var(--gap-elements) 0 0;
-
-  padding: var(--padding-callout);
-
-  border-left: var(--border-callout) solid var(--color-accent);
-
-  background: var(--color-bg-callout);
-
-  border-radius: var(--radius-callout);
-
-  color: var(--color-text-primary);
 
   font-size: var(--text-body);
 

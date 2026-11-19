@@ -292,27 +292,27 @@ const es = {
       ],
       screenshots: [
         {
-          id: "SHOT 03.1.1",
+          id: "",
           label: "Lista de credenciales",
         },
         {
-          id: "SHOT 03.1.2",
+          id: "",
           label: "Lista de asignaciones",
         },
         {
-          id: "SHOT 03.2.1",
+          id: "",
           label: "Asignación por lote - estado vacío",
         },
         {
-          id: "SHOT 03.2.2",
+          id: "",
           label: "Asignación por lote - documento cargado",
         },
         {
-          id: "SHOT 03.3.1",
+          id: "",
           label: "Asignar a lote existente - estado vacío",
         },
         {
-          id: "SHOT 03.3.2",
+          id: "",
           label: "Asignar a lote existente - verificación",
         }
       ]
@@ -492,17 +492,15 @@ const es = {
           "Descartadas",
           "Solo notificaciones batch y recordatorios"
         ]
-      ],
-      closing:
-        "Estos trade-offs son realistas y honestos. Reconocer el costo de las decisiones es más valioso que mostrar un proyecto perfecto."
+      ]
     },
 
     impact: {
       eyebrow: "Impacto",
       title: "Lo que sabemos (sin métricas formales)",
-      limitationTitle: "Limitación honesta",
+      limitationTitle: "Limitación",
       limitation:
-        "La empresa nunca definió métricas formales. La medición se basaba en satisfacción del stakeholder —lo solicitado versus lo entregado— y no en comportamiento del usuario final.",
+        "La empresa nunca definió métricas formales.\nLa medición se basó en la satisfacción de los stakeholders\n\nLo solicitado frente a lo entregado— no en el comportamiento del usuario final.",
       columns: ["Área", "Antes", "Después", "Evidencia"],
       rows: [
         [
@@ -566,8 +564,6 @@ const es = {
     reflections: {
       eyebrow: "contribución",
       title: "Como Diseñador",
-      intro:
-        "Cada decisión de este caso tuvo un costo. Estas son las que aceptamos a conciencia.",
       contribution: [
         "Definir roles, jerarquías y permisos desde cero: no venían del brief.",
         "Diseñar el modelo multi-organización con credenciales compartidas y asignaciones específicas.",

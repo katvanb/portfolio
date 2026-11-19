@@ -292,27 +292,27 @@ const en = {
       ],
       screenshots: [
         {
-          id: "SHOT 03.1.1",
+          id: "",
           label: "List of credentials",
         },
         {
-          id: "SHOT 03.1.2",
+          id: "",
           label: "List of assignments",
         },
         {
-          id: "SHOT 03.2.1",
+          id: "",
           label: "Batch assign - empty state",
         },
         {
-          id: "SHOT 03.2.2",
+          id: "",
           label: "Batch assign - uploaded document",
         },
         {
-          id: "SHOT 03.3.1",
+          id: "",
           label: "Assign to existing batch - empty state",
         },
         {
-          id: "SHOT 03.3.2",
+          id: "",
           label: "Assign to existing batch - verification",
         }
       ]
@@ -492,17 +492,15 @@ const en = {
           "Discarded",
           "Only batch notifications and reminders"
         ]
-      ],
-      closing:
-        "These trade-offs are realistic and honest. Acknowledging the cost of a decision is more valuable than presenting a flawless project."
+      ]
     },
 
     impact: {
       eyebrow: "Impact",
       title: "What We Know (Without Formal Metrics)",
-      limitationTitle: "Honest limitation",
+      limitationTitle: "Limitation",
       limitation:
-        "The company never defined formal metrics. Measurement relied on stakeholder satisfaction —what was requested versus what was delivered— not on end-user behavior.",
+        "The company never defined formal metrics.\nMeasurement relied on stakeholder satisfaction\n\nWhat was requested vs. what was delivered— not on end-user behavior.",
       columns: ["Area", "Before", "After", "Evidence"],
       rows: [
         [
@@ -566,8 +564,6 @@ const en = {
     reflections: {
       eyebrow: "contribution",
       title: "As a Designer",
-      intro:
-        "Every decision in this case had a cost. These are the ones we accepted knowingly.",
       contribution: [
         "Defining roles, hierarchies and permissions from scratch —they did not come in the brief.",
         "Designing the multi-organization model with shared credentials and specific assignments.",

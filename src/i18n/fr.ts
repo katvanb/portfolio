@@ -292,27 +292,27 @@ const fr = {
       ],
       screenshots: [
         {
-          id: "SHOT 03.1.1",
+          id: "",
           label: "Liste des certificats",
         },
         {
-          id: "SHOT 03.1.2",
+          id: "",
           label: "Liste des attributions",
         },
         {
-          id: "SHOT 03.2.1",
+          id: "",
           label: "Attribution par lot - état vide",
         },
         {
-          id: "SHOT 03.2.2",
+          id: "",
           label: "Attribution par lot - document téléversé",
         },
         {
-          id: "SHOT 03.3.1",
+          id: "",
           label: "Attribuer à un lot existant - état vide",
         },
         {
-          id: "SHOT 03.3.2",
+          id: "",
           label: "Attribuer à un lot existant - vérification",
         }
       ]
@@ -492,17 +492,15 @@ const fr = {
           "Écartées",
           "Uniquement des notifications par lots et des rappels"
         ]
-      ],
-      closing:
-        "Ces arbitrages sont réalistes et honnêtes. Reconnaître le coût d'une décision vaut davantage que de présenter un projet sans faille."
+      ]
     },
 
     impact: {
       eyebrow: "Impact",
       title: "Ce que Nous Savons (Sans Métriques Formelles)",
-      limitationTitle: "Limitation honnête",
+      limitationTitle: "Limitation",
       limitation:
-        "L'entreprise n'a jamais défini de métriques formelles. La mesure reposait sur la satisfaction des parties prenantes — ce qui était demandé versus ce qui a été livré — et non sur le comportement des utilisateurs finaux.",
+        "L'entreprise n'a jamais défini de métriques formelles.\nLa mesure reposait sur la satisfaction des parties prenantes\n\nCe qui a été demandé par rapport à ce qui a été livré— et non sur le comportement des utilisateurs finaux.",
       columns: ["Domaine", "Avant", "Après", "Preuve"],
       rows: [
         [
@@ -566,8 +564,6 @@ const fr = {
     reflections: {
       eyebrow: "contribution",
       title: "En tant que Designer",
-      intro:
-        "Chaque décision de ce cas avait un coût. Voici celles que nous avons acceptées en connaissance de cause.",
       contribution: [
         "Définir les rôles, hiérarchies et permissions à partir de zéro : ils ne venaient pas du brief.",
         "Concevoir le modèle multi-organisation avec certificats partagés et attributions spécifiques.",

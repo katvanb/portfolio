@@ -101,9 +101,9 @@ const {
 
   <div class="context">
 
-    <h3 class="sub-title">
+    <span class="context-label">
       {contextTitle}
-    </h3>
+    </span>
 
     <p class="context-lead">
       {contextLead}
@@ -364,10 +364,25 @@ const {
 }
 
 
-.context .sub-title {
+.context-label {
+
+  display: block;
 
   margin: 0 0 var(--gap-label);
 
+  color: var(--color-text-secondary);
+
+  font-family: var(--font-mono);
+
+  font-size: 1rem;
+
+  text-transform: uppercase;
+
+  font-weight: var(--weight-medium);
+
+  letter-spacing: 0;
+
+  line-height: var(--line-height-label);
 }
 
 
@@ -377,7 +392,7 @@ const {
 
   color: var(--color-text-primary);
 
-  font-size: var(--text-body);
+  font-size: var(--text-table);
 
   font-weight: var(--weight-medium);
 
@@ -438,7 +453,7 @@ const {
 
   margin-bottom: var(--gap-label);
 
-  color: var(--color-accent);
+  color: var(--color-text-secondary);
 
   font-family: var(--font-mono);
 
@@ -461,7 +476,7 @@ const {
 
   color: var(--color-text-primary);
 
-  font-size: var(--text-subheading);
+  font-size: var(--text-table);
 
   line-height: var(--line-height-h3);
 
@@ -476,7 +491,7 @@ const {
 
   color: var(--color-text-secondary);
 
-  font-size: var(--text-body);
+  font-size: var(--text-table);
 
   line-height: var(--line-height-body);
 
@@ -489,7 +504,7 @@ const {
 
   color: var(--color-text-secondary);
 
-  font-size: var(--text-body);
+  font-size: var(--text-table);
 
   line-height: var(--line-height-body);
 
