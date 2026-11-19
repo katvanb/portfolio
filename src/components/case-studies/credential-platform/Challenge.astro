@@ -141,15 +141,6 @@ const base = import.meta.env.BASE_URL;
 
     <div class="mandate">
 
-      <img
-        class="mandate-icon"
-        src={`${base}images/shared/woman-facepalming.png`}
-        alt=""
-        width={40}
-        height={40}
-        aria-hidden="true"
-      />
-
       <div class="mandate-content">
 
         <span class="mandate-label">
@@ -165,6 +156,15 @@ const base = import.meta.env.BASE_URL;
         </p>
 
       </div>
+
+      <img
+        class="mandate-icon"
+        src={`${base}images/shared/woman-facepalming.png`}
+        alt=""
+        width={64}
+        height={64}
+        aria-hidden="true"
+      />
 
     </div>
 
@@ -476,7 +476,7 @@ const base = import.meta.env.BASE_URL;
 
   display: flex;
 
-  align-items: flex-start;
+  align-items: center;
 
   gap: var(--space-sm);
 
@@ -487,9 +487,9 @@ const base = import.meta.env.BASE_URL;
 
   flex-shrink: 0;
 
-  width: 40px;
+  width: 64px;
 
-  height: 40px;
+  height: 64px;
 
   object-fit: contain;
 

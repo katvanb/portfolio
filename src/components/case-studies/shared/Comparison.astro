@@ -24,72 +24,80 @@ const base = import.meta.env.BASE_URL;
 
   <div class="side positive">
 
-    <div class="side-head">
+    {
+      showMarkers && (
+        <img
+          class="marker"
+          src={`${base}images/shared/check-mark.png`}
+          alt=""
+          width={40}
+          height={40}
+          aria-hidden="true"
+        />
+      )
+    }
 
-      <span class="side-label">
-        {positiveLabel}
-      </span>
+    <div class="side-content">
 
-      {
-        showMarkers && (
-          <img
-            class="marker"
-            src={`${base}images/shared/check-mark.png`}
-            alt=""
-            width={40}
-            height={40}
-            aria-hidden="true"
-          />
-        )
-      }
+      <div class="side-head">
+
+        <span class="side-label">
+          {positiveLabel}
+        </span>
+
+      </div>
+
+      <ul class="items">
+        {
+          positive.map((item) => (
+            <li>
+              {typeof item === "string" ? item : <><strong>{item.lead}</strong> {item.text}</>}
+            </li>
+          ))
+        }
+      </ul>
 
     </div>
-
-    <ul class="items">
-      {
-        positive.map((item) => (
-          <li>
-            {typeof item === "string" ? item : <><strong>{item.lead}</strong> {item.text}</>}
-          </li>
-        ))
-      }
-    </ul>
 
   </div>
 
 
   <div class="side negative">
 
-    <div class="side-head">
+    {
+      showMarkers && (
+        <img
+          class="marker"
+          src={`${base}images/shared/cross-mark.png`}
+          alt=""
+          width={40}
+          height={40}
+          aria-hidden="true"
+        />
+      )
+    }
 
-      <span class="side-label">
-        {negativeLabel}
-      </span>
+    <div class="side-content">
 
-      {
-        showMarkers && (
-          <img
-            class="marker"
-            src={`${base}images/shared/cross-mark.png`}
-            alt=""
-            width={40}
-            height={40}
-            aria-hidden="true"
-          />
-        )
-      }
+      <div class="side-head">
+
+        <span class="side-label">
+          {negativeLabel}
+        </span>
+
+      </div>
+
+      <ul class="items">
+        {
+          negative.map((item) => (
+            <li>
+              {typeof item === "string" ? item : <><strong>{item.lead}</strong> {item.text}</>}
+            </li>
+          ))
+        }
+      </ul>
 
     </div>
-
-    <ul class="items">
-      {
-        negative.map((item) => (
-          <li>
-            {typeof item === "string" ? item : <><strong>{item.lead}</strong> {item.text}</>}
-          </li>
-        ))
-      }
-    </ul>
 
   </div>
 
@@ -113,20 +121,20 @@ const base = import.meta.env.BASE_URL;
 
   .side {
 
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: var(--space-xs);
+
     min-width: 0;
 
   }
 
 
-  .side-head {
+  .side-content {
 
-    display: flex;
-
-    align-items: flex-start;
-
-    justify-content: space-between;
-
-    gap: var(--space-xs);
+    min-width: 0;
 
   }
 
