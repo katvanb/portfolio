@@ -173,6 +173,8 @@ const {
 
   margin: 0 auto var(--gap-elements);
 
+  padding-block: 24px;
+
   color: var(--color-text-primary);
 
   font-size: var(--text-block-title);
@@ -328,13 +330,15 @@ td.role {
 
   margin: 0;
 
-  padding: 0;
+  padding-left: var(--space-md);
 
   list-style: none;
 }
 
 
 .ux-decision-list li {
+
+  position: relative;
 
   display: flex;
 
@@ -344,9 +348,21 @@ td.role {
 }
 
 
+.ux-decision-list li::before {
+
+  content: "•";
+
+  position: absolute;
+
+  left: calc(-1 * var(--space-md));
+
+  color: var(--color-accent);
+}
+
+
 .ux-decision-item-label {
 
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
 
   font-size: var(--text-table);
 

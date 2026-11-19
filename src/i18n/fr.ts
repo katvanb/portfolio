@@ -268,6 +268,7 @@ const fr = {
         id: "",
         label: "",
         note: "Diagramme du modèle de rôles montrant l'institution linéaire face à la structure multi-organisation.",
+        src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/role%20model.png`,
       }
     },
 
@@ -294,26 +295,32 @@ const fr = {
         {
           id: "",
           label: "Liste des certificats",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/List%20of%20credentials.jpg`,
         },
         {
           id: "",
           label: "Liste des attributions",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/List%20of%20assignments.jpg`,
         },
         {
           id: "",
           label: "Attribution par lot - état vide",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/Batch%20assign%20-%20empty%20state.jpg`,
         },
         {
           id: "",
           label: "Attribution par lot - document téléversé",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/Batch%20assign%20-%20uploaded%20document.jpg`,
         },
         {
           id: "",
           label: "Attribuer à un lot existant - état vide",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/Assign%20to%20existing%20batch%20-%20empty%20state.jpg`,
         },
         {
           id: "",
           label: "Attribuer à un lot existant - vérification",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/Assign%20to%20existing%20batch%20-%20verification.jpg`,
         }
       ]
     },
