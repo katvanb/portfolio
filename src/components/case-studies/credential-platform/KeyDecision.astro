@@ -17,7 +17,6 @@ interface Props {
   id: string;
   eyebrow?: string;
   title: string;
-  questionLabel: string;
   question: string;
   positiveLabel: string;
   positive: Item[];
@@ -30,7 +29,6 @@ const {
   id,
   eyebrow,
   title,
-  questionLabel,
   question,
   positiveLabel,
   positive,
@@ -44,17 +42,9 @@ const {
 
   <SectionHeading title={title} eyebrow={eyebrow} />
 
-  <div class="question">
-
-    <span class="question-label">
-      {questionLabel}
-    </span>
-
-    <p class="question-text">
-      {question}
-    </p>
-
-  </div>
+  <p class="question-text">
+    {question}
+  </p>
 
   <Comparison
     positiveLabel={positiveLabel}
@@ -63,7 +53,7 @@ const {
     negative={negative}
   />
 
-  <div class="screenshot-grid">
+  <div class="screenshot-grid" data-lightbox-group={id}>
     {
       screenshots.map((screenshot) => (
         <Screenshot
@@ -84,40 +74,6 @@ const {
 
 .decision {
   margin-top: var(--section-spacing);
-}
-
-
-.question {
-
-  padding: var(--padding-callout);
-
-  border-left: var(--border-callout) solid var(--color-accent);
-
-  background: var(--color-bg-callout);
-
-  border-radius: var(--radius-callout);
-}
-
-
-.question-label {
-
-  display: block;
-
-  margin-bottom: var(--gap-label);
-
-  color: var(--color-text-secondary);
-
-  font-family: var(--font-mono);
-
-  font-size: 1rem;
-
-  text-transform: uppercase;
-
-  font-weight: var(--weight-medium);
-
-  letter-spacing: 0;
-
-  line-height: var(--line-height-label);
 }
 
 

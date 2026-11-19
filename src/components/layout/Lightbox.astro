@@ -5,10 +5,10 @@ interface Props {
 
 const { lang = "en" } = Astro.props;
 
-const labels: Record<string, { preview: string; close: string }> = {
-  en: { preview: "Image preview", close: "Close image" },
-  es: { preview: "Vista previa de la imagen", close: "Cerrar imagen" },
-  fr: { preview: "Aperçu de l'image", close: "Fermer l'image" },
+const labels: Record<string, { preview: string; close: string; previous: string; next: string }> = {
+  en: { preview: "Image preview", close: "Close image", previous: "Previous image", next: "Next image" },
+  es: { preview: "Vista previa de la imagen", close: "Cerrar imagen", previous: "Imagen anterior", next: "Imagen siguiente" },
+  fr: { preview: "Aperçu de l'image", close: "Fermer l'image", previous: "Image précédente", next: "Image suivante" },
 };
 
 const copy = labels[lang] ?? labels.en;
@@ -29,6 +29,17 @@ const copy = labels[lang] ?? labels.en;
     <span aria-hidden="true">×</span>
   </button>
 
+  <button
+    type="button"
+    class="lightbox-nav lightbox-prev"
+    data-lightbox-nav
+    data-lightbox-prev
+    aria-label={copy.previous}
+    hidden
+  >
+    <span aria-hidden="true">‹</span>
+  </button>
+
   <img
     class="lightbox-image"
     id="lightbox-image"
@@ -36,6 +47,17 @@ const copy = labels[lang] ?? labels.en;
     decoding="async"
     draggable="false"
   />
+
+  <button
+    type="button"
+    class="lightbox-nav lightbox-next"
+    data-lightbox-nav
+    data-lightbox-next
+    aria-label={copy.next}
+    hidden
+  >
+    <span aria-hidden="true">›</span>
+  </button>
 
 </dialog>
 
@@ -192,6 +214,85 @@ const copy = labels[lang] ?? labels.en;
 }
 
 
+.lightbox-nav {
+
+  position: fixed;
+
+  top: 50%;
+
+  z-index: 1;
+
+  display: grid;
+
+  place-items: center;
+
+  width: 48px;
+
+  height: 48px;
+
+  padding: 0 0 4px;
+
+  transform: translateY(-50%);
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  border-radius: 50%;
+
+  background: rgba(20, 20, 24, 0.72);
+
+  color: #fff;
+
+  font-size: 34px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background .2s ease,
+    border-color .2s ease;
+
+}
+
+
+.lightbox-nav[hidden] {
+
+  display: none;
+
+}
+
+
+.lightbox-prev {
+
+  left: clamp(16px, 2.5vw, 32px);
+
+}
+
+
+.lightbox-next {
+
+  right: clamp(16px, 2.5vw, 32px);
+
+}
+
+
+.lightbox-nav:hover {
+
+  border-color: var(--color-accent);
+
+  background: var(--color-accent);
+
+}
+
+
+.lightbox-nav:focus-visible {
+
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+
+}
+
+
 /* Fallback nativo para quien navega con movimiento reducido:
    en ese caso no se monta el cursor personalizado. */
 
@@ -207,7 +308,8 @@ const copy = labels[lang] ?? labels.en;
     cursor: grabbing !important;
   }
 
-  .lightbox[open] .lightbox-close {
+  .lightbox[open] .lightbox-close,
+  .lightbox[open] .lightbox-nav {
     cursor: pointer !important;
   }
 
@@ -261,11 +363,21 @@ const lightboxImage =
 const customCursor =
   document.getElementById("cursor");
 
+const prevButton =
+  document.querySelector<HTMLButtonElement>("[data-lightbox-prev]");
+
+const nextButton =
+  document.querySelector<HTMLButtonElement>("[data-lightbox-next]");
+
 const MIN_SCALE = 1;
 const MAX_SCALE = 6;
 const TAP_ZOOM_SCALE = 2.5;
+const SWIPE_THRESHOLD = 60;
 
 let openedFrom: HTMLElement | null = null;
+
+let lightboxGroup: HTMLElement[] = [];
+let lightboxIndex = 0;
 
 let scale = 1;
 let translateX = 0;
@@ -488,6 +600,54 @@ const toggleZoomAt = (clientX: number, clientY: number) => {
 };
 
 
+const updateNavVisibility = () => {
+
+  const hasGroup = lightboxGroup.length > 1;
+
+  if (prevButton) prevButton.hidden = !hasGroup;
+  if (nextButton) nextButton.hidden = !hasGroup;
+
+};
+
+
+const showImageAt = (index: number) => {
+
+  if (!lightboxImage || lightboxGroup.length === 0) return;
+
+  lightboxIndex = (index + lightboxGroup.length) % lightboxGroup.length;
+
+  const trigger = lightboxGroup[lightboxIndex];
+  const source = trigger?.querySelector("img");
+
+  if (!source) return;
+
+  const src = source.currentSrc || source.src;
+
+  if (!src) return;
+
+  lightboxImage.src = src;
+  lightboxImage.alt = source.alt;
+
+  openedFrom = trigger;
+
+  resetZoom();
+
+  if (lightboxImage.complete) {
+    window.requestAnimationFrame(syncBaseSize);
+  }
+
+};
+
+
+const navigate = (direction: number) => {
+
+  if (!dialog?.open || lightboxGroup.length < 2) return;
+
+  showImageAt(lightboxIndex + direction);
+
+};
+
+
 const openLightbox = (trigger: HTMLElement) => {
 
   if (!dialog || !lightboxImage) return;
@@ -499,6 +659,20 @@ const openLightbox = (trigger: HTMLElement) => {
   const src = source.currentSrc || source.src;
 
   if (!src) return;
+
+  const groupContainer =
+    trigger.closest<HTMLElement>("[data-lightbox-group]");
+
+  const groupItems = groupContainer
+    ? Array.from(
+        groupContainer.querySelectorAll<HTMLElement>("[data-lightbox]")
+      )
+    : [];
+
+  lightboxGroup = groupItems.length > 1 ? groupItems : [trigger];
+  lightboxIndex = Math.max(0, lightboxGroup.indexOf(trigger));
+
+  updateNavVisibility();
 
   lightboxImage.src = src;
   lightboxImage.alt = source.alt;
@@ -750,7 +924,16 @@ const onPointerEnd = (event: PointerEvent, cancelled = false) => {
 
   setDragging(false);
 
-  if (tapped) {
+  const swiped =
+    !cancelled &&
+    dragMoved &&
+    event.pointerType !== "mouse" &&
+    scale === MIN_SCALE &&
+    Math.abs(event.clientX - dragStartX) > SWIPE_THRESHOLD;
+
+  if (swiped) {
+    navigate(event.clientX < dragStartX ? 1 : -1);
+  } else if (tapped) {
     toggleZoomAt(event.clientX, event.clientY);
   }
 
@@ -836,6 +1019,10 @@ if (dialog) {
     resetZoom();
     lightboxImage?.removeAttribute("src");
 
+    lightboxGroup = [];
+    lightboxIndex = 0;
+    updateNavVisibility();
+
     if (customCursor && customCursor.parentElement === dialog) {
       document.body.appendChild(customCursor);
     }
@@ -846,6 +1033,39 @@ if (dialog) {
   });
 
 }
+
+
+prevButton?.addEventListener("click", (event) => {
+
+  event.preventDefault();
+  event.stopPropagation();
+  navigate(-1);
+
+});
+
+
+nextButton?.addEventListener("click", (event) => {
+
+  event.preventDefault();
+  event.stopPropagation();
+  navigate(1);
+
+});
+
+
+window.addEventListener("keydown", (event) => {
+
+  if (!dialog?.open) return;
+
+  if (event.key === "ArrowLeft") {
+    event.preventDefault();
+    navigate(-1);
+  } else if (event.key === "ArrowRight") {
+    event.preventDefault();
+    navigate(1);
+  }
+
+});
 
 
 document.addEventListener("click", (event) => {

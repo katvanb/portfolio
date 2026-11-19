@@ -154,7 +154,8 @@ const fr = {
       team: "PM (manager direct) · 1 UI/UX Designer · 2 développeurs · 1 QA",
       focus: "2 fondatrices (ingénieures système) avec le mandat de répliquer un concurrent du secteur",
       ndaText:
-        "Les détails ont été généralisés afin de protéger la confidentialité du client."
+        "Les détails ont été généralisés afin de protéger la confidentialité du client.",
+      heroImage: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/hero.jpg`
     },
 
     challenge: {
@@ -275,7 +276,6 @@ const fr = {
     sharedCatalog: {
       eyebrow: "Décision clé 2",
       title: "Certificats Partagés, Attributions Spécifiques",
-      questionLabel: "première question",
       question:
         "Lors de la conception de la multi-organisation, chaque sous-organisation a-t-elle ses propres certificats, ou partagent-elles le catalogue ?",
       positiveLabel: "Modèle partagé",
@@ -328,7 +328,6 @@ const fr = {
     creditDistribution: {
       eyebrow: "Décision clé 3",
       title: "Crédits Distribués vs. Consommation en Temps Réel",
-      questionLabel: "modèle de facturation imposé",
       question:
         "Comment les crédits doivent-ils être gérés entre l'organisation principale et ses sous-organisations ?",
       positiveLabel: "Crédits distribués",
@@ -346,11 +345,11 @@ const fr = {
       ],
       screenshots: [
         {
-          id: "SHOT 04",
+          id: "",
           label: "Modale de distribution des crédits",
         },
         {
-          id: "SHOT 05",
+          id: "",
           label: "Comportement de consommation des crédits",
         }
       ]
@@ -359,8 +358,6 @@ const fr = {
     systems: {
       eyebrow: "Pensée systémique",
       title: "Rôles, Permissions, Visibilité et Audit",
-      quote:
-        "Tout ce qui suit a été conçu par moi et documenté comme la spécification avec laquelle l'équipe technique a construit.",
       matrixTitle: "Matrice de visibilité de l'historique par rôle",
       matrixColumns: ["Rôle", "Voir l'activité", "Attribuer des certificats", "Modifier l'historique"],
       matrixRows: [
@@ -406,12 +403,14 @@ const fr = {
       ],
       screenshots: [
         {
-          id: "SHOT 06.1",
+          id: "",
           label: "Cycle de vie d'une attribution",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/Assignment%20life%20cycle.jpg`,
         },
         {
-          id: "SHOT 06.2",
+          id: "",
           label: "Règles du système",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/System%20rules.jpg`,
         }
       ]
     },
@@ -547,8 +546,6 @@ const fr = {
           "Documentée, en attente de remédiation"
         ]
       ],
-      tableNote:
-        "La colonne Preuve indique volontairement « Fonctionnalité livrée ». Quand je n'ai pas de métrique, je le dis au lieu d'en inventer une.",
       evolutionTitle: "Évolution",
       evolution: [
         "2 ans de développement.",

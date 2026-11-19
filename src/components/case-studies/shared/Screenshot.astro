@@ -211,7 +211,7 @@ const hasImage = Boolean(src);
 
   height: auto;
 
-  transition: transform .45s cubic-bezier(.2, .7, .3, 1);
+  transition: opacity .25s ease;
 
 }
 
@@ -219,7 +219,7 @@ const hasImage = Boolean(src);
 .image-trigger:hover .image,
 .image-trigger:focus-visible .image {
 
-  transform: scale(1.04);
+  opacity: .72;
 
 }
 
@@ -229,14 +229,6 @@ const hasImage = Boolean(src);
   .image {
 
     transition: none;
-
-  }
-
-
-  .image-trigger:hover .image,
-  .image-trigger:focus-visible .image {
-
-    transform: none;
 
   }
 

@@ -154,7 +154,8 @@ const es = {
       team: "PM (mi jefe directo) · 1 UI/UX Designer · 2 programadores · 1 QA",
       focus: "2 fundadoras (ingenieras de sistemas) con mandato de replicar un competidor del sector",
       ndaText:
-        "Los detalles se han generalizado para proteger la confidencialidad del cliente."
+        "Los detalles se han generalizado para proteger la confidencialidad del cliente.",
+      heroImage: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/hero.jpg`
     },
 
     challenge: {
@@ -275,7 +276,6 @@ const es = {
     sharedCatalog: {
       eyebrow: "Decisión clave 2",
       title: "Credenciales Compartidas, Asignaciones Específicas",
-      questionLabel: "primera pregunta",
       question:
         "Al diseñar multi-organización, ¿cada sub-organización tiene sus propias credenciales o comparten el catálogo?",
       positiveLabel: "Modelo compartido",
@@ -328,7 +328,6 @@ const es = {
     creditDistribution: {
       eyebrow: "Decisión clave 3",
       title: "Créditos Distribuidos vs. Consumo en Tiempo Real",
-      questionLabel: "modelo de facturación forzado",
       question:
         "¿Cómo se deben gestionar los créditos entre la organización principal y sus sub-organizaciones?",
       positiveLabel: "Créditos distribuidos",
@@ -346,11 +345,11 @@ const es = {
       ],
       screenshots: [
         {
-          id: "SHOT 04",
+          id: "",
           label: "Modal de distribución de créditos",
         },
         {
-          id: "SHOT 05",
+          id: "",
           label: "Comportamiento de consumo de créditos",
         }
       ]
@@ -359,8 +358,6 @@ const es = {
     systems: {
       eyebrow: "Pensamiento sistémico",
       title: "Roles, Permisos, Visibilidad y Auditoría",
-      quote:
-        "Todo lo que sigue lo diseñé yo y lo documenté como la especificación con la que el equipo técnico construyó.",
       matrixTitle: "Matriz de visibilidad de historial por rol",
       matrixColumns: ["Rol", "Ve la actividad", "Asigna credenciales", "Edita el historial"],
       matrixRows: [
@@ -406,12 +403,14 @@ const es = {
       ],
       screenshots: [
         {
-          id: "SHOT 06.1",
+          id: "",
           label: "Ciclo de vida de la asignación",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/Assignment%20life%20cycle.jpg`,
         },
         {
-          id: "SHOT 06.2",
+          id: "",
           label: "Reglas del sistema",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/System%20rules.jpg`,
         }
       ]
     },
@@ -547,8 +546,6 @@ const es = {
           "Documentada, pendiente de remediar"
         ]
       ],
-      tableNote:
-        "La columna de evidencia dice «funcionalidad desplegada» a propósito. Cuando no tengo una métrica, lo digo en lugar de inventarla.",
       evolutionTitle: "Evolución",
       evolution: [
         "2 años de desarrollo.",

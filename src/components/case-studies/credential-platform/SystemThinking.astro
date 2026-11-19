@@ -13,7 +13,6 @@ interface ScreenshotData {
 interface Props {
   eyebrow?: string;
   title: string;
-  quote: string;
   matrixTitle: string;
   matrixColumns: string[];
   matrixRows: string[][];
@@ -28,7 +27,6 @@ interface Props {
 const {
   eyebrow,
   title,
-  quote,
   matrixTitle,
   matrixColumns,
   matrixRows,
@@ -44,10 +42,6 @@ const {
 <section class="systems" id="systems">
 
   <SectionHeading title={title} eyebrow={eyebrow} />
-
-  <blockquote class="quote">
-    {quote}
-  </blockquote>
 
   <h3 class="sub-title">
     {matrixTitle}
@@ -164,26 +158,6 @@ const {
 
 .systems {
   margin-top: var(--section-spacing);
-}
-
-
-.quote {
-
-  width: var(--quote-width);
-
-  margin: 0 auto var(--gap-elements);
-
-  padding-block: 24px;
-
-  color: var(--color-text-primary);
-
-  font-size: var(--text-block-title);
-
-  line-height: var(--line-height-h3);
-
-  font-weight: var(--weight-bold);
-
-  text-align: center;
 }
 
 

@@ -154,7 +154,8 @@ const en = {
       team: "PM (direct manager) · 1 UI/UX Designer · 2 engineers · 1 QA",
       focus: "2 founders (systems engineers) with a mandate to replicate a sector competitor",
       ndaText:
-        "Details have been generalized to protect client confidentiality."
+        "Details have been generalized to protect client confidentiality.",
+      heroImage: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/hero.jpg`
     },
 
     challenge: {
@@ -275,7 +276,6 @@ const en = {
     sharedCatalog: {
       eyebrow: "Key Decision 2",
       title: "Shared Credentials, Specific Assignments",
-      questionLabel: "first question",
       question:
         "When designing multi-organization, does each sub-organization have its own credentials, or do they share the catalog?",
       positiveLabel: "Shared model",
@@ -328,7 +328,6 @@ const en = {
     creditDistribution: {
       eyebrow: "Key decision 3",
       title: "Distributed Credits vs. Real-Time Consumption",
-      questionLabel: "forced billing model",
       question:
         "How credits should be managed between the main organization and its sub-organizations?",
       positiveLabel: "Distributed credits",
@@ -346,11 +345,11 @@ const en = {
       ],
       screenshots: [
         {
-          id: "SHOT 04",
+          id: "",
           label: "Credit distribution modal",
         },
         {
-          id: "SHOT 05",
+          id: "",
           label: "Credit consumption behavior",
         }
       ]
@@ -359,8 +358,6 @@ const en = {
     systems: {
       eyebrow: "System thinking",
       title: "Roles, Permissions, Visibility and Audit",
-      quote:
-        "Everything below was designed by me and documented as the specification the engineering team built from.",
       matrixTitle: "History visibility matrix by role",
       matrixColumns: ["Role", "View activity", "Assign credentials", "Edit history"],
       matrixRows: [
@@ -406,12 +403,14 @@ const en = {
       ],
       screenshots: [
         {
-          id: "SHOT 06.1",
+          id: "",
           label: "Assignment life cycle",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/Assignment%20life%20cycle.jpg`,
         },
         {
-          id: "SHOT 06.2",
+          id: "",
           label: "System rules",
+          src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/System%20rules.jpg`,
         }
       ]
     },
@@ -547,8 +546,6 @@ const en = {
           "Documented, still pending remediation"
         ]
       ],
-      tableNote:
-        "The evidence column reads \"shipped functionality\" on purpose. Where I do not have a metric, I say so instead of inventing one.",
       evolutionTitle: "Evolution",
       evolution: [
         "2 years of development.",
