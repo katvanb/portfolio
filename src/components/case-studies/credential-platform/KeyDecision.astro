@@ -10,6 +10,7 @@ interface ScreenshotData {
   label: string;
   note?: string;
   src?: string;
+  fullSrc?: string;
   padded?: boolean;
 }
 
@@ -61,6 +62,7 @@ const {
           label={screenshot.label}
           note={screenshot.note}
           src={screenshot.src}
+          fullSrc={screenshot.fullSrc}
           padded={screenshot.padded}
         />
       ))

@@ -5,6 +5,7 @@ interface Props {
   note?: string;
   ratio?: string;
   src?: string;
+  fullSrc?: string;
   padded?: boolean;
 }
 
@@ -14,6 +15,7 @@ const {
   note,
   ratio = "16 / 10",
   src,
+  fullSrc,
   padded = false,
 } = Astro.props;
 
@@ -37,6 +39,8 @@ const hasImage = Boolean(src);
           <img
             class="image"
             src={src}
+            srcset={fullSrc ? `${src} 1x, ${fullSrc} 2x` : undefined}
+            data-full-src={fullSrc ?? src}
             alt={label}
             loading="lazy"
             decoding="async"

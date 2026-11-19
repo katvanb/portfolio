@@ -296,31 +296,37 @@ const es = {
           id: "",
           label: "Lista de credenciales",
           src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/List%20of%20credentials.jpg`,
+          fullSrc: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/2x/List%20of%20credentials.jpg`,
         },
         {
           id: "",
           label: "Lista de asignaciones",
           src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/List%20of%20assignments.jpg`,
+          fullSrc: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/2x/List%20of%20assignments.jpg`,
         },
         {
           id: "",
           label: "Asignación por lote - estado vacío",
           src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/Batch%20assign%20-%20empty%20state.jpg`,
+          fullSrc: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/2x/Batch%20assign%20-%20empty%20state.jpg`,
         },
         {
           id: "",
           label: "Asignación por lote - documento cargado",
           src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/Batch%20assign%20-%20uploaded%20document.jpg`,
+          fullSrc: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/2x/Batch%20assign%20-%20uploaded%20document.jpg`,
         },
         {
           id: "",
           label: "Asignar a lote existente - estado vacío",
           src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/Assign%20to%20existing%20batch%20-%20empty%20state.jpg`,
+          fullSrc: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/2x/Assign%20to%20existing%20batch%20-%20empty%20state.jpg`,
         },
         {
           id: "",
           label: "Asignar a lote existente - verificación",
           src: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/Assign%20to%20existing%20batch%20-%20verification.jpg`,
+          fullSrc: `${import.meta.env.BASE_URL}images/case-studies/credential-platform/2x/Assign%20to%20existing%20batch%20-%20verification.jpg`,
         }
       ]
     },

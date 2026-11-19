@@ -621,7 +621,10 @@ const showImageAt = (index: number) => {
 
   if (!source) return;
 
-  const src = source.currentSrc || source.src;
+  const src =
+    source.dataset.fullSrc ||
+    source.currentSrc ||
+    source.src;
 
   if (!src) return;
 
@@ -656,7 +659,10 @@ const openLightbox = (trigger: HTMLElement) => {
 
   if (!source) return;
 
-  const src = source.currentSrc || source.src;
+  const src =
+    source.dataset.fullSrc ||
+    source.currentSrc ||
+    source.src;
 
   if (!src) return;
 
