@@ -282,11 +282,17 @@ const ActiveIcon = activeFile.endsWith(".md") ? FileText : FileCode2;
 
   gap: 10px;
 
-  height: 56px;
+  box-sizing: border-box;
 
-  margin-left: 17px;
+  position: absolute;
 
-  padding: 0 28px;
+  left: var(--current-sidebar, var(--sidebar-width));
+
+  bottom: 0;
+
+  height: 45px;
+
+  padding: 8px 8px 0;
 
   border-radius: 10px 10px 0 0;
 
@@ -296,7 +302,7 @@ const ActiveIcon = activeFile.endsWith(".md") ? FileText : FileCode2;
 
   border-bottom: none;
 
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
 
   font-size: 1rem;
 
@@ -307,8 +313,6 @@ const ActiveIcon = activeFile.endsWith(".md") ? FileText : FileCode2;
   color: var(--color-text-secondary);
 
   white-space: nowrap;
-
-  position: relative;
 
   z-index: 1;
 
@@ -349,6 +353,19 @@ const ActiveIcon = activeFile.endsWith(".md") ? FileText : FileCode2;
 }
 
 
+:global(.layout.collapsed) .file-pill {
+
+  position: static;
+
+  left: auto;
+
+  bottom: auto;
+
+  align-self: flex-end;
+
+}
+
+
 @media (max-width: 768px) {
 
   .topbar {
@@ -369,6 +386,14 @@ const ActiveIcon = activeFile.endsWith(".md") ? FileText : FileCode2;
 
   .file-pill {
 
+    position: static;
+
+    left: auto;
+
+    bottom: auto;
+
+    align-self: flex-end;
+
     margin-left: 12px;
 
   }
@@ -379,8 +404,6 @@ const ActiveIcon = activeFile.endsWith(".md") ? FileText : FileCode2;
 @media (max-width: 640px) {
 
   .file-pill {
-
-    padding: 0 14px;
 
     gap: 8px;
 
