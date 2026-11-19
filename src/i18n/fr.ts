@@ -265,8 +265,8 @@ const fr = {
         "Adaptation à d'autres pays"
       ],
       screenshot: {
-        id: "SHOT 02",
-        label: "Diagramme du modèle de rôles — institution linéaire vs. multi-organisation",
+        id: "",
+        label: "",
         note: "Diagramme du modèle de rôles montrant l'institution linéaire face à la structure multi-organisation.",
       }
     },
@@ -274,56 +274,46 @@ const fr = {
     sharedCatalog: {
       eyebrow: "Décision clé 2",
       title: "Certificats Partagés, Attributions Spécifiques",
-      questionLabel: "La première question",
+      questionLabel: "première question",
       question:
         "Lors de la conception de la multi-organisation, chaque sous-organisation a-t-elle ses propres certificats, ou partagent-elles le catalogue ?",
-      rejectedLabel: "Alternative écartée",
-      rejected: "Chaque sous-organisation avec ses propres certificats.",
-      decisionLabel: "Décision retenue",
-      decision:
-        "Tous les certificats créés sont mis à disposition de toutes les sous-organisations, mais les attributions appartiennent à la sous-organisation spécifique qui les a effectuées.",
-      whyTitle: "Pourquoi",
-      why: [
-        "Évite la duplication de certificats : un même badge peut être utilisé par plusieurs sous-organisations.",
-        "Maintient la traçabilité : chaque attribution appartient à une sous-organisation et les historiques ne se mélangent jamais.",
-        "Permet à une sous-organisation de voir tous les certificats disponibles tout en ne gérant que ses propres attributions."
+      positiveLabel: "Modèle partagé",
+      positive: [
+        "Les certificats sont globaux ; les attributions appartiennent à la sous-organisation.",
+        {
+          lead: "Pourquoi :",
+          text: "Cela a permis de réutiliser les modèles au niveau institutionnel tout en gardant une propriété claire des données."
+        }
       ],
-      uiTitle: "Comment cela s'est reflété dans l'UI/UX",
-      ui: [
-        "Les sous-organisations voient tous les certificats.",
-        "À l'entrée, seules leurs attributions sont affichées ; celles qui ne leur appartiennent pas apparaissent comme non attribuées.",
-        "L'historique d'activité enregistre quel administrateur a fait l'attribution, et à qui (individuel ou lot)."
-      ],
-      typesTitle: "Types de certificat",
-      types: [
-        "Certificat ou badge.",
-        "Ils peuvent porter une attestation.",
-        "Ils peuvent appartenir à une collection : lorsque le système détecte qu'une personne certifiée a validé un cours (via Global Certifica, Moodle ou une API intégrée), il attribue automatiquement le certificat suivant de la collection."
+      negativeLabel: "Modèle isolé",
+      negative: [
+        "Chaque sous-organisation gère ses propres certificats.",
+        "Duplication du travail et des données."
       ],
       screenshots: [
         {
           id: "SHOT 03.1.1",
-          label: "Liste des certificats et état d'attribution — 1/6",
+          label: "Liste des certificats",
         },
         {
           id: "SHOT 03.1.2",
-          label: "Liste des certificats et état d'attribution — 2/6",
+          label: "Liste des attributions",
         },
         {
           id: "SHOT 03.2.1",
-          label: "Liste des certificats et état d'attribution — 3/6",
+          label: "Attribution par lot - état vide",
         },
         {
           id: "SHOT 03.2.2",
-          label: "Liste des certificats et état d'attribution — 4/6",
+          label: "Attribution par lot - document téléversé",
         },
         {
           id: "SHOT 03.3.1",
-          label: "Liste des certificats et état d'attribution — 5/6",
+          label: "Attribuer à un lot existant - état vide",
         },
         {
           id: "SHOT 03.3.2",
-          label: "Liste des certificats et état d'attribution — 6/6",
+          label: "Attribuer à un lot existant - vérification",
         }
       ]
     },
@@ -331,29 +321,22 @@ const fr = {
     creditDistribution: {
       eyebrow: "Décision clé 3",
       title: "Crédits Distribués vs. Consommation en Temps Réel",
-      questionLabel: "La question imposée par le modèle de facturation",
+      questionLabel: "modèle de facturation imposé",
       question:
-        "Le modèle de facturation par crédits (certificat attribué, personne certifiée) a obligé à décider comment les crédits sont gérés entre l'organisation principale et ses sous-organisations.",
-      rejectedLabel: "Alternative écartée",
-      rejected: "Consommation en temps réel partagée entre toutes les sous-organisations.",
-      decisionLabel: "Décision retenue",
-      decision:
-        "Les crédits sont attribués à l'organisation principale, qui les redistribue ensuite entre ses sous-organisations.",
-      whyTitle: "Pourquoi",
-      why: [
-        "Historique clair : si la consommation est globale, l'historique mélange les sous-organisations. Si elle est spécifique par sous-organisation, l'historique est filtrable et compréhensible.",
-        "Réutilisation de composants : cela a permis de réutiliser la modale d'historique d'activité existante, en évitant d'ajouter des filtres qui auraient aussi affecté la génération de rapports.",
-        "Opération maîtrisée : la consommation en temps réel entre sous-organisations était chaotique à suivre."
+        "Comment les crédits doivent-ils être gérés entre l'organisation principale et ses sous-organisations ?",
+      positiveLabel: "Crédits distribués",
+      positive: [
+        "L'administrateur de la plateforme attribue un « budget » de crédits aux sous-organisations.",
+        {
+          lead: "Pourquoi :",
+          text: "J'ai présenté les deux options ; les deux parties ont convenu que la distribution était le meilleur modèle mental."
+        }
       ],
-      uiTitle: "Comment cela s'est reflété dans l'UI/UX",
-      ui: [
-        "L'organisation principale dispose d'une modale pour distribuer les crédits.",
-        "Elle voit combien elle a de sous-organisations, si elles ont des crédits ou non, et combien elles en ont consommés.",
-        "Elle voit comment la consommation du plan total évolue dans le temps.",
-        "Les administrateurs principaux peuvent demander des crédits à leur administrateur d'organisation (si multi-organisation) ou des plans à Global Certifica."
+      negativeLabel: "Consommation en temps réel",
+      negative: [
+        "Déduire les crédits instantanément déroutait les administrateurs.",
+        "Difficile de suivre la répartition du budget entre les sous-organisations."
       ],
-      align:
-        "Alignement avec les parties prenantes : j'ai présenté les deux options et les deux parties ont convenu que la distribution des crédits était préférable à la consommation en temps réel.",
       screenshots: [
         {
           id: "SHOT 04",
@@ -361,8 +344,7 @@ const fr = {
         },
         {
           id: "SHOT 05",
-          label: "Panneau de consommation du plan",
-          note: "Remplacer par une capture réelle."
+          label: "Comportement de consommation des crédits",
         }
       ]
     },
@@ -370,10 +352,8 @@ const fr = {
     systems: {
       eyebrow: "Pensée systémique",
       title: "Rôles, Permissions, Visibilité et Audit",
-      paragraphs: [
-        "Le cœur du produit n'est pas le certificat. C'est qui peut voir quoi, qui peut faire quoi, et comment tout cela est enregistré.",
-        "Tout ce qui suit a été conçu par moi et documenté comme la spécification avec laquelle l'équipe technique a construit."
-      ],
+      quote:
+        "Tout ce qui suit a été conçu par moi et documenté comme la spécification avec laquelle l'équipe technique a construit.",
       matrixTitle: "Matrice de visibilité de l'historique par rôle",
       matrixColumns: ["Rôle", "Voir l'activité", "Attribuer des certificats", "Modifier l'historique"],
       matrixRows: [
@@ -400,29 +380,9 @@ const fr = {
           }
         ]
       },
-      statesTitle: "États d'une attribution",
-      statesIntro:
-        "Tous les rôles d'organisation peuvent voir l'état d'une attribution à une personne certifiée :",
-      states: [
-        "En attente",
-        "Acceptée",
-        "Refusée",
-        "Expirée",
-        "Partagée",
-        "Téléchargée",
-        "Révoquée (exécutée par un administrateur)"
-      ],
-      eventsTitle: "Événements enregistrés dans l'historique (tous avec heure et date)",
-      events: [
-        "Attribution du certificat à la personne certifiée X par l'administrateur Y.",
-        "Attribution du certificat au lot X par l'administrateur Y.",
-        "Création du certificat Z par l'administrateur Y.",
-        "Distribution de N crédits à la sous-organisation A.",
-        "Certificat modifié par l'administrateur Y."
-      ],
-      eventsNote:
-        "Événements automatiques : rappels de paiement de plan, rappels de certificat en attente, rappels de certificat expiré.",
-      docsTitle: "La documentation comme contrat d'implémentation",
+      stateParagraph:
+        "J'ai conçu une machine à états qui suit le cycle de vie du certificat, de En attente à Accepté, avec 5 états intermédiaires pour garantir l'auditabilité.",
+      docsTitle: "La documentation comme spécification d'implémentation",
       docs: [
         {
           title: "Diagrammes de flux",
@@ -437,28 +397,25 @@ const fr = {
           text: "Avec un enregistrement de tous les événements et permissions impliquées."
         }
       ],
-      docsClosing:
-        "Ce n'était pas seulement de la communication : c'était le contrat d'implémentation que l'équipe technique a utilisé pour construire.",
       screenshots: [
         {
           id: "SHOT 06.1",
-          label: "Diagramme de flux des rôles — 1/2",
+          label: "Cycle de vie d'une attribution",
         },
         {
           id: "SHOT 06.2",
-          label: "Diagramme de flux des rôles — 2/2",
+          label: "Règles du système",
         }
       ]
     },
 
     leadership: {
-      eyebrow: "Leadership",
+      eyebrow: "leadership",
       title: "Gérer des Parties Prenantes Résistantes et S'aligner sur des Preuves",
-      contextTitle: "Contexte",
-      context: [
-        "Les parties prenantes étaient deux fondatrices, ingénieures système, avec le mandat de répliquer un concurrent. Elles n'avaient aucune règle métier définie : elles envoyaient des vidéos du concurrent en disant « ça devrait fonctionner comme ça ».",
-        "Mon travail consistait à déterminer ce qui pouvait être ajusté, ce qui ne pouvait pas l'être, et à proposer le modèle."
-      ],
+      paragraph:
+        "Les parties prenantes étaient deux fondateurs, ingénieurs système, avec le mandat de répliquer un concurrent. Ils n'avaient aucune règle métier définie : ils envoyaient des vidéos du concurrent en disant « ça devrait fonctionner comme ça ».",
+      quote:
+        "Je devais déterminer ce qui pouvait être ajusté, ce qui ne pouvait pas l'être, et proposer le modèle.",
       resistanceTitle: "Résistance",
       resistance: [
         {
@@ -474,29 +431,29 @@ const fr = {
           text: "Mon manager gérait l'essentiel, mais lorsqu'il était en congé, je prenais le relais."
         }
       ],
-      approachTitle: "Comment je l'ai géré",
-      approach: [
+      managedTitle: "Comment je l'ai géré",
+      managed: [
         {
           title: "Diagrammes de flux",
           text: "Pour qu'ils comprennent les flux parallèles et les effets croisés entre rôles."
-        },
-        {
-          title: "Tableaux de visibilité",
-          text: "De l'historique et des événements, déclinés par rôle."
         },
         {
           title: "Cas d'usage",
           text: "Avec un enregistrement des événements et des permissions."
         },
         {
+          title: "Tableaux de visibilité",
+          text: "De l'historique et des événements, déclinés par rôle."
+        },
+        {
           title: "Alignement par les preuves",
           text: "Sur la décision des crédits, j'ai présenté les deux options et les deux parties ont convenu de la distribution."
         }
       ],
-      processTitle: "Processus de validation",
-      process:
+      validationTitle: "Processus de validation",
+      validation:
         "Environ 90% des revalidations ont eu lieu en réunion, puis je les renvoyais par e-mail pour en garder une trace — parce que quand quelque chose ne se passait pas comme prévu, la réponse était que ce n'avait pas été correctement expliqué.",
-      debtTitle: "La dette produit que personne ne possédait",
+      debtTitle: "Dette technique",
       debt:
         "Durant une période où j'étais absente, des fonctionnalités ont été ajoutées sans vision systémique. Cela a généré une dette produit qui a affecté la scalabilité. Je l'ai détectée à mon retour et je l'ai documentée comme dette technique. Elle n'a pas été entièrement résolue à l'époque, mais elle est devenue visible sur la liste des améliorations.",
       closing:
@@ -504,7 +461,7 @@ const fr = {
     },
 
     tradeoffs: {
-      eyebrow: "Arbitrages",
+      eyebrow: "arbitrages",
       title: "Ce que Nous avons Sacrifié",
       intro:
         "Chaque décision de ce cas avait un coût. Voici celles que nous avons acceptées en connaissance de cause.",
@@ -512,12 +469,12 @@ const fr = {
       rows: [
         [
           "Flexibilité des rôles",
-          "Au-dessus de la simplicité",
+          "Au-dessus de la scalabilité",
           "Complexité des permissions et de la visibilité"
         ],
         [
           "Rigueur de l'audit",
-          "Au-dessus de la simplicité",
+          "Au-dessus de la scalabilité",
           "Un enchevêtrement d'interactions entre rôles"
         ],
         [
@@ -607,8 +564,10 @@ const fr = {
     },
 
     reflections: {
-      eyebrow: "Contribution",
+      eyebrow: "contribution",
       title: "En tant que Designer",
+      intro:
+        "Chaque décision de ce cas avait un coût. Voici celles que nous avons acceptées en connaissance de cause.",
       contribution: [
         "Définir les rôles, hiérarchies et permissions à partir de zéro : ils ne venaient pas du brief.",
         "Concevoir le modèle multi-organisation avec certificats partagés et attributions spécifiques.",

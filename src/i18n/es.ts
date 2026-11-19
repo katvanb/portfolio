@@ -265,8 +265,8 @@ const es = {
         "Adaptación a otros países"
       ],
       screenshot: {
-        id: "SHOT 02",
-        label: "Diagrama del modelo de roles — institución lineal vs. multi-organización",
+        id: "",
+        label: "",
         note: "Diagrama del modelo de roles mostrando la institución lineal frente a la estructura multi-organización.",
       }
     },
@@ -274,56 +274,46 @@ const es = {
     sharedCatalog: {
       eyebrow: "Decisión clave 2",
       title: "Credenciales Compartidas, Asignaciones Específicas",
-      questionLabel: "La primera pregunta",
+      questionLabel: "primera pregunta",
       question:
         "Al diseñar multi-organización, ¿cada sub-organización tiene sus propias credenciales o comparten el catálogo?",
-      rejectedLabel: "Alternativa descartada",
-      rejected: "Cada sub-organización con sus propias credenciales.",
-      decisionLabel: "Decisión tomada",
-      decision:
-        "Todas las credenciales creadas están disponibles para todas las sub-organizaciones, pero las asignaciones pertenecen a la sub-organización específica que las realizó.",
-      whyTitle: "Por qué",
-      why: [
-        "Evita duplicidad de credenciales: una misma insignia puede ser usada por varias sub-organizaciones.",
-        "Mantiene trazabilidad: cada asignación pertenece a una sub-organización y los historiales nunca se mezclan.",
-        "Permite que una sub-organización vea todas las credenciales disponibles pero solo gestione sus propias asignaciones."
+      positiveLabel: "Modelo compartido",
+      positive: [
+        "Las credenciales son globales; las asignaciones pertenecen a la sub-organización.",
+        {
+          lead: "Por qué:",
+          text: "Permitió reutilizar plantillas a nivel institucional manteniendo una propiedad clara de los datos."
+        }
       ],
-      uiTitle: "Cómo se reflejó en la UI/UX",
-      ui: [
-        "Las sub-organizaciones ven todas las credenciales.",
-        "Al entrar, solo se muestran sus asignaciones; las que no les pertenecen aparecen como sin asignación.",
-        "El historial de actividad registra qué administrador hizo la asignación y a quién (individual o lote)."
-      ],
-      typesTitle: "Tipos de credencial",
-      types: [
-        "Certificado o insignia.",
-        "Pueden tener constancia.",
-        "Pueden pertenecer a una colección: el sistema, al detectar que un acreditado aprobó un curso (vía Global Certifica, Moodle o API integrada), asigna automáticamente la siguiente credencial de la colección."
+      negativeLabel: "Modelo aislado",
+      negative: [
+        "Cada sub-organización gestiona sus propias credenciales.",
+        "Duplicación de trabajo y datos."
       ],
       screenshots: [
         {
           id: "SHOT 03.1.1",
-          label: "Listado de credenciales y estado de asignación — 1/6",
+          label: "Lista de credenciales",
         },
         {
           id: "SHOT 03.1.2",
-          label: "Listado de credenciales y estado de asignación — 2/6",
+          label: "Lista de asignaciones",
         },
         {
           id: "SHOT 03.2.1",
-          label: "Listado de credenciales y estado de asignación — 3/6",
+          label: "Asignación por lote - estado vacío",
         },
         {
           id: "SHOT 03.2.2",
-          label: "Listado de credenciales y estado de asignación — 4/6",
+          label: "Asignación por lote - documento cargado",
         },
         {
           id: "SHOT 03.3.1",
-          label: "Listado de credenciales y estado de asignación — 5/6",
+          label: "Asignar a lote existente - estado vacío",
         },
         {
           id: "SHOT 03.3.2",
-          label: "Listado de credenciales y estado de asignación — 6/6",
+          label: "Asignar a lote existente - verificación",
         }
       ]
     },
@@ -331,29 +321,22 @@ const es = {
     creditDistribution: {
       eyebrow: "Decisión clave 3",
       title: "Créditos Distribuidos vs. Consumo en Tiempo Real",
-      questionLabel: "La pregunta que forzó el modelo de cobro",
+      questionLabel: "modelo de facturación forzado",
       question:
-        "El modelo de cobro por créditos (credencial asignada, acreditado) obligó a definir cómo se gestionan entre la organización principal y sus sub-organizaciones.",
-      rejectedLabel: "Alternativa descartada",
-      rejected: "Consumo en tiempo real entre todas las sub-organizaciones.",
-      decisionLabel: "Decisión tomada",
-      decision:
-        "Los créditos se asignan a la organización principal, y esta los redistribuye entre sus sub-organizaciones.",
-      whyTitle: "Por qué",
-      why: [
-        "Historial claro: si el consumo es global, el historial mezcla sub-organizaciones. Si es específico por sub-organización, el historial es filtrable y entendible.",
-        "Reutilización de componentes: permitió reutilizar el modal de historial de actividad existente, evitando añadir filtros que afectarían también a la generación de reportes.",
-        "Operación controlada: el consumo en tiempo real entre sub-organizaciones era caótico de seguir."
+        "¿Cómo se deben gestionar los créditos entre la organización principal y sus sub-organizaciones?",
+      positiveLabel: "Créditos distribuidos",
+      positive: [
+        'El administrador de plataforma asigna un "presupuesto" de créditos a las sub-organizaciones.',
+        {
+          lead: "Por qué:",
+          text: "Presenté ambas opciones; las dos partes acordaron que la distribución era el mejor modelo mental."
+        }
       ],
-      uiTitle: "Cómo se reflejó en la UI/UX",
-      ui: [
-        "La organización principal tiene un modal para distribuir créditos.",
-        "Ve cuántas sub-organizaciones tiene, si tienen créditos o no, y cuántos han consumido.",
-        "Ve cómo el consumo del plan total va cambiando.",
-        "Los administradores principales pueden solicitar créditos a su administrador de organización (si es multi-organización) o planes a Global Certifica."
+      negativeLabel: "Consumo en tiempo real",
+      negative: [
+        "Deducir créditos al instante confundía a los administradores.",
+        "Difícil de seguir la asignación de presupuesto entre sub-organizaciones."
       ],
-      align:
-        "Cómo se alineó con los stakeholders: les presenté las dos opciones y ambas partes acordaron que distribuir créditos era mejor que el consumo en tiempo real.",
       screenshots: [
         {
           id: "SHOT 04",
@@ -361,8 +344,7 @@ const es = {
         },
         {
           id: "SHOT 05",
-          label: "Panel de consumo del plan",
-          note: "Reemplazar con una captura real."
+          label: "Comportamiento de consumo de créditos",
         }
       ]
     },
@@ -370,10 +352,8 @@ const es = {
     systems: {
       eyebrow: "Pensamiento sistémico",
       title: "Roles, Permisos, Visibilidad y Auditoría",
-      paragraphs: [
-        "El corazón del producto no son las credenciales, es quién puede ver qué, quién puede hacer qué y cómo se registra.",
-        "Todo lo que sigue lo diseñé yo y lo documenté como la especificación con la que el equipo técnico construyó."
-      ],
+      quote:
+        "Todo lo que sigue lo diseñé yo y lo documenté como la especificación con la que el equipo técnico construyó.",
       matrixTitle: "Matriz de visibilidad de historial por rol",
       matrixColumns: ["Rol", "Ve la actividad", "Asigna credenciales", "Edita el historial"],
       matrixRows: [
@@ -400,29 +380,9 @@ const es = {
           }
         ]
       },
-      statesTitle: "Estados de una asignación",
-      statesIntro:
-        "Todos los roles de organización pueden ver el estado de una asignación a un acreditado:",
-      states: [
-        "Pendiente",
-        "Aceptada",
-        "Rechazada",
-        "Vencida",
-        "Compartida",
-        "Descargada",
-        "Revocada (la ejecuta un administrador)"
-      ],
-      eventsTitle: "Eventos registrados en el historial (todos con hora y fecha)",
-      events: [
-        "Asignación de credencial a acreditado X por administrador Y.",
-        "Asignación de credencial a lote X por administrador Y.",
-        "Creación de credencial Z por administrador Y.",
-        "Distribución de N créditos a sub-organización A.",
-        "Credencial editada por administrador Y."
-      ],
-      eventsNote:
-        "Eventos automáticos: recordatorios de pago de plan, recordatorios de credencial pendiente, recordatorios de credencial vencida.",
-      docsTitle: "Documentación como contrato de implementación",
+      stateParagraph:
+        "Diseñé una máquina de estados que registra el ciclo de vida de la credencial, de Pendiente a Aceptada, con 5 estados intermedios para garantizar la trazabilidad.",
+      docsTitle: "Documentación como especificación de implementación",
       docs: [
         {
           title: "Diagramas de flujo",
@@ -437,28 +397,25 @@ const es = {
           text: "Con registro de todos los eventos y permisos involucrados."
         }
       ],
-      docsClosing:
-        "Esto no fue solo comunicación: fue el contrato de implementación que el equipo técnico usó para construir.",
       screenshots: [
         {
           id: "SHOT 06.1",
-          label: "Diagrama de flujo de roles — 1/2",
+          label: "Ciclo de vida de la asignación",
         },
         {
           id: "SHOT 06.2",
-          label: "Diagrama de flujo de roles — 2/2",
+          label: "Reglas del sistema",
         }
       ]
     },
 
     leadership: {
-      eyebrow: "Liderazgo",
+      eyebrow: "liderazgo",
       title: "Gestionar Stakeholders Resistentes y Alinear con Evidencia",
-      contextTitle: "Contexto",
-      context: [
-        "Los stakeholders eran dos fundadoras, ingenieras de sistemas, con mandato de replicar un competidor. No tenían reglas de negocio definidas: pasaban videos del competidor diciendo «así debería funcionar».",
-        "Mi trabajo fue ver qué se podía ajustar, qué no, y proponer el modelo."
-      ],
+      paragraph:
+        "Los stakeholders eran dos fundadores, ingenieros de sistemas, con el mandato de replicar a un competidor. No tenían reglas de negocio definidas: enviaban videos del competidor diciendo «así debería funcionar».",
+      quote:
+        "Tenía que determinar qué se podía ajustar, qué no, y proponer el modelo.",
       resistanceTitle: "Resistencia",
       resistance: [
         {
@@ -474,29 +431,29 @@ const es = {
           text: "Mi jefe manejaba la mayor parte, pero cuando estaba de vacaciones yo asumía."
         }
       ],
-      approachTitle: "Cómo lo gestioné",
-      approach: [
+      managedTitle: "Cómo lo gestioné",
+      managed: [
         {
           title: "Diagramas de flujo",
           text: "Para que entendieran flujos paralelos y afectación entre roles."
-        },
-        {
-          title: "Tablas de visibilidad",
-          text: "De historial y eventos, desglosadas por rol."
         },
         {
           title: "Casos de uso",
           text: "Con registro de eventos y permisos."
         },
         {
+          title: "Tablas de visibilidad",
+          text: "De historial y eventos, desglosadas por rol."
+        },
+        {
           title: "Alineación por evidencia",
           text: "En la decisión de créditos presenté las dos opciones y ambas partes acordaron la distribución."
         }
       ],
-      processTitle: "Proceso de validación",
-      process:
+      validationTitle: "Proceso de validación",
+      validation:
         "Cerca del 90% de las revisiones ocurrieron en reunión, y luego las reenviaba por correo para tener constancia —porque cuando algo no salía como esperaban, la respuesta era que no se había explicado bien.",
-      debtTitle: "La deuda de producto que nadie era dueño",
+      debtTitle: "Deuda técnica",
       debt:
         "En un periodo en que no estuve, se añadieron funcionalidades sin visión sistémica. Eso generó deuda de producto que afecta la escalabilidad. Lo detecté al reincorporarme y lo documenté como deuda técnica. No se remedió del todo en su momento, pero quedó visible en la lista de mejoras.",
       closing:
@@ -504,7 +461,7 @@ const es = {
     },
 
     tradeoffs: {
-      eyebrow: "Trade-offs",
+      eyebrow: "trade-offs",
       title: "Lo que sacrificamos",
       intro:
         "Cada decisión de este caso tuvo un costo. Estas son las que aceptamos a conciencia.",
@@ -512,12 +469,12 @@ const es = {
       rows: [
         [
           "Flexibilidad de roles",
-          "Por encima de simplicidad",
+          "Por encima de escalabilidad",
           "Complejidad en permisos y visibilidad"
         ],
         [
           "Rigurosidad de auditoría",
-          "Por encima de simplicidad",
+          "Por encima de escalabilidad",
           "Maraña de interacciones entre roles"
         ],
         [
@@ -526,7 +483,7 @@ const es = {
           "Deuda de producto"
         ],
         [
-          "Ausencia de visión completa",
+          "Falta de visión completa",
           "Los stakeholders iteraban sobre la marcha",
           "Dificultad para planificar la arquitectura"
         ],
@@ -607,8 +564,10 @@ const es = {
     },
 
     reflections: {
-      eyebrow: "Contribución",
+      eyebrow: "contribución",
       title: "Como Diseñador",
+      intro:
+        "Cada decisión de este caso tuvo un costo. Estas son las que aceptamos a conciencia.",
       contribution: [
         "Definir roles, jerarquías y permisos desde cero: no venían del brief.",
         "Diseñar el modelo multi-organización con credenciales compartidas y asignaciones específicas.",

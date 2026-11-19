@@ -265,8 +265,8 @@ const en = {
         "Adaptation to other countries"
       ],
       screenshot: {
-        id: "SHOT 02",
-        label: "Role model diagram — linear institution vs. multi-organization",
+        id: "",
+        label: "",
         note: "Role model diagram showing linear institution vs multi-organization structure.",
       }
     },
@@ -274,86 +274,69 @@ const en = {
     sharedCatalog: {
       eyebrow: "Key Decision 2",
       title: "Shared Credentials, Specific Assignments",
-      questionLabel: "The first question",
+      questionLabel: "first question",
       question:
         "When designing multi-organization, does each sub-organization have its own credentials, or do they share the catalog?",
-      rejectedLabel: "Rejected alternative",
-      rejected: "Each sub-organization with its own credentials.",
-      decisionLabel: "Decision taken",
-      decision:
-        "All created credentials are available to every sub-organization, but assignments belong to the specific sub-organization that made them.",
-      whyTitle: "Why",
-      why: [
-        "Avoids credential duplication — the same badge can be used by several sub-organizations.",
-        "Maintains traceability: each assignment belongs to one sub-organization, and histories never mix.",
-        "Lets a sub-organization see every available credential while only managing its own assignments."
+      positiveLabel: "Shared model",
+      positive: [
+        "Credentials are global; assignments belong to the sub-org.",
+        {
+          lead: "Why:",
+          text: "It allowed institutional reuse of templates while maintaining clear data ownership."
+        }
       ],
-      uiTitle: "How it showed in the UI/UX",
-      ui: [
-        "Sub-organizations see all credentials.",
-        "On entry, only their own assignments are shown; the ones that do not belong to them appear as unassigned.",
-        "The activity history records which administrator made the assignment, and to whom (individual or batch)."
-      ],
-      typesTitle: "Credential types",
-      types: [
-        "Certificate or badge.",
-        "May carry a record of achievement (constancia).",
-        "May belong to a collection: when the system detects that an accredited passed a course (via Global Certifica, Moodle or an integrated API), it automatically assigns the next credential in the collection."
+      negativeLabel: "Isolated model",
+      negative: [
+        "Each sub-organization manages its own credentials.",
+        "Duplication of work and data."
       ],
       screenshots: [
         {
           id: "SHOT 03.1.1",
-          label: "Credential list and assignment state — 1/6",
+          label: "List of credentials",
         },
         {
           id: "SHOT 03.1.2",
-          label: "Credential list and assignment state — 2/6",
+          label: "List of assignments",
         },
         {
           id: "SHOT 03.2.1",
-          label: "Credential list and assignment state — 3/6",
+          label: "Batch assign - empty state",
         },
         {
           id: "SHOT 03.2.2",
-          label: "Credential list and assignment state — 4/6",
+          label: "Batch assign - uploaded document",
         },
         {
           id: "SHOT 03.3.1",
-          label: "Credential list and assignment state — 5/6",
+          label: "Assign to existing batch - empty state",
         },
         {
           id: "SHOT 03.3.2",
-          label: "Credential list and assignment state — 6/6",
+          label: "Assign to existing batch - verification",
         }
       ]
     },
 
     creditDistribution: {
-      eyebrow: "Key Decision 3",
+      eyebrow: "Key decision 3",
       title: "Distributed Credits vs. Real-Time Consumption",
-      questionLabel: "The question the billing model forced",
+      questionLabel: "forced billing model",
       question:
-        "The per-credit billing model (assigned credential, accredited) forced a decision on how credits are managed between the main organization and its sub-organizations.",
-      rejectedLabel: "Rejected alternative",
-      rejected: "Real-time consumption shared across all sub-organizations.",
-      decisionLabel: "Decision taken",
-      decision:
-        "Credits are assigned to the main organization, which redistributes them among its sub-organizations.",
-      whyTitle: "Why",
-      why: [
-        "Clear history: if consumption is global, the history mixes sub-organizations. If it is specific per sub-organization, the history is filterable and understandable.",
-        "Component reuse: it allowed reusing the existing activity history modal, avoiding filters that would also affect report generation.",
-        "Controlled operation: real-time consumption across sub-organizations was chaotic to follow."
+        "How credits should be managed between the main organization and its sub-organizations?",
+      positiveLabel: "Distributed credits",
+      positive: [
+        'Platform admin assigns a "budget" of credits to sub-orgs.',
+        {
+          lead: "Why:",
+          text: "Presented both options; both sides agreed distribution was the better mental model."
+        }
       ],
-      uiTitle: "How it showed in the UI/UX",
-      ui: [
-        "The main organization has a modal to distribute credits.",
-        "It sees how many sub-organizations it has, whether they have credits or not, and how many they have consumed.",
-        "It sees how the consumption of the total plan changes over time.",
-        "Main administrators can request credits from their organization administrator (if multi-organization) or plans from Global Certifica."
+      negativeLabel: "Real-time consumption",
+      negative: [
+        "Deducting credits instantly confused administrators.",
+        "Hard to track budget allocation across sub-orgs."
       ],
-      align:
-        "How it aligned with stakeholders: I presented both options and both sides agreed that distributing credits was better than real-time consumption.",
       screenshots: [
         {
           id: "SHOT 04",
@@ -361,19 +344,16 @@ const en = {
         },
         {
           id: "SHOT 05",
-          label: "Plan consumption panel",
-          note: "Replace with a real capture."
+          label: "Credit consumption behavior",
         }
       ]
     },
 
     systems: {
-      eyebrow: "System Thinking",
+      eyebrow: "System thinking",
       title: "Roles, Permissions, Visibility and Audit",
-      paragraphs: [
-        "The heart of the product is not the credentials. It is who can see what, who can do what, and how it is all recorded.",
-        "Everything below was designed by me and documented as the specification the engineering team built from."
-      ],
+      quote:
+        "Everything below was designed by me and documented as the specification the engineering team built from.",
       matrixTitle: "History visibility matrix by role",
       matrixColumns: ["Role", "View activity", "Assign credentials", "Edit history"],
       matrixRows: [
@@ -384,7 +364,7 @@ const en = {
       matrixCaption:
         "Designed a strict RBAC (Role-Based Access Control) model where visibility is restricted top-down.",
       uxDecision: {
-        label: "UX Decision: History modal vs. filters",
+        label: "UX Decision: History Modal vs. Filters",
         items: [
           {
             label: "The Trade-off:",
@@ -400,29 +380,9 @@ const en = {
           }
         ]
       },
-      statesTitle: "Assignment states",
-      statesIntro:
-        "All organization roles can see the state of an assignment to an accredited:",
-      states: [
-        "Pending",
-        "Accepted",
-        "Rejected",
-        "Expired",
-        "Shared",
-        "Downloaded",
-        "Revoked (executed by an administrator)"
-      ],
-      eventsTitle: "Events recorded in the history (all with time and date)",
-      events: [
-        "Assignment of a credential to accredited X by administrator Y.",
-        "Assignment of a credential to batch X by administrator Y.",
-        "Creation of credential Z by administrator Y.",
-        "Distribution of N credits to sub-organization A.",
-        "Credential edited by administrator Y."
-      ],
-      eventsNote:
-        "Automatic events: plan payment reminders, pending credential reminders, expired credential reminders.",
-      docsTitle: "Documentation as an implementation contract",
+      stateParagraph:
+        "I designed a state machine tracking the credential lifecycle from Pending to Accepted, with 5 intermediate states to ensure auditability.",
+      docsTitle: "Documentation as an implementation specification",
       docs: [
         {
           title: "Flow diagrams",
@@ -437,28 +397,25 @@ const en = {
           text: "With a full record of every event and permission involved."
         }
       ],
-      docsClosing:
-        "This was not only communication: it was the implementation contract the engineering team used to build.",
       screenshots: [
         {
           id: "SHOT 06.1",
-          label: "Role flow diagram — 1/2",
+          label: "Assignment life cycle",
         },
         {
           id: "SHOT 06.2",
-          label: "Role flow diagram — 2/2",
+          label: "System rules",
         }
       ]
     },
 
     leadership: {
-      eyebrow: "Leadership",
+      eyebrow: "leadership",
       title: "Managing Resistant Stakeholders and Aligning on Evidence",
-      contextTitle: "Context",
-      context: [
-        "The stakeholders were two founders, systems engineers, with a mandate to replicate a competitor. They had no defined business rules: they would send videos of the competitor saying \"this is how it should work\".",
-        "My work was to work out what could be adjusted, what could not, and to propose the model."
-      ],
+      paragraph:
+        'The stakeholders were two founders, systems engineers, with a mandate to replicate a competitor. They had no defined business rules: they would send videos of the competitor saying "this is how it should work".',
+      quote:
+        "I had to determine what could be adjusted, what couldn’t, and propose the model.",
       resistanceTitle: "Resistance",
       resistance: [
         {
@@ -474,29 +431,29 @@ const en = {
           text: "My manager handled most of it, but when he was on vacation I stepped in."
         }
       ],
-      approachTitle: "How I managed it",
-      approach: [
+      managedTitle: "How I managed it",
+      managed: [
         {
           title: "Flow diagrams",
           text: "So they could understand parallel flows and cross-role effects."
-        },
-        {
-          title: "Visibility tables",
-          text: "Of history and events, broken down by role."
         },
         {
           title: "Use cases",
           text: "With a record of events and permissions."
         },
         {
+          title: "Visibility tables",
+          text: "Of history and events, broken down by role."
+        },
+        {
           title: "Alignment by evidence",
           text: "On the credit decision I presented both options and both sides agreed on distribution."
         }
       ],
-      processTitle: "Validation process",
-      process:
+      validationTitle: "Validation process",
+      validation:
         "About 90% of reviews happened in the meeting, then I re-sent them by email to have a record —because when something did not turn out as expected, the claim was that it had not been explained properly.",
-      debtTitle: "The product debt nobody owned",
+      debtTitle: "Technical debt",
       debt:
         "During a period I was not present, features were added without systemic vision. That generated product debt which affected scalability. I detected it when I returned and documented it as technical debt. It was not fully remediated at the time, but it became visible on the improvements list.",
       closing:
@@ -504,7 +461,7 @@ const en = {
     },
 
     tradeoffs: {
-      eyebrow: "Trade-offs",
+      eyebrow: "trade-offs",
       title: "What We Sacrificed",
       intro:
         "Every decision in this case had a cost. These are the ones we accepted knowingly.",
@@ -512,12 +469,12 @@ const en = {
       rows: [
         [
           "Role flexibility",
-          "Above simplicity",
+          "Above scalability",
           "Complexity in permissions and visibility"
         ],
         [
           "Audit rigor",
-          "Above simplicity",
+          "Above scalability",
           "A thicket of interactions between roles"
         ],
         [
@@ -526,7 +483,7 @@ const en = {
           "Product debt"
         ],
         [
-          "Lack of a complete vision",
+          "Lack of complete vision",
           "Stakeholders iterated as we went",
           "Difficulty planning the architecture"
         ],
@@ -607,8 +564,10 @@ const en = {
     },
 
     reflections: {
-      eyebrow: "Contribution",
+      eyebrow: "contribution",
       title: "As a Designer",
+      intro:
+        "Every decision in this case had a cost. These are the ones we accepted knowingly.",
       contribution: [
         "Defining roles, hierarchies and permissions from scratch —they did not come in the brief.",
         "Designing the multi-organization model with shared credentials and specific assignments.",

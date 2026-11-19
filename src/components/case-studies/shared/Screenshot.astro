@@ -50,42 +50,66 @@ const hasImage = Boolean(src);
             <span class="dot"></span>
           </div>
 
-          <div class="marker">
+          {
+            (id || label) && (
+              <div class="marker">
 
-            <span class="asset-id">
-              {id}
-            </span>
+                {
+                  id && (
+                    <span class="asset-id">
+                      {id}
+                    </span>
+                  )
+                }
 
-            <span class="asset-label">
-              {label}
-            </span>
+                {
+                  label && (
+                    <span class="asset-label">
+                      {label}
+                    </span>
+                  )
+                }
 
-          </div>
+              </div>
+            )
+          }
         </>
       )
     }
 
   </div>
 
-  <figcaption>
+  {
+    (id || label || note) && (
+      <figcaption>
 
-    <span class="caption-id">
-      {id}
-    </span>
+        {
+          id && (
+            <span class="caption-id">
+              {id}
+            </span>
+          )
+        }
 
-    <span class="caption-label">
-      {label}
-    </span>
+        {
+          label && (
+            <span class="caption-label">
+              {label}
+            </span>
+          )
+        }
 
-    {
-      note && (
-        <span class="caption-note">
-          {note}
-        </span>
-      )
-    }
+        {
+          note && (
+            <span class="caption-note">
+              {note}
+            </span>
+          )
+        }
 
-  </figcaption>
+      </figcaption>
+    )
+  }
 
 </figure>
 

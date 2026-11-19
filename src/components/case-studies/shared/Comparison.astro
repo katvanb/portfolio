@@ -6,20 +6,35 @@ interface Props {
   positive: Item[];
   negativeLabel: string;
   negative: Item[];
+  showMarkers?: boolean;
 }
 
-const { positiveLabel, positive, negativeLabel, negative } = Astro.props;
+const {
+  positiveLabel,
+  positive,
+  negativeLabel,
+  negative,
+  showMarkers = true,
+} = Astro.props;
 ---
 
 <div class="comparison">
 
   <div class="side positive">
 
-    <span class="marker" aria-hidden="true">✓</span>
+    <div class="side-head">
 
-    <span class="side-label">
-      {positiveLabel}
-    </span>
+      {
+        showMarkers && (
+          <span class="marker" aria-hidden="true">✓</span>
+        )
+      }
+
+      <span class="side-label">
+        {positiveLabel}
+      </span>
+
+    </div>
 
     <ul class="items">
       {
@@ -36,11 +51,19 @@ const { positiveLabel, positive, negativeLabel, negative } = Astro.props;
 
   <div class="side negative">
 
-    <span class="marker" aria-hidden="true">✗</span>
+    <div class="side-head">
 
-    <span class="side-label">
-      {negativeLabel}
-    </span>
+      {
+        showMarkers && (
+          <span class="marker" aria-hidden="true">✗</span>
+        )
+      }
+
+      <span class="side-label">
+        {negativeLabel}
+      </span>
+
+    </div>
 
     <ul class="items">
       {
@@ -65,7 +88,7 @@ const { positiveLabel, positive, negativeLabel, negative } = Astro.props;
 
     grid-template-columns: 1fr 1fr;
 
-    gap: var(--gap-grid);
+    gap: var(--gap-elements);
 
     margin-top: var(--gap-elements);
 
@@ -74,42 +97,31 @@ const { positiveLabel, positive, negativeLabel, negative } = Astro.props;
 
   .side {
 
+    min-width: 0;
+
+  }
+
+
+  .side-head {
+
     display: flex;
 
-    flex-direction: column;
+    align-items: flex-start;
 
     gap: var(--space-xs);
-
-    padding: var(--space-sm);
-
-    border: 1px solid var(--color-border);
-
-    border-radius: var(--radius-md);
-
-  }
-
-
-  .side.positive {
-
-    background: var(--color-bg-callout);
-
-  }
-
-
-  .side.negative {
-
-    background: var(--color-bg-secondary);
 
   }
 
 
   .marker {
 
+    flex-shrink: 0;
+
     font-family: var(--font-mono);
 
     font-size: 1.25rem;
 
-    line-height: 1;
+    line-height: 1.2;
 
   }
 
@@ -140,14 +152,14 @@ const { positiveLabel, positive, negativeLabel, negative } = Astro.props;
 
     font-weight: var(--weight-medium);
 
-    line-height: var(--line-height-label);
+    line-height: 1.2;
 
   }
 
 
   .items {
 
-    margin: 0;
+    margin: var(--space-xs) 0 0;
 
     padding-left: 1.25rem;
 
@@ -188,17 +200,6 @@ const { positiveLabel, positive, negativeLabel, negative } = Astro.props;
     color: var(--color-text-primary);
 
     font-weight: var(--weight-bold);
-
-  }
-
-
-  @media (max-width: 768px) {
-
-    .comparison {
-
-      grid-template-columns: 1fr;
-
-    }
 
   }
 

@@ -2,62 +2,52 @@
 import SectionHeading from "../shared/SectionHeading.astro";
 import Screenshot from "../shared/Screenshot.astro";
 
+interface ScreenshotData {
+  id?: string;
+  label: string;
+  note?: string;
+  src?: string;
+  padded?: boolean;
+}
+
 interface Props {
   eyebrow?: string;
-  number?: string;
   title: string;
-  paragraphs: string[];
+  quote: string;
   matrixTitle: string;
   matrixColumns: string[];
   matrixRows: string[][];
   matrixCaption?: string;
-  uxDecision?: { label: string; items: { label: string; text: string }[] };
-  statesTitle: string;
-  statesIntro: string;
-  states: string[];
-  eventsTitle: string;
-  events: string[];
-  eventsNote: string;
+  uxDecision: { label: string; items: { label: string; text: string }[] };
+  stateParagraph: string;
   docsTitle: string;
   docs: { title: string; text: string }[];
-  docsClosing: string;
-  screenshots: { id: string; label: string; note?: string; src?: string; padded?: boolean }[];
+  screenshots: ScreenshotData[];
 }
 
 const {
   eyebrow,
-  number,
   title,
-  paragraphs,
+  quote,
   matrixTitle,
   matrixColumns,
   matrixRows,
   matrixCaption,
   uxDecision,
-  statesTitle,
-  statesIntro,
-  states,
-  eventsTitle,
-  events,
-  eventsNote,
+  stateParagraph,
   docsTitle,
   docs,
-  docsClosing,
-  screenshots,
+  screenshots = [],
 } = Astro.props;
 ---
 
 <section class="systems" id="systems">
 
-  <SectionHeading number={number} title={title} eyebrow={eyebrow} />
+  <SectionHeading title={title} eyebrow={eyebrow} />
 
-  <div class="body">
-    {
-      paragraphs.map((paragraph) => (
-        <p>{paragraph}</p>
-      ))
-    }
-  </div>
+  <blockquote class="quote">
+    {quote}
+  </blockquote>
 
   <h3 class="sub-title">
     {matrixTitle}
@@ -124,70 +114,48 @@ const {
     )
   }
 
-  <h3 class="sub-title">
-    {statesTitle}
-  </h3>
-
-  <p class="states-intro">
-    {statesIntro}
+  <p class="state-paragraph">
+    {stateParagraph}
   </p>
 
-  <ul class="states">
-    {
-      states.map((state) => (
-        <li>{state}</li>
-      ))
-    }
-  </ul>
-
-  <h3 class="sub-title">
-    {eventsTitle}
-  </h3>
-
-  <ul class="events">
-    {
-      events.map((event) => (
-        <li>{event}</li>
-      ))
-    }
-  </ul>
-
-  <p class="events-note">
-    {eventsNote}
-  </p>
+  {
+    screenshots[0] && (
+      <Screenshot
+        id={screenshots[0].id}
+        label={screenshots[0].label}
+        note={screenshots[0].note}
+        src={screenshots[0].src}
+        padded={screenshots[0].padded}
+      />
+    )
+  }
 
   <h3 class="sub-title">
     {docsTitle}
   </h3>
 
-  <ul class="docs">
+  <div class="labeled-table">
     {
       docs.map((doc) => (
-        <li>
-          <span class="doc-title">{doc.title}</span>
-          <span class="doc-text">{doc.text}</span>
-        </li>
-      ))
-    }
-  </ul>
-
-  <p class="docs-closing">
-    {docsClosing}
-  </p>
-
-  <div class="screenshots-stack">
-    {
-      screenshots.map((screenshot) => (
-        <Screenshot
-          id={screenshot.id}
-          label={screenshot.label}
-          note={screenshot.note}
-          src={screenshot.src}
-          padded={screenshot.padded}
-        />
+        <div class="labeled-row">
+          <span class="row-title">{doc.title}</span>
+          <span class="row-text">{doc.text}</span>
+        </div>
       ))
     }
   </div>
+
+  {
+    screenshots[1] && (
+      <Screenshot
+        id={screenshots[1].id}
+        label={screenshots[1].label}
+        note={screenshots[1].note}
+        src={screenshots[1].src}
+        padded={screenshots[1].padded}
+      />
+    )
+  }
 
 </section>
 
@@ -199,22 +167,21 @@ const {
 }
 
 
-.body {
+.quote {
 
-  display: flex;
+  margin: 0 0 var(--gap-elements);
 
-  flex-direction: column;
+  padding-left: var(--space-md);
 
-  gap: var(--gap-elements);
+  border-left: var(--border-callout) solid var(--color-accent);
 
-}
+  color: var(--color-text-primary);
 
+  font-size: var(--text-subheading);
 
-.body p {
-  margin: 0;
-  color: var(--color-text-secondary);
-  font-size: var(--text-body);
-  line-height: var(--line-height-body);
+  line-height: var(--line-height-h3);
+
+  font-weight: var(--weight-medium);
 }
 
 
@@ -235,8 +202,6 @@ const {
   width: 100%;
 
   overflow-x: auto;
-
-  border: 1px solid var(--color-border);
 }
 
 
@@ -294,6 +259,16 @@ td {
 
 tr:last-child td {
   border-bottom: none;
+}
+
+
+td.role {
+
+  color: var(--color-text-primary);
+
+  font-weight: var(--weight-medium);
+
+  white-space: nowrap;
 }
 
 
@@ -391,19 +366,9 @@ tr:last-child td {
 }
 
 
-td.role {
+.state-paragraph {
 
-  color: var(--color-text-primary);
-
-  font-weight: var(--weight-medium);
-
-  white-space: nowrap;
-}
-
-
-.states-intro {
-
-  margin: 0 0 var(--gap-elements);
+  margin: var(--gap-elements) 0;
 
   color: var(--color-text-secondary);
 
@@ -413,78 +378,15 @@ td.role {
 }
 
 
-.states {
+.labeled-table {
 
-  display: flex;
-
-  flex-wrap: wrap;
-
-  gap: var(--space-xs);
-
-  margin: 0;
-
-  padding: 0;
-
-  list-style: none;
-}
-
-
-.states li {
-
-  padding: var(--space-xs) var(--space-sm);
-
-  border: 1px solid var(--color-border);
-
-  border-radius: var(--radius-full);
-
-  color: var(--color-text-primary);
-
-  font-size: var(--text-table);
-}
-
-
-.events,
-.docs {
-
-  margin: 0;
-
-  padding: 0;
-
-  list-style: none;
+  width: 100%;
 
   border-top: 1px solid var(--color-border);
 }
 
 
-.events li {
-
-  padding: var(--padding-table-cell);
-
-  border-bottom: 1px solid var(--color-border);
-
-  color: var(--color-text-secondary);
-
-  font-size: var(--text-body);
-
-  line-height: var(--line-height-body);
-}
-
-
-.events-note {
-
-  margin: var(--space-sm) 0 0;
-
-  color: var(--color-text-secondary);
-
-  font-size: var(--text-table);
-
-  font-style: italic;
-
-  line-height: var(--line-height-small);
-}
-
-
-.docs li {
+.labeled-row {
 
   display: flex;
 
@@ -492,17 +394,13 @@ td.role {
 
   gap: var(--space-xs);
 
-  padding: var(--space-sm);
-
-  border-right: 1px solid var(--color-border);
+  padding: var(--padding-table-cell);
 
   border-bottom: 1px solid var(--color-border);
-
-  border-left: 1px solid var(--color-border);
 }
 
 
-.doc-title {
+.row-title {
 
   color: var(--color-text-primary);
 
@@ -512,50 +410,13 @@ td.role {
 }
 
 
-.doc-text {
+.row-text {
 
   color: var(--color-text-secondary);
 
   font-size: var(--text-table);
 
   line-height: var(--line-height-small);
-}
-
-
-.docs-closing {
-
-  margin: var(--gap-elements) 0 0;
-
-  padding: var(--padding-callout);
-
-  border-left: var(--border-callout) solid var(--color-accent);
-
-  background: var(--color-bg-callout);
-
-  border-radius: var(--radius-callout);
-
-  color: var(--color-text-primary);
-
-  font-size: var(--text-body);
-
-  line-height: var(--line-height-body);
-}
-
-
-.screenshots-stack {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: var(--gap-elements);
-
-  margin: var(--gap-elements) 0;
-}
-
-
-.screenshots-stack > :global(.screenshot) {
-  margin: 0;
 }
 
 </style>

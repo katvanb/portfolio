@@ -3,72 +3,46 @@ import SectionHeading from "../shared/SectionHeading.astro";
 import Screenshot from "../shared/Screenshot.astro";
 import Comparison from "../shared/Comparison.astro";
 
+type Item = string | { lead: string; text: string };
+
+interface ScreenshotData {
+  id?: string;
+  label: string;
+  note?: string;
+  src?: string;
+  padded?: boolean;
+}
+
 interface Props {
   id: string;
   eyebrow?: string;
-  number?: string;
   title: string;
   questionLabel: string;
   question: string;
-  rejectedLabel: string;
-  rejected: string;
-  decisionLabel: string;
-  decision: string;
-  whyTitle: string;
-  why: string[];
-  uiTitle: string;
-  ui: string[];
-  align?: string;
-  typesTitle?: string;
-  types?: string[];
-  closing?: string;
-  screenshots?: { id: string; label: string; note?: string; src?: string }[];
-  screenshotsLayout?: "stack" | "pairs";
+  positiveLabel: string;
+  positive: Item[];
+  negativeLabel: string;
+  negative: Item[];
+  screenshots: ScreenshotData[];
 }
 
 const {
   id,
   eyebrow,
-  number,
   title,
   questionLabel,
   question,
-  rejectedLabel,
-  rejected,
-  decisionLabel,
-  decision,
-  whyTitle,
-  why,
-  uiTitle,
-  ui,
-  align,
-  typesTitle,
-  types,
-  closing,
+  positiveLabel,
+  positive,
+  negativeLabel,
+  negative,
   screenshots = [],
-  screenshotsLayout = "stack",
 } = Astro.props;
-
-const screenshotRows = screenshots.reduce<
-  { id: string; label: string; note?: string; src?: string }[][]
->((rows, screenshot, index) => {
-  if (screenshotsLayout === "pairs") {
-    if (index % 2 === 0) {
-      rows.push([screenshot]);
-    } else {
-      rows[rows.length - 1].push(screenshot);
-    }
-  } else {
-    rows.push([screenshot]);
-  }
-
-  return rows;
-}, []);
 ---
 
 <section class="decision" id={id}>
 
-  <SectionHeading number={number} title={title} eyebrow={eyebrow} />
+  <SectionHeading title={title} eyebrow={eyebrow} />
 
   <div class="question">
 
@@ -83,88 +57,25 @@ const screenshotRows = screenshots.reduce<
   </div>
 
   <Comparison
-    positiveLabel={decisionLabel}
-    positive={[decision]}
-    negativeLabel={rejectedLabel}
-    negative={[rejected]}
+    positiveLabel={positiveLabel}
+    positive={positive}
+    negativeLabel={negativeLabel}
+    negative={negative}
   />
 
-  <h3 class="sub-title">
-    {whyTitle}
-  </h3>
-
-  <ul class="reasons">
+  <div class="screenshot-grid">
     {
-      why.map((reason) => (
-        <li>{reason}</li>
-      ))
-    }
-  </ul>
-
-  <h3 class="sub-title">
-    {uiTitle}
-  </h3>
-
-  <ul class="ui-list">
-    {
-      ui.map((item) => (
-        <li>{item}</li>
-      ))
-    }
-  </ul>
-
-  {
-    typesTitle && types && (
-      <>
-        <h3 class="sub-title">{typesTitle}</h3>
-        <ul class="ui-list">
-          {types.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
-      </>
-    )
-  }
-
-  {
-    align && (
-      <div class="align">
-        <p>{align}</p>
-      </div>
-    )
-  }
-
-  {
-    closing && (
-      <p class="closing">
-        {closing}
-      </p>
-    )
-  }
-
-  {
-    screenshotRows.map((row) =>
-      row.length > 1 ? (
-        <div class="screenshot-pair">
-          {row.map((screenshot) => (
-            <Screenshot
-              id={screenshot.id}
-              label={screenshot.label}
-              note={screenshot.note}
-              src={screenshot.src}
-            />
-          ))}
-        </div>
-      ) : (
+      screenshots.map((screenshot) => (
         <Screenshot
-          id={row[0].id}
-          label={row[0].label}
-          note={row[0].note}
-          src={row[0].src}
+          id={screenshot.id}
+          label={screenshot.label}
+          note={screenshot.note}
+          src={screenshot.src}
+          padded={screenshot.padded}
         />
-      )
-    )
-  }
+      ))
+    }
+  </div>
 
 </section>
 
@@ -224,132 +135,7 @@ const screenshotRows = screenshots.reduce<
 }
 
 
-.sub-title {
-
-  margin: var(--gap-blocks) 0 var(--gap-elements);
-
-  font-size: var(--text-subheading);
-
-  line-height: var(--line-height-h3);
-
-  font-weight: var(--weight-medium);
-}
-
-
-.reasons,
-.ui-list {
-
-  display: grid;
-
-  gap: 0;
-
-  margin: 0;
-
-  padding: 0;
-
-  list-style: none;
-
-  border-top: 1px solid var(--color-border);
-
-  border-left: 1px solid var(--color-border);
-}
-
-
-.reasons li,
-.ui-list li {
-
-  position: relative;
-
-  padding: var(--space-sm) var(--space-sm) var(--space-sm) var(--space-xl);
-
-  border-right: 1px solid var(--color-border);
-
-  border-bottom: 1px solid var(--color-border);
-
-  color: var(--color-text-secondary);
-
-  font-size: var(--text-body);
-
-  line-height: var(--line-height-body);
-}
-
-
-.reasons li::before,
-.ui-list li::before {
-
-  position: absolute;
-
-  top: var(--space-sm);
-
-  left: var(--space-sm);
-
-  color: var(--color-accent);
-
-  font-family: var(--font-mono);
-
-  font-size: 1rem;
-
-  text-transform: uppercase;
-}
-
-
-.reasons li::before {
-  content: "→";
-}
-
-
-.ui-list li::before {
-  content: "·";
-}
-
-
-.align {
-
-  margin-top: var(--gap-elements);
-
-  padding: var(--padding-callout);
-
-  border-left: var(--border-callout) solid var(--color-accent);
-
-  background: var(--color-bg-callout);
-
-  border-radius: var(--radius-callout);
-}
-
-
-.align p {
-
-  margin: 0;
-
-  color: var(--color-text-secondary);
-
-  font-size: var(--text-body);
-
-  line-height: var(--line-height-body);
-}
-
-
-.closing {
-
-  margin: var(--gap-elements) 0 0;
-
-  padding: var(--padding-callout);
-
-  border-left: var(--border-callout) solid var(--color-accent);
-
-  background: var(--color-bg-callout);
-
-  border-radius: var(--radius-callout);
-
-  color: var(--color-text-primary);
-
-  font-size: var(--text-body);
-
-  line-height: var(--line-height-body);
-}
-
-
-.screenshot-pair {
+.screenshot-grid {
 
   display: grid;
 
@@ -359,19 +145,19 @@ const screenshotRows = screenshots.reduce<
 
   gap: var(--gap-grid);
 
-  margin: var(--gap-elements) 0;
+  margin: var(--gap-elements) 0 0;
 
 }
 
 
-.screenshot-pair > :global(.screenshot) {
+.screenshot-grid > :global(.screenshot) {
   margin: 0;
 }
 
 
 @media (max-width: 768px) {
 
-  .screenshot-pair {
+  .screenshot-grid {
 
     grid-template-columns: 1fr;
 
